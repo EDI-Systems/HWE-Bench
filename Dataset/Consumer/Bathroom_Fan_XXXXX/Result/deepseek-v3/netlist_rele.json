@@ -1,0 +1,117 @@
+[
+  {
+    "net_id": "net1",
+    "connections": [
+      {
+        "ComponentID": "REL_U",
+        "PinName": "Control Input",
+        "FunctionName": ""
+      },
+      {
+        "ComponentID": "2N7002",
+        "PinName": "Gate (G)",
+        "FunctionName": "Control Input"
+      }
+    ]
+  },
+  {
+    "net_id": "net2",
+    "connections": [
+      {
+        "ComponentID": "2N7002",
+        "PinName": "Drain (D)",
+        "FunctionName": "Output / Power"
+      },
+      {
+        "ComponentID": "G3MB",
+        "PinName": "+",
+        "FunctionName": "Control Input +"
+      },
+      {
+        "ComponentID": "LEDR",
+        "PinName": "Anode",
+        "FunctionName": "Anode"
+      }
+    ]
+  },
+  {
+    "net_id": "net3",
+    "connections": [
+      {
+        "ComponentID": "G3MB",
+        "PinName": "-",
+        "FunctionName": "Control Input -"
+      },
+      {
+        "ComponentID": "LEDR",
+        "PinName": "Cathode",
+        "FunctionName": "Cathode"
+      },
+      {
+        "ComponentID": "GND",
+        "PinName": "Ground",
+        "FunctionName": "Ground"
+      }
+    ]
+  },
+  {
+    "net_id": "net4",
+    "connections": [
+      {
+        "ComponentID": "G3MB",
+        "PinName": "AC1",
+        "FunctionName": "AC Load Terminal"
+      },
+      {
+        "ComponentID": "HB611-6.35",
+        "PinName": "AC_L",
+        "FunctionName": "AC Line"
+      }
+    ]
+  },
+  {
+    "net_id": "net5",
+    "connections": [
+      {
+        "ComponentID": "G3MB",
+        "PinName": "AC2",
+        "FunctionName": "AC Load Terminal"
+      },
+      {
+        "ComponentID": "HB611-6.35",
+        "PinName": "AC_FAN_O",
+        "FunctionName": "Fan Output / Control"
+      }
+    ]
+  },
+  {
+    "net_id": "net6",
+    "connections": [
+      {
+        "ComponentID": "2N7002",
+        "PinName": "Source (S)",
+        "FunctionName": "Common / Return"
+      },
+      {
+        "ComponentID": "GND",
+        "PinName": "Ground",
+        "FunctionName": "Ground"
+      }
+    ]
+  },
+  {
+    "net_id": "net7",
+    "connections": [
+      {
+        "ComponentID": "U5V",
+        "PinName": "Power Supply",
+        "FunctionName": ""
+      },
+      {
+        "ComponentID": "A1250",
+        "PinName": "U5V",
+        "FunctionName": "Power Supply"
+      }
+    ]
+  }
+]
