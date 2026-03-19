@@ -33,7 +33,7 @@ def build_prompt(txt_content):
         "Your core task is to design a COMPLETE, FULLY FUNCTIONAL, and PRACTICALLY USABLE circuit architecture strictly based on the provided product description. "
         "Ensuring no essential sub-systems are missing.\n\n"
         "[Execution Constraints]\n"
-        "1. Your output MUST be in English only. Do NOT use any Chinese characters.\n"
+        "1. Your output MUST be in English only. Do NOT use any other characters like Chinese or French.\n"
         "2. Return ONLY valid JSON. No markdown fences, no commentary, no preamble.\n"
         "3. The JSON schema must exactly match the required format.\n"
         "4. Generate ONLY 3 to 6 essential modules in total to represent the complete circuit."

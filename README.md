@@ -33,7 +33,7 @@ This project goes beyond testing LLM text generation; it implements a fully auto
 The diagram below illustrates the comprehensive workflow of the HWE-Bench system, detailing how it automates the design and validation process from IC component extraction to final schematic verification.
 
 <p align="center">
-<img src="figure1.png" alt="HWE-Bench Overall Architecture" width="80%">
+<img src="Document/figure1.png" alt="HWE-Bench Overall Architecture" width="80%">
 
 
 <em>Fig. 1: The overall architecture of HWE-Bench.</em>
