@@ -1,0 +1,43 @@
+[
+  {
+    "net_id": "NET_VCC",
+    "connections": [
+      {
+        "ComponentID": "G3MB","PinName": "3","FunctionName": "+"
+      },
+      {
+        "ComponentID": "LEDR","PinName": "1","FunctionName": "Anode"
+      }
+    ]
+  },
+  {
+    "net_id": "NET_GND",
+    "connections": [
+      {
+        "ComponentID": "S8050","PinName": "2","FunctionName": "Emitter"
+      }
+    ]
+  },
+  {
+    "net_id": "NET_BASE",
+    "connections": [
+      {
+        "ComponentID": "S8050","PinName": "1","FunctionName": "Base"
+      }
+    ]
+  },
+  {
+    "net_id": "NET_DRIVE",
+    "connections": [
+      {
+        "ComponentID": "S8050","PinName": "3","FunctionName": "Collector"
+      },
+      {
+        "ComponentID": "G3MB","PinName": "4","FunctionName": "-"
+      },
+      {
+        "ComponentID": "LEDR","PinName": "2","FunctionName": "Cathode"
+      }
+    ]
+  }
+]

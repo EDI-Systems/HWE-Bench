@@ -1,0 +1,137 @@
+import json
+import os
+import re
+
+class FullSystemValidator:
+    def __init__(self, netlist_path, rules_path):
+        self.netlist_data = self._load_json(netlist_path)
+        self.rules_data = self._load_json(rules_path)
+        self.pin_to_net_map = {}
+        self.locked_mcu_pins = set()  # Track (mcu_id, pin)
+        self.results = []
+        self.total_numerator = 0
+        self.total_denominator = 0
+        
+        self._initialize_pin_map()
+
+    def _load_json(self, path):
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    def _initialize_pin_map(self):
+        """Standardize mapping: (ComponentID, PinName) -> NetID"""
+        # Netlist is a list under "System_Netlist" key
+        netlist = self.netlist_data.get("System_Netlist", [])
+        for net in netlist:
+            net_id = net.get("net_id")
+            for conn in net.get("Connections", []):
+                key = (str(conn["ComponentID"]).strip(), str(conn["PinName"]).strip())
+                # If a pin is connected to multiple nets (e.g. GND), it maps to the last one seen.
+                # In hardware rules, we check if they share ANY common net.
+                if key not in self.pin_to_net_map:
+                    self.pin_to_net_map[key] = set()
+                self.pin_to_net_map[key].add(net_id)
+
+    def _get_mcu_pin_in_net(self, mcu_id, target_nets):
+        """Find an MCU pin present in the same net set."""
+        for (cid, pname), nets in self.pin_to_net_map.items():
+            if cid == mcu_id and not nets.isdisjoint(target_nets):
+                return pname
+        return None
+
+    def run_verification(self):
+        for rule in self.rules_data.get("Routing_Rules", []):
+            rule_name = rule.get("RuleName", "Unnamed")
+            rule_type = rule.get("Type")
+            log = []
+            matched = 0
+            required = 0
+
+            # --- MODE 1: MCU Function Group & Locking (Bus/Allocation) ---
+            if rule_type in ["Bus_Pairing", "Resource_Allocation"]:
+                mcu_id = rule.get("MCU")
+                mcu_groups = self.rules_data["MCU_Function_Groups"].get(mcu_id, {})
+                pattern = rule.get("Target_Group_Pattern")
+                target_group = rule.get("Target_Group")
+                
+                candidates = [target_group] if target_group else [g for g in mcu_groups.keys() if re.match(pattern or "", g)]
+                
+                best_match = 0
+                best_log = []
+                best_locked = set()
+
+                for g_name in candidates:
+                    curr_match, curr_total, curr_log, curr_locked = 0, 0, [], set()
+                    group_pins = [str(p["PinName"]).strip() for p in mcu_groups[g_name]]
+                    
+                    for slave in rule.get("Slaves", []):
+                        iface_pins = self.rules_data["Component_Interfaces"].get(slave["ComponentID"], {}).get(slave["Interface"], [])
+                        for p_req in iface_pins:
+                            curr_total += 1
+                            comp_key = (slave["ComponentID"], str(p_req["PinName"]).strip())
+                            nets = self.pin_to_net_map.get(comp_key)
+                            
+                            if nets:
+                                mcu_pin = self._get_mcu_pin_in_net(mcu_id, nets)
+                                if mcu_pin in group_pins:
+                                    if (mcu_id, mcu_pin) not in self.locked_mcu_pins:
+                                        curr_match += 1
+                                        curr_log.append(f"SUCCESS: {comp_key[0]}[{comp_key[1]}] <-> {mcu_id}[{mcu_pin}] via {g_name}")
+                                        curr_locked.add((mcu_id, mcu_pin))
+                                    else:
+                                        curr_log.append(f"LOCK CONFLICT: {mcu_id}[{mcu_pin}] already used.")
+                    
+                    if curr_match > best_match:
+                        best_match, best_log, best_locked = curr_match, curr_log, curr_locked
+                    required = max(required, curr_total)
+                
+                matched = best_match
+                log = best_log
+                self.locked_mcu_pins.update(best_locked)
+
+            # --- MODE 2: All-Component Direct Connectivity (Point-to-Point) ---
+            elif rule_type == "Direct_Link":
+                nodes = rule.get("Nodes", [])
+                required = len(nodes)
+                node_net_sets = [self.pin_to_net_map.get((n["ComponentID"], str(n["PinName"]).strip()), set()) for n in nodes]
+                
+                # Check if there is a common Net ID shared by ALL nodes in the rule
+                common_nets = set.intersection(*node_net_sets) if node_net_sets else set()
+                
+                if common_nets:
+                    matched = required
+                    net_list = ", ".join(list(common_nets))
+                    log.append(f"LINK VERIFIED: All nodes share Net(s) [{net_list}]")
+                else:
+                    log.append("LINK FAILED: No common Net found between specified nodes.")
+
+            # Record Statistics
+            self.total_numerator += matched
+            self.total_denominator += required
+            status = "PASS" if matched == required and required > 0 else "FAIL"
+            if 0 < matched < required: status = "PARTIAL"
+            self.results.append({"rule": rule_name, "status": status, "score": f"{matched}/{required}", "details": log})
+
+    def generate_report(self, output_path):
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        coverage = (self.total_numerator / self.total_denominator * 100) if self.total_denominator > 0 else 0
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write("=== Full System Connectivity Verification Report ===\n")
+            f.write(f"Total Pins/Links Verified: {self.total_numerator}/{self.total_denominator} ({coverage:.2f}%)\n")
+            f.write("-" * 65 + "\n\n")
+            for res in self.results:
+                f.write(f"[{res['status']}] {res['rule']} ({res['score']})\n")
+                for line in res['details']: f.write(f"  * {line}\n")
+                f.write("\n")
+
+if __name__ == "__main__":
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    NETLIST = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "4system_netlist.json")
+    RULES = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "rules.json") 
+    OUTPUT = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "rules_report.txt")
+
+    if os.path.exists(NETLIST) and os.path.exists(RULES):
+        validator = FullSystemValidator(NETLIST, RULES)
+        validator.run_verification()
+        validator.generate_report(OUTPUT)
+        print(f"Verification done: {validator.total_numerator}/{validator.total_denominator} matches.")

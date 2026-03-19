@@ -1,0 +1,84 @@
+{
+  "ComponentID": "OLED",
+  "ComponentType": "OLED Display Module (SSD1309, 128x64, 1.54\")",
+  "Description": "1.54\" 128x64 OLED module using SSD1309 controller with SPI-style interface signals (CS, DC, RES, SDA, SCL), plus power pins (VCC, GND).",
+  "Pins": [
+    {
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for the display module."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Power supply input for the display module (U5V in schematic)."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "Serial clock input (SPI SCK)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "Serial data input (SPI MOSI)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "RES",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low reset input for the display controller."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "DC",
+      "Functions": [
+        {
+          "FunctionName": "Data/Command Select",
+          "FunctionDescription": "Selects data vs command for the controller."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "Chip select input (active low)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

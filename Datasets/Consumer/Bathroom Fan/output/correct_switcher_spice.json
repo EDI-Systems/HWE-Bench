@@ -1,0 +1,47 @@
+[
+  {
+    "net_id": "NET_VIN",
+    "connections": [
+      { "ComponentID": "IRL", "PinName": "2", "FunctionName": "Source" }
+    ]
+  },
+  {
+    "net_id": "NET_VOUT",
+    "connections": [
+      { "ComponentID": "IRL", "PinName": "3", "FunctionName": "Drain" }
+    ]
+  },
+  {
+    "net_id": "NET_GND",
+    "connections": [
+      { "ComponentID": "2N7002", "PinName": "3", "FunctionName": "Source" }
+    ]
+  },
+  {
+    "net_id": "NET_UPV",
+    "connections": [
+      { "ComponentID": "2N7002", "PinName": "1", "FunctionName": "Gate" }
+    ]
+  },
+  {
+    "net_id": "NET_BTN",
+    "connections": [
+      { "ComponentID": "1N4007", "PinName": "2", "FunctionName": "Cathode" },
+      { "ComponentID": "1N4007", "PinName": "2", "FunctionName": "Cathode" }
+    ]
+  },
+  {
+    "net_id": "NET_DET",
+    "connections": [
+      { "ComponentID": "1N4007", "PinName": "1", "FunctionName": "Anode" }
+    ]
+  },
+  {
+    "net_id": "NET_GATE_INTERNAL",
+    "connections": [
+      { "ComponentID": "IRL", "PinName": "1", "FunctionName": "Gate" },
+      { "ComponentID": "2N7002", "PinName": "2", "FunctionName": "Drain" },
+      { "ComponentID": "1N4007", "PinName": "1", "FunctionName": "Anode" }
+    ]
+  }
+]

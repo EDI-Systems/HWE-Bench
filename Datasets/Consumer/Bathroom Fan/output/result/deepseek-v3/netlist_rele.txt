@@ -1,0 +1,7 @@
+net1: REL_U|Control Input|,2N7002|Gate (G)|Control Input|
+net2: 2N7002|Drain (D)|Output / Power|,G3MB|+|Control Input +|,LEDR|Anode|Anode|
+net3: G3MB|-|Control Input -|,LEDR|Cathode|Cathode|,GND|Ground|Ground|
+net4: G3MB|AC1|AC Load Terminal|,HB611-6.35|AC_L|AC Line|
+net5: G3MB|AC2|AC Load Terminal|,HB611-6.35|AC_FAN_O|Fan Output / Control|
+net6: 2N7002|Source (S)|Common / Return|,GND|Ground|Ground|
+net7: U5V|Power Supply|,A1250|U5V|Power Supply|

@@ -1,0 +1,51 @@
+{
+  "ComponentID": "G3MB",
+  "ComponentType": "Solid State Relay (SSR), Phototriac Output, Single In-line Package (SIP)",
+  "Description": "This is a low-cost, subminiature PCB-mounting solid-state relay in a SIP package designed to switch AC loads up to 2A at 100-240VAC. It features optical isolation between input and output, with variants offering zero-cross switching (G3MB-202P) or non-zero-cross switching (G3MB-202PL). Key integrated features include a built-in snubber circuit and, on most models, a built-in current-limiting input resistor for specified DC voltages (5, 12, 24 VDC). Models without the input resistor (suffix \"EG\") require an external series resistor to limit the LED current to the recommended 7-20 mA range.",
+  "Pins": [
+    {
+      "PinName": "AC1",
+      "Functions": [
+        {
+          "FunctionName": "AC Load Terminal",
+          "FunctionDescription": "One side of the AC load/output path (relay output). Connect in series with AC load."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "AC Power"
+    },
+    {
+      "PinName": "AC2",
+      "Functions": [
+        {
+          "FunctionName": "AC Load Terminal",
+          "FunctionDescription": "Other side of the AC load/output path (relay output). Connect in series with AC load."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "AC Power"
+    },
+    {
+      "PinName": "+",
+      "Functions": [
+        {
+          "FunctionName": "Control Input +",
+          "FunctionDescription": "Positive control input for the internal LED/driver (DC control)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinName": "-",
+      "Functions": [
+        {
+          "FunctionName": "Control Input -",
+          "FunctionDescription": "Negative control input return for the internal LED/driver (DC control)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital/Analog"
+    }
+  ]
+}

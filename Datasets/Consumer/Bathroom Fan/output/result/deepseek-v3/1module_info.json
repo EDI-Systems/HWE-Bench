@@ -1,0 +1,25 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Switching and Self-Latching Module",
+      "Function Description": "Provides main system power switching with self-latching capability and independent button state detection. Uses a P-channel MOSFET as the main power switch and an N-channel MOSFET for logic latching.",
+      "Signal Sources": "Physical button (momentary low-level trigger), Logic Control Unit (high-level latching signal).",
+      "Signal Destinations": "System power rail (VCC), Logic Control Unit (button state input).",
+      "Implementation Logic": "Initial button press pulls gate of P-MOSFET low via diode network, turning it on to power the system. Once powered, the Logic Control Unit outputs a high signal to the gate of the N-MOSFET, latching the P-MOSFET gate low, maintaining power after button release. The diode network isolates the button signal, allowing the Logic Control Unit to independently detect the button state as an input."
+    },
+    {
+      "Module Name": "Isolated Driver Control Module",
+      "Function Description": "Controls a Solid State Relay (SSR) with electrical isolation, includes safety protection against floating inputs, and provides visual status indication via an LED.",
+      "Signal Sources": "Logic Control Unit (high-level control signal).",
+      "Signal Destinations": "Solid State Relay (SSR) control input, Status LED.",
+      "Implementation Logic": "A switching transistor (e.g., NPN BJT or N-channel MOSFET) is driven by the logic signal. A pull-down resistor at the driver input ensures a defined low state during MCU initialization or floating conditions. When the logic signal is high, the transistor turns on, activating the SSR and allowing current to flow through the LED (with series current-limiting resistor) for synchronized visual feedback."
+    },
+    {
+      "Module Name": "Logic Control Unit",
+      "Function Description": "The central microcontroller or logic circuit that monitors the button input, manages the power latching signal, and generates the control signal for the driver module.",
+      "Signal Sources": "Power Switching Module (button state input).",
+      "Signal Destinations": "Power Switching Module (latching signal output), Isolated Driver Control Module (control signal output).",
+      "Implementation Logic": "Upon initial power-up triggered by the button, the unit reads the button input pin. It then asserts a continuous high-level output to the Power Switching Module's N-MOSFET to maintain system power. It also processes control logic to output a high signal to the Isolated Driver Control Module to activate the SSR and LED when required."
+    }
+  ]
+}

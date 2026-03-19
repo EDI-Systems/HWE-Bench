@@ -1,0 +1,105 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net_relay_fan",
+      "Connections": [
+        { "ComponentID": "G3MB", "PinName": "AC1" },
+        { "ComponentID": "HB611-6.35", "PinName": "AC_FAN_O" }
+      ]
+    },
+    {
+      "net_id": "net_led_cathode",
+      "Connections": [
+        { "ComponentID": "LEDR", "PinName": "Cathode" },
+        { "ComponentID": "G3MB", "PinName": "-" }
+      ]
+    },
+    {
+      "net_id": "net_led_anode",
+      "Connections": [
+        { "ComponentID": "LEDR", "PinName": "Anode" },
+        { "ComponentID": "G3MB", "PinName": "+" }
+      ]
+    },
+    {
+      "net_id": "net_switcher_junction",
+      "Connections": [
+        { "ComponentID": "2N7002", "PinName": "Drain (D)" },
+        { "ComponentID": "IRL", "PinName": "G" },
+        { "ComponentID": "1N4007", "PinName": "Cathode" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_sda",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "2-SDA" },
+        { "ComponentID": "A1250", "PinName": "SDA" },
+        { "ComponentID": "AHT10", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_scl",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "3-SCL" },
+        { "ComponentID": "A1250", "PinName": "SCL" },
+        { "ComponentID": "AHT10", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "net_spi_mosi",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "16-MOSI" },
+        { "ComponentID": "OLED", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "net_spi_sclk",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "15-SCLK" },
+        { "ComponentID": "OLED", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "net_oled_cs",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "10-A10" },
+        { "ComponentID": "OLED", "PinName": "CS" }
+      ]
+    },
+    {
+      "net_id": "net_oled_dc",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "9-A9" },
+        { "ComponentID": "OLED", "PinName": "DC" }
+      ]
+    },
+    {
+      "net_id": "net_oled_res",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "8-A8" },
+        { "ComponentID": "OLED", "PinName": "RES" }
+      ]
+    },
+    {
+      "net_id": "net_switcher_logic",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "6-A7" },
+        { "ComponentID": "2N7002", "PinName": "Gate (G)" }
+      ]
+    },
+    {
+      "net_id": "net_relay_ctrl",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "5" },
+        { "ComponentID": "S8050", "PinName": "Base" }
+      ]
+    },
+    {
+      "net_id": "net_button_feedback",
+      "Connections": [
+        { "ComponentID": "Atmega", "PinName": "7" },
+        { "ComponentID": "1N4007", "PinName": "Anode" }
+      ]
+    }
+  ]
+}

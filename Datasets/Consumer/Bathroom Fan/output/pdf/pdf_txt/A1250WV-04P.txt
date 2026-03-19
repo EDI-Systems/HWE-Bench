@@ -1,0 +1,12 @@
+Component ID: A1250
+Component Type: Board-to-Wire Connector (4-Pin, A1250WV-04P)
+Description: 4-pin connector providing I2C signals (SDA, SCL), ground, and +5 V supply (U5V) for an external module/peripheral.
+
+Pinout Table:
+
+| Pin Number | Pin Name | Function     | Description                                                   | Pin Type     | Electrical Type |
+| ---------- | -------- | ------------ | ------------------------------------------------------------- | ------------ | --------------- |
+| 1          | SDA      | I2C Data     | I2C serial data line. Requires pull-up to supply on the bus.  | I/O          | Digital         |
+| 2          | SCL      | I2C Clock    | I2C serial clock line. Requires pull-up to supply on the bus. | Input        | Digital         |
+| 3          | GND      | Ground       | Ground reference. Connect to system ground.                   | Ground       | Power           |
+| 4          | U5V      | Power Supply | +5 V supply output to external device.                        | Power Output | Power           |
