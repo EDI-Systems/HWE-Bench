@@ -1,6 +1,0 @@
-NET_VIN: IRL|S|Source|,1N4007|Anode|Anode Terminal|
-NET_VOUT: IRL|D|Drain|,2N7002|Drain|Output / Power|
-NET_GND: 2N7002|Source|Common / Return|,S8050|Emitter|Common / Current Output|
-NET_BTN: 2N7002|Gate|Control Input|,S8050|Base|Control Input|
-NET_UPV: S8050|Collector|Power Input / Current Output|
-NET_DET: 1N4007|Cathode|Cathode Terminal|
