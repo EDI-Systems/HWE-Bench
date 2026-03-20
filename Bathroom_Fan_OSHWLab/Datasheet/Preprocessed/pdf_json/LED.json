@@ -1,0 +1,31 @@
+{
+  "ComponentID": "LEDR",
+  "ComponentType": "Light Emitting Diode (LED)",
+  "Description": "A red light-emitting diode used for visual indication. It requires a forward voltage to emit light and should be used with a current-limiting resistor.",
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Anode",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal of the LED. Current enters through this pin."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Passive"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Cathode",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal of the LED. Current exits through this pin, usually connected to ground or a resistor."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Passive"
+    }
+  ]
+}

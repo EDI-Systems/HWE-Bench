@@ -1,0 +1,40 @@
+{
+  "ComponentID": "2N7002",
+  "ComponentType": "Small Signal N-Channel MOSFET",
+  "Description": "This is a 60 V, 115 mA N-Channel enhancement-mode MOSFET in a SOT-23 package. It is designed for low-power switching and amplification applications, featuring a typical on-state resistance of 7.5 Ω at 10 V gate drive, a low gate threshold voltage, and qualification for automotive use (AEC-Q101). It is Pb-Free, Halogen Free, and RoHS compliant.",
+  "Pins": [
+    {
+      "PinName": "Gate (G)",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Input terminal for applying the gate-source voltage to control the channel conductivity."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog, High Impedance"
+    },
+    {
+      "PinName": "Drain (D)",
+      "Functions": [
+        {
+          "FunctionName": "Output / Power",
+          "FunctionDescription": "Output terminal; the current flows from Drain to Source when the MOSFET is on. Connects to the higher voltage load."
+        }
+      ],
+      "PinType": "Output / Power",
+      "ElectricalType": "Power, Current Sink"
+    },
+    {
+      "PinName": "Source (S)",
+      "Functions": [
+        {
+          "FunctionName": "Common / Return",
+          "FunctionDescription": "Common terminal and current return path. Typically connected to circuit ground."
+        }
+      ],
+      "PinType": "Common / Return",
+      "ElectricalType": "Power, Current Source"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "ComponentID": "Atmega",
+  "ComponentType": "Microcontroller Module (Arduino Pro Micro / ATmega32U4)",
+  "Description": "Pro Micro module based on ATmega32U4 with USB capability. Provides power pins (RAW, VCC, GND), reset (RST), UART pins (TX/RX), I2C pins (SDA/SCL), SPI pins (SCLK/MISO/MOSI), analog inputs (A0–A3, A7–A10), and multiple GPIOs.",
+  "Pins": [
+    {
+      "PinName": "1-TX",
+      "Functions": [
+        {
+          "FunctionName": "UART TX",
+          "FunctionDescription": "UART transmit output (TX)."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "0-RX",
+      "Functions": [
+        {
+          "FunctionName": "UART RX",
+          "FunctionDescription": "UART receive input (RX)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Additional ground pin. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "2-SDA",
+      "Functions": [
+        {
+          "FunctionName": "I2C Data",
+          "FunctionDescription": "I2C SDA line. Requires pull-up to VCC."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "3-SCL",
+      "Functions": [
+        {
+          "FunctionName": "I2C Clock",
+          "FunctionDescription": "I2C SCL line. Requires pull-up to VCC."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "4",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose digital I/O (BUT\\_M)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "5",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose digital I/O (BUT\\_P)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "6-A7",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / Analog In",
+          "FunctionDescription": "GPIO with analog input A7 (UP\\_PV)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinName": "7",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose digital I/O (BUT\\_SE)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "8-A8",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / Analog In",
+          "FunctionDescription": "GPIO with analog input A8 (RS)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinName": "9-A9",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / Analog In",
+          "FunctionDescription": "GPIO with analog input A9 (DC)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinName": "10-A10",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / Analog In",
+          "FunctionDescription": "GPIO with analog input A10 (CS)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinName": "16-MOSI",
+      "Functions": [
+        {
+          "FunctionName": "SPI MOSI",
+          "FunctionDescription": "SPI master-out slave-in. Also usable as GPIO."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "14-MISO",
+      "Functions": [
+        {
+          "FunctionName": "SPI MISO",
+          "FunctionDescription": "SPI master-in slave-out. Also usable as GPIO."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "15-SCLK",
+      "Functions": [
+        {
+          "FunctionName": "SPI Clock",
+          "FunctionDescription": "SPI clock. Also usable as GPIO (CL)."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "A0",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Analog input A0 (REL\\_U)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Analog input A1."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinName": "A2",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Analog input A2."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinName": "A3",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Analog input A3."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Regulated VCC supply pin for the module (typically 5V or 3.3V depending on variant)."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low reset input."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "RAW",
+      "Functions": [
+        {
+          "FunctionName": "Raw Power Input",
+          "FunctionDescription": "Unregulated input supply (U5V). Feeds onboard regulator (if present)."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    }
+  ]
+}

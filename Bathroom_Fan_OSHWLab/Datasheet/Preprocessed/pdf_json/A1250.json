@@ -1,0 +1,51 @@
+{
+  "ComponentID": "A1250",
+  "ComponentType": "Board-to-Wire Connector (4-Pin, A1250WV-04P)",
+  "Description": "4-pin connector providing I2C signals (SDA, SCL), ground, and +5 V supply (U5V) for an external module/peripheral.",
+  "Pins": [
+    {
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "I2C Data",
+          "FunctionDescription": "I2C serial data line. Requires pull-up to supply on the bus."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "I2C Clock",
+          "FunctionDescription": "I2C serial clock line. Requires pull-up to supply on the bus."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinName": "U5V",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "+5 V supply output to external device."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Power"
+    }
+  ]
+}
