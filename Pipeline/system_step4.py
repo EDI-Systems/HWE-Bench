@@ -3,18 +3,23 @@ import json
 import re
 from openai import OpenAI
 
-# ---------- 1. Initialization ----------
-api_key = os.getenv("")
+def load_api_config(config_path="api_config.json"):
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise RuntimeError(f"Error: Configuration file '{config_path}' not found.")
+    except json.JSONDecodeError:
+        raise RuntimeError(f"Error: Failed to parse '{config_path}'.")
 
-client = OpenAI(api_key=api_key, base_url="")
+api_config = load_api_config("api_config.json")
+client = OpenAI(api_key=api_config.get("api_key", ""), base_url=api_config.get("base_url", ""))
 
-# ---------- 2. File Reading Tools ----------
 def read_json_file(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def load_all_components(component_dir):
-    """Load all component JSON files in the library (pdf_json)"""
     components = []
     if not os.path.isdir(component_dir):
         print(f"Warning: Component directory not found: {component_dir}")
@@ -29,17 +34,12 @@ def load_all_components(component_dir):
     return components
 
 def clean_netlist_text(text: str) -> str:
-    """Clean output: remove Markdown fences and trailing commas"""
     if text.startswith("```"):
         text = "\n".join(line for line in text.splitlines() if not line.strip().startswith("```"))
     cleaned = [re.sub(r",\s*$", "", line) for line in text.splitlines()]
     return "\n".join(cleaned)
 
-# ---------- 3. System Integration LLM Call ----------
 def generate_system_netlist(module_info, module_netlist, components):
-    """
-    Generate global system netlist based on architecture, internal netlists, and component library
-    """
     system_prompt = (
         "Task: Generate a unified SYSTEM-LEVEL NETLIST.\n\n"
         "Context Data:\n"
@@ -59,13 +59,11 @@ def generate_system_netlist(module_info, module_netlist, components):
         "- NO markdown fences.\n"
         "- NO explanations, NO headers, NO blank lines."
     )
-
     user_payload = {
         "functional_arch": module_info,
         "internal_netlists": module_netlist,
         "component_library": components
     }
-
     try:
         response = client.chat.completions.create(
             model="deepseek-chat",
@@ -80,7 +78,6 @@ def generate_system_netlist(module_info, module_netlist, components):
         print(f"API Error: {e}")
         return ""
 
-# ---------- 4. Netlist Parser ----------
 def parse_netlist_to_json(netlist_text: str):
     result = {"System_Netlist": []}
     for raw in netlist_text.splitlines():
@@ -88,7 +85,6 @@ def parse_netlist_to_json(netlist_text: str):
         if not line: continue
         m = re.match(r"^(net\d+):\s*(.*)$", line)
         if not m: continue
-        
         net_name, conns_str = m.group(1), m.group(2)
         connections = []
         for conn in conns_str.split(","):
@@ -100,16 +96,13 @@ def parse_netlist_to_json(netlist_text: str):
         result["System_Netlist"].append({"net_id": net_name, "Connections": connections})
     return result
 
-# ---------- 5. Main Program ----------
 def main_system_integration(project_path):
-    output_dir = os.path.join(project_path, "output", "result", "deepseek-v3")
-    comp_dir = os.path.join(project_path, "output", "pdf", "pdf_json")
+    output_dir = os.path.join(project_path, "Result", "deepseek-v3")
+    comp_dir = os.path.join(project_path, "Datasheet", "Original", "pdf_json")
     
-    info_path = os.path.join(output_dir, "1module_info.json")
-    netlist_path = os.path.join(output_dir, "3module_netlist.json")
-    
-    final_txt = os.path.join(output_dir, "4system_netlist.txt")
-    final_json = os.path.join(output_dir, "4system_netlist.json")
+    info_path = os.path.join(output_dir, "partition_step1.json")
+    netlist_path = os.path.join(output_dir, "module_step3.json")
+    final_json = os.path.join(output_dir, "system_step4.json")
 
     if not all(os.path.exists(p) for p in [info_path, netlist_path, comp_dir]):
         print(f"Error: Missing input files in {project_path}")
@@ -131,14 +124,13 @@ def main_system_integration(project_path):
     system_json = parse_netlist_to_json(cleaned_txt)
 
     os.makedirs(output_dir, exist_ok=True)
-    with open(final_txt, "w", encoding="utf-8") as f: f.write(cleaned_txt)
-    with open(final_json, "w", encoding="utf-8") as f: json.dump(system_json, f, indent=2, ensure_ascii=False)
+    with open(final_json, "w", encoding="utf-8") as f: 
+        json.dump(system_json, f, indent=2, ensure_ascii=False)
 
-    print(f"Success! System netlist saved to {output_dir}")
+    print(f"Success! System netlist saved to {final_json}")
 
 if __name__ == "__main__":
     TARGET_PATH = r"D:\llm\Bathroom Fan"
-    
     if os.path.exists(TARGET_PATH):
         main_system_integration(TARGET_PATH)
     else:

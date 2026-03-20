@@ -1,0 +1,10 @@
+Component ID: S8050
+Component Type: Bipolar Junction Transistor (BJT), NPN
+Description: The component is a silicon NPN transistor in a SOT-23 plastic package, designed for power amplifier applications. It functions as a current-controlled switch or amplifier, where a small current at the base terminal controls a larger current flow between the collector and emitter. It features three gain classifications (hFE), with complementary pairing to the S8550M PNP transistor.
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Base | Control Input | Terminal for applying the control current to modulate the collector-emitter current. | Input | Analog, Current Input |
+| 2 | Emitter | Common / Current Output | Typically the common reference terminal; current exits the transistor here. | Output | Analog, Current Output |
+| 3 | Collector | Power Input / Current Output | Terminal connected to the load and power supply; main current flows into the transistor here. | Power | Analog, Current Input/Output |

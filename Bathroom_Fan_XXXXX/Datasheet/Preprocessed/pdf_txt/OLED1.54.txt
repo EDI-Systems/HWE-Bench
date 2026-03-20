@@ -1,0 +1,15 @@
+Component ID: OLED
+Component Type: OLED Display Module (SSD1309, 128x64, 1.54")
+Description: 1.54" 128x64 OLED module using SSD1309 controller with SPI-style interface signals (CS, DC, RES, SDA, SCL), plus power pins (VCC, GND).
+
+Pinout Table:
+
+| Pin Number | Pin Name | Function            | Description                                                   | Pin Type    | Electrical Type |
+| ---------- | -------- | ------------------- | ------------------------------------------------------------- | ----------- | --------------- |
+| 1          | GND      | Ground              | Ground reference for the display module.                      | Ground      | Power           |
+| 2          | VCC      | Power Supply        | Power supply input for the display module (U5V in schematic). | Power Input | Power           |
+| 3          | SCL      | Serial Clock        | Serial clock input (SPI SCK).                                 | Input       | Digital         |
+| 4          | SDA      | Serial Data         | Serial data input (SPI MOSI).                                 | Input       | Digital         |
+| 5          | RES      | Reset               | Active-low reset input for the display controller.            | Input       | Digital         |
+| 6          | DC       | Data/Command Select | Selects data vs command for the controller.                   | Input       | Digital         |
+| 7          | CS       | Chip Select         | Chip select input (active low).                               | Input       | Digital         |

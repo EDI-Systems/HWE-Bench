@@ -2,9 +2,23 @@ import os
 import glob
 from openai import OpenAI
 
-# Initialize LLM
-api_key = os.getenv("")
-client = OpenAI(api_key=api_key, base_url="")
+# ---------- Init LLM Configuration ----------
+def load_api_config(config_path="api_config.json"):
+    """Load API configuration from an external JSON file."""
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise RuntimeError(f"Error: Configuration file '{config_path}' not found.")
+    except json.JSONDecodeError:
+        raise RuntimeError(f"Error: Failed to parse '{config_path}'. Please check the JSON format.")
+
+# Load configuration and initialize the OpenAI client
+api_config = load_api_config("api_config.json")
+api_key = api_config.get("api_key", "")
+base_url = api_config.get("base_url", "")
+
+client = OpenAI(api_key=api_key, base_url=base_url)
 
 
 def read_md_files_with_limit(directory, max_chars_per_file=7000):

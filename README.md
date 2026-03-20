@@ -4,7 +4,7 @@
 
   Code and data for the following work:
   <p>
-    * [Conference 2026] <a href="https://arxiv.org/abs/xxxx.xxxxx">HWE-Bench: Can Language Models Perform Board-level Schematic Designs?</a>
+    * [Conference 2026] <a href="https://arxiv.org/abs/2603.18102">HWE-Bench: Can Language Models Perform Board-level Schematic Designs?</a>
   </p>
 </div>
 
@@ -118,9 +118,9 @@ python spice_*.py
 If you find this work helpful in your research, please cite:
 
 ```bibtex
-@article{hwebench2026,
+@article{qiu2026hwebench,
   title={HWE-Bench: Can Language Models Perform Board-level Schematic Designs?},
-  author={Your},
-  journal={arXiv preprint arXiv:xxxx.xxxxx},
+  author={Weibo Qiu, Yinhao Xiao, Runyu Pan},
+  journal={arXiv preprint arXiv:2603.18102},
   year={2026}
 }

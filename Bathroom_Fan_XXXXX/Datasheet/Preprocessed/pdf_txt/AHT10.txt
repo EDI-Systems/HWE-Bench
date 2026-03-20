@@ -1,0 +1,11 @@
+Component ID: AHT10
+Component Type: Digital Temperature and Humidity Sensor
+Description: The AHT10 is a fully calibrated, digital-output temperature and humidity sensor that communicates via a standard I²C interface. It integrates a MEMS capacitive humidity sensing element and a band-gap temperature sensing element with a custom ASIC for signal processing, providing excellent long-term stability. The device features a low-power sleep mode, rapid response, and strong anti-interference capability, packaged in a 4x5mm SMD footprint suitable for reflow soldering.
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VDD | Power Supply | Positive supply voltage (1.8V to 3.6V, typical 3.3V) | Power Input | Power |
+| 2 | SDA | Serial Data | I²C bidirectional data line | Digital I/O | Open-Drain |
+| 3 | GND | Ground | Supply ground (0V) | Power Input | Ground |
+| 4 | SCL | Serial Clock | I²C clock input | Digital Input | Open-Drain |

@@ -1,0 +1,347 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Isolated Driver Control Module",
+      "Function Description": "Controls a Solid State Relay (SSR) with electrical isolation, includes safety protection against floating inputs, and provides visual status indication via an LED.",
+      "Signal Sources": "Logic Control Unit (high-level control signal).",
+      "Signal Destinations": "Solid State Relay (SSR) control input, Status LED.",
+      "Implementation Logic": "A switching transistor (e.g., NPN BJT or N-channel MOSFET) is driven by the logic signal. A pull-down resistor at the driver input ensures a defined low state during MCU initialization or floating conditions. When the logic signal is high, the transistor turns on, activating the SSR and allowing current to flow through the LED (with series current-limiting resistor) for synchronized visual feedback.",
+      "Signal Chain": "The Logic Control Unit (MCU) provides a digital control signal. This signal is fed to the base of an NPN transistor (S8050) through a pull-down resistor (not in library, but implied for safety). When the signal is high, the transistor turns on, allowing current to flow from its collector to emitter. The collector is connected to the positive control input (+) of the Solid State Relay (G3MB) and the anode of the status LED (LEDR) via a current-limiting resistor (not in library). The negative control input (-) of the SSR and the cathode of the LED are connected to ground. When the transistor is on, it completes the circuit, activating the SSR to switch the AC load and illuminating the LED for visual status. The AC load is connected to the SSR's output terminals (AC1, AC2), which interface with the AC power lines via a terminal block (HB611-6.35).",
+      "Recommended Components": [
+        {
+          "ComponentID": "Atmega",
+          "Functional Position": "Logic Control Unit",
+          "Recommendation Reason": "Provides the digital control signal to drive the switching transistor. Pin '4' is selected as a general-purpose digital output for this control function.",
+          "Pin Connections": {
+            "4": "Connected to the base of the S8050 transistor (through an external pull-down resistor for safety).",
+            "GND": "Connected to system ground.",
+            "VCC": "Connected to the system's positive supply rail (e.g., 5V)."
+          }
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "Switching Transistor",
+          "Recommendation Reason": "Acts as a current-controlled switch. When the MCU output is high, it turns on, allowing current to flow to the SSR and LED.",
+          "Pin Connections": {
+            "Base": "Connected to MCU pin '4' (via external pull-down resistor).",
+            "Collector": "Connected to the '+' input of the G3MB SSR and the anode of the LEDR (via external current-limiting resistor).",
+            "Emitter": "Connected to system ground."
+          }
+        },
+        {
+          "ComponentID": "G3MB",
+          "Functional Position": "Solid State Relay",
+          "Recommendation Reason": "Provides optically isolated switching of the AC load based on the DC control signal from the transistor.",
+          "Pin Connections": {
+            "+": "Connected to the collector of the S8050 transistor (via external current-limiting resistor).",
+            "-": "Connected to system ground.",
+            "AC1": "Connected to one AC load terminal (e.g., via HB611-6.35).",
+            "AC2": "Connected to the other AC load terminal (e.g., via HB611-6.35)."
+          }
+        },
+        {
+          "ComponentID": "LEDR",
+          "Functional Position": "Status Indicator",
+          "Recommendation Reason": "Provides visual feedback when the SSR is activated (on when transistor is on).",
+          "Pin Connections": {
+            "Anode": "Connected to the collector of the S8050 transistor (via external current-limiting resistor).",
+            "Cathode": "Connected to system ground."
+          }
+        },
+        {
+          "ComponentID": "HB611-6.35",
+          "Functional Position": "AC Power and Load Interface",
+          "Recommendation Reason": "Provides a secure screw-terminal connection for AC power input and the switched AC load output.",
+          "Pin Connections": {
+            "AC_L": "Connected to AC line (hot) input.",
+            "AC_N": "Connected to AC neutral input (can use either pin, both are internally connected).",
+            "AC_FAN_O": "Connected to one side of the AC load (e.g., to G3MB pin AC1).",
+            "Other AC_N": "Connected to the other side of the AC load (e.g., to G3MB pin AC2)."
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Logic Control Unit",
+      "Function Description": "The central microcontroller or logic circuit that monitors the button input, manages the power latching signal, and generates the control signal for the driver module.",
+      "Signal Sources": "Power Switching Module (button state input).",
+      "Signal Destinations": "Power Switching Module (latching signal output), Isolated Driver Control Module (control signal output).",
+      "Implementation Logic": "Upon initial power-up triggered by the button, the unit reads the button input pin. It then asserts a continuous high-level output to the Power Switching Module's N-MOSFET to maintain system power. It also processes control logic to output a high signal to the Isolated Driver Control Module to activate the SSR and LED when required.",
+      "Signal Chain": "The Logic Control Unit is the central processing hub. It receives a button state input from the Power Switching Module via a GPIO pin configured as a digital input with a pull-up resistor (internal or external). Upon detecting the button press (logic low), the microcontroller initializes and asserts a continuous high-level output on a dedicated GPIO pin. This output is connected to the gate of an N-MOSFET in the Power Switching Module to latch the system power. Concurrently, based on its internal control logic (which could involve timing, sensor input, or other conditions), the unit generates a control signal on another GPIO pin. This control signal is output to the Isolated Driver Control Module to command the activation of the SSR and its status LED. The signal flow is: Button Input (Digital Read) -> Microcontroller Logic Processing -> Latching Signal Output (Digital Write) & Control Signal Output (Digital Write).",
+      "Recommended Components": [
+        {
+          "ComponentID": "Atmega",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Serves as the programmable logic core to read the button input, generate the power latching signal, and output the control signal for the driver. Provides necessary GPIOs and processing capability.",
+          "Pin Connections": [
+            {
+              "PinName": "4",
+              "Connected_To_Net": "BUTTON_INPUT",
+              "Connection_Description": "Configured as digital input with internal pull-up to read the button state from the Power Switching Module."
+            },
+            {
+              "PinName": "5",
+              "Connected_To_Net": "LATCH_OUTPUT",
+              "Connection_Description": "Configured as digital output. Drives high to activate the N-MOSFET in the Power Switching Module for power latching."
+            },
+            {
+              "PinName": "9-A9",
+              "Connected_To_Net": "CONTROL_OUTPUT",
+              "Connection_Description": "Configured as digital output. Provides the control signal to the Isolated Driver Control Module to activate the SSR and LED."
+            },
+            {
+              "PinName": "VCC",
+              "Connected_To_Net": "VCC_5V",
+              "Connection_Description": "Connected to the regulated 5V supply from the Power Switching Module's output for microcontroller operation."
+            },
+            {
+              "PinName": "GND",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to the system ground reference."
+            },
+            {
+              "PinName": "RAW",
+              "Connected_To_Net": "U5V_UNREG",
+              "Connection_Description": "Connected to the unregulated 5V supply from the Power Switching Module, feeding the onboard regulator if the VCC pin requires it."
+            }
+          ]
+        },
+        {
+          "ComponentID": "2N7002",
+          "Functional Position": "Power Latching Driver (Optional, if external MOSFET is needed)",
+          "Recommendation Reason": "Can be used as an external N-MOSFET switch if the microcontroller's GPIO cannot directly drive the Power Switching Module's MOSFET gate, or to provide level shifting/isolation. Controlled by the microcontroller's LATCH_OUTPUT signal.",
+          "Pin Connections": [
+            {
+              "PinName": "Gate (G)",
+              "Connected_To_Net": "LATCH_OUTPUT",
+              "Connection_Description": "Connected to the microcontroller's LATCH_OUTPUT pin (e.g., Pin 5). The gate voltage controls the MOSFET switch."
+            },
+            {
+              "PinName": "Drain (D)",
+              "Connected_To_Net": "PWR_LATCH_NET",
+              "Connection_Description": "Connected to the gate of the main P-MOSFET or the latching circuit in the Power Switching Module to control system power."
+            },
+            {
+              "PinName": "Source (S)",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to system ground, completing the switch path."
+            }
+          ]
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "Control Signal Buffer/Driver",
+          "Recommendation Reason": "Can be used as a buffer or current amplifier if the microcontroller's CONTROL_OUTPUT pin needs to drive a higher current load, such as an LED or the input of an isolated driver module, ensuring a robust signal.",
+          "Pin Connections": [
+            {
+              "PinName": "Base",
+              "Connected_To_Net": "CONTROL_OUTPUT",
+              "Connection_Description": "Connected to the microcontroller's CONTROL_OUTPUT pin (e.g., Pin 9-A9) through a current-limiting base resistor (value not in library, but required)."
+            },
+            {
+              "PinName": "Collector",
+              "Connected_To_Net": "VCC_5V",
+              "Connection_Description": "Connected to the 5V supply rail (VCC_5V) through the load (e.g., the input of the Isolated Driver Control Module or an LED with series resistor)."
+            },
+            {
+              "PinName": "Emitter",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to system ground, providing the current sink path."
+            }
+          ]
+        },
+        {
+          "ComponentID": "LEDR",
+          "Functional Position": "Status Indicator for Control Signal",
+          "Recommendation Reason": "Provides a visual indication that the control signal is active, useful for debugging or user feedback. Must be used with a current-limiting resistor (not in library).",
+          "Pin Connections": [
+            {
+              "PinName": "Anode",
+              "Connected_To_Net": "CONTROL_LED_ANODE",
+              "Connection_Description": "Connected to the collector of the S8050 transistor (or directly to CONTROL_OUTPUT with a series resistor) to be driven when the control signal is active."
+            },
+            {
+              "PinName": "Cathode",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to system ground to complete the LED circuit."
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N4007",
+          "Functional Position": "Protection Diode",
+          "Recommendation Reason": "Can be used for reverse voltage protection on the power input (RAW/VCC) or as a flyback diode if an inductive load is switched by the control signal, protecting the microcontroller and transistor from voltage spikes.",
+          "Pin Connections": [
+            {
+              "PinName": "Anode",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to system ground when used as a flyback diode across an inductive load."
+            },
+            {
+              "PinName": "Cathode",
+              "Connected_To_Net": "CONTROL_LOAD_SUPPLY",
+              "Connection_Description": "Connected to the supply side of the inductive load (e.g., relay coil in the driver module) to clamp back-EMF."
+            }
+          ]
+        },
+        {
+          "ComponentID": "A1250",
+          "Functional Position": "External Interface Connector",
+          "Recommendation Reason": "Provides a standardized 4-pin connector (I2C + power) for potential expansion, allowing connection of external I2C peripherals (e.g., sensors, displays) to the microcontroller, enhancing functionality.",
+          "Pin Connections": [
+            {
+              "PinName": "SDA",
+              "Connected_To_Net": "I2C_SDA",
+              "Connection_Description": "Connected to the microcontroller's I2C SDA pin (Pin 2-SDA) for bidirectional data communication with external I2C devices."
+            },
+            {
+              "PinName": "SCL",
+              "Connected_To_Net": "I2C_SCL",
+              "Connection_Description": "Connected to the microcontroller's I2C SCL pin (Pin 3-SCL) for clock signal to external I2C devices."
+            },
+            {
+              "PinName": "GND",
+              "Connected_To_Net": "SYSTEM_GND",
+              "Connection_Description": "Connected to system ground, providing ground reference for external devices."
+            },
+            {
+              "PinName": "U5V",
+              "Connected_To_Net": "VCC_5V",
+              "Connection_Description": "Connected to the regulated 5V supply (VCC_5V) to power external devices connected via this connector."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Switching and Self-Latching Module",
+      "Function Description": "Provides main system power switching with self-latching capability and independent button state detection. Uses a P-channel MOSFET as the main power switch and an N-channel MOSFET for logic latching.",
+      "Signal Sources": "Physical button (momentary low-level trigger), Logic Control Unit (high-level latching signal).",
+      "Signal Destinations": "System power rail (VCC), Logic Control Unit (button state input).",
+      "Implementation Logic": "Initial button press pulls gate of P-MOSFET low via diode network, turning it on to power the system. Once powered, the Logic Control Unit outputs a high signal to the gate of the N-MOSFET, latching the P-MOSFET gate low, maintaining power after button release. The diode network isolates the button signal, allowing the Logic Control Unit to independently detect the button state as an input.",
+      "Signal Chain": "The module's core function is a self-latching power switch. The signal flow begins with a momentary button press. This action pulls the gate of a P-channel MOSFET (IRL) low via a diode network, turning the MOSFET on and supplying power to the system (VCC). Once powered, the Logic Control Unit (implemented by the Atmega microcontroller) detects the button state via an input pin and outputs a high-level latching signal to the gate of an N-channel MOSFET (2N7002). This N-MOSFET then latches the P-MOSFET's gate low, maintaining power even after the button is released. The diode network isolates the button signal, allowing the microcontroller to read the button state independently. The module also provides interfaces for external peripherals via I2C (using the A1250 connector) and can control an AC load via a solid-state relay (G3MB). Status indication is provided by an LED (LEDR), and environmental sensing is available via an I2C sensor (AHT10). A display (OLED) can be connected for user interface.",
+      "Recommended Components": [
+        {
+          "ComponentID": "IRL",
+          "Functional Position": "Main Power Switch",
+          "Recommendation Reason": "P-channel MOSFET required to switch the main system power rail (VCC). Its low on-state resistance ensures efficient power delivery.",
+          "Pin Connections": {
+            "G": "Connected to the latching network (diode network, button, and N-MOSFET drain).",
+            "D": "Connected to the system VCC power rail output.",
+            "S": "Connected to the input power source (e.g., battery or external supply)."
+          }
+        },
+        {
+          "ComponentID": "2N7002",
+          "Functional Position": "Logic Latching Switch",
+          "Recommendation Reason": "N-channel MOSFET required to receive the latching signal from the Logic Control Unit and pull the P-MOSFET gate low to maintain power.",
+          "Pin Connections": {
+            "Gate (G)": "Connected to the latching output pin from the Atmega microcontroller.",
+            "Drain (D)": "Connected to the P-MOSFET (IRL) gate network.",
+            "Source (S)": "Connected to system ground."
+          }
+        },
+        {
+          "ComponentID": "1N4007",
+          "Functional Position": "Signal Isolation Diode",
+          "Recommendation Reason": "Diode required in the network to isolate the button signal path from the latching path, allowing independent state detection by the microcontroller.",
+          "Pin Connections": {
+            "Anode": "Connected to the button signal node.",
+            "Cathode": "Connected to the P-MOSFET (IRL) gate network."
+          }
+        },
+        {
+          "ComponentID": "Atmega",
+          "Functional Position": "Logic Control Unit",
+          "Recommendation Reason": "Microcontroller required to detect the button state and generate the latching control signal. It also manages peripheral interfaces (I2C, display, sensor).",
+          "Pin Connections": {
+            "2-SDA": "Connected to I2C data line (SDA) of A1250 connector, AHT10 sensor, and OLED display.",
+            "3-SCL": "Connected to I2C clock line (SCL) of A1250 connector, AHT10 sensor, and OLED display.",
+            "4": "Configured as digital input to read the button state (BUT_M).",
+            "5": "Configured as digital output to provide the latching signal to the 2N7002 Gate.",
+            "VCC": "Connected to the system VCC rail (output of IRL MOSFET).",
+            "GND": "Connected to system ground.",
+            "RAW": "Connected to the unregulated input supply (if used).",
+            "Other pins (e.g., 1-TX, 0-RX, A0-A3, etc.)": "Available for additional module functions or user-defined applications."
+          }
+        },
+        {
+          "ComponentID": "A1250",
+          "Functional Position": "External Peripheral Interface Connector",
+          "Recommendation Reason": "4-pin connector required to provide I2C and power to external modules or peripherals.",
+          "Pin Connections": {
+            "SDA": "Connected to the Atmega's 2-SDA pin (I2C data).",
+            "SCL": "Connected to the Atmega's 3-SCL pin (I2C clock).",
+            "GND": "Connected to system ground.",
+            "U5V": "Connected to the system's 5V regulated supply (if available from the Atmega's VCC or a separate regulator)."
+          }
+        },
+        {
+          "ComponentID": "AHT10",
+          "Functional Position": "Environmental Sensor",
+          "Recommendation Reason": "Digital temperature and humidity sensor required for environmental monitoring, communicating via I2C.",
+          "Pin Connections": {
+            "VDD": "Connected to the system VCC (3.3V or 5V, depending on sensor compatibility).",
+            "SDA": "Connected to the Atmega's 2-SDA pin (I2C data).",
+            "GND": "Connected to system ground.",
+            "SCL": "Connected to the Atmega's 3-SCL pin (I2C clock)."
+          }
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "User Interface Display",
+          "Recommendation Reason": "OLED display module required for visual output, using SPI-style interface which can be managed by the Atmega.",
+          "Pin Connections": {
+            "GND": "Connected to system ground.",
+            "VCC": "Connected to the system VCC.",
+            "SCL": "Connected to an Atmega SPI clock pin (e.g., 15-SCLK) or a GPIO configured for SPI.",
+            "SDA": "Connected to an Atmega SPI data pin (e.g., 16-MOSI) or a GPIO configured for SPI.",
+            "RES": "Connected to an Atmega GPIO for reset control.",
+            "DC": "Connected to an Atmega GPIO for data/command selection.",
+            "CS": "Connected to an Atmega GPIO for chip select."
+          }
+        },
+        {
+          "ComponentID": "G3MB",
+          "Functional Position": "AC Load Switch",
+          "Recommendation Reason": "Solid-state relay required to switch an AC load (e.g., a fan) based on a control signal from the Atmega.",
+          "Pin Connections": {
+            "+": "Connected to a control output pin from the Atmega (via a current-limiting resistor if needed).",
+            "-": "Connected to system ground.",
+            "AC1": "Connected to one side of the AC load (e.g., to HB611-6.35 AC_FAN_O pin).",
+            "AC2": "Connected to the AC line (AC_L) via the HB611-6.35 connector."
+          }
+        },
+        {
+          "ComponentID": "HB611-6.35",
+          "Functional Position": "AC Power and Load Connector",
+          "Recommendation Reason": "Terminal block required to interface AC line, neutral, and fan load connections safely.",
+          "Pin Connections": {
+            "AC_FAN_O": "Connected to the G3MB relay output (AC1) to switch the fan.",
+            "AC_L": "Connected to the AC line input.",
+            "AC_N": "Connected to the AC neutral input."
+          }
+        },
+        {
+          "ComponentID": "LEDR",
+          "Functional Position": "Status Indicator",
+          "Recommendation Reason": "LED required for visual status indication (e.g., power on, fault).",
+          "Pin Connections": {
+            "Anode": "Connected to a GPIO pin from the Atmega (via a current-limiting resistor).",
+            "Cathode": "Connected to system ground."
+          }
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "Optional Signal Amplifier/Buffer",
+          "Recommendation Reason": "NPN transistor can be used if needed to buffer or amplify a control signal (e.g., for driving the G3MB relay or an external load) where higher current than the Atmega GPIO can provide is required.",
+          "Pin Connections": {
+            "Base": "Connected to a control output pin from the Atmega.",
+            "Emitter": "Connected to system ground.",
+            "Collector": "Connected to the load (e.g., the '+' input of G3MB or another device)."
+          }
+        }
+      ]
+    }
+  ]
+}

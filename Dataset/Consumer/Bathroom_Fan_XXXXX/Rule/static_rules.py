@@ -126,9 +126,9 @@ class FullSystemValidator:
 
 if __name__ == "__main__":
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    NETLIST = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "4system_netlist.json")
-    RULES = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "rules.json") 
-    OUTPUT = os.path.join(BASE_DIR, "output", "result", "deepseek-v3", "rules_report.txt")
+    NETLIST = os.path.join(BASE_DIR, "Result", "deepseek-v3", "system_step4.json")
+    RULES = os.path.join(BASE_DIR, "Result", "deepseek-v3", "static_check.json") 
+    OUTPUT = os.path.join(BASE_DIR, "Result", "deepseek-v3", "rules_report.txt")
 
     if os.path.exists(NETLIST) and os.path.exists(RULES):
         validator = FullSystemValidator(NETLIST, RULES)
