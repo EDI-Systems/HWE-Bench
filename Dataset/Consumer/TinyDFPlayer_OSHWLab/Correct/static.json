@@ -1,0 +1,89 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "GND",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "GND" },
+        { "ComponentID": "DFR0299", "PinName": "GND" },
+        { "ComponentID": "OLED", "PinName": "GND" },
+        { "ComponentID": "ICSP-6", "PinName": "GND" },
+        { "ComponentID": "TP4056", "PinName": "GND" },
+        { "ComponentID": "DW01A", "PinName": "GND" }
+      ]
+    },
+    {
+      "net_id": "VCC_SYSTEM",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "VCC" },
+        { "ComponentID": "DFR0299", "PinName": "VCC" },
+        { "ComponentID": "OLED", "PinName": "VCC" },
+        { "ComponentID": "ICSP-6", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_USI_SDA_MOSI",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB0" },
+        { "ComponentID": "OLED", "PinName": "SDA" },
+        { "ComponentID": "ICSP-6", "PinName": "MOSI" }
+      ]
+    },
+    {
+      "net_id": "NET_USI_SCL_SCK",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB2" },
+        { "ComponentID": "OLED", "PinName": "SCK" },
+        { "ComponentID": "ICSP-6", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_USI_MISO",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB1" },
+        { "ComponentID": "ICSP-6", "PinName": "MISO" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_MCU_TX",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB3" },
+        { "ComponentID": "DFR0299", "PinName": "RX" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_MCU_RX",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB4" },
+        { "ComponentID": "DFR0299", "PinName": "TX" }
+      ]
+    },
+    {
+      "net_id": "NET_MCU_RESET",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB5" },
+        { "ComponentID": "ICSP-6", "PinName": "RESET" }
+      ]
+    },
+    {
+      "net_id": "NET_BAT_POS",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "BAT" },
+        { "ComponentID": "DW01A", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_DW01_OD",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OD" },
+        { "ComponentID": "FS8205A", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_DW01_OC",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OC" },
+        { "ComponentID": "FS8205A", "PinName": "G" }
+      ]
+    }
+  ]
+}

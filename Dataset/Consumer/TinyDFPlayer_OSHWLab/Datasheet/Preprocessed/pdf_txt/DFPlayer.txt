@@ -1,0 +1,35 @@
+Component ID: DF 
+Component Type: MP3 Audio Decoder Module  
+Description:  
+The DFPlayer Mini is a compact, low-cost MP3 module capable of decoding audio files (MP3, WAV, WMA) from storage media (TF card, U-disk, or internal NOR FLASH) and outputting audio via a built-in 24-bit DAC. It supports multiple control modes (serial, I/O, AD button) and features folder-based file management, adjustable volume/EQ, and advertising interruption functionality, making it suitable for embedded voice prompt and playback applications.
+
+Key Parameters:
+- Supported Audio Formats: MP3, WAV, WMA
+- Supported Sampling Rates: 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz
+- DAC Resolution: 24-bit
+- Dynamic Range: 90 dB
+- Signal-to-Noise Ratio (SNR): 85 dB
+- Storage Support: FAT16/FAT32 file system, up to 32 GB TF card, 32 GB U-disk, 64 MB NOR FLASH
+- Folder/Song Capacity: Up to 100 folders, each with up to 255 songs
+- Volume Control: 30 levels
+- Equalizer (EQ) Modes: 6 levels
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VCC | Power Supply | Module power input (3.2–5.0V) | Power | Power Input |
+| 2 | RX | Serial Receive | UART data input (from MCU TX) | Digital Input | UART RX |
+| 3 | TX | Serial Transmit | UART data output (to MCU RX) | Digital Output | UART TX |
+| 4 | DAC_R | Audio Output Right | Right channel analog audio output | Analog Output | Audio Output |
+| 5 | DAC_L | Audio Output Left | Left channel analog audio output | Analog Output | Audio Output |
+| 6 | SPK_1 | Speaker Positive | Positive terminal for speaker connection | Analog Output | Speaker Output |
+| 7 | GND | Ground | Common ground | Power | Ground |
+| 8 | SPK_2 | Speaker Negative | Negative terminal for speaker connection | Analog Output | Speaker Output |
+| 912| ADKEY_1 | AD Key 1 | Analog key input 1 (for button control) | Analog Input | AD Key Input |
+| 9 | IO_1 | GPIO 1 | General-purpose I/O 1 (for I/O control mode) | Digital I/O | GPIO |
+| 11 | IO_2 | GPIO 2 | General-purpose I/O 2 (for I/O control mode) | Digital I/O | GPIO |
+| 13 | ADKEY_2 | AD Key 2 | Analog key input 2 (for button control) | Analog Input | AD Key Input |
+| 16 | BUSY | Busy Indicator | Outputs low during playback, high when idle | Digital Output | Status Output |
+| 10 | GND | Ground | Common ground | Power | Ground |
+| 14 | USB+ | USB Data Positive | USB D+ line (for U-disk connection) | Digital I/O | USB Data |
+| 15 | USB- | USB Data Negative | USB D- line (for U-disk connection) | Digital I/O | USB Data |

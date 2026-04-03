@@ -1,0 +1,489 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB5",
+          "FunctionName": "Port B Bit 5"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "MISO"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB3",
+          "FunctionName": "Port B Bit 3"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "SCK"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB4",
+          "FunctionName": "Port B Bit 4"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "MOSI"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB0",
+          "FunctionName": "Port B Bit 0"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "RESET"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB3",
+          "FunctionName": "Port B Bit 3"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "RX",
+          "FunctionName": "UART Receive"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB4",
+          "FunctionName": "Port B Bit 4"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "TX",
+          "FunctionName": "UART Transmit"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB0",
+          "FunctionName": "Port B Bit 0"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SDA",
+          "FunctionName": "I2C Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB2",
+          "FunctionName": "Port B Bit 2"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SCK",
+          "FunctionName": "I2C Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB5",
+          "FunctionName": "Port B Bit 5"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "RESET"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB3",
+          "FunctionName": "Port B Bit 3"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SCK",
+          "FunctionName": "I2C Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB4",
+          "FunctionName": "Port B Bit 4"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SDA",
+          "FunctionName": "I2C Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB0",
+          "FunctionName": "Port B Bit 0"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "RX",
+          "FunctionName": "UART Receive"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "MOSI"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB1",
+          "FunctionName": "Port B Bit 1"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "MISO"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "PB2",
+          "FunctionName": "Port B Bit 2"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "SCK"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "DFR0299",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "TEMP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "DW01A",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "DW01A",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BAT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "DW01A",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "DW01A",
+          "PinName": "OD",
+          "FunctionName": "Discharge Control"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "DW01A",
+          "PinName": "CS",
+          "FunctionName": "Current Sense / Charger Detect"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "DW01A",
+          "PinName": "OC",
+          "FunctionName": "Charge Control"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "FS8205A",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+Component ID: DW01A
+Component Type: Single-Cell Lithium-Ion/Polymer Battery Protection IC
+Description:
+The DW01A is a protection IC designed for single-cell lithium-ion or lithium-polymer battery packs. It monitors battery voltage and current to provide protection against overcharge, overdischarge, overcurrent (both charge and discharge), and short-circuit conditions. It achieves this by controlling external N-channel MOSFETs in series with the battery, features built-in protection delay timers, and supports charging from 0V.
+
+Key Parameters:
+- Overcharge Protection Voltage (VOCP): 4.28V ±50mV
+- Overcharge Release Voltage (VOCR): 4.08V ±50mV
+- Overdischarge Protection Voltage (VODP): 2.40V ±100mV
+- Overdischarge Release Voltage (VODR): 3.00V ±100mV
+- Discharge Overcurrent Protection Threshold (VEC1): 160mV ±20mV
+- Short-Circuit Protection Threshold (VSHORT): 1.00V ±300mV
+- Charge Overcurrent Protection Threshold (VCHA): -0.150V
+- Operating Current (Typical): 1.5 µA
+- Operating Temperature Range: -40°C to +85°C
+- Package: SOT-23-6
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | OD | Discharge Control | MOSFET gate connection pin for discharge control | Output | Digital Output (Gate Drive) |
+| 2 | CS | Current Sense / Charger Detect | Input pin for current sense and charger detection | Input | Analog Input |
+| 3 | OC | Charge Control | MOSFET gate connection pin for charge control | Output | Digital Output (Gate Drive) |
+| 4 | NC | Not Connected | Not Connected | - | - |
+| 5 | VCC | Power Supply | Power supply, connected through a series resistor (R1) | Power | Power Input |
+| 6 | GND | Ground | Ground reference for the IC | Ground | Ground |

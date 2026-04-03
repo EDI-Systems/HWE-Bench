@@ -1,0 +1,649 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Non-Volatile Memory",
+      "Function Description": "Retains the last played track and folder index across power cycles to enable seamless resume functionality.",
+      "Signal Sources": "Main Control Module (write command with current track data).",
+      "Signal Destinations": "Main Control Module (read data upon boot).",
+      "Implementation Logic": "Implemented using the internal EEPROM of the ATtiny85 microcontroller. The firmware writes the current folder and track number to specific EEPROM addresses before shutdown or during track change. On power-up, the firmware reads these values and sends the corresponding resume command to the Audio Playback Module.",
+      "Signal Chain": "The Non-Volatile Memory module is implemented using the internal EEPROM of the ATtiny85 microcontroller. The signal chain is as follows: 1) The Main Control Module sends write commands with current track and folder data via a serial communication interface (e.g., UART or I2C) to the ATtiny85. 2) The ATtiny85 firmware receives this data and writes it to specific addresses in its internal 512B EEPROM before shutdown or during track changes. 3) Upon power-up, the ATtiny85 firmware reads the stored folder and track numbers from EEPROM. 4) The ATtiny85 then sends a resume command containing the retrieved data via serial communication to the Audio Playback Module (e.g., DFPlayer Mini) to resume playback from the last saved position. The ATtiny85 operates independently, requiring only power, ground, and communication lines with the Main Control and Audio Playback modules.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "Functional Position": "Non-Volatile Memory Controller",
+          "Recommendation Reason": "Provides 512B of internal EEPROM for storing track and folder indices, meeting the module's requirement for data retention across power cycles. Its low-power operation and small footprint are suitable for embedded memory functions.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "UART_TX_TO_MAIN_CONTROL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "UART_RX_FROM_MAIN_CONTROL"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "UART_TX_TO_AUDIO_MODULE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "UART_RX_FROM_AUDIO_MODULE"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Firmware Programming Interface",
+          "Recommendation Reason": "Provides a standard 6-pin ICSP header for in-circuit serial programming of the ATtiny85, enabling firmware updates and debugging without removing the microcontroller from the board.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "ICSP_MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "ICSP_SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "ICSP_MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "ICSP_RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Audio Playback & Decoding",
+      "Function Description": "Decodes MP3 files from the Micro-SD card and outputs an amplified audio signal to the speaker.",
+      "Signal Sources": "Main Control Module (serial control commands for playback and volume).",
+      "Signal Destinations": "Speaker (amplified analog audio signal).",
+      "Implementation Logic": "The DFPlayer Mini module handles all audio decoding. It reads MP3 files from a FAT16/FAT32 formatted Micro-SD card, organized in folders. It receives commands (play, pause, next, previous, set volume) via a UART interface from the ATtiny85. Its built-in amplifier drives the connected 3W/4Ω speaker directly.",
+      "Signal Chain": "The Main Control Module sends serial control commands (play, pause, next, previous, volume) via UART to the ATtiny85 microcontroller. The ATtiny85 receives these commands and forwards them via its own UART interface to the DFPlayer Mini module's RX pin. The DFPlayer Mini reads MP3 files from a FAT16/FAT32 formatted Micro-SD card, decodes them using its internal 24-bit DAC, and outputs an amplified analog audio signal through its built-in amplifier to the connected 3W/4Ω speaker. The speaker is directly driven by the DFPlayer Mini's bridge-tied load (BTL) amplifier outputs (SPK_1 and SPK_2). Power is supplied to both the ATtiny85 and DFPlayer Mini from a common 5V rail, with proper decoupling. Ground references are shared throughout the system.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "Functional Position": "Main Control Interface & Command Relay",
+          "Recommendation Reason": "Acts as the intermediary between the Main Control Module and the DFPlayer Mini. It receives UART commands from the Main Control Module and relays them to the DFPlayer Mini. Its small footprint and sufficient I/O make it ideal for this control role.",
+          "Pin Connections": [
+            {
+              "Net": "UART_RX_FROM_MAIN",
+              "PinNumber": "2",
+              "PinName": "PB3"
+            },
+            {
+              "Net": "UART_TX_TO_DFPLAYER",
+              "PinNumber": "3",
+              "PinName": "PB4"
+            },
+            {
+              "Net": "VCC_5V",
+              "PinNumber": "8",
+              "PinName": "VCC"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "4",
+              "PinName": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "DFR0299",
+          "Functional Position": "Audio Decoder & Amplifier",
+          "Recommendation Reason": "Handles MP3 file decoding from Micro-SD card, includes a built-in amplifier capable of driving a 3W/4Ω speaker directly, and supports UART control for playback commands and volume adjustment as specified.",
+          "Pin Connections": [
+            {
+              "Net": "VCC_5V",
+              "PinNumber": "1",
+              "PinName": "VCC"
+            },
+            {
+              "Net": "UART_RX_FROM_ATTINY",
+              "PinNumber": "2",
+              "PinName": "RX"
+            },
+            {
+              "Net": "UART_TX_TO_ATTINY",
+              "PinNumber": "3",
+              "PinName": "TX"
+            },
+            {
+              "Net": "SPEAKER_POSITIVE",
+              "PinNumber": "6",
+              "PinName": "SPK1"
+            },
+            {
+              "Net": "SPEAKER_NEGATIVE",
+              "PinNumber": "8",
+              "PinName": "SPK2"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "7",
+              "PinName": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "User Interface & Input",
+      "Function Description": "Provides visual feedback to the user and captures all user interactions for playback control and system navigation.",
+      "Signal Sources": "Physical user interaction (button presses, wheel rotation).",
+      "Signal Destinations": "Main Control Module (digital/analog signals representing user intent).",
+      "Implementation Logic": "Comprises a 128x64 OLED display (I2C interface) for showing track number, folder, and battery status. Three tactile buttons (digital inputs to MCU) for play/pause, next, and previous track control. A wheel potentiometer (analog input to MCU ADC) for volume adjustment. The MCU reads these inputs and updates the display accordingly.",
+      "Signal Chain": "The User Interface & Input Module's signal chain begins with user interactions: three tactile buttons (Play/Pause, Next, Previous) generate digital signals, and a wheel potentiometer generates an analog voltage for volume control. These signals are read by the ATtiny85 microcontroller. The buttons are connected to digital I/O pins configured as inputs with internal pull-up resistors, where a button press pulls the pin low. The potentiometer's wiper is connected to an ADC input pin, converting the analog voltage to a digital value representing volume level. The ATtiny85 processes these inputs to determine user intent (e.g., play command, volume setting). For output, the ATtiny85 uses its I2C interface (implemented via USI on PB2/SCL and PB0/SDA) to communicate with the OLED display, sending commands and data to update the screen with track information, folder, and battery status. The processed user commands (e.g., play, pause, next) are then transmitted digitally to the Main Control Module via a separate interface (not specified in components, assumed as digital outputs from unused MCU pins). Power is supplied to all components from a common 5V rail, with appropriate decoupling and grounding.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Processes all user inputs (digital buttons and analog potentiometer), drives the OLED display via I2C, and communicates user intent to the Main Control Module. Provides sufficient I/O pins and ADC for the required functions.",
+          "Pin Connections": [
+            {
+              "Net": "BUTTON_PLAY_PAUSE",
+              "PinNumber": "5",
+              "PinName": "PB0"
+            },
+            {
+              "Net": "BUTTON_NEXT",
+              "PinNumber": "6",
+              "PinName": "PB1"
+            },
+            {
+              "Net": "BUTTON_PREV",
+              "PinNumber": "7",
+              "PinName": "PB2"
+            },
+            {
+              "Net": "POTENTIOMETER_WIPER",
+              "PinNumber": "1",
+              "PinName": "PB5"
+            },
+            {
+              "Net": "OLED_SCL",
+              "PinNumber": "7",
+              "PinName": "PB2"
+            },
+            {
+              "Net": "OLED_SDA",
+              "PinNumber": "5",
+              "PinName": "PB0"
+            },
+            {
+              "Net": "VCC_5V",
+              "PinNumber": "8",
+              "PinName": "VCC"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "4",
+              "PinName": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "User Display",
+          "Recommendation Reason": "Provides visual feedback (128x64 OLED) for track number, folder, and battery status via I2C interface as specified.",
+          "Pin Connections": [
+            {
+              "Net": "GND",
+              "PinNumber": "1",
+              "PinName": "GND"
+            },
+            {
+              "Net": "VCC_5V",
+              "PinNumber": "2",
+              "PinName": "VCC"
+            },
+            {
+              "Net": "OLED_SCL",
+              "PinNumber": "3",
+              "PinName": "SCK"
+            },
+            {
+              "Net": "OLED_SDA",
+              "PinNumber": "4",
+              "PinName": "SDA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Main Control & System Coordination",
+      "Function Description": "Acts as the central processing unit, managing user inputs, coordinating audio playback, controlling the display, and handling non-volatile memory for system state.",
+      "Signal Sources": "User Input Module (button presses, volume wheel), Power Management Module (battery status, power good signals).",
+      "Signal Destinations": "Audio Playback Module (play/pause/next/previous commands, volume level), User Interface Module (track info, menu data, system status), Non-Volatile Memory Module (read/write commands for track index).",
+      "Implementation Logic": "The ATtiny85 microcontroller runs the main firmware. It polls inputs from buttons and the volume wheel, updates the OLED display via I2C, sends serial commands (UART) to the DFPlayer Mini, and reads/writes to its internal EEPROM to save/load the last played track and folder index.",
+      "Signal Chain": "The ATtiny85 microcontroller serves as the central processing unit. It receives digital inputs from the User Input Module (buttons and volume wheel) via its GPIO pins. It monitors battery status signals from the Power Management Module via an ADC pin. The microcontroller processes these inputs, executes the main firmware, and coordinates system actions. It communicates with the OLED display via I2C (SCL and SDA) to update the user interface with track info and system status. It sends serial commands via UART (TX) to the DFPlayer Mini module to control audio playback (play, pause, next, previous, volume). It uses its internal EEPROM to save and load the last played track and folder index, managed via firmware. The DFPlayer Mini receives UART commands, decodes audio files from storage, and outputs analog audio to speakers. The ICSP header provides an interface for programming and debugging the ATtiny85.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Acts as the main processor with sufficient Flash, EEPROM, and I/O for managing inputs, controlling displays, sending audio commands, and handling non-volatile memory.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET/ICSP"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "UART_TX_TO_DFPLAYER"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "USER_INPUT_1"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "USER_INPUT_2"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "DFR0299",
+          "Functional Position": "Audio Playback Module",
+          "Recommendation Reason": "MP3 decoder module that receives serial commands from the microcontroller and outputs audio, suitable for embedded playback applications.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RX",
+              "Net": "UART_TX_TO_DFPLAYER"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "TX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "DAC_R",
+              "Net": "AUDIO_OUT_R"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DAC_L",
+              "Net": "AUDIO_OUT_L"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SPK1",
+              "Net": "SPEAKER_P"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK2",
+              "Net": "SPEAKER_N"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "IO1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "ADKEY1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "ADKEY2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "USB+",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "USB-",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "Busy",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "User Interface Display",
+          "Recommendation Reason": "OLED display with I2C interface for showing track info, menu data, and system status, controlled by the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Standard 6-pin header for in-circuit serial programming of the ATtiny85 microcontroller, enabling firmware updates and debugging.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "PB1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "PB2"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "PB0"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET/ICSP"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Management & Battery Safety",
+      "Function Description": "Manages power distribution, battery charging, and provides critical protection against over-charge, over-discharge, and short circuits.",
+      "Signal Sources": "External USB power (for charging), 3.7V LiPo battery.",
+      "Signal Destinations": "All other modules (regulated system power, ~3.3V/5V as required), Battery (charging current).",
+      "Implementation Logic": "The TP4056 linear charging module manages LiPo battery charging from a USB input (max 1A). The DW01A protection IC paired with FS8205 dual MOSFETs provides overcharge, over-discharge, and over-current protection for the battery. The output of this protection circuit powers the entire system. The ATtiny85 may monitor battery voltage via an ADC pin for status display.",
+      "Signal Chain": "The module's primary signal flow begins with an external USB power source (5V) connected to the TP4056 charger IC's VCC pin. The TP4056 regulates this input to provide a constant-current/constant-voltage charge to the single-cell LiPo battery via its BAT pin. The battery's positive terminal connects to the BAT pin, while its negative terminal connects to system ground. The TP4056's PROG pin uses an external resistor to set the maximum charging current (e.g., 1A). Its TEMP pin can be connected to an NTC thermistor network (or grounded if not used) for temperature monitoring. Status LEDs can be connected to the open-drain CHRG (active-low during charging) and STDBY (active-low when charge complete) pins via current-limiting resistors. The CE pin can be pulled high to enable charging or controlled by an MCU for enable/disable functionality.\n\nThe battery's output (after the TP4056's BAT pin) feeds into the protection circuit. The DW01A protection IC monitors the battery voltage via its VCC pin (through a series resistor, e.g., 1kΩ) and current via its CS pin (connected to the battery negative through a sense resistor, e.g., 10mΩ). The DW01A controls two external N-channel MOSFETs (FS8205A) to protect against overcharge, over-discharge, and overcurrent. The first MOSFET (M1) is for charge control: its gate connects to DW01A's OC pin, drain to the battery positive (BAT net), and source to the system power output (SYS_PWR net). The second MOSFET (M2) is for discharge control: its gate connects to DW01A's OD pin, drain to the system power output (SYS_PWR net), and source to the battery negative (BAT_NEG net, which also connects to the current sense resistor and system ground). The DW01A's CS pin connects between the sense resistor and M2's source to monitor current. When protection triggers, the DW01A drives OC or OD low to turn off the corresponding MOSFET, breaking the path.\n\nThe protected system power (SYS_PWR, ~3.7V nominal from battery) then powers all other modules. For modules requiring regulated voltages (e.g., 3.3V or 5V), additional regulators (not in library) would be needed downstream. The ATtiny85 microcontroller monitors battery voltage via an ADC pin (e.g., PB2/ADC1) connected to a voltage divider from SYS_PWR to ground, providing a scaled analog signal for battery status indication. The ATtiny85 is powered from SYS_PWR (or a regulated 3.3V/5V if available) via its VCC pin and grounded via GND. It can also interface with status LEDs from the TP4056 for user feedback and potentially control the TP4056's CE pin for charging enable/disable.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TP4056",
+          "Functional Position": "Battery Charger",
+          "Recommendation Reason": "Manages single-cell LiPo battery charging from USB input with constant-current/constant-voltage, programmable current up to 1A, and integrated status outputs.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "TEMP",
+              "Net": "NTC_NET (connect to NTC network or GND)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PROG",
+              "Net": "PROG_RES (connect to resistor to GND to set charge current)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "USB_IN (5V from USB)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "BAT",
+              "Net": "BAT_POS (battery positive terminal)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "STDBY",
+              "Net": "LED_STDBY (connect to LED via resistor to VCC)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CHRG",
+              "Net": "LED_CHRG (connect to LED via resistor to VCC)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "CE",
+              "Net": "CHG_EN (pull high to enable, or connect to MCU control)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "DW01A",
+          "Functional Position": "Battery Protection IC",
+          "Recommendation Reason": "Provides overcharge, over-discharge, and overcurrent protection for single-cell LiPo battery by controlling external MOSFETs.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "OD",
+              "Net": "GATE_DISCH (gate control for discharge MOSFET M2)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "CS",
+              "Net": "SENSE_NET (connect to current sense resistor and MOSFET source)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OC",
+              "Net": "GATE_CHG (gate control for charge MOSFET M1)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC (no connection)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VCC",
+              "Net": "BAT_POS (connect via series resistor R1, e.g., 1kΩ)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "FS8205A",
+          "Functional Position": "Charge Control MOSFET (M1)",
+          "Recommendation Reason": "N-channel MOSFET controlled by DW01A's OC pin to switch the charge path from battery to system.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "GATE_CHG (from DW01A OC pin)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "BAT_POS (battery positive from TP4056 BAT)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "SYS_PWR (protected system power output)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "FS8205A",
+          "Functional Position": "Discharge Control MOSFET (M2)",
+          "Recommendation Reason": "N-channel MOSFET controlled by DW01A's OD pin to switch the discharge path from system to battery negative.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "GATE_DISCH (from DW01A OD pin)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "SYS_PWR (protected system power output)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "SENSE_NET (to current sense resistor and DW01A CS pin)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATtiny85-20SU",
+          "Functional Position": "Battery Voltage Monitor",
+          "Recommendation Reason": "Monitors battery voltage via ADC for status indication and can control charging enable/disable.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "ADC0 (optional, e.g., for additional sensing)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "NC (not used in this module)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "NC (not used in this module)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "NC (not used in this module)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "NC (not used in this module)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "BAT_SENSE (from voltage divider on SYS_PWR)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "SYS_PWR (or regulated voltage if available)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

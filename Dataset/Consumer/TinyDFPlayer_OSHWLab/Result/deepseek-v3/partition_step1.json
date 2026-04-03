@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Main Control & System Coordination",
+      "Function Description": "Acts as the central processing unit, managing user inputs, coordinating audio playback, controlling the display, and handling non-volatile memory for system state.",
+      "Signal Sources": "User Input Module (button presses, volume wheel), Power Management Module (battery status, power good signals).",
+      "Signal Destinations": "Audio Playback Module (play/pause/next/previous commands, volume level), User Interface Module (track info, menu data, system status), Non-Volatile Memory Module (read/write commands for track index).",
+      "Implementation Logic": "The ATtiny85 microcontroller runs the main firmware. It polls inputs from buttons and the volume wheel, updates the OLED display via I2C, sends serial commands (UART) to the DFPlayer Mini, and reads/writes to its internal EEPROM to save/load the last played track and folder index."
+    },
+    {
+      "Module Name": "Audio Playback & Decoding",
+      "Function Description": "Decodes MP3 files from the Micro-SD card and outputs an amplified audio signal to the speaker.",
+      "Signal Sources": "Main Control Module (serial control commands for playback and volume).",
+      "Signal Destinations": "Speaker (amplified analog audio signal).",
+      "Implementation Logic": "The DFPlayer Mini module handles all audio decoding. It reads MP3 files from a FAT16/FAT32 formatted Micro-SD card, organized in folders. It receives commands (play, pause, next, previous, set volume) via a UART interface from the ATtiny85. Its built-in amplifier drives the connected 3W/4Ω speaker directly."
+    },
+    {
+      "Module Name": "User Interface & Input",
+      "Function Description": "Provides visual feedback to the user and captures all user interactions for playback control and system navigation.",
+      "Signal Sources": "Physical user interaction (button presses, wheel rotation).",
+      "Signal Destinations": "Main Control Module (digital/analog signals representing user intent).",
+      "Implementation Logic": "Comprises a 128x64 OLED display (I2C interface) for showing track number, folder, and battery status. Three tactile buttons (digital inputs to MCU) for play/pause, next, and previous track control. A wheel potentiometer (analog input to MCU ADC) for volume adjustment. The MCU reads these inputs and updates the display accordingly."
+    },
+    {
+      "Module Name": "Power Management & Battery Safety",
+      "Function Description": "Manages power distribution, battery charging, and provides critical protection against over-charge, over-discharge, and short circuits.",
+      "Signal Sources": "External USB power (for charging), 3.7V LiPo battery.",
+      "Signal Destinations": "All other modules (regulated system power, ~3.3V/5V as required), Battery (charging current).",
+      "Implementation Logic": "The TP4056 linear charging module manages LiPo battery charging from a USB input (max 1A). The DW01A protection IC paired with FS8205 dual MOSFETs provides overcharge, over-discharge, and over-current protection for the battery. The output of this protection circuit powers the entire system. The ATtiny85 may monitor battery voltage via an ADC pin for status display."
+    },
+    {
+      "Module Name": "Non-Volatile Memory",
+      "Function Description": "Retains the last played track and folder index across power cycles to enable seamless resume functionality.",
+      "Signal Sources": "Main Control Module (write command with current track data).",
+      "Signal Destinations": "Main Control Module (read data upon boot).",
+      "Implementation Logic": "Implemented using the internal EEPROM of the ATtiny85 microcontroller. The firmware writes the current folder and track number to specific EEPROM addresses before shutdown or during track change. On power-up, the firmware reads these values and sends the corresponding resume command to the Audio Playback Module."
+    }
+  ]
+}

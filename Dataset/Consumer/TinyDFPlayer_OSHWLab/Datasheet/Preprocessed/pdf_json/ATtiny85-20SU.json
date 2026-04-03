@@ -1,0 +1,104 @@
+{
+  "ComponentID": "ATtiny85-20SU",
+  "ComponentType": "8-bit AVR Microcontroller",
+  "Description": "The ATtiny85 is a low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. By executing powerful instructions in a single clock cycle, the device achieves throughputs approaching 1 MIPS per MHz, allowing the system designer to optimize power consumption versus processing speed. It features 8KB of In-System Programmable Flash memory, 512B EEPROM, and 512B SRAM. Key peripherals include an 8-bit Timer/Counter with PWM, a high-speed 8-bit Timer/Counter with PWM and dead-time generator, a Universal Serial Interface (USI), and a 4-channel 10-bit ADC. It supports multiple sleep modes and offers six programmable I/O lines.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 5",
+          "FunctionDescription": "ADC Input Channel 0 / Reset / debugWIRE"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 3",
+          "FunctionDescription": "ADC Input Channel 3 / XTAL1 / CLKI"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 4",
+          "FunctionDescription": "ADC Input Channel 2 / XTAL2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 0",
+          "FunctionDescription": "MOSI / AIN0 / OC0A / OC1A / AREF"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 1",
+          "FunctionDescription": "MISO / AIN1 / OC0B / OC1B"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "Port B Bit 2",
+          "FunctionDescription": "SCK / USCK / SCL / ADC1 / T0 / INT0"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Supply Voltage",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    }
+  ]
+}

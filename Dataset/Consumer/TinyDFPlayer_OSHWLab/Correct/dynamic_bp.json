@@ -1,0 +1,55 @@
+{
+  "Power Management & Battery Safety": [
+    {
+      "net_id": "net_bat_vcc",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "VCC", "FunctionName": "Voltage Sense" },
+        { "ComponentID": "TP4056", "PinName": "BAT", "FunctionName": "Battery Positive" }
+      ]
+    },
+    {
+      "net_id": "net_system_gnd",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "GND", "FunctionName": "Logic Ground" },
+        { "ComponentID": "ATtiny85-20SU", "PinName": "GND", "FunctionName": "MCU Ground" },
+        { "ComponentID": "FS8205A", "PinName": "S", "FunctionName": "Source 1 (to B-)" },
+        { "ComponentID": "TP4056", "PinName": "GND", "FunctionName": "Power Ground" }
+      ]
+    },
+    {
+      "net_id": "net_od_logic",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OD", "FunctionName": "Discharge Control" },
+        { "ComponentID": "FS8205A", "PinName": "G", "FunctionName": "Gate 1" }
+      ]
+    },
+    {
+      "net_id": "net_oc_logic",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OC", "FunctionName": "Charge Control" },
+        { "ComponentID": "FS8205A", "PinName": "G", "FunctionName": "Gate 2" }
+      ]
+    },
+    {
+      "net_id": "net_load_return",
+      "Connections": [
+        { "ComponentID": "ATtiny85-20SU", "PinName": "VCC", "FunctionName": "Load Low Side" },
+        { "ComponentID": "FS8205A", "PinName": "S", "FunctionName": "Source 2 (to OUT-)" },
+        { "ComponentID": "DW01A", "PinName": "CS", "FunctionName": "Current Sensing" }
+      ]
+    },
+    {
+      "net_id": "net_internal_drain",
+      "Connections": [
+        { "ComponentID": "FS8205A", "PinName": "D", "FunctionName": "Common Drain 1" },
+        { "ComponentID": "FS8205A", "PinName": "D", "FunctionName": "Common Drain 2" }
+      ]
+    },
+    {
+      "net_id": "net_temp_pull",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "TEMP", "FunctionName": "Temperature Protection" }
+      ]
+    }
+  ]
+}

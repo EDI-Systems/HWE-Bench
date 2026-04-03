@@ -1,0 +1,20 @@
+Component ID: ICSP-6
+Component Type: 6-Pin In-Circuit Serial Programming (ICSP) Header
+Description: The ICSP-6 is a standard 2x3 pin header interface used for In-Circuit Serial Programming of AVR microcontrollers. It provides a direct connection to the SPI bus and the Reset line of the target MCU, allowing for firmware uploading, bootloader installation, and debugging without removing the chip from the PCB.
+
+Key Parameters:
+- Connector Type: 2x3 Male Pin Header
+- Pitch: 2.54 mm (0.1 inch)
+- Interface: SPI (Serial Peripheral Interface)
+- Supported Signals: MISO, MOSI, SCK, RESET, VCC, GND
+- Operating Voltage: Typically 3.3V or 5V (VCC dependent)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | MISO | MISO | Master In Slave Out - Data from target to programmer | Output | Signal |
+| 2 | VCC | VCC | Positive power supply input | Power | 5V |
+| 3 | SCK | SCK | Serial Clock signal from programmer | Input | Signal |
+| 4 | MOSI | MOSI | Master Out Slave In - Data from programmer to target | Input | Signal |
+| 5 | RESET | RESET | Active-low reset signal to enter programming mode | Input | Signal |
+| 6 | GND | GND | Common system ground reference | Power | 0V |
