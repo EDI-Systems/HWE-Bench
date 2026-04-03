@@ -4,7 +4,7 @@
 
   Code and data for the following work:
   <p>
-    * [Conference 2026] <a href="https://arxiv.org/abs/2603.18102">HWE-Bench: Can Language Models Perform Board-level Schematic Designs?</a>
+    * [Conference 2026] <a href="https://arxiv.org/html/2603.18102v1">HWE-Bench: Can Language Models Perform Board-level Schematic Designs?</a>
   </p>
 </div>
 
