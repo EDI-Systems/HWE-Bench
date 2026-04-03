@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Precision Thermocouple Signal Conditioner",
+      "Function Description": "Amplifies microvolt-level differential signals from a thermal sensing element (e.g., thermocouple) to a logic-compatible voltage range (e.g., 0-3.3V) with high linearity and SNR. It includes multi-stage passive RC/LC filtering to suppress high-frequency EMI from the switching environment.",
+      "Signal Sources": "Thermocouple or RTD sensor (differential microvolt signal), System power rails (for op-amp biasing).",
+      "Signal Destinations": "Logic Controller ADC input (amplified, filtered single-ended voltage).",
+      "Implementation Logic": "A differential instrumentation amplifier front-end provides high CMRR and gain. Its output feeds into cascaded passive low-pass filter stages (e.g., 2nd order) to attenuate switching noise. A final buffer/amplifier stage sets the exact output voltage range and drives the ADC. Biasing and rail design ensure the output remains within the linear region across the full temperature operating range."
+    },
+    {
+      "Module Name": "High-Side PWM Gate Driver with Active Clamp",
+      "Function Description": "Translates a low-power logic-level PWM command into a high-current drive signal for a high-side N-channel power MOSFET. It provides fast switching to minimize dissipation and includes an active clamp circuit to safely dissipate inductive flyback energy from the load wiring.",
+      "Signal Sources": "Logic Controller PWM output (3.3V/5V digital), High-Voltage DC Supply (e.g., 48V), Load current feedback (via shunt).",
+      "Signal Destinations": "Gate of high-side power MOSFET, System ground/power return (for clamp current).",
+      "Implementation Logic": "A dedicated high-side gate driver IC (or bootstrap circuit) level-shifts the logic PWM to the MOSFET gate voltage. A series gate resistor and optional Baker clamp optimize switching speed. An active clamp circuit (e.g., TVS diode and Zener combination) is placed directly across the MOSFET drain-source to clamp voltage spikes from load inductance during turn-off, routing energy back to the supply or dissipating it thermally."
+    },
+    {
+      "Module Name": "Isolated Power Supply & Regulation Subsystem",
+      "Function Description": "Generates clean, isolated low-voltage rails (e.g., ±5V, 3.3V) for the sensitive analog circuitry and logic controller from the noisy high-voltage DC input. Provides separation to prevent ground loops and noise coupling.",
+      "Signal Sources": "High-Voltage DC Supply (e.g., 48V).",
+      "Signal Destinations": "Precision Signal Conditioner (clean analog supplies), Logic Controller (digital supply), Gate Driver IC (bootstrap supply).",
+      "Implementation Logic": "An isolated DC-DC converter (e.g., flyback or isolated buck) steps down the high-voltage input. Its output feeds into linear regulators (LDOs) to generate ultra-low-noise rails for the analog front-end. Separate ground planes for analog and power sections are connected at a single star point to minimize noise injection."
+    },
+    {
+      "Module Name": "Logic Controller & System Interface",
+      "Function Description": "The central digital brain. It reads the conditioned temperature signal via ADC, runs a control algorithm (e.g., PID), generates the PWM command for power modulation, and manages system states (startup, operation, shutdown).",
+      "Signal Sources": "Conditioned Analog Temperature Signal (from Signal Conditioner), User inputs/communication interfaces (optional).",
+      "Signal Destinations": "PWM Gate Driver (digital PWM command), Status indicators/communication outputs.",
+      "Implementation Logic": "A microcontroller (MCU) with integrated ADC samples the analog temperature voltage. Firmware implements the control loop, calculating the required PWM duty cycle to achieve the target temperature. The MCU's PWM peripheral outputs the corresponding signal to the gate driver. It also monitors system faults (e.g., over-temperature via ADC, over-current via optional shunt) and can execute a safe shutdown."
+    },
+    {
+      "Module Name": "Load Current Monitoring & Protection",
+      "Function Description": "Measures the current through the heating load via a shunt resistor to provide feedback for closed-loop control or fault detection (e.g., open/short circuit).",
+      "Signal Sources": "Load current (via voltage across a shunt resistor).",
+      "Signal Destinations": "Logic Controller ADC input (for monitoring), Protection circuit input (for fast fault response).",
+      "Implementation Logic": "A low-ohm, high-power shunt resistor is placed in series with the load on the low-side. A differential amplifier (or dedicated current-sense amp) amplifies the small shunt voltage. The output is filtered and sent to the MCU's ADC. A comparator can provide a fast, hardware-based over-current trip signal that directly disables the gate driver via a dedicated shutdown pin."
+    }
+  ]
+}

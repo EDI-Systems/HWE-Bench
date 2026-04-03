@@ -1,0 +1,86 @@
+{
+  "ComponentID": "ICSP",
+  "ComponentType": "6-Pin In-Circuit Serial Programming (ICSP) Connector",
+  "Description": "The ICSP-6 is a standard 2x3 pin header used for In-Circuit Serial Programming of AVR microcontrollers. It allows for firmware uploading and bootloader burning without removing the chip from the PCB. It utilizes the SPI (Serial Peripheral Interface) bus along with a dedicated Reset line.",
+  "KeyParameters": {
+    "Programming Interface Type": "Serial (2-wire data)",
+    "Required Programming Pins": "5 (VPP, VDD, VSS, PGD, PGC)",
+    "Supported Device Families": "PIC12C5XX, PIC16CXXX, PIC17CXXX, PIC16F8X, PIC12C67X, PIC14000, PIC16C55X, PIC16C6XX/7XX/9XX, PIC18CXXX, PIC16F62X, PIC16F87X",
+    "Memory Types": "OTP (One-Time Programmable), Flash/EEPROM",
+    "Programming Mode Activation": "Applied via dedicated VPP/MCLR pin"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "MISO",
+      "Functions": [
+        {
+          "FunctionName": "MISO",
+          "FunctionDescription": "Master In Slave Out - Data from target to programmer"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply (usually +5V)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCK",
+          "FunctionDescription": "Serial Clock signal from programmer"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "MOSI",
+      "Functions": [
+        {
+          "FunctionName": "MOSI",
+          "FunctionDescription": "Master Out Slave In - Data from programmer to target"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "RESET",
+      "Functions": [
+        {
+          "FunctionName": "RESET",
+          "FunctionDescription": "Active-low reset signal to trigger programming mode"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

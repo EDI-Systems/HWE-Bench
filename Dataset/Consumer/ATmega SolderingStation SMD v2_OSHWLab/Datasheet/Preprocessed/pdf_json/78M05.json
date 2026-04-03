@@ -1,0 +1,54 @@
+{
+  "ComponentID": "78M05",
+  "ComponentType": "Positive Voltage Linear Regulator (LDO)",
+  "Description": "The 78M05 is a monolithic positive voltage regulator in a TO-252 (DPAK) package, designed to provide a fixed 5V output from a higher input voltage. It features internal thermal overload protection and short-circuit current limiting, making it suitable for local on-card regulation to eliminate noise and distribution problems associated with single-point regulation.",
+  "KeyParameters": {
+    "Fixed Output Voltage (Vo)": "5.0 V (Typical, 4.75V to 5.25V range)",
+    "Maximum Input Voltage (VIN)": "35 V",
+    "Maximum Output Current (IO)": "500 mA",
+    "Dropout Voltage (VD)": "2 V (Typical, at IO=350mA)",
+    "Line Regulation (delta VO)": "100 mV (Max, VIN=7V to 25V, IO=200mA)",
+    "Load Regulation (delta VO)": "100 mV (Max, VIN=10V, IO=5mA to 500mA)",
+    "Quiescent Current (IQ)": "6 mA (Max)",
+    "Operating Junction Temperature (TOPR)": "-40°C to +125°C",
+    "Thermal Resistance, Junction-to-Air (RthJA)": "100 °C/W"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Unregulated DC input voltage pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Regulated 5V DC output voltage pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground (0V) reference for the regulator"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

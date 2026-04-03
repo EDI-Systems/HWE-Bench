@@ -1,0 +1,37 @@
+{
+  "Precision Thermocouple Signal Conditioner": [
+    {
+      "net_id": "net_tc_signal",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "+IN2", "FunctionName": "Signal Input" }
+      ]
+    },
+    {
+      "net_id": "net_fb_node",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "-IN2", "FunctionName": "Feedback Junction" }
+      ]
+    },
+    {
+      "net_id": "net_output",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "OUT2", "FunctionName": "Amplified Output" },
+        { "ComponentID": "ATmega328P", "PinName": "PC0", "FunctionName": "MCU ADC0" }
+      ]
+    },
+    {
+      "net_id": "net_vcc_5v",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "VCC+", "FunctionName": "5V Power" },
+        { "ComponentID": "ATmega328P", "PinName": "VCC", "FunctionName": "5V Power" }
+      ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "GND", "FunctionName": "System Ground" },
+        { "ComponentID": "ATmega328P", "PinName": "GND", "FunctionName": "System Ground" }
+      ]
+    }
+  ]
+}

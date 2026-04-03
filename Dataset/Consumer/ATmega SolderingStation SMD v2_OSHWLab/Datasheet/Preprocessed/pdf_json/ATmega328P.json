@@ -1,0 +1,392 @@
+{
+  "ComponentID": "ATmega328P",
+  "ComponentType": "8-bit AVR Microcontroller",
+  "Description": "The ATmega48P/88P/168P/328P is a high-performance, low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. It features in-system programmable Flash memory (4K to 32K bytes), EEPROM, SRAM, two 8-bit and one 16-bit timer/counter, PWM channels, a 10-bit ADC, USART, SPI, and I2C interfaces. It operates from 1.8V to 5.5V, offers up to 20 MIPS throughput, and includes multiple sleep modes for low-power applications.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PD3",
+      "Functions": [
+        {
+          "FunctionName": "D3",
+          "FunctionDescription": "Digital I/O pin 3 (**D3**) / PWM"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PD4",
+      "Functions": [
+        {
+          "FunctionName": "D4",
+          "FunctionDescription": "Digital I/O pin 4"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "+5V main power supply input"
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Secondary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Secondary +5V power supply input"
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "XTAL1/PB6",
+      "Functions": [
+        {
+          "FunctionName": "OSC1",
+          "FunctionDescription": "External 16MHz crystal input"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "XTAL2/PB7",
+      "Functions": [
+        {
+          "FunctionName": "OSC2",
+          "FunctionDescription": "External 16MHz crystal output"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "PD5",
+      "Functions": [
+        {
+          "FunctionName": "D5",
+          "FunctionDescription": "Digital I/O pin 5 / PWM"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "PD6",
+      "Functions": [
+        {
+          "FunctionName": "D6",
+          "FunctionDescription": "Digital I/O pin 6 / PWM"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "PD7",
+      "Functions": [
+        {
+          "FunctionName": "D7",
+          "FunctionDescription": "Digital I/O pin 7"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "D8",
+          "FunctionDescription": "Digital I/O pin 8 / CLKO"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "SS_MCP",
+          "FunctionDescription": "SPI Chip Select for MCP peripheral"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "D10",
+          "FunctionDescription": "Digital I/O pin 10 / SS / PWM"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "MOSI",
+          "FunctionDescription": "SPI Master Out Slave In signal"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "MISO",
+          "FunctionDescription": "SPI Master In Slave Out signal"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "SCK",
+          "FunctionDescription": "SPI Serial Clock signal"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "AVCC",
+      "Functions": [
+        {
+          "FunctionName": "Analog Power",
+          "FunctionDescription": "Power supply for ADC; tied to +5V"
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "ADC6",
+      "Functions": [
+        {
+          "FunctionName": "ADC6",
+          "FunctionDescription": "Analog input channel 6 (TQFP only)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "AREF",
+      "Functions": [
+        {
+          "FunctionName": "Analog Ref",
+          "FunctionDescription": "Reference voltage for ADC; tied to +5V"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Tertiary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "ADC7",
+      "Functions": [
+        {
+          "FunctionName": "ADC7",
+          "FunctionDescription": "Analog input channel 7 (TQFP only)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "PC0",
+      "Functions": [
+        {
+          "FunctionName": "A0",
+          "FunctionDescription": "Analog input channel 0 (**A0**)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "PC1",
+      "Functions": [
+        {
+          "FunctionName": "A1",
+          "FunctionDescription": "Analog input channel 1 (**A1**)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "PC2",
+      "Functions": [
+        {
+          "FunctionName": "A2",
+          "FunctionDescription": "Analog input channel 2 (**A2**)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "PC3",
+      "Functions": [
+        {
+          "FunctionName": "A3",
+          "FunctionDescription": "Analog input channel 3 (**A3**)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "PC4",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "Analog input 4 / I2C Serial Data"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "PC5",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "Analog input 5 / I2C Serial Clock"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "PC6",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low hardware reset signal"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "30",
+      "PinName": "PD0",
+      "Functions": [
+        {
+          "FunctionName": "RX_TTL",
+          "FunctionDescription": "UART serial receive via 220Ω resistor"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "31",
+      "PinName": "PD1",
+      "Functions": [
+        {
+          "FunctionName": "TX_TTL",
+          "FunctionDescription": "UART serial transmit via 220Ω resistor"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "32",
+      "PinName": "PD2",
+      "Functions": [
+        {
+          "FunctionName": "MCP_INT",
+          "FunctionDescription": "Interrupt input from MCP peripheral"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "MCU_Function_Groups": {
+    "ATmega328P": {
+      "I2C_0": [
+        { "PinName": "PC4", "FunctionName": "SDA" },
+        { "PinName": "PC5", "FunctionName": "SCL" }
+      ],
+      "SPI_0": [
+        { "PinName": "PB3", "FunctionName": "MOSI" },
+        { "PinName": "PB4", "FunctionName": "MISO" },
+        { "PinName": "PB5", "FunctionName": "SCK" }
+      ],
+      "ADC_Input": [
+        { "PinName": "PC0", "FunctionName": "ADC0_Temp" },
+        { "PinName": "PC1", "FunctionName": "ADC1_V_Sense" }
+      ],
+      "GPIO_Pool": [
+        { "PinName": "PD3", "FunctionName": "PWM_Heater" },
+        { "PinName": "PD5", "FunctionName": "Buzzer" },
+        { "PinName": "PD4", "FunctionName": "Encoder_A" },
+        { "PinName": "PD2", "FunctionName": "Encoder_B" },
+        { "PinName": "PC6", "FunctionName": "Reset" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "OLED": {
+      "I2C_Target": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCK", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "ICSP": {
+      "SPI_Programming": [
+        { "PinName": "MOSI", "FunctionName": "MOSI" },
+        { "PinName": "MISO", "FunctionName": "MISO" },
+        { "PinName": "SCK", "FunctionName": "SCK" }
+      ]
+    },
+    "LMV358": {
+      "Amp_Output": [
+        { "PinName": "OUT1", "FunctionName": "Signal Out" }
+      ]
+    },
+    "MLT-5030": {
+      "Signal_Input": [
+        { "PinName": "+", "FunctionName": "Drive Pin" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Temperature_Feedback_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "LMV358", "PinName": "OUT1" },
+        { "ComponentID": "ATmega328P", "PinName": "PC0" }
+      ]
+    },
+    {
+      "RuleName": "OLED_Display_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P",
+      "Target_Group_Pattern": "I2C_.*",
+      "Slaves": [
+        { "ComponentID": "OLED", "Interface": "I2C_Target" }
+      ]
+    },
+    {
+      "RuleName": "Programming_Header_SPI",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P",
+      "Target_Group_Pattern": "SPI_.*",
+      "Slaves": [
+        { "ComponentID": "ICSP", "Interface": "SPI_Programming" }
+      ]
+    },
+    {
+      "RuleName": "Buzzer_Control_Logic",
+      "Type": "Resource_Allocation",
+      "MCU": "ATmega328P",
+      "Target_Group": "GPIO_Pool",
+      "Slaves": [
+        { "ComponentID": "MLT-5030", "Interface": "Signal_Input" }
+      ]
+    },
+    {
+      "RuleName": "System_Hardware_Reset",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ICSP", "PinName": "RESET" },
+        { "ComponentID": "ATmega328P", "PinName": "PC6" }
+      ]
+    }
+  ]
+}

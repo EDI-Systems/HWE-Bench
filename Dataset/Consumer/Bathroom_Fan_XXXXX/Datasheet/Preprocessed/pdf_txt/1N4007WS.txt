@@ -1,9 +1,0 @@
-Component ID: 1N4007
-Component Type: SOD-323 Surface Mount Diode
-Description: This is a general-purpose, fast-switching silicon diode in a SOD-323 surface-mount package. It is characterized by high conductance and a fast reverse recovery time of 4 ns, making it suitable for high-speed switching applications. Key electrical ratings include a maximum repetitive peak reverse voltage of 300V, an average rectified forward current of 300mA, and a low junction capacitance of 2pF.
-
-Pinout Table:
-| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
-| ----- | -------- | -------- | ----------- | -------- | --------------- |
-| 1 | Anode | Anode Terminal | Positive terminal for forward current flow. | Terminal | Power |
-| 2 | Cathode | Cathode Terminal | Negative terminal; current flows out from this pin under forward bias. | Terminal | Power |

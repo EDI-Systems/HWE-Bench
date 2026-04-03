@@ -1,0 +1,704 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Isolated Power Supply & Regulation Subsystem",
+      "Function Description": "Generates clean, isolated low-voltage rails (e.g., ±5V, 3.3V) for the sensitive analog circuitry and logic controller from the noisy high-voltage DC input. Provides separation to prevent ground loops and noise coupling.",
+      "Signal Sources": "High-Voltage DC Supply (e.g., 48V).",
+      "Signal Destinations": "Precision Signal Conditioner (clean analog supplies), Logic Controller (digital supply), Gate Driver IC (bootstrap supply).",
+      "Implementation Logic": "An isolated DC-DC converter (e.g., flyback or isolated buck) steps down the high-voltage input. Its output feeds into linear regulators (LDOs) to generate ultra-low-noise rails for the analog front-end. Separate ground planes for analog and power sections are connected at a single star point to minimize noise injection.",
+      "Signal Chain": "The isolated power supply subsystem begins with a high-voltage DC input (e.g., 48V). This input feeds into an isolated DC-DC converter (not in library, implied) to step down to an intermediate isolated voltage, such as 12V. The isolated output then powers a linear regulator (LDO) to generate a clean, low-noise 5V rail. This 5V rail supplies the logic controller (microcontroller) and can be further regulated to 3.3V (not in library) for sensitive analog circuits. The subsystem maintains separate ground planes for the high-voltage input side (noisy) and the low-voltage output side (clean), connected only at a single star point to prevent ground loops and noise coupling. The clean 5V output is distributed to the microcontroller's VCC/AVCC pins and other low-noise destinations.",
+      "Recommended Components": [
+        {
+          "ComponentID": "78M05",
+          "Functional Position": "Post-isolation voltage regulation",
+          "Recommendation Reason": "Provides a stable, low-noise 5V output from the isolated DC-DC converter's output (e.g., 12V), suitable for powering the microcontroller and other digital/analog circuits with clean power.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "Isolated_Intermediate_Voltage"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "Clean_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "Clean_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "Functional Position": "Logic controller powered by the clean 5V rail",
+          "Recommendation Reason": "Requires a stable 5V supply for operation; its VCC and AVCC pins must connect to the clean 5V output from the 78M05 to ensure reliable digital and analog performance.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "Clean_5V"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "Clean_5V"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "Clean_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "Clean_GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "Clean_GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "Clean_GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Load Current Monitoring & Protection",
+      "Function Description": "Measures the current through the heating load via a shunt resistor to provide feedback for closed-loop control or fault detection (e.g., open/short circuit).",
+      "Signal Sources": "Load current (via voltage across a shunt resistor).",
+      "Signal Destinations": "Logic Controller ADC input (for monitoring), Protection circuit input (for fast fault response).",
+      "Implementation Logic": "A low-ohm, high-power shunt resistor is placed in series with the load on the low-side. A differential amplifier (or dedicated current-sense amp) amplifies the small shunt voltage. The output is filtered and sent to the MCU's ADC. A comparator can provide a fast, hardware-based over-current trip signal that directly disables the gate driver via a dedicated shutdown pin.",
+      "Signal Chain": "The load current flows through a low-side shunt resistor, generating a small differential voltage. This voltage is amplified by a differential amplifier (using one channel of LMV358) to a suitable level for the MCU's ADC. The amplified signal is filtered to reduce noise and then fed to an ADC input pin (e.g., A0) for digital monitoring and closed-loop control. Simultaneously, a comparator function (using the second channel of LMV358) compares the amplified signal against a reference voltage representing the over-current threshold. If exceeded, the comparator output triggers a fast hardware fault signal, which can be connected to a digital input pin (e.g., PD2) configured as an interrupt or directly to a gate driver shutdown pin (not in library) for immediate protection.",
+      "Recommended Components": [
+        {
+          "ComponentID": "LMV358",
+          "Functional Position": "Differential Amplifier and Comparator",
+          "Recommendation Reason": "Dual op-amp suitable for both amplifying the small shunt voltage (Channel 1) and providing a fast comparator function for over-current protection (Channel 2). Operates at 5V supply, rail-to-rail output compatible with MCU ADC.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "OUT1",
+              "Net": "ADC_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "-IN1",
+              "Net": "AMP_FEEDBACK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "+IN1",
+              "Net": "SHUNT_POS"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "+IN2",
+              "Net": "AMP_OUT"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "-IN2",
+              "Net": "OC_REF"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "OUT2",
+              "Net": "OC_TRIP"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC+",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "Functional Position": "Logic Controller",
+          "Recommendation Reason": "MCU with 10-bit ADC for current monitoring and digital I/O for receiving over-current trip signal. Provides processing for closed-loop control and fault detection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "ADC_IN"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "PD2",
+              "Net": "OC_TRIP"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78M05",
+          "Functional Position": "Power Supply Regulator",
+          "Recommendation Reason": "Provides stable 5V supply for the op-amp and MCU from a higher input voltage (e.g., 12V or 24V system rail).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Side PWM Gate Driver with Active Clamp",
+      "Function Description": "Translates a low-power logic-level PWM command into a high-current drive signal for a high-side N-channel power MOSFET. It provides fast switching to minimize dissipation and includes an active clamp circuit to safely dissipate inductive flyback energy from the load wiring.",
+      "Signal Sources": "Logic Controller PWM output (3.3V/5V digital), High-Voltage DC Supply (e.g., 48V), Load current feedback (via shunt).",
+      "Signal Destinations": "Gate of high-side power MOSFET, System ground/power return (for clamp current).",
+      "Implementation Logic": "A dedicated high-side gate driver IC (or bootstrap circuit) level-shifts the logic PWM to the MOSFET gate voltage. A series gate resistor and optional Baker clamp optimize switching speed. An active clamp circuit (e.g., TVS diode and Zener combination) is placed directly across the MOSFET drain-source to clamp voltage spikes from load inductance during turn-off, routing energy back to the supply or dissipating it thermally.",
+      "Signal Chain": "The module receives a low-power logic-level PWM command from a Logic Controller (e.g., microcontroller). This PWM signal is fed into a high-side gate driver circuit (not explicitly in the library, but its function is implied). The gate driver level-shifts the PWM signal to a voltage suitable for driving the high-side N-channel power MOSFET's gate (relative to its source). A series gate resistor (external, not in library) and optional Baker clamp (using a diode like 1N4148W) can be added to optimize switching speed and prevent Miller-induced turn-on. The gate driver is powered from a regulated low-voltage supply (e.g., 5V from 78M05) derived from the High-Voltage DC Supply (e.g., 48V). The gate driver's output directly drives the MOSFET's gate. The MOSFET's drain is connected to the High-Voltage DC Supply via the load, and its source is connected to the load's other terminal. An active clamp circuit, consisting of a TVS diode and Zener combination (not in library, but 1N4148W could be part of a Baker clamp, not the active clamp), is placed directly across the MOSFET's drain-source to clamp voltage spikes from load inductance during turn-off, safely dissipating energy. Load current feedback via a shunt resistor is amplified (e.g., by LMV358 op-amp) and read by the Logic Controller's ADC for monitoring or protection.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATmega328P",
+          "Functional Position": "Logic Controller",
+          "Recommendation Reason": "Generates the PWM command signal and reads load current feedback via ADC. Provides necessary digital control and interface capabilities.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "PWM_OUT"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "CURRENT_FEEDBACK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "5V_LOGIC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78M05",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 5V supply from the high-voltage DC input (e.g., 48V stepped down to a suitable input voltage for the 78M05) to power the logic controller, gate driver, and other low-voltage circuitry.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "HV_DC_INPUT_REGULATED"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "5V_LOGIC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLR",
+          "Functional Position": "High-Side Power MOSFET",
+          "Recommendation Reason": "Switches the high-voltage DC supply to the load based on the gate drive signal. Its low RDS(on) and high current capability make it suitable for efficient power switching.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "GATE_DRIVE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "HV_DC_SUPPLY"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "LOAD_POSITIVE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N4148W",
+          "Functional Position": "Baker Clamp Diode",
+          "Recommendation Reason": "Used in a Baker clamp configuration (across gate-source or gate-drain, depending on design) to prevent Miller-induced turn-on of the MOSFET and improve switching speed.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "GATE_DRIVE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "LOAD_POSITIVE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LMV358",
+          "Functional Position": "Current Sense Amplifier",
+          "Recommendation Reason": "Amplifies the small voltage from the load current shunt resistor to a level suitable for the microcontroller's ADC input, enabling current monitoring.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "-IN1",
+              "Net": "SHUNT_VOLTAGE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "+IN1",
+              "Net": "REFERENCE_VOLTAGE"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "OUT1",
+              "Net": "CURRENT_FEEDBACK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC+",
+              "Net": "5V_LOGIC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Precision Thermocouple Signal Conditioner",
+      "Function Description": "Amplifies microvolt-level differential signals from a thermal sensing element (e.g., thermocouple) to a logic-compatible voltage range (e.g., 0-3.3V) with high linearity and SNR. It includes multi-stage passive RC/LC filtering to suppress high-frequency EMI from the switching environment.",
+      "Signal Sources": "Thermocouple or RTD sensor (differential microvolt signal), System power rails (for op-amp biasing).",
+      "Signal Destinations": "Logic Controller ADC input (amplified, filtered single-ended voltage).",
+      "Implementation Logic": "A differential instrumentation amplifier front-end provides high CMRR and gain. Its output feeds into cascaded passive low-pass filter stages (e.g., 2nd order) to attenuate switching noise. A final buffer/amplifier stage sets the exact output voltage range and drives the ADC. Biasing and rail design ensure the output remains within the linear region across the full temperature operating range.",
+      "Signal Chain": "The thermocouple differential microvolt signal is first conditioned by the instrumentation amplifier stage (using LMV358 configured as a differential amplifier) to provide high CMRR and initial gain. The amplified differential signal is then converted to a single-ended signal. This single-ended signal passes through cascaded passive RC low-pass filter stages to suppress high-frequency EMI and switching noise. The filtered signal is buffered and further amplified by a second op-amp stage (using the other channel of LMV358) to scale the voltage to the 0-3.3V range suitable for the ADC input. The ATmega328P's ADC (e.g., on pin A0) digitizes this conditioned analog voltage. System power is regulated from a higher input voltage (e.g., 12V) to a stable 5V by the 78M05 LDO, which powers the op-amps and microcontroller. The microcontroller can interface with peripherals like the OLED display via I2C for data visualization.",
+      "Recommended Components": [
+        {
+          "ComponentID": "LMV358",
+          "Functional Position": "Differential Instrumentation Amplifier and Output Buffer",
+          "Recommendation Reason": "Dual-channel, low-voltage, rail-to-rail op-amp suitable for amplifying microvolt-level differential signals and buffering filtered signals to the ADC. Operates from 2.7V to 5.5V, matching the 5V system supply.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "OUT1",
+              "Net": "Filtered_Signal"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "-IN1",
+              "Net": "Feedback_Resistor_Network"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "+IN1",
+              "Net": "Thermocouple_Positive"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "+IN2",
+              "Net": "Filtered_Signal"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "-IN2",
+              "Net": "Output_Buffer_Feedback"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "OUT2",
+              "Net": "ADC_Input"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC+",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "Functional Position": "Logic Controller and ADC",
+          "Recommendation Reason": "8-bit microcontroller with integrated 10-bit ADC to digitize the conditioned analog signal. Provides necessary processing and interface capabilities.",
+          "Pin Connections": [
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "ADC_Input"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "I2C_SCL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78M05",
+          "Functional Position": "Power Supply Regulator",
+          "Recommendation Reason": "Provides stable 5V output from a higher input voltage (e.g., 7-35V) to power the op-amps and microcontroller, ensuring clean power rails for sensitive analog circuitry.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_Unregulated"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "User Interface Display",
+          "Recommendation Reason": "Monochrome OLED display with I2C interface for visualizing temperature readings and system status.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Logic Controller & System Interface",
+      "Function Description": "The central digital brain. It reads the conditioned temperature signal via ADC, runs a control algorithm (e.g., PID), generates the PWM command for power modulation, and manages system states (startup, operation, shutdown).",
+      "Signal Sources": "Conditioned Analog Temperature Signal (from Signal Conditioner), User inputs/communication interfaces (optional).",
+      "Signal Destinations": "PWM Gate Driver (digital PWM command), Status indicators/communication outputs.",
+      "Implementation Logic": "A microcontroller (MCU) with integrated ADC samples the analog temperature voltage. Firmware implements the control loop, calculating the required PWM duty cycle to achieve the target temperature. The MCU's PWM peripheral outputs the corresponding signal to the gate driver. It also monitors system faults (e.g., over-temperature via ADC, over-current via optional shunt) and can execute a safe shutdown.",
+      "Signal Chain": "The conditioned analog temperature signal from the Signal Conditioner module is fed into the microcontroller's ADC input (e.g., PC0/A0). The microcontroller (ATmega328P) samples this voltage, converts it to a digital value, and runs a control algorithm (e.g., PID) in firmware. Based on the algorithm output, the microcontroller generates a PWM signal via a dedicated PWM-capable digital output pin (e.g., PD5/D5). This PWM command is sent to the PWM Gate Driver module to control power modulation. The microcontroller also manages system states (startup, operation, shutdown) by monitoring user inputs (e.g., from rotary encoder SW1) and optional fault signals (e.g., over-temperature via ADC, over-current via shunt). It can drive status indicators like an OLED display via I2C and a buzzer for audible alerts. A voltage regulator (78M05) provides a stable 5V supply to the microcontroller and peripherals. An ICSP connector allows for in-circuit programming. Diodes (1N4148W) may be used for signal conditioning or protection, and a MOSFET (IRLR) could be used for switching external loads if needed, though it is not the primary PWM output driver for the gate driver interface.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATmega328P",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "It is an 8-bit AVR microcontroller with integrated 10-bit ADC for sampling the conditioned temperature signal, multiple PWM channels for generating the PWM command, and sufficient I/O for system management and interfacing with peripherals like the OLED display and rotary encoder.",
+          "Pin Connections": [
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "Temperature_Signal_ADC"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PD5",
+              "Net": "PWM_Command_Output"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PD4",
+              "Net": "Encoder_Phase_A"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PC6",
+              "Net": "Reset"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78M05",
+          "Functional Position": "Power Supply Regulator",
+          "Recommendation Reason": "Provides a stable 5V output from a higher input voltage (e.g., 12V) to power the microcontroller and other 5V peripherals, ensuring reliable operation.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_12V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "Status Display",
+          "Recommendation Reason": "Monochrome OLED display with I2C interface for showing system status, temperature readings, and control parameters.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SW1",
+          "Functional Position": "User Input Interface",
+          "Recommendation Reason": "Incremental rotary encoder with push switch for user interaction, such as setting target temperature, navigating menus, or starting/stopping the system.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A",
+              "PinName": "Phase A",
+              "Net": "Encoder_Phase_A"
+            },
+            {
+              "PinNumber": "C",
+              "PinName": "Common",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B",
+              "PinName": "Phase B",
+              "Net": "Encoder_Phase_B"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SW1",
+              "Net": "Encoder_Switch"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "6-pin ICSP connector for in-circuit serial programming of the ATmega328P microcontroller, enabling firmware updates and debugging.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "ICSP_MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "ICSP_SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "ICSP_MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "Reset"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MLT-5030",
+          "Functional Position": "Audible Alert",
+          "Recommendation Reason": "Magnetic buzzer for providing audible feedback, such as indicating system startup, faults, or user input acknowledgment.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "+",
+              "Net": "Buzzer_Drive"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "-",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "GND",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "78M05", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "LMV358", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "OLED", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "ICSP", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "MLT-5030", "PinName": "Negative Terminal", "FunctionName": "Ground" }
+      ]
+    },
+    {
+      "net_id": "VCC_5V",
+      "Connections": [
+        { "ComponentID": "78M05", "PinName": "VOUT", "FunctionName": "Power" },
+        { "ComponentID": "ATmega328P", "PinName": "VCC", "FunctionName": "Power" },
+        { "ComponentID": "ATmega328P", "PinName": "Analog Power", "FunctionName": "Power" },
+        { "ComponentID": "LMV358", "PinName": "Power", "FunctionName": "Power" },
+        { "ComponentID": "OLED", "PinName": "Power", "FunctionName": "Power" },
+        { "ComponentID": "ICSP", "PinName": "Power", "FunctionName": "Power" }
+      ]
+    },
+    {
+      "net_id": "NET_TEMP_FEEDBACK",
+      "Connections": [
+        { "ComponentID": "LMV358", "PinName": "OUT1", "FunctionName": "Signal Out" },
+        { "ComponentID": "ATmega328P", "PinName": "PC0", "FunctionName": "ADC0" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SDA",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PC4", "FunctionName": "SDA" },
+        { "ComponentID": "OLED", "PinName": "SDA", "FunctionName": "Data" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PC5", "FunctionName": "SCL" },
+        { "ComponentID": "OLED", "PinName": "SCK", "FunctionName": "Clock" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MOSI",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB3", "FunctionName": "MOSI" },
+        { "ComponentID": "ICSP", "PinName": "MOSI", "FunctionName": "MOSI" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB4", "FunctionName": "MISO" },
+        { "ComponentID": "ICSP", "PinName": "MISO", "FunctionName": "MISO" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_SCK",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB5", "FunctionName": "SCK" },
+        { "ComponentID": "ICSP", "PinName": "SCK", "FunctionName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_HW_RESET",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PC6", "FunctionName": "Reset" },
+        { "ComponentID": "ICSP", "PinName": "RESET", "FunctionName": "Reset" }
+      ]
+    },
+    {
+      "net_id": "NET_BUZZER",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD5", "FunctionName": "Buzzer" },
+        { "ComponentID": "MLT-5030", "PinName": "+", "FunctionName": "Input" }
+      ]
+    }
+  ]
+}

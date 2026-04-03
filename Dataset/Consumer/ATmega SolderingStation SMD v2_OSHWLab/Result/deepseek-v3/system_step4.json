@@ -1,0 +1,259 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "78M05",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "78M05",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "AVCC",
+          "FunctionName": "Analog Power"
+        },
+        {
+          "ComponentID": "LMV358",
+          "PinName": "VCC+",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "78M05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LMV358",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SW1",
+          "PinName": "Common",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SW1",
+          "PinName": "SW2",
+          "FunctionName": "Switch"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MLT-5030",
+          "PinName": "-",
+          "FunctionName": "Negative Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "LMV358",
+          "PinName": "OUT1",
+          "FunctionName": "Output 1"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PC0",
+          "FunctionName": "A0"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "LMV358",
+          "PinName": "-IN1",
+          "FunctionName": "Input 1-"
+        },
+        {
+          "ComponentID": "LMV358",
+          "PinName": "OUT1",
+          "FunctionName": "Output 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "LMV358",
+          "PinName": "+IN2",
+          "FunctionName": "Input 2+"
+        },
+        {
+          "ComponentID": "LMV358",
+          "PinName": "OUT1",
+          "FunctionName": "Output 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "LMV358",
+          "PinName": "OUT2",
+          "FunctionName": "Output 2"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD2",
+          "FunctionName": "MCP_INT"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD3",
+          "FunctionName": "D3"
+        },
+        {
+          "ComponentID": "IRLR",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "IRLR",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "1N4148W",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PC4",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PC5",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD4",
+          "FunctionName": "D4"
+        },
+        {
+          "ComponentID": "SW1",
+          "PinName": "Phase A",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PC6",
+          "FunctionName": "Reset"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "RESET",
+          "FunctionName": "RESET"
+        }
+      ]
+    }
+  ]
+}
