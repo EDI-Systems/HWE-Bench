@@ -1,0 +1,66 @@
+Component ID: U6 STM32F103CBT6
+Component Type: 32-bit ARM Cortex-M3 Microcontroller
+Description: The STM32F103CBT6 is a medium-density performance line microcontroller incorporating the high-performance ARM Cortex-M3 32-bit RISC core operating at a 72 MHz frequency. It features 128KB of Flash memory, 20KB of SRAM, and an extensive range of enhanced I/Os and peripherals. These include two 12-bit ADCs, three general-purpose 16-bit timers plus one PWM timer, as well as standard and advanced communication interfaces including I2C, SPI, USART, CAN, and USB. It is designed for applications such as industrial control, motor drives, and consumer electronics.
+
+Key Parameters:
+- Core ARM 32-bit Cortex-M3
+- Max CPU Frequency 72 MHz
+- Flash Memory 128 KB
+- SRAM 20 KB
+- Operating Voltage 2.0V to 3.6V
+- ADC 2 x 12-bit (10 channels)
+- I/O Pins 37
+- Operating Temperature -40 to +85 Celsius
+- Package LQFP-48
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VBAT | Power | Battery backup supply voltage | Power | 3.3V |
+| 2 | PC13 | NC | General purpose I/O (Not connected) | NC | - |
+| 3 | PC14 | NC | OSC32_IN / RTC crystal (Not connected) | NC | - |
+| 4 | PC15 | NC | OSC32_OUT / RTC crystal (Not connected) | NC | - |
+| 5 | PD0 | OSC_IN | External high-speed clock input | Input | Signal |
+| 6 | PD1 | OSC_OUT | External high-speed clock output | Output | Signal |
+| 7 | NRST | Reset | Active-low system reset input | Input | 3.3V |
+| 8 | VSSA | Ground | Analog ground reference | Power | 0V |
+| 9 | VDDA | Power | Analog positive power supply | Power | 3.3V |
+| 10 | PA0 | NC | General purpose I/O (Not connected) | NC | - |
+| 11 | PA1 | FIR1 | Digital I/O configured for FIR1 signal | I/O | 3.3V |
+| 12 | PA2 | CON1 | Digital I/O configured for CON1 signal | I/O | 3.3V |
+| 13 | PA3 | FIR2 | Digital I/O configured for FIR2 signal | I/O | 3.3V |
+| 14 | PA4 | CON2 | Digital I/O configured for CON2 signal | I/O | 3.3V |
+| 15 | PA5 | PA5 | General purpose I/O signal | I/O | 3.3V |
+| 16 | PA6 | PA6 | General purpose I/O signal | I/O | 3.3V |
+| 17 | PA7 | BUZZ1 | Buzzer 1 control output | Output | 3.3V |
+| 18 | PB0 | NSE | Digital input/output for NSE signal | I/O | 3.3V |
+| 19 | PB1 | NC | General purpose I/O (Not connected) | NC | - |
+| 20 | PB2 | OT1 | Digital output for OT1 signal | Output | 3.3V |
+| 21 | PB10 | PB10 | General purpose I/O signal | I/O | 3.3V |
+| 22 | PB11 | PB11 | General purpose I/O signal | I/O | 3.3V |
+| 23 | VSS | Ground | Primary digital system ground | Power | 0V |
+| 24 | VDD | Power | Primary digital power supply input | Power | 3.3V |
+| 25 | PB12 | FL_1 | Flash/Function signal line 1 | I/O | 3.3V |
+| 26 | PB13 | FL_2 | Flash/Function signal line 2 | I/O | 3.3V |
+| 27 | PB14 | FL_3 | Flash/Function signal line 3 | I/O | 3.3V |
+| 28 | PB15 | FL_4 | Flash/Function signal line 4 | I/O | 3.3V |
+| 29 | PA8 | BUZZ2 | Buzzer 2 control output | Output | 3.3V |
+| 30 | PA9 | US1 | UART1 Transmit / Function US1 | Output | 3.3V |
+| 31 | PA10 | US2 | UART1 Receive / Function US2 | Input | 3.3V |
+| 32 | PA11 | RES | System function RES signal | I/O | 3.3V |
+| 33 | PA12 | NC | General purpose I/O (Not connected) | NC | - |
+| 34 | PA13 | SWDIO | Serial Wire Debug Data I/O | I/O | 3.3V |
+| 35 | VSS | Ground | Secondary digital ground | Power | 0V |
+| 36 | VDD | Power | Secondary digital power supply | Power | 3.3V |
+| 37 | PA14 | SWCLK | Serial Wire Debug Clock input | Input | 3.3V |
+| 38 | PA15 | DB_SIG | Debug signal output | Output | 3.3V |
+| 39 | PB3 | DATA | Digital data communication line | I/O | 3.3V |
+| 40 | PB4 | PB4 | General purpose I/O signal | I/O | 3.3V |
+| 41 | PB5 | NT1 | Network/Function signal line 1 | I/O | 3.3V |
+| 42 | PB6 | NT2 | Network/Function signal line 2 | I/O | 3.3V |
+| 43 | PB7 | INT | External interrupt input signal | Input | 3.3V |
+| 44 | BOOT0 | BOOT0 | Boot mode selection input | Input | 3.3V |
+| 45 | PB8 | RX | UART/Serial receive signal | Input | 3.3V |
+| 46 | PB9 | TX | UART/Serial transmit signal | Output | 3.3V |
+| 47 | VSS | Ground | Tertiary digital ground | Power | 0V |
+| 48 | VDD | Power | Tertiary digital power supply | Power | 3.3V |

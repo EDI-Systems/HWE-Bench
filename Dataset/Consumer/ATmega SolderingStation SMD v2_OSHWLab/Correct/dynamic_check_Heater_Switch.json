@@ -1,0 +1,61 @@
+{
+  "High-Side PWM Gate Driver with Active Clamp": [
+    {
+      "net_id": "net_24v_input",
+      "Connections": [
+        { "ComponentID": "V1", "PinName": "P", "FunctionName": "24V Source" },
+        { "ComponentID": "IRLR", "PinName": "D", "FunctionName": "Drain" },
+        { "ComponentID": "D1", "PinName": "A", "FunctionName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "net_bootstrap_node",
+      "Connections": [
+        { "ComponentID": "D1", "PinName": "K", "FunctionName": "Cathode" },
+        { "ComponentID": "C7", "PinName": "P", "FunctionName": "C_Boot +" },
+        { "ComponentID": "R5", "PinName": "1", "FunctionName": "R_Gate In" }
+      ]
+    },
+    {
+      "net_id": "net_gate_drive",
+      "Connections": [
+        { "ComponentID": "IRLR", "PinName": "G", "FunctionName": "Gate" },
+        { "ComponentID": "R5", "PinName": "2", "FunctionName": "R_Gate Out" },
+        { "ComponentID": "Q1", "PinName": "C", "FunctionName": "NPN Collector" },
+        { "ComponentID": "D4", "PinName": "K", "FunctionName": "Zener Cathode" }
+      ]
+    },
+    {
+      "net_id": "net_pplus_out",
+      "Connections": [
+        { "ComponentID": "IRLR", "PinName": "S", "FunctionName": "Source" },
+        { "ComponentID": "C7", "PinName": "N", "FunctionName": "C_Boot -" },
+        { "ComponentID": "D4", "PinName": "A", "FunctionName": "Zener Anode" },
+        { "ComponentID": "HEATER", "PinName": "1", "FunctionName": "Load P+" }
+      ]
+    },
+    {
+      "net_id": "net_mcu_pwm",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD3", "FunctionName": "PWM Out" },
+        { "ComponentID": "R6", "PinName": "1", "FunctionName": "R_Base In" }
+      ]
+    },
+    {
+      "net_id": "net_npn_base",
+      "Connections": [
+        { "ComponentID": "R6", "PinName": "2", "FunctionName": "R_Base Out" },
+        { "ComponentID": "Q1", "PinName": "B", "FunctionName": "Base" }
+      ]
+    },
+    {
+      "net_id": "net_system_gnd",
+      "Connections": [
+        { "ComponentID": "V1", "PinName": "N", "FunctionName": "GND" },
+        { "ComponentID": "ATmega328P", "PinName": "GND", "FunctionName": "GND" },
+        { "ComponentID": "Q1", "PinName": "E", "FunctionName": "Emitter" },
+        { "ComponentID": "HEATER", "PinName": "2", "FunctionName": "GND" }
+      ]
+    }
+  ]
+}

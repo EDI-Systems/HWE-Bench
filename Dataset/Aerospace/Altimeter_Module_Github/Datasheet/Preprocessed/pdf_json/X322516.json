@@ -1,0 +1,56 @@
+{
+  "ComponentID": "X322516",
+  "ComponentType": "16MHz SMD Quartz Crystal",
+  "Description": "The Y1 is a high-precision 16MHz surface-mount quartz crystal resonator housed in a standard 3225 ceramic package. It provides a stable frequency reference for microcontrollers and other digital circuits. The four-pad design includes two terminals for the crystal element and two grounding terminals connected to the metal lid to reduce electromagnetic interference and provide mechanical stability.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "XTAL1",
+      "Functions": [
+        {
+          "FunctionName": "Crystal",
+          "FunctionDescription": "Crystal oscillator terminal 1"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Connected to metal lid for EMI shielding"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "XTAL2",
+      "Functions": [
+        {
+          "FunctionName": "Crystal",
+          "FunctionDescription": "Crystal oscillator terminal 2"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Connected to metal lid for EMI shielding"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+Component ID: OLED
+Component Type: 4-Pin OLED Display Connector (I^2C)
+Description: The J4 is a 4-pin serial interface connector designed for small OLED display modules, such as those based on the SSD1306 or SH1106 drivers. It utilizes the $I^2C$ (Inter-Integrated Circuit) communication protocol, which minimizes the required I/O pins on a microcontroller by using only two signal lines. This interface is the standard connection for 0.91-inch and 0.96-inch monochrome displays commonly used in prototyping and embedded applications.
+
+Key Parameters:
+- Connector Type: 4-Pin Single Row Header
+- Pitch: 2.54 mm (0.1 inch)
+- Communication Protocol: I^2C (Serial Data and Serial Clock)
+- Operating Voltage: 3.3V to 5V (Module dependent)
+- Logic Level: 3.3V / 5V compatible
+- Typical Display Controllers: SSD1306, SH1106, SSD1315
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND | Ground | Main system ground reference | Power | 0V |
+| 2 | VCC | Supply Voltage | Positive power supply input for the display | Power | 3.3V - 5V |
+| 3 | SCK | SCL | $I^2C$ Serial Clock signal from the master device | Input | Signal |
+| 4 | SDA | SDA | $I^2C$ Serial Data line for bidirectional communication | I/O | Signal |

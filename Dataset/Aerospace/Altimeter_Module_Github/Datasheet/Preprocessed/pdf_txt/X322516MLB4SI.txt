@@ -1,0 +1,20 @@
+Component ID: X322516
+Component Type: 16MHz SMD Quartz Crystal
+Description: The Y1 is a high-precision 16MHz surface-mount quartz crystal resonator housed in a standard 3225 ceramic package. It provides a stable frequency reference for microcontrollers and other digital circuits. The four-pad design includes two terminals for the crystal element and two grounding terminals connected to the metal lid to reduce electromagnetic interference and provide mechanical stability.
+
+Key Parameters:
+- Frequency 16.000 MHz
+- Package 3225 SMD (3.2mm x 2.5mm)
+- Load Capacitance 12pF to 20pF (Typical)
+- Frequency Tolerance +/- 20ppm
+- Frequency Stability +/- 30ppm
+- Equivalent Series Resistance 60 ohm Max
+- Operating Temperature -40 to +85 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | XTAL1 | Crystal | Crystal oscillator terminal 1 | Passive | Signal |
+| 2 | GND | Ground | Connected to metal lid for EMI shielding | Power | 0V |
+| 3 | XTAL2 | Crystal | Crystal oscillator terminal 2 | Passive | Signal |
+| 4 | GND | Ground | Connected to metal lid for EMI shielding | Power | 0V |

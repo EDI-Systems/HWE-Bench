@@ -1,0 +1,25 @@
+Component ID: MS561101BA03-50
+Component Type: High Resolution Barometric Pressure Sensor
+Description: The MS5611 is a high resolution altimeter sensor that includes a high linearity pressure sensor and an ultra low power 24 bit sigma delta ADC with internal factory calibrated coefficients. It provides precise digital 24 bit pressure and temperature values and different operation modes that allow the user to optimize for conversion speed and current consumption. It features both I2C and SPI interfaces for easy communication with microcontrollers and is widely used in flight controllers for drones and handheld altimeters.
+
+Key Parameters:
+- Pressure Range 10 to 1200 mbar
+- Supply Voltage 1.8V to 3.6V
+- Interface I2C and SPI
+- ADC Resolution 24 bit
+- Altitude Resolution 10 cm
+- Accuracy 1.5 mbar at 25 Celsius
+- Operating Temperature -40 to +85 Celsius
+- Current Consumption 1.4 uA typical
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VDD | Power | Main power supply input | Power | 1.8V-3.6V |
+| 2 | PS | Protocol Select | Logic high selects I2C mode; logic low selects SPI | Input | Signal |
+| 3 | GND | Ground | Main system ground reference | Power | 0V |
+| 4 | CSB | Chip Select | Chip select input for SPI mode or I2C address bit | Input | Signal |
+| 5 | CSB | NC | Secondary chip select terminal (marked not connected) | NC | - |
+| 6 | SDO | SDO | SPI serial data output (marked not connected) | Output | Signal |
+| 7 | SDI/SDA | SDA | I2C serial data or SPI serial data input | I/O | Signal |
+| 8 | SCLK | SCL | I2C serial clock or SPI serial clock input | Input | Signal |

@@ -1,0 +1,29 @@
+Component ID: KX134ACR-LBZE2
+Component Type: High Performance Tri-axis Accelerometer
+Description: The KX134ACR-LBZE2 is a high-performance, low-power, tri-axis accelerometer with a digital I2C/SPI interface. It is designed for high-g applications and features user-selectable full-scale ranges of +/-8g, +/-16g, +/-32g, and +/-64g. It includes an integrated 512-byte FIFO buffer, advanced power management, and internal digital filters to improve signal quality and reduce system power consumption.
+
+Key Parameters:
+- Full-scale Range User selectable +/-8g, +/-16g, +/-32g, +/-64g
+- Supply Voltage 1.7V to 3.6V
+- I/O Voltage 1.2V to 3.6V
+- Interface I2C (up to 3.4MHz) and SPI (up to 10MHz)
+- Sensitivity 0.061 to 0.488 mg/LSB
+- Output Data Rate 0.781Hz to 25600Hz
+- Operating Temperature -40 to +105 Celsius
+- Package LGA-12
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SDO/ADDR | SDO/ADDR | SPI Serial Data Output / I2C Address select | Output | Signal |
+| 2 | SDI/SDA | SDI/SDA | SPI Serial Data Input / I2C Serial Data | I/O | Signal |
+| 3 | IO_VDD | IO_VDD | Digital I/O power supply voltage | Power | 1.2V-3.6V |
+| 4 | TRIG | TRIG | External trigger input for synchronized sampling | Input | Signal |
+| 5 | INT1 | INT1 | Programmable interrupt output 1 | Output | Signal |
+| 6 | INT2 | INT2 | Programmable interrupt output 2 | Output | Signal |
+| 7 | VDD | VDD | Main analog/digital power supply | Power | 1.7V-3.6V |
+| 8 | GND | GND | Power supply ground reference | Power | 0V |
+| 9 | GND | GND | Power supply ground reference | Power | 0V |
+| 10 | nCS | nCS | Chip select for SPI communication (Active Low) | Input | Signal |
+| 11 | NC | NC | No internal electrical connection | NC | - |
+| 12 | SCLK/SCL | SCLK/SCL | SPI Serial Clock / I2C Serial Clock | Input | Signal |

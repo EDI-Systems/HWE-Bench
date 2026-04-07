@@ -1,0 +1,140 @@
+{
+  "ComponentID": "USB",
+  "ComponentType": "USB Type-C Female Receptacle (USB 2.0 Only)",
+  "Description": "The J4 is a 16-pin female USB Type-C connector designed for power delivery and USB 2.0 data communication. It features a simplified pinout that excludes high-speed SuperSpeed differential pairs, making it an efficient choice for devices relying on 480 Mbps data rates. The design includes Configuration Channel (CC) pins for cable orientation detection and power negotiation, as well as Sideband Use (SBU) pins for secondary signaling. The integrated shield pins provide EMI protection and mechanical stability.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB bus power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V-20V"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "CC1",
+          "FunctionDescription": "Configuration channel 1 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive (Group A)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative (Group A)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 1 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "CC2",
+          "FunctionDescription": "Configuration channel 2 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive (Group B)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative (Group B)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 2 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "S1",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell for EMI/ESD protection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

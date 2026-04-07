@@ -1,0 +1,164 @@
+{
+  "ComponentID": "MPU-6050",
+  "ComponentType": "Six-Axis (Gyro + Accelerometer) MEMS MotionTracking Device",
+  "Description": "The MPU-6050 is a high-performance motion tracking device that integrates a 3-axis gyroscope and a 3-axis accelerometer on a single silicon die. It features an onboard Digital Motion Processor (DMP) capable of offloading complex MotionFusion algorithms from the host processor. The device includes a primary I2C interface for communication with the MCU and an auxiliary I2C bus to interface with external sensors such as magnetometers to provide complete 9-axis output.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CLKIN",
+      "Functions": [
+        {
+          "FunctionName": "CLKIN",
+          "FunctionDescription": "External clock input (tied to GND in this view)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "AUX_DA",
+      "Functions": [
+        {
+          "FunctionName": "AUX_DA",
+          "FunctionDescription": "Auxiliary I2C serial data for external sensors"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "AUX_CL",
+      "Functions": [
+        {
+          "FunctionName": "AUX_CL",
+          "FunctionDescription": "Auxiliary I2C serial clock for external sensors"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VLOGIC",
+      "Functions": [
+        {
+          "FunctionName": "VLOGIC",
+          "FunctionDescription": "Digital I/O supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V-3.3V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "AD0",
+      "Functions": [
+        {
+          "FunctionName": "AD0",
+          "FunctionDescription": "I2C slave address LSB (connected to -3.3V)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "REGOUT",
+      "Functions": [
+        {
+          "FunctionName": "REGOUT",
+          "FunctionDescription": "Internal regulator filter capacitor connection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "FSYNC",
+      "Functions": [
+        {
+          "FunctionName": "FSYNC",
+          "FunctionDescription": "Frame synchronization digital input (tied to GND)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "INT",
+          "FunctionDescription": "Programmable interrupt digital output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "VDD",
+          "FunctionDescription": "Main analog/digital power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.4V-3.4V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "CPOUT",
+      "Functions": [
+        {
+          "FunctionName": "CPOUT",
+          "FunctionDescription": "Charge pump capacitor connection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "Primary I2C serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "Primary I2C serial data"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

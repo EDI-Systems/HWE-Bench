@@ -1,0 +1,28 @@
+Component ID: ISO1042
+Component Type: Galvanically-Isolated CAN (Controller Area Network) Transceiver
+Description:
+The ISO1042-Q1 is an automotive-qualified, isolated CAN transceiver that provides electrical isolation between the CAN protocol controller and the physical bus. It supports both classic CAN (up to 1 Mbps) and CAN FD (Flexible Data Rate, up to 5 Mbps) standards. Its primary function is to transmit data from the controller (via TXD) onto the differential CAN bus (CANH, CANL) and receive data from the bus to the controller (via RXD), while protecting the local system from high bus voltages, noise, and ground potential differences through its integrated isolation barrier and robust protection features like ±70-V DC bus fault tolerance.
+
+Key Parameters:
+- **Isolation Withstand Voltage**: 5000 VRMS for 1 minute (UL 1577)
+- **Maximum Data Rate**: 5 Mbps (CAN FD)
+- **Common-Mode Voltage Range (Bus)**: ±30 V
+- **DC Bus Fault Protection**: ±70 V
+- **Logic-Side Supply Voltage (VCC1)**: 1.71 V to 5.5 V
+- **Bus-Side Supply Voltage (VCC2)**: 4.5 V to 5.5 V
+- **Common-Mode Transient Immunity (CMTI)**: 100 kV/µs
+- **Loop Delay (Propagation)**: 152 ns (typical)
+- **ESD Protection (Bus Pins, HBM)**: ±16 kV
+- **Ambient Temperature Range**: –40°C to +125°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1 | VCC1 | Power | Digital-side supply voltage, Side 1 | Input | Power |
+| 2 | GND1 | Ground | Digital-side ground connection, Side 1 | Input | Ground |
+| 3 | TXD | Input | CAN transmit data input (LOW for dominant and HIGH for recessive bus states) | Input | Digital Input |
+| 4 | RXD | Output | CAN receive data output (LOW for dominant and HIGH for recessive bus states) | Output | Digital Output |
+| 5 | GND2 | Ground | Bus-side ground connection, Side 2 | Input | Ground |
+| 6 | CANL | I/O | CAN low-level bus line | I/O | Differential Bus Line |
+| 7 | CANH | I/O | CAN high-level bus line | I/O | Differential Bus Line |
+| 8 | VCC2 | Power | Bus-side supply voltage, Side 2 | Input | Power |

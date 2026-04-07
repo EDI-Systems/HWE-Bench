@@ -1,0 +1,40 @@
+{
+  "ComponentID": "1N4148W",
+  "ComponentType": "High-Speed Switching Diode",
+  "Description": "The 1N4148W is a high-speed switching diode fabricated in planar technology and encapsulated in a small Surface Mount Device (SMD) package (typically SOD-123). It is designed for general-purpose switching applications, high-speed rectification, and signal processing. It is characterized by its very fast recovery time, low capacitance, and high reliability.",
+  "KeyParameters": {
+    "Reverse Voltage (Vr)": "100 V (Maximum)",
+    "Forward Continuous Current (If)": "300 mA",
+    "Reverse Recovery Time (trr)": "4 ns (Maximum)",
+    "Forward Voltage Drop (Vf)": "1.0 V (at If = 10mA)",
+    "Power Dissipation (Pd)": "400 mW",
+    "Peak Forward Surge Current (Ifsm)": "2.0 A (at 1us pulse)",
+    "Operating Junction Temperature (Tj)": "-65 to +150 Celsius"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "K",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal (indicated by the band on the body)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Output"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input"
+    }
+  ]
+}

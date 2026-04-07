@@ -1,0 +1,94 @@
+{
+  "High-Current Pyrotechnic Deployment Channel": [
+    {
+      "net_id": "PYRO_1",
+      "Connections": [
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "G",
+          "FunctionName": "Gate Control Signal"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA1",
+          "FunctionName": "Microcontroller PWM Out"
+        },
+        {
+          "ComponentID": "R8",
+          "PinName": "1",
+          "FunctionName": "Safety Pull-down High Side"
+        }
+      ]
+    },
+    {
+      "net_id": "net_drain",
+      "Connections": [
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "D",
+          "FunctionName": "Power Switch Drain"
+        },
+        {
+          "ComponentID": "J3",
+          "PinName": "2",
+          "FunctionName": "Initiator Negative Terminal"
+        },
+        {
+          "ComponentID": "R10",
+          "PinName": "2",
+          "FunctionName": "Continuity Divider High Input"
+        }
+      ]
+    },
+    {
+      "net_id": "GND",
+      "Connections": [
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "S",
+          "FunctionName": "Source Ground"
+        },
+        {
+          "ComponentID": "R8",
+          "PinName": "2",
+          "FunctionName": "Pull-down Ground"
+        },
+        {
+          "ComponentID": "R9",
+          "PinName": "1",
+          "FunctionName": "Divider Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "CONT_1",
+      "Connections": [
+        {
+          "ComponentID": "R10",
+          "PinName": "1",
+          "FunctionName": "Divider Output"
+        },
+        {
+          "ComponentID": "R9",
+          "PinName": "2",
+          "FunctionName": "Divider Feedback Node"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA2",
+          "FunctionName": "ADC Continuity Sense"
+        }
+      ]
+    },
+    {
+      "net_id": "PYRO_BUS",
+      "Connections": [
+        {
+          "ComponentID": "J3",
+          "PinName": "1",
+          "FunctionName": "Battery Power Bus"
+        }
+      ]
+    }
+  ]
+}

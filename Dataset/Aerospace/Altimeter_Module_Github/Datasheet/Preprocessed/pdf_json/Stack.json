@@ -1,0 +1,260 @@
+{
+  "ComponentID": "Stack",
+  "ComponentType": "Male PCB Edge Connector",
+  "Description": "This is a high-density male PCB edge connector (gold finger style) designed for stackable modular systems. It provides standardized power delivery and communication paths between multiple PCB layers. The pinout includes dedicated lines for CAN bus communication and redundant power rails (3.3V, 5.0V, and Battery voltage) paired with ground references. The \"Reserved\" pins allow for future expansion or proprietary signal routing within the stack.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "3.3V_A",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Redundant 3.3V power rail group A"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "A3",
+      "PinName": "GND_A",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary ground reference group A"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "5.0V_A",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Redundant 5.0V power rail group A"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "3.3V_B",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Redundant 3.3V power rail group B"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "GND_B",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary ground reference group B"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "A10",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A11",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A13",
+      "PinName": "DB_LED",
+      "Functions": [
+        {
+          "FunctionName": "Signal",
+          "FunctionDescription": "Debug LED status indicator output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A14",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A15",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A16",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A17",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "A18",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "BATT_A",
+      "Functions": [
+        {
+          "FunctionName": "Battery",
+          "FunctionDescription": "Unregulated battery voltage group A"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Battery"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "BATT_B",
+      "Functions": [
+        {
+          "FunctionName": "Battery",
+          "FunctionDescription": "Unregulated battery voltage group B"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Battery"
+    },
+    {
+      "PinNumber": "B13",
+      "PinName": "CAN_L",
+      "Functions": [
+        {
+          "FunctionName": "CAN_L",
+          "FunctionDescription": "CAN bus differential low signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B14",
+      "PinName": "CAN_H",
+      "Functions": [
+        {
+          "FunctionName": "CAN_H",
+          "FunctionDescription": "CAN bus differential high signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B15",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B16",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B17",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B18",
+      "PinName": "Reserved",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Reserved for future system expansion"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "ComponentID": "OLED",
+  "ComponentType": "4-Pin OLED Display Connector (I^2C)",
+  "Description": "The J4 is a 4-pin serial interface connector designed for small OLED display modules, such as those based on the SSD1306 or SH1106 drivers. It utilizes the $I^2C$ (Inter-Integrated Circuit) communication protocol, which minimizes the required I/O pins on a microcontroller by using only two signal lines. This interface is the standard connection for 0.91-inch and 0.96-inch monochrome displays commonly used in prototyping and embedded applications.",
+  "KeyParameters": {
+    "Connector Type": "4-Pin Single Row Header",
+    "Pitch": "2.54 mm (0.1 inch)",
+    "Communication Protocol": "I^2C (Serial Data and Serial Clock)",
+    "Operating Voltage": "3.3V to 5V (Module dependent)",
+    "Logic Level": "3.3V / 5V compatible",
+    "Typical Display Controllers": "SSD1306, SH1106, SSD1315"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Supply Voltage",
+          "FunctionDescription": "Positive power supply input for the display"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "$I^2C$ Serial Clock signal from the master device"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "$I^2C$ Serial Data line for bidirectional communication"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

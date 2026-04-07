@@ -1,0 +1,354 @@
+{
+  "ComponentID": "CP2102N",
+  "ComponentType": "USB-to-UART Bridge Controller",
+  "Description": "The CP2102N is a highly-integrated USB-to-UART bridge controller that provides a complete solution for adding USB connectivity to applications with a UART interface. It incorporates a USB 2.0 full-speed function controller, transceiver, oscillator, and UART, requiring no external USB components, firmware development, or crystal. It is configured via a GUI tool and supports virtual COM port drivers, enabling rapid conversion of legacy RS-232 systems to USB.",
+  "KeyParameters": {
+    "USB Specification": "USB 2.0 Full-Speed (12 Mbps)",
+    "UART Baud Rate": "300 baud to 3 Mbaud",
+    "Operating Voltage (VDD)": "3.0 V to 3.6 V or 3.0 V to 5.25 V (depending on configuration)",
+    "Regulated Output Voltage (VREGIN/VDD mode)": "3.3 V",
+    "Operating Current": "9.5 mA (typical)",
+    "UART FIFO Buffers": "512-byte receive, 512-byte transmit",
+    "Integrated Features": "USB transceiver, clock, voltage regulator, power-on reset",
+    "Package Options": "QFN28, QFN24, QFN20",
+    "Operating Temperature": "-40°C to +85°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DCD",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Data Carrier Detect (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "RI/CLK",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Ring Indicator / Clock output (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB D+",
+          "FunctionDescription": "USB differential pair positive"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB D-",
+          "FunctionDescription": "USB differential pair negative"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "3.3V voltage regulator output / supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "VREGIN",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "5V voltage regulator input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "VBUS Sense",
+          "FunctionDescription": "USB VBUS voltage sense input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low device reset"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Not internally connected"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "SUSPEND",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Suspend status (Active High, not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "SUSPEND#",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Suspend status (Active Low, not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "CHREN",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Battery charger enable (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "CHR1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Battery charger detection bit 1 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "CHR0",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Battery charger detection bit 0 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "WAKEUP/GPIO.3",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Wakeup input / GPIO 3 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "RS485/GPIO.2",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "RS-485 flow control / GPIO 2 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "RXT/GPIO.1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "RX toggle indicator / GPIO 1 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "TXT/GPIO.0",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "TX toggle indicator / GPIO 0 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "GPIO.6",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O 6 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "GPIO.5",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O 5 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "GPIO.4",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O 4 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "CTS",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Clear To Send (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "RTS",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Request To Send (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "RXD",
+          "FunctionDescription": "UART receive data input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "TXD",
+          "FunctionDescription": "UART transmit data output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "DSR",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Data Set Ready (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "DTR",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Data Terminal Ready (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    }
+  ]
+}

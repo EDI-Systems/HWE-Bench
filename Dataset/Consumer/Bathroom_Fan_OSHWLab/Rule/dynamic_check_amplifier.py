@@ -11,14 +11,14 @@ CIR_FILE = os.path.join(BASE_DIR, "tc_amp_auto.net")
 LOG_FILE = os.path.join(BASE_DIR, "tc_amp_auto.log")
 
 TEST_POINTS_CONFIG = [
-    {"id": "V_OUT_MAX",  "unit": "V", "min": 3.95,  "max": 4.10,  "name": "满量程检测", "desc": "20mV 输入对应 4.02V"},
-    {"id": "V_OUT_MID",  "unit": "V", "min": 1.95,  "max": 2.05,  "name": "线性中点",   "desc": "10mV 输入对应 2.01V"},
-    {"id": "V_ADC_LINK", "unit": "V", "min": 3.95,  "max": 4.10,  "name": "ADC 链路通断", "desc": "验证 MCU:PC0 引脚是否收到信号"},
-    {"id": "V_FB_SHORT", "unit": "V", "min": -1e-3, "max": 1e-3,  "name": "运放虚短检测", "desc": "验证同反相端压差是否接近0"},
-    {"id": "V_NON_INV",  "unit": "V", "min": 0.019, "max": 0.021, "name": "输入引脚电位", "desc": "验证激励是否成功进入芯片"},
-    {"id": "V_VCC_LMV",  "unit": "V", "min": 4.80,  "max": 5.20,  "name": "芯片电源检测", "desc": "验证 LMV358 引脚是否带电"},
-    {"id": "V_GND_LMV",  "unit": "V", "min": -0.01, "max": 0.01,  "name": "芯片接地检测", "desc": "验证 LMV358 地引脚电位"},
-    {"id": "V_LIN_75",   "unit": "V", "min": 2.95,  "max": 3.10,  "name": "高位线性度",   "desc": "15mV 输入时的增益表现"}
+    {"id": "V_OUT_MAX",  "unit": "V", "min": 3.95,  "max": 4.10,  "name": "Full Scale Detection", "desc": "20mV input corresponds to 4.02V"},
+    {"id": "V_OUT_MID",  "unit": "V", "min": 1.95,  "max": 2.05,  "name": "Linear Midpoint",      "desc": "10mV input corresponds to 2.01V"},
+    {"id": "V_ADC_LINK", "unit": "V", "min": 3.95,  "max": 4.10,  "name": "ADC Link Connectivity", "desc": "Verify if MCU:PC0 pin receives signal"},
+    {"id": "V_FB_SHORT", "unit": "V", "min": -1e-3, "max": 1e-3,  "name": "Op-amp Virtual Short", "desc": "Verify if differential voltage is near 0V"},
+    {"id": "V_NON_INV",  "unit": "V", "min": 0.019, "max": 0.021, "name": "Input Pin Potential",  "desc": "Verify if stimulus successfully enters the chip"},
+    {"id": "V_VCC_LMV",  "unit": "V", "min": 4.80,  "max": 5.20,  "name": "IC Power Detection",   "desc": "Verify if LMV358 power pin is energized"},
+    {"id": "V_GND_LMV",  "unit": "V", "min": -0.01, "max": 0.01,  "name": "IC Grounding Detection", "desc": "Verify LMV358 GND pin potential"},
+    {"id": "V_LIN_75",   "unit": "V", "min": 2.95,  "max": 3.10,  "name": "High-range Linearity",  "desc": "Gain performance at 15mV input"}
 ]
 
 def build_netlist():

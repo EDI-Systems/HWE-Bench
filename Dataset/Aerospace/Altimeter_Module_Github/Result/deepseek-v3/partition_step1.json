@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Dual-Input Power Management & Audio Test Subsystem",
+      "Function Description": "Provides a dual-input power architecture for the acoustic signaling system, enabling functional audio testing even when the primary flight battery is disconnected. It manages power source selection and conditioning.",
+      "Signal Sources": "Primary Flight Battery, Secondary/Test Power Source",
+      "Signal Destinations": "H-Bridge Piezo Driver Subsystem, System Power Rails",
+      "Implementation Logic": "Utilizes power path controllers (e.g., ideal diodes, MOSFET switches) and voltage regulators to allow seamless switching or OR-ing between the primary battery and a secondary test power source. This ensures the acoustic subsystem remains powered for ground testing."
+    },
+    {
+      "Module Name": "H-Bridge Piezo Driver Subsystem",
+      "Function Description": "Generates high-output acoustic signals by driving a piezo transducer with an H-bridge topology using complementary PWM signals to effectively double the peak-to-peak voltage.",
+      "Signal Sources": "Microcontroller PWM Outputs, Dual-Input Power Management Subsystem (Power)",
+      "Signal Destinations": "Piezo Transducer",
+      "Implementation Logic": "An H-bridge circuit built with four power MOSFETs (or a dedicated H-bridge IC). Two complementary PWM signals from the microcontroller drive the bridge legs, applying a swinging voltage of +/- Vsupply across the piezo, doubling the peak-to-peak voltage compared to a single-ended drive."
+    },
+    {
+      "Module Name": "High-Current Pyrotechnic Switch Subsystem",
+      "Function Description": "Regulates the ignition of primary and drogue electronic matches (e-matches) directly from the main battery bus using high-current P-channel MOSFET switches for mission-critical recovery deployment.",
+      "Signal Sources": "Microcontroller GPIOs (Fire Commands), Main Battery Bus (Power)",
+      "Signal Destinations": "Primary E-Match, Drogue E-Match",
+      "Implementation Logic": "Two independent switch channels. Each channel uses a P-Channel MOSFET (or a P-MOSFET driver stage) as the high-side switch. A microcontroller GPIO, via a level-shifter or driver if needed, controls the MOSFET gate to connect the main battery bus to the e-match, delivering the high surge current required for ignition."
+    },
+    {
+      "Module Name": "E-Match Continuity Sensing Network",
+      "Function Description": "Monitors the electrical integrity (continuity) of the ignition loops for the primary and drogue e-matches before flight, allowing the microcontroller to verify the presence of functional pyrotechnic charges.",
+      "Signal Sources": "A precision reference voltage or regulated supply, Pyrotechnic Switch Subsystem (connection point to e-match)",
+      "Signal Destinations": "Microcontroller ADC Inputs",
+      "Implementation Logic": "For each ignition channel, a voltage divider is formed between a precision pull-up resistor to a known reference voltage and the e-match's inherent resistance. The divider node connects to a microcontroller ADC input. By measuring this voltage, the system can distinguish between an open circuit (no e-match), a short circuit (fault), or the correct resistance range (continuity OK). Sensing is performed when the corresponding high-current switch is OFF."
+    },
+    {
+      "Module Name": "Central Control & Interface Subsystem",
+      "Function Description": "The core microcontroller unit that coordinates all subsystems: generates PWM for the acoustic driver, controls pyrotechnic switches, reads continuity sensor data, and interfaces with the broader aerospace vehicle avionics.",
+      "Signal Sources": "E-Match Continuity Sensing Network (ADC Inputs), External Avionics Commands (e.g., UART, CAN)",
+      "Signal Destinations": "H-Bridge Piezo Driver Subsystem (PWM Signals), High-Current Pyrotechnic Switch Subsystem (GPIO Fire Commands), System Status Outputs",
+      "Implementation Logic": "A robust microcontroller (or FPGA) with sufficient PWM channels, ADC channels, GPIOs, and communication peripherals (UART, CAN, SPI). It executes firmware to perform pre-flight continuity checks, receive deployment commands, trigger e-matches, and activate the acoustic beacon as needed."
+    }
+  ]
+}

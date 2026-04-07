@@ -1,0 +1,89 @@
+{
+  "ComponentID": "LM66100",
+  "ComponentType": "Integrated Ideal Diode / Power Switch with Reverse Polarity Protection",
+  "Description": "The LM66100 is a single-input, single-output (SISO) integrated circuit that functions as an ideal diode using an internal P-channel MOSFET. It provides low-loss power path control with reverse current blocking, reverse polarity input protection, and a chip enable function. It is designed to replace a Schottky diode, offering significantly lower forward voltage drop and power loss, and can be used in ORing configurations for power multiplexing.",
+  "KeyParameters": {
+    "Operating Voltage Range (VIN)": "1.5 V to 5.5 V",
+    "Maximum Continuous Output Current (IMAX)": "1.5 A",
+    "On-Resistance (RON)": "79 mΩ (typical at VIN = 5 V)",
+    "Reverse Voltage Standoff on VIN": "-6 V (Absolute Maximum)",
+    "Quiescent Current (IQ, VIN)": "150 nA (typical at VIN = 3.6 V)",
+    "Shutdown Current (ISD, VIN)": "120 nA (typical at VIN = 3.6 V)",
+    "Operating Junction Temperature (TJ)": "-40°C to 125°C",
+    "Package": "SC-70 (6-pin), Body Size: 2.1 mm x 2.0 mm"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Device input voltage supply."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Device ground reference."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Control",
+          "FunctionDescription": "Active-low chip enable. A voltage higher than VIN disables the device. Can be connected to VOUT for reverse current protection. Must not be left floating."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input (Comparator)"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "N/C",
+      "Functions": [
+        {
+          "FunctionName": "Not Connected",
+          "FunctionDescription": "Not internally connected. Can be tied to GND or left floating."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "No Connection"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "ST",
+      "Functions": [
+        {
+          "FunctionName": "Status",
+          "FunctionDescription": "Active-low, open-drain status output. Pulled low when the chip is disabled. High-impedance (Hi-Z) when enabled. Connect to GND if not used."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Open-Drain Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Device output."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    }
+  ]
+}

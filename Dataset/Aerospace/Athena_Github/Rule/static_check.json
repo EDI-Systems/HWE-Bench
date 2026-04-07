@@ -1,0 +1,198 @@
+{
+  "MCU_Function_Groups": {
+    "STM32F405RGT6": {
+      "System_Power_Reset": [
+        { "PinName": "VBAT", "FunctionName": "Power / Battery" },
+        { "PinName": "NRST", "FunctionName": "Reset" },
+        { "PinName": "VCAP_1", "FunctionName": "Core Volt Filter 1" },
+        { "PinName": "VCAP_2", "FunctionName": "Core Volt Filter 2" },
+        { "PinName": "BOOT0", "FunctionName": "Boot Mode" },
+        { "PinName": "PH0", "FunctionName": "OSC_IN" },
+        { "PinName": "PH1", "FunctionName": "OSC_OUT" }
+      ],
+      "ADC_Analog_Group": [
+        { "PinName": "PA0", "FunctionName": "ADC123_IN0" },
+        { "PinName": "PA1", "FunctionName": "ADC123_IN1" },
+        { "PinName": "PA2", "FunctionName": "ADC123_IN2" },
+        { "PinName": "PA3", "FunctionName": "ADC123_IN3" },
+        { "PinName": "PA4", "FunctionName": "ADC12_IN4" },
+        { "PinName": "PA5", "FunctionName": "ADC12_IN5" },
+        { "PinName": "PA6", "FunctionName": "ADC12_IN6" },
+        { "PinName": "PA7", "FunctionName": "ADC12_IN7" },
+        { "PinName": "PB0", "FunctionName": "ADC12_IN8" },
+        { "PinName": "PB1", "FunctionName": "ADC12_IN9" },
+        { "PinName": "PC0", "FunctionName": "ADC123_IN10" },
+        { "PinName": "PC1", "FunctionName": "ADC123_IN11" },
+        { "PinName": "PC2", "FunctionName": "ADC123_IN12" },
+        { "PinName": "PC3", "FunctionName": "ADC123_IN13" },
+        { "PinName": "PC4", "FunctionName": "ADC12_IN14" },
+        { "PinName": "PC5", "FunctionName": "ADC12_IN15" }
+      ],
+      "SPI1_Group": [
+        { "PinName": "PA4", "FunctionName": "SPI1_NSS" },
+        { "PinName": "PA5", "FunctionName": "SPI1_SCK" },
+        { "PinName": "PA6", "FunctionName": "SPI1_MISO" },
+        { "PinName": "PA7", "FunctionName": "SPI1_MOSI" }
+      ],
+      "SPI2_Group": [
+        { "PinName": "PB12", "FunctionName": "SPI2_NSS" },
+        { "PinName": "PB13", "FunctionName": "SPI2_SCK" },
+        { "PinName": "PB14", "FunctionName": "SPI2_MISO" },
+        { "PinName": "PB15", "FunctionName": "SPI2_MOSI" }
+      ],
+      "SPI3_Group": [
+        { "PinName": "PB3", "FunctionName": "SPI3_SCK" },
+        { "PinName": "PB4", "FunctionName": "SPI3_MISO" },
+        { "PinName": "PB5", "FunctionName": "SPI3_MOSI" },
+        { "PinName": "PC10", "FunctionName": "SPI3_SCK_AF" },
+        { "PinName": "PC11", "FunctionName": "SPI3_MISO_AF" },
+        { "PinName": "PC12", "FunctionName": "SPI3_MOSI_AF" }
+      ],
+      "I2C1_Group": [
+        { "PinName": "PB6", "FunctionName": "I2C1_SCL" },
+        { "PinName": "PB7", "FunctionName": "I2C1_SDA" },
+        { "PinName": "PB8", "FunctionName": "I2C1_SCL_AF" },
+        { "PinName": "PB9", "FunctionName": "I2C1_SDA_AF" }
+      ],
+      "I2C2_Group": [
+        { "PinName": "PB10", "FunctionName": "I2C2_SCL" },
+        { "PinName": "PB11", "FunctionName": "I2C2_SDA" }
+      ],
+      "USART_Group": [
+        { "PinName": "PA9", "FunctionName": "USART1_TX" },
+        { "PinName": "PA10", "FunctionName": "USART1_RX" },
+        { "PinName": "PA2", "FunctionName": "USART2_TX" },
+        { "PinName": "PA3", "FunctionName": "USART2_RX" },
+        { "PinName": "PB10", "FunctionName": "USART3_TX" },
+        { "PinName": "PB11", "FunctionName": "USART3_RX" },
+        { "PinName": "PC10", "FunctionName": "UART4_TX" },
+        { "PinName": "PC11", "FunctionName": "UART4_RX" },
+        { "PinName": "PC12", "FunctionName": "UART5_TX" },
+        { "PinName": "PD2", "FunctionName": "UART5_RX" },
+        { "PinName": "PC6", "FunctionName": "USART6_TX" },
+        { "PinName": "PC7", "FunctionName": "USART6_RX" }
+      ],
+      "USB_OTG_Group": [
+        { "PinName": "PA9", "FunctionName": "VBUS" },
+        { "PinName": "PA10", "FunctionName": "OTG_FS_ID" },
+        { "PinName": "PA11", "FunctionName": "OTG_FS_DM" },
+        { "PinName": "PA12", "FunctionName": "OTG_FS_DP" }
+      ],
+      "SDIO_Group": [
+        { "PinName": "PC8", "FunctionName": "SDIO_D0" },
+        { "PinName": "PC9", "FunctionName": "SDIO_D1" },
+        { "PinName": "PC10", "FunctionName": "SDIO_D2" },
+        { "PinName": "PC11", "FunctionName": "SDIO_D3" },
+        { "PinName": "PC12", "FunctionName": "SDIO_CK" },
+        { "PinName": "PD2", "FunctionName": "SDIO_CMD" }
+      ],
+      "CAN_Group": [
+        { "PinName": "PA11", "FunctionName": "CAN1_RX" },
+        { "PinName": "PA12", "FunctionName": "CAN1_TX" },
+        { "PinName": "PB5", "FunctionName": "CAN2_RX" },
+        { "PinName": "PB6", "FunctionName": "CAN2_TX" }
+      ],
+      "Debug_Group": [
+        { "PinName": "PA13", "FunctionName": "JTMS-SWDIO" },
+        { "PinName": "PA14", "FunctionName": "JTCK-SWCLK" },
+        { "PinName": "PA15", "FunctionName": "JTDI" },
+        { "PinName": "PB3", "FunctionName": "JTDO" },
+        { "PinName": "PB4", "FunctionName": "NJTRST" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "W25Q128JV": {
+      "SPI_Standard": [
+        { "PinName": "CS", "FunctionName": "SPI1_NSS" },
+        { "PinName": "CLK", "FunctionName": "SPI1_SCK" },
+        { "PinName": "DO (IO1)", "FunctionName": "SPI1_MISO" },
+        { "PinName": "DI (IO0)", "FunctionName": "SPI1_MOSI" }
+      ]
+    },
+    "BMI088": {
+      "I2C_Bus": [
+        { "PinName": "SCL/SCK", "FunctionName": "I2C1_SCL" },
+        { "PinName": "SDA/SDI", "FunctionName": "I2C1_SDA" }
+      ]
+    },
+    "BMP388": {
+      "I2C_Bus": [
+        { "PinName": "SCK", "FunctionName": "I2C1_SCL" },
+        { "PinName": "SDI", "FunctionName": "I2C1_SDA" }
+      ]
+    },
+    "USBLC6": {
+      "ESD_Line": [
+        { "PinName": "I/O1", "FunctionName": "OTG_FS_DM" },
+        { "PinName": "I/O2", "FunctionName": "OTG_FS_DP" },
+        { "PinName": "VCC", "FunctionName": "VBUS" }
+      ]
+    },
+    "TYPE-C 16PIN 2MD (073)": {
+      "USB_Line": [
+        { "PinName": "D-", "FunctionName": "OTG_FS_DM" },
+        { "PinName": "D+", "FunctionName": "OTG_FS_DP" },
+        { "PinName": "VBUS", "FunctionName": "VBUS" }
+      ]
+    },
+    "AO3400A": {
+      "Pyro_Gate": [
+        { "PinName": "G", "FunctionName": "ADC123_IN10" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_SPI1_Flash",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "SPI1_Group",
+      "Slaves": [ { "ComponentID": "W25Q128JV", "Interface": "SPI_Standard" } ]
+    },
+    {
+      "RuleName": "Check_I2C1_Sensors",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "I2C1_Group",
+      "Slaves": [
+        { "ComponentID": "BMI088", "Interface": "I2C_Bus" },
+        { "ComponentID": "BMP388", "Interface": "I2C_Bus" }
+      ]
+    },
+    {
+      "RuleName": "Check_USB_ESD_Chain",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "USB_OTG_Group",
+      "Slaves": [
+        { "ComponentID": "USBLC6", "Interface": "ESD_Line" },
+        { "ComponentID": "TYPE-C 16PIN 2MD (073)", "Interface": "USB_Line" }
+      ]
+    },
+    {
+      "RuleName": "Check_Pyro_MOSFET",
+      "Type": "Resource_Allocation",
+      "MCU": "STM32F405RGT6",
+      "Target_Group": "ADC_Analog_Group",
+      "Slaves": [ { "ComponentID": "AO3400A", "Interface": "Pyro_Gate" } ]
+    },
+    {
+      "RuleName": "Check_Buck_to_LDO",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TPS565208", "PinName": "SW" },
+        { "ComponentID": "AMS1117", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "Check_3V3_Core",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDD" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDDA" }
+      ]
+    }
+  ]
+}

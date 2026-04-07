@@ -1,0 +1,89 @@
+{
+  "ComponentID": "USBLC6",
+  "ComponentType": "Low Capacitance TVS Diode Array / ESD Protection Device",
+  "Description": "This component is a bidirectional, low-capacitance TVS diode array designed to protect two high-speed data lines (e.g., USB D+/D-, Ethernet) from electrostatic discharge (ESD), electrical fast transients (EFT), and surge events. It clamps transient overvoltage to a safe level with minimal impact on signal integrity due to its ultra-low junction capacitance and leakage current, making it suitable for high-speed interfaces operating at 5V.",
+  "KeyParameters": {
+    "Reverse Stand-off Voltage (VRWM)": "5 V (Max)",
+    "Breakdown Voltage (VBR)": "6 V (Min) to 9 V (Max) @ IR=1mA",
+    "Peak Pulse Current (Ipp)": "6 A (8/20µs)",
+    "ESD Protection Level (VESD)": "±30 kV (Air & Contact, IEC 61000-4-2)",
+    "Clamping Voltage (Vc)": "15 V (Max) @ Ipp=6A (8/20µs)",
+    "Junction Capacitance (CJ)": "1 pF (Max) @ 0V, 1MHz (I/O to GND)",
+    "Reverse Leakage Current (IR)": "0.1 µA (Max) @ VR=5V",
+    "Operating Temperature Range (TJ)": "-55°C to +125°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "I/O1",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 1",
+          "FunctionDescription": "Protected line 1. Connect to the signal line to be protected."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Protected Signal Line"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground reference for the protection circuitry."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "I/O2",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 2",
+          "FunctionDescription": "Protected line 2. Connect to the signal line to be protected."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Protected Signal Line"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connection",
+          "FunctionDescription": "This pin is not internally connected."
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "No Connection"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground reference for the protection circuitry."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Supply voltage pin. Connect to the positive supply rail (e.g., 5V)."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power Supply"
+    }
+  ]
+}

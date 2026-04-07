@@ -1,0 +1,132 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_GND_COMMON",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "VSS" },
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "VSSA" },
+        { "ComponentID": "W25Q128JV", "PinName": "VSS" },
+        { "ComponentID": "CP2102N", "PinName": "GND" },
+        { "ComponentID": "ISO1042", "PinName": "GND1" },
+        { "ComponentID": "MPU-6050", "PinName": "GND" },
+        { "ComponentID": "MS561101BA03-50", "PinName": "GND" },
+        { "ComponentID": "KX134ACR-LBZE2", "PinName": "GND" },
+        { "ComponentID": "WS2812B", "PinName": "VSS" },
+        { "ComponentID": "TPM8837C", "PinName": "GND" }
+      ]
+    },
+    {
+      "net_id": "NET_VCC_3V3",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "VDD" },
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "VDDA" },
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "VBAT" },
+        { "ComponentID": "W25Q128JV", "PinName": "VCC" },
+        { "ComponentID": "MPU-6050", "PinName": "VDD" },
+        { "ComponentID": "MS561101BA03-50", "PinName": "VDD" },
+        { "ComponentID": "KX134ACR-LBZE2", "PinName": "VDD" },
+        { "ComponentID": "ISO1042", "PinName": "VCC1" },
+        { "ComponentID": "TPM8837C", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI2_FLASH_CS",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB12" },
+        { "ComponentID": "W25Q128JV", "PinName": "CS" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI2_FLASH_CLK",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB13" },
+        { "ComponentID": "W25Q128JV", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI2_FLASH_MISO",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB14" },
+        { "ComponentID": "W25Q128JV", "PinName": "DO (IO1)" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI2_FLASH_MOSI",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB15" },
+        { "ComponentID": "W25Q128JV", "PinName": "DI (IO0)" }
+      ]
+    },
+    {
+      "net_id": "NET_CAN_RX",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB8" },
+        { "ComponentID": "ISO1042", "PinName": "RXD" }
+      ]
+    },
+    {
+      "net_id": "NET_CAN_TX",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB9" },
+        { "ComponentID": "ISO1042", "PinName": "TXD" }
+      ]
+    },
+    {
+      "net_id": "NET_BUZZER_PWM1",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA7" },
+        { "ComponentID": "TPM8837C", "PinName": "IN1" }
+      ]
+    },
+    {
+      "net_id": "NET_BUZZER_PWM2",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA8" },
+        { "ComponentID": "TPM8837C", "PinName": "IN2" }
+      ]
+    },
+    {
+      "net_id": "NET_BUZZER_ENABLE",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PB2" },
+        { "ComponentID": "TPM8837C", "PinName": "nSLEEP" }
+      ]
+    },
+    {
+      "net_id": "NET_MAIN_FIRE",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA1" },
+        { "ComponentID": "AO4406AL_MAIN", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_DROGUE_FIRE",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA3" },
+        { "ComponentID": "AO3400_DROGUE", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_BATT_SENSE",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA11" },
+        { "ComponentID": "R10_R11_DIVIDER", "PinName": "V_OUT" }
+      ]
+    },
+    {
+      "net_id": "NET_WS2812_DATA",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA15" },
+        { "ComponentID": "WS2812B", "PinName": "DIN" }
+      ]
+    },
+    {
+      "net_id": "NET_SWD_SWDIO",
+      "Connections": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA13" },
+        { "ComponentID": "SWD_HEADER", "PinName": "SWDIO" }
+      ]
+    }
+  ]
+}

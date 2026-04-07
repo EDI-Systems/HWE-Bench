@@ -1,0 +1,23 @@
+Component ID: WS2812B
+Component Type: Addressable RGB LED (Integrated LED + Driver IC)
+Description: The WS2812B is an intelligent, addressable RGB LED that integrates the control IC and an RGB LED chip into a single 5050 (5.0x5.0mm) surface-mount package. It uses a single-wire NZR communication protocol to receive serial data, latch the color data for its own LED, and then reshape and retransmit the data stream to the next LED in a daisy chain. This allows for simple control of long LED strings to create dynamic, full-color lighting effects without the need for external components.
+
+Key Parameters:
+- Supply Voltage (VDD): +3.7V to +5.3V
+- Data Transmission Rate: 800 Kbps
+- Maximum Cascade Length (at 30 fps): ≥1024 pixels
+- Maximum Reset Time: >280 µs
+- Color Depth per Channel: 8-bit (256 levels)
+- Total Display Colors: 16.7 million (24-bit)
+- Refresh Frequency: 2 kHz
+- Logic High Input Voltage (VIH): Min 2.7V, Max VDD+0.7V
+- Logic Low Input Voltage (VIL): Min -0.3V, Max 0.7V
+- Input Current: Max ±1 µA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VDD | POWER SUPPLY | Power supply | Power | Power Input |
+| 2 | DOUT | DATA OUT | Control data signal output | Output | Digital Output |
+| 3 | VSS | GROUND | Ground, data & power grounding | Power | Ground |
+| 4 | DIN | DATA IN | Control data signal input | Input | Digital Input |

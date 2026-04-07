@@ -1,0 +1,55 @@
+{
+  "ComponentID": "AO4406AL",
+  "ComponentType": "N-Channel Power MOSFET",
+  "Description": "The AO4406AL is an N-Channel MOSFET utilizing advanced trench technology to deliver low on-state resistance (RDS(ON)) and low gate charge, enabling efficient high-current switching. It is designed to operate with gate drive voltages as low as 4.5V, making it suitable for battery protection circuits, load switches, and power management applications in systems like uninterruptible power supplies.",
+  "KeyParameters": {
+    "Drain-Source Voltage (Vds)": "30 V (Max)",
+    "Continuous Drain Current (Id)": "15 A @ 25°C",
+    "Static Drain-Source On-Resistance (Rds(on))": "< 10 mΩ @ Vgs=10V, Id=7A (Max)",
+    "Gate Threshold Voltage (Vgs(th))": "1.2 V to 2.5 V (Min to Max)",
+    "Total Gate Charge (Qg)": "6 nC (Typ) @ Vds=15V, Vgs=4.5V",
+    "Input Capacitance (Ciss)": "Not explicitly provided in doc (Derived from Qg/Vgs)",
+    "Forward Transconductance (gfs)": "6.2 S (Typ) @ Vds=5V, Id=7A",
+    "Total Power Dissipation (Pd)": "1.5 W @ 25°C",
+    "Thermal Resistance Junction-to-Ambient (RθJA)": "85 °C/W (≤10s pulse), 25 °C/W (steady-state)",
+    "Operating Junction Temperature (Tj)": "-55 to 150 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Gate connection for first MOSFET (tied internally)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal, High Impedance"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Source connection for first MOSFET (tied internally)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power, Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain connection for first MOSFET (tied internally)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power, Input/Output"
+    }
+  ]
+}

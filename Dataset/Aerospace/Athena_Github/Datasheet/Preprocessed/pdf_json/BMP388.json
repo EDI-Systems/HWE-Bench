@@ -1,0 +1,128 @@
+{
+  "ComponentID": "BMP388",
+  "ComponentType": "Digital Barometric Pressure Sensor",
+  "Description": "The BMP388 is a high-performance digital barometric pressure sensor for mobile applications. It offers high accuracy, low power consumption, and low noise, based on Bosch's piezo-resistive pressure sensor technology. It integrates a 24-bit digital output for pressure and temperature via I2C or SPI interfaces. It is ideal for indoor navigation, altitude measurement, and weather forecasting.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Digital I/O supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V-3.3V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCL/SCK",
+          "FunctionDescription": "I2C Serial Clock / SPI Serial Clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDI",
+      "Functions": [
+        {
+          "FunctionName": "SDA/SDI",
+          "FunctionDescription": "I2C Serial Data / SPI Serial Data Input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SDO",
+      "Functions": [
+        {
+          "FunctionName": "SDO",
+          "FunctionDescription": "SPI Serial Data Output / I2C Address select"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "CSB",
+      "Functions": [
+        {
+          "FunctionName": "CSB",
+          "FunctionDescription": "Chip select for SPI mode (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "INT",
+          "FunctionDescription": "Programmable interrupt output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V-3.6V"
+    }
+  ]
+}

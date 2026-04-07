@@ -1,0 +1,46 @@
+Component ID: CP2102N
+Component Type: USB-to-UART Bridge Controller
+Description:
+The CP2102N is a highly-integrated USB-to-UART bridge controller that provides a complete solution for adding USB connectivity to applications with a UART interface. It incorporates a USB 2.0 full-speed function controller, transceiver, oscillator, and UART, requiring no external USB components, firmware development, or crystal. It is configured via a GUI tool and supports virtual COM port drivers, enabling rapid conversion of legacy RS-232 systems to USB.
+
+Key Parameters:
+- USB Specification: USB 2.0 Full-Speed (12 Mbps)
+- UART Baud Rate: 300 baud to 3 Mbaud
+- Operating Voltage (VDD): 3.0 V to 3.6 V or 3.0 V to 5.25 V (depending on configuration)
+- Regulated Output Voltage (VREGIN/VDD mode): 3.3 V
+- Operating Current: 9.5 mA (typical)
+- UART FIFO Buffers: 512-byte receive, 512-byte transmit
+- Integrated Features: USB transceiver, clock, voltage regulator, power-on reset
+- Package Options: QFN28, QFN24, QFN20
+- Operating Temperature: -40°C to +85°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| 1 | DCD | NC | Data Carrier Detect (Not connected) | NC | - |
+| 2 | RI/CLK | NC | Ring Indicator / Clock output (Not connected) | NC | - |
+| 3 | GND | Ground | Main system ground reference | Power | 0V |
+| 4 | D+ | USB D+ | USB differential pair positive | I/O | Signal |
+| 5 | D- | USB D- | USB differential pair negative | I/O | Signal |
+| 6 | VDD | Power | 3.3V voltage regulator output / supply input | Power | 3.3V |
+| 7 | VREGIN | Power | 5V voltage regulator input | Power | 5V |
+| 8 | VBUS | VBUS Sense | USB VBUS voltage sense input | Input | 5V |
+| 9 | RST | Reset | Active-low device reset | Input | 3.3V |
+| 10 | NC | NC | Not internally connected | NC | - |
+| 11 | SUSPEND | NC | Suspend status (Active High, not connected) | NC | - |
+| 12 | SUSPEND# | NC | Suspend status (Active Low, not connected) | NC | - |
+| 13 | CHREN | NC | Battery charger enable (Not connected) | NC | - |
+| 14 | CHR1 | NC | Battery charger detection bit 1 (Not connected) | NC | - |
+| 15 | CHR0 | NC | Battery charger detection bit 0 (Not connected) | NC | - |
+| 16 | WAKEUP/GPIO.3 | NC | Wakeup input / GPIO 3 (Not connected) | NC | - |
+| 17 | RS485/GPIO.2 | NC | RS-485 flow control / GPIO 2 (Not connected) | NC | - |
+| 18 | RXT/GPIO.1 | NC | RX toggle indicator / GPIO 1 (Not connected) | NC | - |
+| 19 | TXT/GPIO.0 | NC | TX toggle indicator / GPIO 0 (Not connected) | NC | - |
+| 20 | GPIO.6 | NC | General purpose I/O 6 (Not connected) | NC | - |
+| 21 | GPIO.5 | NC | General purpose I/O 5 (Not connected) | NC | - |
+| 22 | GPIO.4 | NC | General purpose I/O 4 (Not connected) | NC | - |
+| 23 | CTS | NC | Clear To Send (Not connected) | NC | - |
+| 24 | RTS | NC | Request To Send (Not connected) | NC | - |
+| 25 | RXD | RXD | UART receive data input | Input | 3.3V |
+| 26 | TXD | TXD | UART transmit data output | Output | 3.3V |
+| 27 | DSR | NC | Data Set Ready (Not connected) | NC | - |
+| 28 | DTR | NC | Data Terminal Ready (Not connected) | NC | - |

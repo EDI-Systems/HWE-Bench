@@ -1,0 +1,136 @@
+{
+  "MCU_Function_Groups": {
+    "U6 STM32F103CBT6": {
+      "SPI2_Flash_Memory": [
+        { "PinName": "PB12", "FunctionName": "FL_1 (CS)" },
+        { "PinName": "PB13", "FunctionName": "FL_2 (SCK)" },
+        { "PinName": "PB14", "FunctionName": "FL_3 (MISO)" },
+        { "PinName": "PB15", "FunctionName": "FL_4 (MOSI)" }
+      ],
+      "I2C2_Sensor_Bus": [
+        { "PinName": "PB10", "FunctionName": "SCL" },
+        { "PinName": "PB11", "FunctionName": "SDA" }
+      ],
+      "CAN_Isolated_Link": [
+        { "PinName": "PB8", "FunctionName": "CAN_RX" },
+        { "PinName": "PB9", "FunctionName": "CAN_TX" }
+      ],
+      "USART1_USB_UART": [
+        { "PinName": "PA9", "FunctionName": "US1 (TX)" },
+        { "PinName": "PA10", "FunctionName": "US2 (RX)" }
+      ],
+      "Buzzer_PWM_Bridge": [
+        { "PinName": "PA7", "FunctionName": "BUZZ1" },
+        { "PinName": "PA8", "FunctionName": "BUZZ2" },
+        { "PinName": "PB2", "FunctionName": "OT1 (nSLEEP)" }
+      ],
+      "Dual_Firing_Output": [
+        { "PinName": "PA1", "FunctionName": "FIR1 (Main)" },
+        { "PinName": "PA3", "FunctionName": "FIR2 (Drogue)" }
+      ],
+      "Continuity_ADC_Input": [
+        { "PinName": "PA2", "FunctionName": "CON1 (Sense)" },
+        { "PinName": "PA4", "FunctionName": "CON2 (Sense)" }
+      ],
+      "System_Safety_Monitoring": [
+        { "PinName": "PA11", "FunctionName": "BATT_SENSE / RES_FL" },
+        { "PinName": "PB0", "FunctionName": "NSE (Noise/Safety Enable)" }
+      ],
+      "Debug_and_Indicators": [
+        { "PinName": "PA15", "FunctionName": "DB_SIG (WS2812)" },
+        { "PinName": "PA13", "FunctionName": "SWDIO" },
+        { "PinName": "PA14", "FunctionName": "SWCLK" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "W25Q128JV": {
+      "SPI_Standard": [
+        { "PinName": "CS", "FunctionName": "Select" },
+        { "PinName": "CLK", "FunctionName": "Clock" },
+        { "PinName": "DO (IO1)", "FunctionName": "MISO" },
+        { "PinName": "DI (IO0)", "FunctionName": "MOSI" }
+      ]
+    },
+    "TPM8837C": {
+      "H_Bridge_Control": [
+        { "PinName": "IN1", "FunctionName": "PWM_A" },
+        { "PinName": "IN2", "FunctionName": "PWM_B" },
+        { "PinName": "nSLEEP", "FunctionName": "Sleep_Control" }
+      ]
+    },
+    "ISO1042": {
+      "Isolated_UART_Side": [
+        { "PinName": "TXD", "FunctionName": "TX" },
+        { "PinName": "RXD", "FunctionName": "RX" }
+      ]
+    },
+    "WS2812B": {
+      "Data_In": [
+        { "PinName": "DIN", "FunctionName": "Serial Data" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Critical_Flash_Storage_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "U6 STM32F103CBT6",
+      "Target_Group_Pattern": "SPI2_.*",
+      "Slaves": [ { "ComponentID": "W25Q128JV", "Interface": "SPI_Standard" } ]
+    },
+    {
+      "RuleName": "Isolated_CAN_Comms_Check",
+      "Type": "Bus_Pairing",
+      "MCU": "U6 STM32F103CBT6",
+      "Target_Group_Pattern": "CAN_.*",
+      "Slaves": [ { "ComponentID": "ISO1042", "Interface": "Isolated_UART_Side" } ]
+    },
+    {
+      "RuleName": "Buzzer_HBridge_Inverse_Drive",
+      "Type": "Bus_Pairing",
+      "MCU": "U6 STM32F103CBT6",
+      "Target_Group_Pattern": "Buzzer_.*",
+      "Slaves": [ { "ComponentID": "TPM8837C", "Interface": "H_Bridge_Control" } ]
+    },
+    {
+      "RuleName": "RGB_LED_Telemetry_Indicator",
+      "Type": "Resource_Allocation",
+      "MCU": "U6 STM32F103CBT6",
+      "Target_Group_Pattern": "Debug_.*",
+      "Slaves": [ { "ComponentID": "WS2812B", "Interface": "Data_In" } ]
+    },
+    {
+      "RuleName": "Analog_Battery_Voltage_Sense",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA11" },
+        { "ComponentID": "R10_R11_DIVIDER", "PinName": "V_OUT" }
+      ]
+    },
+    {
+      "RuleName": "Main_Pyro_Channel_Firing",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA1" },
+        { "ComponentID": "AO4406AL_MAIN", "PinName": "G" }
+      ]
+    },
+    {
+      "RuleName": "Drogue_Pyro_Channel_Firing",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA3" },
+        { "ComponentID": "AO3400_DROGUE", "PinName": "G" }
+      ]
+    },
+    {
+      "RuleName": "SWD_Debug_Port_Connectivity",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "U6 STM32F103CBT6", "PinName": "PA13" },
+        { "ComponentID": "SWD_HEADER", "PinName": "SWDIO" }
+      ]
+    }
+  ]
+}

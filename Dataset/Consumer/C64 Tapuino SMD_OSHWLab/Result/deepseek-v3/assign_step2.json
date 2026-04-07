@@ -1,0 +1,530 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Voltage Regulator & Power Filter",
+      "Function Description": "Converts an external power supply into a stable, clean logic-level voltage for all digital components. It ensures rail stability and dampens high-frequency noise to support high-speed data operations.",
+      "Signal Sources": "External DC power supply.",
+      "Signal Destinations": "Microcontroller, all other logic-level peripherals (e.g., storage interface, display, input interface, Motor Signal Converter).",
+      "Implementation Logic": "Utilizes a low-dropout linear regulator (LDO) as the primary voltage converter. Its output is stabilized by a symmetric filtering network comprising multiple capacitors (e.g., bulk, ceramic) in parallel to handle a wide noise spectrum.",
+      "Signal Chain": "The external DC power supply is connected to the input of the AMS1117 LDO regulator. The LDO converts this input to a stable, clean logic-level voltage (e.g., 3.3V or 5V, depending on the fixed version selected). Its output is then filtered by a symmetric capacitor network (not in the library, but implied by the implementation logic) to dampen high-frequency noise and ensure rail stability. This filtered output is distributed as the VCC power rail to all digital components, including the microcontroller (ATmega328p), storage interface (SD card via MICRO), display (OLED), input interface (implied, but not specified in library), and motor signal converter (implied, but not specified in library). The ground (GND) network provides the common reference for all components.",
+      "Recommended Components": [
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Primary voltage regulator and converter",
+          "Recommendation Reason": "Provides stable, regulated logic-level voltage (e.g., 3.3V or 5V fixed output) from a higher external DC supply, with up to 1A output current to support all digital components. Its low dropout voltage ensures efficiency, and it is suitable for power filtering as described.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "External_DC_Input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Motor Signal Converter with Optoisolation",
+      "Function Description": "Translates the microcontroller's logic-level motor control signals into signals compatible with the host hardware, providing complete electrical isolation to protect the emulator's logic from host power transients.",
+      "Signal Sources": "Synchronized pulse signals from the Microcontroller.",
+      "Signal Destinations": "Isolated motor control signals to the host hardware connector.",
+      "Implementation Logic": "Uses an optoisolator (optocoupler). The MCU's signal drives an LED inside the optoisolator. The isolated phototransistor output side replicates the signal, powered by a separate, isolated supply rail referenced to the host side, creating a safe bridge.",
+      "Signal Chain": "The microcontroller (ATmega328p) generates synchronized pulse motor control signals on its digital I/O pins. These logic-level signals drive the anode (Pin 1) of the infrared LED inside the optoisolator (PC817) through a current-limiting resistor, with the LED cathode (Pin 2) connected to ground. When the LED is energized, it emits infrared light, which activates the phototransistor on the isolated side. The phototransistor's collector (Pin 4) is pulled up to an isolated supply rail (e.g., 5V from the host side) via a resistor, and its emitter (Pin 3) is connected to the isolated ground. The voltage at the collector replicates the input signal but is electrically isolated, providing a safe interface to the host hardware connector. The isolated output signal is then routed to the destination connector for motor control.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATmega328p",
+          "Functional Position": "Signal Source",
+          "Recommendation Reason": "Generates the synchronized pulse motor control signals as per the module's signal sources. It provides programmable digital I/O pins to output the logic-level signals that will drive the optoisolator.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "MCU_MOTOR_CTRL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "MCU_VCC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "MCU_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "PC817",
+          "Functional Position": "Signal Isolation and Conversion",
+          "Recommendation Reason": "Provides complete electrical isolation as specified, translating the microcontroller's logic-level signals to isolated signals compatible with the host hardware. It uses an LED-phototransistor pair to create a safe bridge between the MCU side and the host side.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "MCU_MOTOR_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "C",
+              "Net": "MCU_GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "E",
+              "Net": "HOST_GND_ISO"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "C",
+              "Net": "HOST_MOTOR_OUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Power Regulation (Optional for Host Side)",
+          "Recommendation Reason": "If the host side requires a specific regulated voltage (e.g., 5V or 3.3V) for the isolated supply rail, the AMS1117 can provide stable power from a higher input voltage. This ensures reliable operation of the optoisolator's output side.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "HOST_GND_ISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "HOST_VCC_ISO"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "HOST_VIN_UNREG"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "External Storage Interface",
+      "Function Description": "Provides a voltage-level shifted connection to an external storage medium (e.g., SD card, USB flash) for retrieving digital files that will be emulated.",
+      "Signal Sources": "Data and control signals from the external storage device.",
+      "Signal Destinations": "Level-shifted data and control signals to the Microcontroller.",
+      "Implementation Logic": "Uses a voltage-level shifting circuit (e.g., with dedicated level-shifter ICs or MOSFETs) to adapt the storage medium's signal voltage levels (which may be 3.3V or 5V) to the microcontroller's logic voltage level, ensuring reliable communication.",
+      "Signal Chain": "The external storage device (SD card) communicates via its SD bus interface (CLK, CMD, DAT0-DAT3). These signals are at the storage medium's native voltage level (e.g., 3.3V). The microcontroller (ATmega328p) operates at its logic level (e.g., 5V or 3.3V). A voltage-level shifting circuit is required to adapt the bidirectional data/command lines (CMD, DAT0-DAT3) and the unidirectional clock (CLK) from the microcontroller to the SD card. The SD card's power (VDD) and ground (VSS) are supplied directly. The microcontroller's SPI pins (PB2-SS#, PB3-MOSI, PB4-MISO, PB5-SCK) are configured for SD communication in SPI mode, requiring level-shifting for reliable data transfer. The card detect (CD/DAT3) may also need level-shifting if used as an interrupt. The signal flow is: Microcontroller SPI pins -> Level Shifter -> SD Card pins (CLK, CMD, DAT0) for SPI mode; with DAT1-DAT3 and CD optionally handled if using SD 4-bit mode.",
+      "Recommended Components": [
+        {
+          "ComponentID": "MICRO",
+          "Functional Position": "External Storage Interface Connector",
+          "Recommendation Reason": "Provides the physical and electrical interface to the SD/Micro SD card, which is the target external storage medium.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "DAT2",
+              "Net": "SD_DAT2"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "CD/DAT3",
+              "Net": "SD_CD_DAT3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CMD",
+              "Net": "SD_CMD"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "STORAGE_VCC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "CLK",
+              "Net": "SD_CLK"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DAT0",
+              "Net": "SD_DAT0"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DAT1",
+              "Net": "SD_DAT1"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "Functional Position": "Microcontroller (Host Controller)",
+          "Recommendation Reason": "Acts as the host controller, generating and receiving the SPI signals to communicate with the SD card. Its I/O pins provide the source/destination for the data and control signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "14",
+              "PinName": "PB2",
+              "Net": "MCU_SS"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PB3",
+              "Net": "MCU_MOSI"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PB4",
+              "Net": "MCU_MISO"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PB5",
+              "Net": "MCU_SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "MCU_VCC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "MCU_VCC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "MCU_VCC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Voltage Regulator for Storage Power",
+          "Recommendation Reason": "Provides a stable 3.3V supply (if using fixed 3.3V version) to power the SD card (VDD). Ensures the storage medium operates at its required voltage level, which is a common standard for SD cards.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "STORAGE_VCC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "INPUT_VIN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Microcontroller & Data Processing Core",
+      "Function Description": "Acts as the central processing unit. It retrieves digital files from external storage, processes the data, and generates synchronized pulse signals for emulation. It also manages the user interface.",
+      "Signal Sources": "Data from the External Storage Interface, user commands from the Tactile Input Interface.",
+      "Signal Destinations": "Synchronized pulse signals to the Motor Signal Converter, display data to the Visual Display, control signals for data retrieval.",
+      "Implementation Logic": "A microcontroller (MCU) runs firmware that handles file I/O, data protocol conversion, timing generation for pulse signals, and UI management. It interfaces with other modules via its GPIO, communication peripherals (e.g., SPI, I2C), and timers.",
+      "Signal Chain": "The microcontroller (ATmega328p) acts as the central processing unit. It receives digital files from the external storage (SD card via MICRO connector) using its SPI interface. User commands from the tactile input interface are read via GPIO pins configured as digital inputs. The firmware processes the data, converting protocols and generating precise timing. Synchronized pulse signals for motor emulation are output via GPIO pins configured as timer outputs (PWM). Display data for the user interface is sent to the OLED display via the I2C interface. Control signals for data retrieval (e.g., chip select for SD card) are managed via GPIO. The ICSP header allows in-circuit programming of the microcontroller. The AMS1117 provides regulated 5V or 3.3V power to the microcontroller and peripherals from a higher input voltage. The PC817 optocoupler is not required for this core module's described functions but could be used for isolation in signal outputs if needed externally.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATmega328p",
+          "Functional Position": "Central Processing Unit",
+          "Recommendation Reason": "8-bit AVR microcontroller with sufficient Flash, SRAM, and peripherals (SPI, I2C, timers, GPIO) to handle file I/O, data processing, pulse generation, and UI management as described.",
+          "Pin Connections": {
+            "PD3": "GPIO for tactile input or auxiliary output",
+            "PD4": "GPIO for tactile input or auxiliary output",
+            "GND": "Connect to system ground",
+            "VCC": "Connect to +5V regulated supply from AMS1117",
+            "PB6": "Connect to crystal oscillator (if used) or leave as GPIO",
+            "PB7": "Connect to crystal oscillator (if used) or leave as GPIO",
+            "PD5": "Timer output (OC0B) for synchronized pulse signal to motor converter",
+            "PD6": "Timer output (OC0A) for synchronized pulse signal to motor converter",
+            "PD7": "GPIO for tactile input or auxiliary output",
+            "PB0": "GPIO for tactile input or auxiliary output",
+            "PB1": "Timer output (OC1A) for synchronized pulse signal to motor converter",
+            "PB2": "SPI slave select (SS#) for SD card control",
+            "PB3": "SPI MOSI for SD card data output",
+            "PB4": "SPI MISO for SD card data input",
+            "PB5": "SPI SCK for SD card clock",
+            "AVCC": "Connect to +5V regulated supply from AMS1117",
+            "ADC6": "Leave unconnected or use as analog input if needed",
+            "AREF": "Connect to decoupled analog reference voltage or VCC",
+            "ADC7": "Leave unconnected or use as analog input if needed",
+            "PC0": "GPIO for tactile input or auxiliary input",
+            "PC1": "GPIO for tactile input or auxiliary input",
+            "PC2": "GPIO for tactile input or auxiliary input",
+            "PC3": "GPIO for tactile input or auxiliary input",
+            "PC4": "I2C SDA for OLED display data",
+            "PC5": "I2C SCL for OLED display clock",
+            "PC6": "Connect to RESET of ICSP header with pull-up resistor",
+            "PD0": "UART RXD for serial communication if needed",
+            "PD1": "UART TXD for serial communication if needed",
+            "PD2": "GPIO for tactile input (e.g., interrupt) or auxiliary output"
+          }
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Power Regulation",
+          "Recommendation Reason": "LDO voltage regulator to provide stable 5V (or 3.3V) to the microcontroller and peripherals from a higher input voltage (e.g., 7-12V), ensuring reliable operation.",
+          "Pin Connections": {
+            "GND/ADJ": "Connect to system ground",
+            "VOUT": "Connect to +5V (or 3.3V) power net for VCC/AVCC of ATmega328p and VCC of peripherals",
+            "VIN": "Connect to unregulated input voltage source (e.g., 7-12V)"
+          }
+        },
+        {
+          "ComponentID": "MICRO",
+          "Functional Position": "External Storage Interface",
+          "Recommendation Reason": "SD card socket for retrieving digital files as a signal source, interfacing via SPI with the microcontroller.",
+          "Pin Connections": {
+            "DAT2": "Leave unconnected or pull-up for SPI mode",
+            "CD/DAT3": "Connect to +3.3V via pull-up resistor (for SPI mode) or use as card detect if needed",
+            "CMD": "Connect to PB3 (MOSI) of ATmega328p",
+            "VDD": "Connect to +3.3V regulated supply (may require separate LDO)",
+            "CLK": "Connect to PB5 (SCK) of ATmega328p",
+            "VSS": "Connect to system ground",
+            "DAT0": "Connect to PB4 (MISO) of ATmega328p",
+            "DAT1": "Leave unconnected or pull-up for SPI mode"
+          }
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "Visual Display Interface",
+          "Recommendation Reason": "I2C OLED display connector for UI output, providing a low-pin-count interface for status and data visualization.",
+          "Pin Connections": {
+            "GND": "Connect to system ground",
+            "VCC": "Connect to +5V (or 3.3V) power net",
+            "SCK": "Connect to PC5 (SCL) of ATmega328p",
+            "SDA": "Connect to PC4 (SDA) of ATmega328p"
+          }
+        },
+        {
+          "ComponentID": "ICSP",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "ICSP header for in-circuit serial programming of the ATmega328p, enabling firmware updates without removing the chip.",
+          "Pin Connections": {
+            "MISO": "Connect to PB4 (MISO) of ATmega328p",
+            "VCC": "Connect to +5V power net",
+            "SCK": "Connect to PB5 (SCK) of ATmega328p",
+            "MOSI": "Connect to PB3 (MOSI) of ATmega328p",
+            "RESET": "Connect to PC6 (RESET#) of ATmega328p",
+            "GND": "Connect to system ground"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "User Interface (Tactile Input & Visual Display)",
+      "Function Description": "Allows user interaction for task selection and provides visual feedback on system status and operations.",
+      "Signal Sources": "User button presses (Tactile Input).",
+      "Signal Destinations": "User command data to the Microcontroller; display information from the Microcontroller to the user.",
+      "Implementation Logic": "The Tactile Input Interface consists of debounced push-button switches connected to the MCU's GPIO. The Visual Display is a dedicated module (e.g., OLED, LCD) connected via a parallel or serial interface (e.g., SPI, I2C) to the MCU for showing menus and status.",
+      "Signal Chain": "The user interface module integrates tactile input and visual display functions. Tactile input is provided by push-button switches connected to the microcontroller's GPIO pins. When a button is pressed, it generates a digital signal that is debounced (either in hardware with RC filters or in software) and read by the MCU as a user command. The MCU processes this input and updates the system status or menu selection accordingly. For visual feedback, the MCU drives an OLED display via an I2C serial interface. The MCU sends display data (e.g., menus, status information) over the I2C bus (SDA and SCL lines) to the OLED module, which renders it for the user. Power is supplied to the MCU and OLED via a regulated voltage source (e.g., 5V or 3.3V), with the OLED's VCC matching the MCU's logic level. The MCU also includes an ICSP header for programming and debugging.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATmega328p",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Processes tactile input signals and drives the OLED display via I2C. Provides sufficient GPIO for buttons and I2C interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "SDA",
+              "Connection": "Connect to OLED Pin 4 (SDA) for I2C data"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "SCL",
+              "Connection": "Connect to OLED Pin 3 (SCK) for I2C clock"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "PD0",
+              "Net": "BUTTON1",
+              "Connection": "Connect to a tactile switch (with pull-up resistor) for user input"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "PD1",
+              "Net": "BUTTON2",
+              "Connection": "Connect to a tactile switch (with pull-up resistor) for user input"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VCC_MCU",
+              "Connection": "Connect to regulated 5V supply"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "VCC_MCU",
+              "Connection": "Connect to regulated 5V supply"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VCC_MCU",
+              "Connection": "Connect to regulated 5V supply"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND",
+              "Connection": "Connect to system ground"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND",
+              "Connection": "Connect to system ground"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND",
+              "Connection": "Connect to system ground"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PC6",
+              "Net": "RESET",
+              "Connection": "Connect to ICSP Pin 5 (RESET) for programming"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "Visual Display",
+          "Recommendation Reason": "Provides visual feedback (menus, status) via I2C interface, minimizing required MCU pins.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND",
+              "Connection": "Connect to system ground"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_OLED",
+              "Connection": "Connect to regulated 3.3V or 5V supply (match MCU logic level)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "SCL",
+              "Connection": "Connect to ATmega328p Pin 28 (PC5) for I2C clock"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "SDA",
+              "Connection": "Connect to ATmega328p Pin 27 (PC4) for I2C data"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Enables in-circuit serial programming and debugging of the ATmega328p microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "MISO",
+              "Connection": "Connect to ATmega328p Pin 16 (PB4) for SPI data from MCU"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_MCU",
+              "Connection": "Connect to regulated 5V supply"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "SCK_SPI",
+              "Connection": "Connect to ATmega328p Pin 17 (PB5) for SPI clock"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "MOSI",
+              "Connection": "Connect to ATmega328p Pin 15 (PB3) for SPI data to MCU"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET",
+              "Connection": "Connect to ATmega328p Pin 29 (PC6) for reset control"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND",
+              "Connection": "Connect to system ground"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Provides stable 5V or 3.3V regulated power from a higher input voltage (e.g., 9V battery) for the MCU and OLED display.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND",
+              "Connection": "Connect to system ground (for fixed 5V or 3.3V version)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC_REG",
+              "Connection": "Connect to VCC_MCU and VCC_OLED nets for regulated output"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "VIN_UNREG",
+              "Connection": "Connect to unregulated input source (e.g., 9V battery)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

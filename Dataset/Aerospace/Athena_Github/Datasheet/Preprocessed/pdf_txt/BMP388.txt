@@ -1,0 +1,27 @@
+Component ID: BMP388
+Component Type: Digital Barometric Pressure Sensor
+Description: The BMP388 is a high-performance digital barometric pressure sensor for mobile applications. It offers high accuracy, low power consumption, and low noise, based on Bosch's piezo-resistive pressure sensor technology. It integrates a 24-bit digital output for pressure and temperature via I2C or SPI interfaces. It is ideal for indoor navigation, altitude measurement, and weather forecasting.
+
+Key Parameters:
+- Pressure Range 300 to 1250 hPa
+- Supply Voltage VDD 1.7V to 3.6V
+- I/O Voltage VDDIO 1.2V to 3.6V
+- Interface I2C and SPI
+- Relative Accuracy +/- 8 Pa
+- Temperature Coefficient +/- 0.75 Pa/K
+- Operating Temperature -40 to +85 Celsius
+- Package 10-pin LGA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VDDIO | Power | Digital I/O supply voltage | Power | 1.8V-3.3V |
+| 2 | SCK | SCL/SCK | I2C Serial Clock / SPI Serial Clock | Input | Signal |
+| 3 | VSS | Ground | Main system ground reference | Power | 0V |
+| 4 | SDI | SDA/SDI | I2C Serial Data / SPI Serial Data Input | I/O | Signal |
+| 5 | SDO | SDO | SPI Serial Data Output / I2C Address select | Output | Signal |
+| 6 | CSB | CSB | Chip select for SPI mode (Active Low) | Input | Signal |
+| 7 | INT | INT | Programmable interrupt output | Output | Signal |
+| 8 | VSS | Ground | Power supply ground reference | Power | 0V |
+| 9 | VSS | Ground | Power supply ground reference | Power | 0V |
+| 10 | VDD | Power | Main power supply input | Power | 1.8V-3.6V |

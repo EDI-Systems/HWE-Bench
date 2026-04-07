@@ -1,0 +1,27 @@
+Component ID: MICRO
+Component Type: SD / Micro SD Card Socket (Connector)
+Description: This is a family of surface-mount card sockets designed for secure electrical and mechanical interfacing with SD and Micro SD memory cards. They feature a push-push or push-pull card ejection mechanism for easy insertion and removal, are shielded for EMI/ESD protection, and are compatible with high-speed UHS-I and UHS-II interfaces. Designed for space-constrained portable and automotive applications, they support a second reflow process for double-sided PCB assembly.
+
+Key Parameters:
+- Card Type Compatibility: SD, Micro SD (specific to part number)
+- Interface Standard: UHS-I, UHS-II
+- Number of Positions (Pins): 8 (Micro SD), 9 (SD)
+- Current Rating: 0.5A
+- Voltage Rating: 5V AC
+- Contact Resistance: 100mΩ max.
+- Insertion/Extraction Force: 14N max.
+- Mechanical Durability: 10,000 cycles
+- Operating Temperature Range: -55°C to +85°C (based on environmental test)
+- Package/Reel: Tape and Reel
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | DAT2 | Data Line 2 | SD Data Bit 2 | Contact | I/O |
+| 2 | CD/DAT3 | Card Detect / Data Line 3 | Card Detect / SD Data Bit 3 | Contact | I/O / Card Detect |
+| 3 | CMD | Command | Command/Response Line | Contact | I/O |
+| 4 | VDD | Supply Voltage | Power Supply for Card | Contact | Power |
+| 5 | CLK | Clock | SD Clock Signal | Contact | Input (to Card) |
+| 6 | VSS | Ground | Signal Ground | Contact | Ground |
+| 7 | DAT0 | Data Line 0 | SD Data Bit 0 | Contact | I/O |
+| 8 | DAT1 | Data Line 1 | SD Data Bit 1 | Contact | I/O |

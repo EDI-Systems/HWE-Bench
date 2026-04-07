@@ -1,0 +1,23 @@
+Component ID: IRLR
+Component Type: N-Channel Power MOSFET
+Description:
+This is a high-performance N-channel power MOSFET designed for high-frequency switching applications, particularly in synchronous buck converters for computer processor power supplies and isolated DC-DC converters for telecom and industrial use. It features a very low on-state resistance (RDS(on)), ultra-low gate impedance, and is fully characterized for avalanche energy, making it suitable for efficient, high-current power conversion.
+
+Key Parameters:
+- Drain-to-Source Voltage (VDSS): 30 V
+- Static Drain-to-Source On-Resistance (RDS(on)max): 3.3 mΩ (max at VGS = 10V, ID = 15A)
+- Total Gate Charge (Qg): 34 nC (typ)
+- Continuous Drain Current (ID): 161 A (max at TC = 25°C, VGS = 10V)
+- Pulsed Drain Current (IDM): 620 A
+- Gate Threshold Voltage (VGS(th)): 1.4 V to 2.3 V
+- Maximum Power Dissipation (PD): 140 W (at TC = 25°C)
+- Forward Transconductance (gfs): 37 S (min)
+- Junction-to-Case Thermal Resistance (RθJC): 1.05 °C/W (max)
+- Operating Junction Temperature (TJ): -55 to +175 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | G | Gate | Control terminal. Voltage applied here controls the conduction between Drain and Source. | Input | High Impedance, Voltage Controlled |
+| 2 | D | Drain | Power terminal. Typically connected to the higher voltage/current supply side in the circuit. | Power | Output (for switching) |
+| 3 | S | Source | Power terminal. Typically connected to the load or ground/reference side in the circuit. | Power | Common, Current Return |

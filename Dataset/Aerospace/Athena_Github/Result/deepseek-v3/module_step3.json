@@ -1,0 +1,338 @@
+{
+  "Acoustic Status Indicator Driver": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB13",
+          "FunctionName": "Port B 13"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "A1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "S1",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    }
+  ],
+  "High-Current Pyrotechnic Deployment Channel": [
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA2",
+          "FunctionName": "Port A 2"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDDA",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "TPS565208",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ],
+  "Microcontroller Interface & Safety Logic": [
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA4",
+          "FunctionName": "Port A 4"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "A1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "S1",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "USBLC6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USBLC6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB13",
+          "FunctionName": "Port B 13"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "CLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB14",
+          "FunctionName": "Port B 14"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DO (IO1)",
+          "FunctionName": "Data Output / IO1"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB15",
+          "FunctionName": "Port B 15"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DI (IO0)",
+          "FunctionName": "Data Input / IO0"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB12",
+          "FunctionName": "Port B 12"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "CS",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "A4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USBLC6",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "A6",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "USBLC6",
+          "PinName": "I/O1",
+          "FunctionName": "Input/Output 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C 16PIN 2MD (073)",
+          "PinName": "A7",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "USBLC6",
+          "PinName": "I/O2",
+          "FunctionName": "Input/Output 2"
+        }
+      ]
+    }
+  ]
+}

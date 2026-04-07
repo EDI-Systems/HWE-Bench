@@ -1,0 +1,27 @@
+Component ID: USB
+Component Type: USB Type-C Female Receptacle (USB 2.0 Only)
+Description: The J4 is a 16-pin female USB Type-C connector designed for power delivery and USB 2.0 data communication. It features a simplified pinout that excludes high-speed SuperSpeed differential pairs, making it an efficient choice for devices relying on 480 Mbps data rates. The design includes Configuration Channel (CC) pins for cable orientation detection and power negotiation, as well as Sideband Use (SBU) pins for secondary signaling. The integrated shield pins provide EMI protection and mechanical stability.
+
+Key Parameters:
+- Connector Type USB Type-C Receptacle
+- Number of Pins 16 Pins
+- Data Protocol USB 2.0 High Speed (480 Mbps)
+- Maximum Voltage 20V DC
+- Current Rating 3A to 5A
+- Durability 10000 mating cycles
+- Operating Temperature -30 to +85 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | GND | Ground | Primary system ground reference | Power | 0V |
+| A4 | VBUS | Power | USB bus power supply input | Power | 5V-20V |
+| A5 | CC1 | CC1 | Configuration channel 1 for orientation detection | Signal | 5V |
+| A6 | D+ | Data+ | USB 2.0 differential pair positive (Group A) | I/O | Signal |
+| A7 | D- | Data- | USB 2.0 differential pair negative (Group A) | I/O | Signal |
+| A8 | SBU1 | NC | Sideband use 1 (Not connected) | NC | - |
+| B5 | CC2 | CC2 | Configuration channel 2 for orientation detection | Signal | 5V |
+| B6 | D+ | Data+ | USB 2.0 differential pair positive (Group B) | I/O | Signal |
+| B7 | D- | Data- | USB 2.0 differential pair negative (Group B) | I/O | Signal |
+| B8 | SBU2 | NC | Sideband use 2 (Not connected) | NC | - |
+| S1 | SHIELD | Shield | Connector shell for EMI/ESD protection | Power | 0V |

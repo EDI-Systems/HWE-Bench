@@ -1,0 +1,54 @@
+{
+  "ComponentID": "AMS1117",
+  "ComponentType": "Low Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The AMS1117 is a series of adjustable and fixed-output low-dropout linear voltage regulators capable of delivering up to 1A output current. It is designed to operate with a low input-to-output voltage differential (dropout), typically as low as 1V, making it efficient for powering low-voltage circuits from higher voltage sources. The device provides stable, regulated output voltages with good line and load regulation, and is available in multiple package types (SOT-223, TO-252, SO-8) and fixed output voltages (1.5V, 1.8V, 2.5V, 2.85V, 3.3V, 5.0V) or as an adjustable version.",
+  "KeyParameters": {
+    "Output Current": "1A (maximum)",
+    "Dropout Voltage": "1.3V maximum (typical operation down to 1V)",
+    "Line Regulation": "0.2% maximum",
+    "Load Regulation": "0.4% maximum",
+    "Output Voltage Options": "Fixed: 1.5V, 1.8V, 2.5V, 2.85V, 3.3V, 5.0V; Adjustable via external resistors",
+    "Input Voltage Range": "Up to 15V (absolute maximum)",
+    "Operating Junction Temperature": "-40°C to +125°C",
+    "Package Thermal Resistance (θJA)": "SOT-223: 90°C/W; TO-252: 80°C/W; SO-8: 160°C/W",
+    "Reference Voltage (Adjustable Version)": "1.25V typical"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND/ADJ",
+      "Functions": [
+        {
+          "FunctionName": "Ground/Adjust",
+          "FunctionDescription": "Ground connection for fixed-voltage versions; adjustment pin for adjustable version (connect to resistor divider)"
+        }
+      ],
+      "PinType": "Input/Reference",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output Voltage",
+          "FunctionDescription": "Regulated output voltage pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Voltage",
+          "FunctionDescription": "Unregulated input voltage supply pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power Input"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+Component ID: TPS565208
+Component Type: Synchronous Buck (Step-Down) Switching Voltage Regulator
+Description:
+The TPS565208 is a monolithic, 5-A synchronous step-down DC/DC converter in a SOT-23 package. It employs D-CAP2™ mode control for fast transient response without requiring external compensation, supports a 4.5-V to 17-V input range, and is optimized for low external component count and low standby current. It includes integrated power MOSFETs, fixed-frequency operation, and comprehensive protection features.
+
+Key Parameters:
+- Input Voltage Range: 4.5 V to 17 V
+- Output Voltage Range: 0.76 V to 7 V
+- Maximum Continuous Output Current: 5 A
+- Switching Frequency: 500 kHz
+- Feedback Voltage Accuracy: 1%
+- High-Side FET On-Resistance (Rds(on)): 31 mΩ
+- Low-Side FET On-Resistance (Rds(on)): 16 mΩ
+- Shutdown Current: < 1 µA
+- Soft-Start Time: 1.0 ms (Fixed)
+- Operating Junction Temperature (Tj): -40°C to 125°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Source terminal of low-side NFET and controller ground. Connect sensitive VFB to this GND at a single point. | Power | Ground |
+| 2 | SW | Switch Node | Connection between the high-side and low-side power NFETs. | Power | Power Output |
+| 3 | VIN | Input Supply | Input voltage supply. Drain terminal of the high-side power NFET. | Power | Power Input |
+| 4 | VFB | Feedback Input | Converter feedback input. Connect to the output voltage via a resistor divider. | Analog Input | Signal Input |
+| 5 | EN | Enable | Active-high enable control input. Must be pulled high to enable the device. | Digital Input | Signal Input |
+| 6 | VBST | Bootstrap Supply | Supply input for the high-side NFET gate driver. Connect a 0.1 µF capacitor between VBST and SW. | Power | Power Input |

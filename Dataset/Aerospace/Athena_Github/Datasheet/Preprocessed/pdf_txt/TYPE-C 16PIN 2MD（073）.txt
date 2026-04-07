@@ -1,0 +1,31 @@
+Component ID: TYPE-C 16PIN 2MD (073)
+Component Type: USB Type-C Female Connector (Receptacle)
+Description:
+This is a 16-pin USB Type-C female connector (receptacle) designed for surface-mount assembly. It functions as a standardized physical and electrical interface for data transfer and power delivery, supporting the reversible plug orientation feature of the USB Type-C standard. The specification details its mechanical durability, electrical performance (including contact resistance and insulation), and environmental reliability to ensure proper mating, signal integrity, and power transmission up to its rated capacity.
+
+Key Parameters:
+- Rated Voltage/Current: DC 5V, 5A
+- Operating Temperature Range: -25°C to +85°C
+- Contact Resistance: ≤ 10 mΩ (measured at ≤100mA)
+- Insulation Resistance: ≥ 100 MΩ (at 100V DC)
+- Dielectric Strength: Withstands AC 100V (50Hz) for 1 minute
+- Insertion Force: 0.5 - 2.0 kgf
+- Withdrawal Force: 0.8 - 2.0 kgf
+- Mechanical Life (Durability): 5000 mating cycles
+- Solder Heat Resistance (Reflow): Peak temperature 260°C ±5°C for ≤20s
+- Terminal Strength: Withstands 0.1 N/m (1 kgf/cm) static load for 1 min
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| A1 | GND | Ground | Primary system ground reference | Power | 0V |
+| A4 | VBUS | Power | USB bus power supply input | Power | 5V-20V |
+| A5 | CC1 | CC1 | Configuration channel 1 for orientation detection | Signal | 5V |
+| A6 | D+ | Data+ | USB 2.0 differential pair positive (Group A) | I/O | Signal |
+| A7 | D- | Data- | USB 2.0 differential pair negative (Group A) | I/O | Signal |
+| A8 | SBU1 | NC | Sideband use 1 (Not connected/marked NC) | NC | - |
+| B5 | CC2 | CC2 | Configuration channel 2 for orientation detection | Signal | 5V |
+| B6 | D+ | Data+ | USB 2.0 differential pair positive (Group B) | I/O | Signal |
+| B7 | D- | Data- | USB 2.0 differential pair negative (Group B) | I/O | Signal |
+| B8 | SBU2 | NC | Sideband use 2 (Not connected/marked NC) | NC | - |
+| S1 | SHIELD | Shield | Connector shell for EMI/ESD protection | Power | 0V |

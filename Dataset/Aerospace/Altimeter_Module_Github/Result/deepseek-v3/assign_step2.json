@@ -1,0 +1,1305 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "H-Bridge Piezo Driver Subsystem",
+      "Function Description": "Generates high-output acoustic signals by driving a piezo transducer with an H-bridge topology using complementary PWM signals to effectively double the peak-to-peak voltage.",
+      "Signal Sources": "Microcontroller PWM Outputs, Dual-Input Power Management Subsystem (Power)",
+      "Signal Destinations": "Piezo Transducer",
+      "Implementation Logic": "An H-bridge circuit built with four power MOSFETs (or a dedicated H-bridge IC). Two complementary PWM signals from the microcontroller drive the bridge legs, applying a swinging voltage of +/- Vsupply across the piezo, doubling the peak-to-peak voltage compared to a single-ended drive.",
+      "Signal Chain": "The H-Bridge Piezo Driver Subsystem receives two complementary PWM signals from the microcontroller (e.g., from timer channels). These signals drive the control inputs of an H-bridge driver IC. The driver IC, powered by a motor supply voltage (VM) derived from the system power rail (e.g., 5V or battery), switches its high-current outputs (OUT1, OUT2) in a complementary fashion. This applies a swinging voltage across the piezo transducer terminals, effectively generating a peak-to-peak voltage of up to 2*VM. The subsystem requires local power conditioning (e.g., an LDO) to provide a clean logic supply (VCC) for the driver IC from the main system rail.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPM8837C",
+          "Functional Position": "H-Bridge Driver Core",
+          "Recommendation Reason": "Integrated H-bridge driver designed for inductive loads like piezo transducers. It accepts low-voltage PWM control signals, provides high-current bidirectional drive (up to 1A), and includes essential protection features (UVLO, OCP, TSD). This simplifies design compared to a discrete MOSFET bridge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VM",
+              "Net": "PIEZO_PWR"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "OUT1",
+              "Net": "PIEZO_P"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OUT2",
+              "Net": "PIEZO_N"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "IN2",
+              "Net": "PWM_N"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IN1",
+              "Net": "PWM_P"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "nSLEEP",
+              "Net": "DRV_EN"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Logic Supply Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply (VCC_3V3) for the H-bridge driver's logic (VCC pin) from a higher system voltage (e.g., 5V). Its low dropout and 1A current capability are sufficient for the driver's control circuitry.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V_SYS"
+            }
+          ]
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "Functional Position": "PWM Signal Source",
+          "Recommendation Reason": "Microcontroller generates the complementary PWM signals (PWM_P, PWM_N) and enable control (DRV_EN). Specific GPIOs (e.g., PA8/BUZZ2 and PA7/BUZZ1 configured as timer outputs) can be used.",
+          "Pin Connections": [
+            {
+              "PinNumber": "29",
+              "PinName": "PA8",
+              "Net": "PWM_P"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PA7",
+              "Net": "PWM_N"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "PB0",
+              "Net": "DRV_EN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Stack",
+          "Functional Position": "System Power and Control Interface",
+          "Recommendation Reason": "Provides the primary system power rails (5V_SYS, 3.3V_A, GND) and a connection point for the enable signal (DRV_EN) from the stack.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "PinName": "5.0V_A",
+              "Net": "5V_SYS"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "GND_A",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A13",
+              "PinName": "DB_LED",
+              "Net": "DRV_EN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "E-Match Continuity Sensing Network",
+      "Function Description": "Monitors the electrical integrity (continuity) of the ignition loops for the primary and drogue e-matches before flight, allowing the microcontroller to verify the presence of functional pyrotechnic charges.",
+      "Signal Sources": "A precision reference voltage or regulated supply, Pyrotechnic Switch Subsystem (connection point to e-match)",
+      "Signal Destinations": "Microcontroller ADC Inputs",
+      "Implementation Logic": "For each ignition channel, a voltage divider is formed between a precision pull-up resistor to a known reference voltage and the e-match's inherent resistance. The divider node connects to a microcontroller ADC input. By measuring this voltage, the system can distinguish between an open circuit (no e-match), a short circuit (fault), or the correct resistance range (continuity OK). Sensing is performed when the corresponding high-current switch is OFF.",
+      "Signal Chain": "The E-Match Continuity Sensing Network operates by creating a voltage divider for each ignition channel. A precision pull-up resistor (not in library, must be external) connects from a known reference voltage (e.g., 3.3V from the Stack connector) to the sensing node. The e-match, when connected, forms the lower leg of the divider via its inherent resistance (typically low, e.g., a few ohms). This sensing node is connected to a microcontroller ADC input. When the corresponding high-current switch (e.g., a MOSFET like AO4406AL, controlled by the microcontroller) is OFF, the microcontroller can measure the voltage at the ADC input. An open circuit (no e-match) results in a voltage near the reference (pull-up only). A short circuit (fault) results in near 0V. A correct e-match resistance results in a mid-range voltage, indicating continuity OK. The signal flows from the reference voltage source, through the pull-up resistor, through the e-match (via the Pyrotechnic Switch Subsystem connection point), to ground, with the voltage at the divider node being read by the microcontroller's ADC.",
+      "Recommended Components": [
+        {
+          "ComponentID": "Stack",
+          "Functional Position": "Power Source for Reference Voltage",
+          "Recommendation Reason": "Provides the regulated 3.3V power rail needed as the precision reference voltage for the continuity sensing voltage dividers. It is the system's primary power interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "3.3V_A",
+              "ConnectedTo": "Reference Voltage Net (e.g., VREF_3V3)"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "GND_A",
+              "ConnectedTo": "System Ground Net (e.g., GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "Functional Position": "Signal Processor and ADC",
+          "Recommendation Reason": "The microcontroller reads the analog voltage from the sensing node via its ADC inputs to determine e-match continuity status. It also controls the high-current switches for ignition.",
+          "Pin Connections": [
+            {
+              "PinNumber": "11",
+              "PinName": "PA1",
+              "ConnectedTo": "Primary E-Match Continuity Sense Net (ADC Input 1)"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PA3",
+              "ConnectedTo": "Drogue E-Match Continuity Sense Net (ADC Input 2)"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PA2",
+              "ConnectedTo": "Primary Ignition Switch Control Net (e.g., GPIO to MOSFET gate)"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PA4",
+              "ConnectedTo": "Drogue Ignition Switch Control Net (e.g., GPIO to MOSFET gate)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VSSA",
+              "ConnectedTo": "Analog Ground Net (e.g., AGND)"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VDDA",
+              "ConnectedTo": "Analog Power Net (e.g., VREF_3V3)"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "VSS",
+              "ConnectedTo": "Digital Ground Net (e.g., GND)"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "VDD",
+              "ConnectedTo": "Digital Power Net (e.g., VREF_3V3)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "Functional Position": "High-Current Ignition Switch (Primary Channel)",
+          "Recommendation Reason": "Acts as the high-current switch controlled by the microcontroller to fire the primary e-match. Its low Rds(on) is suitable for high-current pyrotechnic loads. Sensing occurs when this switch is OFF.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "ConnectedTo": "Primary Ignition Switch Control Net (from MCU PA2)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "ConnectedTo": "System Ground Net (e.g., GND)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "ConnectedTo": "Primary E-Match Connection Point Net (to sensing divider and e-match)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "Functional Position": "High-Current Ignition Switch (Drogue Channel)",
+          "Recommendation Reason": "Acts as the high-current switch controlled by the microcontroller to fire the drogue e-match. Its low Rds(on) is suitable for high-current pyrotechnic loads. Sensing occurs when this switch is OFF.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "ConnectedTo": "Drogue Ignition Switch Control Net (from MCU PA4)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "ConnectedTo": "System Ground Net (e.g., GND)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "ConnectedTo": "Drogue E-Match Connection Point Net (to sensing divider and e-match)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Current Pyrotechnic Switch Subsystem",
+      "Function Description": "Regulates the ignition of primary and drogue electronic matches (e-matches) directly from the main battery bus using high-current P-channel MOSFET switches for mission-critical recovery deployment.",
+      "Signal Sources": "Microcontroller GPIOs (Fire Commands), Main Battery Bus (Power)",
+      "Signal Destinations": "Primary E-Match, Drogue E-Match",
+      "Implementation Logic": "Two independent switch channels. Each channel uses a P-Channel MOSFET (or a P-MOSFET driver stage) as the high-side switch. A microcontroller GPIO, via a level-shifter or driver if needed, controls the MOSFET gate to connect the main battery bus to the e-match, delivering the high surge current required for ignition.",
+      "Signal Chain": "The subsystem implements two independent high-current switch channels for igniting primary and drogue e-matches. The signal flow for each channel is: 1) The microcontroller (U6 STM32F103CBT6) generates a fire command (FIR1/FIR2) as a logic-high GPIO signal (3.3V). 2) This signal drives the gate of an N-Channel MOSFET (AO3400 or AO4406AL) configured as a low-side switch. 3) When the N-MOSFET turns on, it pulls the gate of a P-Channel MOSFET (not in library, implied by functional description) low through a pull-up resistor (not in library). 4) The P-MOSFET, connected as a high-side switch between the main battery bus (BATT_A/B) and the e-match load, turns on, delivering high surge current to ignite the e-match. 5) A flyback diode (1N5819) is placed across each e-match load (anode to battery+, cathode to e-match output) to clamp inductive voltage spikes when the switch opens. Power for the microcontroller logic is derived from the stack's 3.3V rail. The main battery bus is taken directly from the stack's BATT_A/B pins.",
+      "Recommended Components": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "Functional Position": "Control Logic",
+          "Recommendation Reason": "Microcontroller to generate the precise fire command signals (FIR1, FIR2) for the two e-match channels. Provides programmable timing and safety interlocks.",
+          "Pin Connections": [
+            {
+              "PinNumber": "11",
+              "PinName": "PA1",
+              "Net": "FIR1"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PA3",
+              "Net": "FIR2"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "VDD",
+              "Net": "3.3V_A"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "VDD",
+              "Net": "3.3V_B"
+            },
+            {
+              "PinNumber": "48",
+              "PinName": "VDD",
+              "Net": "3.3V_A"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "VSS",
+              "Net": "GND_A"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "VSS",
+              "Net": "GND_B"
+            },
+            {
+              "PinNumber": "47",
+              "PinName": "VSS",
+              "Net": "GND_A"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VSSA",
+              "Net": "GND_A"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VDDA",
+              "Net": "3.3V_A"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO3400",
+          "Functional Position": "Channel 1 Gate Driver (Low-side)",
+          "Recommendation Reason": "N-Channel MOSFET to interface the microcontroller's 3.3V logic signal to the high-side P-MOSFET gate. Provides fast switching and low gate charge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "FIR1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "Net": "GND_A"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "Net": "GATE_P1"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "Functional Position": "Channel 2 Gate Driver (Low-side)",
+          "Recommendation Reason": "N-Channel MOSFET (higher current capability variant) for the second channel, performing the same function as AO3400 for symmetry and robustness.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "FIR2"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "Net": "GND_B"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "Net": "GATE_P2"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N5819",
+          "Functional Position": "Channel 1 Flyback Diode",
+          "Recommendation Reason": "Schottky diode placed across the e-match load to clamp inductive voltage spikes when the P-MOSFET turns off, protecting the switch.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "EMATCH1_OUT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "BATT_A"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N5819",
+          "Functional Position": "Channel 2 Flyback Diode",
+          "Recommendation Reason": "Second Schottky diode for the second e-match channel, providing identical protection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "EMATCH2_OUT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "BATT_B"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Stack",
+          "Functional Position": "Power and Ground Interface",
+          "Recommendation Reason": "Provides the main battery bus voltage (BATT_A, BATT_B) and system ground (GND_A, GND_B) from the stackable backplane, as well as regulated 3.3V for the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "3.3V_A",
+              "Net": "3.3V_A"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "GND_A",
+              "Net": "GND_A"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "3.3V_B",
+              "Net": "3.3V_B"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "GND_B",
+              "Net": "GND_B"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "BATT_A",
+              "Net": "BATT_A"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "BATT_B",
+              "Net": "BATT_B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Dual-Input Power Management & Audio Test Subsystem",
+      "Function Description": "Provides a dual-input power architecture for the acoustic signaling system, enabling functional audio testing even when the primary flight battery is disconnected. It manages power source selection and conditioning.",
+      "Signal Sources": "Primary Flight Battery, Secondary/Test Power Source",
+      "Signal Destinations": "H-Bridge Piezo Driver Subsystem, System Power Rails",
+      "Implementation Logic": "Utilizes power path controllers (e.g., ideal diodes, MOSFET switches) and voltage regulators to allow seamless switching or OR-ing between the primary battery and a secondary test power source. This ensures the acoustic subsystem remains powered for ground testing.",
+      "Signal Chain": "The dual-input power management subsystem implements a power OR-ing architecture to seamlessly switch between the primary flight battery and a secondary/test power source. The signal flow begins with two unregulated DC inputs: BATT_A/B from the stack connector (primary battery) and VBUS from the USB Type-C connector (secondary/test power). These inputs feed into a power path controller stage using integrated ideal diodes (LM66100) configured for OR-ing. The LM66100 devices provide low-loss forward conduction, reverse current blocking, and reverse polarity protection. The OR-ed output from the ideal diodes becomes the main unregulated power rail (V_MAIN). This V_MAIN rail then supplies a voltage regulator stage. An AMS1117-5.0 LDO steps down V_MAIN to a stable 5.0V system rail, which powers the H-Bridge piezo driver (TPM8837C VM pin) and other 5V peripherals. A second AMS1117-3.3 LDO further regulates the 5.0V rail (or directly from V_MAIN if dropout permits) to create a clean 3.3V digital rail. This 3.3V rail powers the microcontroller (U6 STM32F103CBT6 VDD/VDDA), USB-to-UART bridge (CP2102N VDD), and other 3.3V logic. The microcontroller generates PWM control signals (BUZZ1, BUZZ2) to drive the H-Bridge driver (TPM8837C IN1, IN2), which in turn drives the piezo acoustic transducer. System status can be monitored via the CAN bus interface (ISO1042) connected to the stack connector and debug LED (DB_LED) on the stack.",
+      "Recommended Components": [
+        {
+          "ComponentID": "LM66100",
+          "Functional Position": "Primary Power Path OR-ing Controller (for Battery Input)",
+          "Recommendation Reason": "Integrated ideal diode provides low-loss (79mΩ RON), low forward voltage drop power path from primary battery with reverse current blocking and reverse polarity protection. Replaces inefficient Schottky diode for OR-ing.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "BATT_A"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "VOUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "N/C",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "ST",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VOUT",
+              "Net": "V_MAIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LM66100",
+          "Functional Position": "Secondary Power Path OR-ing Controller (for USB Test Power)",
+          "Recommendation Reason": "Second ideal diode for OR-ing the USB test power source (VBUS) with the battery path. Ensures seamless power source selection and prevents back-feeding.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "VOUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "N/C",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "ST",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VOUT",
+              "Net": "V_MAIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "5.0V System Rail Regulator",
+          "Recommendation Reason": "Low-dropout linear regulator to create a stable 5.0V rail from the OR-ed V_MAIN input for powering the H-Bridge driver and other 5V peripherals. Fixed 5.0V version selected.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "5V0_SYS"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "V_MAIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Digital Rail Regulator",
+          "Recommendation Reason": "Second LDO to generate a clean 3.3V digital supply from the 5.0V rail (or V_MAIN) for microcontroller, USB bridge, and logic. Fixed 3.3V version selected.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V0_SYS"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "Functional Position": "H-Bridge Piezo Driver",
+          "Recommendation Reason": "High-voltage H-Bridge driver capable of driving inductive loads like piezo transducers with up to 1A continuous current. Accepts PWM control from MCU to generate acoustic signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VM",
+              "Net": "5V0_SYS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "OUT1",
+              "Net": "PIEZO_P"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OUT2",
+              "Net": "PIEZO_N"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "IN2",
+              "Net": "BUZZ2"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IN1",
+              "Net": "BUZZ1"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "nSLEEP",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3_DIG"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ISO1042",
+          "Functional Position": "Isolated CAN Bus Transceiver",
+          "Recommendation Reason": "Galvanically-isolated CAN FD transceiver for robust communication over the stack's CAN bus. Provides protection from high bus voltages and ground potential differences.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC1",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "TXD",
+              "Net": "CAN_TX"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RXD",
+              "Net": "CAN_RX"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND2",
+              "Net": "GND_CAN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CANL",
+              "Net": "CAN_L"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CANH",
+              "Net": "CAN_H"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC2",
+              "Net": "5V0_SYS"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102N",
+          "Functional Position": "USB-to-UART Bridge for Debug/Test",
+          "Recommendation Reason": "Enables USB connectivity for ground testing, firmware updates, and debug output via virtual COM port. Requires minimal external components.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VREGIN",
+              "Net": "VBUS"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VBUS",
+              "Net": "VBUS"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "RST",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "RXD",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "TXD",
+              "Net": "UART_RX"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Stack",
+          "Functional Position": "System Power & Communication Interface",
+          "Recommendation Reason": "Provides primary battery input, CAN bus interface, debug LED output, and connection to system power rails from other stack modules.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "3.3V_A",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "GND_A",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "5.0V_A",
+              "Net": "5V0_SYS"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "3.3V_B",
+              "Net": "3V3_DIG"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "GND_B",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A13",
+              "PinName": "DB_LED",
+              "Net": "DB_LED"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "BATT_A",
+              "Net": "BATT_A"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "BATT_B",
+              "Net": "BATT_B"
+            },
+            {
+              "PinNumber": "B13",
+              "PinName": "CAN_L",
+              "Net": "CAN_L"
+            },
+            {
+              "PinNumber": "B14",
+              "PinName": "CAN_H",
+              "Net": "CAN_H"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Secondary/Test Power Input & Data Port",
+          "Recommendation Reason": "USB Type-C connector provides secondary test power source (VBUS) and USB 2.0 data lines for the CP2102N bridge during ground testing.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "VBUS"
+            },
+            {
+              "PinNumber": "A5",
+              "PinName": "CC1",
+              "Net": "CC1"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "B5",
+              "PinName": "CC2",
+              "Net": "CC2"
+            },
+            {
+              "PinNumber": "B6",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "S1",
+              "PinName": "SHIELD",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Central Control & Interface Subsystem",
+      "Function Description": "The core microcontroller unit that coordinates all subsystems: generates PWM for the acoustic driver, controls pyrotechnic switches, reads continuity sensor data, and interfaces with the broader aerospace vehicle avionics.",
+      "Signal Sources": "E-Match Continuity Sensing Network (ADC Inputs), External Avionics Commands (e.g., UART, CAN)",
+      "Signal Destinations": "H-Bridge Piezo Driver Subsystem (PWM Signals), High-Current Pyrotechnic Switch Subsystem (GPIO Fire Commands), System Status Outputs",
+      "Implementation Logic": "A robust microcontroller (or FPGA) with sufficient PWM channels, ADC channels, GPIOs, and communication peripherals (UART, CAN, SPI). It executes firmware to perform pre-flight continuity checks, receive deployment commands, trigger e-matches, and activate the acoustic beacon as needed.",
+      "Signal Chain": "The Central Control & Interface Subsystem is built around the STM32F103CBT6 microcontroller (U6). It receives external avionics commands via CAN bus through the ISO1042 isolated transceiver and via UART through the CP2102N USB-to-UART bridge. The microcontroller reads continuity sensor data from the E-Match network via its ADC channels (configured on GPIOs). It generates PWM signals for the H-Bridge Piezo Driver (TPM8837C) to control the acoustic beacon and drives GPIO fire commands to the High-Current Pyrotechnic Switch Subsystem (using MOSFETs like AO4406AL). System status is output via GPIOs to LEDs (e.g., WS2812B) and the stack connector debug pin. The W25Q128JV SPI Flash provides non-volatile storage for firmware and data. Power is regulated from the stack's battery and 5V rails using the AMS1117 LDO and protected with the LM66100 ideal diode. The 16MHz crystal (X322516) provides the system clock.",
+      "Recommended Components": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "Functional Position": "Core Microcontroller",
+          "Recommendation Reason": "ARM Cortex-M3 MCU with sufficient PWM channels, ADC inputs, GPIOs, and communication peripherals (UART, SPI, I2C, CAN) to coordinate all subsystems as described.",
+          "Pin Connections": [
+            {
+              "PinNumber": "5",
+              "PinName": "PD0",
+              "Net": "XTAL_IN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PD1",
+              "Net": "XTAL_OUT"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "NRST",
+              "Net": "MCU_nRST"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VSSA",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VDDA",
+              "Net": "3.3V_ANALOG"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PA1",
+              "Net": "FIR1"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PA2",
+              "Net": "CON1"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PA3",
+              "Net": "FIR2"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PA4",
+              "Net": "CON2"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PA7",
+              "Net": "BUZZ1_PWM"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "PB0",
+              "Net": "NSE"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "PB2",
+              "Net": "OT1"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "VDD",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PA8",
+              "Net": "BUZZ2_PWM"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "PA9",
+              "Net": "UART1_TX"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "PA10",
+              "Net": "UART1_RX"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "PA13",
+              "Net": "SWDIO"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "VDD",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "PA14",
+              "Net": "SWCLK"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "PA15",
+              "Net": "DB_SIG"
+            },
+            {
+              "PinNumber": "39",
+              "PinName": "PB3",
+              "Net": "SPI1_MOSI"
+            },
+            {
+              "PinNumber": "40",
+              "PinName": "PB4",
+              "Net": "SPI1_MISO"
+            },
+            {
+              "PinNumber": "41",
+              "PinName": "PB5",
+              "Net": "SPI1_SCK"
+            },
+            {
+              "PinNumber": "42",
+              "PinName": "PB6",
+              "Net": "I2C1_SCL"
+            },
+            {
+              "PinNumber": "43",
+              "PinName": "PB7",
+              "Net": "I2C1_SDA"
+            },
+            {
+              "PinNumber": "45",
+              "PinName": "PB8",
+              "Net": "CAN_RX_MCU"
+            },
+            {
+              "PinNumber": "46",
+              "PinName": "PB9",
+              "Net": "CAN_TX_MCU"
+            },
+            {
+              "PinNumber": "47",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "48",
+              "PinName": "VDD",
+              "Net": "3.3V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ISO1042",
+          "Functional Position": "Isolated CAN Transceiver for External Avionics Interface",
+          "Recommendation Reason": "Provides galvanic isolation and robust CAN FD communication up to 5 Mbps, interfacing the MCU to the vehicle CAN bus as per signal sources.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC1",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "TXD",
+              "Net": "CAN_TX_MCU"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RXD",
+              "Net": "CAN_RX_MCU"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND2",
+              "Net": "GND_CAN_ISO"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CANL",
+              "Net": "CAN_L"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CANH",
+              "Net": "CAN_H"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC2",
+              "Net": "5V_CAN_ISO"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102N",
+          "Functional Position": "USB-to-UART Bridge for Debug/External Commands",
+          "Recommendation Reason": "Enables USB connectivity for UART communication with external avionics or ground support equipment, providing a standard serial interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VREGIN",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "RXD",
+              "Net": "UART1_TX"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "TXD",
+              "Net": "UART1_RX"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "Functional Position": "H-Bridge Driver for Acoustic Beacon PWM Control",
+          "Recommendation Reason": "High-voltage H-bridge driver capable of driving inductive loads (piezo) with PWM control from the MCU, matching the signal destination for the acoustic driver.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VM",
+              "Net": "12V_PIEZO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "OUT1",
+              "Net": "PIEZO_OUT1"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OUT2",
+              "Net": "PIEZO_OUT2"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "IN2",
+              "Net": "BUZZ2_PWM"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IN1",
+              "Net": "BUZZ1_PWM"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "nSLEEP",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3.3V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "Functional Position": "High-Current Switch for Pyrotechnic Fire Command",
+          "Recommendation Reason": "N-Channel MOSFET with low Rds(on) and high current capability, suitable for switching high-current e-match circuits based on MCU GPIO fire commands.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "FIR1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "Net": "E_MATCH_OUT1"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V LDO Regulator for MCU and Logic Power",
+          "Recommendation Reason": "Provides stable 3.3V from the 5V rail for the microcontroller and other digital components, with sufficient current (1A) for the subsystem.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V_REG"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LM66100",
+          "Functional Position": "Ideal Diode for Reverse Polarity Protection on Battery Input",
+          "Recommendation Reason": "Provides low-loss reverse polarity protection and reverse current blocking for the battery input, enhancing system robustness.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "BATT_A"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VOUT",
+              "Net": "BATT_PROT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "Functional Position": "SPI Flash Memory for Firmware Storage/Data Logging",
+          "Recommendation Reason": "16MB serial flash provides non-volatile storage for firmware, configuration, and mission data, interfacing via SPI with the MCU.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "CS",
+              "Net": "FLASH_CS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "DO (IO1)",
+              "Net": "SPI1_MISO"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "WP (IO2)",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DI (IO0)",
+              "Net": "SPI1_MOSI"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CLK",
+              "Net": "SPI1_SCK"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "HOLD (IO3)",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3.3V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "X322516",
+          "Functional Position": "16MHz Crystal Oscillator for MCU Clock",
+          "Recommendation Reason": "Provides accurate 16MHz reference clock for the STM32 microcontroller's high-speed external oscillator.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "XTAL1",
+              "Net": "XTAL_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "XTAL2",
+              "Net": "XTAL_OUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Stack",
+          "Functional Position": "PCB Edge Connector for System Power and CAN Bus",
+          "Recommendation Reason": "Provides standardized power and communication interfaces to the broader aerospace vehicle stack as per module requirements.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "3.3V_A",
+              "Net": "3.3V"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "GND_A",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "5.0V_A",
+              "Net": "5V_REG"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "BATT_A",
+              "Net": "BATT_A"
+            },
+            {
+              "PinNumber": "B13",
+              "PinName": "CAN_L",
+              "Net": "CAN_L"
+            },
+            {
+              "PinNumber": "B14",
+              "PinName": "CAN_H",
+              "Net": "CAN_H"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

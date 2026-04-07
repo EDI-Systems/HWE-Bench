@@ -1,0 +1,43 @@
+{
+  "ComponentID": "1N5819",
+  "ComponentType": "Schottky Barrier Diode",
+  "Description": "The 1N5819xWS series are Schottky barrier diodes designed for high-efficiency switching applications. They feature a low forward voltage drop, a guard ring construction for transient protection, and exhibit negligible reverse recovery time and low reverse capacitance, making them suitable for fast switching circuits.",
+  "KeyParameters": {
+    "Peak Repetitive Reverse Voltage (VRRM)": "20V (CWS), 30V (BWS), 40V (WS)",
+    "Forward Continuous Current (IF(AV))": "350 mA",
+    "Repetitive Peak Forward Current (IFRM)": "1.5 A (t ≤ 1.0s)",
+    "Forward Voltage (VF)": "0.37 V (Typ, IF=20mA), 0.60 V (Max, IF=200mA)",
+    "Reverse Current (IR)": "5.0 µA (Max, at rated VR)",
+    "Junction Capacitance (CT)": "50 pF (Typ, VR=0V, f=1MHz)",
+    "Reverse Recovery Time (trr)": "10 ns (Typ)",
+    "Power Dissipation (Pd)": "400 mW",
+    "Thermal Resistance (RθJA)": "300 °C/W",
+    "Package": "SOD-323"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "K",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal, marked by a band on the package body."
+        }
+      ],
+      "PinType": "Physical Pin",
+      "ElectricalType": "Anode (Common for diodes, the band indicates cathode)"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal."
+        }
+      ],
+      "PinType": "Physical Pin",
+      "ElectricalType": "Cathode (Common for diodes, the body is typically anode)"
+    }
+  ]
+}

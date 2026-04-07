@@ -1,0 +1,639 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "Stack",
+          "PinName": "A1",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "9",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "24",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "36",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "48",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Voltage Output"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "nSLEEP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "VCC",
+          "FunctionName": "IO Power"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "VCC1",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "WP (IO2)",
+          "FunctionName": "Write Protect / IO2"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "HOLD (IO3)",
+          "FunctionName": "Hold / IO3"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "Stack",
+          "PinName": "A3",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "8",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "23",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "35",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "47",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "2",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "2",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "AO3400",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "GND1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "GND2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "X322516",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "X322516",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "Stack",
+          "PinName": "A4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "VM",
+          "FunctionName": "Motor Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Voltage Input"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "VCC2",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "VREGIN",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA7",
+          "FunctionName": "BUZZ1"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "IN2",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA8",
+          "FunctionName": "BUZZ2"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "IN1",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB0",
+          "FunctionName": "NSE"
+        },
+        {
+          "ComponentID": "TPM8837C",
+          "PinName": "nSLEEP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "Stack",
+          "PinName": "A13",
+          "FunctionName": "Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA1",
+          "FunctionName": "FIR1"
+        },
+        {
+          "ComponentID": "AO3400",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA3",
+          "FunctionName": "FIR2"
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "12",
+          "FunctionName": "CON1"
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "1",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "14",
+          "FunctionName": "CON2"
+        },
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "1",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "Stack",
+          "PinName": "B1",
+          "FunctionName": "Battery"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "1N5819",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "Stack",
+          "PinName": "B7",
+          "FunctionName": "Battery"
+        },
+        {
+          "ComponentID": "1N5819",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PD0",
+          "FunctionName": "OSC_IN"
+        },
+        {
+          "ComponentID": "X322516",
+          "PinName": "XTAL1",
+          "FunctionName": "Crystal"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PD1",
+          "FunctionName": "OSC_OUT"
+        },
+        {
+          "ComponentID": "X322516",
+          "PinName": "XTAL2",
+          "FunctionName": "Crystal"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA9",
+          "FunctionName": "US1"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "RXD",
+          "FunctionName": "RXD"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA10",
+          "FunctionName": "US2"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "TXD",
+          "FunctionName": "TXD"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB3",
+          "FunctionName": "DATA"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DI (IO0)",
+          "FunctionName": "Data Input / IO0"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB5",
+          "FunctionName": "NT1"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "CLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB8",
+          "FunctionName": "RX"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "RXD",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB9",
+          "FunctionName": "TX"
+        },
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "TXD",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "CANL",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "Stack",
+          "PinName": "B13",
+          "FunctionName": "CAN_L"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "ISO1042",
+          "PinName": "CANH",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "Stack",
+          "PinName": "B14",
+          "FunctionName": "CAN_H"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "VREGIN",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102N",
+          "PinName": "VBUS",
+          "FunctionName": "VBUS Sense"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "LM66100",
+          "PinName": "CE",
+          "FunctionName": "Control"
+        },
+        {
+          "ComponentID": "LM66100",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Voltage Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PB4",
+          "FunctionName": "PB4"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DO (IO1)",
+          "FunctionName": "Data Output / IO1"
+        }
+      ]
+    }
+  ]
+}

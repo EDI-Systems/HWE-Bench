@@ -1,0 +1,67 @@
+{
+  "ComponentID": "WS2812B",
+  "ComponentType": "Addressable RGB LED (Integrated LED + Driver IC)",
+  "Description": "The WS2812B is an intelligent, addressable RGB LED that integrates the control IC and an RGB LED chip into a single 5050 (5.0x5.0mm) surface-mount package. It uses a single-wire NZR communication protocol to receive serial data, latch the color data for its own LED, and then reshape and retransmit the data stream to the next LED in a daisy chain. This allows for simple control of long LED strings to create dynamic, full-color lighting effects without the need for external components.",
+  "KeyParameters": {
+    "Supply Voltage (VDD)": "+3.7V to +5.3V",
+    "Data Transmission Rate": "800 Kbps",
+    "Maximum Cascade Length (at 30 fps)": "≥1024 pixels",
+    "Maximum Reset Time": ">280 µs",
+    "Color Depth per Channel": "8-bit (256 levels)",
+    "Total Display Colors": "16.7 million (24-bit)",
+    "Refresh Frequency": "2 kHz",
+    "Logic High Input Voltage (VIH)": "Min 2.7V, Max VDD+0.7V",
+    "Logic Low Input Voltage (VIL)": "Min -0.3V, Max 0.7V",
+    "Input Current": "Max ±1 µA"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "POWER SUPPLY",
+          "FunctionDescription": "Power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "DOUT",
+      "Functions": [
+        {
+          "FunctionName": "DATA OUT",
+          "FunctionDescription": "Control data signal output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "GROUND",
+          "FunctionDescription": "Ground, data & power grounding"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "DIN",
+      "Functions": [
+        {
+          "FunctionName": "DATA IN",
+          "FunctionDescription": "Control data signal input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    }
+  ]
+}

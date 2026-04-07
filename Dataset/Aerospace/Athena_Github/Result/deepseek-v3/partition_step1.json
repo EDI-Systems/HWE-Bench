@@ -1,0 +1,25 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "High-Current Pyrotechnic Deployment Channel",
+      "Function Description": "Low-side switching stage that regulates high-voltage battery bus connection to an external initiator for deployment. Includes integrated continuity-sensing for real-time monitoring.",
+      "Signal Sources": "Microcontroller control signal (PWM or digital), high-voltage battery bus, initiator terminal voltage.",
+      "Signal Destinations": "Power MOSFET gate, microcontroller feedback input (continuity signal), external initiator load.",
+      "Implementation Logic": "Power MOSFET (low-side) switches initiator ground path. Voltage-divider network across initiator terminals generates a scaled low-voltage feedback signal indicating continuity/open-circuit. Safety pull-down resistor on MOSFET gate ensures OFF state during power-up/MCU init."
+    },
+    {
+      "Module Name": "Acoustic Status Indicator Driver",
+      "Function Description": "Drives a piezo buzzer via PWM for audible telemetry and recovery beacons.",
+      "Signal Sources": "Microcontroller PWM signal.",
+      "Signal Destinations": "Signal-level MOSFET gate, piezo buzzer terminals.",
+      "Implementation Logic": "Signal-level MOSFET (low-side) switches buzzer ground. PWM from MCU modulates buzzer activation for variable tones/patterns. Safety pull-down resistor on MOSFET gate ensures OFF state during power-up/MCU init."
+    },
+    {
+      "Module Name": "Microcontroller Interface & Safety Logic",
+      "Function Description": "Provides control signals, reads feedback, and ensures safe default states for both deployment and indicator subsystems.",
+      "Signal Sources": "Continuity feedback voltage (from deployment channel), system power-good signals.",
+      "Signal Destinations": "Deployment channel control signal, indicator driver PWM signal.",
+      "Implementation Logic": "MCU outputs digital/PWM signals to control MOSFETs. Reads analog continuity voltage via ADC. Internal firmware ensures signals are only asserted after system initialization and safety checks. Pull-down resistors on all control GPIOs provide hardware safety."
+    }
+  ]
+}

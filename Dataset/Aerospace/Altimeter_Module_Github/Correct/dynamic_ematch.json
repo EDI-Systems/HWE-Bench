@@ -1,0 +1,81 @@
+{
+  "High-Current Pyrotechnic Switch Subsystem": [
+    {
+      "net_id": "net_fire_gate",
+      "Connections": [
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "G",
+          "FunctionName": "Gate Driver Input"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "PA1",
+          "FunctionName": "FIR1 PWM Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net_fire_drain",
+      "Connections": [
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "D",
+          "FunctionName": "Power Switch Output"
+        },
+        {
+          "ComponentID": "J2",
+          "PinName": "2",
+          "FunctionName": "E-Match Negative Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "GND",
+      "Connections": [
+        {
+          "ComponentID": "AO4406AL",
+          "PinName": "S",
+          "FunctionName": "Source Ground"
+        }
+      ]
+    }
+  ],
+  "E-Match Continuity Sensing Network": [
+    {
+      "net_id": "net_sense_gate",
+      "Connections": [
+        {
+          "ComponentID": "AO3400",
+          "PinName": "G",
+          "FunctionName": "Continuity Sensor Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_continuity_out",
+      "Connections": [
+        {
+          "ComponentID": "AO3400",
+          "PinName": "D",
+          "FunctionName": "Continuity Logic Output"
+        },
+        {
+          "ComponentID": "U6 STM32F103CBT6",
+          "PinName": "12",
+          "FunctionName": "CON1 ADC Input"
+        }
+      ]
+    },
+    {
+      "net_id": "GND",
+      "Connections": [
+        {
+          "ComponentID": "AO3400",
+          "PinName": "S",
+          "FunctionName": "Source Ground"
+        }
+      ]
+    }
+  ]
+}

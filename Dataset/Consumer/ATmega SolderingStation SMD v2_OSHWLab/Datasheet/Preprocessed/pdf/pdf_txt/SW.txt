@@ -1,0 +1,22 @@
+Component ID: SW1
+Component Type: Incremental Rotary Encoder with Push Switch
+Description: The SW1 is an incremental rotary encoder with an integrated momentary push button. It converts rotational movement into quadrature digital pulses on phases A and B to detect both direction and displacement. The common terminal C is used as a ground reference for the encoder signals. The integrated switch provides a normally open contact between pins 1 and 2, typically used for menu selection or power control.
+
+Key Parameters:
+- Resolution 20 pulses per revolution
+- Rotation 360 degrees continuous
+- Switch Type Momentary Push Button
+- Rating 10mA at 5V DC
+- Contact Resistance 100m ohm maximum
+- Operating Temperature -30 to +70 Celsius
+- Rotational Life 30000 cycles
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A | Phase A | Output | Quadrature signal output A | Output | Signal |
+| C | Common | Ground | Common terminal for A and B phases | Power | 0V |
+| B | Phase B | Output | Quadrature signal output B | Output | Signal |
+| 1 | SW1 | Switch | Push button terminal 1 | Input | Signal |
+| 2 | SW2 | Switch | Push button terminal 2 | Input | Signal |
+| 3 | GND | Ground | Mechanical support and shield ground | Power | 0V |

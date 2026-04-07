@@ -1,0 +1,55 @@
+{
+  "ComponentID": "IRLR",
+  "ComponentType": "N-Channel Power MOSFET",
+  "Description": "This is a high-performance N-channel power MOSFET designed for high-frequency switching applications, particularly in synchronous buck converters for computer processor power supplies and isolated DC-DC converters for telecom and industrial use. It features a very low on-state resistance (RDS(on)), ultra-low gate impedance, and is fully characterized for avalanche energy, making it suitable for efficient, high-current power conversion.",
+  "KeyParameters": {
+    "Drain-to-Source Voltage (VDSS)": "30 V",
+    "Static Drain-to-Source On-Resistance (RDS(on)max)": "3.3 mΩ (max at VGS = 10V, ID = 15A)",
+    "Total Gate Charge (Qg)": "34 nC (typ)",
+    "Continuous Drain Current (ID)": "161 A (max at TC = 25°C, VGS = 10V)",
+    "Pulsed Drain Current (IDM)": "620 A",
+    "Gate Threshold Voltage (VGS(th))": "1.4 V to 2.3 V",
+    "Maximum Power Dissipation (PD)": "140 W (at TC = 25°C)",
+    "Forward Transconductance (gfs)": "37 S (min)",
+    "Junction-to-Case Thermal Resistance (RθJC)": "1.05 °C/W (max)",
+    "Operating Junction Temperature (TJ)": "-55 to +175 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Control terminal. Voltage applied here controls the conduction between Drain and Source."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "High Impedance, Voltage Controlled"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Power terminal. Typically connected to the higher voltage/current supply side in the circuit."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Output (for switching)"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Power terminal. Typically connected to the load or ground/reference side in the circuit."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Common, Current Return"
+    }
+  ]
+}

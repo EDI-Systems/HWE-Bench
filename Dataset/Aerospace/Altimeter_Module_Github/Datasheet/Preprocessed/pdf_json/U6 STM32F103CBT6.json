@@ -1,0 +1,584 @@
+{
+  "ComponentID": "U6 STM32F103CBT6",
+  "ComponentType": "32-bit ARM Cortex-M3 Microcontroller",
+  "Description": "The STM32F103CBT6 is a medium-density performance line microcontroller incorporating the high-performance ARM Cortex-M3 32-bit RISC core operating at a 72 MHz frequency. It features 128KB of Flash memory, 20KB of SRAM, and an extensive range of enhanced I/Os and peripherals. These include two 12-bit ADCs, three general-purpose 16-bit timers plus one PWM timer, as well as standard and advanced communication interfaces including I2C, SPI, USART, CAN, and USB. It is designed for applications such as industrial control, motor drives, and consumer electronics.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VBAT",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Battery backup supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PC13",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PC14",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "OSC32_IN / RTC crystal (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "PC15",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "OSC32_OUT / RTC crystal (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PD0",
+      "Functions": [
+        {
+          "FunctionName": "OSC_IN",
+          "FunctionDescription": "External high-speed clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PD1",
+      "Functions": [
+        {
+          "FunctionName": "OSC_OUT",
+          "FunctionDescription": "External high-speed clock output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "NRST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low system reset input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VSSA",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Analog ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VDDA",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Analog positive power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "PA0",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "PA1",
+      "Functions": [
+        {
+          "FunctionName": "FIR1",
+          "FunctionDescription": "Digital I/O configured for FIR1 signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "PA2",
+      "Functions": [
+        {
+          "FunctionName": "CON1",
+          "FunctionDescription": "Digital I/O configured for CON1 signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "PA3",
+      "Functions": [
+        {
+          "FunctionName": "FIR2",
+          "FunctionDescription": "Digital I/O configured for FIR2 signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "PA4",
+      "Functions": [
+        {
+          "FunctionName": "CON2",
+          "FunctionDescription": "Digital I/O configured for CON2 signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "PA5",
+      "Functions": [
+        {
+          "FunctionName": "PA5",
+          "FunctionDescription": "General purpose I/O signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "PA6",
+      "Functions": [
+        {
+          "FunctionName": "PA6",
+          "FunctionDescription": "General purpose I/O signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "PA7",
+      "Functions": [
+        {
+          "FunctionName": "BUZZ1",
+          "FunctionDescription": "Buzzer 1 control output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "NSE",
+          "FunctionDescription": "Digital input/output for NSE signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "OT1",
+          "FunctionDescription": "Digital output for OT1 signal"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "PB10",
+      "Functions": [
+        {
+          "FunctionName": "PB10",
+          "FunctionDescription": "General purpose I/O signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "PB11",
+      "Functions": [
+        {
+          "FunctionName": "PB11",
+          "FunctionDescription": "General purpose I/O signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary digital system ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Primary digital power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "PB12",
+      "Functions": [
+        {
+          "FunctionName": "FL_1",
+          "FunctionDescription": "Flash/Function signal line 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "PB13",
+      "Functions": [
+        {
+          "FunctionName": "FL_2",
+          "FunctionDescription": "Flash/Function signal line 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "PB14",
+      "Functions": [
+        {
+          "FunctionName": "FL_3",
+          "FunctionDescription": "Flash/Function signal line 3"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "PB15",
+      "Functions": [
+        {
+          "FunctionName": "FL_4",
+          "FunctionDescription": "Flash/Function signal line 4"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "PA8",
+      "Functions": [
+        {
+          "FunctionName": "BUZZ2",
+          "FunctionDescription": "Buzzer 2 control output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "30",
+      "PinName": "PA9",
+      "Functions": [
+        {
+          "FunctionName": "US1",
+          "FunctionDescription": "UART1 Transmit / Function US1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "31",
+      "PinName": "PA10",
+      "Functions": [
+        {
+          "FunctionName": "US2",
+          "FunctionDescription": "UART1 Receive / Function US2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "32",
+      "PinName": "PA11",
+      "Functions": [
+        {
+          "FunctionName": "RES",
+          "FunctionDescription": "System function RES signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "33",
+      "PinName": "PA12",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "General purpose I/O (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "34",
+      "PinName": "PA13",
+      "Functions": [
+        {
+          "FunctionName": "SWDIO",
+          "FunctionDescription": "Serial Wire Debug Data I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "35",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Secondary digital ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "36",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Secondary digital power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "37",
+      "PinName": "PA14",
+      "Functions": [
+        {
+          "FunctionName": "SWCLK",
+          "FunctionDescription": "Serial Wire Debug Clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "38",
+      "PinName": "PA15",
+      "Functions": [
+        {
+          "FunctionName": "DB_SIG",
+          "FunctionDescription": "Debug signal output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "39",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "DATA",
+          "FunctionDescription": "Digital data communication line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "40",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "PB4",
+          "FunctionDescription": "General purpose I/O signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "41",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "NT1",
+          "FunctionDescription": "Network/Function signal line 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "42",
+      "PinName": "PB6",
+      "Functions": [
+        {
+          "FunctionName": "NT2",
+          "FunctionDescription": "Network/Function signal line 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "43",
+      "PinName": "PB7",
+      "Functions": [
+        {
+          "FunctionName": "INT",
+          "FunctionDescription": "External interrupt input signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "44",
+      "PinName": "BOOT0",
+      "Functions": [
+        {
+          "FunctionName": "BOOT0",
+          "FunctionDescription": "Boot mode selection input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "45",
+      "PinName": "PB8",
+      "Functions": [
+        {
+          "FunctionName": "RX",
+          "FunctionDescription": "UART/Serial receive signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "46",
+      "PinName": "PB9",
+      "Functions": [
+        {
+          "FunctionName": "TX",
+          "FunctionDescription": "UART/Serial transmit signal"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "47",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Tertiary digital ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "48",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Tertiary digital power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    }
+  ]
+}

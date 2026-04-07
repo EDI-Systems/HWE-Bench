@@ -1,0 +1,39 @@
+Component ID: ATmega328P
+Component Type: 8-bit AVR Microcontroller
+Description: The ATmega48P/88P/168P/328P is a high-performance, low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. It features in-system programmable Flash memory (4K to 32K bytes), EEPROM, SRAM, two 8-bit and one 16-bit timer/counter, PWM channels, a 10-bit ADC, USART, SPI, and I2C interfaces. It operates from 1.8V to 5.5V, offers up to 20 MIPS throughput, and includes multiple sleep modes for low-power applications.
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | PD3 | D3 | Digital I/O pin 3 (**D3**) / PWM | Digital I/O | 5V |
+| 2 | PD4 | D4 | Digital I/O pin 4 | Digital I/O | 5V |
+| 3 | GND | Ground | Primary system ground reference | Power | 0V |
+| 4 | VCC | Power | +5V main power supply input | Power Input | 5V |
+| 5 | GND | Ground | Secondary system ground reference | Power | 0V |
+| 6 | VCC | Power | Secondary +5V power supply input | Power Input | 5V |
+| 7 | XTAL1/PB6 | OSC1 | External 16MHz crystal input | Analog Input | Signal |
+| 8 | XTAL2/PB7 | OSC2 | External 16MHz crystal output | Analog Output | Signal |
+| 9 | PD5 | D5 | Digital I/O pin 5 / PWM | Digital I/O | 5V |
+| 10 | PD6 | D6 | Digital I/O pin 6 / PWM | Digital I/O | 5V |
+| 11 | PD7 | D7 | Digital I/O pin 7 | Digital I/O | 5V |
+| 12 | PB0 | D8 | Digital I/O pin 8 / CLKO | Digital I/O | 5V |
+| 13 | PB1 | SS_MCP | SPI Chip Select for MCP peripheral | Digital Output | 5V |
+| 14 | PB2 | D10 | Digital I/O pin 10 / SS / PWM | Digital I/O | 5V |
+| 15 | PB3 | MOSI | SPI Master Out Slave In signal | Digital Output | 5V |
+| 16 | PB4 | MISO | SPI Master In Slave Out signal | Digital Input | 5V |
+| 17 | PB5 | SCK | SPI Serial Clock signal | Digital Output | 5V |
+| 18 | AVCC | Analog Power | Power supply for ADC; tied to +5V | Power Input | 5V |
+| 19 | ADC6 | ADC6 | Analog input channel 6 (TQFP only) | Analog Input | 5V |
+| 20 | AREF | Analog Ref | Reference voltage for ADC; tied to +5V | Analog Input | 5V |
+| 21 | GND | Ground | Tertiary system ground reference | Power | 0V |
+| 22 | ADC7 | ADC7 | Analog input channel 7 (TQFP only) | Analog Input | 5V |
+| 23 | PC0 | A0 | Analog input channel 0 (**A0**) | Analog Input | 5V |
+| 24 | PC1 | A1 | Analog input channel 1 (**A1**) | Analog Input | 5V |
+| 25 | PC2 | A2 | Analog input channel 2 (**A2**) | Analog Input | 5V |
+| 26 | PC3 | A3 | Analog input channel 3 (**A3**) | Analog Input | 5V |
+| 27 | PC4 | SDA | Analog input 4 / I2C Serial Data | Digital/Analog| 5V |
+| 28 | PC5 | SCL | Analog input 5 / I2C Serial Clock | Digital/Analog| 5V |
+| 29 | PC6 | Reset | Active-low hardware reset signal | Digital Input | 5V |
+| 30 | PD0 | RX_TTL | UART serial receive via 220Ω resistor | Digital Input | 5V |
+| 31 | PD1 | TX_TTL | UART serial transmit via 220Ω resistor | Digital Output | 5V |
+| 32 | PD2 | MCP_INT | Interrupt input from MCP peripheral | Digital Input | 5V |

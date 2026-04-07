@@ -1,0 +1,152 @@
+{
+  "ComponentID": "KX134ACR-LBZE2",
+  "ComponentType": "High Performance Tri-axis Accelerometer",
+  "Description": "The KX134ACR-LBZE2 is a high-performance, low-power, tri-axis accelerometer with a digital I2C/SPI interface. It is designed for high-g applications and features user-selectable full-scale ranges of +/-8g, +/-16g, +/-32g, and +/-64g. It includes an integrated 512-byte FIFO buffer, advanced power management, and internal digital filters to improve signal quality and reduce system power consumption.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SDO/ADDR",
+      "Functions": [
+        {
+          "FunctionName": "SDO/ADDR",
+          "FunctionDescription": "SPI Serial Data Output / I2C Address select"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SDI/SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDI/SDA",
+          "FunctionDescription": "SPI Serial Data Input / I2C Serial Data"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "IO_VDD",
+      "Functions": [
+        {
+          "FunctionName": "IO_VDD",
+          "FunctionDescription": "Digital I/O power supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.2V-3.6V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "TRIG",
+      "Functions": [
+        {
+          "FunctionName": "TRIG",
+          "FunctionDescription": "External trigger input for synchronized sampling"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "INT1",
+      "Functions": [
+        {
+          "FunctionName": "INT1",
+          "FunctionDescription": "Programmable interrupt output 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "INT2",
+      "Functions": [
+        {
+          "FunctionName": "INT2",
+          "FunctionDescription": "Programmable interrupt output 2"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "VDD",
+          "FunctionDescription": "Main analog/digital power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.7V-3.6V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "nCS",
+      "Functions": [
+        {
+          "FunctionName": "nCS",
+          "FunctionDescription": "Chip select for SPI communication (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "No internal electrical connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "SCLK/SCL",
+      "Functions": [
+        {
+          "FunctionName": "SCLK/SCL",
+          "FunctionDescription": "SPI Serial Clock / I2C Serial Clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

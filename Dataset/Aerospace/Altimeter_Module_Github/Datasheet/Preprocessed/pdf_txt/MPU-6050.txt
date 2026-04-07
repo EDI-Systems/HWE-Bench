@@ -1,0 +1,30 @@
+Component ID: MPU-6050
+Component Type: Six-Axis (Gyro + Accelerometer) MEMS MotionTracking Device
+Description: The MPU-6050 is a high-performance motion tracking device that integrates a 3-axis gyroscope and a 3-axis accelerometer on a single silicon die. It features an onboard Digital Motion Processor (DMP) capable of offloading complex MotionFusion algorithms from the host processor. The device includes a primary I2C interface for communication with the MCU and an auxiliary I2C bus to interface with external sensors such as magnetometers to provide complete 9-axis output.
+
+Key Parameters:
+- Gyroscope Range +/- 250, 500, 1000, 2000 deg/s
+- Accelerometer Range +/- 2, 4, 8, 16 g
+- Supply Voltage VDD 2.375V to 3.46V
+- Logic Voltage VLOGIC 1.71V to VDD
+- Communication I2C up to 400kHz
+- Integrated 16-bit ADCs for each axis
+- Operating Temperature -40 to +85 Celsius
+- Package 24-pin QFN
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CLKIN | CLKIN | External clock input (tied to GND in this view) | Input | Signal |
+| 6 | AUX_DA | AUX_DA | Auxiliary I2C serial data for external sensors | I/O | Signal |
+| 7 | AUX_CL | AUX_CL | Auxiliary I2C serial clock for external sensors | Output | Signal |
+| 8 | VLOGIC | VLOGIC | Digital I/O supply voltage | Power | 1.8V-3.3V |
+| 9 | AD0 | AD0 | I2C slave address LSB (connected to -3.3V) | Input | Signal |
+| 10 | REGOUT | REGOUT | Internal regulator filter capacitor connection | Power | Analog |
+| 11 | FSYNC | FSYNC | Frame synchronization digital input (tied to GND) | Input | Signal |
+| 12 | INT | INT | Programmable interrupt digital output | Output | Signal |
+| 13 | VDD | VDD | Main analog/digital power supply | Power | 2.4V-3.4V |
+| 18 | GND | GND | Main system ground reference | Power | 0V |
+| 20 | CPOUT | CPOUT | Charge pump capacitor connection | Power | Analog |
+| 23 | SCL | SCL | Primary I2C serial clock input | Input | Signal |
+| 24 | SDA | SDA | Primary I2C serial data | I/O | Signal |

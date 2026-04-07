@@ -1,0 +1,151 @@
+{
+  "ComponentID": "TYPE-C 16PIN 2MD (073)",
+  "ComponentType": "USB Type-C Female Connector (Receptacle)",
+  "Description": "This is a 16-pin USB Type-C female connector (receptacle) designed for surface-mount assembly. It functions as a standardized physical and electrical interface for data transfer and power delivery, supporting the reversible plug orientation feature of the USB Type-C standard. The specification details its mechanical durability, electrical performance (including contact resistance and insulation), and environmental reliability to ensure proper mating, signal integrity, and power transmission up to its rated capacity.",
+  "KeyParameters": {
+    "Rated Voltage/Current": "DC 5V, 5A",
+    "Operating Temperature Range": "-25°C to +85°C",
+    "Contact Resistance": "≤ 10 mΩ (measured at ≤100mA)",
+    "Insulation Resistance": "≥ 100 MΩ (at 100V DC)",
+    "Dielectric Strength": "Withstands AC 100V (50Hz) for 1 minute",
+    "Insertion Force": "0.5 - 2.0 kgf",
+    "Withdrawal Force": "0.8 - 2.0 kgf",
+    "Mechanical Life (Durability)": "5000 mating cycles",
+    "Solder Heat Resistance (Reflow)": "Peak temperature 260°C ±5°C for ≤20s",
+    "Terminal Strength": "Withstands 0.1 N/m (1 kgf/cm) static load for 1 min"
+  },
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB bus power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V-20V"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "CC1",
+          "FunctionDescription": "Configuration channel 1 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive (Group A)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative (Group A)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 1 (Not connected/marked NC)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "CC2",
+          "FunctionDescription": "Configuration channel 2 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive (Group B)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative (Group B)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 2 (Not connected/marked NC)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "S1",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell for EMI/ESD protection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

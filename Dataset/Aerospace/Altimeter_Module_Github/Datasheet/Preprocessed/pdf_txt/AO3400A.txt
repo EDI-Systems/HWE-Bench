@@ -1,0 +1,23 @@
+Component ID: AO4406AL
+Component Type: N-Channel Power MOSFET
+Description:
+The AO4406AL is an N-Channel MOSFET utilizing advanced trench technology to deliver low on-state resistance (RDS(ON)) and low gate charge, enabling efficient high-current switching. It is designed to operate with gate drive voltages as low as 4.5V, making it suitable for battery protection circuits, load switches, and power management applications in systems like uninterruptible power supplies.
+
+Key Parameters:
+- Drain-Source Voltage (Vds): 30 V (Max)
+- Continuous Drain Current (Id): 15 A @ 25°C
+- Static Drain-Source On-Resistance (Rds(on)): < 10 mΩ @ Vgs=10V, Id=7A (Max)
+- Gate Threshold Voltage (Vgs(th)): 1.2 V to 2.5 V (Min to Max)
+- Total Gate Charge (Qg): 6 nC (Typ) @ Vds=15V, Vgs=4.5V
+- Input Capacitance (Ciss): Not explicitly provided in doc (Derived from Qg/Vgs)
+- Forward Transconductance (gfs): 6.2 S (Typ) @ Vds=5V, Id=7A
+- Total Power Dissipation (Pd): 1.5 W @ 25°C
+- Thermal Resistance Junction-to-Ambient (RθJA): 85 °C/W (≤10s pulse), 25 °C/W (steady-state)
+- Operating Junction Temperature (Tj): -55 to 150 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | G | Gate  | Gate connection for first MOSFET (tied internally) | Input | Signal, High Impedance |
+| 2 | S | Source  | Source connection for first MOSFET (tied internally) | Power | Power, Output |
+| 3 | D | Drain  | Drain connection for first MOSFET (tied internally) | Power | Power, Input/Output |

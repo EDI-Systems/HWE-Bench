@@ -1,0 +1,115 @@
+{
+  "ComponentID": "W25Q128JV",
+  "ComponentType": "3V 128M-bit Serial Flash Memory with Dual/Quad SPI",
+  "Description": "The W25Q128JV is a 128M-bit (16MB) serial flash memory designed for systems with limited space, pins, and power. It operates from a single 2.7V to 3.6V supply and supports standard SPI, Dual I/O SPI, and Quad I/O SPI interfaces, enabling high-speed data transfer with clock frequencies up to 133MHz. The memory is organized into 65,536 programmable pages of 256 bytes each, with flexible erase options (4KB sector, 32KB block, 64KB block, or full chip erase). It includes features such as software/hardware reset, write protection, security registers, a 64-bit unique ID, and low power consumption down to 1µA in power-down mode, making it suitable for code execution (XIP), data storage, and parameter storage in embedded systems.",
+  "KeyParameters": {
+    "Memory Density": "128 Mbit (16 MB)",
+    "Operating Voltage": "2.7V to 3.6V",
+    "SPI Clock Frequency (Max)": "133 MHz",
+    "Page Size": "256 bytes",
+    "Erase Sectors/Blocks": "4,096 sectors (4 KB each) / 256 blocks (64 KB each)",
+    "Standby Current": "1 µA (typical, power-down mode)",
+    "Data Retention": ">20 years",
+    "Endurance": "100,000 program/erase cycles per sector",
+    "Interface Support": "Standard SPI, Dual I/O SPI, Quad I/O SPI",
+    "Temperature Range": "-40°C to +85°C (industrial)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "Activates device communication when low"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "DO (IO1)",
+      "Functions": [
+        {
+          "FunctionName": "Data Output / IO1",
+          "FunctionDescription": "Data output in standard SPI; bidirectional I/O in Dual/Quad modes"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "WP (IO2)",
+      "Functions": [
+        {
+          "FunctionName": "Write Protect / IO2",
+          "FunctionDescription": "Hardware write protect when low; bidirectional I/O in Quad mode"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "DI (IO0)",
+      "Functions": [
+        {
+          "FunctionName": "Data Input / IO0",
+          "FunctionDescription": "Data input in standard SPI; bidirectional I/O in Dual/Quad modes"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "Clock input for SPI communication"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "/HOLD (IO3)",
+      "Functions": [
+        {
+          "FunctionName": "Hold / IO3",
+          "FunctionDescription": "Pauses serial communication when low; bidirectional I/O in Quad mode"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital, CMOS"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "2.7V to 3.6V operating voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+Component ID: AO3400A
+Component Type: N-Channel Enhancement Mode MOSFET
+Description: The AO3400A is an N-channel MOSFET utilizing advanced trench technology, designed for low on-resistance in a compact package. It functions as a voltage-controlled switch, suitable for applications like load switching and PWM control, by modulating the conductivity between its drain and source terminals via the gate voltage.
+
+Key Parameters:
+- Drain-Source Voltage (V_DS): 30 V (Maximum)
+- Continuous Drain Current (I_D): 5.7 A (at T_A=25°C)
+- Gate-Source Voltage (V_GS): ±12 V (Maximum)
+- Static Drain-Source On-Resistance (R_DS(on)): 28 mΩ max (at V_GS=10V, I_D=5.7A, T_j=125°C)
+- Gate Threshold Voltage (V_GS(th)): 1.05 V (Typical)
+- Input Capacitance (C_iss): 630 pF (Typical)
+- Power Dissipation (P_D): 1.4 W (at T_A=25°C)
+- Junction Temperature (T_J): -55 to 150 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | G | Gate | Control terminal. Voltage applied here creates an electric field to turn the channel between Drain and Source on/off. | Input | High Impedance |
+| 2 | D | Drain | Output/load terminal. Current flows out from this pin when the MOSFET is on and the load is connected to V+. | Power | Power Output |
+| 3 | S | Source | Input/reference terminal. Typically connected to ground or the lower voltage side of the load. | Power | Power Input/Return |

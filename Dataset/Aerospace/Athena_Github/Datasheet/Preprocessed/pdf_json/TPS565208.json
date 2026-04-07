@@ -1,0 +1,91 @@
+{
+  "ComponentID": "TPS565208",
+  "ComponentType": "Synchronous Buck (Step-Down) Switching Voltage Regulator",
+  "Description": "The TPS565208 is a monolithic, 5-A synchronous step-down DC/DC converter in a SOT-23 package. It employs D-CAP2™ mode control for fast transient response without requiring external compensation, supports a 4.5-V to 17-V input range, and is optimized for low external component count and low standby current. It includes integrated power MOSFETs, fixed-frequency operation, and comprehensive protection features.",
+  "KeyParameters": {
+    "Input Voltage Range": "4.5 V to 17 V",
+    "Output Voltage Range": "0.76 V to 7 V",
+    "Maximum Continuous Output Current": "5 A",
+    "Switching Frequency": "500 kHz",
+    "Feedback Voltage Accuracy": "1%",
+    "High-Side FET On-Resistance (Rds(on))": "31 mΩ",
+    "Low-Side FET On-Resistance (Rds(on))": "16 mΩ",
+    "Shutdown Current": "< 1 µA",
+    "Soft-Start Time": "1.0 ms (Fixed)",
+    "Operating Junction Temperature (Tj)": "-40°C to 125°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Source terminal of low-side NFET and controller ground. Connect sensitive VFB to this GND at a single point."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch Node",
+          "FunctionDescription": "Connection between the high-side and low-side power NFETs."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Supply",
+          "FunctionDescription": "Input voltage supply. Drain terminal of the high-side power NFET."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VFB",
+      "Functions": [
+        {
+          "FunctionName": "Feedback Input",
+          "FunctionDescription": "Converter feedback input. Connect to the output voltage via a resistor divider."
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal Input"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Active-high enable control input. Must be pulled high to enable the device."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Signal Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VBST",
+      "Functions": [
+        {
+          "FunctionName": "Bootstrap Supply",
+          "FunctionDescription": "Supply input for the high-side NFET gate driver. Connect a 0.1 µF capacitor between VBST and SW."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    }
+  ]
+}

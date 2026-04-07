@@ -1,0 +1,19 @@
+{
+  "External Storage Interface": [
+    {
+      "net_id": "MCU_SPI_CS",
+      "Connections": [
+        { "ComponentID": "ATmega328p", "PinName": "PB2" },
+        { "ComponentID": "R5", "PinName": "1" }
+      ]
+    },
+    {
+      "net_id": "SD_SPI_CS",
+      "Connections": [
+        { "ComponentID": "R5", "PinName": "2" },
+        { "ComponentID": "R8", "PinName": "1" },
+        { "ComponentID": "MICRO", "PinName": "CD/DAT3" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_GND",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "VSS" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VSSA" },
+        { "ComponentID": "W25Q128JV", "PinName": "GND" },
+        { "ComponentID": "BMI088", "PinName": "GNDA" },
+        { "ComponentID": "BMI088", "PinName": "GNDIO" },
+        { "ComponentID": "BMP388", "PinName": "VSS" },
+        { "ComponentID": "AMS1117", "PinName": "GND/ADJ" },
+        { "ComponentID": "TPS565208", "PinName": "GND" },
+        { "ComponentID": "USBLC6", "PinName": "GND" },
+        { "ComponentID": "TYPE-C 16PIN 2MD (073)", "PinName": "GND" }
+      ]
+    },
+    {
+      "net_id": "NET_3V3",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDD" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDDA" },
+        { "ComponentID": "W25Q128JV", "PinName": "VCC" },
+        { "ComponentID": "BMI088", "PinName": "VDD" },
+        { "ComponentID": "BMI088", "PinName": "VDDIO" },
+        { "ComponentID": "BMP388", "PinName": "VDD" },
+        { "ComponentID": "BMP388", "PinName": "VDDIO" }
+      ]
+    },
+    {
+      "net_id": "NET_BUCK_SW",
+      "Connections": [
+        { "ComponentID": "TPS565208", "PinName": "SW" },
+        { "ComponentID": "AMS1117", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI1_CS",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA4" },
+        { "ComponentID": "W25Q128JV", "PinName": "CS" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI1_SCK",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA5" },
+        { "ComponentID": "W25Q128JV", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI1_MISO",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA6" },
+        { "ComponentID": "W25Q128JV", "PinName": "DO (IO1)" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI1_MOSI",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA7" },
+        { "ComponentID": "W25Q128JV", "PinName": "DI (IO0)" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C1_SCL",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB6" },
+        { "ComponentID": "BMI088", "PinName": "SCL/SCK" },
+        { "ComponentID": "BMP388", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C1_SDA",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB7" },
+        { "ComponentID": "BMI088", "PinName": "SDA/SDI" },
+        { "ComponentID": "BMP388", "PinName": "SDI" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_VBUS",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA9" },
+        { "ComponentID": "USBLC6", "PinName": "VCC" },
+        { "ComponentID": "TYPE-C 16PIN 2MD (073)", "PinName": "VBUS" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DM",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA11" },
+        { "ComponentID": "USBLC6", "PinName": "I/O1" },
+        { "ComponentID": "TYPE-C 16PIN 2MD (073)", "PinName": "D-" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DP",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA12" },
+        { "ComponentID": "USBLC6", "PinName": "I/O2" },
+        { "ComponentID": "TYPE-C 16PIN 2MD (073)", "PinName": "D+" }
+      ]
+    },
+    {
+      "net_id": "NET_PYRO_GATE",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PC0" },
+        { "ComponentID": "AO3400A", "PinName": "G" }
+      ]
+    }
+  ]
+}

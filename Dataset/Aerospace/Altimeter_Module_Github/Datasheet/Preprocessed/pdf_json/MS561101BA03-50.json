@@ -1,0 +1,104 @@
+{
+  "ComponentID": "MS561101BA03-50",
+  "ComponentType": "High Resolution Barometric Pressure Sensor",
+  "Description": "The MS5611 is a high resolution altimeter sensor that includes a high linearity pressure sensor and an ultra low power 24 bit sigma delta ADC with internal factory calibrated coefficients. It provides precise digital 24 bit pressure and temperature values and different operation modes that allow the user to optimize for conversion speed and current consumption. It features both I2C and SPI interfaces for easy communication with microcontrollers and is widely used in flight controllers for drones and handheld altimeters.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V-3.6V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PS",
+      "Functions": [
+        {
+          "FunctionName": "Protocol Select",
+          "FunctionDescription": "Logic high selects I2C mode; logic low selects SPI"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CSB",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "Chip select input for SPI mode or I2C address bit"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CSB",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Secondary chip select terminal (marked not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SDO",
+      "Functions": [
+        {
+          "FunctionName": "SDO",
+          "FunctionDescription": "SPI serial data output (marked not connected)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "SDI/SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "I2C serial data or SPI serial data input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SCLK",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "I2C serial clock or SPI serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

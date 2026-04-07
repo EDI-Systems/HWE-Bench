@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Voltage Regulator & Power Filter",
+      "Function Description": "Converts an external power supply into a stable, clean logic-level voltage for all digital components. It ensures rail stability and dampens high-frequency noise to support high-speed data operations.",
+      "Signal Sources": "External DC power supply.",
+      "Signal Destinations": "Microcontroller, all other logic-level peripherals (e.g., storage interface, display, input interface, Motor Signal Converter).",
+      "Implementation Logic": "Utilizes a low-dropout linear regulator (LDO) as the primary voltage converter. Its output is stabilized by a symmetric filtering network comprising multiple capacitors (e.g., bulk, ceramic) in parallel to handle a wide noise spectrum."
+    },
+    {
+      "Module Name": "Microcontroller & Data Processing Core",
+      "Function Description": "Acts as the central processing unit. It retrieves digital files from external storage, processes the data, and generates synchronized pulse signals for emulation. It also manages the user interface.",
+      "Signal Sources": "Data from the External Storage Interface, user commands from the Tactile Input Interface.",
+      "Signal Destinations": "Synchronized pulse signals to the Motor Signal Converter, display data to the Visual Display, control signals for data retrieval.",
+      "Implementation Logic": "A microcontroller (MCU) runs firmware that handles file I/O, data protocol conversion, timing generation for pulse signals, and UI management. It interfaces with other modules via its GPIO, communication peripherals (e.g., SPI, I2C), and timers."
+    },
+    {
+      "Module Name": "External Storage Interface",
+      "Function Description": "Provides a voltage-level shifted connection to an external storage medium (e.g., SD card, USB flash) for retrieving digital files that will be emulated.",
+      "Signal Sources": "Data and control signals from the external storage device.",
+      "Signal Destinations": "Level-shifted data and control signals to the Microcontroller.",
+      "Implementation Logic": "Uses a voltage-level shifting circuit (e.g., with dedicated level-shifter ICs or MOSFETs) to adapt the storage medium's signal voltage levels (which may be 3.3V or 5V) to the microcontroller's logic voltage level, ensuring reliable communication."
+    },
+    {
+      "Module Name": "User Interface (Tactile Input & Visual Display)",
+      "Function Description": "Allows user interaction for task selection and provides visual feedback on system status and operations.",
+      "Signal Sources": "User button presses (Tactile Input).",
+      "Signal Destinations": "User command data to the Microcontroller; display information from the Microcontroller to the user.",
+      "Implementation Logic": "The Tactile Input Interface consists of debounced push-button switches connected to the MCU's GPIO. The Visual Display is a dedicated module (e.g., OLED, LCD) connected via a parallel or serial interface (e.g., SPI, I2C) to the MCU for showing menus and status."
+    },
+    {
+      "Module Name": "Motor Signal Converter with Optoisolation",
+      "Function Description": "Translates the microcontroller's logic-level motor control signals into signals compatible with the host hardware, providing complete electrical isolation to protect the emulator's logic from host power transients.",
+      "Signal Sources": "Synchronized pulse signals from the Microcontroller.",
+      "Signal Destinations": "Isolated motor control signals to the host hardware connector.",
+      "Implementation Logic": "Uses an optoisolator (optocoupler). The MCU's signal drives an LED inside the optoisolator. The isolated phototransistor output side replicates the signal, powered by a separate, isolated supply rail referenced to the host side, creating a safe bridge."
+    }
+  ]
+}

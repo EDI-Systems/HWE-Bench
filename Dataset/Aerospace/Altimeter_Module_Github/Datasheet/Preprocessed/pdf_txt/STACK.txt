@@ -1,0 +1,36 @@
+Component ID: Stack
+Component Type: Male PCB Edge Connector
+Description: This is a high-density male PCB edge connector (gold finger style) designed for stackable modular systems. It provides standardized power delivery and communication paths between multiple PCB layers. The pinout includes dedicated lines for CAN bus communication and redundant power rails (3.3V, 5.0V, and Battery voltage) paired with ground references. The "Reserved" pins allow for future expansion or proprietary signal routing within the stack.
+
+Key Parameters:
+- Connector Style Male Edge Connector
+- Interface Type CAN Bus and Power Distribution
+- Redundancy Dual Power/GND Groups (A and B)
+- Mounting PCB Gold Finger / Edge Mount
+- Operating Voltage 3.3V to Battery Voltage
+- Operating Temperature -40 to +105 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | 3.3V_A | Power | Redundant 3.3V power rail group A | Power | 3.3V |
+| A3 | GND_A | Ground | Primary ground reference group A | Power | 0V |
+| A4 | 5.0V_A | Power | Redundant 5.0V power rail group A | Power | 5V |
+| A7 | 3.3V_B | Power | Redundant 3.3V power rail group B | Power | 3.3V |
+| A9 | GND_B | Ground | Primary ground reference group B | Power | 0V |
+| A10 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A11 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A13 | DB_LED | Signal | Debug LED status indicator output | Output | Signal |
+| A14 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A15 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A16 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A17 | Reserved | NC | Reserved for future system expansion | NC | - |
+| A18 | Reserved | NC | Reserved for future system expansion | NC | - |
+| B1 | BATT_A | Battery | Unregulated battery voltage group A | Power | Battery |
+| B7 | BATT_B | Battery | Unregulated battery voltage group B | Power | Battery |
+| B13 | CAN_L | CAN_L | CAN bus differential low signal | I/O | Signal |
+| B14 | CAN_H | CAN_H | CAN bus differential high signal | I/O | Signal |
+| B15 | Reserved | NC | Reserved for future system expansion | NC | - |
+| B16 | Reserved | NC | Reserved for future system expansion | NC | - |
+| B17 | Reserved | NC | Reserved for future system expansion | NC | - |
+| B18 | Reserved | NC | Reserved for future system expansion | NC | - |

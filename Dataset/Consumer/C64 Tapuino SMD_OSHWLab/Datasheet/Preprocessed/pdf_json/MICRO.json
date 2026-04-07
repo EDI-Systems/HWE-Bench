@@ -1,0 +1,115 @@
+{
+  "ComponentID": "MICRO",
+  "ComponentType": "SD / Micro SD Card Socket (Connector)",
+  "Description": "This is a family of surface-mount card sockets designed for secure electrical and mechanical interfacing with SD and Micro SD memory cards. They feature a push-push or push-pull card ejection mechanism for easy insertion and removal, are shielded for EMI/ESD protection, and are compatible with high-speed UHS-I and UHS-II interfaces. Designed for space-constrained portable and automotive applications, they support a second reflow process for double-sided PCB assembly.",
+  "KeyParameters": {
+    "Card Type Compatibility": "SD, Micro SD (specific to part number)",
+    "Interface Standard": "UHS-I, UHS-II",
+    "Number of Positions (Pins)": "8 (Micro SD), 9 (SD)",
+    "Current Rating": "0.5A",
+    "Voltage Rating": "5V AC",
+    "Contact Resistance": "100mΩ max.",
+    "Insertion/Extraction Force": "14N max.",
+    "Mechanical Durability": "10,000 cycles",
+    "Operating Temperature Range": "-55°C to +85°C (based on environmental test)",
+    "Package/Reel": "Tape and Reel"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DAT2",
+      "Functions": [
+        {
+          "FunctionName": "Data Line 2",
+          "FunctionDescription": "SD Data Bit 2"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "I/O"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "CD/DAT3",
+      "Functions": [
+        {
+          "FunctionName": "Card Detect / Data Line 3",
+          "FunctionDescription": "Card Detect / SD Data Bit 3"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "I/O / Card Detect"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CMD",
+      "Functions": [
+        {
+          "FunctionName": "Command",
+          "FunctionDescription": "Command/Response Line"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "I/O"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Supply Voltage",
+          "FunctionDescription": "Power Supply for Card"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "SD Clock Signal"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "Input (to Card)"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Signal Ground"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "DAT0",
+      "Functions": [
+        {
+          "FunctionName": "Data Line 0",
+          "FunctionDescription": "SD Data Bit 0"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "I/O"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "DAT1",
+      "Functions": [
+        {
+          "FunctionName": "Data Line 1",
+          "FunctionDescription": "SD Data Bit 1"
+        }
+      ],
+      "PinType": "Contact",
+      "ElectricalType": "I/O"
+    }
+  ]
+}

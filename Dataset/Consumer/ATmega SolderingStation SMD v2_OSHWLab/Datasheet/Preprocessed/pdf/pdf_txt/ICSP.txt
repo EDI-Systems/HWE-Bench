@@ -1,0 +1,20 @@
+Component ID: ICSP
+Component Type: 6-Pin In-Circuit Serial Programming (ICSP) Connector
+Description: The ICSP-6 is a standard 2x3 pin header used for In-Circuit Serial Programming of AVR microcontrollers. It allows for firmware uploading and bootloader burning without removing the chip from the PCB. It utilizes the SPI (Serial Peripheral Interface) bus along with a dedicated Reset line.
+
+Key Parameters:
+- Programming Interface Type: Serial (2-wire data)
+- Required Programming Pins: 5 (VPP, VDD, VSS, PGD, PGC)
+- Supported Device Families: PIC12C5XX, PIC16CXXX, PIC17CXXX, PIC16F8X, PIC12C67X, PIC14000, PIC16C55X, PIC16C6XX/7XX/9XX, PIC18CXXX, PIC16F62X, PIC16F87X
+- Memory Types: OTP (One-Time Programmable), Flash/EEPROM
+- Programming Mode Activation: Applied via dedicated VPP/MCLR pin
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | MISO | MISO | Master In Slave Out - Data from target to programmer | Digital Output | 5V |
+| 2 | VCC | Power | Positive power supply (usually +5V) | Power | 5V |
+| 3 | SCK | SCK | Serial Clock signal from programmer | Digital Input | 5V |
+| 4 | MOSI | MOSI | Master Out Slave In - Data from programmer to target | Digital Input | 5V |
+| 5 | RESET | RESET | Active-low reset signal to trigger programming mode | Digital Input | 5V |
+| 6 | GND | Ground | Common system ground reference | Power | 0V |

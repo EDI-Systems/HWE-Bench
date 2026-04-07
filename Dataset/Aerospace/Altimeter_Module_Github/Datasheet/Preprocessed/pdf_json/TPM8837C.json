@@ -1,0 +1,112 @@
+{
+  "ComponentID": "TPM8837C",
+  "ComponentType": "H-Bridge Motor Driver IC",
+  "Description": "The TPM8837C is a high-voltage H-bridge driver designed to control inductive loads such as DC motors, solenoids, and relays. It provides bidirectional drive capability with a maximum output current of 1 A from a motor supply voltage (VM) ranging from 2.5 V to 17 V. The device features a PWM control interface (IN1/IN2) compatible with 1.8-V, 3.3-V, and 5-V logic levels and includes integrated protection features like undervoltage lockout (UVLO), over-current protection (OCP), and thermal shutdown (TSD) to enhance system reliability.",
+  "KeyParameters": {
+    "Maximum Output Current": "1 A (Continuous)",
+    "Motor Supply Voltage (VM) Range": "2.5 V to 17 V (Operating)",
+    "Logic Supply Voltage (VCC) Compatibility": "1.8 V, 3.3 V, 5 V",
+    "Control Interface": "PWM via IN1/IN2",
+    "Protection Features": "Undervoltage Lockout (UVLO), Over-Current Protection (OCP), Thermal Shutdown (TSD)",
+    "Package Options": "DFN2X2-8L (DFN-8), SOP8",
+    "Operating Junction Temperature Range": "-40°C to 150°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VM",
+      "Functions": [
+        {
+          "FunctionName": "Motor Power",
+          "FunctionDescription": "Motor power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "OUT1",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "H-Bridge output 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "OUT2",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "H-Bridge output 2"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Device ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "IN2",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Bridge input 2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "IN1",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Bridge input 1"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "nSLEEP",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Device enable, active high"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Device power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    }
+  ]
+}

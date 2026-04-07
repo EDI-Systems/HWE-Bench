@@ -1,0 +1,28 @@
+Component ID: W25Q128JV  
+Component Type: 3V 128M-bit Serial Flash Memory with Dual/Quad SPI  
+Description:  
+The W25Q128JV is a 128M-bit (16MB) serial flash memory designed for systems with limited space, pins, and power. It operates from a single 2.7V to 3.6V supply and supports standard SPI, Dual I/O SPI, and Quad I/O SPI interfaces, enabling high-speed data transfer with clock frequencies up to 133MHz. The memory is organized into 65,536 programmable pages of 256 bytes each, with flexible erase options (4KB sector, 32KB block, 64KB block, or full chip erase). It includes features such as software/hardware reset, write protection, security registers, a 64-bit unique ID, and low power consumption down to 1µA in power-down mode, making it suitable for code execution (XIP), data storage, and parameter storage in embedded systems.
+
+Key Parameters:  
+- Memory Density: 128 Mbit (16 MB)  
+- Operating Voltage: 2.7V to 3.6V  
+- SPI Clock Frequency (Max): 133 MHz  
+- Page Size: 256 bytes  
+- Erase Sectors/Blocks: 4,096 sectors (4 KB each) / 256 blocks (64 KB each)  
+- Standby Current: 1 µA (typical, power-down mode)  
+- Data Retention: >20 years  
+- Endurance: 100,000 program/erase cycles per sector  
+- Interface Support: Standard SPI, Dual I/O SPI, Quad I/O SPI  
+- Temperature Range: -40°C to +85°C (industrial)  
+
+Pinout Table:  
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | CS      | Chip Select | Activates device communication when low | Input | Digital, CMOS |
+| 2          | DO (IO1) | Data Output / IO1 | Data output in standard SPI; bidirectional I/O in Dual/Quad modes | I/O | Digital, CMOS |
+| 3          | WP (IO2) | Write Protect / IO2 | Hardware write protect when low; bidirectional I/O in Quad mode | I/O | Digital, CMOS |
+| 4          | GND      | Ground    | Ground reference for power supply | Power | Ground |
+| 5          | DI (IO0) | Data Input / IO0 | Data input in standard SPI; bidirectional I/O in Dual/Quad modes | I/O | Digital, CMOS |
+| 6          | CLK      | Serial Clock | Clock input for SPI communication | Input | Digital, CMOS |
+| 7          | /HOLD (IO3) | Hold / IO3 | Pauses serial communication when low; bidirectional I/O in Quad mode | I/O | Digital, CMOS |
+| 8          | VCC      | Power Supply | 2.7V to 3.6V operating voltage input | Power | Power |

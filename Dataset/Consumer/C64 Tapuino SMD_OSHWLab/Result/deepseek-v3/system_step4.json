@@ -1,0 +1,234 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground/Adjust"
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "MICRO",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PC817",
+          "PinName": "C",
+          "FunctionName": "Cathode"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "AVCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "MICRO",
+          "PinName": "VDD",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "VCC",
+          "FunctionName": "Supply Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PD3",
+          "FunctionName": "Port D Bit 3"
+        },
+        {
+          "ComponentID": "PC817",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "AREF",
+          "FunctionName": "AREF"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PB3",
+          "FunctionName": "Port B Bit 3"
+        },
+        {
+          "ComponentID": "MICRO",
+          "PinName": "CMD",
+          "FunctionName": "Command"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "MOSI",
+          "FunctionName": "MOSI"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PB4",
+          "FunctionName": "Port B Bit 4"
+        },
+        {
+          "ComponentID": "MICRO",
+          "PinName": "DAT0",
+          "FunctionName": "Data Line 0"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "MISO",
+          "FunctionName": "MISO"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PB5",
+          "FunctionName": "Port B Bit 5"
+        },
+        {
+          "ComponentID": "MICRO",
+          "PinName": "CLK",
+          "FunctionName": "Clock"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "SCK",
+          "FunctionName": "SCK"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PC4",
+          "FunctionName": "Port C Bit 4"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PC5",
+          "FunctionName": "Port C Bit 5"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328p",
+          "PinName": "PC6",
+          "FunctionName": "Port C Bit 6"
+        },
+        {
+          "ComponentID": "ICSP",
+          "PinName": "RESET",
+          "FunctionName": "RESET"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "PC817",
+          "PinName": "E",
+          "FunctionName": "Emitter"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground/Adjust"
+        }
+      ]
+    }
+  ]
+}

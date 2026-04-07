@@ -1,0 +1,34 @@
+Component ID: BMI088
+Component Type: High Performance Inertial Measurement Unit (IMU)
+Description: The BMI088 is a high-performance 6-axis IMU designed for drones, robotics, and high-end consumer applications. It integrates a 16-bit triaxial accelerometer and a 16-bit triaxial gyroscope into a single LGA package. The device offers excellent vibration robustness and high temperature stability. It supports both I2C and SPI digital interfaces and features independent power supplies for the accelerometer and gyroscope parts to optimize power management.
+
+Key Parameters:
+- Accelerometer Range +/- 3g, 6g, 12g, 24g
+- Gyroscope Range +/- 125, 250, 500, 1000, 2000 deg/s
+- Supply Voltage VDD 2.4V to 3.6V
+- I/O Voltage VDDIO 1.2V to 3.6V
+- Communication I2C (up to 400kHz) and SPI (up to 10MHz)
+- Accelerometer Noise 160 ug/sqrt(Hz)
+- Gyroscope Noise 0.014 deg/s/sqrt(Hz)
+- Operating Temperature -40 to +85 Celsius
+- Package LGA-16 (3.0 x 4.5 x 0.95 mm)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | INT2 | INT2 | Gyroscope interrupt pin 2 | Output | Signal |
+| 2 | NC | NC | Not internally connected | NC | - |
+| 3 | VDD | Power | Main analog/digital supply voltage | Power | 3.3V |
+| 4 | GNDA | Ground | Analog ground reference | Power | 0V |
+| 5 | CSB2 | CSB2 | Chip select for gyroscope (SPI mode) | Input | Signal |
+| 6 | GNDIO | Ground | Digital I/O ground reference | Power | 0V |
+| 7 | PS | Protocol Select | Protocol select (High = I2C, Low = SPI) | Input | Signal |
+| 8 | SCL/SCK | SCL/SCK | I2C Serial Clock / SPI Serial Clock | Input | Signal |
+| 9 | SDA/SDI | SDA/SDI | I2C Serial Data / SPI Serial Data Input | I/O | Signal |
+| 10 | SDO2 | SDO2 | Gyroscope SPI Serial Data Output | Output | Signal |
+| 11 | VDDIO | Power | Digital I/O supply voltage | Power | 1.8V-3.3V |
+| 12 | INT3 | INT3 | Accelerometer interrupt pin 3 | Output | Signal |
+| 13 | INT4 | INT4 | Accelerometer interrupt pin 4 | Output | Signal |
+| 14 | CSB1 | CSB1 | Chip select for accelerometer (SPI mode) | Input | Signal |
+| 15 | SDO1 | SDO1 | Accelerometer SPI Serial Data Output | Output | Signal |
+| 16 | INT1 | INT1 | Accelerometer interrupt pin 1 | Output | Signal |

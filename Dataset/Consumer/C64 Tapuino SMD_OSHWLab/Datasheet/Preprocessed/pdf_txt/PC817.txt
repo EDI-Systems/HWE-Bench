@@ -1,0 +1,23 @@
+Component ID: PC817
+Component Type: Phototransistor Optocoupler / Optoisolator  
+Description:  
+The PC817X is a 4-pin optocoupler consisting of an infrared LED coupled to a phototransistor, designed to provide electrical isolation and signal transmission between input and output circuits. It offers a wide current transfer ratio (CTR) range, high isolation voltage, and is suitable for applications such as switching power supplies, industrial controls, and appliance interfaces.
+
+Key Parameters:
+- Current Transfer Ratio (CTR): 80% to 600% (IF=5mA, VCE=5V, Ta=25°C)
+- Isolation Voltage (Viso): >5000 Vrms (1 minute, RH<60%)
+- Collector-Emitter Breakdown Voltage (BVCEO): ≥80 V
+- Forward Current (IF) - Continuous: 50 mA (max)
+- Collector Current (IC): 50 mA (max)
+- Collector-Emitter Saturation Voltage (VCE(sat)): 0.1 V to 0.2 V (IC=1mA, IF=5mA)
+- Rise Time (tr) / Fall Time (tf): 4 µs / 3 µs (typical, VCC=5V, IC=2mA, RL=100Ω)
+- Operating Temperature Range: -55°C to +110°C
+- Peak Forward Current (IFP): 1000 mA (1 µs pulse)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | A        | Anode    | Anode of the input infrared LED | Input    | Current-driven, forward voltage ~1.2–1.4V |
+| 2          | C        | Cathode  | Cathode of the input infrared LED | Input    | Return path for LED current |
+| 3          | E        | Emitter  | Emitter of the output phototransistor | Output   | Common/ground reference for output |
+| 4          | C        | Collector| Collector of the output phototransistor | Output   | Output current sink; requires external pull-up/bias |

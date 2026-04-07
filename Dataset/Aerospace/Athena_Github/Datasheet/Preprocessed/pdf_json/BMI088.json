@@ -1,0 +1,200 @@
+{
+  "ComponentID": "BMI088",
+  "ComponentType": "High Performance Inertial Measurement Unit (IMU)",
+  "Description": "The BMI088 is a high-performance 6-axis IMU designed for drones, robotics, and high-end consumer applications. It integrates a 16-bit triaxial accelerometer and a 16-bit triaxial gyroscope into a single LGA package. The device offers excellent vibration robustness and high temperature stability. It supports both I2C and SPI digital interfaces and features independent power supplies for the accelerometer and gyroscope parts to optimize power management.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "INT2",
+      "Functions": [
+        {
+          "FunctionName": "INT2",
+          "FunctionDescription": "Gyroscope interrupt pin 2"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Not internally connected"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main analog/digital supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GNDA",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Analog ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CSB2",
+      "Functions": [
+        {
+          "FunctionName": "CSB2",
+          "FunctionDescription": "Chip select for gyroscope (SPI mode)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GNDIO",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Digital I/O ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PS",
+      "Functions": [
+        {
+          "FunctionName": "Protocol Select",
+          "FunctionDescription": "Protocol select (High = I2C, Low = SPI)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SCL/SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCL/SCK",
+          "FunctionDescription": "I2C Serial Clock / SPI Serial Clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SDA/SDI",
+      "Functions": [
+        {
+          "FunctionName": "SDA/SDI",
+          "FunctionDescription": "I2C Serial Data / SPI Serial Data Input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "SDO2",
+      "Functions": [
+        {
+          "FunctionName": "SDO2",
+          "FunctionDescription": "Gyroscope SPI Serial Data Output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Digital I/O supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V-3.3V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "INT3",
+      "Functions": [
+        {
+          "FunctionName": "INT3",
+          "FunctionDescription": "Accelerometer interrupt pin 3"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "INT4",
+      "Functions": [
+        {
+          "FunctionName": "INT4",
+          "FunctionDescription": "Accelerometer interrupt pin 4"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "CSB1",
+      "Functions": [
+        {
+          "FunctionName": "CSB1",
+          "FunctionDescription": "Chip select for accelerometer (SPI mode)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "SDO1",
+      "Functions": [
+        {
+          "FunctionName": "SDO1",
+          "FunctionDescription": "Accelerometer SPI Serial Data Output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "INT1",
+      "Functions": [
+        {
+          "FunctionName": "INT1",
+          "FunctionDescription": "Accelerometer interrupt pin 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

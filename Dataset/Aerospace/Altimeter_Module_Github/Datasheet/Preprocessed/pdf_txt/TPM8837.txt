@@ -1,0 +1,25 @@
+Component ID: TPM8837C
+Component Type: H-Bridge Motor Driver IC
+Description:
+The TPM8837C is a high-voltage H-bridge driver designed to control inductive loads such as DC motors, solenoids, and relays. It provides bidirectional drive capability with a maximum output current of 1 A from a motor supply voltage (VM) ranging from 2.5 V to 17 V. The device features a PWM control interface (IN1/IN2) compatible with 1.8-V, 3.3-V, and 5-V logic levels and includes integrated protection features like undervoltage lockout (UVLO), over-current protection (OCP), and thermal shutdown (TSD) to enhance system reliability.
+
+Key Parameters:
+- Maximum Output Current: 1 A (Continuous)
+- Motor Supply Voltage (VM) Range: 2.5 V to 17 V (Operating)
+- Logic Supply Voltage (VCC) Compatibility: 1.8 V, 3.3 V, 5 V
+- Control Interface: PWM via IN1/IN2
+- Protection Features: Undervoltage Lockout (UVLO), Over-Current Protection (OCP), Thermal Shutdown (TSD)
+- Package Options: DFN2X2-8L (DFN-8), SOP8
+- Operating Junction Temperature Range: -40°C to 150°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VM | Motor Power | Motor power supply | Power | Power Input |
+| 2 | OUT1 | Output | H-Bridge output 1 | Output | Power Output |
+| 3 | OUT2 | Output | H-Bridge output 2 | Output | Power Output |
+| 4 | GND | Ground | Device ground | Power | Ground |
+| 5 | IN2 | Input | Bridge input 2 | Input | Digital Input |
+| 6 | IN1 | Input | Bridge input 1 | Input | Digital Input |
+| 7 | nSLEEP | Input | Device enable, active high | Input | Digital Input |
+| 8 | VCC | IO Power | Device power supply | Power | Power Input |

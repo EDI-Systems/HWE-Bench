@@ -1,0 +1,49 @@
+Component ID: ATmega328p
+Component Type: 8-bit AVR Microcontroller
+Description: The ATmega328P is a high-performance, low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. It is one of the most popular microcontrollers in the world, famously serving as the brain of the Arduino Uno. It features 32KB of In-System Programmable Flash, 1KB EEPROM, 2KB SRAM, and a rich set of peripherals including 23 general-purpose I/O lines, 32 general-purpose working registers, three flexible timer/counters with compare modes, internal and external interrupts, and a 6- or 8-channel 10-bit ADC.
+
+Key Parameters:
+- Flash Memory: 32 KB
+- SRAM: 2 KB
+- EEPROM: 1 KB
+- Clock Speed: Up to 20 MHz
+- Operating Voltage: 1.8V to 5.5V
+- ADC: 8-channel 10-bit (TQFP package)
+- I/O Pins: 23 programmable I/O lines
+- Package: 32-lead TQFP (shown in schematic)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1 | PD3 | Port D Bit 3 | Digital I/O / INT1 / OC2B | I/O | Digital |
+| 2 | PD4 | Port D Bit 4 | Digital I/O / XCK / T0 | I/O | Digital |
+| 3 | GND | Ground | Digital Ground | Power | 0V |
+| 4 | VCC | Power | Digital supply voltage | Power | 1.8V-5.5V |
+| 5 | GND | Ground | Digital Ground | Power | 0V |
+| 6 | VCC | Power | Digital supply voltage | Power | 1.8V-5.5V |
+| 7 | PB6 | Port B Bit 6 | XTAL1 / TOSC1 | I/O | Signal |
+| 8 | PB7 | Port B Bit 7 | XTAL2 / TOSC2 | I/O | Signal |
+| 9 | PD5 | Port D Bit 5 | Digital I/O / T1 / OC0B | I/O | Digital |
+| 10 | PD6 | Port D Bit 6 | Digital I/O / AIN0 / OC0A | I/O | Digital |
+| 11 | PD7 | Port D Bit 7 | Digital I/O / AIN1 | I/O | Digital |
+| 12 | PB0 | Port B Bit 0 | Digital I/O / ICP1 / CLKO | I/O | Digital |
+| 13 | PB1 | Port B Bit 1 | Digital I/O / OC1A | I/O | Digital |
+| 14 | PB2 | Port B Bit 2 | Digital I/O / SS# / OC1B | I/O | Digital |
+| 15 | PB3 | Port B Bit 3 | Digital I/O / MOSI / OC2A | I/O | Digital |
+| 16 | PB4 | Port B Bit 4 | Digital I/O / MISO | I/O | Digital |
+| 17 | PB5 | Port B Bit 5 | Digital I/O / SCK | I/O | Digital |
+| 18 | AVCC | Power | Analog supply voltage | Power | 1.8V-5.5V |
+| 19 | ADC6 | ADC6 | Analog input channel 6 | Input | Analog |
+| 20 | AREF | AREF | Analog reference pin | Input | Analog |
+| 21 | GND | Ground | Digital Ground | Power | 0V |
+| 22 | ADC7 | ADC7 | Analog input channel 7 | Input | Analog |
+| 23 | PC0 | Port C Bit 0 | Digital I/O / ADC0 | I/O | Digital/Analog |
+| 24 | PC1 | Port C Bit 1 | Digital I/O / ADC1 | I/O | Digital/Analog |
+| 25 | PC2 | Port C Bit 2 | Digital I/O / ADC2 | I/O | Digital/Analog |
+| 26 | PC3 | Port C Bit 3 | Digital I/O / ADC3 | I/O | Digital/Analog |
+| 27 | PC4 | Port C Bit 4 | Digital I/O / ADC4 / SDA | I/O | Digital/Analog |
+| 28 | PC5 | Port C Bit 5 | Digital I/O / ADC5 / SCL | I/O | Digital/Analog |
+| 29 | PC6 | Port C Bit 6 | RESET# / Digital I/O | I/O | Digital |
+| 30 | PD0 | Port D Bit 0 | Digital I/O / RXD | I/O | Digital |
+| 31 | PD1 | Port D Bit 1 | Digital I/O / TXD | I/O | Digital |
+| 32 | PD2 | Port D Bit 2 | Digital I/O / INT0 | I/O | Digital |

@@ -7,7 +7,7 @@ class FullSystemValidator:
         self.netlist_data = self._load_json(netlist_path)
         self.rules_data = self._load_json(rules_path)
         self.pin_to_net_map = {}
-        self.locked_mcu_pins = set()
+        self.locked_mcu_pins = set()  # Track (mcu_id, pin)
         self.results = []
         self.total_numerator = 0
         self.total_denominator = 0
@@ -20,11 +20,14 @@ class FullSystemValidator:
 
     def _initialize_pin_map(self):
         """Standardize mapping: (ComponentID, PinName) -> NetID"""
+        # Netlist is a list under "System_Netlist" key
         netlist = self.netlist_data.get("System_Netlist", [])
         for net in netlist:
             net_id = net.get("net_id")
             for conn in net.get("Connections", []):
                 key = (str(conn["ComponentID"]).strip(), str(conn["PinName"]).strip())
+                # If a pin is connected to multiple nets (e.g. GND), it maps to the last one seen.
+                # In hardware rules, we check if they share ANY common net.
                 if key not in self.pin_to_net_map:
                     self.pin_to_net_map[key] = set()
                 self.pin_to_net_map[key].add(net_id)
@@ -44,6 +47,7 @@ class FullSystemValidator:
             matched = 0
             required = 0
 
+            # --- MODE 1: MCU Function Group & Locking (Bus/Allocation) ---
             if rule_type in ["Bus_Pairing", "Resource_Allocation"]:
                 mcu_id = rule.get("MCU")
                 mcu_groups = self.rules_data["MCU_Function_Groups"].get(mcu_id, {})
@@ -85,11 +89,13 @@ class FullSystemValidator:
                 log = best_log
                 self.locked_mcu_pins.update(best_locked)
 
+            # --- MODE 2: All-Component Direct Connectivity (Point-to-Point) ---
             elif rule_type == "Direct_Link":
                 nodes = rule.get("Nodes", [])
                 required = len(nodes)
                 node_net_sets = [self.pin_to_net_map.get((n["ComponentID"], str(n["PinName"]).strip()), set()) for n in nodes]
                 
+                # Check if there is a common Net ID shared by ALL nodes in the rule
                 common_nets = set.intersection(*node_net_sets) if node_net_sets else set()
                 
                 if common_nets:
@@ -99,6 +105,7 @@ class FullSystemValidator:
                 else:
                     log.append("LINK FAILED: No common Net found between specified nodes.")
 
+            # Record Statistics
             self.total_numerator += matched
             self.total_denominator += required
             status = "PASS" if matched == required and required > 0 else "FAIL"
@@ -119,11 +126,25 @@ class FullSystemValidator:
 
 if __name__ == "__main__":
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    # 修正点1: 增加逗号，确保跳转到父目录下的 Result/deepseek-v3
     NETLIST = os.path.join(BASE_DIR, "..", "Result", "deepseek-v3", "system_step4.json")
+    # NETLIST = os.path.join(BASE_DIR, "..", "Correct", "static.json")
+    # 修正点2: 去掉多余的 "Rule" 层级
     RULES = os.path.join(BASE_DIR, "static_check.json") 
     OUTPUT = os.path.join(BASE_DIR, "rules_report.txt")
+
+    # 调试用：打印路径看看对不对
+    print(f"正在查找 Netlist: {os.path.abspath(NETLIST)}")
+    print(f"正在查找 Rules: {os.path.abspath(RULES)}")
 
     if os.path.exists(NETLIST) and os.path.exists(RULES):
         validator = FullSystemValidator(NETLIST, RULES)
         validator.run_verification()
         validator.generate_report(OUTPUT)
+        print(f"验证完成！结果已保存至: {OUTPUT}")
+        print(f"统计评分: {validator.total_numerator}/{validator.total_denominator}")
+    else:
+        # 如果文件没找到，至少会告诉你缺哪个
+        if not os.path.exists(NETLIST): print(f"错误：找不到 Netlist 文件")
+        if not os.path.exists(RULES): print(f"错误：找不到 Rules 文件")

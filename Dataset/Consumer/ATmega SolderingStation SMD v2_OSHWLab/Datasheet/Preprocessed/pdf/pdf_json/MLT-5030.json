@@ -1,0 +1,53 @@
+{
+  "ComponentID": "MLT-5030",
+  "ComponentType": "Magnetic Acoustic Transducer (Buzzer)",
+  "Description": "The MLT-5030 is a compact magnetic buzzer designed to generate an audible tone. It operates by applying an oscillating square wave voltage across its terminals, causing the internal diaphragm to vibrate. It is characterized by its small SMD package and is suitable for providing acoustic feedback in portable electronic devices.",
+  "KeyParameters": {
+    "Rated Voltage": "3.0 Vp-p",
+    "Operating Voltage Range": "2 to 4 Vp-p",
+    "Minimum Sound Pressure Level (SPL)": "75 dB (at 0.1m, rated voltage)",
+    "Maximum Current Consumption": "100 mA",
+    "Coil Impedance": "12 ohm",
+    "Resonant Frequency": "2700 Hz",
+    "Operating Temperature Range": "-20 to +70 Celsius",
+    "Storage Temperature Range": "-30 to +85 Celsius"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "+",
+      "Functions": [
+        {
+          "FunctionName": "Positive Terminal",
+          "FunctionDescription": "Signal input connected to D5"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "-",
+      "Functions": [
+        {
+          "FunctionName": "Negative Terminal",
+          "FunctionDescription": "System ground connection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "Not Connected",
+          "FunctionDescription": "Mechanical support pin with no electrical connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+Component ID: OLED
+Component Type: 0.96 inch Monochrome OLED Display
+Description: This is a monochrome passive matrix OLED display module with a 0.96-inch diagonal, 128x64 pixel resolution, and an integrated SSD1306BZ controller/driver IC. It communicates via an I2C interface in this configuration. The module includes an internal DC/DC charge pump for power supply generation and features high contrast with no backlight required.
+
+Key Parameters:
+- Display Technology: Passive Matrix OLED
+- Driver IC: SSD1306
+- Resolution: 128 x 64 pixels
+- Interface: I2C
+- Supply Voltage: 3.3V to 5.0V
+- Operating Current: 20mA typical
+- Viewing Angle: Greater than 160 degrees
+- Operating Temperature: -40 to 70 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Primary system ground reference | Power | 0V |
+| 2 | VCC | Power | Main supply voltage input (3.3V - 5V) | Power | 5V |
+| 3 | SCK | SCL | I2C serial clock signal line | Input | 5V |
+| 4 | SDA | SDA | I2C serial data signal line | I/O | 5V |

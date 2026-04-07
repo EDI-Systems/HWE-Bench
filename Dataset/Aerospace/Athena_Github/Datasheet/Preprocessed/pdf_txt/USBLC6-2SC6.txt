@@ -1,0 +1,24 @@
+Component ID: USBLC6
+Component Type: Low Capacitance TVS Diode Array / ESD Protection Device
+Description:
+This component is a bidirectional, low-capacitance TVS diode array designed to protect two high-speed data lines (e.g., USB D+/D-, Ethernet) from electrostatic discharge (ESD), electrical fast transients (EFT), and surge events. It clamps transient overvoltage to a safe level with minimal impact on signal integrity due to its ultra-low junction capacitance and leakage current, making it suitable for high-speed interfaces operating at 5V.
+
+Key Parameters:
+- Reverse Stand-off Voltage (VRWM): 5 V (Max)
+- Breakdown Voltage (VBR): 6 V (Min) to 9 V (Max) @ IR=1mA
+- Peak Pulse Current (Ipp): 6 A (8/20µs)
+- ESD Protection Level (VESD): ±30 kV (Air & Contact, IEC 61000-4-2)
+- Clamping Voltage (Vc): 15 V (Max) @ Ipp=6A (8/20µs)
+- Junction Capacitance (CJ): 1 pF (Max) @ 0V, 1MHz (I/O to GND)
+- Reverse Leakage Current (IR): 0.1 µA (Max) @ VR=5V
+- Operating Temperature Range (TJ): -55°C to +125°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | I/O1 | Input/Output 1 | Protected line 1. Connect to the signal line to be protected. | I/O | Protected Signal Line |
+| 2 | GND | Ground | Common ground reference for the protection circuitry. | PWR | Ground |
+| 3 | I/O2 | Input/Output 2 | Protected line 2. Connect to the signal line to be protected. | I/O | Protected Signal Line |
+| 4 | NC | No Connection | This pin is not internally connected. | NC | No Connection |
+| 5 | GND | Ground | Common ground reference for the protection circuitry. | PWR | Ground |
+| 6 | VCC | Power Supply | Supply voltage pin. Connect to the positive supply rail (e.g., 5V). | PWR | Power Supply |

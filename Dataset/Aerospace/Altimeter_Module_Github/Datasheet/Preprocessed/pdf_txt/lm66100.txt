@@ -1,0 +1,24 @@
+Component ID: LM66100
+Component Type: Integrated Ideal Diode / Power Switch with Reverse Polarity Protection
+Description:
+The LM66100 is a single-input, single-output (SISO) integrated circuit that functions as an ideal diode using an internal P-channel MOSFET. It provides low-loss power path control with reverse current blocking, reverse polarity input protection, and a chip enable function. It is designed to replace a Schottky diode, offering significantly lower forward voltage drop and power loss, and can be used in ORing configurations for power multiplexing.
+
+Key Parameters:
+- Operating Voltage Range (VIN): 1.5 V to 5.5 V
+- Maximum Continuous Output Current (IMAX): 1.5 A
+- On-Resistance (RON): 79 mΩ (typical at VIN = 5 V)
+- Reverse Voltage Standoff on VIN: -6 V (Absolute Maximum)
+- Quiescent Current (IQ, VIN): 150 nA (typical at VIN = 3.6 V)
+- Shutdown Current (ISD, VIN): 120 nA (typical at VIN = 3.6 V)
+- Operating Junction Temperature (TJ): -40°C to 125°C
+- Package: SC-70 (6-pin), Body Size: 2.1 mm x 2.0 mm
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VIN | Input | Device input voltage supply. | Input | Power |
+| 2 | GND | Ground | Device ground reference. | Input | Ground |
+| 3 | CE | Control | Active-low chip enable. A voltage higher than VIN disables the device. Can be connected to VOUT for reverse current protection. Must not be left floating. | Input | Digital Input (Comparator) |
+| 4 | N/C | Not Connected | Not internally connected. Can be tied to GND or left floating. | - | No Connection |
+| 5 | ST | Status | Active-low, open-drain status output. Pulled low when the chip is disabled. High-impedance (Hi-Z) when enabled. Connect to GND if not used. | Output | Open-Drain Output |
+| 6 | VOUT | Output | Device output. | Output | Power |
