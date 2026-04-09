@@ -1,0 +1,21 @@
+Component ID: SS34
+Component Type: Schottky Barrier Rectifier Diode
+Description:
+This component is a surface-mount Schottky barrier rectifier diode designed for high-efficiency power rectification. It features a low forward voltage drop, a metallurgically bonded construction for reliability, and is housed in a DO-214AB (SMC) plastic case. It is ideal for applications requiring high current handling in a compact package, such as switch-mode power supplies, freewheeling diodes, and reverse polarity protection, with a voltage range from 20V to 100V and a continuous current rating of 3.0A.
+
+Key Parameters:
+- Maximum Recurrent Peak Reverse Voltage (VRRM): 20V to 100V (depending on specific SS3x part number)
+- Maximum Average Forward Rectified Current (IO): 3.0 A (at TL=100°C)
+- Maximum Instantaneous Forward Voltage (VF): 0.55V to 0.85V (at 3.0A, depending on voltage rating)
+- Peak Forward Surge Current (IFSM): 80 A (8.3 ms single half sine-wave)
+- Maximum DC Reverse Current (IR): 0.15 mA (at 25°C, rated VDC) / 2 mA (at 100°C, rated VDC)
+- Typical Junction Capacitance (CJ): 300 pF (at 1MHz, 4.0V reverse bias)
+- Thermal Resistance, Junction to Lead (RθJL): 10 °C/W
+- Operating Junction Temperature Range (TJ): -65 to +150 °C
+- Package / Case: DO-214AB (SMC)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode | Anode Terminal | Positive terminal for forward current flow. Identified as the end without the color band. | Terminal | Power |
+| 2 | Cathode | Cathode Terminal | Negative terminal. Identified by a color band on the component body. | Terminal | Power |

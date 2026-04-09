@@ -1,0 +1,20 @@
+Component ID: BAT760
+Component Type: Surface Mount Schottky Barrier Rectifier Diode
+Description: The BAT760-7 is a Schottky diode designed for high-efficiency rectification, featuring a very low forward voltage drop and high conductance. It is constructed with a guard ring for transient protection and is qualified for high-reliability applications, including automotive (AEC-Q101). It is a lead-free, halogen-free, and RoHS-compliant "Green" device in a SOD323 package.
+
+Key Parameters:
+- Peak Repetitive Reverse Voltage (VRRM): 30 V
+- Average Rectified Output Current (IO): 1 A
+- Non-Repetitive Peak Forward Surge Current (IFSM): 5.5 A (8.3ms)
+- Forward Voltage Drop (VF): 270 mV (Typical at IF = 10mA), 350 mV (Typical at IF = 100mA), 550 mV (Max at IF = 1A)
+- Reverse Leakage Current (IR): 10 µA (Max at VR = 5V), 20 µA (Max at VR = 8V), 50 µA (Max at VR = 15V)
+- Total Capacitance (CT): 25 pF (Typical at f = 1MHz, VR = 5V)
+- Power Dissipation (PD): 235 mW
+- Thermal Resistance, Junction to Ambient (RθJA): 426 °C/W
+- Operating Junction Temperature Range (TJ): -65 to +150 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | K | Cathode | Cathode terminal, marked by a band on the package body. | Terminal | Power |
+| 2 | A | Anode | Anode terminal. | Terminal | Power |

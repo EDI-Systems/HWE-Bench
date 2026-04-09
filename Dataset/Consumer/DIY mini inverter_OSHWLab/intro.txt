@@ -1,0 +1,13 @@
+Please design a complete 11-21V DC to high-voltage AC modified sine wave inverter system. The working principle and workflow of the circuit should be structured into the following key stages to ensure safe and efficient power conversion:
+
+1. Input Protection Stage: The workflow begins at the battery input. Design an input stage that includes a 15A DC fuse, reverse polarity protection, and adequate decoupling capacitors to stabilize the 11-21V raw DC input and protect the downstream components from power surges.
+
+2. Auxiliary Power Supply System: To power the control logic, the raw input voltage must be stepped down. Implement a DC-DC buck converter (using an IC like the TPS54331) to generate a stable +9.5V bus for the MOSFET gate drivers. Then, cascade a linear regulator (such as the 78L05) to step the +9.5V down to a clean +5V for the microcontroller and sensors.
+
+3. Push-Pull DC-DC Boost Converter (Step-Up Stage): This is the primary power conversion stage. Use an SG3525 PWM controller to drive a low-side push-pull topology featuring high-current MOSFETs (e.g., NCEP60T12A). These MOSFETs will switch current through the primary windings of a center-tapped step-up transformer. The secondary side will rectify the stepped-up voltage to establish a stable High Voltage DC (HVDC) bus. Include soft-start circuitry and current sensing resistors to prevent transformer saturation and overcurrent.
+
+4. H-Bridge Inverter Stage (DC-AC Conversion): To convert the HVDC into alternating current, design an H-Bridge circuit using high-voltage MOSFETs (e.g., IRF840). The H-Bridge will chop the HVDC bus into a modified sine wave output. Ensure that the gate drive signals from the microcontroller are strictly isolated using optocouplers (e.g., EL357N) to protect the low-voltage control logic from high-voltage transients.
+
+5. Main MCU Control & Monitoring Logic: Incorporate an ATMEGA328P microcontroller as the brain of the system. The MCU's workflow includes generating precise dead-time-injected PWM signals for the H-Bridge to prevent shoot-through. Additionally, use the MCU's ADC channels to continuously monitor the battery voltage via a voltage divider and system temperature via an NTC thermistor. Use these readings to implement active cooling (PWM fan control) and low-battery shutdown.
+
+6. User Interface & Peripherals: Finally, complete the design by adding an I2C breakout for an OLED display and a DS3231 Real-Time Clock module to show system status. Include an RGB LED for visual status indication, an SG3525 enable circuit controlled by the MCU, and standard ICSP/Serial headers for bootloader burning and firmware programming.

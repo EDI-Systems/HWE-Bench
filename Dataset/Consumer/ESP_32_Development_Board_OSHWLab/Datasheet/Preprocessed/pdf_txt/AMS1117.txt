@@ -1,0 +1,22 @@
+Component ID: AMS1117
+Component Type: Low Dropout (LDO) Linear Voltage Regulator
+Description:
+The AMS1117 is a series of three-terminal, positive, low-dropout linear voltage regulators capable of providing up to 1A of output current. It is available in both adjustable and fixed output voltage versions (1.5V, 1.8V, 2.5V, 2.85V, 3.3V, 5.0V). The device is designed to operate with a very low input-to-output voltage differential, with a guaranteed maximum dropout voltage of 1.3V at full load, making it efficient for converting a higher input voltage to a stable, lower output voltage. It features internal current limiting and thermal protection and is offered in SOT-223, TO-252 (DPAK), and SO-8 packages.
+
+Key Parameters:
+- **Output Current (Max)**: 1A
+- **Dropout Voltage (Max)**: 1.3V (at Iout = 1A)
+- **Line Regulation (Max)**: 0.2%
+- **Load Regulation (Max)**: 0.4%
+- **Fixed Output Voltages**: 1.5V, 1.8V, 2.5V, 2.85V, 3.3V, 5.0V
+- **Adjustable Reference Voltage**: 1.25V (Typical)
+- **Input Voltage (Absolute Max)**: 15V
+- **Operating Junction Temperature**: -40°C to +125°C
+- **Package Thermal Resistance (θJA)**: SOT-223: 90°C/W, TO-252: 80°C/W, SO-8: 160°C/W
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND/ADJ | Ground / Adjust | For fixed-voltage versions, this pin is ground. For adjustable versions, this pin is the adjustment input. | Input | Analog, Ground |
+| 2 | VOUT | Output Voltage | Regulated output voltage. Must be connected to a capacitor for stability. | Output | Power Output |
+| 3 | VIN | Input Voltage | Unregulated input voltage supply. Must be connected to a capacitor. | Input | Power Input |

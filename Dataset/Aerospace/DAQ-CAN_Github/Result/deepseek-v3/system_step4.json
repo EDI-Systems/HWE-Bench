@@ -1,0 +1,344 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VCC / VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data"
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "I/O 2",
+          "FunctionName": "Input/Output 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data"
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "I/O 1",
+          "FunctionName": "Input/Output 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "I/O 1",
+          "FunctionName": "Input/Output 1"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RA0/D+",
+          "FunctionName": "USB D+"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "I/O 2",
+          "FunctionName": "Input/Output 2"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RA1/D-",
+          "FunctionName": "USB D-"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "DMN63D8",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RC5",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "DMN63D8",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "G5Q-1A",
+          "PinName": "COIL_1",
+          "FunctionName": "Coil Terminal"
+        },
+        {
+          "ComponentID": "1N4148WX",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "DMN63D8",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "G5Q-1A",
+          "PinName": "COIL_2",
+          "FunctionName": "Coil Terminal"
+        },
+        {
+          "ComponentID": "1N4148WX",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "TXCAN",
+          "FunctionName": "CAN Transmit"
+        },
+        {
+          "ComponentID": "MCP2562",
+          "PinName": "TXD",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "RXCAN",
+          "FunctionName": "CAN Receive"
+        },
+        {
+          "ComponentID": "MCP2562",
+          "PinName": "RXD",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "SCK",
+          "FunctionName": "SPI Clock"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RC1/ICSPCLK",
+          "FunctionName": "GPIO / Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "SI",
+          "FunctionName": "SPI Data In"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RC4",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "SO",
+          "FunctionName": "SPI Data Out"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RC2",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "CS",
+          "FunctionName": "Chip Select"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RC3",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "!INT",
+          "FunctionName": "Interrupt"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "RA5",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "OSC1",
+          "FunctionName": "Oscillator"
+        },
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "OSC2",
+          "FunctionName": "Oscillator"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP2562",
+          "PinName": "VDD",
+          "FunctionName": "Supply"
+        },
+        {
+          "ComponentID": "MCP2562",
+          "PinName": "VIO",
+          "FunctionName": "Supply / Ground"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "MCP2515",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP2562",
+          "PinName": "STBY",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "PIC16F1455",
+          "PinName": "VUSB3V3",
+          "FunctionName": "USB Power"
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "Protected USB Interface & Power Supply": [
+    {
+      "net_id": "net_usb_vbus",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "VCC / VBUS" }
+      ]
+    }
+  ]
+}

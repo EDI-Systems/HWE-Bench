@@ -1,0 +1,410 @@
+{
+  "ComponentID": "ESP32",
+  "ComponentType": "Wi-Fi + Bluetooth + BLE MCU Module",
+  "Description": "The ESP32-WROOM-32E-N8 is a powerful, generic Wi-Fi+BT+BLE MCU module based on the ESP32-D0WD-V3 chip. It is designed for a wide range of applications, from low-power sensor networks to demanding tasks like voice encoding and music streaming. The module features a dual-core processor, integrated antenna, and extensive peripherals. The \"N8\" suffix specifically indicates that this version is equipped with 8MB of onboard SPI flash memory.",
+  "KeyParameters": {
+    "Microcontroller": "ESP32-D0WD-V3 (Dual-core Xtensa® 32-bit LX6)",
+    "Clock Frequency": "Adjustable from 80 MHz to 240 MHz",
+    "Flash Memory": "8 MB",
+    "Operating Voltage": "3.0V to 3.6V (3.3V Typical)",
+    "Connectivity": "802.11 b/g/n Wi-Fi and Bluetooth V4.2 BR/EDR & BLE"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "3V3",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "3.3V power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Chip-enable / Reset (Active High)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SENSOR_VP",
+      "Functions": [
+        {
+          "FunctionName": "ADC",
+          "FunctionDescription": "GPIO36, ADC1_CH0, RTC_GPIO0"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SENSOR_VN",
+      "Functions": [
+        {
+          "FunctionName": "ADC",
+          "FunctionDescription": "GPIO39, ADC1_CH3, RTC_GPIO3"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "IO34",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO34, ADC1_CH6, RTC_GPIO4"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "IO35",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO35, ADC1_CH7, RTC_GPIO5"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "IO32",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO32, ADC1_CH4, RTC_GPIO9"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "IO33",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO33, ADC1_CH5, RTC_GPIO8"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "IO25",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO25, ADC2_CH8, RTC_GPIO6, DAC_1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "IO26",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO26, ADC2_CH9, RTC_GPIO7, DAC_2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "IO27",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO27, ADC2_CH7, RTC_GPIO17"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "IO14",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO14, ADC2_CH6, RTC_GPIO16, MTMS"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "IO12",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO12, ADC2_CH5, RTC_GPIO15, MTDI"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "IO13",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO13, ADC2_CH4, RTC_GPIO14, MTCK"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "IO15",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO15, ADC2_CH3, RTC_GPIO13, MTDO"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "IO2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO2, ADC2_CH2, RTC_GPIO12"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "IO0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO0, ADC2_CH1, RTC_GPIO11 (Boot Mode)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "IO4",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO4, ADC2_CH0, RTC_GPIO10"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "IO16",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO16"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "IO17",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO17"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "IO5",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO5, VSPI_CS"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "30",
+      "PinName": "IO18",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO18, VSPI_CLK"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "31",
+      "PinName": "IO19",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO19, VSPI_MISO"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "32",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "No internal connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "33",
+      "PinName": "IO21",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO21, I2C SDA"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "34",
+      "PinName": "RXD0",
+      "Functions": [
+        {
+          "FunctionName": "UART RX",
+          "FunctionDescription": "GPIO3, U0RXD"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "35",
+      "PinName": "TXD0",
+      "Functions": [
+        {
+          "FunctionName": "UART TX",
+          "FunctionDescription": "GPIO1, U0TXD"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "36",
+      "PinName": "IO22",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO22, I2C SCL"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "37",
+      "PinName": "IO23",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "GPIO23, VSPI_MOSI"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "38",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "39",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "EP",
+          "FunctionDescription": "Thermal/Shield ground (Exposed Pad)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

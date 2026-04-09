@@ -1,0 +1,797 @@
+{
+  "6-Axis IMU and Sensor Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDDIO",
+          "FunctionName": "I/O Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO21",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "SDA",
+          "FunctionName": "Serial Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO22",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "SCL",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ],
+  "GPIO Pin Headers and Expansion Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ],
+  "ESP32-WROOM-32E Core Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Regulator Output"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDDIO",
+          "FunctionName": "I/O Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "EP"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "EP",
+          "FunctionName": "Exposed Pad"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "RXD0",
+          "FunctionName": "UART RX"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "TXD",
+          "FunctionName": "UART Transmit"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "TXD0",
+          "FunctionName": "UART TX"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RXD",
+          "FunctionName": "UART Receive"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO21",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "SDA",
+          "FunctionName": "Serial Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO22",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "SCL",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VREGIN",
+          "FunctionName": "Regulator Input"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    }
+  ],
+  "Automatic Download and Reset Circuit": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "EP",
+          "FunctionName": "Exposed Pad"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Source (S)",
+          "FunctionName": "Common / Low Side"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Source (S)",
+          "FunctionName": "Common / Low Side"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Regulator Output"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VREGIN",
+          "FunctionName": "Regulator Input"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VBUS",
+          "FunctionName": "VBUS Sense"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RTS",
+          "FunctionName": "Request to Send"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Gate (G)",
+          "FunctionName": "Control Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RXD",
+          "FunctionName": "UART Receive"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "TXD0",
+          "FunctionName": "UART TX"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "TXD",
+          "FunctionName": "UART Transmit"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "RXD0",
+          "FunctionName": "UART RX"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "DTR",
+          "FunctionName": "Data Terminal Ready"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Gate (G)",
+          "FunctionName": "Control Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Drain (D)",
+          "FunctionName": "Output / High Side"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Drain (D)",
+          "FunctionName": "Output / High Side"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO0",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Regulator Output"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ],
+  "Power Management and USB Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VREGIN",
+          "FunctionName": "Regulator Input"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VBUS",
+          "FunctionName": "VBUS Sense"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "1050170001",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "1050170001",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "EP",
+          "FunctionName": "Exposed Pad"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Source (S)",
+          "FunctionName": "Common / Low Side"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Regulator Output"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDDIO",
+          "FunctionName": "I/O Power"
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RTS",
+          "FunctionName": "Request to Send"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Gate (G)",
+          "FunctionName": "Control Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RXD",
+          "FunctionName": "UART Receive"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "TXD0",
+          "FunctionName": "UART TX"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "TXD",
+          "FunctionName": "UART Transmit"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "RXD0",
+          "FunctionName": "UART RX"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "2N7002",
+          "PinName": "Drain (D)",
+          "FunctionName": "Output / High Side"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "ComponentID": "SX1308",
+  "ComponentType": "High-Efficiency Step-Up (Boost) Converter",
+  "Description": "The SX1308 is a constant frequency, 6-pin SOT23 current mode step-up converter intended for small, low power applications. The SX1308 switches at 1.2MHz and allows the use of tiny, low cost capacitors and inductors 2mm or less in height. Internal soft-start results in small inrush current and extends battery life. It features automatic shifting to pulse frequency modulation mode at light loads. The SX1308 includes under-voltage lockout, current limiting, and thermal overload protection to prevent damage in the event of an output overload.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch Output",
+          "FunctionDescription": "Output switching node connected to inductor"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "FB",
+      "Functions": [
+        {
+          "FunctionName": "Feedback",
+          "FunctionDescription": "Feedback input for output voltage regulation"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Drive high to turn on; low to shut down"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Voltage",
+          "FunctionDescription": "Power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2V-24V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "Not Connected",
+          "FunctionDescription": "No internal electrical connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    }
+  ]
+}

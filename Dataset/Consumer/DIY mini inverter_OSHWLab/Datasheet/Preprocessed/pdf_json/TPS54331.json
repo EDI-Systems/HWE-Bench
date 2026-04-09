@@ -1,0 +1,113 @@
+{
+  "ComponentID": "TPS54331",
+  "ComponentType": "Non-synchronous Step-Down (Buck) DC-DC Converter with Integrated High-Side MOSFET",
+  "Description": "The TPS54331 is a monolithic buck converter designed to deliver up to 3 A of continuous output current from an input voltage range of 3.5 V to 28 V. It integrates an 80 mΩ high-side MOSFET and employs current-mode control with internal slope compensation, enabling stable operation with ceramic output capacitors. Key features include a fixed 570 kHz switching frequency, pulse-skipping Eco-mode™ for high efficiency at light loads, adjustable output voltage down to 0.8 V, programmable undervoltage lockout (UVLO), and comprehensive protection functions such as cycle-by-cycle current limit, frequency foldback, overvoltage transient protection, and thermal shutdown. It is offered in 8-pin SOIC and thermally enhanced SOIC PowerPAD packages.",
+  "KeyParameters": {
+    "Input Voltage Range": "3.5 V to 28 V",
+    "Continuous Output Current": "Up to 3 A",
+    "High-Side MOSFET On-Resistance (RDS(on))": "80 mΩ (typical)",
+    "Switching Frequency": "Fixed 570 kHz (typical)",
+    "Output Voltage Range": "Adjustable down to 0.8 V",
+    "Shutdown Quiescent Current": "1 μA (typical)",
+    "Operating Junction Temperature Range": "-40°C to 150°C",
+    "Package Options": "SOIC-8 (4.90 mm × 3.90 mm) and SO PowerPAD-8"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "BOOT",
+      "Functions": [
+        {
+          "FunctionName": "Bootstrap",
+          "FunctionDescription": "Connection for bootstrap capacitor to drive the high-side MOSFET; requires 0.1 μF capacitor to PH pin."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog, Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Voltage",
+          "FunctionDescription": "Supply input pin; accepts 3.5 V to 28 V."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Enable control; pull below 1.25 V to disable, float to enable. Also used for programming input undervoltage lockout (UVLO)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital, Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SS/TR",
+      "Functions": [
+        {
+          "FunctionName": "Soft-Start/Tracking",
+          "FunctionDescription": "Soft-start control; connect capacitor to set soft-start time. Can be used for output voltage tracking."
+        }
+      ],
+      "PinType": "Input/Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VSENSE",
+      "Functions": [
+        {
+          "FunctionName": "Voltage Feedback",
+          "FunctionDescription": "Inverting input of the error amplifier; connect to output voltage divider for regulation."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "COMP",
+      "Functions": [
+        {
+          "FunctionName": "Compensation",
+          "FunctionDescription": "Output of the error amplifier; connect external compensation network."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Device ground reference."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "PH",
+      "Functions": [
+        {
+          "FunctionName": "Switch Node",
+          "FunctionDescription": "Connection to the internal high-side MOSFET drain and external inductor."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    }
+  ]
+}

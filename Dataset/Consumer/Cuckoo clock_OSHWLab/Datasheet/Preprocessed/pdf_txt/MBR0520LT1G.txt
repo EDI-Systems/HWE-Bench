@@ -1,0 +1,18 @@
+Component ID: MBR0520LT1G
+Component Type: Surface Mount Schottky Power Rectifier
+Description: The MBR0520LT1G is a Schottky barrier rectifier designed for use in low-voltage, high-frequency rectification, freewheeling, and polarity protection applications. It is housed in the compact SOD-123 surface-mount package. The device features a very low forward voltage drop and extremely fast switching speeds, which significantly reduces power dissipation and improves efficiency in portable and battery-powered electronics.
+
+Key Parameters:
+- Peak Repetitive Reverse Voltage: 20V
+- Average Rectified Forward Current: 0.5A
+- Peak Forward Surge Current: 5.5A
+- Maximum Forward Voltage: 0.385V (at 0.5A, 25 Celsius)
+- Maximum Reverse Current: 250uA (at 20V, 25 Celsius)
+- Operating Junction Temperature: -65 to +125 Celsius
+- Package: SOD-123
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | K | Cathode | Negative terminal, indicated by a polarity band | Passive | Output |
+| 2 | A | Anode | Positive terminal | Passive | Input |

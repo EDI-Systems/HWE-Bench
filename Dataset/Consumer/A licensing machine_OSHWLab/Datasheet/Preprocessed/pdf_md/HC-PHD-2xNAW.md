@@ -1,0 +1,20 @@
+1、Current Rating: 3A AC, DC  
+2、Voltage Rating: 250V AC, DC  
+3、Temperatuer Range: -25℃\~ +85℃  
+4、Contact Resistance: 20mΩ Max  
+5、Insulation Resistance：1000mΩ Min  
+6、Withstanding Voltang：800V AC/minute  
+7、Material: Wafer Nylon66 UL94-VO  
+PIN Brass Tin-plated
+
+# SPECIFICATIONS
+
+![](images/7faf2cddcac317ccf9ee3c2915f8dab425e85bd6da1703e21f0cf843a02dea8f.jpg)
+
+<table><tr><td rowspan=3 colspan=1>Circuit</td><td rowspan=3 colspan=1>Part NO.</td><td rowspan=2 colspan=2>Dimensions mm</td><td></td></tr><tr><td rowspan=21 colspan=1>BC</td></tr><tr><td rowspan=1 colspan=1>A</td><td rowspan=1 colspan=1>B</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>HC-PHD-2x2AW</td><td rowspan=1 colspan=1>2.00</td><td rowspan=1 colspan=1>6.00</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>HC-PHD-2x3AW</td><td rowspan=1 colspan=1>4.00</td><td rowspan=1 colspan=1>8.00</td></tr><tr><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>HC-PHD-2x4AW</td><td rowspan=1 colspan=1>6.00</td><td rowspan=1 colspan=1>10.00</td></tr><tr><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>HC-PHD-2x5AW</td><td rowspan=1 colspan=1>8.00</td><td rowspan=1 colspan=1>12.00</td></tr><tr><td rowspan=1 colspan=1>6</td><td rowspan=1 colspan=1>HC-PHD-2x6AW</td><td rowspan=1 colspan=1>10.00</td><td rowspan=1 colspan=1>14.00</td></tr><tr><td rowspan=1 colspan=1>7</td><td rowspan=1 colspan=1>HC-PHD-2x7AW</td><td rowspan=1 colspan=1>12.00</td><td rowspan=1 colspan=1>16.00</td></tr><tr><td rowspan=1 colspan=1>8</td><td rowspan=1 colspan=1>HC-PHD-2x8AW</td><td rowspan=1 colspan=1>14.00</td><td rowspan=1 colspan=1>18.00</td></tr><tr><td rowspan=1 colspan=1>9</td><td rowspan=1 colspan=1>HC-PHD-2x9AW</td><td rowspan=1 colspan=1>16.00</td><td rowspan=1 colspan=1>20.00</td></tr><tr><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>HC-PHD-2x10AW</td><td rowspan=1 colspan=1>18.00</td><td rowspan=1 colspan=1>22.00</td></tr><tr><td rowspan=1 colspan=1>11</td><td rowspan=1 colspan=1>HC-PHD-2x11AW</td><td rowspan=1 colspan=1>20.00</td><td rowspan=1 colspan=1>24.00</td></tr><tr><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>HC-PHD-2x12AW</td><td rowspan=1 colspan=1>22.00</td><td rowspan=1 colspan=1>26.00</td></tr><tr><td rowspan=1 colspan=1>13</td><td rowspan=1 colspan=1>HC-PHD-2x13AW</td><td rowspan=1 colspan=1>24.00</td><td rowspan=1 colspan=1>28.00</td></tr><tr><td rowspan=1 colspan=1>14</td><td rowspan=1 colspan=1>HC-PHD-2x14AW</td><td rowspan=1 colspan=1>26.00</td><td rowspan=1 colspan=1>30.00</td></tr><tr><td rowspan=1 colspan=1>15</td><td rowspan=1 colspan=1>HC-PHD-2x15AW</td><td rowspan=1 colspan=1>28.00</td><td rowspan=1 colspan=1>32.00</td></tr><tr><td rowspan=1 colspan=1>16</td><td rowspan=1 colspan=1>HC-PHD-2x16AW</td><td rowspan=1 colspan=1>30.00</td><td rowspan=1 colspan=1>34.00</td></tr><tr><td rowspan=1 colspan=1>17</td><td rowspan=1 colspan=1>HC-PHD-2x17AW</td><td rowspan=1 colspan=1>32.00</td><td rowspan=1 colspan=1>36.00</td></tr><tr><td rowspan=1 colspan=1>18</td><td rowspan=1 colspan=1>HC-PHD-2x18AW</td><td rowspan=1 colspan=1>34.00</td><td rowspan=1 colspan=1>38.00</td></tr><tr><td rowspan=1 colspan=1>19</td><td rowspan=1 colspan=1>HC-PHD-2x19AW</td><td rowspan=1 colspan=1>36.00</td><td rowspan=1 colspan=1>40.00</td></tr><tr><td rowspan=1 colspan=1>20</td><td rowspan=1 colspan=1>HC-PHD-2x20AW</td><td rowspan=1 colspan=1>38.00</td><td rowspan=1 colspan=1>42.00</td></tr></table>
+
+# 深圳市华灿天禄电子有限公司
+
+ShenzhenhuacantianluELECTRONICS CO.,LTD
+
+<table><tr><td rowspan=1 colspan=1>产品名称TITLE</td><td rowspan=1 colspan=1>PHD (2.0)双排定位弯针</td><td rowspan=1 colspan=1>版本REV.</td><td rowspan=1 colspan=1>A</td></tr><tr><td rowspan=1 colspan=1>产品料号PART NO.</td><td rowspan=1 colspan=1>HC-PHD-2xNAW</td><td rowspan=1 colspan=1>单位UNITS</td><td rowspan=1 colspan=1>mm</td></tr><tr><td rowspan=1 colspan=1>材料MATERIAL</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>页次SHEET</td><td rowspan=1 colspan=1>1/1</td></tr></table>

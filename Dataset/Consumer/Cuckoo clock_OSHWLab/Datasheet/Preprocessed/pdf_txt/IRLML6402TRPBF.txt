@@ -1,0 +1,21 @@
+Component ID: IRLM
+Component Type: P-Channel Enhancement Mode Power MOSFET
+Description:
+This is a P-Channel MOSFET utilizing advanced trench technology, designed for efficient power switching in a compact SOT-23 package. Its primary function is to act as a voltage-controlled switch, connecting or disconnecting a load from a power source. Key features include a low on-state resistance (Rds(on)) and low gate charge, enabling high-efficiency switching for applications such as load/power switching, interfacing, and logic level shifting. It is characterized by a -20V drain-source voltage rating and a continuous drain current of -4.1A.
+
+Key Parameters:
+- Drain-Source Voltage (VDSS): -20 V
+- Continuous Drain Current (ID): -4.1 A (Tc=25°C)
+- Drain-Source On-State Resistance (Rds(on)): 52 mΩ max @ Vgs=-4.5V, Id=-4.1A
+- Gate Threshold Voltage (Vgs(th)): -0.45V to -1.0V (Id=-250µA)
+- Total Gate Charge (Qg): 7.8 nC (Typ)
+- Input Capacitance (Ciss): 740 pF (Typ)
+- Maximum Power Dissipation (PD): 1.7 W
+- Gate-Source Voltage (Vgs): ±12 V (Max)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | G | Gate | Control terminal. Voltage applied here relative to the source controls the channel conductivity. | Input | High Impedance, Voltage Controlled |
+| 2 | D | Drain | Output/Current terminal. For a P-Channel MOSFET, this is typically connected to the load or the more negative supply side. | Output | Power, Switched Output |
+| 3 | S | Source | Input/Current terminal. For a P-Channel MOSFET, this is typically connected to the positive supply rail. | Input | Power, Supply Input |

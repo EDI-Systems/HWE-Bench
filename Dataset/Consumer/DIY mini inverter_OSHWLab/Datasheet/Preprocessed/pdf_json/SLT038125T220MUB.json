@@ -1,0 +1,43 @@
+{
+  "ComponentID": "SLT038125T220MUB",
+  "ComponentType": "Through-Hole (Axial Lead) Toroidal (Magnetic Ring) Inductor",
+  "Description": "This is a vertical, through-hole mounted toroidal inductor designed for power filtering and energy storage in electronic circuits. It consists of a magnetic core (T038125) wound with insulated copper wire, providing a nominal inductance of 22 µH. Its primary function is to oppose changes in current, commonly used in DC-DC converters, power supply input/output filtering, and noise suppression applications.",
+  "KeyParameters": {
+    "**Inductance (L)**": "22 µH ±20% (Tested at 1kHz, 0.25V)",
+    "**DC Resistance (DCR)**": "32 mΩ MAX",
+    "**Rated RMS Current (Irms)**": "3.0 A (Defined by temperature rise ΔT ≤ 40°C)",
+    "**Core Material / Type**": "125 (Material Code), T038125 (Toroid Size)",
+    "**Winding Specifications**": "16.5 turns of Φ0.60mm 2UEW-F insulated copper wire",
+    "**Operating Temperature Range**": "Verified from -25°C to +100°C (Reliability Tests)",
+    "**Lead Diameter (D)**": "0.60 mm ±0.05",
+    "**Body Height (C)**": "10.0 mm ±2.0",
+    "**Body Diameter / Width (A)**": "12.5 mm MAX",
+    "**Body Thickness / Depth (B)**": "6.5 mm MAX"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Lead 1",
+      "Functions": [
+        {
+          "FunctionName": "Inductor Terminal 1",
+          "FunctionDescription": "First terminal of the wound inductor coil. Electrically identical to Lead 2."
+        }
+      ],
+      "PinType": "Through-Hole Lead",
+      "ElectricalType": "Passive, Inductive"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Lead 2",
+      "Functions": [
+        {
+          "FunctionName": "Inductor Terminal 2",
+          "FunctionDescription": "Second terminal of the wound inductor coil. Electrically identical to Lead 1."
+        }
+      ],
+      "PinType": "Through-Hole Lead",
+      "ElectricalType": "Passive, Inductive"
+    }
+  ]
+}

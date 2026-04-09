@@ -1,0 +1,23 @@
+Component ID: 78L05
+Component Type: Positive Fixed-Voltage Linear Regulator (LDO)
+Description:
+The 78LXX series are monolithic integrated circuit voltage regulators designed to provide a stable, fixed positive output voltage from a higher, unregulated input voltage. They are suitable for low-power applications requiring up to 100mA of supply current and include built-in protection features such as thermal overload protection and short-circuit current limiting.
+
+Key Parameters:
+- **Output Voltage Options (Fixed)**: 5V, 6V, 8V, 9V, 10V, 12V, 15V, 24V
+- **Maximum Output Current**: 100 mA
+- **Maximum Input Voltage (Vi)**: 30 V (for Vo=5V,8V); 35 V (for Vo=12V,15V)
+- **Dropout Voltage (Typical)**: 1.7 V (for 78L05, Tj=25°C)
+- **Line Regulation (Max)**: 150 mV (7V≤Vi≤20V, for 78L05)
+- **Load Regulation (Max)**: 60 mV (Io=1mA~100mA, for 78L05)
+- **Quiescent Current (Max)**: 5.5 mA
+- **Ripple Rejection (Min)**: 40 dB (f=120Hz, for 78L05)
+- **Operating Junction Temperature**: -20°C to +120°C
+- **Maximum Power Dissipation**: 700 mW
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | VIN      | Input    | Unregulated input voltage | Input    | Power In        |
+| 2          | GND      | Ground   | Common ground / heat sink connection | Common   | Ground          |
+| 3          | VOUT     | Output   | Regulated output voltage | Output   | Power Out       |

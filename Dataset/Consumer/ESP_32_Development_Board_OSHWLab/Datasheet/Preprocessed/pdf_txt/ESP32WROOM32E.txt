@@ -1,0 +1,47 @@
+Component ID: ESP32
+Component Type: Wi-Fi + Bluetooth + BLE MCU Module
+Description: The ESP32-WROOM-32E-N8 is a powerful, generic Wi-Fi+BT+BLE MCU module based on the ESP32-D0WD-V3 chip. It is designed for a wide range of applications, from low-power sensor networks to demanding tasks like voice encoding and music streaming. The module features a dual-core processor, integrated antenna, and extensive peripherals. The "N8" suffix specifically indicates that this version is equipped with 8MB of onboard SPI flash memory.
+
+Key Parameters:
+- Microcontroller: ESP32-D0WD-V3 (Dual-core Xtensa® 32-bit LX6)
+- Clock Frequency: Adjustable from 80 MHz to 240 MHz
+- Flash Memory: 8 MB
+- Operating Voltage: 3.0V to 3.6V (3.3V Typical)
+- Connectivity: 802.11 b/g/n Wi-Fi and Bluetooth V4.2 BR/EDR & BLE
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Ground reference | Power | 0V |
+| 2 | 3V3 | Power | 3.3V power supply input | Power | 3.3V |
+| 3 | EN | Enable | Chip-enable / Reset (Active High) | Input | Digital |
+| 4 | SENSOR_VP | ADC | GPIO36, ADC1_CH0, RTC_GPIO0 | Input | Analog |
+| 5 | SENSOR_VN | ADC | GPIO39, ADC1_CH3, RTC_GPIO3 | Input | Analog |
+| 6 | IO34 | GPIO | GPIO34, ADC1_CH6, RTC_GPIO4 | Input | Digital/Analog |
+| 7 | IO35 | GPIO | GPIO35, ADC1_CH7, RTC_GPIO5 | Input | Digital/Analog |
+| 8 | IO32 | GPIO | GPIO32, ADC1_CH4, RTC_GPIO9 | I/O | Digital/Analog |
+| 9 | IO33 | GPIO | GPIO33, ADC1_CH5, RTC_GPIO8 | I/O | Digital/Analog |
+| 10 | IO25 | GPIO | GPIO25, ADC2_CH8, RTC_GPIO6, DAC_1 | I/O | Digital/Analog |
+| 11 | IO26 | GPIO | GPIO26, ADC2_CH9, RTC_GPIO7, DAC_2 | I/O | Digital/Analog |
+| 12 | IO27 | GPIO | GPIO27, ADC2_CH7, RTC_GPIO17 | I/O | Digital/Analog |
+| 13 | IO14 | GPIO | GPIO14, ADC2_CH6, RTC_GPIO16, MTMS | I/O | Digital/Analog |
+| 14 | IO12 | GPIO | GPIO12, ADC2_CH5, RTC_GPIO15, MTDI | I/O | Digital/Analog |
+| 15 | GND | Ground | Ground reference | Power | 0V |
+| 16 | IO13 | GPIO | GPIO13, ADC2_CH4, RTC_GPIO14, MTCK | I/O | Digital/Analog |
+| 23 | IO15 | GPIO | GPIO15, ADC2_CH3, RTC_GPIO13, MTDO | I/O | Digital/Analog |
+| 24 | IO2 | GPIO | GPIO2, ADC2_CH2, RTC_GPIO12 | I/O | Digital/Analog |
+| 25 | IO0 | GPIO | GPIO0, ADC2_CH1, RTC_GPIO11 (Boot Mode) | I/O | Digital/Analog |
+| 26 | IO4 | GPIO | GPIO4, ADC2_CH0, RTC_GPIO10 | I/O | Digital/Analog |
+| 27 | IO16 | GPIO | GPIO16 | I/O | Digital |
+| 28 | IO17 | GPIO | GPIO17 | I/O | Digital |
+| 29 | IO5 | GPIO | GPIO5, VSPI_CS | I/O | Digital |
+| 30 | IO18 | GPIO | GPIO18, VSPI_CLK | I/O | Digital |
+| 31 | IO19 | GPIO | GPIO19, VSPI_MISO | I/O | Digital |
+| 32 | NC | NC | No internal connection | NC | - |
+| 33 | IO21 | GPIO | GPIO21, I2C SDA | I/O | Digital |
+| 34 | RXD0 | UART RX | GPIO3, U0RXD | I/O | Digital |
+| 35 | TXD0 | UART TX | GPIO1, U0TXD | I/O | Digital |
+| 36 | IO22 | GPIO | GPIO22, I2C SCL | I/O | Digital |
+| 37 | IO23 | GPIO | GPIO23, VSPI_MOSI | I/O | Digital |
+| 38 | GND | Ground | Ground reference | Power | 0V |
+| 39 | GND | EP | Thermal/Shield ground (Exposed Pad) | Power | 0V |

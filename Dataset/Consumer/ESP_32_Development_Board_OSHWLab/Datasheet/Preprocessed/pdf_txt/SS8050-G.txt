@@ -1,0 +1,21 @@
+Component ID: SS8050-G
+Component Type: NPN Bipolar Junction Transistor (BJT)
+Description:
+The SS8050-G is an NPN bipolar junction transistor in a SOT-23 surface-mount package, designed for general-purpose amplification and switching applications. It functions as a current-controlled device where a small base current controls a larger collector current, enabling signal amplification, driving loads, or acting as an electronic switch. It features a high DC current gain and a transition frequency suitable for low to medium frequency circuits.
+
+Key Parameters:
+- Collector-Emitter Voltage (VCEO): 25 V (Max)
+- Collector Current (Ic): 1.5 A (Max)
+- Collector Power Dissipation (Pc): 300 mW (Max)
+- DC Current Gain (hFE): 200 to 350 (at VCE=1V, Ic=100mA)
+- Collector-Emitter Saturation Voltage (VCE(sat)): 0.5 V (Max, at Ic=800mA, IB=80mA)
+- Transition Frequency (fT): 100 MHz (Min)
+- Thermal Resistance (RθJA): 417 °C/W
+- Junction Temperature (Tj): 150 °C (Max)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | BASE | Control Input | Controls the flow of current between the collector and emitter. | Input | Analog, Current-Controlled |
+| 2 | EMITTER | Common / Current Output | The terminal from which the majority of current flows out; typically connected to ground or a lower potential. | Output | Analog, Current Sink |
+| 3 | COLLECTOR | Power Input / Current Output | The terminal that receives power and outputs the amplified/switched current. | Output | Analog, Current Source |

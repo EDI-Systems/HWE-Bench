@@ -1,0 +1,26 @@
+Component ID: DRV8870  
+Component Type: Brushed DC Motor Driver IC (H-Bridge with PWM Control)  
+Description: The DRV8870 is an integrated H-bridge motor driver designed to bidirectionally control a single brushed DC motor, one winding of a stepper motor, or other inductive loads. It features a PWM control interface for speed regulation, integrated current sensing and regulation, and comprehensive protection (undervoltage, overcurrent, thermal shutdown). Operating from 6.5V to 45V, it can deliver up to 3.6A peak output current.
+
+Key Parameters:
+- Operating Voltage (VM): 6.5 V to 45 V
+- Peak Output Current: 3.6 A
+- Typical RDS(on) (HS + LS): 565 mΩ
+- Control Interface: Two logic inputs (IN1, IN2) for direction/PWM
+- Current Regulation: Adjustable via VREF pin (0.3 V to 5 V) and external sense resistor
+- Protection Features: Undervoltage Lockout (UVLO), Overcurrent Protection (OCP), Thermal Shutdown (TSD)
+- Package: 8-pin HSOP with PowerPAD (4.90 mm × 6.00 mm)
+- Low-Power Mode: Sleep mode activated when both logic inputs are low
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type |
+|------------|----------|----------|-------------|----------|
+| 1          | GND      | Ground   | Logic ground. Connect to board ground. | PWR      |
+| 2          | IN2      | Logic Input | Controls H-bridge output. Has internal pulldown. | Input    |
+| 3          | IN1      | Logic Input | Controls H-bridge output. Has internal pulldown. | Input    |
+| 4          | VREF     | Analog Input | Voltage reference (0.3 V to 5 V) for setting current regulation threshold. | Input    |
+| 5          | VM       | Power Supply | Motor power supply (6.5 V to 45 V). Requires bypass and bulk capacitance. | PWR      |
+| 6          | OUT1     | H-Bridge Output | Connects directly to one terminal of the motor or inductive load. | Output   |
+| 7          | ISEN     | Current Sense | High-current ground path. Connect to external sense resistor for current regulation; tie directly to ground if not used. | PWR      |
+| 8          | OUT2     | H-Bridge Output | Connects directly to the other terminal of the motor or inductive load. | Output   |
+| 9 | PAD      | Thermal Pad | Exposed pad for heat dissipation. Must be connected to board ground. | PWR      |

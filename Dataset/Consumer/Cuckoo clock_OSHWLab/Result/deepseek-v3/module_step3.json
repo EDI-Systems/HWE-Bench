@@ -1,0 +1,692 @@
+{
+  "Motor Load Switch & Inrush Buffer": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "3",
+          "FunctionName": "Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_5",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "3",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_10",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "1",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "2",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "2",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    }
+  ],
+  "Power Path Multiplexer (PPMUX)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "4",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "SS34LH",
+          "PinName": "1",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "SS34LH",
+          "PinName": "2",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "2",
+          "FunctionName": "D"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "3",
+          "FunctionName": "BAT"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "3",
+          "FunctionName": "S"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "2",
+          "FunctionName": "GND"
+        }
+      ]
+    }
+  ],
+  "Battery Management & Charging": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "MBR0520LT1G",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "MBR0520LT1G",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "4",
+          "FunctionName": "VCC"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "MBR0520LT1G",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "1",
+          "FunctionName": "CHRG#"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_4",
+          "FunctionName": "2/INT0"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "5",
+          "FunctionName": "STDBY#"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_5",
+          "FunctionName": "3/INT1/PWM"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "2",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_5",
+          "FunctionName": "GND"
+        }
+      ]
+    }
+  ],
+  "Main System Power Domain": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_1",
+          "FunctionName": "Power In"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "4",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "1",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "2",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_5",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_6",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "BTM_1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "BTM_2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "BTM_3",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "5",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "1",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "3",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "2",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "2",
+          "FunctionName": "I^2C Data"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "4",
+          "FunctionName": "Serial Data"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_7",
+          "FunctionName": "I2C Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "3",
+          "FunctionName": "I^2C Clock"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "3",
+          "FunctionName": "Serial Clock"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_6",
+          "FunctionName": "I2C Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "2",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "2",
+          "FunctionName": "Drain"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "1",
+          "FunctionName": "Control Input"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_5",
+          "FunctionName": "Digital I/O"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "1",
+          "FunctionName": "Gate"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_4",
+          "FunctionName": "Digital I/O"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "1",
+          "FunctionName": "Status"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_8",
+          "FunctionName": "Analog In"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "5",
+          "FunctionName": "Status"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_9",
+          "FunctionName": "Analog In"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "6",
+          "FunctionName": "Program"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_10",
+          "FunctionName": "Analog In"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "OLED",
+          "PinName": "5",
+          "FunctionName": "Reset"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_11",
+          "FunctionName": "Analog In"
+        }
+      ]
+    }
+  ],
+  "Main Controller (MCU) & System Control Logic": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "1",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "2",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "TOP_5",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Arduino",
+          "PinName": "BTM_1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "5",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "1",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "7",
+          "FunctionName": "Chip Select"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_7",
+          "FunctionName": "I2C Data"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "2",
+          "FunctionName": "I^2C Data"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "4",
+          "FunctionName": "Serial Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "RIGHT_6",
+          "FunctionName": "I2C Clock"
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "PinName": "3",
+          "FunctionName": "I^2C Clock"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "3",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_10",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "1",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_4",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "5",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "Arduino",
+          "PinName": "LEFT_5",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "OLED",
+          "PinName": "6",
+          "FunctionName": "Data/Command (SPI) / Address Select (I²C)"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "2",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "2",
+          "FunctionName": "Drain"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ES9251II",
+          "PinName": "3",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "PinName": "4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        }
+      ]
+    }
+  ]
+}

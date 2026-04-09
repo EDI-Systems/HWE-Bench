@@ -1,0 +1,32 @@
+Component ID: MCP2515
+Component Type: Stand-alone CAN Controller with SPI Interface
+Description: The MCP2515 is a stand-alone Controller Area Network (CAN) controller that implements the CAN specification, Version 2.0B. It is capable of transmitting and receiving both standard and extended data and remote frames. The MCP2515 has two acceptance masks and six acceptance filters that are used to filter out unwanted messages, thereby reducing the host MCU's overhead. It interfaces with microcontrollers via an industry-standard Serial Peripheral Interface (SPI), making it a popular choice for adding CAN connectivity to systems without a native CAN peripheral.
+
+Key Parameters:
+- CAN Protocol: Supports CAN V2.0B at 1 Mb/s
+- Interface: SPI (up to 10 MHz, supports modes 0,0 and 1,1)
+- Operating Voltage: 2.7V to 5.5V
+- Buffers: 3 Transmit Buffers and 2 Receive Buffers
+- Low Power: Standby current typically 5 µA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | TXCAN | CAN Transmit | Transmit output pin to CAN transceiver | Output | Signal |
+| 2 | RXCAN | CAN Receive | Receive input pin from CAN transceiver | Input | Signal |
+| 3 | CLKOUT | Clock Out | Configurable clock output | Output | Signal |
+| 4 | TX0RTS | Request to Send | Transmit Buffer 0 Request-to-Send / GPIO | Input | Signal |
+| 5 | TX1RTS | Request to Send | Transmit Buffer 1 Request-to-Send / GPIO | Input | Signal |
+| 6 | TX2RTS | Request to Send | Transmit Buffer 2 Request-to-Send / GPIO | Input | Signal |
+| 7 | OSC2 | Oscillator | Oscillator crystal output | Output | Signal |
+| 8 | OSC1 | Oscillator | Oscillator crystal input | Input | Signal |
+| 9 | VSS | Ground | Ground reference | Power | 0V |
+| 10 | !RX1BF | Buffer Full | Receive Buffer 1 Full Interrupt / GPIO | Output | Signal |
+| 11 | !RX0BF | Buffer Full | Receive Buffer 0 Full Interrupt / GPIO | Output | Signal |
+| 12 | !INT | Interrupt | Interrupt output to host MCU (active low) | Output | Signal |
+| 13 | SCK | SPI Clock | SPI serial clock input | Input | Signal |
+| 14 | SI | SPI Data In | SPI serial data input | Input | Signal |
+| 15 | SO | SPI Data Out | SPI serial data output | Output | Signal |
+| 16 | CS | Chip Select | SPI chip select input (active low) | Input | Signal |
+| 17 | RESET | Reset | Hardware reset input (active low) | Input | Signal |
+| 18 | VDD | Power | Positive power supply voltage | Power | 2.7V - 5.5V |

@@ -1,0 +1,32 @@
+Component ID: USB6
+Component Type: USB Type-C Connector
+Description: The USB6 is a 16-pin USB Type-C female receptacle designed for power delivery and USB 2.0 data communication. This specific configuration supports reversible plug orientation and is commonly used in devices where USB 3.0 or 3.1 high-speed data pairs are not required. The symmetric pin layout ensures that power and basic data lines are connected regardless of the cable orientation.
+
+Key Parameters:
+- Connector Type USB Type-C Receptacle
+- Number of Pins 16 Pins
+- Current Rating 3.0A to 5.0A
+- Voltage Rating 20.0V DC
+- Data Protocol USB 2.0 High Speed (480 Mbps)
+- Mating Durability 10000 Cycles
+- Operating Temperature -30 to +85 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1B12 | GND | Ground | Primary system ground reference | Power | 0V |
+| A4B9 | VBUS | Power | USB bus power supply input | Power | 5V-20V |
+| A5 | CC1 | Configuration | Configuration channel 1 for orientation detection | Signal | 5V |
+| A6 | DP1 | Data+ | USB 2.0 differential pair positive 1 | I/O | Signal |
+| A7 | DN1 | Data- | USB 2.0 differential pair negative 1 | I/O | Signal |
+| A8 | SBU1 | NC | Sideband use 1 (Not connected) | NC | - |
+| B5 | CC2 | Configuration | Configuration channel 2 for orientation detection | Signal | 5V |
+| B6 | DP2 | Data+ | USB 2.0 differential pair positive 2 | I/O | Signal |
+| B7 | DN2 | Data- | USB 2.0 differential pair negative 2 | I/O | Signal |
+| B8 | SBU2 | NC | Sideband use 2 (Not connected) | NC | - |
+| B4A9 | VBUS | Power | USB bus power supply input | Power | 5V-20V |
+| B1A12 | GND | Ground | Primary system ground reference | Power | 0V |
+| 1 | SHELL | Shield | Mechanical shield ground terminal 1 | Power | 0V |
+| 2 | SHELL | Shield | Mechanical shield ground terminal 2 | Power | 0V |
+| 3 | SHELL | Shield | Mechanical shield ground terminal 3 | Power | 0V |
+| 4 | SHELL | Shield | Mechanical shield ground terminal 4 | Power | 0V |

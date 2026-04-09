@@ -1,0 +1,51 @@
+{
+  "High Voltage DC Generation (Push-Pull Converter)": [
+    {
+      "net_id": "topo_batt_pos",
+      "Connections": [
+        { "ComponentID": "MR30PB-F", "PinName": "Pin 3" }
+      ]
+    },
+    {
+      "net_id": "topo_gnd",
+      "Connections": [
+        { "ComponentID": "78L05", "PinName": "GND" },
+        { "ComponentID": "SG3525A", "PinName": "Ground" },
+        { "ComponentID": "NCEP60T12A", "PinName": "S" },
+        { "ComponentID": "NCEP60T12A", "PinName": "S" }
+      ]
+    },
+    {
+      "net_id": "topo_pwm_a",
+      "Connections": [
+        { "ComponentID": "SG3525A", "PinName": "Output A" },
+        { "ComponentID": "NCEP60T12A", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "topo_pwm_b",
+      "Connections": [
+        { "ComponentID": "SG3525A", "PinName": "Output B" },
+        { "ComponentID": "NCEP60T12A", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "topo_drain_1",
+      "Connections": [
+        { "ComponentID": "NCEP60T12A", "PinName": "D" }
+      ]
+    },
+    {
+      "net_id": "topo_drain_2",
+      "Connections": [
+        { "ComponentID": "NCEP60T12A", "PinName": "D" }
+      ]
+    },
+    {
+      "net_id": "topo_hvdc",
+      "Connections": [
+        { "ComponentID": "ES3GF", "PinName": "K" }
+      ]
+    }
+  ]
+}

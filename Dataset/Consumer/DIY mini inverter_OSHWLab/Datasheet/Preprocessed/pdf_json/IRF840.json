@@ -1,0 +1,53 @@
+{
+  "ComponentID": "IRF840",
+  "ComponentType": "N-Channel Power MOSFET",
+  "Description": "The IRF840 is a high-voltage, N-channel enhancement mode power MOSFET designed for high-speed switching applications. It features low on-resistance and a high breakdown voltage, making it suitable for off-line switch-mode power supplies (SMPS), DC-to-DC converters, and motor controllers. The device includes an integrated body diode and is typically housed in a TO-220 package, which allows for efficient heat dissipation when mounted to a heatsink.",
+  "KeyParameters": {
+    "**Drain-to-Source Voltage ($V_{DSS}$)": "** 500V",
+    "**Continuous Drain Current ($I_D$)": "** 8.0A (at $T_C = 25^\\circ\\text{C}$)",
+    "**Static Drain-to-Source On-Resistance ($R_{DS(on)}$)": "** 0.85 $\\Omega$ (max)",
+    "**Gate Threshold Voltage ($V_{GS(th)}$)": "** 2.0V to 4.0V",
+    "**Total Gate Charge ($Q_g$)": "** 63nC (max)",
+    "**Power Dissipation ($P_D$)": "** 125W (at $T_C = 25^\\circ\\text{C}$)",
+    "**Operating Junction Temperature": "** -55 to +150°C",
+    "**Package": "** TO-220AB"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Controls the conduction between Drain and Source"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Primary current entrance (Connected to the metal tab)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Primary current exit/ground reference"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    }
+  ]
+}

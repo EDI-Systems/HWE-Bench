@@ -1,0 +1,41 @@
+{
+  "ComponentID": "SS34LH",
+  "ComponentType": "Surface Mount Schottky Barrier Rectifier Diode",
+  "Description": "The SS32LH through SS320LH are a series of 3A surface-mount Schottky barrier rectifier diodes designed for high-efficiency power conversion applications. They feature a low forward voltage drop, ultra-high-speed switching capability, and a low-profile DO-214AC (SMA) package to save board space. These diodes are suitable for use as rectifiers, freewheeling diodes, and polarity protection in circuits requiring high current capability and fast recovery.",
+  "KeyParameters": {
+    "**Max Repetitive Peak Reverse Voltage (VRRM)**": "20V to 200V (depending on part number)",
+    "**Max Average Forward Rectified Current (IO)**": "3.0 A",
+    "**Max Forward Voltage Drop (VF)**": "0.40V to 0.85V @ 3A, TA=25°C (depending on part number)",
+    "**Max Reverse Current (IR)**": "0.5 mA @ VRRM, TA=25°C / 20 mA @ VRRM, TA=100°C",
+    "**Max Forward Surge Current (IFSM)**": "125 A (8.3ms single half sine-wave)",
+    "**Junction-to-Ambient Thermal Resistance (RθJA)**": "55 °C/W (Typical)",
+    "**Operating Junction Temperature (TJ)**": "-55°C to +150°C (SS32LH-SS310LH) / -55°C to +175°C (SS315LH-SS320LH)",
+    "**Diode Junction Capacitance (Cj)**": "250 pF (Typical) @ f=1MHz, VR=4V"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Anode",
+      "Functions": [
+        {
+          "FunctionName": "Anode Terminal",
+          "FunctionDescription": "Positive terminal for forward current flow."
+        }
+      ],
+      "PinType": "Physical Pin",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Cathode",
+      "Functions": [
+        {
+          "FunctionName": "Cathode Terminal",
+          "FunctionDescription": "Negative terminal, marked by a cathode band on the package body."
+        }
+      ],
+      "PinType": "Physical Pin",
+      "ElectricalType": "Power"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "ComponentID": "MMBT3904",
+  "ComponentType": "NPN Bipolar Junction Transistor (BJT)",
+  "Description": "The MMBT3904 is a general-purpose NPN bipolar junction transistor constructed with epitaxial planar technology, housed in a SOT-23 surface-mount package. It is designed for general switching and amplification applications, featuring a complementary PNP type (MMBT3906). Its key characteristics include a collector current capability of 200mA, a collector-emitter voltage rating of 40V, and a transition frequency of 300MHz minimum, making it suitable for low-power signal processing and control circuits.",
+  "KeyParameters": {
+    "Collector-Emitter Voltage (VCEO)": "40 V (max)",
+    "Collector Current (DC) (Ic)": "200 mA (max)",
+    "DC Current Gain (hFE)": "60 to 300 (VCE=1V, Ic=0.1mA)",
+    "Collector-Emitter Saturation Voltage (VCE(sat))": "0.3 V max (Ic=50mA, IB=5mA)",
+    "Transition Frequency (fT)": "300 MHz min (Ic=10mA, VCE=20V)",
+    "Total Power Dissipation (Ptot)": "250 mW (Ta ≤ 25°C)",
+    "Collector-Base Voltage (VCBO)": "60 V (max)",
+    "Emitter-Base Voltage (VEBO)": "6 V (max)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "E",
+      "Functions": [
+        {
+          "FunctionName": "Emitter",
+          "FunctionDescription": "Emitter terminal"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog I/O"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "B",
+      "Functions": [
+        {
+          "FunctionName": "Base",
+          "FunctionDescription": "Base terminal"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "C",
+      "Functions": [
+        {
+          "FunctionName": "Collector",
+          "FunctionDescription": "Collector terminal"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog I/O"
+    }
+  ]
+}

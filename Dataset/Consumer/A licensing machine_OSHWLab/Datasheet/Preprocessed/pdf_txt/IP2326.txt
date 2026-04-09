@@ -1,0 +1,41 @@
+Component ID: IP2326
+Component Type: 2S/3S Li-Ion Battery Boost Charging Management IC
+Description: The IP2326 is a highly integrated power management IC designed for charging 2-series or 3-series lithium-ion battery packs from a standard 5V USB input. It features a synchronous boost converter that integrates power MOSFETs to provide high efficiency charging up to 94 percent. The device includes USB Type-C support with CC detection, NTC temperature monitoring, and comprehensive protection features such as overvoltage, undervoltage, and thermal shutdown. It is commonly used in portable devices requiring higher voltage battery packs such as power tools, drones, and high-power portable speakers.
+
+Key Parameters:
+- Input Voltage 4.5V to 5.5V
+- Battery Configuration 2-series (8.4V) or 3-series (12.6V)
+- Maximum Charging Current 1.5A
+- Efficiency Up to 94 percent
+- Switching Frequency 500 kHz
+- Protection OVP, UVLO, OTP, Short Circuit
+- Package QFN-24
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | DM | Data- | USB D- signal for power source detection | I/O | Signal |
+| 2 | DP | Data+ | USB D+ signal for power source detection | I/O | Signal |
+| 3 | VSET | NC | Battery cell count setting (NC in this view) | NC | - |
+| 4 | NTC | Temp Sense | Battery temperature monitoring input | Input | Analog |
+| 5 | BAT_STAT | Status | Battery presence or status indicator | Output | Signal |
+| 6 | LED | LED | Charging status LED driver output | Output | Signal |
+| 7 | TIME_SET | NC | Charge safety timer setting (NC in this view) | NC | - |
+| 8 | VIN_UVSET | NC | Input undervoltage threshold set (NC in this view) | NC | - |
+| 9 | VIN_OVSET | NC | Input overvoltage threshold set (NC in this view) | NC | - |
+| 10 | CON_SEL | NC | Configuration selection (NC in this view) | NC | - |
+| 11 | ISET | ISET | Charging current programming pin | Input | Analog |
+| 12 | EN | Enable | Chip enable (Active High) | Input | Signal |
+| 13 | VIN | Power In | 5V DC power supply input | Power | 5V |
+| 14 | BST | Bootstrap | High-side gate drive boost capacitor pin | Power | Signal |
+| 15 | LX | Switch | Switching node connected to inductor | Output | Power |
+| 16 | LX | Switch | Switching node connected to inductor | Output | Power |
+| 17 | LX | Switch | Switching node connected to inductor | Output | Power |
+| 18 | PGND | Power GND | High current power ground | Power | 0V |
+| 19 | VSYS | System | System power output | Output | Power |
+| 20 | VSYS | System | System power output | Output | Power |
+| 21 | VOUT | Battery+ | Regulated charging output to battery | Output | 8.4V/12.6V |
+| 22 | VOUT | Battery+ | Regulated charging output to battery | Output | 8.4V/12.6V |
+| 23 | VBATM | V-Sense | Battery voltage monitoring and sensing | Input | Analog |
+| 24 | VBAT_GND | Battery- | Battery ground reference | Power | 0V |
+| 25 | EP | GND | Exposed pad for thermal dissipation and ground | Power | 0V |

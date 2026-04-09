@@ -1,0 +1,308 @@
+{
+  "ComponentID": "IP2326",
+  "ComponentType": "2S/3S Li-Ion Battery Boost Charging Management IC",
+  "Description": "The IP2326 is a highly integrated power management IC designed for charging 2-series or 3-series lithium-ion battery packs from a standard 5V USB input. It features a synchronous boost converter that integrates power MOSFETs to provide high efficiency charging up to 94 percent. The device includes USB Type-C support with CC detection, NTC temperature monitoring, and comprehensive protection features such as overvoltage, undervoltage, and thermal shutdown. It is commonly used in portable devices requiring higher voltage battery packs such as power tools, drones, and high-power portable speakers.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DM",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB D- signal for power source detection"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "DP",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB D+ signal for power source detection"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VSET",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Battery cell count setting (NC in this view)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NTC",
+      "Functions": [
+        {
+          "FunctionName": "Temp Sense",
+          "FunctionDescription": "Battery temperature monitoring input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "BAT_STAT",
+      "Functions": [
+        {
+          "FunctionName": "Status",
+          "FunctionDescription": "Battery presence or status indicator"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "LED",
+      "Functions": [
+        {
+          "FunctionName": "LED",
+          "FunctionDescription": "Charging status LED driver output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "TIME_SET",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Charge safety timer setting (NC in this view)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VIN_UVSET",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Input undervoltage threshold set (NC in this view)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VIN_OVSET",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Input overvoltage threshold set (NC in this view)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "CON_SEL",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Configuration selection (NC in this view)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "ISET",
+      "Functions": [
+        {
+          "FunctionName": "ISET",
+          "FunctionDescription": "Charging current programming pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Chip enable (Active High)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Power In",
+          "FunctionDescription": "5V DC power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "BST",
+      "Functions": [
+        {
+          "FunctionName": "Bootstrap",
+          "FunctionDescription": "High-side gate drive boost capacitor pin"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "LX",
+      "Functions": [
+        {
+          "FunctionName": "Switch",
+          "FunctionDescription": "Switching node connected to inductor"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "LX",
+      "Functions": [
+        {
+          "FunctionName": "Switch",
+          "FunctionDescription": "Switching node connected to inductor"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "LX",
+      "Functions": [
+        {
+          "FunctionName": "Switch",
+          "FunctionDescription": "Switching node connected to inductor"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "PGND",
+      "Functions": [
+        {
+          "FunctionName": "Power GND",
+          "FunctionDescription": "High current power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "VSYS",
+      "Functions": [
+        {
+          "FunctionName": "System",
+          "FunctionDescription": "System power output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "VSYS",
+      "Functions": [
+        {
+          "FunctionName": "System",
+          "FunctionDescription": "System power output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Battery+",
+          "FunctionDescription": "Regulated charging output to battery"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "8.4V/12.6V"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Battery+",
+          "FunctionDescription": "Regulated charging output to battery"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "8.4V/12.6V"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "VBATM",
+      "Functions": [
+        {
+          "FunctionName": "V-Sense",
+          "FunctionDescription": "Battery voltage monitoring and sensing"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "VBAT_GND",
+      "Functions": [
+        {
+          "FunctionName": "Battery-",
+          "FunctionDescription": "Battery ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Exposed pad for thermal dissipation and ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

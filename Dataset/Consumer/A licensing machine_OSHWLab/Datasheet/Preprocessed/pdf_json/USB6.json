@@ -1,0 +1,200 @@
+{
+  "ComponentID": "USB6",
+  "ComponentType": "USB Type-C Connector",
+  "Description": "The USB6 is a 16-pin USB Type-C female receptacle designed for power delivery and USB 2.0 data communication. This specific configuration supports reversible plug orientation and is commonly used in devices where USB 3.0 or 3.1 high-speed data pairs are not required. The symmetric pin layout ensures that power and basic data lines are connected regardless of the cable orientation.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "A1B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "A4B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB bus power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V-20V"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration",
+          "FunctionDescription": "Configuration channel 1 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "DP1",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "DN1",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 1 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration",
+          "FunctionDescription": "Configuration channel 2 for orientation detection"
+        }
+      ],
+      "PinType": "Signal",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "DP2",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair positive 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "DN2",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair negative 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "Sideband use 2 (Not connected)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "B4A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB bus power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V-20V"
+    },
+    {
+      "PinNumber": "B1A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "1",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Mechanical shield ground terminal 1"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Mechanical shield ground terminal 2"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Mechanical shield ground terminal 3"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Mechanical shield ground terminal 4"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

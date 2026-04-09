@@ -1,0 +1,206 @@
+{
+  "ComponentID": "TMC2208",
+  "ComponentType": "Ultra-Silent Stepper Motor Driver",
+  "Description": "",
+  "KeyParameters": {
+    "Motor Supply Voltage VM": "4.75V to 36V",
+    "Logic Supply Voltage VIO": "3V to 5.25V",
+    "Phase Current": "1.2A RMS",
+    "Peak Current": "2A",
+    "Control Interface": "Step/Dir or UART"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Enable",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Enable motor outputs (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "MS1",
+      "Functions": [
+        {
+          "FunctionName": "MS1",
+          "FunctionDescription": "Microstep resolution configuration pin 1"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "MS2",
+      "Functions": [
+        {
+          "FunctionName": "MS2",
+          "FunctionDescription": "Microstep resolution configuration pin 2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "PDN",
+      "Functions": [
+        {
+          "FunctionName": "PDN/UART",
+          "FunctionDescription": "UART communication or power down input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "USART",
+      "Functions": [
+        {
+          "FunctionName": "USART",
+          "FunctionDescription": "Serial communication interface pin"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "CLK",
+          "FunctionDescription": "External clock input for synchronized timing"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "Step",
+      "Functions": [
+        {
+          "FunctionName": "Step",
+          "FunctionDescription": "Step pulse input for motor movement"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "Dir",
+      "Functions": [
+        {
+          "FunctionName": "Dir",
+          "FunctionDescription": "Direction control input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "Gnd",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Logic ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "VIO",
+      "Functions": [
+        {
+          "FunctionName": "VIO",
+          "FunctionDescription": "Logic supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V-5V"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "M2B",
+      "Functions": [
+        {
+          "FunctionName": "Motor 2B",
+          "FunctionDescription": "Stepper motor phase 2 output B"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "M2A",
+      "Functions": [
+        {
+          "FunctionName": "Motor 2A",
+          "FunctionDescription": "Stepper motor phase 2 output A"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "M1A",
+      "Functions": [
+        {
+          "FunctionName": "Motor 1A",
+          "FunctionDescription": "Stepper motor phase 1 output A"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "M1B",
+      "Functions": [
+        {
+          "FunctionName": "Motor 1B",
+          "FunctionDescription": "Stepper motor phase 1 output B"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "Gnd",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Motor power ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "VM",
+      "Functions": [
+        {
+          "FunctionName": "VM",
+          "FunctionDescription": "Motor supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V-36V"
+    }
+  ]
+}

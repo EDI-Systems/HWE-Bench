@@ -1,0 +1,27 @@
+Component ID: USB
+Component Type: USB Type-C Connector (Receptacle, SMT, 6-pin)
+Description:
+This is a USB 3.1 Type-C surface-mount connector designed for device-side integration. It provides the physical interface for USB power delivery (VBUS), ground (GND), and the two Configuration Channel (CC1, CC2) pins essential for cable orientation detection, role detection, and power delivery negotiation. It is a simplified 6-pin version lacking the high-speed SuperSpeed data lanes.
+
+Key Parameters:
+- **Current Rating (VBUS Pin)**: 5 A
+- **Current Rating (GND Pin)**: 1.25 A
+- **Current Rating (Other Pins)**: 0.25 A
+- **Maximum Voltage Rating**: 20 V DC
+- **Withstanding Voltage**: 100 V AC RMS
+- **Contact Resistance**: 40 mΩ max
+- **Insulation Resistance**: 10 MΩ min
+- **Operating Temperature**: -25°C to +85°C
+- **Mechanical Durability**: 10,000 mating cycles
+- **Insertion Force**: 5 ~ 20 N
+- **Extraction Force**: 8 ~ 20 N
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A12 | GND | Ground | Ground return path for power. | SMT Pad | Power |
+| A9 | VBUS | VBUS | USB bus power supply (5V default, up to 20V via PD). | SMT Pad | Power |
+| A5 | CC1 | Configuration Channel 1 | Used for cable attachment detection, orientation detection, and Power Delivery communication. | SMT Pad | Analog/Digital I/O |
+| B5 | CC2 | Configuration Channel 2 | Used for cable attachment detection, orientation detection, and Power Delivery communication. | SMT Pad | Analog/Digital I/O |
+| B9 | VBUS | VBUS | USB bus power supply (5V default, up to 20V via PD). | SMT Pad | Power |
+| B12 | GND | Ground | Ground return path for power. | SMT Pad | Power |

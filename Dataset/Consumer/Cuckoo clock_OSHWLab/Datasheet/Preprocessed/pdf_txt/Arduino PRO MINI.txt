@@ -1,0 +1,53 @@
+Component ID: Arduino
+Component Type: ATmega328P Development Board
+Description: The Arduino Pro Mini is a compact, minimalist development board based on the ATmega328P microcontroller. It is designed for space-constrained projects and permanent installations where the size of a standard Arduino Uno is prohibitive. Unlike most Arduino boards, it does not include a built-in USB-to-serial bridge; instead, it features a 6-pin header for programming via an external FTDI adapter. It is available in two versions: a 5V/16MHz model and a 3.3V/8MHz model for low-power applications.
+
+Key Parameters:
+- Microcontroller: ATmega328P
+- Operating Voltage: 3.3V or 5V (Model dependent)
+- Input Voltage (RAW): 3.35V - 12V (3.3V version) or 5V - 12V (5V version)
+- Digital I/O Pins: 14 (of which 6 provide PWM output)
+- Analog Input Pins: 8 (A0-A7)
+- Flash Memory: 32 KB (2 KB used by bootloader)
+- SRAM: 2 KB
+- EEPROM: 1 KB
+- Clock Speed: 8 MHz or 16 MHz
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| TOP_1 | DTR | Reset | Data Terminal Ready (Auto-reset for programming) | Input | Signal |
+| TOP_2 | TXO | UART TX | Serial Transmit Data | Output | Signal |
+| TOP_3 | RXI | UART RX | Serial Receive Data | Input | Signal |
+| TOP_4 | VCC | Power | Regulated system voltage | Power | 3.3V/5V |
+| TOP_5 | GND | Ground | System Ground | Power | 0V |
+| TOP_6 | BLK | Ground | FTDI "Black" wire reference (Ground) | Power | 0V |
+| LEFT_1 | 1/TX | UART TX | Digital Pin 1 / Hardware Serial Transmit | I/O | Digital |
+| LEFT_2 | 0/RX | UART RX | Digital Pin 0 / Hardware Serial Receive | I/O | Digital |
+| LEFT_3 | RST | Reset | Active-low hardware reset | Input | Signal |
+| LEFT_4 | 2/INT0 | Digital I/O | Digital Pin 2 / External Interrupt 0 | I/O | Digital |
+| LEFT_5 | 3/INT1/PWM | Digital I/O | Digital Pin 3 / External Interrupt 1 / PWM | I/O | Digital |
+| LEFT_6 | 4/T0 | Digital I/O | Digital Pin 4 / Timer 0 Counter Input | I/O | Digital |
+| LEFT_7 | 5/T1/PWM | Digital I/O | Digital Pin 5 / Timer 1 Counter Input / PWM | I/O | Digital |
+| LEFT_8 | 6/AIN0/PWM | Digital I/O | Digital Pin 6 / Analog Comparator AIN0 / PWM | I/O | Digital |
+| LEFT_9 | 7/AIN1 | Digital I/O | Digital Pin 7 / Analog Comparator AIN1 | I/O | Digital |
+| LEFT_10 | 8 | Digital I/O | Digital Pin 8 | I/O | Digital |
+| LEFT_11 | 9/PWM | Digital I/O | Digital Pin 9 / PWM Output | I/O | Digital |
+| LEFT_12 | 10/SS/PWM | SPI SS | Digital Pin 10 / SPI Slave Select / PWM | I/O | Digital |
+| LEFT_13 | 11/MOSI/PWM | SPI MOSI | Digital Pin 11 / SPI Master Out / PWM | I/O | Digital |
+| LEFT_14 | 12/MISO | SPI MISO | Digital Pin 12 / SPI Master In | I/O | Digital |
+| LEFT_15 | 13/SCK | SPI SCK | Digital Pin 13 / SPI Serial Clock | I/O | Digital |
+| RIGHT_1 | RAW | Power In | Unregulated voltage input for internal regulator | Power | 3.35V-12V |
+| RIGHT_2 | RST | Reset | Duplicate hardware reset pin | Input | Signal |
+| RIGHT_3 | VCC | Power | Secondary regulated system voltage pin | Power | 3.3V/5V |
+| RIGHT_4 | A7 | Analog In | Analog-only input channel 7 | Input | Analog |
+| RIGHT_5 | A6 | Analog In | Analog-only input channel 6 | Input | Analog |
+| RIGHT_6 | SCL/A5 | I2C Clock | I2C Clock / Analog Input 5 | I/O | Digital/Analog |
+| RIGHT_7 | SDA/A4 | I2C Data | I2C Data / Analog Input 4 | I/O | Digital/Analog |
+| RIGHT_8 | A3 | Analog In | General purpose analog input 3 | Input | Analog |
+| RIGHT_9 | A2 | Analog In | General purpose analog input 2 | Input | Analog |
+| RIGHT_10 | A1 | Analog In | General purpose analog input 1 | Input | Analog |
+| RIGHT_11 | A0 | Analog In | General purpose analog input 0 | Input | Analog |
+| BTM_1 | GND | Ground | System Ground Reference 1 | Power | 0V |
+| BTM_2 | GND | Ground | System Ground Reference 2 | Power | 0V |
+| BTM_3 | GND | Ground | System Ground Reference 3 | Power | 0V |

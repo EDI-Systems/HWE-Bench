@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "ESP32-WROOM-32E Core Module",
+      "Function Description": "Provides the main microcontroller unit with integrated Wi-Fi and Bluetooth connectivity for IoT applications, handling data processing, communication, and control tasks.",
+      "Signal Sources": "GPIO pins from the ESP32-WROOM-32E module, including UART signals from the CP2102N, I2C signals from the IMU, and power from the power management block.",
+      "Signal Destinations": "GPIO pins to the pin headers for peripheral expansion, I2C signals to the IMU for communication, and internal processing for Wi-Fi/Bluetooth transmission.",
+      "Implementation Logic": "The ESP32-WROOM-32E module is mounted on the board with its pins connected to the necessary circuits, including UART for serial communication via CP2102N, I2C for IMU interfacing, and power rails from the AMS1117-3.3 LDO."
+    },
+    {
+      "Module Name": "Power Management and USB Interface",
+      "Function Description": "Manages power supply by stepping down 5V from the Micro USB input to 3.3V for the MCU and IMU, and provides ESD-protected USB connectivity with serial conversion for debugging and communication.",
+      "Signal Sources": "5V input from the Micro USB port, DTR and RTS signals from the CP2102N for automatic download control.",
+      "Signal Destinations": "3.3V output to the ESP32-WROOM-32E and IMU, serial data signals to/from the CP2102N, and control signals to the automatic download circuit.",
+      "Implementation Logic": "Uses an AMS1117-3.3 LDO to regulate 5V USB input to 3.3V, with ESD protection on the Micro USB lines. The CP2102N converts USB data to UART signals for the ESP32, and its DTR/RTS outputs drive the automatic download circuit."
+    },
+    {
+      "Module Name": "6-Axis IMU and Sensor Interface",
+      "Function Description": "Integrates a 6-axis Inertial Measurement Unit (IMU) for motion tracking and sensor data acquisition, interfaced with the MCU for real-time data processing in IoT applications.",
+      "Signal Sources": "I2C clock and data signals from the ESP32-WROOM-32E, power from the 3.3V supply.",
+      "Signal Destinations": "Accelerometer and gyroscope data sent via I2C to the ESP32-WROOM-32E for further processing and transmission.",
+      "Implementation Logic": "The IMU module (e.g., MPU6050) is connected to the ESP32 via I2C bus, with pull-up resistors on SDA and SCL lines, and powered by the 3.3V rail from the power management block."
+    },
+    {
+      "Module Name": "Automatic Download and Reset Circuit",
+      "Function Description": "Automates the firmware flashing process by toggling the ESP32's EN (Reset) and IO0 pins based on DTR and RTS signals from the USB-to-serial converter, eliminating manual button presses.",
+      "Signal Sources": "DTR and RTS signals from the CP2102N USB-to-serial converter.",
+      "Signal Destinations": "EN and IO0 pins of the ESP32-WROOM-32E module to control reset and boot modes during programming.",
+      "Implementation Logic": "Uses logic gates or transistors to combine DTR and RTS signals, generating pulses that drive EN and IO0 pins low/high as needed to put the ESP32 into bootloader mode and reset it automatically during serial uploads."
+    },
+    {
+      "Module Name": "GPIO Pin Headers and Expansion Interface",
+      "Function Description": "Provides standard pin headers that break out the ESP32's GPIO pins for easy breadboarding and connection to external peripherals, enabling flexible hardware expansion.",
+      "Signal Sources": "GPIO signals from the ESP32-WROOM-32E module, including digital I/O, analog inputs, and communication interfaces.",
+      "Signal Destinations": "External peripherals such as sensors, actuators, or other development boards connected via the pin headers.",
+      "Implementation Logic": "Male or female pin headers are soldered to the board, with traces connecting each header pin to the corresponding GPIO pin on the ESP32-WROOM-32E, ensuring proper spacing and labeling for user accessibility."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Component ID: SX1308
+Component Type: High-Efficiency Step-Up (Boost) Converter
+Description: The SX1308 is a constant frequency, 6-pin SOT23 current mode step-up converter intended for small, low power applications. The SX1308 switches at 1.2MHz and allows the use of tiny, low cost capacitors and inductors 2mm or less in height. Internal soft-start results in small inrush current and extends battery life. It features automatic shifting to pulse frequency modulation mode at light loads. The SX1308 includes under-voltage lockout, current limiting, and thermal overload protection to prevent damage in the event of an output overload.
+
+Key Parameters:
+- Input Voltage Range 2V to 24V
+- Output Voltage Range Up to 28V
+- Switching Frequency 1.2MHz
+- Peak Switch Current 4A
+- Internal MOSFET Resistance 80m ohm
+- Efficiency Up to 97%
+- Operating Temperature -40 to +85 Celsius
+- Package SOT23-6
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SW | Switch Output | Output switching node connected to inductor | Output | Power |
+| 2 | GND | Ground | Main ground reference | Power | 0V |
+| 3 | FB | Feedback | Feedback input for output voltage regulation | Input | Signal |
+| 4 | EN | Enable | Drive high to turn on; low to shut down | Input | Signal |
+| 5 | VIN | Input Voltage | Power supply input | Power | 2V-24V |
+| 6 | NC | Not Connected | No internal electrical connection | NC | - |

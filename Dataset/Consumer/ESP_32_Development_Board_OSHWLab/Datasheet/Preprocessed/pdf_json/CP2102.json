@@ -1,0 +1,361 @@
+{
+  "ComponentID": "CP2102",
+  "ComponentType": "USB-to-UART Bridge Controller",
+  "Description": "The CP2102N-A02-GQFN28R is a high-performance, small-form-factor USB-to-UART bridge from Silicon Labs' USBXpress family. It is designed to provide a simple solution for updating RS-232 designs to USB using minimum components and PCB space. This device includes a USB 2.0 full-speed function controller, USB transceiver, oscillator, and a universal asynchronous receiver/transmitter (UART) in a single package. It is specifically updated (A02 version) to include features like battery charger detection and remote wakeup.",
+  "KeyParameters": {
+    "USB Specification": "USB 2.0 Full Speed (12 Mbps)",
+    "UART Baud Rate": "Up to 3 Mbps",
+    "Integrated Regulator": "3.3V output (supports 3.0V to 5.25V input)",
+    "Package": "28-pin QFN (5x5 mm)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DCD",
+      "Functions": [
+        {
+          "FunctionName": "Data Carrier Detect",
+          "FunctionDescription": "UART control input (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "RI/CLK",
+      "Functions": [
+        {
+          "FunctionName": "Ring Indicator / CLK",
+          "FunctionDescription": "UART control input / Configurable clock output"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB D+",
+          "FunctionDescription": "USB differential data plus"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/USB"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB D-",
+          "FunctionDescription": "USB differential data minus"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog/USB"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Regulator Output",
+          "FunctionDescription": "3.3V internal regulator output"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "VREGIN",
+      "Functions": [
+        {
+          "FunctionName": "Regulator Input",
+          "FunctionDescription": "Voltage regulator input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.0V-5.25V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "VBUS Sense",
+          "FunctionDescription": "USB VBUS voltage sense input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "RSTb",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Device reset (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "No internal connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "SUSPENDb",
+      "Functions": [
+        {
+          "FunctionName": "Suspend Status",
+          "FunctionDescription": "USB suspend state indicator (active low)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "SUSPEND",
+      "Functions": [
+        {
+          "FunctionName": "Suspend Status",
+          "FunctionDescription": "USB suspend state indicator (active high)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "CHREN",
+      "Functions": [
+        {
+          "FunctionName": "Charger Enable",
+          "FunctionDescription": "Battery charger enable output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "CHR1",
+      "Functions": [
+        {
+          "FunctionName": "Charger Detect 1",
+          "FunctionDescription": "Charger detection status bit 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "CHR0",
+      "Functions": [
+        {
+          "FunctionName": "Charger Detect 0",
+          "FunctionDescription": "Charger detection status bit 0"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "GPIO.3/WAKEUP",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / Wakeup",
+          "FunctionDescription": "Configurable I/O or Remote Wakeup input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "GPIO.2/RS485",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / RS485",
+          "FunctionDescription": "Configurable I/O or RS485 Transmit Enable"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "GPIO.1/RXT",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / RX LED",
+          "FunctionDescription": "Configurable I/O or UART Receive LED"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "GPIO.0/TXT",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / TX LED",
+          "FunctionDescription": "Configurable I/O or UART Transmit LED"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "GPIO.6",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "Configurable I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "GPIO.5",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "Configurable I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "GPIO.4",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "Configurable I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "CTS",
+      "Functions": [
+        {
+          "FunctionName": "Clear to Send",
+          "FunctionDescription": "UART flow control input (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "RTS",
+      "Functions": [
+        {
+          "FunctionName": "Request to Send",
+          "FunctionDescription": "UART flow control output (active low)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "UART Receive",
+          "FunctionDescription": "UART data receive"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "UART Transmit",
+          "FunctionDescription": "UART data transmit"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "DSR",
+      "Functions": [
+        {
+          "FunctionName": "Data Set Ready",
+          "FunctionDescription": "UART control input (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "DTR",
+      "Functions": [
+        {
+          "FunctionName": "Data Terminal Ready",
+          "FunctionDescription": "UART control output (active low)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Exposed Pad",
+          "FunctionDescription": "Thermal/Ground pad on bottom of package"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

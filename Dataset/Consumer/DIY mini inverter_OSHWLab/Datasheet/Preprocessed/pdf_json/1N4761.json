@@ -1,0 +1,42 @@
+{
+  "ComponentID": "1N4761",
+  "ComponentType": "Silicon Planar Power Zener Diode",
+  "Description": "This is a family of silicon planar power Zener diodes designed for voltage stabilization and clipping circuits in high-power applications. They operate in the reverse breakdown (Zener) region to maintain a nearly constant voltage across their terminals despite variations in current or supply voltage, and can also conduct in the forward direction like a standard diode. The series offers a wide range of nominal Zener voltages from 3.0V to 100V, packaged in a DO-41 glass case.",
+  "KeyParameters": {
+    "**Nominal Zener Voltage (Vz nom)**": "3.0V to 100V (specific per part number, e.g., 1N4727A = 3.0V, 1N4732A = 4.7V)",
+    "**Zener Voltage Range (Vz)**": "Specific tolerance range per part number (e.g., 1N4727A: 2.85V - 3.15V)",
+    "**Maximum Power Dissipation (Ptot)**": "1.0 W (at Ta=25°C with leads at ambient 8mm from case)",
+    "**Maximum Zener Impedance (Zzt)**": "Ranges from 10 Ω (e.g., 3.0V) to 900 Ω (e.g., 100V) at the test current Izt",
+    "**Maximum Regulator Current (Izm)**": "Ranges from 275 mA (3.0V) to 12.5 mA (100V) at Ta=25°C",
+    "**Maximum Surge Current (Izm (surge))**": "Ranges from 1375 mA (3.0V) to 62 mA (100V) at Ta=25°C",
+    "**Maximum Reverse Leakage Current (IR)**": "Ranges from 150 μA (3.0V) to 10 μA (100V) at specified test voltage VR",
+    "**Junction Temperature (Tj)**": "200 °C (maximum)",
+    "**Forward Voltage (VF)**": "1.2 V (maximum at IF = 200 mA)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Anode",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal for forward conduction"
+        }
+      ],
+      "PinType": "Through-hole lead",
+      "ElectricalType": "Power / Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Cathode",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal; voltage is regulated relative to this pin when reverse-biased (Zener operation)"
+        }
+      ],
+      "PinType": "Through-hole lead",
+      "ElectricalType": "Power / Analog"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "ComponentID": "SS54A",
+  "ComponentType": "Schottky Barrier Rectifier",
+  "Description": "The SS54A is a surface-mount Schottky barrier rectifier designed for high-efficiency rectification and protection. It features a low forward voltage drop and high switching speed, which helps minimize power loss and improve efficiency in DC-DC converters and power supply circuits. The device is housed in a compact SMA package and includes a guard ring for overvoltage protection and high reliability.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "K",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal indicated by a polarity band"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Output"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input"
+    }
+  ]
+}

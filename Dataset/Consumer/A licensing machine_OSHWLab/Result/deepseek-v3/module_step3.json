@@ -1,0 +1,388 @@
+{
+  "High-Efficiency Inductive Transformation and Precision Regulation Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 1",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 2",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "SW",
+          "FunctionName": "Switch Output"
+        },
+        {
+          "ComponentID": "SS54A",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "FB",
+          "FunctionName": "Feedback"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 4",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 5",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "SX1308",
+          "PinName": "NC",
+          "FunctionName": "Not Connected"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 6",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "SS54A",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 3",
+          "FunctionName": "Connection"
+        }
+      ]
+    }
+  ],
+  "Closed-Loop Negative Feedback and Noise Management Network": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 6",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "AVCC",
+          "FunctionName": "AVCC"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 5",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 4",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PC0",
+          "FunctionName": "PC0"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 1",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "AREF",
+          "FunctionName": "AREF"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 2",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD3",
+          "FunctionName": "PD3"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 3",
+          "FunctionName": "Connection"
+        }
+      ]
+    }
+  ],
+  "Bi-Directional Power Bridge and Inductive Modulation Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD3",
+          "FunctionName": "PD3"
+        },
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "IN1",
+          "FunctionName": "IN1"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 4",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "PD4",
+          "FunctionName": "PD4"
+        },
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "IN2",
+          "FunctionName": "IN2"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 5",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "nSLEEP",
+          "FunctionName": "nSLEEP"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 6",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "OUT1",
+          "FunctionName": "OUT1"
+        },
+        {
+          "ComponentID": "SS54A",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 2",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "OUT2",
+          "FunctionName": "OUT2"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 3",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "DRV8870",
+          "PinName": "VM",
+          "FunctionName": "VM"
+        },
+        {
+          "ComponentID": "HC-PHD-2*3AW",
+          "PinName": "Pin 1",
+          "FunctionName": "Connection"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "AVCC",
+          "FunctionName": "AVCC"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        }
+      ]
+    }
+  ]
+}

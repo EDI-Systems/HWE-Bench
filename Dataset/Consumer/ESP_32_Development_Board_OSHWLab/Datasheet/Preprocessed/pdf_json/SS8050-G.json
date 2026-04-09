@@ -1,0 +1,53 @@
+{
+  "ComponentID": "SS8050-G",
+  "ComponentType": "NPN Bipolar Junction Transistor (BJT)",
+  "Description": "The SS8050-G is an NPN bipolar junction transistor in a SOT-23 surface-mount package, designed for general-purpose amplification and switching applications. It functions as a current-controlled device where a small base current controls a larger collector current, enabling signal amplification, driving loads, or acting as an electronic switch. It features a high DC current gain and a transition frequency suitable for low to medium frequency circuits.",
+  "KeyParameters": {
+    "Collector-Emitter Voltage (VCEO)": "25 V (Max)",
+    "Collector Current (Ic)": "1.5 A (Max)",
+    "Collector Power Dissipation (Pc)": "300 mW (Max)",
+    "DC Current Gain (hFE)": "200 to 350 (at VCE=1V, Ic=100mA)",
+    "Collector-Emitter Saturation Voltage (VCE(sat))": "0.5 V (Max, at Ic=800mA, IB=80mA)",
+    "Transition Frequency (fT)": "100 MHz (Min)",
+    "Thermal Resistance (RθJA)": "417 °C/W",
+    "Junction Temperature (Tj)": "150 °C (Max)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "BASE",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Controls the flow of current between the collector and emitter."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog, Current-Controlled"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "EMITTER",
+      "Functions": [
+        {
+          "FunctionName": "Common / Current Output",
+          "FunctionDescription": "The terminal from which the majority of current flows out; typically connected to ground or a lower potential."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog, Current Sink"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "COLLECTOR",
+      "Functions": [
+        {
+          "FunctionName": "Power Input / Current Output",
+          "FunctionDescription": "The terminal that receives power and outputs the amplified/switched current."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog, Current Source"
+    }
+  ]
+}

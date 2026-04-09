@@ -1,0 +1,54 @@
+{
+  "ComponentID": "2N7002",
+  "ComponentType": "N-Channel Enhancement Mode Small Signal MOSFET",
+  "Description": "This is a 60V, 115 mA N-channel MOSFET designed for low-power switching and amplification applications. It features a low threshold voltage and is housed in a SOT-23 package, making it suitable for space-constrained designs in automotive and general-purpose circuits.",
+  "KeyParameters": {
+    "Drain-Source Voltage (VDSS)": "60 V",
+    "Continuous Drain Current (ID)": "115 mA @ 25°C",
+    "Gate-Source Voltage (VGS)": "±20 V (Continuous)",
+    "Drain-Source On-State Resistance (RDS(on))": "7.5 Ω max @ VGS = 10 V, ID = 500 mA",
+    "Gate Threshold Voltage (VGS(th))": "1.0 to 2.5 V",
+    "Total Power Dissipation (PD)": "225 mW (FR-4 board, TA=25°C)",
+    "Input Capacitance (Ciss)": "50 pF typical",
+    "Forward Transconductance (gFS)": "80 mS typical",
+    "Junction Temperature Range (TJ, Tstg)": "-55 to +150 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Gate (G)",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Controls the conduction between drain and source."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Voltage Controlled, High Impedance"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Drain (D)",
+      "Functions": [
+        {
+          "FunctionName": "Output / High Side",
+          "FunctionDescription": "The terminal where current exits the channel. Connects to the load."
+        }
+      ],
+      "PinType": "Output / Power",
+      "ElectricalType": "Current Output, High Voltage"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Source (S)",
+      "Functions": [
+        {
+          "FunctionName": "Common / Low Side",
+          "FunctionDescription": "The terminal where current enters the channel. Typically connected to ground or the lower supply rail."
+        }
+      ],
+      "PinType": "Common / Power",
+      "ElectricalType": "Current Return, Reference Potential"
+    }
+  ]
+}

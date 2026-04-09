@@ -1,0 +1,21 @@
+Component ID: USBLC6-2SC6
+Component Type: Very Low Capacitance ESD Protection for USB 2.0 High Speed
+Description: The USBLC6-2SC6 is a monolithic application-specific device dedicated to ESD protection of high-speed interfaces, such as USB 2.0, Ethernet, and video lines. It utilizes a rail-to-rail architecture to protect two data lines against ESD strikes while maintaining very low line capacitance (typically 3.5 pF). This ensures high signal integrity even at high data rates. It is an essential component for protecting sensitive ICs from electrostatic discharge (ESD) and other transient overvoltages.
+
+
+Key Parameters:
+- **Breakdown Voltage ($V_{BR}$):** 6V (min)
+- **Peak Pulse Power ($P_{PP}$):** 70W (8/20 µs waveform)
+- **Line Capacitance ($C_{line}$):** 3.5 pF (typical) between I/O and GND
+- **Operating Junction Temperature:** -40°C to +150°C
+- **Package:** SOT23-6L
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | I/O 1 | Input/Output 1 | ESD protection for the first line (e.g., USB D+) | I/O | Signal |
+| 2 | GND | Ground | Common system ground reference | Power | 0V |
+| 3 | I/O 1 | Input/Output 1 | Pass-through for line 1 (Internally connected to Pin 1) | I/O | Signal |
+| 4 | I/O 2 | Input/Output 2 | ESD protection for the second line (e.g., USB D-) | I/O | Signal |
+| 5 | VBUS | Power | Connected to VBUS supply to bias internal diodes | Power | 5V |
+| 6 | I/O 2 | Input/Output 2 | Pass-through for line 2 (Internally connected to Pin 4) | I/O | Signal |

@@ -1,0 +1,21 @@
+Component ID: DMN63D8
+Component Type: N-Channel Enhancement-Mode MOSFET
+Description: This is a small-signal, surface-mount N-channel MOSFET designed for high-efficiency power switching and management. It features low on-resistance, fast switching speed, and low input capacitance, making it suitable for applications like motor control, power management, and backlighting in portable and space-constrained designs.
+
+Key Parameters:
+- Drain-Source Voltage (Vdss): 30 V
+- Continuous Drain Current (Id): 380 mA @ Ta=25°C, Vgs=10V
+- On-Resistance (Rds(on)): 2.8 Ω max @ Vgs=10V, Id=0.1A
+- Gate Threshold Voltage (Vgs(th)): 0.5 - 1.5 V
+- Total Gate Charge (Qg): 0.7 nC (Typ) @ Vds=15V, Id=0.1A
+- Input Capacitance (Ciss): 30 pF (Typ) @ Vds=15V, Vgs=0V
+- Forward Transconductance (gfs): 0.7 S (Typ) @ Id=0.1A
+- Total Power Dissipation (Pd): 300 mW (Steady State, Note 5)
+- Operating Junction Temperature (Tj): -55 to +150 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | G | Gate | Control terminal. Voltage applied here controls the conduction between Drain and Source. | Input | High-Impedance, ESD Protected |
+| 2 | D | Drain | Output / Load terminal. Connects to the positive side of the load or power supply. | Output | Power |
+| 3 | S | Source | Common / Ground terminal. Typically connected to circuit ground. | Common | Power |

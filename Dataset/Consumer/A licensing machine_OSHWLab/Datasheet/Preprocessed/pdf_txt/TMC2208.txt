@@ -1,0 +1,33 @@
+Component ID: TMC2208
+Component Type: Ultra-Silent Stepper Motor Driver
+Description The TMC2208 is an ultra-silent motor driver IC for two-phase stepper motors, commonly used in 3D printers and CNC machines. It features StealthChop2 technology for noiseless motor operation and SpreadCycle for high dynamics. It supports a simple Step/Dir interface for motion control and a UART interface for advanced configuration. The module includes an integrated power stage capable of driving up to 1.2A RMS current with microstepping resolution up to 1/256.
+
+Key Parameters:
+- Motor Supply Voltage VM: 4.75V to 36V
+- Logic Supply Voltage VIO: 3V to 5.25V
+- Phase Current: 1.2A RMS
+- Peak Current: 2A
+- Microstepping Up to 1/256
+- Control Interface: Step/Dir or UART
+- Thermal Protection Internal thermal shutdown
+- Operating Temperature -40 to +125 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Enable | Enable | Enable motor outputs (Active Low) | Input | Signal |
+| 2 | MS1 | MS1 | Microstep resolution configuration pin 1 | Input | Signal |
+| 3 | MS2 | MS2 | Microstep resolution configuration pin 2 | Input | Signal |
+| 4 | PDN | PDN/UART | UART communication or power down input | I/O | Signal |
+| 5 | USART | USART | Serial communication interface pin | I/O | Signal |
+| 6 | CLK | CLK | External clock input for synchronized timing | Input | Signal |
+| 7 | Step | Step | Step pulse input for motor movement | Input | Signal |
+| 8 | Dir | Dir | Direction control input | Input | Signal |
+| 9 | Gnd | GND | Logic ground reference | Power | 0V |
+| 10 | VIO | VIO | Logic supply voltage input | Power | 3.3V-5V |
+| 11 | M2B | Motor 2B | Stepper motor phase 2 output B | Output | Power |
+| 12 | M2A | Motor 2A | Stepper motor phase 2 output A | Output | Power |
+| 13 | M1A | Motor 1A | Stepper motor phase 1 output A | Output | Power |
+| 14 | M1B | Motor 1B | Stepper motor phase 1 output B | Output | Power |
+| 15 | Gnd | GND | Motor power ground reference | Power | 0V |
+| 16 | VM | VM | Motor supply voltage input | Power | 5V-36V |

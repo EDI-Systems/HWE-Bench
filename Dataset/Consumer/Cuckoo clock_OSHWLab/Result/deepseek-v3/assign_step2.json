@@ -1,0 +1,606 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Motor Load Switch & Inrush Buffer",
+      "Function Description": "Provides isolated, switched power to the servo motor. It prevents the motor's high inrush current from affecting the main system power rail, thereby avoiding MCU resets and saving energy.",
+      "Signal Sources": "SYS_VCC (from Power Path Multiplexer), MCU_GPIO_MOTOR_EN (Control Signal)",
+      "Signal Destinations": "MOTOR_PWR (Power to Servo Motor)",
+      "Implementation Logic": "An electronic load switch IC (or a MOSFET driven by a gate driver) is controlled by the MCU_GPIO_MOTOR_EN signal. A large capacitor (e.g., several hundred to thousand µF) is placed on the output (MOTOR_PWR side) to buffer energy and supply the initial inrush current. The MCU turns the switch ON only during motor actuation sequences and OFF immediately after, isolating the motor load.",
+      "Signal Chain": "The MCU_GPIO_MOTOR_EN control signal from the Arduino (e.g., digital I/O pin) is used to drive the gate of a P-Channel MOSFET (IRLM). When the GPIO is driven low (logic 0), it turns the MOSFET ON, allowing current to flow from the SYS_VCC power source (connected to the MOSFET's source) through the MOSFET's drain to the MOTOR_PWR output. A large electrolytic capacitor (not in library, must be added externally) is connected between MOTOR_PWR and ground to buffer the inrush current. When the GPIO is driven high (logic 1), the MOSFET turns OFF, isolating the motor load from SYS_VCC. The servo motor (ES9251II) connects its power pin to MOTOR_PWR, its ground to system ground, and its signal pin to a separate MCU PWM pin for control.",
+      "Recommended Components": [
+        {
+          "ComponentID": "Arduino",
+          "Functional Position": "Control Signal Source",
+          "Recommendation Reason": "Provides the MCU_GPIO_MOTOR_EN digital control signal to switch the MOSFET. A general-purpose digital I/O pin is suitable.",
+          "Pin Connections": [
+            {
+              "PinNumber": "LEFT_10",
+              "PinName": "8",
+              "Net": "MCU_GPIO_MOTOR_EN"
+            },
+            {
+              "PinNumber": "TOP_4",
+              "PinName": "VCC",
+              "Net": "SYS_VCC"
+            },
+            {
+              "PinNumber": "TOP_5",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLM",
+          "Functional Position": "Power Switch",
+          "Recommendation Reason": "P-Channel MOSFET acts as a high-side switch controlled by the MCU GPIO. Its low Rds(on) minimizes voltage drop, and it can handle the motor's current.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "MCU_GPIO_MOTOR_EN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "MOTOR_PWR"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "SYS_VCC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ES9251II",
+          "Functional Position": "Load",
+          "Recommendation Reason": "Servo motor is the primary load requiring switched power. It connects to the buffered MOTOR_PWR rail.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Signal (S)",
+              "Net": "MCU_PWM_MOTOR_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Power (VCC)",
+              "Net": "MOTOR_PWR"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Ground (GND)",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Path Multiplexer (PPMUX)",
+      "Function Description": "Automatically selects and switches between the external USB power source and the built-in lithium battery to provide a continuous, stable, and conflict-free main system voltage rail. Ensures seamless transition and prevents reverse current.",
+      "Signal Sources": "USB_VBUS (External Power), BAT_V (Battery Voltage)",
+      "Signal Destinations": "SYS_VCC (Main System Power Rail)",
+      "Implementation Logic": "Utilizes a power path controller IC (or discrete MOSFET-based circuit) with ideal diode/OR-ing functionality. It monitors USB_VBUS. When present and valid, it connects USB_VBUS to SYS_VCC and disconnects the battery path. When absent, it instantly connects BAT_V to SYS_VCC. The logic ensures priority to USB power and automatic, glitch-free switching.",
+      "Signal Chain": "The Power Path Multiplexer (PPMUX) module requires an automatic, glitch-free switching mechanism between two power sources: USB_VBUS (external) and BAT_V (battery). The signal chain begins with the USB Type-C connector providing USB_VBUS and ground. This voltage is monitored and used as the primary source. The battery voltage BAT_V is provided from a Li-Ion battery charger IC's BAT pin, which manages charging from USB_VBUS when present. The core switching logic uses a P-Channel MOSFET (IRLM) configured as a high-side switch for the battery path, controlled by the state of USB_VBUS. When USB_VBUS is present (valid), it directly powers the SYS_VCC rail and also drives the gate of the P-MOSFET high via a voltage divider, turning it OFF and disconnecting BAT_V. When USB_VBUS is absent, the gate is pulled low through a resistor to ground, turning the P-MOSFET ON and connecting BAT_V to SYS_VCC. A Schottky diode (SS34LH) is placed in series with USB_VBUS to prevent reverse current from SYS_VCC back into the USB port when battery is powering the system. The battery charger IC (TP4057ST26P) is powered from USB_VBUS to charge the battery when USB is connected, with its BAT pin providing BAT_V. All grounds are common. The output SYS_VCC is a clean, switched rail powering the system load.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Primary Power Input Interface",
+          "Recommendation Reason": "Provides the external USB_VBUS power source and ground connection as defined in the module's signal sources. Essential for receiving power from a USB Type-C cable.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "Functional Position": "Battery Charger and Battery Voltage Source",
+          "Recommendation Reason": "Manages charging of the single-cell Li-Ion battery from USB_VBUS and provides the regulated BAT_V output as the secondary power source. Its BAT pin is the source for BAT_V.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "BAT",
+              "Net": "BAT_V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLM",
+          "Functional Position": "Battery Path Switch (P-MOSFET)",
+          "Recommendation Reason": "Acts as an ideal diode/OR-ing switch for the battery path. Controlled by USB_VBUS presence to connect or disconnect BAT_V from SYS_VCC, ensuring priority to USB power and preventing reverse current.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "GATE_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "SYS_VCC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "BAT_V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS34LH",
+          "Functional Position": "USB Path Isolation Diode",
+          "Recommendation Reason": "Placed in series with USB_VBUS to prevent reverse current from SYS_VCC back into the USB port when the battery is powering the system. Its low forward voltage minimizes power loss.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "SYS_VCC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Battery Management & Charging",
+      "Function Description": "Safely charges the built-in lithium battery when external USB power is available and provides battery protection (over-voltage, under-voltage, over-current).",
+      "Signal Sources": "USB_VBUS (External Power), BAT_V (Battery Voltage), Battery temperature sensor",
+      "Signal Destinations": "BAT_V (to Battery), CHG_STAT (Status to MCU)",
+      "Implementation Logic": "A dedicated battery charge management IC (e.g., linear or switching charger) is connected to USB_VBUS and the battery. It regulates charging current/voltage according to battery chemistry (e.g., CC/CV for Li-ion). An integrated or separate protection circuit safeguards the battery. The charger IC provides a status signal to the MCU.",
+      "Signal Chain": "The USB Type-C connector provides VBUS power and ground. The VBUS line is connected to the VCC pin of the TP4057ST26P linear Li-Ion battery charger IC. The TP4057ST26P regulates the input voltage to a constant 4.2V output for charging a single-cell lithium-ion battery connected to its BAT pin. The charger IC monitors the battery voltage and temperature (implicitly via its internal thermal regulation) to implement CC/CV charging and protection. The CHRG# and STDBY# open-drain status outputs are connected to the MCU's digital I/O pins to indicate charging activity and completion. The battery's positive terminal (BAT_V) is connected to the charger's BAT pin, and its negative terminal is connected to system ground. The system load (e.g., the Arduino and other peripherals) is powered from the battery voltage (BAT_V) via appropriate regulation if needed. The USB_VBUS may also power the system directly when present, typically through a power path management circuit (not explicitly defined in the library, so assumed handled by the charger IC's input capability and system design).",
+      "Recommended Components": [
+        {
+          "ComponentID": "TP4057ST26P",
+          "Functional Position": "Battery Charge Management IC",
+          "Recommendation Reason": "It is a dedicated linear charger for single-cell Li-Ion batteries with CC/CV profile, preset 4.2V output, programmable charge current up to 500mA, and provides status signals (CHRG#, STDBY#) for MCU monitoring. It matches the module's requirement for safe charging from USB_VBUS.",
+          "Pin Connections": {
+            "CHRG#": "Connected to MCU digital I/O pin (e.g., Arduino LEFT_4 '2/INT0') as CHG_STAT signal for charging status.",
+            "GND": "Connected to system ground (e.g., Arduino TOP_5 'GND').",
+            "BAT": "Connected to the positive terminal of the lithium-ion battery (BAT_V).",
+            "VCC": "Connected to USB_VBUS from the USB connector (e.g., USB Pin A9 'VBUS').",
+            "STDBY#": "Connected to another MCU digital I/O pin (e.g., Arduino LEFT_5 '3/INT1/PWM') as additional status signal.",
+            "PROG": "Connected to an external resistor to ground to set the charge current (e.g., 1.2kΩ for ~500mA)."
+          }
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "External Power Input Connector",
+          "Recommendation Reason": "Provides the USB_VBUS power source from an external USB host or charger, essential for battery charging.",
+          "Pin Connections": {
+            "A9 (VBUS)": "Connected to TP4057ST26P Pin 4 (VCC) and optionally to system power input if needed.",
+            "A12 (GND)": "Connected to system ground (e.g., Arduino TOP_5 'GND').",
+            "B9 (VBUS)": "Connected in parallel to A9 (VBUS) for higher current capacity.",
+            "B12 (GND)": "Connected in parallel to A12 (GND) for higher current capacity.",
+            "A5 (CC1)": "Left floating or connected per USB-C specification (typically through pull-down resistors for sink role).",
+            "B5 (CC2)": "Left floating or connected per USB-C specification (typically through pull-down resistors for sink role)."
+          }
+        },
+        {
+          "ComponentID": "Arduino",
+          "Functional Position": "Main Control Unit (MCU)",
+          "Recommendation Reason": "Acts as the system controller to monitor the charger status signals (CHG_STAT) via its digital I/O pins and manage overall system operation.",
+          "Pin Connections": {
+            "LEFT_4 (2/INT0)": "Connected to TP4057ST26P Pin 1 (CHRG#) to detect charging activity.",
+            "LEFT_5 (3/INT1/PWM)": "Connected to TP4057ST26P Pin 5 (STDBY#) to detect charge completion.",
+            "TOP_5 (GND)": "Connected to system ground (common with TP4057ST26P GND and USB GND).",
+            "VCC (e.g., TOP_4)": "Powered from the battery voltage (BAT_V) via appropriate regulation if needed (note: Arduino RAW or VCC may accept battery voltage directly depending on model).",
+            "Other pins": "Used for other system functions as required."
+          }
+        },
+        {
+          "ComponentID": "MBR0520LT1G",
+          "Functional Position": "Reverse Polarity Protection Diode",
+          "Recommendation Reason": "Optional but recommended to protect the charger IC and battery from accidental reverse polarity connection of the USB_VBUS or battery. Placed in series with the input VCC line.",
+          "Pin Connections": {
+            "A (Anode)": "Connected to USB_VBUS source (e.g., USB Pin A9 'VBUS').",
+            "K (Cathode)": "Connected to TP4057ST26P Pin 4 (VCC)."
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Main System Power Domain",
+      "Function Description": "Provides regulated, clean power from the SYS_VCC rail to the low-power digital and analog subsystems, including the main controller, real-time clock (RTC), display driver, and audio amplifier/decoder.",
+      "Signal Sources": "SYS_VCC (from Power Path Multiplexer)",
+      "Signal Destinations": "MCU_VDD, RTC_VDD, DISPLAY_VDD, AUDIO_VDD",
+      "Implementation Logic": "SYS_VCC is fed into multiple low-dropout linear regulators (LDOs) or a multi-output power management IC (PMIC) to generate the specific, noise-sensitive voltage rails required by each sub-system (e.g., 3.3V for MCU, 1.8V for RTC). This domain is always active when the system is operational.",
+      "Signal Chain": "The Main System Power Domain receives the primary system voltage (SYS_VCC) from the Power Path Multiplexer. This SYS_VCC rail is then distributed to multiple voltage regulators to generate clean, specific voltage rails for sensitive subsystems. The Arduino (ATmega328P) acts as the main controller and requires a regulated MCU_VDD (3.3V or 5V, model-dependent). The DS3231 RTC module requires a clean RTC_VDD (3.3V to 5.5V) for timekeeping. The OLED display requires DISPLAY_VDD (3.3V to 5V) for its driver. The ES9251II servo requires AUDIO_VDD (4.8V to 6.0V) for its motor, though note this is a servo, not an audio amplifier/decoder as implied by the destination name. The internal signal flow is: SYS_VCC -> [Voltage Regulation/Conversion] -> {MCU_VDD, RTC_VDD, DISPLAY_VDD, AUDIO_VDD}. The Arduino's RAW pin can accept an unregulated input (3.35V-12V for 3.3V model) which its onboard regulator converts to VCC. The OLED, RTC, and Servo require their respective VCC inputs to be supplied from appropriate regulated rails derived from SYS_VCC.",
+      "Recommended Components": [
+        {
+          "ComponentID": "Arduino",
+          "Functional Position": "Main Controller & Primary Power Regulator for MCU_VDD",
+          "Recommendation Reason": "The Arduino Pro Mini (3.3V/8MHz model) can serve as the main controller. Its RAW pin accepts the SYS_VCC input (must be within 3.35V-12V for the 3.3V model), and its onboard linear regulator generates the clean MCU_VDD (3.3V) on its VCC pins. It also provides the digital I/O and communication interfaces (I2C, SPI, UART) needed to control the other subsystems like the RTC and display.",
+          "Pin Connections": [
+            {
+              "Net": "SYS_VCC",
+              "Pin": "RIGHT_1 (RAW)"
+            },
+            {
+              "Net": "MCU_VDD",
+              "Pin": "TOP_4 (VCC)"
+            },
+            {
+              "Net": "MCU_VDD",
+              "Pin": "RIGHT_3 (VCC)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "TOP_5 (GND)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "TOP_6 (BLK)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "BTM_1 (GND)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "BTM_2 (GND)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "BTM_3 (GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "Functional Position": "Real-Time Clock (RTC) providing RTC_VDD",
+          "Recommendation Reason": "Provides high-accuracy timekeeping for the system. It requires a clean, regulated power supply (RTC_VDD) within 3.3V to 5.5V, which can be sourced from the Arduino's VCC (MCU_VDD) or a dedicated LDO. It communicates with the Arduino via I2C.",
+          "Pin Connections": [
+            {
+              "Net": "RTC_VDD",
+              "Pin": "1 (VCC)"
+            },
+            {
+              "Net": "I2C_SDA",
+              "Pin": "2 (SDA)"
+            },
+            {
+              "Net": "I2C_SCL",
+              "Pin": "3 (SCK)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "5 (GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "Display Driver providing DISPLAY_VDD",
+          "Recommendation Reason": "Provides visual output. It requires a regulated power supply (DISPLAY_VDD) between 3.3V and 5V. It can be configured for I2C communication, sharing the bus with the RTC, which minimizes GPIO usage on the Arduino.",
+          "Pin Connections": [
+            {
+              "Net": "DISPLAY_VDD",
+              "Pin": "2 (VCC)"
+            },
+            {
+              "Net": "I2C_SCL",
+              "Pin": "3 (SCL)"
+            },
+            {
+              "Net": "I2C_SDA",
+              "Pin": "4 (SDA)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "1 (GND)"
+            },
+            {
+              "Net": "VCC",
+              "Pin": "5 (RES)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "7 (CS)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ES9251II",
+          "Functional Position": "Servo Motor requiring AUDIO_VDD (Note: This is a servo, not an audio amplifier. The destination name 'AUDIO_VDD' is misleading but treated as the servo power rail.)",
+          "Recommendation Reason": "Requires a dedicated power rail (AUDIO_VDD) between 4.8V and 6.0V, which is distinct from the 3.3V logic voltage. SYS_VCC must be regulated or directly within this range to power the servo. The control signal can come from an Arduino PWM pin.",
+          "Pin Connections": [
+            {
+              "Net": "AUDIO_VDD",
+              "Pin": "2 (Power (VCC))"
+            },
+            {
+              "Net": "SERVO_PWM",
+              "Pin": "1 (Signal (S))"
+            },
+            {
+              "Net": "GND",
+              "Pin": "3 (Ground (GND))"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLM",
+          "Functional Position": "Optional Power Switch for Servo/AUDIO_VDD Rail",
+          "Recommendation Reason": "A P-Channel MOSFET can be used as a high-side switch to enable/disable the AUDIO_VDD rail to the servo from the SYS_VCC or a regulated 5V rail, controlled by an Arduino GPIO pin. This allows the MCU to power down the servo when not in use, saving power.",
+          "Pin Connections": [
+            {
+              "Net": "SYS_VCC_OR_5V_REG",
+              "Pin": "3 (S)"
+            },
+            {
+              "Net": "AUDIO_VDD",
+              "Pin": "2 (D)"
+            },
+            {
+              "Net": "SERVO_ENABLE_GPIO",
+              "Pin": "1 (G)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "Functional Position": "Optional Battery Charger for System Backup",
+          "Recommendation Reason": "If the system includes a backup Li-Ion battery (e.g., for the RTC), this charger can manage charging from the SYS_VCC rail. It provides a regulated 4.2V output to the battery and status indicators.",
+          "Pin Connections": [
+            {
+              "Net": "SYS_VCC",
+              "Pin": "4 (VCC)"
+            },
+            {
+              "Net": "BAT+",
+              "Pin": "3 (BAT)"
+            },
+            {
+              "Net": "GND",
+              "Pin": "2 (GND)"
+            },
+            {
+              "Net": "CHRG_STATUS",
+              "Pin": "1 (CHRG#)"
+            },
+            {
+              "Net": "STDBY_STATUS",
+              "Pin": "5 (STDBY#)"
+            },
+            {
+              "Net": "PROG_RESISTOR",
+              "Pin": "6 (PROG)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Main Controller (MCU) & System Control Logic",
+      "Function Description": "The central intelligence that manages the overall system state, timekeeping (via RTC), user interface, audio playback for cuckoo sounds, display updates, and precisely timed activation of the motor load switch.",
+      "Signal Sources": "User inputs, RTC interrupts, internal timers, power good signals",
+      "Signal Destinations": "MCU_GPIO_MOTOR_EN (to Motor Load Switch), Display control lines, Audio control/data lines, General system control signals",
+      "Implementation Logic": "A low-power microcontroller runs the firmware. It monitors time from the RTC. At scheduled events (e.g., on the hour), it sequences operations: activate audio, update display, assert MCU_GPIO_MOTOR_EN to power the motor for the physical cuckoo action, then de-assert it. It also manages sleep states for power saving.",
+      "Signal Chain": "The system operates as a state machine driven by the MCU. The primary time reference is provided by the DS3231 RTC via I2C. The MCU periodically reads the RTC or uses its alarm interrupt to detect scheduled events (e.g., on the hour). Upon an event, the MCU sequences operations: 1) It activates audio playback (implied, though no specific audio component is in the library, control would be via GPIO/PWM). 2) It updates the OLED display via I2C to show relevant information (time, event status). 3) It asserts the MCU_GPIO_MOTOR_EN signal. This signal controls the gate of the P-Channel MOSFET (IRLM), which acts as a high-side switch. When the MOSFET is turned on, it connects the motor supply (e.g., 5V) to the ES9251II servo motor, powering it for the physical cuckoo action. After a timed duration, the MCU de-asserts MCU_GPIO_MOTOR_EN, turning off the MOSFET and cutting power to the motor. The MCU also monitors user inputs (e.g., buttons on GPIOs) for configuration and manages low-power sleep states, waking via RTC interrupt or user input. Power is supplied via the USB Type-C connector, regulated to 5V/3.3V for the MCU and peripherals, with the TP4057 managing Li-Ion battery charging for backup operation. The Schottky diodes (MBR0520LT1G, SS34LH) provide reverse polarity protection and/or OR-ing logic for power sources.",
+      "Recommended Components": [
+        {
+          "ComponentID": "Arduino",
+          "Functional Position": "Main Controller",
+          "Recommendation Reason": "The ATmega328P provides sufficient I/O, timers, and low-power modes to manage the system state, RTC communication, display control, motor timing, and user interface. Its development board form factor simplifies prototyping.",
+          "Pin Connections": [
+            {
+              "Net": "VCC_3V3",
+              "Pin": "TOP_4"
+            },
+            {
+              "Net": "GND",
+              "Pin": "TOP_5"
+            },
+            {
+              "Net": "GND",
+              "Pin": "BTM_1"
+            },
+            {
+              "Net": "I2C_SDA",
+              "Pin": "RIGHT_7"
+            },
+            {
+              "Net": "I2C_SCL",
+              "Pin": "RIGHT_6"
+            },
+            {
+              "Net": "MCU_GPIO_MOTOR_EN",
+              "Pin": "LEFT_10"
+            },
+            {
+              "Net": "OLED_RES",
+              "Pin": "LEFT_4"
+            },
+            {
+              "Net": "OLED_DC",
+              "Pin": "LEFT_5"
+            }
+          ]
+        },
+        {
+          "ComponentID": "DS3231 MINI PI",
+          "Functional Position": "Precision Timekeeping",
+          "Recommendation Reason": "Provides highly accurate time and date with temperature compensation. Its I2C interface is simple and low-power, and it includes a backup power source to maintain time during main power loss.",
+          "Pin Connections": [
+            {
+              "Net": "VCC_3V3",
+              "Pin": "1"
+            },
+            {
+              "Net": "I2C_SDA",
+              "Pin": "2"
+            },
+            {
+              "Net": "I2C_SCL",
+              "Pin": "3"
+            },
+            {
+              "Net": "GND",
+              "Pin": "5"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ES9251II",
+          "Functional Position": "Cuckoo Mechanism Actuator",
+          "Recommendation Reason": "A micro servo motor suitable for precise angular control of a small mechanical cuckoo door or figure. It is lightweight and operates at low current, matching the system's power constraints.",
+          "Pin Connections": [
+            {
+              "Net": "MOTOR_PWM_CTRL",
+              "Pin": "1"
+            },
+            {
+              "Net": "MOTOR_VCC",
+              "Pin": "2"
+            },
+            {
+              "Net": "GND",
+              "Pin": "3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLM",
+          "Functional Position": "Motor Power Switch",
+          "Recommendation Reason": "A P-Channel MOSFET acts as an efficient high-side switch controlled by the MCU's GPIO to apply/remove power to the servo motor, enabling precise timing of the mechanical action.",
+          "Pin Connections": [
+            {
+              "Net": "MCU_GPIO_MOTOR_EN",
+              "Pin": "1"
+            },
+            {
+              "Net": "MOTOR_VCC",
+              "Pin": "2"
+            },
+            {
+              "Net": "SYS_5V",
+              "Pin": "3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED",
+          "Functional Position": "User Interface Display",
+          "Recommendation Reason": "A monochrome OLED display provides clear visual feedback for time, settings, and system status. Its I2C interface minimizes wiring and uses few MCU pins.",
+          "Pin Connections": [
+            {
+              "Net": "GND",
+              "Pin": "1"
+            },
+            {
+              "Net": "VCC_3V3",
+              "Pin": "2"
+            },
+            {
+              "Net": "I2C_SCL",
+              "Pin": "3"
+            },
+            {
+              "Net": "I2C_SDA",
+              "Pin": "4"
+            },
+            {
+              "Net": "OLED_RES",
+              "Pin": "5"
+            },
+            {
+              "Net": "OLED_DC",
+              "Pin": "6"
+            },
+            {
+              "Net": "GND",
+              "Pin": "7"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4057ST26P",
+          "Functional Position": "Battery Management",
+          "Recommendation Reason": "A linear Li-Ion charger enables safe single-cell battery charging from the USB input, providing power backup for the RTC and system during main power loss.",
+          "Pin Connections": [
+            {
+              "Net": "CHRG_STATUS_LED",
+              "Pin": "1"
+            },
+            {
+              "Net": "GND",
+              "Pin": "2"
+            },
+            {
+              "Net": "BAT_POS",
+              "Pin": "3"
+            },
+            {
+              "Net": "USB_5V",
+              "Pin": "4"
+            },
+            {
+              "Net": "STDBY_STATUS_LED",
+              "Pin": "5"
+            },
+            {
+              "Net": "PROG_RESISTOR",
+              "Pin": "6"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Primary Power and Programming Interface",
+          "Recommendation Reason": "USB Type-C connector provides a robust, reversible interface for 5V power input and potential firmware programming via serial.",
+          "Pin Connections": [
+            {
+              "Net": "GND",
+              "Pin": "A12"
+            },
+            {
+              "Net": "USB_5V",
+              "Pin": "A9"
+            },
+            {
+              "Net": "GND",
+              "Pin": "B12"
+            },
+            {
+              "Net": "USB_5V",
+              "Pin": "B9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

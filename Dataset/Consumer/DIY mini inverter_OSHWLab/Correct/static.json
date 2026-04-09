@@ -1,0 +1,89 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_5V_SYSTEM",
+      "Connections": [
+        { "ComponentID": "78L05", "PinName": "VOUT" },
+        { "ComponentID": "ATmega328P-AU", "PinName": "VCC" },
+        { "ComponentID": "ATmega328P-AU", "PinName": "AVCC" }
+      ]
+    },
+    {
+      "net_id": "NET_ISP_MOSI",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PB3" },
+        { "ComponentID": "AVR ISP", "PinName": "MOSI" }
+      ]
+    },
+    {
+      "net_id": "NET_ISP_MISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PB4" },
+        { "ComponentID": "AVR ISP", "PinName": "MISO" }
+      ]
+    },
+    {
+      "net_id": "NET_ISP_SCK",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PB5" },
+        { "ComponentID": "AVR ISP", "PinName": "SCLK" }
+      ]
+    },
+    {
+      "net_id": "NET_ISP_RESET",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PC6" },
+        { "ComponentID": "AVR ISP", "PinName": "RESET" }
+      ]
+    },
+    {
+      "net_id": "NET_DRIVE_A_ISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PD3" },
+        { "ComponentID": "EL357N_1", "PinName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "NET_DRIVE_B_ISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PD5" },
+        { "ComponentID": "EL357N_2", "PinName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "NET_DRIVE_C_ISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PD6" },
+        { "ComponentID": "EL357N_3", "PinName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "NET_DRIVE_D_ISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P-AU", "PinName": "PB1" },
+        { "ComponentID": "EL357N_4", "PinName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "NET_PUSH_PULL_DRV_A",
+      "Connections": [
+        { "ComponentID": "SG3525A", "PinName": "Output A" },
+        { "ComponentID": "NCEP60T12A_1", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_PUSH_PULL_DRV_B",
+      "Connections": [
+        { "ComponentID": "SG3525A", "PinName": "Output B" },
+        { "ComponentID": "NCEP60T12A_2", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_BUCK_PH_INDUCTOR",
+      "Connections": [
+        { "ComponentID": "TPS54331", "PinName": "PH" },
+        { "ComponentID": "SLT038125T220MUB", "PinName": "Lead 1" }
+      ]
+    }
+  ]
+}

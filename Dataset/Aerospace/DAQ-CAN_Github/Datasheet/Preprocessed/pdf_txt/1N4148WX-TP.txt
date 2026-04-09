@@ -1,0 +1,21 @@
+Component ID: 1N4148WX
+Component Type: High-Speed Switching Diode
+Description:
+The 1N4148WX is a general-purpose, surface-mount silicon switching diode designed for fast switching applications. It features a very low reverse recovery time, making it suitable for high-frequency rectification, signal demodulation, and digital logic circuits. It is housed in a compact SOD-323 package with polarity indicated by a cathode band.
+
+Key Parameters:
+- Peak Repetitive Reverse Voltage (VRM): 100 V
+- Average Rectified Output Current (IO): 150 mA
+- Maximum Forward Voltage (VF): 1.0 V @ IF = 50 mA
+- Maximum Reverse Recovery Time (trr): 4 ns
+- Maximum Reverse Current (IR): 25 nA @ VR=20V, Tj=25°C / 1.0 µA @ VR=75V, Tj=25°C
+- Junction Capacitance (Cj): 4 pF (Typical)
+- Peak Forward Surge Current (IFSM): 2.0 A (t=1µs)
+- Power Dissipation (PD): 200 mW
+- Operating Junction Temperature (Tj): -55 to +150 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode | Anode | Positive terminal, current enters here | Terminal | Power |
+| 2 | Cathode | Cathode | Negative terminal, marked by a band, current exits here | Terminal | Power |

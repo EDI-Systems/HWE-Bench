@@ -1,0 +1,23 @@
+Component ID: ES9251II
+Component Type: Micro Servo Motor (RC Servo)
+Description:
+The ES9251II is a lightweight, low-profile micro servo motor designed for radio-controlled models. It utilizes a PWM control system to convert pulse width signals into precise angular position control of its output shaft. It features a 360° continuous rotation capability (though standard operating travel is limited), a gear train with one metal and five plastic gears, and is characterized by its low operating current and compact size.
+
+Key Parameters:
+- Operating Voltage Range: 4.8V to 6.0V (specified)
+- No-Load Operating Speed: 0.09 sec/60° @ 4.8V, 0.08 sec/60° @ 6.0V
+- Stall Torque: 0.25 kg·cm @ 4.8V, 0.3 kg·cm @ 6.0V
+- Maximum (Stall) Current: 120 mA @ 4.8V, 140 mA @ 6.0V
+- Idle Current: 2.2 mA
+- Operating Temperature Range: -10°C to 60°C
+- Weight: 3.0 ± 0.5 g
+- Control Signal: PWM, 700-2300 µs pulse width range
+- Standard Operating Travel: 90° ± 10° (for 1000-2000 µs pulse)
+- Gear Type: 1 metal gear + 5 plastic gears
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Signal (S) | Control Input | PWM signal input for position/rotation control | Input | Digital, 3.3V/5V logic compatible |
+| 2 | Power (VCC) | Power Supply | Positive supply voltage (4.8V - 6.0V) | Power Input | DC Power |
+| 3 | Ground (GND) | Ground | Common ground/return path for power and signal | Power Input | Ground |

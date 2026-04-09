@@ -1,0 +1,86 @@
+{
+  "ComponentID": "USBLC6-2SC6",
+  "ComponentType": "Very Low Capacitance ESD Protection for USB 2.0 High Speed",
+  "Description": "The USBLC6-2SC6 is a monolithic application-specific device dedicated to ESD protection of high-speed interfaces, such as USB 2.0, Ethernet, and video lines. It utilizes a rail-to-rail architecture to protect two data lines against ESD strikes while maintaining very low line capacitance (typically 3.5 pF). This ensures high signal integrity even at high data rates. It is an essential component for protecting sensitive ICs from electrostatic discharge (ESD) and other transient overvoltages.",
+  "KeyParameters": {
+    "**Breakdown Voltage ($V_{BR}$)": "** 6V (min)",
+    "**Peak Pulse Power ($P_{PP}$)": "** 70W (8/20 µs waveform)",
+    "**Line Capacitance ($C_{line}$)": "** 3.5 pF (typical) between I/O and GND",
+    "**Operating Junction Temperature": "** -40°C to +150°C",
+    "**Package": "** SOT23-6L"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "I/O 1",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 1",
+          "FunctionDescription": "ESD protection for the first line (e.g., USB D+)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "I/O 1",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 1",
+          "FunctionDescription": "Pass-through for line 1 (Internally connected to Pin 1)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "I/O 2",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 2",
+          "FunctionDescription": "ESD protection for the second line (e.g., USB D-)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Connected to VBUS supply to bias internal diodes"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "I/O 2",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output 2",
+          "FunctionDescription": "Pass-through for line 2 (Internally connected to Pin 4)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

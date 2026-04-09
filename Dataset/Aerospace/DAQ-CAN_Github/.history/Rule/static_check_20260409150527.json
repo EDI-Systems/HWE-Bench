@@ -1,0 +1,112 @@
+{
+  "MCU_Function_Groups": {
+    "PIC16F1455": {
+      "System_Power_And_Misc": [
+        { "PinName": "VDD", "FunctionName": "5V Main Power" },
+        { "PinName": "VSS", "FunctionName": "System Ground" },
+        { "PinName": "VUSB3V3", "FunctionName": "Internal 3.3V LDO" },
+        { "PinName": "RA3/!MCLR", "FunctionName": "MCLR / VPP Reset" },
+        { "PinName": "RC5", "FunctionName": "Status LED Output" }
+      ],
+      "USB_Data_Bus": [
+        { "PinName": "RA0/D+", "FunctionName": "USB Data Plus" },
+        { "PinName": "RA1/D-", "FunctionName": "USB Data Minus" }
+      ],
+      "SPI_CAN_Control_Bus": [
+        { "PinName": "RC0/ICSPDAT", "FunctionName": "SPI SCK" },
+        { "PinName": "RC1/ICSPCLK", "FunctionName": "SPI MISO" },
+        { "PinName": "RC2", "FunctionName": "SPI MOSI" },
+        { "PinName": "RC3", "FunctionName": "SPI CS" },
+        { "PinName": "RA4", "FunctionName": "CAN Clock Input" },
+        { "PinName": "RA5", "FunctionName": "CAN Interrupt" }
+      ],
+      "Relay_Drive_Channel": [
+        { "PinName": "RC4", "FunctionName": "Relay Control Signal" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "USB": {
+      "USB_Data_Port": [
+        { "PinName": "D+", "FunctionName": "Data Plus" },
+        { "PinName": "D-", "FunctionName": "Data Minus" }
+      ]
+    },
+    "USBLC6-2SC6": {
+      "ESD_Data_Lines": [
+        { "PinName": "I/O 2", "FunctionName": "Protected Data D+" },
+        { "PinName": "I/O 1", "FunctionName": "Protected Data D-" }
+      ]
+    },
+    "MCP2515": {
+      "SPI_CAN_Interface": [
+        { "PinName": "SCK", "FunctionName": "SPI Clock Input" },
+        { "PinName": "SO", "FunctionName": "SPI MISO Output" },
+        { "PinName": "SI", "FunctionName": "SPI MOSI Input" },
+        { "PinName": "CS", "FunctionName": "SPI Chip Select" },
+        { "PinName": "CLKOUT", "FunctionName": "CAN Clock Output" },
+        { "PinName": "!INT", "FunctionName": "CAN Interrupt Output" }
+      ]
+    },
+    "DMN63D8": {
+      "MOSFET_Gate": [
+        { "PinName": "G", "FunctionName": "Gate Logic Drive" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_USB_ESD_Data_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "PIC16F1455",
+      "Target_Group_Pattern": "USB_Data_Bus",
+      "Slaves": [
+        { "ComponentID": "USB", "Interface": "USB_Data_Port" },
+        { "ComponentID": "USBLC6-2SC6", "Interface": "ESD_Data_Lines" }
+      ]
+    },
+    {
+      "RuleName": "Check_SPI_CAN_Controller_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "PIC16F1455",
+      "Target_Group_Pattern": "SPI_CAN_Control_Bus",
+      "Slaves": [
+        { "ComponentID": "MCP2515", "Interface": "SPI_CAN_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Check_Relay_MOSFET_Isolation",
+      "Type": "Resource_Allocation",
+      "MCU": "PIC16F1455",
+      "Target_Group": "Relay_Drive_Channel",
+      "Slaves": [
+        { "ComponentID": "DMN63D8", "Interface": "MOSFET_Gate" }
+      ]
+    },
+    {
+      "RuleName": "Check_CAN_TX_Link",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "MCP2515", "PinName": "TXCAN" },
+        { "ComponentID": "MCP2562", "PinName": "TXD" }
+      ]
+    },
+    {
+      "RuleName": "Check_CAN_RX_Link",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "MCP2515", "PinName": "RXCAN" },
+        { "ComponentID": "MCP2562", "PinName": "RXD" }
+      ]
+    },
+    {
+      "RuleName": "Check_Relay_Coil_Drive_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "DMN63D8", "PinName": "D" },
+        { "ComponentID": "G5Q-1A", "PinName": "COIL_1" },
+        { "ComponentID": "1N4148WX", "PinName": "Anode" }
+      ]
+    }
+  ]
+}

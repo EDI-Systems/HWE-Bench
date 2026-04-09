@@ -1,0 +1,42 @@
+Component ID: CP2102
+Component Type: USB-to-UART Bridge Controller
+Description: The CP2102N-A02-GQFN28R is a high-performance, small-form-factor USB-to-UART bridge from Silicon Labs' USBXpress family. It is designed to provide a simple solution for updating RS-232 designs to USB using minimum components and PCB space. This device includes a USB 2.0 full-speed function controller, USB transceiver, oscillator, and a universal asynchronous receiver/transmitter (UART) in a single package. It is specifically updated (A02 version) to include features like battery charger detection and remote wakeup.
+
+Key Parameters:
+- USB Specification: USB 2.0 Full Speed (12 Mbps)
+- UART Baud Rate: Up to 3 Mbps
+- Integrated Regulator: 3.3V output (supports 3.0V to 5.25V input)
+- Package: 28-pin QFN (5x5 mm)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | DCD | Data Carrier Detect | UART control input (active low) | Input | Digital |
+| 2 | RI/CLK | Ring Indicator / CLK | UART control input / Configurable clock output | I/O | Digital |
+| 3 | GND | Ground | Ground reference | Power | 0V |
+| 4 | D+ | USB D+ | USB differential data plus | I/O | Analog/USB |
+| 5 | D- | USB D- | USB differential data minus | I/O | Analog/USB |
+| 6 | VDD | Regulator Output | 3.3V internal regulator output | Power | 3.3V |
+| 7 | VREGIN | Regulator Input | Voltage regulator input | Power | 3.0V-5.25V |
+| 8 | VBUS | VBUS Sense | USB VBUS voltage sense input | Input | Analog |
+| 9 | RSTb | Reset | Device reset (active low) | Input | Digital |
+| 10 | NC | No Connect | No internal connection | NC | - |
+| 11 | SUSPENDb | Suspend Status | USB suspend state indicator (active low) | Output | Digital |
+| 12 | SUSPEND | Suspend Status | USB suspend state indicator (active high) | Output | Digital |
+| 13 | CHREN | Charger Enable | Battery charger enable output | Output | Digital |
+| 14 | CHR1 | Charger Detect 1 | Charger detection status bit 1 | Output | Digital |
+| 15 | CHR0 | Charger Detect 0 | Charger detection status bit 0 | Output | Digital |
+| 16 | GPIO.3/WAKEUP| GPIO / Wakeup | Configurable I/O or Remote Wakeup input | I/O | Digital |
+| 17 | GPIO.2/RS485 | GPIO / RS485 | Configurable I/O or RS485 Transmit Enable | I/O | Digital |
+| 18 | GPIO.1/RXT | GPIO / RX LED | Configurable I/O or UART Receive LED | I/O | Digital |
+| 19 | GPIO.0/TXT | GPIO / TX LED | Configurable I/O or UART Transmit LED | I/O | Digital |
+| 20 | GPIO.6 | GPIO | Configurable I/O | I/O | Digital |
+| 21 | GPIO.5 | GPIO | Configurable I/O | I/O | Digital |
+| 22 | GPIO.4 | GPIO | Configurable I/O | I/O | Digital |
+| 23 | CTS | Clear to Send | UART flow control input (active low) | Input | Digital |
+| 24 | RTS | Request to Send | UART flow control output (active low) | Output | Digital |
+| 25 | RXD | UART Receive | UART data receive | Input | Digital |
+| 26 | TXD | UART Transmit | UART data transmit | Output | Digital |
+| 27 | DSR | Data Set Ready | UART control input (active low) | Input | Digital |
+| 28 | DTR | Data Terminal Ready| UART control output (active low) | Output | Digital |
+| 29 | EP | Exposed Pad | Thermal/Ground pad on bottom of package | Power | Ground |

@@ -1,0 +1,103 @@
+{
+  "ComponentID": "OLED",
+  "ComponentType": "OLED Display Module (Graphic Display Module)",
+  "Description": "This is a 1.54-inch monochrome OLED graphic display module with a resolution of 128x64 pixels, driven by the SSD1309 controller. Its core functionality is to provide a visual output interface by controlling individual pixels to form images or text. It supports configurable communication interfaces, including 4-wire SPI and I²C, allowing flexible integration with various microcontrollers. The module features a wide operating voltage (3.3V to 5V), low power consumption, a high viewing angle (>160°), and is available in white-on-black or blue-on-black color variants.",
+  "KeyParameters": {
+    "Display Size": "1.54 inch",
+    "Resolution": "128 x 64 pixels",
+    "Display Technology": "OLED (Monochrome)",
+    "Active Area": "35.052 mm x 17.516 mm",
+    "Interface": "Configurable 4-wire SPI or I²C",
+    "Operating Voltage": "3.3V to 5V",
+    "Operating Temperature": "-20°C to 60°C",
+    "Viewing Angle": ">160°",
+    "Driver IC": "SSD1309",
+    "Module Dimensions": "42.40 mm x 38.00 mm"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Power Ground",
+          "FunctionDescription": "OLED power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "OLED power positive (3.3V~5V)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "SPI and I²C bus clock signal"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Bidirectional (Open-drain for I²C)"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "SPI and I²C bus data signal"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Bidirectional (Open-drain for I²C)"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "RES",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "OLED reset signal, active-low. Must be held high for I²C operation."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "DC",
+      "Functions": [
+        {
+          "FunctionName": "Data/Command (SPI) / Address Select (I²C)",
+          "FunctionDescription": "SPI: Command/Data selection (High: Data, Low: Command). I²C: I²C slave address selection (High: 0x7A, Low: 0x78)."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "OLED chip select signal, active-low. Can be omitted if resistor R8 is soldered. For I²C mode (without R8), must be connected to ground."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Input"
+    }
+  ]
+}

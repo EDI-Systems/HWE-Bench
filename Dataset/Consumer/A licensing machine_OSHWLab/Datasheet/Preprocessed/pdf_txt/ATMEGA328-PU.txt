@@ -1,0 +1,49 @@
+Component ID: ATmega328P
+Component Type: 8-bit AVR Microcontroller
+Description: The ATmega328P-AU is a high-performance, low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. It features 32KB of in-system programmable Flash, 1KB EEPROM, 2KB SRAM, and a rich set of peripherals including three flexible timer/counters, a 10-bit ADC with up to 8 channels, a programmable USART, and an SPI serial interface. It is designed to achieve throughputs approaching 1 MIPS per MHz, balancing power consumption and processing speed.
+
+Key Parameters:
+- Flash Memory: 32 KB
+- SRAM: 2 KB
+- EEPROM: 1 KB
+- Clock Speed: Up to 20 MHz
+- Operating Voltage: 1.8V to 5.5V
+- ADC: 8-channel 10-bit
+- I/O Pins: 23 programmable I/O lines
+- Package: 32-lead TQFP
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | PD3 | PD3 | Digital I/O 3 / PCINT19 / OC2B / INT1 | Digital I/O | 5V |
+| 2 | PD4 | PD4 | Digital I/O 4 / PCINT20 / XCK / T0 | Digital I/O | 5V |
+| 3 | GND | Ground | Power ground | Power | 0V |
+| 4 | VCC | Power | Digital supply voltage | Power | 5V |
+| 5 | GND | Ground | Power ground | Power | 0V |
+| 6 | VCC | Power | Digital supply voltage | Power | 5V |
+| 7 | PB6 | PB6 | Port B 6 / PCINT6 / XTAL1 / TOSC1 | Digital I/O | Signal |
+| 8 | PB7 | PB7 | Port B 7 / PCINT7 / XTAL2 / TOSC2 | Digital I/O | Signal |
+| 9 | PD5 | PD5 | Digital I/O 5 / PCINT21 / OC0B / T1 | Digital I/O | 5V |
+| 10 | PD6 | PD6 | Digital I/O 6 / PCINT22 / OC0A / AIN0 | Digital I/O | 5V |
+| 11 | PD7 | PD7 | Digital I/O 7 / PCINT23 / AIN1 | Digital I/O | 5V |
+| 12 | PB0 | PB0 | Port B 0 / PCINT0 / CLKO / ICP1 | Digital I/O | 5V |
+| 13 | PB1 | PB1 | Port B 1 / PCINT1 / OC1A | Digital I/O | 5V |
+| 14 | PB2 | PB2 | Port B 2 / PCINT2 / SS# / OC1B | Digital I/O | 5V |
+| 15 | PB3 | PB3 | Port B 3 / PCINT3 / OC2A / MOSI | Digital I/O | 5V |
+| 16 | PB4 | PB4 | Port B 4 / PCINT4 / MISO | Digital I/O | 5V |
+| 17 | PB5 | PB5 | Port B 5 / SCK / PCINT5 | Digital I/O | 5V |
+| 18 | AVCC | AVCC | Supply voltage for ADC | Power | 5V |
+| 19 | ADC6 | ADC6 | Analog input channel 6 | Analog Input | 5V |
+| 20 | AREF | AREF | Analog reference pin for ADC | Analog Input | 5V |
+| 21 | GND | Ground | Power ground | Power | 0V |
+| 22 | ADC7 | ADC7 | Analog input channel 7 | Analog Input | 5V |
+| 23 | PC0 | PC0 | Port C 0 / ADC0 / PCINT8 | Digital/Analog | 5V |
+| 24 | PC1 | PC1 | Port C 1 / ADC1 / PCINT9 | Digital/Analog | 5V |
+| 25 | PC2 | PC2 | Port C 2 / ADC2 / PCINT10 | Digital/Analog | 5V |
+| 26 | PC3 | PC3 | Port C 3 / ADC3 / PCINT11 | Digital/Analog | 5V |
+| 27 | PC4 | PC4 | Port C 4 / ADC4 / SDA / PCINT12 | Digital/Analog | 5V |
+| 28 | PC5 | PC5 | Port C 5 / ADC5 / SCL / PCINT13 | Digital/Analog | 5V |
+| 29 | PC6 | PC6 | Port C 6 / RESET# / PCINT14 | Digital Input | 5V |
+| 30 | PD0 | PD0 | Digital I/O 0 / RXD / PCINT16 | Digital I/O | 5V |
+| 31 | PD1 | PD1 | Digital I/O 1 / TXD / PCINT17 | Digital I/O | 5V |
+| 32 | PD2 | PD2 | Digital I/O 2 / INT0 / PCINT18 | Digital I/O | 5V |

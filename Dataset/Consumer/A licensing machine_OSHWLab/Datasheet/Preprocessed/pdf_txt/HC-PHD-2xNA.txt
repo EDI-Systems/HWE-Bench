@@ -1,0 +1,23 @@
+Component ID: HC-PHD-2*3AW
+Component Type: 6-Pin Dual Row Right-Angle Male Header
+Description: The HC-PHD-2*3AW is a 6-pin dual-row male header connector usually featuring a 2.0mm pitch. It is designed for board-to-board or wire-to-board connections where a compact footprint is required. The right-angle orientation allows for side-entry cable connections or low-profile PCB stacking.
+
+Key Parameters:
+- Pitch 2.0 mm
+- Number of Pins 6 (2x3)
+- Mounting Type Through-hole Right Angle
+- Current Rating 2A AC/DC
+- Voltage Rating 250V AC/DC
+- Contact Resistance 20m ohm Max
+- Insulation Resistance 1000M ohm Min
+- Operating Temperature -25 to +85 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Pin 1 | Connection | General purpose header pin 1 | Passive | Signal/Power |
+| 2 | Pin 2 | Connection | General purpose header pin 2 | Passive | Signal/Power |
+| 3 | Pin 3 | Connection | General purpose header pin 3 | Passive | Signal/Power |
+| 4 | Pin 4 | Connection | General purpose header pin 4 | Passive | Signal/Power |
+| 5 | Pin 5 | Connection | General purpose header pin 5 | Passive | Signal/Power |
+| 6 | Pin 6 | Connection | General purpose header pin 6 | Passive | Signal/Power |

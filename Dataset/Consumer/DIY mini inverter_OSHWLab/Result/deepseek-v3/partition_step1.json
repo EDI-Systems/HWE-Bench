@@ -1,0 +1,46 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Input Protection & Conditioning",
+      "Function Description": "Provides reverse polarity protection, overcurrent protection via a fuse, and input voltage stabilization for the raw 11-21V DC battery input.",
+      "Signal Sources": "Battery terminals (11-21V DC).",
+      "Signal Destinations": "Auxiliary Power Supply System, Push-Pull DC-DC Boost Converter.",
+      "Implementation Logic": "A series diode for reverse polarity protection, a 15A DC fuse in series for overcurrent protection, and bulk/decoupling capacitors (e.g., electrolytic and ceramic) placed across the input rails to filter noise and provide local energy storage."
+    },
+    {
+      "Module Name": "Auxiliary Power Supply",
+      "Function Description": "Generates stable, low-voltage rails (+9.5V and +5V) from the raw battery input to power the control logic, gate drivers, and microcontroller.",
+      "Signal Sources": "Protected 11-21V DC from the Input Protection stage.",
+      "Signal Destinations": "SG3525 PWM Controller, MOSFET Gate Drivers, Main MCU, Sensors, Optocouplers.",
+      "Implementation Logic": "A TPS54331-based buck converter steps the input down to +9.5V. This +9.5V rail directly powers the gate drivers. A 78L05 linear regulator then steps the +9.5V down to a clean +5V for the MCU and sensors."
+    },
+    {
+      "Module Name": "High Voltage DC Generation (Push-Pull Converter)",
+      "Function Description": "Steps up the low-voltage DC input to a stable High Voltage DC (HVDC) bus required for the inverter output.",
+      "Signal Sources": "Protected 11-21V DC, +9.5V Auxiliary Rail (for SG3525), PWM control signal from SG3525.",
+      "Signal Destinations": "H-Bridge Inverter Stage (HVDC Bus).",
+      "Implementation Logic": "An SG3525 PWM controller generates complementary signals to drive a low-side push-pull MOSFET pair (e.g., NCEP60T12A). These MOSFETs switch current through the primary of a center-tapped step-up transformer. The secondary voltage is rectified and filtered to create the HVDC bus. The circuit includes soft-start and primary current sensing for protection."
+    },
+    {
+      "Module Name": "H-Bridge Inverter & Isolated Gate Drive",
+      "Function Description": "Converts the HVDC into a modified sine wave AC output by chopping it with an H-Bridge. Provides galvanic isolation between high-voltage power stage and low-voltage control.",
+      "Signal Sources": "HVDC Bus from Push-Pull Converter, PWM control signals from Main MCU.",
+      "Signal Destinations": "AC Output terminals, system ground reference for power stage.",
+      "Implementation Logic": "An H-Bridge formed by four high-voltage MOSFETs (e.g., IRF840). The MCU's PWM signals, which include dead-time, are fed through optocouplers (e.g., EL357N) to provide isolated gate drive signals for the high-side and low-side MOSFETs of each bridge leg, converting HVDC to AC."
+    },
+    {
+      "Module Name": "Main Control & Monitoring (MCU Core)",
+      "Function Description": "The central control unit that generates PWM for the H-Bridge, monitors system parameters (voltage, temperature), and implements protection/logic functions.",
+      "Signal Sources": "+5V Auxiliary Rail, Analog signals from voltage divider and NTC thermistor.",
+      "Signal Destinations": "PWM signals to H-Bridge Gate Drive optocouplers, Enable signal to SG3525, Control signal to Cooling Fan.",
+      "Implementation Logic": "An ATmega328P microcontroller runs the core firmware. Its ADC reads battery voltage (via divider) and temperature (via NTC circuit). It generates the precise dead-time PWM waveforms for the H-Bridge. Based on sensor data, it controls a cooling fan via PWM and can disable the SG3525 (inverter shutdown) for low-battery or overtemperature conditions."
+    },
+    {
+      "Module Name": "User Interface & System Peripherals",
+      "Function Description": "Provides user feedback, system status display, timekeeping, and programming interfaces.",
+      "Signal Sources": "+5V Auxiliary Rail, I2C/GPIO signals from Main MCU.",
+      "Signal Destinations": "User (via display/LEDs), Programming device (via headers).",
+      "Implementation Logic": "Includes an I2C OLED display and DS3231 RTC module connected to the MCU's I2C bus. An RGB LED is driven by MCU GPIOs for status. An ICSP header and serial header (e.g., FTDI) are provided for programming and debugging."
+    }
+  ]
+}

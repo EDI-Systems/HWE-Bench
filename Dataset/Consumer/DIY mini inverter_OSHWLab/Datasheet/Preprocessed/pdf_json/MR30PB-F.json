@@ -1,0 +1,55 @@
+{
+  "ComponentID": "MR30PB-F",
+  "ComponentType": "Board-mount, 3-pin, molded power connector (wire-to-board/board-to-board)",
+  "Description": "The MR30PB-F is a vertical, board-mount, 3-pin power connector designed for space-constrained PCBs, particularly for integration with motors in lithium battery-powered applications. It provides a wire-to-board or board-to-board connection solution, aiming to eliminate separate wiring by allowing direct integration between the motor and controller.",
+  "KeyParameters": {
+    "Rated Current": "20A MAX (ΔT<85°C)",
+    "Withstanding Voltage": "500V DC",
+    "Insulation Resistance": "≥2000 MΩ",
+    "Contact Resistance": "≤1.2 mΩ",
+    "Mechanical Life (Mating Cycles)": "100 cycles",
+    "Operating Temperature": "-20°C to 120°C",
+    "Ingress Protection (IP) Rating": "IP40",
+    "Flammability Rating": "UL94 V-0",
+    "Housing Material": "PA (Polyamide/Nylon), colors: Yellow, Black, Blue",
+    "Contact Material": "Copper alloy, plating: Gold"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Pin 1",
+      "Functions": [
+        {
+          "FunctionName": "Power/Contact",
+          "FunctionDescription": "Electrical contact for circuit connection."
+        }
+      ],
+      "PinType": "Male Pin (PCB Mount)",
+      "ElectricalType": "Power/Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Pin 2",
+      "Functions": [
+        {
+          "FunctionName": "Power/Contact",
+          "FunctionDescription": "Electrical contact for circuit connection."
+        }
+      ],
+      "PinType": "Male Pin (PCB Mount)",
+      "ElectricalType": "Power/Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Pin 3",
+      "Functions": [
+        {
+          "FunctionName": "Power/Contact",
+          "FunctionDescription": "Electrical contact for circuit connection."
+        }
+      ],
+      "PinType": "Male Pin (PCB Mount)",
+      "ElectricalType": "Power/Signal"
+    }
+  ]
+}

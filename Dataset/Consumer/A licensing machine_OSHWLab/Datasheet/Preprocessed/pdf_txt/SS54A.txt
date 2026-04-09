@@ -1,0 +1,17 @@
+Component ID: SS54A
+Component Type: Schottky Barrier Rectifier
+Description: The SS54A is a surface-mount Schottky barrier rectifier designed for high-efficiency rectification and protection. It features a low forward voltage drop and high switching speed, which helps minimize power loss and improve efficiency in DC-DC converters and power supply circuits. The device is housed in a compact SMA package and includes a guard ring for overvoltage protection and high reliability.
+
+Key Parameters:
+- Maximum Repetitive Peak Reverse Voltage 40V
+- Maximum Average Forward Current 5.0A
+- Peak Forward Surge Current 120A
+- Maximum Forward Voltage 0.55V
+- Operating Junction Temperature -55 to +150 Celsius
+- Package SMA (DO-214AC)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | K | Cathode | Negative terminal indicated by a polarity band | Passive | Output |
+| 2 | A | Anode | Positive terminal | Passive | Input |

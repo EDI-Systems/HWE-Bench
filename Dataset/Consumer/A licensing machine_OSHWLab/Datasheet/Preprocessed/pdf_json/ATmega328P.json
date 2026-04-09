@@ -1,0 +1,401 @@
+{
+  "ComponentID": "ATmega328P",
+  "ComponentType": "8-bit AVR Microcontroller",
+  "Description": "The ATmega328P-AU is a high-performance, low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. It features 32KB of in-system programmable Flash, 1KB EEPROM, 2KB SRAM, and a rich set of peripherals including three flexible timer/counters, a 10-bit ADC with up to 8 channels, a programmable USART, and an SPI serial interface. It is designed to achieve throughputs approaching 1 MIPS per MHz, balancing power consumption and processing speed.",
+  "KeyParameters": {
+    "Flash Memory": "32 KB",
+    "SRAM": "2 KB",
+    "EEPROM": "1 KB",
+    "Clock Speed": "Up to 20 MHz",
+    "Operating Voltage": "1.8V to 5.5V",
+    "ADC": "8-channel 10-bit",
+    "I/O Pins": "23 programmable I/O lines",
+    "Package": "32-lead TQFP"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PD3",
+      "Functions": [
+        {
+          "FunctionName": "PD3",
+          "FunctionDescription": "Digital I/O 3 / PCINT19 / OC2B / INT1"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PD4",
+      "Functions": [
+        {
+          "FunctionName": "PD4",
+          "FunctionDescription": "Digital I/O 4 / PCINT20 / XCK / T0"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Digital supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Digital supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PB6",
+      "Functions": [
+        {
+          "FunctionName": "PB6",
+          "FunctionDescription": "Port B 6 / PCINT6 / XTAL1 / TOSC1"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "PB7",
+      "Functions": [
+        {
+          "FunctionName": "PB7",
+          "FunctionDescription": "Port B 7 / PCINT7 / XTAL2 / TOSC2"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "PD5",
+      "Functions": [
+        {
+          "FunctionName": "PD5",
+          "FunctionDescription": "Digital I/O 5 / PCINT21 / OC0B / T1"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "PD6",
+      "Functions": [
+        {
+          "FunctionName": "PD6",
+          "FunctionDescription": "Digital I/O 6 / PCINT22 / OC0A / AIN0"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "PD7",
+      "Functions": [
+        {
+          "FunctionName": "PD7",
+          "FunctionDescription": "Digital I/O 7 / PCINT23 / AIN1"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "PB0",
+          "FunctionDescription": "Port B 0 / PCINT0 / CLKO / ICP1"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "PB1",
+          "FunctionDescription": "Port B 1 / PCINT1 / OC1A"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "PB2",
+          "FunctionDescription": "Port B 2 / PCINT2 / SS# / OC1B"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "PB3",
+          "FunctionDescription": "Port B 3 / PCINT3 / OC2A / MOSI"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "PB4",
+          "FunctionDescription": "Port B 4 / PCINT4 / MISO"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "PB5",
+          "FunctionDescription": "Port B 5 / SCK / PCINT5"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "AVCC",
+      "Functions": [
+        {
+          "FunctionName": "AVCC",
+          "FunctionDescription": "Supply voltage for ADC"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "ADC6",
+      "Functions": [
+        {
+          "FunctionName": "ADC6",
+          "FunctionDescription": "Analog input channel 6"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "AREF",
+      "Functions": [
+        {
+          "FunctionName": "AREF",
+          "FunctionDescription": "Analog reference pin for ADC"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "ADC7",
+      "Functions": [
+        {
+          "FunctionName": "ADC7",
+          "FunctionDescription": "Analog input channel 7"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "PC0",
+      "Functions": [
+        {
+          "FunctionName": "PC0",
+          "FunctionDescription": "Port C 0 / ADC0 / PCINT8"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "PC1",
+      "Functions": [
+        {
+          "FunctionName": "PC1",
+          "FunctionDescription": "Port C 1 / ADC1 / PCINT9"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "PC2",
+      "Functions": [
+        {
+          "FunctionName": "PC2",
+          "FunctionDescription": "Port C 2 / ADC2 / PCINT10"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "PC3",
+      "Functions": [
+        {
+          "FunctionName": "PC3",
+          "FunctionDescription": "Port C 3 / ADC3 / PCINT11"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "PC4",
+      "Functions": [
+        {
+          "FunctionName": "PC4",
+          "FunctionDescription": "Port C 4 / ADC4 / SDA / PCINT12"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "PC5",
+      "Functions": [
+        {
+          "FunctionName": "PC5",
+          "FunctionDescription": "Port C 5 / ADC5 / SCL / PCINT13"
+        }
+      ],
+      "PinType": "Digital/Analog",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "PC6",
+      "Functions": [
+        {
+          "FunctionName": "PC6",
+          "FunctionDescription": "Port C 6 / RESET# / PCINT14"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "30",
+      "PinName": "PD0",
+      "Functions": [
+        {
+          "FunctionName": "PD0",
+          "FunctionDescription": "Digital I/O 0 / RXD / PCINT16"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "31",
+      "PinName": "PD1",
+      "Functions": [
+        {
+          "FunctionName": "PD1",
+          "FunctionDescription": "Digital I/O 1 / TXD / PCINT17"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "32",
+      "PinName": "PD2",
+      "Functions": [
+        {
+          "FunctionName": "PD2",
+          "FunctionDescription": "Digital I/O 2 / INT0 / PCINT18"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "5V"
+    }
+  ]
+}

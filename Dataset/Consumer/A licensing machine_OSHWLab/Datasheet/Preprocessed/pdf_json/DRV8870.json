@@ -1,0 +1,16 @@
+{
+  "ComponentID": "DRV8870",
+  "ComponentType": "Brushed DC Motor Driver IC (H-Bridge with PWM Control)",
+  "Description": "The DRV8870 is an integrated H-bridge motor driver designed to bidirectionally control a single brushed DC motor, one winding of a stepper motor, or other inductive loads. It features a PWM control interface for speed regulation, integrated current sensing and regulation, and comprehensive protection (undervoltage, overcurrent, thermal shutdown). Operating from 6.5V to 45V, it can deliver up to 3.6A peak output current.",
+  "KeyParameters": {
+    "Operating Voltage (VM)": "6.5 V to 45 V",
+    "Peak Output Current": "3.6 A",
+    "Typical RDS(on) (HS + LS)": "565 mΩ",
+    "Control Interface": "Two logic inputs (IN1, IN2) for direction/PWM",
+    "Current Regulation": "Adjustable via VREF pin (0.3 V to 5 V) and external sense resistor",
+    "Protection Features": "Undervoltage Lockout (UVLO), Overcurrent Protection (OCP), Thermal Shutdown (TSD)",
+    "Package": "8-pin HSOP with PowerPAD (4.90 mm × 6.00 mm)",
+    "Low-Power Mode": "Sleep mode activated when both logic inputs are low"
+  },
+  "Pins": []
+}

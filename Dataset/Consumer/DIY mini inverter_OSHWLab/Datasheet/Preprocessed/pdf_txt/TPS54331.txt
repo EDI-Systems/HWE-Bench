@@ -1,0 +1,26 @@
+Component ID: TPS54331  
+Component Type: Non-synchronous Step-Down (Buck) DC-DC Converter with Integrated High-Side MOSFET  
+Description:  
+The TPS54331 is a monolithic buck converter designed to deliver up to 3 A of continuous output current from an input voltage range of 3.5 V to 28 V. It integrates an 80 mΩ high-side MOSFET and employs current-mode control with internal slope compensation, enabling stable operation with ceramic output capacitors. Key features include a fixed 570 kHz switching frequency, pulse-skipping Eco-mode™ for high efficiency at light loads, adjustable output voltage down to 0.8 V, programmable undervoltage lockout (UVLO), and comprehensive protection functions such as cycle-by-cycle current limit, frequency foldback, overvoltage transient protection, and thermal shutdown. It is offered in 8-pin SOIC and thermally enhanced SOIC PowerPAD packages.
+
+Key Parameters:
+- Input Voltage Range: 3.5 V to 28 V
+- Continuous Output Current: Up to 3 A
+- High-Side MOSFET On-Resistance (RDS(on)): 80 mΩ (typical)
+- Switching Frequency: Fixed 570 kHz (typical)
+- Output Voltage Range: Adjustable down to 0.8 V
+- Shutdown Quiescent Current: 1 μA (typical)
+- Operating Junction Temperature Range: -40°C to 150°C
+- Package Options: SOIC-8 (4.90 mm × 3.90 mm) and SO PowerPAD-8
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | BOOT | Bootstrap | Connection for bootstrap capacitor to drive the high-side MOSFET; requires 0.1 μF capacitor to PH pin. | Input | Analog, Power |
+| 2 | VIN | Input Voltage | Supply input pin; accepts 3.5 V to 28 V. | Input | Power |
+| 3 | EN | Enable | Enable control; pull below 1.25 V to disable, float to enable. Also used for programming input undervoltage lockout (UVLO). | Input | Digital, Analog |
+| 4 | SS/TR | Soft-Start/Tracking | Soft-start control; connect capacitor to set soft-start time. Can be used for output voltage tracking. | Input/Output | Analog |
+| 5 | VSENSE | Voltage Feedback | Inverting input of the error amplifier; connect to output voltage divider for regulation. | Input | Analog |
+| 6 | COMP | Compensation | Output of the error amplifier; connect external compensation network. | Output | Analog |
+| 7 | GND | Ground | Device ground reference. | Ground | Power |
+| 8 | PH | Switch Node | Connection to the internal high-side MOSFET drain and external inductor. | Output | Power |

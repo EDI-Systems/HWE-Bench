@@ -1,0 +1,130 @@
+{
+  "MCU_Function_Groups": {
+    "ATmega328P": {
+      "SPI_ISP_Bus": [
+        { "PinName": "PB3", "FunctionName": "MOSI" },
+        { "PinName": "PB4", "FunctionName": "MISO" },
+        { "PinName": "PB5", "FunctionName": "SCK" }
+      ],
+      "Stepper_Control_Logic": [
+        { "PinName": "PD7", "FunctionName": "STEP" },
+        { "PinName": "PB0", "FunctionName": "DIR" },
+        { "PinName": "PD6", "FunctionName": "ENABLE" }
+      ],
+      "DC_Motor_PWM_Logic": [
+        { "PinName": "PD3", "FunctionName": "IN1" },
+        { "PinName": "PD4", "FunctionName": "IN2" }
+      ],
+      "User_Input_Encoders": [
+        { "PinName": "PD2", "FunctionName": "ROT1" },
+        { "PinName": "PD1", "FunctionName": "ROT2" },
+        { "PinName": "PD0", "FunctionName": "ROT3" }
+      ],
+      "Battery_Monitoring": [
+        { "PinName": "PC0", "FunctionName": "VBAT_SENSE" }
+      ],
+      "System_Power_Management": [
+        { "PinName": "VCC", "FunctionName": "Digital_Supply" },
+        { "PinName": "AVCC", "FunctionName": "Analog_Supply" },
+        { "PinName": "AREF", "FunctionName": "Analog_Reference" },
+        { "PinName": "PC6", "FunctionName": "RESET" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "TMC2208": {
+      "Step_Dir_Interface": [
+        { "PinName": "Step", "FunctionName": "Step_Pulse" },
+        { "PinName": "Dir", "FunctionName": "Direction_Signal" },
+        { "PinName": "Enable", "FunctionName": "Output_Enable" }
+      ]
+    },
+    "DRV8870": {
+      "PWM_Interface": [
+        { "PinName": "IN1", "FunctionName": "PWM_A" },
+        { "PinName": "IN2", "FunctionName": "PWM_B" }
+      ]
+    },
+    "IP2326": {
+      "Charging_Control": [
+        { "PinName": "VIN", "FunctionName": "USB_5V_IN" },
+        { "PinName": "VOUT", "FunctionName": "Battery_Charge_Out" },
+        { "PinName": "LED", "FunctionName": "Status_Indicator" }
+      ]
+    },
+    "USB6": {
+      "Power_Input": [
+        { "PinName": "VBUS", "FunctionName": "5V_Power" },
+        { "PinName": "CC1", "FunctionName": "Config_1" },
+        { "PinName": "CC2", "FunctionName": "Config_2" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "USB_TypeC_Orientation_Detection",
+      "Type": "Direct_Link",
+      "Description": "验证 USB-C 的 CC1/CC2 是否连接了下拉电阻（R30/R31）以启用 5V 供电",
+      "Nodes": [
+        { "ComponentID": "USB6", "PinName": "CC1" },
+        { "ComponentID": "USB6", "PinName": "CC2" }
+      ]
+    },
+    {
+      "RuleName": "Battery_Charging_Source",
+      "Type": "Direct_Link",
+      "Description": "确保 USB 5V 正确进入 IP2326 充电芯片",
+      "Nodes": [
+        { "ComponentID": "USB6", "PinName": "VBUS" },
+        { "ComponentID": "IP2326", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "MCU_SPI_Programming_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P",
+      "Target_Group_Pattern": "SPI_ISP_.*",
+      "Slaves": [
+        { "ComponentID": "ICSP-6", "Interface": "ISP_Programming" }
+      ]
+    },
+    {
+      "RuleName": "Stepper_Motor_Drive_Signals",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P",
+      "Target_Group_Pattern": "Stepper_Control_.*",
+      "Slaves": [
+        { "ComponentID": "TMC2208", "Interface": "Step_Dir_Interface" }
+      ]
+    },
+    {
+      "RuleName": "DC_Motor_Drive_Signals",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P",
+      "Target_Group_Pattern": "DC_Motor_PWM_.*",
+      "Slaves": [
+        { "ComponentID": "DRV8870", "Interface": "PWM_Interface" }
+      ]
+    },
+    {
+      "RuleName": "MCU_Power_Domain_Integrity",
+      "Type": "Direct_Link",
+      "Description": "检查 VCC, AVCC, AREF 是否物理连通至 5V 稳压输出 (AMS1117)",
+      "Nodes": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "ATmega328P", "PinName": "VCC" },
+        { "ComponentID": "ATmega328P", "PinName": "AVCC" },
+        { "ComponentID": "ATmega328P", "PinName": "AREF" }
+      ]
+    },
+    {
+      "RuleName": "Boost_Enable_Hardwired",
+      "Type": "Direct_Link",
+      "Description": "确保两个 SX1308 升压模块的 EN 脚均拉高至 VIN 以保持常开状态",
+      "Nodes": [
+        { "ComponentID": "SX1308", "PinName": "EN" },
+        { "ComponentID": "SX1308", "PinName": "VIN" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+Component ID: PIC16F1455
+Component Type: 8-bit Flash Microcontroller with Full-Speed USB
+Description: The PIC16F1455 is a high-performance 8-bit microcontroller from Microchip's Enhanced Mid-range family, featuring eXtreme Low Power (XLP) technology. A standout feature is its "Crystal-less" Full-Speed USB 2.0 interface, which uses an internal oscillator with clock recovery to eliminate the need for an external crystal. It is designed for cost-sensitive and space-constrained applications requiring USB connectivity, such as PC peripherals, medical devices, and industrial loggers.
+
+Key Parameters:
+- **Core:** 8-bit PIC (Enhanced Mid-range)
+- **Flash Memory:** 14 KB
+- **RAM / EEPROM:** 1024 Bytes / (No dedicated EEPROM, uses High-Endurance Flash)
+- **Max CPU Speed:** 48 MHz (12 MIPS)
+- **USB:** Full-Speed USB 2.0 (12 Mbps) with internal clock recovery
+- **Operating Voltage:** 1.8V to 5.5V
+- **ADC:** 5-channel, 10-bit resolution
+- **Package:** 14-pin PDIP/SOIC/TSSOP (shown in schematic)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VDD | Power | Positive supply voltage input | Power | 1.8V - 5.5V |
+| 2 | RA5 | GPIO | Port A Bit 5 / Clock In / Timer1 Clock In | I/O | Digital |
+| 3 | RA4 | GPIO | Port A Bit 4 / Analog Input 3 / Clock Out | I/O | Digital/Analog |
+| 4 | RA3/!MCLR | Reset | Master Clear (Reset) input or Programming voltage | Input | Signal |
+| 5 | RC5 | GPIO | Port C Bit 5 / PWM1 Output | I/O | Digital |
+| 6 | RC4 | GPIO | Port C Bit 4 / Complementary Waveform Gen | I/O | Digital |
+| 7 | RC3 | GPIO | Port C Bit 3 / Analog Input 7 / SPI SS | I/O | Digital/Analog |
+| 8 | RC2 | GPIO | Port C Bit 2 / Analog Input 6 / SPI SDO | I/O | Digital/Analog |
+| 9 | RC1/ICSPCLK | GPIO / Clock | Port C Bit 1 / $I^2C$ SDA / In-Circuit Clock | I/O | Digital/Analog |
+| 10 | RC0/ICSPDAT | GPIO / Data | Port C Bit 0 / $I^2C$ SCL / In-Circuit Data | I/O | Digital/Analog |
+| 11 | VUSB3V3 | USB Power | 3.3V USB transceiver regulator output | Power | 3.3V |
+| 12 | RA1/D- | USB D- | Port A Bit 1 / USB Differential Data Minus | I/O | Digital |
+| 13 | RA0/D+ | USB D+ | Port A Bit 0 / USB Differential Data Plus | I/O | Digital |
+| 14 | VSS | Ground | System ground reference | Power | 0V |

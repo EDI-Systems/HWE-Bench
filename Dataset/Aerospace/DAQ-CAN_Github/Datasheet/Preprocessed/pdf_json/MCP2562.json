@@ -1,0 +1,114 @@
+{
+  "ComponentID": "MCP2562",
+  "ComponentType": "High-Speed CAN (Controller Area Network) Transceiver",
+  "Description": "The MCP2561/2 is a second-generation, high-speed CAN transceiver that serves as the physical layer interface between a CAN protocol controller and a two-wire differential CAN bus. It supports data rates up to 1 Mb/s, implements ISO-11898-2/5 standards, and is designed for robust automotive applications. Key functionalities include differential transmission and reception, very low standby current, protection against bus faults and transients, and features for system-level management such as a VIO pin for I/O voltage level shifting (MCP2562) or a SPLIT pin for bus common-mode stabilization (MCP2561).",
+  "KeyParameters": {
+    "**Data Rate**": "Up to 1 Mb/s",
+    "**Supply Voltage (VDD)**": "Not explicitly stated in provided text, but implied for 12V/24V systems; typical range for such transceivers is 4.5V to 5.5V.",
+    "**I/O Logic Supply Voltage (VIO)**": "1.8V to 5.5V (MCP2562 feature)",
+    "**Standby Current**": "5 µA (typical)",
+    "**Operating Temperature Range**": "Extended (E): -40°C to +125°C; High (H): -40°C to +150°C",
+    "**ESD Protection (CANH, CANL)**": "±14 kV (IEC61000-4-2)",
+    "**Fault Protection**": "Short-circuit to battery voltage, high-voltage transients, thermal shutdown (~+175°C)",
+    "**Package Options**": "PDIP-8, SOIC-8, 3x3 DFN-8",
+    "**Compliance**": "ISO-11898-2, ISO-11898-5, Automotive Hardware Requirements"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Transmit Data Input from CAN controller. Low = Bus Dominant, High = Bus Recessive."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VIO (MCP2562) / GND (MCP2561)",
+      "Functions": [
+        {
+          "FunctionName": "Supply / Ground",
+          "FunctionDescription": "MCP2562: Logic I/O Supply Voltage (1.8V-5.5V). MCP2561: Ground."
+        }
+      ],
+      "PinType": "Power / Ground",
+      "ElectricalType": "Power / Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Supply",
+          "FunctionDescription": "Primary Supply Voltage for the transceiver."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Receive Data Output to CAN controller. Reflects bus state: Low = Bus Dominant, High = Bus Recessive."
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SPLIT (MCP2561) / VIO (MCP2562)",
+      "Functions": [
+        {
+          "FunctionName": "Output / Supply",
+          "FunctionDescription": "MCP2561: Stabilizes common-mode voltage in split termination schemes. MCP2562: Logic I/O Supply Voltage (1.8V-5.5V)."
+        }
+      ],
+      "PinType": "Analog Output / Power",
+      "ElectricalType": "Analog / Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "CANL",
+      "Functions": [
+        {
+          "FunctionName": "Bus Line",
+          "FunctionDescription": "Low-level CAN bus line."
+        }
+      ],
+      "PinType": "Bus I/O",
+      "ElectricalType": "Differential Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "CANH",
+      "Functions": [
+        {
+          "FunctionName": "Bus Line",
+          "FunctionDescription": "High-level CAN bus line."
+        }
+      ],
+      "PinType": "Bus I/O",
+      "ElectricalType": "Differential Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "STBY",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Standby Mode Control. Low = Normal Mode, High = Standby Mode (Low Power)."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    }
+  ]
+}

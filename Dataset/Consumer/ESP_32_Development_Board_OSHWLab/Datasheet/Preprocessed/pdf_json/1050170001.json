@@ -1,0 +1,133 @@
+{
+  "ComponentID": "1050170001",
+  "ComponentType": "Micro-USB Type B Receptacle",
+  "Description": "The 1050170001 is a surface-mount (SMT), bottom-mount Micro-USB Type B connector produced by Molex. Designed for high-density mobile and portable applications, it features a robust stainless steel shell for high mechanical durability and effective EMI shielding. It supports the USB 2.0 standard for data transfer and power delivery, making it a standard choice for charging and data syncing in embedded systems and consumer electronics.",
+  "KeyParameters": {
+    "Connector Style": "Micro-USB Type B (Bottom Mount)",
+    "Data Protocol": "USB 2.0 High Speed (480 Mbps)",
+    "Current Rating": "1.8A (Power pins 1 & 5), 1.0A (Data pins 2, 3, 4)",
+    "Durability": "10,000 mating cycles"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "+5V USB Power Supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 Differential Pair Negative"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 Differential Pair Positive"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "ID",
+      "Functions": [
+        {
+          "FunctionName": "ID",
+          "FunctionDescription": "USB OTG Identification (Host/Slave)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main System Ground Reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Shell/Exposed Pad for EMI/Mechanical Support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Shell/Exposed Pad for EMI/Mechanical Support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Shell/Exposed Pad for EMI/Mechanical Support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Shell/Exposed Pad for EMI/Mechanical Support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Shell/Exposed Pad for EMI/Mechanical Support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

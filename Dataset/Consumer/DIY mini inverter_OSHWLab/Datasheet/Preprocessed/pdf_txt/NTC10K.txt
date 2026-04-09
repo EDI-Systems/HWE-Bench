@@ -1,0 +1,20 @@
+Component ID: NTC10K
+Component Type: Temperature Probe / Sensor (NTC Thermistor, Silicon Temperature Sensor)
+Description:
+This is a family of passive temperature sensing probes that convert temperature into a measurable resistance change. The SN series uses Negative Temperature Coefficient (NTC) thermistors (2kΩ or 10kΩ @ 25°C), while the QT series uses KTY82-121 silicon temperature sensors (1kΩ @ 25°C). They are designed for immersion or surface mounting in industrial or appliance applications, featuring a protective metal or TPE sheath, insulated cables, and IP67-rated environmental sealing for durability in harsh conditions.
+
+Key Parameters:
+- **Sensor Type / Resistance at 25°C**: NTC2K (2000Ω), NTC10K (10000Ω), KTY82-121 (1000Ω)
+- **Operating Temperature Range**: -40°C to 120°C (SN & QT1K/QT1N series), -40°C to 110°C (QT1L series)
+- **Accuracy at 25°C**: ±0.3°C (SN series), ±1.5°C (QT series)
+- **Sheath / Probe Dimensions**: Ø6 x 29mm TPE (SN), Ø6 x 20mm or 40mm AISI 304 Steel (QT)
+- **Cable Specification**: 2 wires, 0.35 mm² or 0.25 mm², TPE or thermoplastic rubber insulation, -40°C to 120°C rating
+- **Ingress Protection (IP) Rating**: IP67
+- **Standard Cable Lengths**: 1m, 1.5m, 2m, 2.5m, 3m, 3.5m, 4m, 5m, 6m (varies by model)
+- **Termination**: Loose leads (P1/P2/P-X variants) or Connectors (C1/C2/C3 variants)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Wire 1 | Sensor Terminal 1 | First connection lead to the temperature-sensitive element. | Wire Lead / Connector Pin | Passive, Resistive |
+| 2 | Wire 2 | Sensor Terminal 2 | Second connection lead to the temperature-sensitive element. | Wire Lead / Connector Pin | Passive, Resistive |

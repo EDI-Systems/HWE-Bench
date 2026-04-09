@@ -1,0 +1,43 @@
+{
+  "24V Relay Actuation & Protection": [
+    {
+      "net_id": "topo_relay_ctrl",
+      "Connections": [
+        { "ComponentID": "SignalSource", "PinName": "RELAY_CONTROL" },
+        { "ComponentID": "Resistor", "PinName": "1" }
+      ]
+    },
+    {
+      "net_id": "topo_q1_gate",
+      "Connections": [
+        { "ComponentID": "Resistor", "PinName": "2" },
+        { "ComponentID": "Resistor", "PinName": "1" },
+        { "ComponentID": "DMN63D8", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "topo_24v_pwr",
+      "Connections": [
+        { "ComponentID": "PowerSource", "PinName": "24V" },
+        { "ComponentID": "G5Q-1A", "PinName": "COIL_2" },
+        { "ComponentID": "1N4148WX", "PinName": "Cathode" }
+      ]
+    },
+    {
+      "net_id": "topo_q1_drain",
+      "Connections": [
+        { "ComponentID": "DMN63D8", "PinName": "D" },
+        { "ComponentID": "G5Q-1A", "PinName": "COIL_1" },
+        { "ComponentID": "1N4148WX", "PinName": "Anode" }
+      ]
+    },
+    {
+      "net_id": "topo_gnd",
+      "Connections": [
+        { "ComponentID": "DMN63D8", "PinName": "S" },
+        { "ComponentID": "Resistor", "PinName": "2" },
+        { "ComponentID": "PowerSource", "PinName": "GND" }
+      ]
+    }
+  ]
+}

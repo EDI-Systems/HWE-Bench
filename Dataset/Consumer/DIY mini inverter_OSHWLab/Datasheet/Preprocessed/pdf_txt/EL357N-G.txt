@@ -1,0 +1,23 @@
+Component ID: EL357N
+Component Type: Phototransistor Optocoupler / Optoisolator
+Description:
+The EL357N-G is a 4-pin SMD optocoupler that provides electrical isolation and signal transmission between two circuits. It contains an infrared LED on the input side optically coupled to a phototransistor on the output side. Its primary function is to transfer an electrical signal via light, isolating the input and output sides to prevent ground loops, block high voltages, and allow interfacing between circuits of different potentials.
+
+Key Parameters:
+- Current Transfer Ratio (CTR): 50% to 600% (EL357N base grade, at IF=5mA, VCE=5V)
+- Isolation Voltage (Viso): 3750 Vrms (Input to Output)
+- Collector-Emitter Voltage (VCEO): 80 V (Max)
+- Forward Current (IF): 50 mA (Max Continuous)
+- Collector Current (IC): 50 mA (Max)
+- Forward Voltage (VF): 1.4 V (Max at IF=20mA)
+- Collector-Emitter Dark Current (ICEO): 100 nA (Max at VCE=20V, IF=0mA)
+- Operating Temperature: -55°C to +110°C
+- Package: 4-Pin SOP, 2.0 mm Profile
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode | Input | Anode of the Infrared Emitting Diode (LED) | Input | Anode |
+| 2 | Cathode | Input | Cathode of the Infrared Emitting Diode (LED) | Input | Cathode |
+| 3 | Emitter | Output | Emitter of the Phototransistor | Output | Emitter |
+| 4 | Collector | Output | Collector of the Phototransistor | Output | Collector |

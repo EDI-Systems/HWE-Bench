@@ -1,0 +1,27 @@
+Component ID: LSM6DSMTR
+Component Type: iNEMO Inertial Module (3D Accelerometer and 3D Gyroscope)
+Description: The LSM6DSMTR is a high-performance 6-axis inertial measurement unit (IMU) that integrates a 3D digital accelerometer and a 3D digital gyroscope. It is designed for "always-on" high-accuracy applications such as smartphones, optical image stabilization (OIS), and IoT devices. The module features ultra-low power consumption, an embedded sensor hub for collecting data from external sensors, and specialized features like a pedometer, tilt detection, and significant motion detection.
+
+Key Parameters:
+- Supply Voltage (VDD): 1.71V to 3.6V
+- Measurement Range (Accel): $\pm 2g$, $\pm 4g$, $\pm 8g$, $\pm 16g$
+- Measurement Range (Gyro): $\pm 125$, $\pm 245$, $\pm 500$, $\pm 1000$, $\pm 2000$ dps
+- Interfaces: $I^2C$, $I^3C$ (MIPI), and SPI (Standard/Auxiliary)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SDO/SA0 | SPI SDO / $I^2C$ Addr | SPI Serial Data Out / $I^2C$ Address selection | Output/Input | Signal |
+| 2 | SDX | Sensor Hub Data | Auxiliary $I^2C$ Data / $I^3C$ Serial Data | I/O | Signal |
+| 3 | SCX | Sensor Hub Clock | Auxiliary $I^2C$ Clock / $I^3C$ Serial Clock | Input | Signal |
+| 4 | INT1 | Interrupt 1 | Programmable interrupt pin 1 | Output | Signal |
+| 5 | VDDIO | I/O Power | Power supply for I/O pins | Power | 1.8V |
+| 6 | GND | Ground | System power supply ground | Power | 0V |
+| 7 | GND | Ground | System power supply ground | Power | 0V |
+| 8 | VDD | Power | Main power supply voltage | Power | 1.8V - 3.3V |
+| 9 | INT2 | Interrupt 2 | Programmable interrupt pin 2 | Output | Signal |
+| 10 | OSC_AUX | Aux Oscillator | Auxiliary external oscillator input | Input | Signal |
+| 11 | SDO_AUX | Aux SPI SDO | Auxiliary SPI serial data output (OIS support) | Output | Signal |
+| 12 | CS | Chip Select | SPI Chip Select / $I^2C$ mode selection | Input | Signal |
+| 13 | SCL | Serial Clock | $I^2C$ Serial Clock / SPI Serial Clock | Input | Signal |
+| 14 | SDA | Serial Data | $I^2C$ Serial Data / SPI Serial Data Input | I/O | Signal |

@@ -1,0 +1,36 @@
+{
+  "High-Efficiency Inductive Transformation and Precision Regulation Module": [
+    {
+      "net_id": "net_vin",
+      "Connections": [
+        { "ComponentID": "SX1308", "PinName": "VIN" },
+        { "ComponentID": "SX1308", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "net_sw",
+      "Connections": [
+        { "ComponentID": "SX1308", "PinName": "SW" },
+        { "ComponentID": "SS54A", "PinName": "A" }
+      ]
+    },
+    {
+      "net_id": "net_vout",
+      "Connections": [
+        { "ComponentID": "SS54A", "PinName": "K" }
+      ]
+    },
+    {
+      "net_id": "net_fb",
+      "Connections": [
+        { "ComponentID": "SX1308", "PinName": "FB" }
+      ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "SX1308", "PinName": "GND" }
+      ]
+    }
+  ]
+}

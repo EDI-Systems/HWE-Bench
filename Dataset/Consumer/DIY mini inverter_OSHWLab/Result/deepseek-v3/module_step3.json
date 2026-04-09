@@ -1,0 +1,1104 @@
+{
+  "Input Protection & Conditioning": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ES3GF",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 1",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ES3GF",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode Terminal"
+        },
+        {
+          "ComponentID": "1N4761",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "PinName": "Lead 1",
+          "FunctionName": "Inductor Terminal 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "SS34",
+          "PinName": "Anode",
+          "FunctionName": "Anode Terminal"
+        },
+        {
+          "ComponentID": "1N4761",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 3",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "PinName": "Lead 2",
+          "FunctionName": "Inductor Terminal 2"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 2",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    }
+  ],
+  "H-Bridge Inverter & Isolated Gate Drive": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD3",
+          "FunctionName": "Port D 3"
+        },
+        {
+          "ComponentID": "EL357N_1",
+          "PinName": "Anode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD5",
+          "FunctionName": "Port D 5"
+        },
+        {
+          "ComponentID": "EL357N_2",
+          "PinName": "Anode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD6",
+          "FunctionName": "Port D 6"
+        },
+        {
+          "ComponentID": "EL357N_3",
+          "PinName": "Anode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD7",
+          "FunctionName": "Port D 7"
+        },
+        {
+          "ComponentID": "EL357N_4",
+          "PinName": "Anode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "EL357N_1",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "EL357N_2",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "EL357N_3",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "EL357N_4",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "EL357N_1",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "EL357N_2",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "EL357N_3",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "EL357N_4",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 3",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "EL357N_1",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "IRF840_1",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "EL357N_2",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "IRF840_2",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "EL357N_3",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "IRF840_3",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "EL357N_4",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "IRF840_4",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "IRF840_1",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "IRF840_3",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "IRF840_2",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "IRF840_4",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 2",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "IRF840_1",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "IRF840_2",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "PinName": "Pin 1",
+          "FunctionName": "Power/Contact"
+        }
+      ]
+    }
+  ],
+  "High Voltage DC Generation (Push-Pull Converter)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Vcc",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Ground",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "ES3GF",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "ES3GF",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "PinName": "Lead 2",
+          "FunctionName": "Inductor Terminal 2"
+        },
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Output A",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Output B",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Shutdown",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        }
+      ]
+    }
+  ],
+  "Main Control & Monitoring (MCU Core)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "+5V_AUX_RAIL",
+          "PinName": "Power",
+          "FunctionName": "Power In"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Cathode",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "QT1NxxP-/01",
+          "PinName": "Wire 2",
+          "FunctionName": "Sensor Terminal 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "AVCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "AREF",
+          "FunctionName": "AREF"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "5V",
+          "FunctionName": "VCC Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB6",
+          "FunctionName": "Port B 6"
+        },
+        {
+          "ComponentID": "XTAL1",
+          "PinName": "Signal",
+          "FunctionName": "Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB7",
+          "FunctionName": "Port B 7"
+        },
+        {
+          "ComponentID": "XTAL2",
+          "PinName": "Signal",
+          "FunctionName": "Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD6",
+          "FunctionName": "Port D 6"
+        },
+        {
+          "ComponentID": "FAN_PWM",
+          "PinName": "Signal",
+          "FunctionName": "Digital"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB1",
+          "FunctionName": "Port B 1"
+        },
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Anode",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB2",
+          "FunctionName": "Port B 2"
+        },
+        {
+          "ComponentID": "PWM_HB_LOW",
+          "PinName": "Signal",
+          "FunctionName": "Digital"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB4",
+          "FunctionName": "Port B 4"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB5",
+          "FunctionName": "Port B 5"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "SCLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PC0",
+          "FunctionName": "Port C 0"
+        },
+        {
+          "ComponentID": "BATT_VOLT_ADC",
+          "PinName": "Signal",
+          "FunctionName": "Digital/Analog"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PC1",
+          "FunctionName": "Port C 1"
+        },
+        {
+          "ComponentID": "TEMP_NTC_ADC",
+          "PinName": "Signal",
+          "FunctionName": "Digital/Analog"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PC6",
+          "FunctionName": "Port C 6"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PD2",
+          "FunctionName": "Port D 2"
+        },
+        {
+          "ComponentID": "SG3525_ENABLE",
+          "PinName": "Signal",
+          "FunctionName": "Digital"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        },
+        {
+          "ComponentID": "ISP_MOSI",
+          "PinName": "Signal",
+          "FunctionName": "Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Emitter",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "GND_ISO",
+          "PinName": "Power",
+          "FunctionName": "Emitter"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "EL357N",
+          "PinName": "Collector",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "GATE_DRIVE_HIGH",
+          "PinName": "Power",
+          "FunctionName": "Collector"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "QT1NxxP-/01",
+          "PinName": "Wire 1",
+          "FunctionName": "Sensor Terminal 1"
+        },
+        {
+          "ComponentID": "TEMP_NTC_TOP",
+          "PinName": "Signal",
+          "FunctionName": "Passive"
+        }
+      ]
+    }
+  ],
+  "Auxiliary Power Supply": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TPS54331",
+          "PinName": "BOOT",
+          "FunctionName": "Bootstrap"
+        },
+        {
+          "ComponentID": "TPS54331",
+          "PinName": "PH",
+          "FunctionName": "Switch Node"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "TPS54331",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Ground",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "Anode",
+          "FunctionName": "Anode Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "TPS54331",
+          "PinName": "PH",
+          "FunctionName": "Switch Node"
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "PinName": "Lead 1",
+          "FunctionName": "Inductor Terminal 1"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "PinName": "Lead 2",
+          "FunctionName": "Inductor Terminal 2"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Vc",
+          "FunctionName": "Collector Supply Voltage for Output Drivers"
+        },
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Vcc",
+          "FunctionName": "Supply Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "AVCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "5V",
+          "FunctionName": "VCC Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Noninv Input",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "SG3525A",
+          "PinName": "Vref",
+          "FunctionName": "5.1V Reference Voltage Output"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "AREF",
+          "FunctionName": "AREF"
+        }
+      ]
+    },
+    {
+      "net_id": "net34",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB4",
+          "FunctionName": "Port B 4"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net35",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB5",
+          "FunctionName": "Port B 5"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "SCLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net44",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PC6",
+          "FunctionName": "Port C 6"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    }
+  ],
+  "User Interface & System Peripherals": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "AVCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "5V",
+          "FunctionName": "VCC Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB3",
+          "FunctionName": "Port B 3"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB4",
+          "FunctionName": "Port B 4"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PB5",
+          "FunctionName": "Port B 5"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "SCLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "ATmega328P-AU",
+          "PinName": "PC6",
+          "FunctionName": "Port C 6"
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    }
+  ]
+}

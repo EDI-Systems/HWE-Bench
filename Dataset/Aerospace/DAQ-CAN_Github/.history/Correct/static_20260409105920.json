@@ -1,0 +1,69 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_3V3_POWER",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DP",
+      "Connections": [
+        { "ComponentID": "1050170001", "PinName": "D+" },
+        { "ComponentID": "CP2102", "PinName": "D+" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DN",
+      "Connections": [
+        { "ComponentID": "1050170001", "PinName": "D-" },
+        { "ComponentID": "CP2102", "PinName": "D-" }
+      ]
+    },
+    {
+      "net_id": "NET_UART0_TX_RX",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "TXD0" },
+        { "ComponentID": "CP2102", "PinName": "RXD" }
+      ]
+    },
+    {
+      "net_id": "NET_UART0_RX_TX",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "RXD0" },
+        { "ComponentID": "CP2102", "PinName": "TXD" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SDA_IMU",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO21" },
+        { "ComponentID": "LSM6DSMTR", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL_IMU",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO22" },
+        { "ComponentID": "LSM6DSMTR", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_ESP_EN_CTRL",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "EN" },
+        { "ComponentID": "SS8050-G_Q1", "PinName": "COLLECTOR" },
+        { "ComponentID": "SW1_EN", "PinName": "Terminal 2" }
+      ]
+    },
+    {
+      "net_id": "NET_ESP_IO0_BOOT",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO0" },
+        { "ComponentID": "SS8050-G_Q2", "PinName": "COLLECTOR" },
+        { "ComponentID": "SW2_BOOT", "PinName": "Terminal 2" }
+      ]
+    }
+  ]
+}

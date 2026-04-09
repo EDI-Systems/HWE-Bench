@@ -1,0 +1,114 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "GND",
+      "Connections": [
+        { "ComponentID": "USB6", "PinName": "GND" },
+        { "ComponentID": "ATmega328P", "PinName": "GND" },
+        { "ComponentID": "IP2326", "PinName": "PGND" },
+        { "ComponentID": "AMS1117", "PinName": "GND/ADJ" },
+        { "ComponentID": "SX1308", "PinName": "GND" },
+        { "ComponentID": "TMC2208", "PinName": "Gnd" },
+        { "ComponentID": "DRV8870", "PinName": "GND" },
+        { "ComponentID": "ICSP-6", "PinName": "GND" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_VBUS",
+      "Connections": [
+        { "ComponentID": "USB6", "PinName": "VBUS" },
+        { "ComponentID": "IP2326", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_CC_DETECTION",
+      "Connections": [
+        { "ComponentID": "USB6", "PinName": "CC1" },
+        { "ComponentID": "USB6", "PinName": "CC2" }
+      ]
+    },
+    {
+      "net_id": "NET_VBAT_RAW",
+      "Connections": [
+        { "ComponentID": "IP2326", "PinName": "VOUT" },
+        { "ComponentID": "SX1308", "PinName": "VIN" },
+        { "ComponentID": "SX1308", "PinName": "EN" },
+        { "ComponentID": "AMS1117", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_VCC_5V",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "ATmega328P", "PinName": "VCC" },
+        { "ComponentID": "ATmega328P", "PinName": "AVCC" },
+        { "ComponentID": "ATmega328P", "PinName": "AREF" },
+        { "ComponentID": "ICSP-6", "PinName": "VCC" },
+        { "ComponentID": "TMC2208", "PinName": "VIO" }
+      ]
+    },
+    {
+      "net_id": "NET_MCU_RESET",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PC6" },
+        { "ComponentID": "ICSP-6", "PinName": "RESET" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MOSI",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB3" },
+        { "ComponentID": "ICSP-6", "PinName": "MOSI" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MISO",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB4" },
+        { "ComponentID": "ICSP-6", "PinName": "MISO" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_SCK",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB5" },
+        { "ComponentID": "ICSP-6", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_STEPPER_STEP",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD7" },
+        { "ComponentID": "TMC2208", "PinName": "Step" }
+      ]
+    },
+    {
+      "net_id": "NET_STEPPER_DIR",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PB0" },
+        { "ComponentID": "TMC2208", "PinName": "Dir" }
+      ]
+    },
+    {
+      "net_id": "NET_STEPPER_EN",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD6" },
+        { "ComponentID": "TMC2208", "PinName": "Enable" }
+      ]
+    },
+    {
+      "net_id": "NET_MOTOR_PWM1",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD3" },
+        { "ComponentID": "DRV8870", "PinName": "IN1" }
+      ]
+    },
+    {
+      "net_id": "NET_MOTOR_PWM2",
+      "Connections": [
+        { "ComponentID": "ATmega328P", "PinName": "PD4" },
+        { "ComponentID": "DRV8870", "PinName": "IN2" }
+      ]
+    }
+  ]
+}

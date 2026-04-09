@@ -1,0 +1,27 @@
+Component ID: MCP2562
+Component Type: High-Speed CAN (Controller Area Network) Transceiver
+Description:
+The MCP2561/2 is a second-generation, high-speed CAN transceiver that serves as the physical layer interface between a CAN protocol controller and a two-wire differential CAN bus. It supports data rates up to 1 Mb/s, implements ISO-11898-2/5 standards, and is designed for robust automotive applications. Key functionalities include differential transmission and reception, very low standby current, protection against bus faults and transients, and features for system-level management such as a VIO pin for I/O voltage level shifting (MCP2562) or a SPLIT pin for bus common-mode stabilization (MCP2561).
+
+Key Parameters:
+- **Data Rate**: Up to 1 Mb/s
+- **Supply Voltage (VDD)**: Not explicitly stated in provided text, but implied for 12V/24V systems; typical range for such transceivers is 4.5V to 5.5V.
+- **I/O Logic Supply Voltage (VIO)**: 1.8V to 5.5V (MCP2562 feature)
+- **Standby Current**: 5 µA (typical)
+- **Operating Temperature Range**: Extended (E): -40°C to +125°C; High (H): -40°C to +150°C
+- **ESD Protection (CANH, CANL)**: ±14 kV (IEC61000-4-2)
+- **Fault Protection**: Short-circuit to battery voltage, high-voltage transients, thermal shutdown (~+175°C)
+- **Package Options**: PDIP-8, SOIC-8, 3x3 DFN-8
+- **Compliance**: ISO-11898-2, ISO-11898-5, Automotive Hardware Requirements
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | TXD | Input | Transmit Data Input from CAN controller. Low = Bus Dominant, High = Bus Recessive. | Digital Input | CMOS/TTL |
+| 2 | VIO (MCP2562) / GND (MCP2561) | Supply / Ground | MCP2562: Logic I/O Supply Voltage (1.8V-5.5V). MCP2561: Ground. | Power / Ground | Power / Ground |
+| 3 | VDD | Supply | Primary Supply Voltage for the transceiver. | Power | Power |
+| 4 | RXD | Output | Receive Data Output to CAN controller. Reflects bus state: Low = Bus Dominant, High = Bus Recessive. | Digital Output | CMOS/TTL |
+| 5 | SPLIT (MCP2561) / VIO (MCP2562) | Output / Supply | MCP2561: Stabilizes common-mode voltage in split termination schemes. MCP2562: Logic I/O Supply Voltage (1.8V-5.5V). | Analog Output / Power | Analog / Power |
+| 6 | CANL | Bus Line | Low-level CAN bus line. | Bus I/O | Differential Analog |
+| 7 | CANH | Bus Line | High-level CAN bus line. | Bus I/O | Differential Analog |
+| 8 | STBY | Input | Standby Mode Control. Low = Normal Mode, High = Standby Mode (Low Power). | Digital Input | CMOS/TTL |

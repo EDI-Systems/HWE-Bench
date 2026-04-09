@@ -1,0 +1,438 @@
+{
+  "ComponentID": "Arduino",
+  "ComponentType": "ATmega328P Development Board",
+  "Description": "The Arduino Pro Mini is a compact, minimalist development board based on the ATmega328P microcontroller. It is designed for space-constrained projects and permanent installations where the size of a standard Arduino Uno is prohibitive. Unlike most Arduino boards, it does not include a built-in USB-to-serial bridge; instead, it features a 6-pin header for programming via an external FTDI adapter. It is available in two versions: a 5V/16MHz model and a 3.3V/8MHz model for low-power applications.",
+  "KeyParameters": {
+    "Microcontroller": "ATmega328P",
+    "Operating Voltage": "3.3V or 5V (Model dependent)",
+    "Input Voltage (RAW)": "3.35V - 12V (3.3V version) or 5V - 12V (5V version)",
+    "Digital I/O Pins": "14 (of which 6 provide PWM output)",
+    "Analog Input Pins": "8 (A0-A7)",
+    "Flash Memory": "32 KB (2 KB used by bootloader)",
+    "SRAM": "2 KB",
+    "EEPROM": "1 KB",
+    "Clock Speed": "8 MHz or 16 MHz"
+  },
+  "Pins": [
+    {
+      "PinNumber": "TOP_1",
+      "PinName": "DTR",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Data Terminal Ready (Auto-reset for programming)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "TOP_2",
+      "PinName": "TXO",
+      "Functions": [
+        {
+          "FunctionName": "UART TX",
+          "FunctionDescription": "Serial Transmit Data"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "TOP_3",
+      "PinName": "RXI",
+      "Functions": [
+        {
+          "FunctionName": "UART RX",
+          "FunctionDescription": "Serial Receive Data"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "TOP_4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Regulated system voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V/5V"
+    },
+    {
+      "PinNumber": "TOP_5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System Ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "TOP_6",
+      "PinName": "BLK",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "FTDI \"Black\" wire reference (Ground)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "LEFT_1",
+      "PinName": "1/TX",
+      "Functions": [
+        {
+          "FunctionName": "UART TX",
+          "FunctionDescription": "Digital Pin 1 / Hardware Serial Transmit"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_2",
+      "PinName": "0/RX",
+      "Functions": [
+        {
+          "FunctionName": "UART RX",
+          "FunctionDescription": "Digital Pin 0 / Hardware Serial Receive"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_3",
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Active-low hardware reset"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "LEFT_4",
+      "PinName": "2/INT0",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 2 / External Interrupt 0"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_5",
+      "PinName": "3/INT1/PWM",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 3 / External Interrupt 1 / PWM"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_6",
+      "PinName": "4/T0",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 4 / Timer 0 Counter Input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_7",
+      "PinName": "5/T1/PWM",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 5 / Timer 1 Counter Input / PWM"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_8",
+      "PinName": "6/AIN0/PWM",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 6 / Analog Comparator AIN0 / PWM"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_9",
+      "PinName": "7/AIN1",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 7 / Analog Comparator AIN1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_10",
+      "PinName": "8",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 8"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_11",
+      "PinName": "9/PWM",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "Digital Pin 9 / PWM Output"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_12",
+      "PinName": "10/SS/PWM",
+      "Functions": [
+        {
+          "FunctionName": "SPI SS",
+          "FunctionDescription": "Digital Pin 10 / SPI Slave Select / PWM"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_13",
+      "PinName": "11/MOSI/PWM",
+      "Functions": [
+        {
+          "FunctionName": "SPI MOSI",
+          "FunctionDescription": "Digital Pin 11 / SPI Master Out / PWM"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_14",
+      "PinName": "12/MISO",
+      "Functions": [
+        {
+          "FunctionName": "SPI MISO",
+          "FunctionDescription": "Digital Pin 12 / SPI Master In"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "LEFT_15",
+      "PinName": "13/SCK",
+      "Functions": [
+        {
+          "FunctionName": "SPI SCK",
+          "FunctionDescription": "Digital Pin 13 / SPI Serial Clock"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "RIGHT_1",
+      "PinName": "RAW",
+      "Functions": [
+        {
+          "FunctionName": "Power In",
+          "FunctionDescription": "Unregulated voltage input for internal regulator"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.35V-12V"
+    },
+    {
+      "PinNumber": "RIGHT_2",
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Duplicate hardware reset pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "RIGHT_3",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Secondary regulated system voltage pin"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V/5V"
+    },
+    {
+      "PinNumber": "RIGHT_4",
+      "PinName": "A7",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "Analog-only input channel 7"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "RIGHT_5",
+      "PinName": "A6",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "Analog-only input channel 6"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "RIGHT_6",
+      "PinName": "SCL/A5",
+      "Functions": [
+        {
+          "FunctionName": "I2C Clock",
+          "FunctionDescription": "I2C Clock / Analog Input 5"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "RIGHT_7",
+      "PinName": "SDA/A4",
+      "Functions": [
+        {
+          "FunctionName": "I2C Data",
+          "FunctionDescription": "I2C Data / Analog Input 4"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "RIGHT_8",
+      "PinName": "A3",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "General purpose analog input 3"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "RIGHT_9",
+      "PinName": "A2",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "General purpose analog input 2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "RIGHT_10",
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "General purpose analog input 1"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "RIGHT_11",
+      "PinName": "A0",
+      "Functions": [
+        {
+          "FunctionName": "Analog In",
+          "FunctionDescription": "General purpose analog input 0"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "BTM_1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System Ground Reference 1"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "BTM_2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System Ground Reference 2"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "BTM_3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System Ground Reference 3"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

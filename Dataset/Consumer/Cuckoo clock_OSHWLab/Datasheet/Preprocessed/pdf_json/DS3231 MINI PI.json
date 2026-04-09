@@ -1,0 +1,76 @@
+{
+  "ComponentID": "DS3231 MINI PI",
+  "ComponentType": "High-Accuracy $I^2C$ Real-Time Clock (RTC) Module",
+  "Description": "The DS3231 MINI PI is a compact, high-precision real-time clock module specifically designed for the Raspberry Pi, though it is compatible with any microcontroller supporting the $I^2C$ protocol. It is based on the DS3231 chip, which features an integrated temperature-compensated crystal oscillator (TCXO) and a 32.768 kHz crystal. This integration ensures extremely high timing accuracy across a wide temperature range. The module is designed to be low-power and typically includes a backup power source (such as a supercapacitor or small coin cell) on the underside to maintain timekeeping when main power is removed.",
+  "KeyParameters": {
+    "RTC Chip": "DS3231",
+    "Timekeeping Accuracy": "$\\pm 2\\text{ppm}$ ($0^\\circ\\text{C}$ to $+40^\\circ\\text{C}$), $\\pm 3.5\\text{ppm}$ ($-40^\\circ\\text{C}$ to $+85^\\circ\\text{C}$)",
+    "Supply Voltage (VCC)": "3.3V to 5.5V",
+    "Communication Interface": "$I^2C$ (Serial Clock and Data)",
+    "Calendar Support": "Seconds, Minutes, Hours, Day, Date, Month, and Year (with leap-year compensation up to 2100)",
+    "Temperature Sensor Accuracy": "\\pm 3^\\circ\\text{C}$",
+    "Operating Temperature": "$-40^\\circ\\text{C}$ to $+85^\\circ\\text{C}$"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Primary DC power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V / 5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "I^2C Data",
+          "FunctionDescription": "Serial Data line for bidirectional communication"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal (Open Drain)"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "I^2C Clock",
+          "FunctionDescription": "Serial Clock line from the master device"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "Not internally connected"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

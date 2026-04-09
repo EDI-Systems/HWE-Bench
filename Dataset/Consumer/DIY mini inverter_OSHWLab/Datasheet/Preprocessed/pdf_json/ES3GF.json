@@ -1,0 +1,40 @@
+{
+  "ComponentID": "ES3GF",
+  "ComponentType": "Super Fast Recovery Rectifier",
+  "Description": "The ES3GF is a surface-mount, super-fast recovery power rectifier. It is designed for applications requiring high efficiency and rapid switching, such as high-frequency inverters, freewheeling diodes, and polarity protection. It features a glass-passivated chip junction for enhanced reliability and a low forward voltage drop to minimize power loss. The \"Super Fast\" characteristic ensures a very short reverse recovery time, reducing switching losses in power supply circuits.",
+  "KeyParameters": {
+    "Maximum Repetitive Peak Reverse Voltage": "400V",
+    "Maximum Average Forward Current": "3.0A",
+    "Reverse Recovery Time ($t_{rr}$)": "35ns",
+    "Maximum Forward Voltage": "1.3V (at 3.0A)",
+    "Peak Forward Surge Current": "100A",
+    "Operating Junction Temperature": "-55 to +150 Celsius",
+    "Package": "SMB (DO-214AA)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "K",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal marked with a polarity band"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Output"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input"
+    }
+  ]
+}

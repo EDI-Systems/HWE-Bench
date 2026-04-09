@@ -1,0 +1,41 @@
+{
+  "ComponentID": "SW",
+  "ComponentType": "Tactile Switch / Push Button Switch",
+  "Description": "This component is a surface-mount, low-profile tactile switch designed for PCB mounting. It functions as a momentary, normally-open (NO) push-button switch, where pressing the button completes an electrical circuit between its two terminals. It features a metal dome (弹片) for tactile feedback, a dust-proof membrane, and is rated for low-current signal or power applications.",
+  "KeyParameters": {
+    "Rated Voltage & Current": "12V DC, 50mA",
+    "Contact Resistance": "≤ 100 mΩ",
+    "Operating Force": "160gf, 260gf, or 50gf ±50gf (depending on variant)",
+    "Travel": "0.2 ± 0.1 mm",
+    "Insulation Resistance": "≥ 100 MΩ",
+    "Dielectric Strength": "≥ 250 VAC for 1 minute",
+    "Actuator Height (H)": "1.8mm, 2.0mm, or 2.5mm (variant)",
+    "Terminal Type": "Surface Mount (SMD)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Terminal 1",
+      "Functions": [
+        {
+          "FunctionName": "Switch Contact",
+          "FunctionDescription": "One electrical terminal of the switch."
+        }
+      ],
+      "PinType": "SMD Pad",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Terminal 2",
+      "Functions": [
+        {
+          "FunctionName": "Switch Contact",
+          "FunctionDescription": "The other electrical terminal of the switch."
+        }
+      ],
+      "PinType": "SMD Pad",
+      "ElectricalType": "Signal/Power"
+    }
+  ]
+}

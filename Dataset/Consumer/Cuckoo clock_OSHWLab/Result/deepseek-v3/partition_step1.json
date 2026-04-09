@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Path Multiplexer (PPMUX)",
+      "Function Description": "Automatically selects and switches between the external USB power source and the built-in lithium battery to provide a continuous, stable, and conflict-free main system voltage rail. Ensures seamless transition and prevents reverse current.",
+      "Signal Sources": "USB_VBUS (External Power), BAT_V (Battery Voltage)",
+      "Signal Destinations": "SYS_VCC (Main System Power Rail)",
+      "Implementation Logic": "Utilizes a power path controller IC (or discrete MOSFET-based circuit) with ideal diode/OR-ing functionality. It monitors USB_VBUS. When present and valid, it connects USB_VBUS to SYS_VCC and disconnects the battery path. When absent, it instantly connects BAT_V to SYS_VCC. The logic ensures priority to USB power and automatic, glitch-free switching."
+    },
+    {
+      "Module Name": "Main System Power Domain",
+      "Function Description": "Provides regulated, clean power from the SYS_VCC rail to the low-power digital and analog subsystems, including the main controller, real-time clock (RTC), display driver, and audio amplifier/decoder.",
+      "Signal Sources": "SYS_VCC (from Power Path Multiplexer)",
+      "Signal Destinations": "MCU_VDD, RTC_VDD, DISPLAY_VDD, AUDIO_VDD",
+      "Implementation Logic": "SYS_VCC is fed into multiple low-dropout linear regulators (LDOs) or a multi-output power management IC (PMIC) to generate the specific, noise-sensitive voltage rails required by each sub-system (e.g., 3.3V for MCU, 1.8V for RTC). This domain is always active when the system is operational."
+    },
+    {
+      "Module Name": "Motor Load Switch & Inrush Buffer",
+      "Function Description": "Provides isolated, switched power to the servo motor. It prevents the motor's high inrush current from affecting the main system power rail, thereby avoiding MCU resets and saving energy.",
+      "Signal Sources": "SYS_VCC (from Power Path Multiplexer), MCU_GPIO_MOTOR_EN (Control Signal)",
+      "Signal Destinations": "MOTOR_PWR (Power to Servo Motor)",
+      "Implementation Logic": "An electronic load switch IC (or a MOSFET driven by a gate driver) is controlled by the MCU_GPIO_MOTOR_EN signal. A large capacitor (e.g., several hundred to thousand µF) is placed on the output (MOTOR_PWR side) to buffer energy and supply the initial inrush current. The MCU turns the switch ON only during motor actuation sequences and OFF immediately after, isolating the motor load."
+    },
+    {
+      "Module Name": "Main Controller (MCU) & System Control Logic",
+      "Function Description": "The central intelligence that manages the overall system state, timekeeping (via RTC), user interface, audio playback for cuckoo sounds, display updates, and precisely timed activation of the motor load switch.",
+      "Signal Sources": "User inputs, RTC interrupts, internal timers, power good signals",
+      "Signal Destinations": "MCU_GPIO_MOTOR_EN (to Motor Load Switch), Display control lines, Audio control/data lines, General system control signals",
+      "Implementation Logic": "A low-power microcontroller runs the firmware. It monitors time from the RTC. At scheduled events (e.g., on the hour), it sequences operations: activate audio, update display, assert MCU_GPIO_MOTOR_EN to power the motor for the physical cuckoo action, then de-assert it. It also manages sleep states for power saving."
+    },
+    {
+      "Module Name": "Battery Management & Charging",
+      "Function Description": "Safely charges the built-in lithium battery when external USB power is available and provides battery protection (over-voltage, under-voltage, over-current).",
+      "Signal Sources": "USB_VBUS (External Power), BAT_V (Battery Voltage), Battery temperature sensor",
+      "Signal Destinations": "BAT_V (to Battery), CHG_STAT (Status to MCU)",
+      "Implementation Logic": "A dedicated battery charge management IC (e.g., linear or switching charger) is connected to USB_VBUS and the battery. It regulates charging current/voltage according to battery chemistry (e.g., CC/CV for Li-ion). An integrated or separate protection circuit safeguards the battery. The charger IC provides a status signal to the MCU."
+    }
+  ]
+}

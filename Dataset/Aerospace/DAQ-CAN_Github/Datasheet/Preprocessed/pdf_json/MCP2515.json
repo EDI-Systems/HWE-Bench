@@ -1,0 +1,230 @@
+{
+  "ComponentID": "MCP2515",
+  "ComponentType": "Stand-alone CAN Controller with SPI Interface",
+  "Description": "The MCP2515 is a stand-alone Controller Area Network (CAN) controller that implements the CAN specification, Version 2.0B. It is capable of transmitting and receiving both standard and extended data and remote frames. The MCP2515 has two acceptance masks and six acceptance filters that are used to filter out unwanted messages, thereby reducing the host MCU's overhead. It interfaces with microcontrollers via an industry-standard Serial Peripheral Interface (SPI), making it a popular choice for adding CAN connectivity to systems without a native CAN peripheral.",
+  "KeyParameters": {
+    "CAN Protocol": "Supports CAN V2.0B at 1 Mb/s",
+    "Interface": "SPI (up to 10 MHz, supports modes 0,0 and 1,1)",
+    "Operating Voltage": "2.7V to 5.5V",
+    "Buffers": "3 Transmit Buffers and 2 Receive Buffers",
+    "Low Power": "Standby current typically 5 µA"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "TXCAN",
+      "Functions": [
+        {
+          "FunctionName": "CAN Transmit",
+          "FunctionDescription": "Transmit output pin to CAN transceiver"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "RXCAN",
+      "Functions": [
+        {
+          "FunctionName": "CAN Receive",
+          "FunctionDescription": "Receive input pin from CAN transceiver"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CLKOUT",
+      "Functions": [
+        {
+          "FunctionName": "Clock Out",
+          "FunctionDescription": "Configurable clock output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "TX0RTS",
+      "Functions": [
+        {
+          "FunctionName": "Request to Send",
+          "FunctionDescription": "Transmit Buffer 0 Request-to-Send / GPIO"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "TX1RTS",
+      "Functions": [
+        {
+          "FunctionName": "Request to Send",
+          "FunctionDescription": "Transmit Buffer 1 Request-to-Send / GPIO"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "TX2RTS",
+      "Functions": [
+        {
+          "FunctionName": "Request to Send",
+          "FunctionDescription": "Transmit Buffer 2 Request-to-Send / GPIO"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "OSC2",
+      "Functions": [
+        {
+          "FunctionName": "Oscillator",
+          "FunctionDescription": "Oscillator crystal output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "OSC1",
+      "Functions": [
+        {
+          "FunctionName": "Oscillator",
+          "FunctionDescription": "Oscillator crystal input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "!RX1BF",
+      "Functions": [
+        {
+          "FunctionName": "Buffer Full",
+          "FunctionDescription": "Receive Buffer 1 Full Interrupt / GPIO"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "!RX0BF",
+      "Functions": [
+        {
+          "FunctionName": "Buffer Full",
+          "FunctionDescription": "Receive Buffer 0 Full Interrupt / GPIO"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "!INT",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt",
+          "FunctionDescription": "Interrupt output to host MCU (active low)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SPI Clock",
+          "FunctionDescription": "SPI serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "SI",
+      "Functions": [
+        {
+          "FunctionName": "SPI Data In",
+          "FunctionDescription": "SPI serial data input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "SO",
+      "Functions": [
+        {
+          "FunctionName": "SPI Data Out",
+          "FunctionDescription": "SPI serial data output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "SPI chip select input (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "RESET",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Hardware reset input (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.7V - 5.5V"
+    }
+  ]
+}

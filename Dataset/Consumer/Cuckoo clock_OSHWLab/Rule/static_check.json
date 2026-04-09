@@ -1,0 +1,121 @@
+{
+  "MCU_Function_Groups": {
+    "Arduino": {
+      "System_Power": [
+        { "PinName": "VCC", "FunctionName": "System 5V/3.3V Power" },
+        { "PinName": "GND", "FunctionName": "System Ground" },
+        { "PinName": "RAW", "FunctionName": "Raw Power Input" }
+      ],
+      "I2C_RTC_Bus": [
+        { "PinName": "A4", "FunctionName": "I2C_SDA / SDA_CLK" },
+        { "PinName": "A5", "FunctionName": "I2C_SCL / SCL_CLK" }
+      ],
+      "SPI_OLED_Bus": [
+        { "PinName": "13", "FunctionName": "SPI_SCK / SCL" },
+        { "PinName": "11", "FunctionName": "SPI_MOSI / SDA" },
+        { "PinName": "10", "FunctionName": "SPI_CS" },
+        { "PinName": "9", "FunctionName": "SPI_DC" },
+        { "PinName": "8", "FunctionName": "SPI_RES" }
+      ],
+      "Power_Management_Status": [
+        { "PinName": "A1", "FunctionName": "BAT_CHRG (Charge Status)" },
+        { "PinName": "A2", "FunctionName": "BAT_STNB (Standby Status)" },
+        { "PinName": "A0", "FunctionName": "BP_INPUT (Battery ADC)" }
+      ],
+      "Servo_Power_Control": [
+        { "PinName": "A3", "FunctionName": "U_PV (MOSFET Gate Drive)" }
+      ],
+      "Servo_Signal_Control": [
+        { "PinName": "7", "FunctionName": "SERV_P (PWM Signal)" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "DS3231 MINI PI": {
+      "I2C_Interface": [
+        { "PinName": "SDA", "FunctionName": "I2C_SDA / SDA_CLK" },
+        { "PinName": "SCL", "FunctionName": "I2C_SCL / SCL_CLK" }
+      ]
+    },
+    "OLED": {
+      "SPI_Display_Interface": [
+        { "PinName": "SCL", "FunctionName": "SPI_SCK / SCL" },
+        { "PinName": "SDA", "FunctionName": "SPI_MOSI / SDA" },
+        { "PinName": "CS", "FunctionName": "SPI_CS" },
+        { "PinName": "DC", "FunctionName": "SPI_DC" },
+        { "PinName": "RES", "FunctionName": "SPI_RES" }
+      ]
+    },
+    "TP4057ST26P": {
+      "Charge_Status": [
+        { "PinName": "1", "FunctionName": "BAT_CHRG (Charge Status)" },
+        { "PinName": "5", "FunctionName": "BAT_STNB (Standby Status)" }
+      ]
+    },
+    "IRLM": {
+      "Gate_Switch": [
+        { "PinName": "1", "FunctionName": "U_PV (MOSFET Gate Drive)" }
+      ]
+    },
+    "ES9251II": {
+      "Servo_Drive": [
+        { "PinName": "1", "FunctionName": "SERV_P (PWM Signal)" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "RTC_I2C_Bus_Integrity",
+      "Type": "Bus_Pairing",
+      "MCU": "Arduino",
+      "Target_Group_Pattern": "I2C_RTC_Bus",
+      "Slaves": [
+        { "ComponentID": "DS3231 MINI PI", "Interface": "I2C_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Display_SPI_Bus_Integrity",
+      "Type": "Bus_Pairing",
+      "MCU": "Arduino",
+      "Target_Group_Pattern": "SPI_OLED_Bus",
+      "Slaves": [
+        { "ComponentID": "OLED", "Interface": "SPI_Display_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Battery_Charge_Status_Monitoring",
+      "Type": "Resource_Allocation",
+      "MCU": "Arduino",
+      "Target_Group": "Power_Management_Status",
+      "Slaves": [
+        { "ComponentID": "TP4057ST26P", "Interface": "Charge_Status" }
+      ]
+    },
+    {
+      "RuleName": "Servo_Power_Gating",
+      "Type": "Resource_Allocation",
+      "MCU": "Arduino",
+      "Target_Group": "Servo_Power_Control",
+      "Slaves": [
+        { "ComponentID": "IRLM", "Interface": "Gate_Switch" }
+      ]
+    },
+    {
+      "RuleName": "Servo_PWM_Signal",
+      "Type": "Resource_Allocation",
+      "MCU": "Arduino",
+      "Target_Group": "Servo_Signal_Control",
+      "Slaves": [
+        { "ComponentID": "ES9251II", "Interface": "Servo_Drive" }
+      ]
+    },
+    {
+      "RuleName": "Servo_VCC_Switched_Power",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "IRLM", "PinName": "2" },
+        { "ComponentID": "ES9251II", "PinName": "2" }
+      ]
+    }
+  ]
+}

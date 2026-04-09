@@ -1,0 +1,1324 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "6-Axis IMU and Sensor Interface",
+      "Function Description": "Integrates a 6-axis Inertial Measurement Unit (IMU) for motion tracking and sensor data acquisition, interfaced with the MCU for real-time data processing in IoT applications.",
+      "Signal Sources": "I2C clock and data signals from the ESP32-WROOM-32E, power from the 3.3V supply.",
+      "Signal Destinations": "Accelerometer and gyroscope data sent via I2C to the ESP32-WROOM-32E for further processing and transmission.",
+      "Implementation Logic": "The IMU module (e.g., MPU6050) is connected to the ESP32 via I2C bus, with pull-up resistors on SDA and SCL lines, and powered by the 3.3V rail from the power management block.",
+      "Signal Chain": "The signal chain begins with the 3.3V power supply from the ESP32-WROOM-32E's 3V3 pin (Pin 2) or an external source, which powers the LSM6DSMTR IMU module. The IMU requires VDD (Pin 8) for core power and VDDIO (Pin 5) for I/O levels, both at 3.3V. The ESP32 generates I2C clock (SCL) and data (SDA) signals from its GPIO22 (Pin 36) and GPIO21 (Pin 33) pins, respectively. These signals connect to the IMU's SCL (Pin 13) and SDA (Pin 14) pins, forming a complete I2C bus for communication. Pull-up resistors (not in library) are needed on SDA and SCL lines to 3.3V for proper I2C operation. The IMU's interrupt pins INT1 (Pin 4) and INT2 (Pin 9) can be optionally connected to ESP32 GPIO pins for event-driven data acquisition. Ground connections are established from the ESP32's GND pins (e.g., Pin 1, 15, 38) to the IMU's GND pins (Pin 6, 7). Data flows from the IMU's accelerometer and gyroscope sensors through its internal ADC and processing, then transmitted via I2C to the ESP32 for real-time processing and potential transmission over Wi-Fi/Bluetooth.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32",
+          "Functional Position": "Main Microcontroller",
+          "Recommendation Reason": "Provides I2C interface, processing power for IMU data, and connectivity (Wi-Fi/BT) for IoT applications as specified in the module description.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO21",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "IO22",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "Functional Position": "6-Axis IMU Sensor",
+          "Recommendation Reason": "Integrates 3D accelerometer and gyroscope with I2C interface, matching the module's functional description for motion tracking and data acquisition.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VDD",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VDDIO",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "GPIO Pin Headers and Expansion Interface",
+      "Function Description": "Provides standard pin headers that break out the ESP32's GPIO pins for easy breadboarding and connection to external peripherals, enabling flexible hardware expansion.",
+      "Signal Sources": "GPIO signals from the ESP32-WROOM-32E module, including digital I/O, analog inputs, and communication interfaces.",
+      "Signal Destinations": "External peripherals such as sensors, actuators, or other development boards connected via the pin headers.",
+      "Implementation Logic": "Male or female pin headers are soldered to the board, with traces connecting each header pin to the corresponding GPIO pin on the ESP32-WROOM-32E, ensuring proper spacing and labeling for user accessibility.",
+      "Signal Chain": "The GPIO Pin Headers and Expansion Interface module functions as a passive breakout board. GPIO signals from the ESP32-WROOM-32E module (including digital I/O, analog inputs, and communication interfaces like UART, SPI, I2C) are routed directly through traces to male or female pin headers. These headers provide physical access points for external peripherals such as sensors, actuators, or other development boards. The signal flow is linear: ESP32 GPIO pins → PCB traces → pin header pins → external connections. No active signal conditioning or protocol conversion is required; the module simply extends the ESP32's native interfaces for flexible hardware expansion.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32",
+          "Functional Position": "Signal Source",
+          "Recommendation Reason": "Provides all GPIO signals (digital I/O, analog inputs, UART, SPI, I2C) that need to be broken out to the pin headers for external peripheral connections.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SENSOR_VP",
+              "Net": "GPIO36"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SENSOR_VN",
+              "Net": "GPIO39"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IO34",
+              "Net": "GPIO34"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "IO35",
+              "Net": "GPIO35"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "IO32",
+              "Net": "GPIO32"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "IO33",
+              "Net": "GPIO33"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO25",
+              "Net": "GPIO25"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO26",
+              "Net": "GPIO26"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO27",
+              "Net": "GPIO27"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO14",
+              "Net": "GPIO14"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "IO12",
+              "Net": "GPIO12"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "IO13",
+              "Net": "GPIO13"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "IO15",
+              "Net": "GPIO15"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "IO2",
+              "Net": "GPIO2"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "IO0",
+              "Net": "GPIO0"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "IO4",
+              "Net": "GPIO4"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "IO16",
+              "Net": "GPIO16"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "IO17",
+              "Net": "GPIO17"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "IO5",
+              "Net": "GPIO5"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "IO18",
+              "Net": "GPIO18"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "IO19",
+              "Net": "GPIO19"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO21",
+              "Net": "GPIO21"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART0_RX"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "IO22",
+              "Net": "GPIO22"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "IO23",
+              "Net": "GPIO23"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "39",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "ESP32-WROOM-32E Core Module",
+      "Function Description": "Provides the main microcontroller unit with integrated Wi-Fi and Bluetooth connectivity for IoT applications, handling data processing, communication, and control tasks.",
+      "Signal Sources": "GPIO pins from the ESP32-WROOM-32E module, including UART signals from the CP2102N, I2C signals from the IMU, and power from the power management block.",
+      "Signal Destinations": "GPIO pins to the pin headers for peripheral expansion, I2C signals to the IMU for communication, and internal processing for Wi-Fi/Bluetooth transmission.",
+      "Implementation Logic": "The ESP32-WROOM-32E module is mounted on the board with its pins connected to the necessary circuits, including UART for serial communication via CP2102N, I2C for IMU interfacing, and power rails from the AMS1117-3.3 LDO.",
+      "Signal Chain": "The ESP32-WROOM-32E module serves as the core microcontroller, powered by a 3.3V supply from the AMS1117 LDO regulator, which steps down from a 5V input via the Micro-USB connector. The CP2102N USB-to-UART bridge facilitates serial communication between the ESP32 and a host PC through the Micro-USB interface, with UART signals (TXD, RXD) connected bidirectionally. The LSM6DSMTR IMU communicates with the ESP32 via I2C for sensor data acquisition, using dedicated SDA and SCL lines. GPIO pins from the ESP32 are routed to pin headers for peripheral expansion, while internal processing handles Wi-Fi/Bluetooth transmission. Power management includes the AMS1117 for voltage regulation, with optional components like the 2N7002 MOSFET for switching control, BAT760 diode for protection, SS8050-G BJT for amplification, and SW tactile switch for user input, all integrated into the signal flow as needed for specific circuit functions.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32",
+          "Functional Position": "Core Microcontroller Unit",
+          "Recommendation Reason": "Provides the main processing, Wi-Fi, and Bluetooth capabilities as specified in the module description.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "39",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART_TX_FROM_CP2102"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART_RX_TO_CP2102"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO21",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "IO22",
+              "Net": "I2C_SCL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge",
+          "Recommendation Reason": "Enables serial communication between the ESP32 and a host PC via USB, as mentioned in the implementation logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "TXD",
+              "Net": "UART_TX_FROM_CP2102"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "RXD",
+              "Net": "UART_RX_TO_CP2102"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VREGIN",
+              "Net": "5V_USB"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1050170001",
+          "Functional Position": "USB Interface Connector",
+          "Recommendation Reason": "Provides physical USB connection for power and data transfer to the CP2102 bridge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Converts 5V USB power to 3.3V required by the ESP32 and other components, as specified in the implementation logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "Functional Position": "Inertial Measurement Unit (IMU)",
+          "Recommendation Reason": "Provides accelerometer and gyroscope data via I2C to the ESP32, as mentioned in signal sources and destinations.",
+          "Pin Connections": [
+            {
+              "PinNumber": "14",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VDD",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VDDIO",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Automatic Download and Reset Circuit",
+      "Function Description": "Automates the firmware flashing process by toggling the ESP32's EN (Reset) and IO0 pins based on DTR and RTS signals from the USB-to-serial converter, eliminating manual button presses.",
+      "Signal Sources": "DTR and RTS signals from the CP2102N USB-to-serial converter.",
+      "Signal Destinations": "EN and IO0 pins of the ESP32-WROOM-32E module to control reset and boot modes during programming.",
+      "Implementation Logic": "Uses logic gates or transistors to combine DTR and RTS signals, generating pulses that drive EN and IO0 pins low/high as needed to put the ESP32 into bootloader mode and reset it automatically during serial uploads.",
+      "Signal Chain": "The signal chain begins with the Micro-USB connector providing 5V power and USB data lines. The 5V from USB pin 1 is regulated to 3.3V by the AMS1117 LDO to power the CP2102 and ESP32. The USB D+ and D- lines connect to the CP2102 for USB-to-UART conversion. The CP2102 generates DTR (pin 28) and RTS (pin 24) signals, which are active-low UART control outputs. These signals drive the gates of two 2N7002 MOSFETs. The DTR signal controls the MOSFET connected to ESP32 EN pin (pin 3), pulling it low when DTR is low to reset the ESP32. The RTS signal controls the MOSFET connected to ESP32 IO0 pin (pin 25), pulling it low when RTS is low to set boot mode. The CP2102 TXD (pin 26) and RXD (pin 25) connect to ESP32 RXD0 (pin 34) and TXD0 (pin 35) for UART communication. The ESP32 operates on 3.3V from the AMS1117, with EN and IO0 controlled by the MOSFETs to automate firmware flashing.",
+      "Recommended Components": [
+        {
+          "ComponentID": "1050170001",
+          "Functional Position": "USB Interface",
+          "Recommendation Reason": "Provides USB 2.0 connectivity for power and data transfer from a host computer to the CP2102 USB-to-UART bridge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "ID",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge",
+          "Recommendation Reason": "Converts USB signals to UART, providing DTR and RTS control signals to automate ESP32 reset and boot mode via MOSFETs.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "DCD",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RI/CLK",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VREGIN",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VBUS",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "RSTb",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "SUSPENDb",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "SUSPEND",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "CHREN",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "CHR1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "CHR0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "GPIO.3/WAKEUP",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "GPIO.2/RS485",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "GPIO.1/RXT",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "GPIO.0/TXT",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "GPIO.6",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GPIO.5",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "GPIO.4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "CTS",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "RTS",
+              "Net": "RTS_SIGNAL"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "RXD",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "TXD",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "DSR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "DTR",
+              "Net": "DTR_SIGNAL"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Regulates 5V from USB to 3.3V required by the CP2102 and ESP32, ensuring stable power supply.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "USB_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "2N7002",
+          "Functional Position": "Reset Control MOSFET",
+          "Recommendation Reason": "Acts as a switch controlled by DTR signal to pull ESP32 EN pin low for reset, using N-channel MOSFET for low-side switching.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Gate (G)",
+              "Net": "DTR_SIGNAL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Drain (D)",
+              "Net": "ESP32_EN"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Source (S)",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "2N7002",
+          "Functional Position": "Boot Mode Control MOSFET",
+          "Recommendation Reason": "Acts as a switch controlled by RTS signal to pull ESP32 IO0 pin low for bootloader mode, using N-channel MOSFET for low-side switching.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Gate (G)",
+              "Net": "RTS_SIGNAL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Drain (D)",
+              "Net": "ESP32_IO0"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Source (S)",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ESP32",
+          "Functional Position": "Main Microcontroller",
+          "Recommendation Reason": "Target device for firmware flashing, with EN and IO0 pins controlled by MOSFETs to automate reset and boot mode entry via UART.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ESP32_EN"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "IO0",
+              "Net": "ESP32_IO0"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "39",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Management and USB Interface",
+      "Function Description": "Manages power supply by stepping down 5V from the Micro USB input to 3.3V for the MCU and IMU, and provides ESD-protected USB connectivity with serial conversion for debugging and communication.",
+      "Signal Sources": "5V input from the Micro USB port, DTR and RTS signals from the CP2102N for automatic download control.",
+      "Signal Destinations": "3.3V output to the ESP32-WROOM-32E and IMU, serial data signals to/from the CP2102N, and control signals to the automatic download circuit.",
+      "Implementation Logic": "Uses an AMS1117-3.3 LDO to regulate 5V USB input to 3.3V, with ESD protection on the Micro USB lines. The CP2102N converts USB data to UART signals for the ESP32, and its DTR/RTS outputs drive the automatic download circuit.",
+      "Signal Chain": "The Micro-USB connector (1050170001) provides 5V power (pin 1) and USB data signals (pins 2 and 3) from an external source. The 5V input is regulated to 3.3V by the AMS1117 LDO (pin 3 VIN to pin 2 VOUT), which supplies power to the ESP32 (pin 2 3V3) and IMU (pin 8 VDD). The USB data lines (D+ and D-) from the Micro-USB are connected to the CP2102N (pins 4 D+ and 5 D-) for ESD-protected USB-to-UART conversion. The CP2102N outputs UART signals: TXD (pin 26) to ESP32 RXD0 (pin 34) and RXD (pin 25) to ESP32 TXD0 (pin 35). The CP2102N's DTR (pin 28) and RTS (pin 24) control the automatic download circuit, which uses a 2N7002 MOSFET (pin 1 Gate connected to DTR/RTS via logic, pin 2 Drain to ESP32 EN, pin 3 Source to ground) to reset the ESP32. Ground connections are shared among all components via the Micro-USB pin 5, CP2102N pin 3, ESP32 pins 1, 15, 38, 39, and IMU pins 6, 7.",
+      "Recommended Components": [
+        {
+          "ComponentID": "1050170001",
+          "Functional Position": "USB Interface and Power Input",
+          "Recommendation Reason": "Provides 5V power and USB data connectivity from an external source, essential for powering the module and enabling USB communication.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "ID",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Steps down the 5V USB input to a stable 3.3V output required by the ESP32 and IMU, with low dropout suitable for USB power.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "USB_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge",
+          "Recommendation Reason": "Converts USB data to UART signals for serial communication with the ESP32, and provides DTR/RTS outputs for automatic download control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "DCD",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RI/CLK",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VREGIN",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VBUS",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "RSTb",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "SUSPENDb",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "SUSPEND",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "CHREN",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "CHR1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "CHR0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "GPIO.3/WAKEUP",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "GPIO.2/RS485",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "GPIO.1/RXT",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "GPIO.0/TXT",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "GPIO.6",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GPIO.5",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "GPIO.4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "CTS",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "RTS",
+              "Net": "AUTO_DL_RTS"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "RXD",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "TXD",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "DSR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "DTR",
+              "Net": "AUTO_DL_DTR"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ESP32",
+          "Functional Position": "Main MCU",
+          "Recommendation Reason": "Processes data from the IMU and communicates via UART with the CP2102N for debugging and communication, powered by the 3.3V supply.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ESP_EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SENSOR_VP",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SENSOR_VN",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IO34",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "IO35",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "IO32",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "IO33",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO25",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO26",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO27",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO14",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "IO12",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "IO13",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "IO15",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "IO2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "IO0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "IO4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "IO16",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "IO17",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "IO5",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "IO18",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "IO19",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO21",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "IO22",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "IO23",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "39",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "LSM6DSMTR",
+          "Functional Position": "Inertial Measurement Unit",
+          "Recommendation Reason": "Provides accelerometer and gyroscope data to the ESP32, powered by the 3.3V supply from the LDO.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "SDO/SA0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SDX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "INT1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VDDIO",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "INT2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "OSC_AUX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "SDO_AUX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "CS",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SCL",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SDA",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "2N7002",
+          "Functional Position": "Automatic Download Control Switch",
+          "Recommendation Reason": "Used in the automatic download circuit to control the ESP32's EN pin based on DTR/RTS signals from the CP2102N, enabling firmware upload.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Gate (G)",
+              "Net": "AUTO_DL_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Drain (D)",
+              "Net": "ESP_EN"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Source (S)",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

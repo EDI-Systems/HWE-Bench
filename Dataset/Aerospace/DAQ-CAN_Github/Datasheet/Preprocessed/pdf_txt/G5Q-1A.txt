@@ -1,0 +1,17 @@
+Component ID: G5Q-1A
+Component Type: Miniature Power Relay (SPST-NO)
+Description: The G5Q-1A is a high-performance, compact PCB-mount power relay manufactured by Omron. It is designed for switching significant loads (up to 10A) in a small footprint, making it ideal for home appliances, HVAC systems, and industrial control modules. This specific "1A" variant features a single-pole, single-throw, normally open contact configuration.
+
+Key Parameters:
+- **Contact Form:** SPST-NO (1 Form A)
+- **Rated Load (Resistive):** 10A at 125VAC / 5A at 30VDC / 3A at 250VAC
+- **Max. Switching Voltage:** 277 VAC / 30 VDC
+- **Coil Voltage Options:** 5V, 12V, or 24V DC (model-specific)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | COIL_1 | Coil Terminal | Connection to the relay's electromagnetic coil (non-polarized) | Input | Power |
+| 5 | COIL_2 | Coil Terminal | Connection to the relay's electromagnetic coil (non-polarized) | Input | Power |
+| 2 | COM | Common | Moving contact of the internal switch | Passive | Signal/Power |
+| 3 | NO | Normally Open | Stationary contact that connects to COM when coil is energized | Passive | Signal/Power |

@@ -1,0 +1,21 @@
+Component ID: IRF840
+Component Type: N-Channel Power MOSFET
+Description: The IRF840 is a high-voltage, N-channel enhancement mode power MOSFET designed for high-speed switching applications. It features low on-resistance and a high breakdown voltage, making it suitable for off-line switch-mode power supplies (SMPS), DC-to-DC converters, and motor controllers. The device includes an integrated body diode and is typically housed in a TO-220 package, which allows for efficient heat dissipation when mounted to a heatsink.
+
+Key Parameters:
+- **Drain-to-Source Voltage ($V_{DSS}$):** 500V
+- **Continuous Drain Current ($I_D$):** 8.0A (at $T_C = 25^\circ\text{C}$)
+- **Static Drain-to-Source On-Resistance ($R_{DS(on)}$):** 0.85 $\Omega$ (max)
+- **Gate Threshold Voltage ($V_{GS(th)}$):** 2.0V to 4.0V
+- **Total Gate Charge ($Q_g$):** 63nC (max)
+- **Power Dissipation ($P_D$):** 125W (at $T_C = 25^\circ\text{C}$)
+- **Operating Junction Temperature:** -55 to +150°C
+- **Package:** TO-220AB
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | G | Gate | Controls the conduction between Drain and Source | Input | Signal |
+| 2 | D | Drain | Primary current entrance (Connected to the metal tab) | Passive | Power |
+| 3 | S | Source | Primary current exit/ground reference | Passive | Power |

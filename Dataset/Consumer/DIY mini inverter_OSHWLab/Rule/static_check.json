@@ -1,0 +1,144 @@
+{
+  "MCU_Function_Groups": {
+    "ATmega328P-AU": {
+      "System_Power_Clock": [
+        { "PinName": "VCC", "FunctionName": "Digital Supply" },
+        { "PinName": "GND", "FunctionName": "Digital Ground" },
+        { "PinName": "AVCC", "FunctionName": "Analog Supply" },
+        { "PinName": "AREF", "FunctionName": "Analog Reference" },
+        { "PinName": "PB6", "FunctionName": "Crystal / TOSC1" },
+        { "PinName": "PB7", "FunctionName": "Crystal / TOSC2" },
+        { "PinName": "PC6", "FunctionName": "RESET#" }
+      ],
+      "ADC_Analog_Monitoring": [
+        { "PinName": "PC0", "FunctionName": "ADC0 / Battery" },
+        { "PinName": "PC1", "FunctionName": "ADC1 / Temp" },
+        { "PinName": "PC2", "FunctionName": "ADC2" },
+        { "PinName": "PC3", "FunctionName": "ADC3" },
+        { "PinName": "PC4", "FunctionName": "ADC4 / SDA" },
+        { "PinName": "PC5", "FunctionName": "ADC5 / SCL" },
+        { "PinName": "ADC6", "FunctionName": "Dedicated ADC6" },
+        { "PinName": "ADC7", "FunctionName": "Dedicated ADC7" }
+      ],
+      "SPI_ISP_Interface": [
+        { "PinName": "PB3", "FunctionName": "MOSI" },
+        { "PinName": "PB4", "FunctionName": "MISO" },
+        { "PinName": "PB5", "FunctionName": "SCK" },
+        { "PinName": "PC6", "FunctionName": "RESET#" }
+      ],
+      "I2C_Interface": [
+        { "PinName": "PC4", "FunctionName": "SDA" },
+        { "PinName": "PC5", "FunctionName": "SCL" }
+      ],
+      "UART_Telemetry": [
+        { "PinName": "PD0", "FunctionName": "RXD" },
+        { "PinName": "PD1", "FunctionName": "TXD" }
+      ],
+      "PWM_Drive_Signals": [
+        { "PinName": "PD3", "FunctionName": "OC2B / DRIVE_A" },
+        { "PinName": "PD5", "FunctionName": "OC0B / DRIVE_B" },
+        { "PinName": "PD6", "FunctionName": "OC0A / DRIVE_C" },
+        { "PinName": "PB1", "FunctionName": "OC1A / DRIVE_D" },
+        { "PinName": "PB2", "FunctionName": "OC1B" },
+        { "PinName": "PB3", "FunctionName": "OC2A" }
+      ],
+      "Indicator_And_Misc": [
+        { "PinName": "PD2", "FunctionName": "INT0 / RGB1" },
+        { "PinName": "PD3", "FunctionName": "INT1 / RGB2" },
+        { "PinName": "PD4", "FunctionName": "XCK / RGB3" },
+        { "PinName": "PD7", "FunctionName": "AIN1 / TAP" },
+        { "PinName": "PB0", "FunctionName": "ICP1" }
+      ]
+    },
+    "SG3525A": {
+      "Push_Pull_Controller": [
+        { "PinName": "Output A", "FunctionName": "Drive Phase A" },
+        { "PinName": "Output B", "FunctionName": "Drive Phase B" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "78L05": {
+      "LDO_Power": [
+        { "PinName": "VIN", "FunctionName": "Input" },
+        { "PinName": "VOUT", "FunctionName": "Output" },
+        { "PinName": "GND", "FunctionName": "Ground" }
+      ]
+    },
+    "TPS54331": {
+      "Buck_Power": [
+        { "PinName": "VIN", "FunctionName": "Battery Input" },
+        { "PinName": "PH", "FunctionName": "Switch Node" },
+        { "PinName": "GND", "FunctionName": "Ground" }
+      ]
+    },
+    "AVR ISP": {
+      "ICSP_Port": [
+        { "PinName": "MOSI", "FunctionName": "MOSI" },
+        { "PinName": "MISO", "FunctionName": "MISO" },
+        { "PinName": "SCLK", "FunctionName": "SCK" },
+        { "PinName": "RESET", "FunctionName": "RESET" }
+      ]
+    },
+    "EL357N": {
+      "Signal_Input": [
+        { "PinName": "Anode", "FunctionName": "PWM Input Anode" }
+      ]
+    },
+    "NCEP60T12A": {
+      "Gate_Input": [
+        { "PinName": "G", "FunctionName": "Gate Drive" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_5V_Logic_Supply",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "78L05", "PinName": "VOUT" },
+        { "ComponentID": "ATmega328P-AU", "PinName": "VCC" },
+        { "ComponentID": "ATmega328P-AU", "PinName": "AVCC" }
+      ]
+    },
+    {
+      "RuleName": "Check_ISP_Programming_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATmega328P-AU",
+      "Target_Group_Pattern": "SPI_ISP_Interface",
+      "Slaves": [
+        { "ComponentID": "AVR ISP", "Interface": "ICSP_Port" }
+      ]
+    },
+    {
+      "RuleName": "Check_H_Bridge_Opto_Isolation",
+      "Type": "Resource_Allocation",
+      "MCU": "ATmega328P-AU",
+      "Target_Group": "PWM_Drive_Signals",
+      "Slaves": [
+        { "ComponentID": "EL357N_1", "Interface": "Signal_Input" },
+        { "ComponentID": "EL357N_2", "Interface": "Signal_Input" },
+        { "ComponentID": "EL357N_3", "Interface": "Signal_Input" },
+        { "ComponentID": "EL357N_4", "Interface": "Signal_Input" }
+      ]
+    },
+    {
+      "RuleName": "Check_Push_Pull_Driving_Stage",
+      "Type": "Resource_Allocation",
+      "MCU": "SG3525A",
+      "Target_Group": "Push_Pull_Controller",
+      "Slaves": [
+        { "ComponentID": "NCEP60T12A_1", "Interface": "Gate_Input" },
+        { "ComponentID": "NCEP60T12A_2", "Interface": "Gate_Input" }
+      ]
+    },
+    {
+      "RuleName": "Check_Aux_Power_Buck_Node",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TPS54331", "PinName": "PH" },
+        { "ComponentID": "SLT038125T220MUB", "PinName": "Lead 1" }
+      ]
+    }
+  ]
+}

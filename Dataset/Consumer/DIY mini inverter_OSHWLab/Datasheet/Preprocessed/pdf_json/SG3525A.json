@@ -1,0 +1,210 @@
+{
+  "ComponentID": "SG3525A",
+  "ComponentType": "Pulse Width Modulator (PWM) Controller IC",
+  "Description": "The SG3525A series are integrated circuits designed for controlling switching power supplies. They generate a variable-duty-cycle pulse train (PWM) to regulate output voltage/current. Key features include an internal 5.1V trimmed reference, an error amplifier with a common-mode range that includes the reference, a wide-frequency oscillator (sync-capable), adjustable dead time control, internal soft-start, undervoltage lockout with hysteresis, a pulse-terminating latch to prevent multiple pulses per cycle, and dual totem-pole output drivers capable of sourcing and sinking current.",
+  "KeyParameters": {
+    "Supply Voltage (Operating)": "8 V to 35 V",
+    "Reference Output Voltage": "5.1 V (trimmed to ±1% for SG2525A, ±2% for SG3525A)",
+    "Oscillator Frequency Range": "100 Hz to 500 kHz",
+    "Output Driver Current (Source/Sink)": "> 200 mA (Typical), 500 mA (Absolute Max)",
+    "Undervoltage Lockout Hysteresis": "~500 mV",
+    "Dead Time Control": "Adjustable via external resistor",
+    "Soft-Start": "Controlled via external capacitor",
+    "Total Power Dissipation (Max)": "1000 mW",
+    "Operating Temperature Range (SG3525A)": "0°C to 70°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Inv Input",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Inverting Input (Error Amplifier)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Noninv Input",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Non-Inverting Input (Error Amplifier)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Sync",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Oscillator Synchronization"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "OSC Output",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Oscillator Output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CT",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Timing Capacitor Connection for Oscillator"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "RT",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Timing Resistor Connection for Oscillator"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "Discharge",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Discharge Pin for Dead Time Control Capacitor"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "Soft-Start",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output",
+          "FunctionDescription": "Soft-Start Timing Capacitor Connection"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "Comp",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Compensation Pin (Error Amplifier Output)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "Shutdown",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Shutdown Control (Pulls low to disable outputs)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "Output A",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Output Driver A (PWM Signal)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power (Digital)"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "Ground",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "Vc",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Collector Supply Voltage for Output Drivers"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "Output B",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Output Driver B (PWM Signal)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power (Digital)"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "Vcc",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Supply Voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "Vref",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "5.1V Reference Voltage Output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power (Analog)"
+    }
+  ]
+}

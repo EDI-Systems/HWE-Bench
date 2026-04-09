@@ -1,0 +1,48 @@
+{
+  "Automatic Download and Reset Circuit": [
+    {
+      "net_id": "net_dtr",
+      "Connections": [
+        { "ComponentID": "CP2102", "PinName": "DTR" },
+        { "ComponentID": "SS8050-G", "PinName": "EMITTER" },
+        { "ComponentID": "Resistor", "PinName": "1" }
+      ]
+    },
+    {
+      "net_id": "net_rts",
+      "Connections": [
+        { "ComponentID": "CP2102", "PinName": "RTS" },
+        { "ComponentID": "SS8050-G", "PinName": "EMITTER" },
+        { "ComponentID": "Resistor", "PinName": "1" }
+      ]
+    },
+    {
+      "net_id": "net_q1_base",
+      "Connections": [
+        { "ComponentID": "Resistor", "PinName": "2" },
+        { "ComponentID": "SS8050-G", "PinName": "BASE" }
+      ]
+    },
+    {
+      "net_id": "net_q2_base",
+      "Connections": [
+        { "ComponentID": "Resistor", "PinName": "2" },
+        { "ComponentID": "SS8050-G", "PinName": "BASE" }
+      ]
+    },
+    {
+      "net_id": "net_en",
+      "Connections": [
+        { "ComponentID": "SS8050-G", "PinName": "COLLECTOR" },
+        { "ComponentID": "ESP32", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "net_io_btn",
+      "Connections": [
+        { "ComponentID": "SS8050-G", "PinName": "COLLECTOR" },
+        { "ComponentID": "ESP32", "PinName": "IO0" }
+      ]
+    }
+  ]
+}

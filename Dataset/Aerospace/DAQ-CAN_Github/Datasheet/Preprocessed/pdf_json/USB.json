@@ -1,0 +1,79 @@
+{
+  "ComponentID": "USB",
+  "ComponentType": "USB Type B Female Connector (Right-Angle, Through-Hole Mount)",
+  "Description": "This component is a right-angle, through-hole mounted USB Type B female receptacle. It is designed for PCB mounting to provide a standard USB Type B host connection for peripheral devices. The connector features a metal shell for shielding and mechanical robustness, with variations in shell material (iron or brass) and housing color (white or black PBT plastic). Its primary function is to provide the physical interface and electrical connectivity for the USB 2.0 standard signals and power.",
+  "KeyParameters": {
+    "**Contact Resistance**": "30 mΩ (Max)",
+    "**Insulation Resistance**": "1000 MΩ (Min)",
+    "**Withstanding Voltage**": "500 VAC for 1 minute",
+    "**Shell Material Options**": "Iron or Brass",
+    "**Housing Material**": "PBT (Polybutylene Terephthalate)",
+    "**Housing Color Options**": "White or Black",
+    "**Mounting Type**": "Through-Hole",
+    "**Orientation**": "Right-Angle (PCB mount)",
+    "**Number of Positions**": "4",
+    "**Connector Gender & Type**": "Female, USB Type B"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC / VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB Bus Power (+5V)"
+        }
+      ],
+      "PinType": "Through-Hole",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data",
+          "FunctionDescription": "USB Data Negative (D-)"
+        }
+      ],
+      "PinType": "Through-Hole",
+      "ElectricalType": "Data Line"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data",
+          "FunctionDescription": "USB Data Positive (D+)"
+        }
+      ],
+      "PinType": "Through-Hole",
+      "ElectricalType": "Data Line"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "USB Ground Return"
+        }
+      ],
+      "PinType": "Through-Hole",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "Shell",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal Shell for EMI Shielding and Mechanical Ground"
+        }
+      ],
+      "PinType": "Solder Tab / Mounting Lug",
+      "ElectricalType": "Shield / Ground"
+    }
+  ]
+}

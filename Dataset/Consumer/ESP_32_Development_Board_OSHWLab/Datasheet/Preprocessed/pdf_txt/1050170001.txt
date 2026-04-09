@@ -1,0 +1,23 @@
+Component ID: 1050170001
+Component Type: Micro-USB Type B Receptacle
+Description: The 1050170001 is a surface-mount (SMT), bottom-mount Micro-USB Type B connector produced by Molex. Designed for high-density mobile and portable applications, it features a robust stainless steel shell for high mechanical durability and effective EMI shielding. It supports the USB 2.0 standard for data transfer and power delivery, making it a standard choice for charging and data syncing in embedded systems and consumer electronics.
+
+Key Parameters:
+- Connector Style: Micro-USB Type B (Bottom Mount)
+- Data Protocol: USB 2.0 High Speed (480 Mbps)
+- Current Rating: 1.8A (Power pins 1 & 5), 1.0A (Data pins 2, 3, 4)
+- Durability: 10,000 mating cycles
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VCC | Power | +5V USB Power Supply | Power | 5V |
+| 2 | D- | Data- | USB 2.0 Differential Pair Negative | I/O | Signal |
+| 3 | D+ | Data+ | USB 2.0 Differential Pair Positive | I/O | Signal |
+| 4 | ID | ID | USB OTG Identification (Host/Slave) | Input | Signal |
+| 5 | GND | Ground | Main System Ground Reference | Power | 0V |
+| 6 | EP | Shield | Shell/Exposed Pad for EMI/Mechanical Support | Passive | Ground |
+| 7 | EP | Shield | Shell/Exposed Pad for EMI/Mechanical Support | Passive | Ground |
+| 8 | EP | Shield | Shell/Exposed Pad for EMI/Mechanical Support | Passive | Ground |
+| 9 | EP | Shield | Shell/Exposed Pad for EMI/Mechanical Support | Passive | Ground |
+| 10 | EP | Shield | Shell/Exposed Pad for EMI/Mechanical Support | Passive | Ground |

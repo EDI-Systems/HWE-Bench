@@ -1,0 +1,80 @@
+{
+  "ComponentID": "HC-PHD-2*3AW",
+  "ComponentType": "6-Pin Dual Row Right-Angle Male Header",
+  "Description": "The HC-PHD-2*3AW is a 6-pin dual-row male header connector usually featuring a 2.0mm pitch. It is designed for board-to-board or wire-to-board connections where a compact footprint is required. The right-angle orientation allows for side-entry cable connections or low-profile PCB stacking.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Pin 1",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 1"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Pin 2",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 2"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Pin 3",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 3"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "Pin 4",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 4"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "Pin 5",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 5"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "Pin 6",
+      "Functions": [
+        {
+          "FunctionName": "Connection",
+          "FunctionDescription": "General purpose header pin 6"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    }
+  ]
+}

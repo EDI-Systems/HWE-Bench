@@ -1,0 +1,382 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Protected USB Interface & Power Supply",
+      "Function Description": "Provides 5V power from USB host and a secure bidirectional data communication channel for configuration and data acquisition, with integrated overcurrent and ESD protection.",
+      "Signal Sources": "USB host VBUS (5V), D+, D- data lines.",
+      "Signal Destinations": "5V power rail to system, protected D+/D- signals to MCU's USB pins.",
+      "Implementation Logic": "USB-B connector brings in 5V VBUS and data. The 350mA PTC resettable fuse is placed in series on the VBUS line for overcurrent protection. The USBLC6-2SC6 TVS diode array is connected across VBUS, D+, D-, and GND to clamp ESD and voltage transients. The protected 5V rail powers the MCU and other ICs, while the protected data lines connect directly to the MCU's USB pins.",
+      "Signal Chain": "The USB connector (USB) provides the external interface. VBUS (Pin 1) supplies 5V power, which is routed through an overcurrent protection device (not in library, implied as a PTC fuse) to create a protected 5V rail. This rail powers the system and biases the USBLC6-2SC6. The D+ (Pin 3) and D- (Pin 2) data lines from the USB connector are connected to the corresponding I/O pins of the USBLC6-2SC6 ESD protection array. The protected outputs from the USBLC6-2SC6 are then directly connected to the USB data pins (D+/RA0 and D-/RA1) of the PIC16F1455 microcontroller. The microcontroller's internal USB transceiver, powered by its VUSB3V3 regulator, handles the bidirectional data communication. The GND (Pin 4) and Shell (Pin 5) of the USB connector provide the ground and shield return paths, connecting to the system ground plane.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB",
+          "Functional Position": "External Interface Connector",
+          "Recommendation Reason": "Provides the standard USB Type-B physical and electrical interface to the host, supplying 5V VBUS and differential data lines.",
+          "Pin Connections": {
+            "1": "NET_VBUS_IN",
+            "2": "NET_D_MINUS_IN",
+            "3": "NET_D_PLUS_IN",
+            "4": "NET_GND",
+            "5": "NET_SHIELD"
+          }
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "Functional Position": "ESD and Transient Voltage Protection",
+          "Recommendation Reason": "Provides rail-to-rail ESD protection for the high-speed USB data lines (D+ and D-) and the VBUS line, maintaining signal integrity with low capacitance.",
+          "Pin Connections": {
+            "1": "NET_D_PLUS_IN",
+            "2": "NET_GND",
+            "3": "NET_D_PLUS_PROT",
+            "4": "NET_D_MINUS_IN",
+            "5": "NET_VBUS_PROT",
+            "6": "NET_D_MINUS_PROT"
+          }
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "Functional Position": "USB Communication Controller",
+          "Recommendation Reason": "8-bit microcontroller with integrated full-speed USB 2.0 transceiver, capable of handling configuration and data acquisition communication over the protected USB interface.",
+          "Pin Connections": {
+            "1": "NET_VDD_5V",
+            "2": "NC",
+            "3": "NC",
+            "4": "NET_MCLR",
+            "5": "NC",
+            "6": "NC",
+            "7": "NC",
+            "8": "NC",
+            "9": "NC",
+            "10": "NC",
+            "11": "NET_VUSB3V3",
+            "12": "NET_D_MINUS_PROT",
+            "13": "NET_D_PLUS_PROT",
+            "14": "NET_GND"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "24V Relay Actuation & Protection",
+      "Function Description": "Provides a safe, high-power switching capability for external loads (e.g., actuators, solenoids) using a 24V relay, with integrated driver and inductive kickback protection.",
+      "Signal Sources": "RELAY_CONTROL logic signal from MCU, 24V DC supply for the relay coil.",
+      "Signal Destinations": "Switched high-current output to relay contacts (COM, NO, NC).",
+      "Implementation Logic": "The MCU's RELAY_CONTROL pin drives the gate of the DMN63D8LW-13 N-channel MOSFET via a current-limiting resistor. The MOSFET's source is grounded, and its drain connects to one side of the G5Q-1A relay coil. The other side of the coil connects to the 24V supply. A 1N4148 flyback diode is placed in reverse bias (cathode to 24V, anode to MOSFET drain) across the coil. When RELAY_CONTROL is high, the MOSFET turns on, completing the coil circuit and energizing the relay. When turned off, the diode provides a path for the coil's inductive current, preventing a high-voltage spike across the MOSFET.",
+      "Signal Chain": "The signal chain begins with the MCU's RELAY_CONTROL logic signal (e.g., from a GPIO pin like PIC16F1455's RC5). This signal is connected through a current-limiting resistor (not in library, assumed external) to the Gate (G) of the DMN63D8 N-channel MOSFET. When RELAY_CONTROL is high (typically > MOSFET Vgs(th)), the MOSFET turns on, connecting its Drain (D) to its Source (S), which is grounded. The Drain is connected to one terminal of the G5Q-1A relay coil (COIL_1). The other coil terminal (COIL_2) is connected to the 24V DC supply. This completes the coil circuit, energizing the relay. The relay's COM contact connects to the external load power source, and the NO contact connects to the load, closing the high-current path when energized. To protect the MOSFET from inductive kickback when the coil is de-energized, the 1N4148WX flyback diode is placed across the coil with its Anode connected to the MOSFET Drain/COIL_1 node and its Cathode connected to the 24V supply/COIL_2 node, providing a path for the coil's decaying current.",
+      "Recommended Components": [
+        {
+          "ComponentID": "DMN63D8",
+          "Functional Position": "Relay Driver Switch",
+          "Recommendation Reason": "N-channel MOSFET suitable for low-side switching of the 24V relay coil. Its Vdss of 30V exceeds the 24V supply, and Id rating of 380mA is sufficient for typical relay coil currents. Low Vgs(th) ensures it can be driven directly from a 3.3V or 5V MCU GPIO.",
+          "Pin Connections": {
+            "1": "RELAY_CONTROL (via current-limiting resistor)",
+            "2": "NET_COIL_LOW (connects to relay COIL_1 and diode anode)",
+            "3": "GND"
+          }
+        },
+        {
+          "ComponentID": "G5Q-1A",
+          "Functional Position": "High-Power Load Switch",
+          "Recommendation Reason": "SPST-NO relay capable of switching high-current loads (up to 10A) as specified. The 24V DC coil variant matches the supply voltage.",
+          "Pin Connections": {
+            "1": "NET_COIL_LOW (connects to MOSFET drain and diode anode)",
+            "5": "24V_SUPPLY",
+            "2": "COM (to load power source)",
+            "3": "NO (to load)"
+          }
+        },
+        {
+          "ComponentID": "1N4148WX",
+          "Functional Position": "Flyback/Freewheeling Diode",
+          "Recommendation Reason": "Fast switching diode for inductive kickback protection. Its VRM of 100V and IFSM of 2.0A are adequate for suppressing the relay coil's back-EMF.",
+          "Pin Connections": {
+            "1": "NET_COIL_LOW (anode to MOSFET drain/relay coil)",
+            "2": "24V_SUPPLY (cathode to positive supply)"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "CAN Bus Communication Interface",
+      "Function Description": "Enables robust, differential network communication for data acquisition and control commands in harsh industrial/aerospace environments.",
+      "Signal Sources": "SPI commands and data from MCU, differential CAN_H/CAN_L signals from the network.",
+      "Signal Destinations": "SPI data to MCU, differential CAN_H/CAN_L signals to the network bus.",
+      "Implementation Logic": "MCP2515 standalone CAN controller interfaces with the MCU via SPI (SCK, SI, SO, CS). It handles CAN protocol framing, filtering, and buffering. Its TX and RX pins connect to the MCP2562 high-speed CAN transceiver. The transceiver converts the MCP2515's logic-level signals to robust differential signals (CAN_H, CAN_L) on the bus and provides common-mode noise rejection.",
+      "Signal Chain": "The MCU (PIC16F1455) communicates with the MCP2515 CAN controller via a full SPI interface (SCK, SI, SO, CS). The MCU sends configuration commands and data to be transmitted over the CAN bus via this SPI link. The MCP2515 handles the CAN protocol, framing, and buffering. Its TXCAN pin outputs the logic-level transmit signal, and its RXCAN pin receives the logic-level receive signal. These two pins connect directly to the MCP2562 CAN transceiver's TXD (input) and RXD (output) pins, respectively. The MCP2562 converts the single-ended logic signals from the MCP2515 into robust differential signals on the CAN_H and CAN_L bus lines for network transmission, and vice-versa for reception. It provides the necessary drive strength, common-mode noise rejection, and fault protection for the harsh industrial environment. The MCP2515's !INT pin can be connected to an MCU GPIO to signal events (e.g., message received, error). The MCP2515 requires a crystal connected between its OSC1 and OSC2 pins for its internal clock generation. Power and ground connections must be provided to all active components.",
+      "Recommended Components": [
+        {
+          "ComponentID": "MCP2515",
+          "Functional Position": "CAN Protocol Controller",
+          "Recommendation Reason": "Implements the CAN 2.0B protocol, interfaces with the MCU via SPI, and provides the logical interface to the CAN transceiver. It is the core component specified in the module's implementation logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "TXCAN",
+              "Net": "CAN_TX_LOGIC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RXCAN",
+              "Net": "CAN_RX_LOGIC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SCK",
+              "Net": "SPI_SCK"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SI",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "SO",
+              "Net": "SPI_MISO"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "CS",
+              "Net": "SPI_CS_CAN"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "!INT",
+              "Net": "CAN_INT"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "OSC1",
+              "Net": "XTAL_IN"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "OSC2",
+              "Net": "XTAL_OUT"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VDD",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MCP2562",
+          "Functional Position": "CAN Bus Physical Layer Transceiver",
+          "Recommendation Reason": "Converts the MCP2515's logic-level signals to/from the differential CAN bus signals (CAN_H/CAN_L). Provides the necessary robustness, noise immunity, and fault protection for harsh industrial/aerospace environments as required by the module description.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "TXD",
+              "Net": "CAN_TX_LOGIC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RXD",
+              "Net": "CAN_RX_LOGIC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CANL",
+              "Net": "CAN_L"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CANH",
+              "Net": "CAN_H"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VDD",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIO",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "STBY",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "PIC16F1455",
+          "Functional Position": "System Microcontroller (MCU)",
+          "Recommendation Reason": "Acts as the host processor to configure the MCP2515 via SPI and handle the application-level data acquisition and control commands. Its SPI pins can be directly connected to the MCP2515.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "RC2",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "RC3",
+              "Net": "SPI_CS_CAN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "RC4",
+              "Net": "SPI_MISO"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RC5",
+              "Net": "SPI_SCK"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RA5",
+              "Net": "CAN_INT"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "VDD",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "MCU Core & Logic Controller",
+      "Function Description": "Orchestrates system logic, processes incoming data/commands from USB and CAN, and generates control signals for the relay module.",
+      "Signal Sources": "SPI data from CAN controller, USB data lines, internal firmware execution.",
+      "Signal Destinations": "SPI clock and data to CAN controller, RELAY_CONTROL pin to MOSFET driver, USB data lines.",
+      "Implementation Logic": "PIC16F1455 microcontroller runs the main firmware. It initializes SPI for CAN communication, manages USB enumeration and data transfer, parses incoming telemetry/commands, and sets the RELAY_CONTROL GPIO pin high/low based on logic decisions to control the relay.",
+      "Signal Chain": "The PIC16F1455 microcontroller serves as the central logic controller. It receives data from the CAN bus via the MCP2515 CAN controller over SPI (SCK, SI, SO, CS) and from the USB host via the USB connector (D+, D-). The USBLC6-2SC6 provides ESD protection for the USB data lines. The MCU processes incoming commands and telemetry through firmware, making logic decisions. To control the relay, the MCU drives its RELAY_CONTROL GPIO pin (e.g., RC5) high or low. This signal is fed to the gate of the DMN63D8 MOSFET. When the gate is driven high, the MOSFET conducts, allowing current to flow from the relay coil power supply, through the relay coil (between COIL_1 and COIL_2), through the MOSFET's Drain to Source, to ground, thus energizing the relay and closing the NO contact to COM. The 1N4148WX diode is placed in reverse bias across the relay coil (anode to MOSFET drain, cathode to coil power) to suppress the inductive voltage spike when the coil is de-energized. The MCP2562 CAN transceiver interfaces the MCP2515's logic-level TXCAN/RXCAN to the differential CAN bus (CANH, CANL).",
+      "Recommended Components": [
+        {
+          "ComponentID": "PIC16F1455",
+          "Functional Position": "Central Processing Unit (CPU)",
+          "Recommendation Reason": "Core microcontroller specified in the module description. It handles USB communication, SPI communication with the CAN controller, firmware execution, and GPIO control for the relay.",
+          "Pin Connections": {
+            "Pin 1 (VDD)": "Connect to system logic power supply (e.g., 3.3V or 5V).",
+            "Pin 2 (RA5)": "Can be used as a general-purpose I/O or left unconnected if not needed.",
+            "Pin 3 (RA4)": "Can be used as a general-purpose I/O or left unconnected if not needed.",
+            "Pin 4 (RA3/!MCLR)": "Connect to a pull-up resistor and a reset button/circuit for master reset functionality.",
+            "Pin 5 (RC5)": "Configure as digital output. Connect to net 'RELAY_CONTROL' to drive the MOSFET gate.",
+            "Pin 6 (RC4)": "Configure as digital output for SPI SDO (Master Out Slave In). Connect to MCP2515 Pin 14 (SI).",
+            "Pin 7 (RC3)": "Configure as digital output for SPI CS (Chip Select). Connect to MCP2515 Pin 16 (CS).",
+            "Pin 8 (RC2)": "Configure as digital input for SPI SDI (Master In Slave Out). Connect to MCP2515 Pin 15 (SO).",
+            "Pin 9 (RC1/ICSPCLK)": "Configure as digital output for SPI SCK (Serial Clock). Connect to MCP2515 Pin 13 (SCK).",
+            "Pin 10 (RC0/ICSPDAT)": "Can be used as general-purpose I/O, or for ICSP programming. Connect as needed.",
+            "Pin 11 (VUSB3V3)": "Outputs 3.3V for USB transceiver. Connect to USBLC6-2SC6 Pin 5 (VBUS) and provide decoupling capacitor.",
+            "Pin 12 (RA1/D-)": "Configure for USB D- function. Connect to USBLC6-2SC6 Pin 4 (I/O 2).",
+            "Pin 13 (RA0/D+)": "Configure for USB D+ function. Connect to USBLC6-2SC6 Pin 1 (I/O 1).",
+            "Pin 14 (VSS)": "Connect to system ground."
+          }
+        },
+        {
+          "ComponentID": "MCP2515",
+          "Functional Position": "CAN Bus Protocol Controller",
+          "Recommendation Reason": "Required to interface the MCU's SPI to the CAN bus protocol. It handles CAN message framing, filtering, and buffering.",
+          "Pin Connections": {
+            "Pin 1 (TXCAN)": "Connect to MCP2562 Pin 1 (TXD).",
+            "Pin 2 (RXCAN)": "Connect to MCP2562 Pin 4 (RXD).",
+            "Pin 3 (CLKOUT)": "Can be left unconnected or used for system clock if needed.",
+            "Pin 4 (TX0RTS)": "Can be left unconnected or pulled high via resistor.",
+            "Pin 5 (TX1RTS)": "Can be left unconnected or pulled high via resistor.",
+            "Pin 6 (TX2RTS)": "Can be left unconnected or pulled high via resistor.",
+            "Pin 7 (OSC2)": "Connect to one side of a crystal oscillator (e.g., 8MHz or 16MHz) if using external clock. Connect a load capacitor to ground.",
+            "Pin 8 (OSC1)": "Connect to the other side of the crystal oscillator. Connect a load capacitor to ground.",
+            "Pin 9 (VSS)": "Connect to system ground.",
+            "Pin 10 (!RX1BF)": "Can be left unconnected or used as an interrupt line to MCU.",
+            "Pin 11 (!RX0BF)": "Connect to an available MCU digital input pin (e.g., as an interrupt) to signal received CAN messages.",
+            "Pin 12 (!INT)": "Connect to an available MCU digital input pin (e.g., as an interrupt) for general CAN controller interrupts.",
+            "Pin 13 (SCK)": "Connect to PIC16F1455 Pin 9 (RC1/ICSPCLK).",
+            "Pin 14 (SI)": "Connect to PIC16F1455 Pin 6 (RC4).",
+            "Pin 15 (SO)": "Connect to PIC16F1455 Pin 8 (RC2).",
+            "Pin 16 (CS)": "Connect to PIC16F1455 Pin 7 (RC3).",
+            "Pin 17 (RESET)": "Connect to system reset net (same as PIC16F1455 Pin 4) or pull up to VDD via resistor.",
+            "Pin 18 (VDD)": "Connect to same logic power supply as PIC16F1455 Pin 1."
+          }
+        },
+        {
+          "ComponentID": "MCP2562",
+          "Functional Position": "CAN Bus Physical Layer Transceiver",
+          "Recommendation Reason": "Converts the MCP2515's logic-level CAN signals to the differential voltage levels required on the CAN bus. Provides robustness and ESD protection.",
+          "Pin Connections": {
+            "Pin 1 (TXD)": "Connect to MCP2515 Pin 1 (TXCAN).",
+            "Pin 2 (VIO)": "Connect to the logic voltage supply (e.g., 3.3V or 5V) to match the MCP2515's I/O levels.",
+            "Pin 3 (VDD)": "Connect to the transceiver's power supply (typically 5V). Ensure it matches the CAN bus common-mode voltage requirements.",
+            "Pin 4 (RXD)": "Connect to MCP2515 Pin 2 (RXCAN).",
+            "Pin 5 (VIO)": "Connect to the same logic voltage supply as Pin 2.",
+            "Pin 6 (CANL)": "Connect to the CAN bus low line. Include series termination resistor (e.g., 120Ω) to CANH if needed at the node.",
+            "Pin 7 (CANH)": "Connect to the CAN bus high line.",
+            "Pin 8 (STBY)": "Connect to system ground for normal operation, or to an MCU GPIO for low-power standby control."
+          }
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "USB Host Physical Connector",
+          "Recommendation Reason": "Provides the physical interface for USB communication as specified in the module description.",
+          "Pin Connections": {
+            "Pin 1 (VCC / VBUS)": "Connect to a 5V power source, possibly from the host or an external supply, with appropriate filtering.",
+            "Pin 2 (D-)": "Connect to USBLC6-2SC6 Pin 6 (I/O 2).",
+            "Pin 3 (D+)": "Connect to USBLC6-2SC6 Pin 3 (I/O 1).",
+            "Pin 4 (GND)": "Connect to system ground.",
+            "Pin 5 (Shell)": "Connect to chassis ground or system ground via a low-impedance path, considering EMI/ESD strategies."
+          }
+        },
+        {
+          "ComponentID": "USBLC6-2SC6",
+          "Functional Position": "USB Data Line ESD Protection",
+          "Recommendation Reason": "Protects the sensitive USB data lines and the MCU's USB pins from electrostatic discharge (ESD) and transient voltages, ensuring reliability.",
+          "Pin Connections": {
+            "Pin 1 (I/O 1)": "Connect to PIC16F1455 Pin 13 (RA0/D+).",
+            "Pin 2 (GND)": "Connect to system ground.",
+            "Pin 3 (I/O 1)": "Connect to USB Pin 3 (D+).",
+            "Pin 4 (I/O 2)": "Connect to PIC16F1455 Pin 12 (RA1/D-).",
+            "Pin 5 (VBUS)": "Connect to PIC16F1455 Pin 11 (VUSB3V3) or a clean 3.3V supply.",
+            "Pin 6 (I/O 2)": "Connect to USB Pin 2 (D-)."
+          }
+        },
+        {
+          "ComponentID": "DMN63D8",
+          "Functional Position": "Relay Coil Driver (Low-Side Switch)",
+          "Recommendation Reason": "Used to switch the relay coil current based on the MCU's RELAY_CONTROL signal. Provides electrical isolation and allows the MCU to control a higher current load.",
+          "Pin Connections": {
+            "Pin 1 (G)": "Connect to net 'RELAY_CONTROL' from PIC16F1455 Pin 5 (RC5). Include a series resistor (e.g., 100Ω to 1kΩ) to limit gate current and a pull-down resistor (e.g., 10kΩ) to ensure off state.",
+            "Pin 2 (D)": "Connect to the cathode of the 1N4148WX diode and to one terminal of the relay coil (e.g., G5Q-1A Pin 5 (COIL_2)).",
+            "Pin 3 (S)": "Connect to system ground."
+          }
+        },
+        {
+          "ComponentID": "G5Q-1A",
+          "Functional Position": "Power Switching Relay",
+          "Recommendation Reason": "The load-switching component controlled by the MCU via the MOSFET, as implied by the module's function to generate control signals for the relay module.",
+          "Pin Connections": {
+            "Pin 1 (COIL_1)": "Connect to the positive relay coil supply voltage (e.g., 5V, 12V, or 24V DC, depending on relay variant).",
+            "Pin 5 (COIL_2)": "Connect to the drain of the DMN63D8 MOSFET (Pin 2) and the cathode of the 1N4148WX diode.",
+            "Pin 2 (COM)": "Connect to the load or power source to be switched.",
+            "Pin 3 (NO)": "Connect to the load return or switched output."
+          }
+        },
+        {
+          "ComponentID": "1N4148WX",
+          "Functional Position": "Relay Coil Flyback Diode",
+          "Recommendation Reason": "Suppresses the inductive voltage spike generated by the relay coil when the MOSFET turns off, protecting the MOSFET from overvoltage.",
+          "Pin Connections": {
+            "Pin 1 (Anode)": "Connect to the drain of the DMN63D8 MOSFET (Pin 2) and G5Q-1A Pin 5 (COIL_2).",
+            "Pin 2 (Cathode)": "Connect to the positive relay coil supply voltage (same as G5Q-1A Pin 1 (COIL_1))."
+          }
+        }
+      ]
+    }
+  ]
+}

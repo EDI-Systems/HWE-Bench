@@ -1,0 +1,21 @@
+Component ID: NCEP60T12A
+Component Type: N-Channel Power MOSFET
+Description: The NCEP60T12A is an N-channel enhancement mode power MOSFET that utilizes Super Trench technology to provide excellent $R_{DS(on)}$ and low gate charge. This device is designed for high-efficiency power management and switching applications, such as DC-DC converters, motor control, and synchronous rectification. Its high current handling capability and robust design make it suitable for demanding industrial and consumer electronics.
+
+Key Parameters:
+- **Drain-to-Source Voltage ($V_{DSS}$):** 60V
+- **Continuous Drain Current ($I_D$):** 120A (at $T_C = 25^\circ\text{C}$)
+- **Static Drain-to-Source On-Resistance ($R_{DS(on)}$):** 4.2 m$\Omega$ (typ), 5.0 m$\Omega$ (max)
+- **Gate-to-Source Voltage ($V_{GS}$):** $\pm 20$V
+- **Total Gate Charge ($Q_g$):** 95nC (typ)
+- **Power Dissipation ($P_D$):** 170W (at $T_C = 25^\circ\text{C}$)
+- **Operating Junction Temperature:** -55 to +175°C
+- **Package:** TO-220 / TO-263
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | G | Gate | Gate control signal input | Input | Signal |
+| 2 | D | Drain | Main current entrance | Passive | Power |
+| 3 | S | Source | Main current exit / Reference ground | Passive | Power |

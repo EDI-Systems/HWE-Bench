@@ -1,0 +1,1302 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Input Protection & Conditioning",
+      "Function Description": "Provides reverse polarity protection, overcurrent protection via a fuse, and input voltage stabilization for the raw 11-21V DC battery input.",
+      "Signal Sources": "Battery terminals (11-21V DC).",
+      "Signal Destinations": "Auxiliary Power Supply System, Push-Pull DC-DC Boost Converter.",
+      "Implementation Logic": "A series diode for reverse polarity protection, a 15A DC fuse in series for overcurrent protection, and bulk/decoupling capacitors (e.g., electrolytic and ceramic) placed across the input rails to filter noise and provide local energy storage.",
+      "Signal Chain": "The raw 11-21V DC battery input enters the module. First, it passes through a series diode for reverse polarity protection, ensuring current flows only when the battery is connected correctly. Next, a 15A DC fuse in series provides overcurrent protection, opening the circuit if current exceeds the rating. The protected voltage then feeds into a network of bulk electrolytic and decoupling ceramic capacitors placed across the input rails to ground. These capacitors filter high-frequency noise, suppress voltage transients, and provide local energy storage to stabilize the input voltage. The conditioned and stabilized DC voltage is then output to downstream systems: the Auxiliary Power Supply System and the Push-Pull DC-DC Boost Converter.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ES3GF",
+          "Functional Position": "Reverse Polarity Protection Diode",
+          "Recommendation Reason": "Provides reverse polarity protection with low forward voltage drop (max 1.3V at 3A) and super-fast recovery (35ns), suitable for the 11-21V DC input range and capable of handling the expected current up to the fuse rating of 15A. Its 400V reverse voltage rating offers ample margin.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "BATTERY_INPUT_POSITIVE"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "PROTECTED_VIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS34",
+          "Functional Position": "Freewheeling/Clamping Diode (Optional, for inductive load protection)",
+          "Recommendation Reason": "Schottky diode with low forward voltage (0.55V-0.85V at 3A) and 3A current rating, suitable for clamping inductive spikes or serving as an alternative protection diode if lower voltage drop is critical. Its surface-mount package saves space.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "PROTECTED_VIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N4761",
+          "Functional Position": "Input Voltage Clamping/Overvoltage Protection Zener Diode",
+          "Recommendation Reason": "Can be used as a voltage clamp (e.g., select Vz ~24V) to protect against input overvoltage transients beyond 21V, with 1W power dissipation capability. Connects across input after fuse to shunt excess voltage.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "PROTECTED_VIN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "Functional Position": "Input Filter Inductor (for EMI suppression)",
+          "Recommendation Reason": "22 µH toroidal inductor with 3A RMS current rating and low DCR (32 mΩ max), suitable for forming a pi-filter with capacitors to suppress high-frequency noise and conducted EMI on the input line, enhancing voltage stabilization.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Lead 1",
+              "Net": "PROTECTED_VIN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Lead 2",
+              "Net": "FILTERED_VIN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "H-Bridge Inverter & Isolated Gate Drive",
+      "Function Description": "Converts the HVDC into a modified sine wave AC output by chopping it with an H-Bridge. Provides galvanic isolation between high-voltage power stage and low-voltage control.",
+      "Signal Sources": "HVDC Bus from Push-Pull Converter, PWM control signals from Main MCU.",
+      "Signal Destinations": "AC Output terminals, system ground reference for power stage.",
+      "Implementation Logic": "An H-Bridge formed by four high-voltage MOSFETs (e.g., IRF840). The MCU's PWM signals, which include dead-time, are fed through optocouplers (e.g., EL357N) to provide isolated gate drive signals for the high-side and low-side MOSFETs of each bridge leg, converting HVDC to AC.",
+      "Signal Chain": "The HVDC bus from the Push-Pull Converter supplies power to the H-Bridge formed by four high-voltage MOSFETs (IRF840). The Main MCU (ATmega328P-AU) generates PWM control signals with dead-time. These PWM signals are isolated via optocouplers (EL357N) to provide galvanic isolation between the low-voltage control side and the high-voltage power stage. The isolated gate drive signals control the high-side and low-side MOSFETs of each bridge leg, chopping the HVDC to produce a modified sine wave AC output. The AC output is delivered through a power connector (MR30PB-F). A linear regulator (78L05) may provide a stable 5V supply for the control circuitry if needed, though the module description focuses on the power stage and isolation.",
+      "Recommended Components": [
+        {
+          "ComponentID": "IRF840",
+          "Functional Position": "H-Bridge Power Switch (4 required)",
+          "Recommendation Reason": "High-voltage N-channel MOSFET suitable for switching HVDC in an H-Bridge configuration. Provides the main power switching function.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "Isolated_Gate_Drive_[Leg][HS/LS]"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "HVDC_Bus_or_Switch_Node"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "Switch_Node_or_Power_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "EL357N",
+          "Functional Position": "Gate Drive Isolator (4 required, one per MOSFET gate)",
+          "Recommendation Reason": "Optocoupler provides galvanic isolation for PWM signals from the MCU to the MOSFET gates, protecting the low-voltage control side from high-voltage transients.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "PWM_Signal_from_MCU_[Leg][HS/LS]"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "Control_GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Emitter",
+              "Net": "Isolated_Power_GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "Collector",
+              "Net": "Isolated_Gate_Drive_[Leg][HS/LS]"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "Functional Position": "Main MCU / PWM Signal Generator",
+          "Recommendation Reason": "8-bit microcontroller capable of generating the required PWM signals with dead-time for H-Bridge control. Provides the control intelligence.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "PWM_Signal_from_MCU_LegA_HS"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PD5",
+              "Net": "PWM_Signal_from_MCU_LegA_LS"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PD6",
+              "Net": "PWM_Signal_from_MCU_LegB_HS"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PD7",
+              "Net": "PWM_Signal_from_MCU_LegB_LS"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "Control_GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "Control_VCC_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "Control_GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "Control_VCC_5V"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "Control_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MR30PB-F",
+          "Functional Position": "AC Output Connector",
+          "Recommendation Reason": "Power connector rated for high current, suitable for delivering the AC output from the H-Bridge to external loads.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Pin 1",
+              "Net": "AC_Output_Phase"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Pin 2",
+              "Net": "AC_Output_Neutral"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Pin 3",
+              "Net": "Power_Stage_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Control Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 5V supply for the MCU and other low-voltage control circuitry from a higher input voltage, ensuring reliable operation.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "Unregulated_Input_VCC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "Control_GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "Control_VCC_5V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High Voltage DC Generation (Push-Pull Converter)",
+      "Function Description": "Steps up the low-voltage DC input to a stable High Voltage DC (HVDC) bus required for the inverter output.",
+      "Signal Sources": "Protected 11-21V DC, +9.5V Auxiliary Rail (for SG3525), PWM control signal from SG3525.",
+      "Signal Destinations": "H-Bridge Inverter Stage (HVDC Bus).",
+      "Implementation Logic": "An SG3525 PWM controller generates complementary signals to drive a low-side push-pull MOSFET pair (e.g., NCEP60T12A). These MOSFETs switch current through the primary of a center-tapped step-up transformer. The secondary voltage is rectified and filtered to create the HVDC bus. The circuit includes soft-start and primary current sensing for protection.",
+      "Signal Chain": "The module steps up a low-voltage DC input (11-21V) to a high-voltage DC (HVDC) bus using a push-pull converter topology. The signal flow begins with the Protected 11-21V DC input, which powers the SG3525A PWM controller via its Vcc pin (Pin 15) after being regulated to a suitable voltage (e.g., via a linear regulator like 78L05 for stable 5V if needed, though the SG3525A can accept 8-35V directly). The SG3525A generates complementary PWM signals at Output A (Pin 11) and Output B (Pin 14), with frequency set by RT (Pin 6) and CT (Pin 5). These signals drive the gates of two N-channel MOSFETs (NCEP60T12A) in a push-pull configuration. The MOSFETs switch current through the primary windings of a center-tapped step-up transformer (not in library, assumed external). The transformer secondary voltage is rectified using fast recovery diodes (ES3GF) in a full-wave or bridge configuration, then filtered by capacitors and possibly an inductor (SLT038125T220MUB) to produce the stable HVDC bus. Primary current sensing (for protection) can be implemented with a shunt resistor and an optocoupler (EL357N) for isolation, feeding back to the SG3525A's Shutdown (Pin 10) or error amplifier. Soft-start is controlled via a capacitor on the SG3525A's Soft-Start pin (Pin 8). The +9.5V Auxiliary Rail powers the SG3525A's Vc (Pin 13) for the output drivers, ensuring proper MOSFET gate drive.",
+      "Recommended Components": [
+        {
+          "ComponentID": "SG3525A",
+          "Functional Position": "PWM Controller",
+          "Recommendation Reason": "Generates complementary PWM signals for push-pull converter with adjustable frequency, dead time, soft-start, and protection features.",
+          "Pin Connections": {
+            "Pin 1": "Connect to feedback network (e.g., voltage divider from HVDC bus via optocoupler) for error amplifier inverting input.",
+            "Pin 2": "Connect to reference voltage (e.g., Vref Pin 16) via resistor divider for error amplifier non-inverting input to set regulation point.",
+            "Pin 3": "Leave open or connect to ground if not using sync.",
+            "Pin 4": "Leave open or connect to ground if not used.",
+            "Pin 5": "Connect timing capacitor (external) to ground to set oscillator frequency with Pin 6.",
+            "Pin 6": "Connect timing resistor (external) to Vref (Pin 16) to set oscillator frequency with Pin 5.",
+            "Pin 7": "Connect dead time control capacitor (external) to ground.",
+            "Pin 8": "Connect soft-start capacitor (external) to ground.",
+            "Pin 9": "Connect compensation network (external RC) to ground for error amplifier stability.",
+            "Pin 10": "Connect to primary current sense circuit (e.g., via optocoupler EL357N) for shutdown protection.",
+            "Pin 11": "Connect to gate of first push-pull MOSFET (NCEP60T12A Gate) via gate resistor.",
+            "Pin 12": "Connect to system ground.",
+            "Pin 13": "Connect to +9.5V Auxiliary Rail for output driver supply.",
+            "Pin 14": "Connect to gate of second push-pull MOSFET (NCEP60T12A Gate) via gate resistor.",
+            "Pin 15": "Connect to Protected 11-21V DC input (or regulated 5V from 78L05 if needed) for IC supply.",
+            "Pin 16": "Connect to decoupling capacitor to ground; provide reference for error amplifier and timing resistor."
+          }
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "Functional Position": "Push-Pull MOSFET (Low-side switch)",
+          "Recommendation Reason": "High-current N-channel MOSFET with low Rds(on) for efficient switching in push-pull primary; handles 60V drain-source voltage suitable for input voltage range.",
+          "Pin Connections": {
+            "Pin 1": "Connect to SG3525A Output A or Output B via gate resistor for switching control.",
+            "Pin 2": "Connect to one end of primary winding of step-up transformer (center-tapped configuration).",
+            "Pin 3": "Connect to system ground (source terminal)."
+          }
+        },
+        {
+          "ComponentID": "NCEP60T12A",
+          "Functional Position": "Push-Pull MOSFET (Low-side switch)",
+          "Recommendation Reason": "Second MOSFET for complementary switching in push-pull topology; ensures alternating current flow in transformer primary.",
+          "Pin Connections": {
+            "Pin 1": "Connect to SG3525A Output B or Output A (opposite of first MOSFET) via gate resistor for complementary switching.",
+            "Pin 2": "Connect to other end of primary winding of step-up transformer (center-tapped configuration).",
+            "Pin 3": "Connect to system ground (source terminal)."
+          }
+        },
+        {
+          "ComponentID": "ES3GF",
+          "Functional Position": "Secondary Rectifier Diode",
+          "Recommendation Reason": "Super-fast recovery rectifier for high-frequency secondary rectification; 400V rating suitable for HVDC bus voltage.",
+          "Pin Connections": {
+            "Pin 1": "Connect to transformer secondary winding (for rectification configuration, e.g., full-wave).",
+            "Pin 2": "Connect to HVDC bus positive rail via filter network."
+          }
+        },
+        {
+          "ComponentID": "ES3GF",
+          "Functional Position": "Secondary Rectifier Diode",
+          "Recommendation Reason": "Second diode for complete rectification (e.g., in full-wave or bridge setup).",
+          "Pin Connections": {
+            "Pin 1": "Connect to transformer secondary winding (opposite phase for full-wave).",
+            "Pin 2": "Connect to HVDC bus positive rail via filter network."
+          }
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "Functional Position": "Output Filter Inductor",
+          "Recommendation Reason": "Toroidal inductor for LC filtering of rectified HVDC bus to reduce ripple and ensure stable output.",
+          "Pin Connections": {
+            "Pin 1": "Connect to rectifier output (e.g., from ES3GF cathodes).",
+            "Pin 2": "Connect to HVDC bus positive output terminal."
+          }
+        },
+        {
+          "ComponentID": "EL357N",
+          "Functional Position": "Isolation for Current Sense/Protection",
+          "Recommendation Reason": "Optocoupler provides galvanic isolation for primary current sensing feedback to SG3525A shutdown pin, protecting against overcurrent.",
+          "Pin Connections": {
+            "Pin 1": "Connect to current sense resistor (on primary side) via current-limiting resistor for LED anode.",
+            "Pin 2": "Connect to primary ground for LED cathode.",
+            "Pin 3": "Connect to secondary/system ground for phototransistor emitter.",
+            "Pin 4": "Connect to SG3525A Shutdown (Pin 10) via pull-up resistor to Vref for active-low shutdown signal."
+          }
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Voltage Regulator for SG3525A Supply (if needed)",
+          "Recommendation Reason": "Provides stable 5V supply from Protected 11-21V DC input if SG3525A requires lower voltage for Vcc; ensures reliable operation.",
+          "Pin Connections": {
+            "Pin 1": "Connect to Protected 11-21V DC input.",
+            "Pin 2": "Connect to system ground.",
+            "Pin 3": "Connect to SG3525A Vcc (Pin 15) and decoupling capacitor to ground."
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Main Control & Monitoring (MCU Core)",
+      "Function Description": "The central control unit that generates PWM for the H-Bridge, monitors system parameters (voltage, temperature), and implements protection/logic functions.",
+      "Signal Sources": "+5V Auxiliary Rail, Analog signals from voltage divider and NTC thermistor.",
+      "Signal Destinations": "PWM signals to H-Bridge Gate Drive optocouplers, Enable signal to SG3525, Control signal to Cooling Fan.",
+      "Implementation Logic": "An ATmega328P microcontroller runs the core firmware. Its ADC reads battery voltage (via divider) and temperature (via NTC circuit). It generates the precise dead-time PWM waveforms for the H-Bridge. Based on sensor data, it controls a cooling fan via PWM and can disable the SG3525 (inverter shutdown) for low-battery or overtemperature conditions.",
+      "Signal Chain": "The +5V Auxiliary Rail powers the 78L05 linear regulator, which provides a stable 5V supply to the ATmega328P-AU microcontroller (VCC/AVCC pins). The microcontroller's ADC reads two analog signals: 1) Battery voltage via a voltage divider (connected to an ADC input pin, e.g., PC0/ADC0) and 2) Temperature via an NTC thermistor circuit (connected to another ADC input pin, e.g., PC1/ADC1). The ATmega328P-AU firmware processes these readings. For control outputs, it generates PWM signals (e.g., from PB1/OC1A and PB2/OC1B) which are sent to the gate drive optocouplers (EL357N) for the H-Bridge. A digital output pin (e.g., PD2) provides an Enable signal to the SG3525's Shutdown pin to disable the inverter if needed. Another PWM-capable pin (e.g., PD6/OC0A) controls the cooling fan speed via a driver circuit. The AVR ISP interface connects to the microcontroller's SPI and Reset pins for programming.",
+      "Recommended Components": [
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Power Supply Regulation",
+          "Recommendation Reason": "Provides a stable 5V supply from the +5V Auxiliary Rail to power the ATmega328P-AU microcontroller and other low-power logic circuits.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "+5V_AUX_RAIL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Executes core firmware: reads ADC sensors (battery voltage, temperature), generates PWM for H-Bridge with dead-time, controls fan PWM, and manages protection logic (enables/disables SG3525).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PD4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB6",
+              "Net": "XTAL1"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PB7",
+              "Net": "XTAL2"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PD5",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PD6",
+              "Net": "FAN_PWM"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PD7",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PB0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PB1",
+              "Net": "PWM_HB_HIGH"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PB2",
+              "Net": "PWM_HB_LOW"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PB3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PB4",
+              "Net": "ISP_MISO"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PB5",
+              "Net": "ISP_SCK"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "ADC6",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "ADC7",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "BATT_VOLT_ADC"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "PC1",
+              "Net": "TEMP_NTC_ADC"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "PC2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "PC3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PC6",
+              "Net": "ISP_RESET"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "PD0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "PD1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "PD2",
+              "Net": "SG3525_ENABLE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Provides a standard 6-pin ICSP header for in-system programming and debugging of the ATmega328P-AU firmware.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "ISP_MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "5V",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "ISP_SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "ISP_MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "ISP_RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "EL357N",
+          "Functional Position": "Gate Drive Isolation (for H-Bridge PWM)",
+          "Recommendation Reason": "Provides electrical isolation between the microcontroller's low-voltage PWM signals and the high-voltage gate drive circuits of the H-Bridge MOSFETs. Two units are typically needed for high-side and low-side drives.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "PWM_HB_HIGH"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Emitter",
+              "Net": "GND_ISO"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "Collector",
+              "Net": "GATE_DRIVE_HIGH"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SN2BxxPx, SN4BxxPx, QT1KxxP1/P2/P-X/C1/C2/C3, QT1LxxP-X, QT1NxxP-/01",
+          "Functional Position": "Temperature Sensor",
+          "Recommendation Reason": "NTC thermistor (e.g., 10kΩ @25°C) for monitoring system temperature. Forms a voltage divider with a fixed resistor, providing an analog voltage to the microcontroller's ADC.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Wire 1",
+              "Net": "TEMP_NTC_TOP"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Wire 2",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Auxiliary Power Supply",
+      "Function Description": "Generates stable, low-voltage rails (+9.5V and +5V) from the raw battery input to power the control logic, gate drivers, and microcontroller.",
+      "Signal Sources": "Protected 11-21V DC from the Input Protection stage.",
+      "Signal Destinations": "SG3525 PWM Controller, MOSFET Gate Drivers, Main MCU, Sensors, Optocouplers.",
+      "Implementation Logic": "A TPS54331-based buck converter steps the input down to +9.5V. This +9.5V rail directly powers the gate drivers. A 78L05 linear regulator then steps the +9.5V down to a clean +5V for the MCU and sensors.",
+      "Signal Chain": "The Auxiliary Power Supply module receives a protected 11-21V DC input from the Input Protection stage. This input is fed into a TPS54331 buck converter, which steps it down to a regulated +9.5V output. The +9.5V rail directly powers the SG3525 PWM controller and the MOSFET gate drivers. The +9.5V rail is also fed into a 78L05 linear regulator, which steps it down to a clean, low-noise +5V output. The +5V rail powers the ATmega328P microcontroller, sensors, and the input side of any optocouplers. The SG3525's internal 5.1V reference can be used for the feedback divider of the TPS54331 or as a precision reference for the microcontroller's ADC. The microcontroller can be programmed via the AVR ISP interface.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPS54331",
+          "Functional Position": "Primary Buck Converter (11-21V to +9.5V)",
+          "Recommendation Reason": "Integrated 3A buck converter with input range covering 11-21V, suitable for generating the +9.5V rail efficiently.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "BOOT",
+              "Net": "BOOT_to_PH"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "VIN_11_21V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "EN_UVLO"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SS/TR",
+              "Net": "SS_CAP"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VSENSE",
+              "Net": "FB_9V5"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "COMP",
+              "Net": "COMP_NET"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PH",
+              "Net": "SW_NODE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Linear Regulator (+9.5V to +5V)",
+          "Recommendation Reason": "Provides a clean, low-noise +5V rail from the +9.5V input for sensitive analog and digital circuits like the MCU and sensors.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VOUT_9V5"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VOUT_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SG3525A",
+          "Functional Position": "PWM Controller for main power stage",
+          "Recommendation Reason": "Generates PWM signals for the main power converter; powered by the +9.5V rail.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Inv Input",
+              "Net": "FB_MAIN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Noninv Input",
+              "Net": "VREF_5V1"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Sync",
+              "Net": "NC_or_SYNC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "OSC Output",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "CT",
+              "Net": "CT_CAP"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "RT",
+              "Net": "RT_RES"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "Discharge",
+              "Net": "DISCH"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "Soft-Start",
+              "Net": "SS_CAP_MAIN"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "Comp",
+              "Net": "COMP_MAIN"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "Shutdown",
+              "Net": "SHDN_CTRL"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "Output A",
+              "Net": "PWM_A"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "Ground",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "Vc",
+              "Net": "VOUT_9V5"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "Output B",
+              "Net": "PWM_B"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "Vcc",
+              "Net": "VOUT_9V5"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "Vref",
+              "Net": "VREF_5V1"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "Functional Position": "Main System Microcontroller",
+          "Recommendation Reason": "Control logic, sensor reading, and system management; powered by the +5V rail.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "GPIO1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PD4",
+              "Net": "GPIO2"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "VOUT_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "VOUT_5V"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB6",
+              "Net": "XTAL1"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PB7",
+              "Net": "XTAL2"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PD5",
+              "Net": "GPIO3"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PD6",
+              "Net": "GPIO4"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PD7",
+              "Net": "GPIO5"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PB0",
+              "Net": "GPIO6"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PB1",
+              "Net": "GPIO7"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PB2",
+              "Net": "GPIO8"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PB3",
+              "Net": "GPIO9"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PB4",
+              "Net": "MISO"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PB5",
+              "Net": "SCK"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "VOUT_5V"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "ADC6",
+              "Net": "ANALOG_IN1"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "VREF_5V1"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "ADC7",
+              "Net": "ANALOG_IN2"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "ANALOG_IN3"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "PC1",
+              "Net": "ANALOG_IN4"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "PC2",
+              "Net": "ANALOG_IN5"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "PC3",
+              "Net": "ANALOG_IN6"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "SDA"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "SCL"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PC6",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "PD0",
+              "Net": "RXD"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "PD1",
+              "Net": "TXD"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "PD2",
+              "Net": "GPIO10"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "Functional Position": "Microcontroller Programming Interface",
+          "Recommendation Reason": "Provides in-system programming capability for the ATmega328P.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "5V",
+              "Net": "VOUT_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "EL357N",
+          "Functional Position": "Signal Isolation (e.g., for feedback or control)",
+          "Recommendation Reason": "Provides galvanic isolation for signals between power stages and control logic, enhancing safety and noise immunity.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "ISO_LED_ANODE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "ISO_LED_CATHODE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Emitter",
+              "Net": "ISO_PHOTO_EMITTER"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "Collector",
+              "Net": "ISO_PHOTO_COLLECTOR"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SLT038125T220MUB",
+          "Functional Position": "Output Inductor for TPS54331",
+          "Recommendation Reason": "22 µH inductor suitable for the TPS54331's 570 kHz switching frequency to filter the +9.5V output.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Lead 1",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Lead 2",
+              "Net": "VOUT_9V5"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS34",
+          "Functional Position": "Freewheeling Diode for TPS54331",
+          "Recommendation Reason": "Schottky diode for the buck converter's synchronous rectification path, providing low forward voltage and fast recovery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "SW_NODE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SN2BxxPx, SN4BxxPx, QT1KxxP1/P2/P-X/C1/C2/C3, QT1LxxP-X, QT1NxxP-/01",
+          "Functional Position": "Temperature Sensor (e.g., for heatsink or ambient monitoring)",
+          "Recommendation Reason": "NTC or silicon temperature sensor for thermal monitoring, interfacing with the microcontroller's ADC.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Wire 1",
+              "Net": "TEMP_SENSOR1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Wire 2",
+              "Net": "TEMP_SENSOR2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "User Interface & System Peripherals",
+      "Function Description": "Provides user feedback, system status display, timekeeping, and programming interfaces.",
+      "Signal Sources": "+5V Auxiliary Rail, I2C/GPIO signals from Main MCU.",
+      "Signal Destinations": "User (via display/LEDs), Programming device (via headers).",
+      "Implementation Logic": "Includes an I2C OLED display and DS3231 RTC module connected to the MCU's I2C bus. An RGB LED is driven by MCU GPIOs for status. An ICSP header and serial header (e.g., FTDI) are provided for programming and debugging.",
+      "Signal Chain": "The +5V Auxiliary Rail powers the 78L05 linear regulator, which provides a stable +5V supply for the ATmega328P-AU microcontroller and peripherals. The ATmega328P-AU acts as the main controller, receiving I2C/GPIO signals from an external main MCU via its PC4 (SDA) and PC5 (SCL) pins for I2C communication, and other GPIO pins for control. Internally, the ATmega328P-AU processes these signals to drive the user interface: it sends display data via the same I2C bus (shared with the DS3231 RTC) to an external OLED display, controls an RGB LED via GPIO pins (e.g., PD3, PD5, PD6 for PWM channels), and maintains timekeeping via the DS3231 RTC over I2C. For programming and debugging, the AVR ISP header connects directly to the ATmega328P-AU's SPI pins (PB3-MOSI, PB4-MISO, PB5-SCK) and reset pin (PC6), while a serial header (not in library, implied by FTDI) would connect to PD0 (RXD) and PD1 (TXD) for UART communication with a programming device.",
+      "Recommended Components": [
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Power Regulation",
+          "Recommendation Reason": "Provides a stable +5V supply from the +5V Auxiliary Rail for the ATmega328P-AU microcontroller and other low-power peripherals, ensuring reliable operation within their voltage specifications.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "+5V_AUX"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "+5V_LOGIC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATmega328P-AU",
+          "Functional Position": "Main Microcontroller for User Interface & System Peripherals",
+          "Recommendation Reason": "Acts as the local controller for this module, handling I2C communication with the external main MCU, driving the OLED display and RGB LED, interfacing with the DS3231 RTC, and providing programming interfaces via ICSP and serial headers.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD3",
+              "Net": "LED_RED_PWM"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PD4",
+              "Net": "GPIO_FROM_MAIN_MCU_1"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "+5V_LOGIC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VCC",
+              "Net": "+5V_LOGIC"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB6",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PB7",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PD5",
+              "Net": "LED_GREEN_PWM"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PD6",
+              "Net": "LED_BLUE_PWM"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PD7",
+              "Net": "GPIO_FROM_MAIN_MCU_2"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PB0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PB1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PB2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PB3",
+              "Net": "MOSI"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PB4",
+              "Net": "MISO"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PB5",
+              "Net": "SCK"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "AVCC",
+              "Net": "+5V_LOGIC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "ADC6",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "AREF",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "ADC7",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "PC0",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "PC1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "PC2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "PC3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "PC4",
+              "Net": "SDA"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "PC5",
+              "Net": "SCL"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "PC6",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "PD0",
+              "Net": "RXD"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "PD1",
+              "Net": "TXD"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "PD2",
+              "Net": "GPIO_FROM_MAIN_MCU_3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AVR ISP",
+          "Functional Position": "Programming Interface (ICSP Header)",
+          "Recommendation Reason": "Provides a standard 6-pin ICSP header for in-system programming and debugging of the ATmega328P-AU microcontroller, connecting directly to its SPI and reset pins.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "5V",
+              "Net": "+5V_LOGIC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

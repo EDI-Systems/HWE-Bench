@@ -1,0 +1,88 @@
+{
+  "ComponentID": "TP4057ST26P",
+  "ComponentType": "Linear Li-Ion Battery Charger (Single Cell)",
+  "Description": "The TP4057 is a complete constant-current/constant-voltage (CC/CV) linear charger for single-cell lithium-ion batteries. Its SOT-23-6 package and low external component count make it ideal for portable applications. No external sense resistor or blocking diode is required. It features a preset 4.2V charge voltage with 1% accuracy and programmable charge current up to 500mA. The device includes two open-drain status indicator pins (CHRG# and STDBY#) to signify charging activity and full charge completion.",
+  "KeyParameters": {
+    "Input Supply Voltage (VCC)": "4.0V to 9.0V",
+    "Maximum Charge Current": "500mA (Programmable)",
+    "Regulated Output Voltage": "4.2V (+/- 1%)",
+    "Trickle Charge Threshold": "2.9V",
+    "Standby Current": "40uA (typ)",
+    "Thermal Protection": "Internal regulation for temperature control",
+    "Package": "SOT-23-6"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CHRG#",
+      "Functions": [
+        {
+          "FunctionName": "Status",
+          "FunctionDescription": "Open-drain charge status output; pulls low during charging"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Battery",
+          "FunctionDescription": "Connection to the positive terminal of the Li-Ion battery"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "4.2V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive input supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V (4V-9V)"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "STDBY#",
+      "Functions": [
+        {
+          "FunctionName": "Status",
+          "FunctionDescription": "Open-drain standby status output; pulls low when charge is complete"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PROG",
+      "Functions": [
+        {
+          "FunctionName": "Program",
+          "FunctionDescription": "Charge current programming and monitoring via external resistor"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

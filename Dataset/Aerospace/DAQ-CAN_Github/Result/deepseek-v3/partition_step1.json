@@ -1,0 +1,32 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "MCU Core & Logic Controller",
+      "Function Description": "Orchestrates system logic, processes incoming data/commands from USB and CAN, and generates control signals for the relay module.",
+      "Signal Sources": "SPI data from CAN controller, USB data lines, internal firmware execution.",
+      "Signal Destinations": "SPI clock and data to CAN controller, RELAY_CONTROL pin to MOSFET driver, USB data lines.",
+      "Implementation Logic": "PIC16F1455 microcontroller runs the main firmware. It initializes SPI for CAN communication, manages USB enumeration and data transfer, parses incoming telemetry/commands, and sets the RELAY_CONTROL GPIO pin high/low based on logic decisions to control the relay."
+    },
+    {
+      "Module Name": "Protected USB Interface & Power Supply",
+      "Function Description": "Provides 5V power from USB host and a secure bidirectional data communication channel for configuration and data acquisition, with integrated overcurrent and ESD protection.",
+      "Signal Sources": "USB host VBUS (5V), D+, D- data lines.",
+      "Signal Destinations": "5V power rail to system, protected D+/D- signals to MCU's USB pins.",
+      "Implementation Logic": "USB-B connector brings in 5V VBUS and data. The 350mA PTC resettable fuse is placed in series on the VBUS line for overcurrent protection. The USBLC6-2SC6 TVS diode array is connected across VBUS, D+, D-, and GND to clamp ESD and voltage transients. The protected 5V rail powers the MCU and other ICs, while the protected data lines connect directly to the MCU's USB pins."
+    },
+    {
+      "Module Name": "CAN Bus Communication Interface",
+      "Function Description": "Enables robust, differential network communication for data acquisition and control commands in harsh industrial/aerospace environments.",
+      "Signal Sources": "SPI commands and data from MCU, differential CAN_H/CAN_L signals from the network.",
+      "Signal Destinations": "SPI data to MCU, differential CAN_H/CAN_L signals to the network bus.",
+      "Implementation Logic": "MCP2515 standalone CAN controller interfaces with the MCU via SPI (SCK, SI, SO, CS). It handles CAN protocol framing, filtering, and buffering. Its TX and RX pins connect to the MCP2562 high-speed CAN transceiver. The transceiver converts the MCP2515's logic-level signals to robust differential signals (CAN_H, CAN_L) on the bus and provides common-mode noise rejection."
+    },
+    {
+      "Module Name": "24V Relay Actuation & Protection",
+      "Function Description": "Provides a safe, high-power switching capability for external loads (e.g., actuators, solenoids) using a 24V relay, with integrated driver and inductive kickback protection.",
+      "Signal Sources": "RELAY_CONTROL logic signal from MCU, 24V DC supply for the relay coil.",
+      "Signal Destinations": "Switched high-current output to relay contacts (COM, NO, NC).",
+      "Implementation Logic": "The MCU's RELAY_CONTROL pin drives the gate of the DMN63D8LW-13 N-channel MOSFET via a current-limiting resistor. The MOSFET's source is grounded, and its drain connects to one side of the G5Q-1A relay coil. The other side of the coil connects to the 24V supply. A 1N4148 flyback diode is placed in reverse bias (cathode to 24V, anode to MOSFET drain) across the coil. When RELAY_CONTROL is high, the MOSFET turns on, completing the coil circuit and energizing the relay. When turned off, the diode provides a path for the coil's inductive current, preventing a high-voltage spike across the MOSFET."
+    }
+  ]
+}
