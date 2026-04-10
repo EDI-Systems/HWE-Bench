@@ -1,0 +1,307 @@
+{
+  "ComponentID": "bq25895",
+  "ComponentType": "I2C-Controlled Single-Cell Li-Ion/Li-Polymer Battery Charger and Power Path Manager with Boost Converter",
+  "Description": "The bq25895 is a highly integrated switch-mode battery charge management and system power path management IC designed for single-cell Li-Ion/Li-Polymer batteries. It features a 5-A buck charger optimized for high-voltage inputs (up to 14 V) and includes a boost converter capable of delivering up to 3.1 A from the battery to the system. The device supports Narrow-VDC (NVDC) power path management, allowing the system to operate instantly with or without a battery. It integrates all necessary MOSFETs, current sensing, and control logic, and is configurable via I2C for parameters like input current limit, charge voltage/current, and boost output voltage. Key features include USB input detection (SDP, CDP, DCP), Input Current Optimizer (ICO), battery temperature monitoring, and thermal regulation.",
+  "KeyParameters": {
+    "**Charge Topology**": "Switch-mode buck converter",
+    "**Max Charge Current**": "5 A",
+    "**Input Voltage Range**": "3.9 V to 14 V",
+    "**Battery Charge Voltage Regulation Accuracy**": "±0.5%",
+    "**Boost Converter Output Voltage Range**": "4.5 V to 5.5 V (adjustable)",
+    "**Max Boost Output Current**": "3.1 A",
+    "**Switching Frequency (Charge)**": "1.5 MHz (fixed)",
+    "**Switching Frequency (Boost)**": "500 kHz to 1.5 MHz (selectable)",
+    "**Battery Discharge MOSFET Rds(on)**": "11 mΩ",
+    "**Quiescent Current (Low Battery Leakage)**": "12 µA"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Charger Input Voltage. The internal n-channel reverse block MOSFET prevents reverse current."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PMID",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Power Multiplexer Output. Connects to the system load."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Switching Node for the Buck and Boost Converters."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power I/O"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "PGND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power Ground for the Switching Regulator."
+        }
+      ],
+      "PinType": "G",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "AGND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Analog Ground."
+        }
+      ],
+      "PinType": "G",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "TS",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Battery Temperature Sense Input. Connect to an NTC thermistor network."
+        }
+      ],
+      "PinType": "AI",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Digital Input",
+          "FunctionDescription": "Charge Enable Pin (Active Low). Pull low to enable charging."
+        }
+      ],
+      "PinType": "DI",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "Digital Output",
+          "FunctionDescription": "Interrupt Output (Active Low). Indicates status changes."
+        }
+      ],
+      "PinType": "DO",
+      "ElectricalType": "Open-Drain Output"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "I2C Clock Line."
+        }
+      ],
+      "PinType": "DIO",
+      "ElectricalType": "Open-Drain I/O"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Digital I/O",
+          "FunctionDescription": "I2C Data Line."
+        }
+      ],
+      "PinType": "DIO",
+      "ElectricalType": "Open-Drain I/O"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Analog I/O",
+          "FunctionDescription": "USB Data Positive Line. Used for USB adapter detection."
+        }
+      ],
+      "PinType": "AIO",
+      "ElectricalType": "Analog I/O"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Analog I/O",
+          "FunctionDescription": "USB Data Negative Line. Used for USB adapter detection."
+        }
+      ],
+      "PinType": "AIO",
+      "ElectricalType": "Analog I/O"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "DSEL",
+      "Functions": [
+        {
+          "FunctionName": "Digital Input",
+          "FunctionDescription": "USB Data Line Switch Control. Selects internal/external USB data switch."
+        }
+      ],
+      "PinType": "DI",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "ILIM",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Input Current Limit Set Pin. Sets default input current limit via resistor."
+        }
+      ],
+      "PinType": "AI",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "VREGN",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "Internal LDO Output (3.3 V). Powers internal circuitry. Decoupling capacitor required."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "VBAT",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Battery Connection. Connect directly to the battery positive terminal."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power I/O"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "SYS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "System Output. Powers the system load via the internal power path."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "BTST",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bootstrap Capacitor Connection for the High-Side Gate Driver."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Supply"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "REGN",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "Internal LDO Output (6 V). Powers the gate drivers. Decoupling capacitor required."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "VREF",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "Reference Voltage Output (2.5 V). Can be used for external circuits."
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "ACP",
+      "Functions": [
+        {
+          "FunctionName": "Analog Input",
+          "FunctionDescription": "Adapter Present Indicator Input. Monitors input voltage presence."
+        }
+      ],
+      "PinType": "AI",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "ACDRV",
+      "Functions": [
+        {
+          "FunctionName": "Digital Output",
+          "FunctionDescription": "Adapter Control Driver Output. Drives an external P-MOSFET for input source selection."
+        }
+      ],
+      "PinType": "DO",
+      "ElectricalType": "Digital Output"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "EN_HIZ",
+      "Functions": [
+        {
+          "FunctionName": "Digital Input",
+          "FunctionDescription": "High Impedance Mode Enable (Active High). Enables high-Z state on VBUS."
+        }
+      ],
+      "PinType": "DI",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "PG",
+      "Functions": [
+        {
+          "FunctionName": "Digital Output",
+          "FunctionDescription": "Power Good Output (Active Low). Indicates input power is valid."
+        }
+      ],
+      "PinType": "DO",
+      "ElectricalType": "Open-Drain Output"
+    }
+  ]
+}

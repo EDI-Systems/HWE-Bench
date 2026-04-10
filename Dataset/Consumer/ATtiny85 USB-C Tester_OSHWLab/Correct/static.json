@@ -1,0 +1,63 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_USB_VBUS_VIN",
+      "Connections": [
+        { "ComponentID": "USB1", "PinName": "VBUS" },
+        { "ComponentID": "78L05", "PinName": "INPUT" },
+        { "ComponentID": "INA219", "PinName": "IN+" }
+      ]
+    },
+    {
+      "net_id": "NET_VCC_5V_LOGIC",
+      "Connections": [
+        { "ComponentID": "78L05", "PinName": "OUTPUT" },
+        { "ComponentID": "ATtiny85", "PinName": "VCC" },
+        { "ComponentID": "INA219", "PinName": "VS" },
+        { "ComponentID": "OLED 0.91", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SDA_SHARED",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB0" },
+        { "ComponentID": "INA219", "PinName": "SDA" },
+        { "ComponentID": "OLED 0.91", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL_SHARED",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB2" },
+        { "ComponentID": "INA219", "PinName": "SCL" },
+        { "ComponentID": "OLED 0.91", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_BTN_RESET",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB5" },
+        { "ComponentID": "RESET_SW", "PinName": "Pin 3" }
+      ]
+    },
+    {
+      "net_id": "NET_BTN_SET",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB3" },
+        { "ComponentID": "SET_SW", "PinName": "Pin 3" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "USB1", "PinName": "GND" },
+        { "ComponentID": "78L05", "PinName": "GND" },
+        { "ComponentID": "ATtiny85", "PinName": "GND" },
+        { "ComponentID": "INA219", "PinName": "GND" },
+        { "ComponentID": "OLED 0.91", "PinName": "GND" },
+        { "ComponentID": "RESET_SW", "PinName": "Pin 4" },
+        { "ComponentID": "SET_SW", "PinName": "Pin 4" }
+      ]
+    }
+  ]
+}

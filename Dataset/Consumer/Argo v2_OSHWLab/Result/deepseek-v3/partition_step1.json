@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "USB-C PD Input & Battery Charger with Power-Path Management",
+      "Function Description": "Manages USB-C Power Delivery input, charges a single-cell lithium-ion/polymer battery, and dynamically routes power from either source to the main system voltage rail with priority and seamless switching.",
+      "Signal Sources": "USB-C connector (VBUS, CC1/CC2), Battery terminal (BAT+), System load demand.",
+      "Signal Destinations": "Main System Voltage Rail (SYS), Battery (for charging), Automatic Power OR-ing Network (as a source), System microcontroller (charging status, fault indicators).",
+      "Implementation Logic": "An integrated switching battery charger IC with built-in power-path management. It negotiates USB PD contracts, regulates battery charge current/voltage (CC/CV), and uses internal MOSFETs to select the higher-voltage source (USB or battery) to power the SYS rail, ensuring no back-powering and minimal dropout."
+    },
+    {
+      "Module Name": "Automatic Power OR-ing & 3.3V LDO Reference",
+      "Function Description": "Provides seamless, glitch-free transition between the main SYS rail and a backup capacitor/battery for critical logic, generating a stable 3.3V rail immune to input transients.",
+      "Signal Sources": "Main System Voltage Rail (SYS) from Charger module, Optional backup capacitor bank.",
+      "Signal Destinations": "3.3V Rail (for core logic, MCU, memory), System monitoring circuits.",
+      "Implementation Logic": "A power OR-ing circuit using Schottky diodes or ideal diode controllers to combine SYS and a local reservoir. Its output feeds a low-noise, high-PSRR Low-Dropout (LDO) linear regulator set to 3.3V, ensuring stability during USB plug/unplug events."
+    },
+    {
+      "Module Name": "Synchronous Boost Converter (SYS to 5V)",
+      "Function Description": "Steps up the variable main system voltage (e.g., 3.0V-4.2V from battery) to a stable 5V rail to power peripheral interfaces.",
+      "Signal Sources": "Main System Voltage Rail (SYS), Enable signal from system controller.",
+      "Signal Destinations": "5V Power Distribution Bus (to Load Switch Controllers).",
+      "Implementation Logic": "A high-efficiency, fixed-frequency synchronous boost converter IC. It uses internal MOSFETs and an external inductor/capacitor to generate a regulated 5V output, capable of supplying the required high current for peripherals with good transient response."
+    },
+    {
+      "Module Name": "Load Switch Controllers for Hot-Plug Interfaces",
+      "Function Description": "Individually controls power delivery to high-current peripheral connectors (e.g., HDMI, Micro SD) with inrush current limiting and fault protection.",
+      "Signal Sources": "5V Rail from Boost Converter, Individual enable signals from system controller (e.g., GPIOs), Fault feedback (optional).",
+      "Signal Destinations": "HDMI connector power pin, Micro SD card VDD pin, System controller (fault status).",
+      "Implementation Logic": "Dedicated load switch ICs per interface. Each integrates a low-Rds(on) MOSFET gate driver with adjustable slew rate (soft-start) control to limit inrush current during hot-plug. Includes over-current protection and thermal shutdown. Enabled only when the peripheral is activated."
+    },
+    {
+      "Module Name": "System Controller & Power Sequencing Logic",
+      "Function Description": "Manages the enable/disable sequencing of power rails, monitors system status, and controls the load switches based on operational state.",
+      "Signal Sources": "User input, peripheral detection signals (e.g., card detect), signals from charger module, voltage monitor outputs.",
+      "Signal Destinations": "Enable pins of Boost Converter and Load Switch Controllers, Status LEDs, Charger IC control pins.",
+      "Implementation Logic": "A low-power microcontroller or dedicated power sequencer IC. It follows a predefined sequence: ensures 3.3V is stable, enables the 5V boost converter, then enables specific load switches based on system mode. It also handles fault recovery and provides status communication."
+    }
+  ]
+}

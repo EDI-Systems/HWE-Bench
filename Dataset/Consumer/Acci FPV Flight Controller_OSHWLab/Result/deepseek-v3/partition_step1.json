@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Reverse Polarity Protection & Power Input",
+      "Function Description": "Protects the entire system from damage due to accidental reverse battery connection. Accepts 3S to 6S LiPo input (up to 28V) and provides a protected main power rail.",
+      "Signal Sources": "Battery input (V_BAT).",
+      "Signal Destinations": "Protected main power rail (V_MAIN) to the two Buck Conversion modules.",
+      "Implementation Logic": "Utilizes a P-channel MOSFET (e.g., AOD403) in a high-side configuration. The MOSFET's gate is pulled to V_BAT via a resistor. Correct polarity connects the source to V_BAT, turning the MOSFET ON. Reverse polarity pulls the gate high relative to the source, keeping the MOSFET OFF and blocking current."
+    },
+    {
+      "Module Name": "5V/2A BEC & MCU Power",
+      "Function Description": "Generates a stable, low-ripple 5V supply for the radio receiver (RX), external sensors, and a secondary 3.3V LDO. The LDO provides clean power to the STM32F405 MCU and its peripherals.",
+      "Signal Sources": "Protected main power rail (V_MAIN).",
+      "Signal Destinations": "5V rail powers RX and sensors. 3.3V rail powers the STM32F405 MCU and integrated MPU6000 gyroscope.",
+      "Implementation Logic": "Uses a synchronous buck converter IC (e.g., TPS54202) configured for 5V/2A output. Its output feeds a low-dropout linear regulator (LDO) to generate a precise 3.3V rail for the MCU and sensitive analog/digital circuits."
+    },
+    {
+      "Module Name": "9V/1.4A HD VTX BEC with MCU Control",
+      "Function Description": "Generates a dedicated 9V supply for a High-Definition Video Transmitter (HD VTX). Features MCU-controlled enable/disable to manage inrush current and power state.",
+      "Signal Sources": "Protected main power rail (V_MAIN), MCU GPIO pin (9V_ENABLE).",
+      "Signal Destinations": "9V rail powers the HD Video Transmitter (VTX).",
+      "Implementation Logic": "Uses a buck converter IC configured for 9V/1.4A output. The converter's enable (EN) pin is driven by the MCU's GPIO (9V_ENABLE) via a level-shifter if needed. This allows the MCU to sequence power-up, disable the VTX during faults, or toggle it for power saving."
+    },
+    {
+      "Module Name": "Flight Control Core (MCU & IMU)",
+      "Function Description": "The central processing unit. The STM32F405 MCU reads flight dynamics data from the MPU6000 gyroscope/accelerometer, runs the flight control algorithms, and generates control signals for motor ESCs and telemetry.",
+      "Signal Sources": "MPU6000 sensor data (SPI/I2C), RC receiver signals (UART/SBUS), telemetry input.",
+      "Signal Destinations": "Motor ESC control signals (PWM/DShot), telemetry output (UART), 9V_ENABLE control signal, status LEDs.",
+      "Implementation Logic": "STM32F405 MCU is powered from the 3.3V LDO. It communicates with the MPU6000 via SPI for high-speed IMU data. It processes this data, mixes in RC commands, and outputs precise timing signals to ESCs. It also manages the 9V_ENABLE pin based on system state."
+    },
+    {
+      "Module Name": "ESC Control & Telemetry Interface",
+      "Function Description": "Provides the physical and electrical interface to connect Electronic Speed Controllers (ESCs) for motor control and to send/receive telemetry data.",
+      "Signal Sources": "Motor control signals from the MCU, telemetry data from ESCs or peripherals.",
+      "Signal Destinations": "Motor ESCs (via signal pins), telemetry radio module.",
+      "Implementation Logic": "Consists of signal pin headers or pads for up to 4-8 ESCs. Each signal line may include a series resistor for impedance matching/protection. A dedicated UART port with appropriate level shifting (if 5V) is provided for telemetry communication with an external radio module."
+    }
+  ]
+}

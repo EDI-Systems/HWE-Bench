@@ -1,0 +1,38 @@
+{
+  "ComponentID": "MM3Z10VT1G",
+  "ComponentType": "Zener Diode",
+  "Description": "The MM3Z10VT1G is a surface-mount Zener diode in a compact SOD-323 package. It is designed for voltage regulation and protection in applications where board space is at a premium. Unlike standard diodes, a Zener diode is specifically designed to operate in the reverse-bias breakdown region, allowing it to maintain a stable reference voltage despite variations in current. This makes it ideal for voltage clamping, regulation, and overvoltage protection.",
+  "KeyParameters": {
+    "**Nominal Zener Voltage ($V_Z$)": "** 10V",
+    "**Power Dissipation ($P_D$)": "** 300 mW",
+    "**Zener Impedance ($Z_{ZT}$)": "** 20 $\\Omega$ (at $I_{ZT} = 5\\text{mA}$)",
+    "**Operating Junction Temperature": "** -65 to +150°C",
+    "**Package": "** SOD-323"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "K",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal; marked by a polarity band on the package"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Output (Ref)"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input (GND)"
+    }
+  ]
+}

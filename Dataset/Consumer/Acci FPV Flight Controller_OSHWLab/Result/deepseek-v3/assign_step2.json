@@ -1,0 +1,944 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Reverse Polarity Protection & Power Input",
+      "Function Description": "Protects the entire system from damage due to accidental reverse battery connection. Accepts 3S to 6S LiPo input (up to 28V) and provides a protected main power rail.",
+      "Signal Sources": "Battery input (V_BAT).",
+      "Signal Destinations": "Protected main power rail (V_MAIN) to the two Buck Conversion modules.",
+      "Implementation Logic": "Utilizes a P-channel MOSFET (e.g., AOD403) in a high-side configuration. The MOSFET's gate is pulled to V_BAT via a resistor. Correct polarity connects the source to V_BAT, turning the MOSFET ON. Reverse polarity pulls the gate high relative to the source, keeping the MOSFET OFF and blocking current.",
+      "Signal Chain": "The module receives battery input (V_BAT) from a 3S to 6S LiPo source (up to 28V). This input is connected to the source (S) of a P-channel MOSFET (ComponentID: 3401) configured as a high-side switch. The gate (G) of the MOSFET is pulled to V_BAT through a resistor (not in library, external). Under correct polarity, V_BAT at the source and gate (via pull-up) creates a V_GS close to 0V, turning the MOSFET ON, allowing current to flow from source to drain (D). The drain output becomes the protected main power rail (V_MAIN), which is then distributed to downstream buck conversion modules. Under reverse polarity, the gate is pulled high relative to the source, creating a positive V_GS that keeps the MOSFET OFF, blocking current and protecting the system.",
+      "Recommended Components": [
+        {
+          "ComponentID": "3401",
+          "Functional Position": "High-side reverse polarity protection switch",
+          "Recommendation Reason": "P-channel MOSFET suitable for high-side switching with -30V V_DSS rating exceeding the 28V max input. Low R_DS(on) minimizes voltage drop and power loss. SOT23-3L package is compact.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "GATE_NET"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "Net": "V_BAT"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "Net": "V_MAIN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "5V/2A BEC & MCU Power",
+      "Function Description": "Generates a stable, low-ripple 5V supply for the radio receiver (RX), external sensors, and a secondary 3.3V LDO. The LDO provides clean power to the STM32F405 MCU and its peripherals.",
+      "Signal Sources": "Protected main power rail (V_MAIN).",
+      "Signal Destinations": "5V rail powers RX and sensors. 3.3V rail powers the STM32F405 MCU and integrated MPU6000 gyroscope.",
+      "Implementation Logic": "Uses a synchronous buck converter IC (e.g., TPS54202) configured for 5V/2A output. Its output feeds a low-dropout linear regulator (LDO) to generate a precise 3.3V rail for the MCU and sensitive analog/digital circuits.",
+      "Signal Chain": "The module receives protected main power (V_MAIN) as input. This voltage is fed into the TPS54202 synchronous buck converter, which steps it down to a stable 5V/2A output. The 5V rail directly powers the radio receiver (RX) and external sensors. This 5V output also serves as the input to the TPRT9013 low-dropout linear regulator (LDO), which generates a precise, low-noise 3.3V rail. The 3.3V rail powers the STM32F405 microcontroller and the integrated MPU6000 gyroscope. The STM32F405 may communicate with the MPU6000 via SPI or I2C, and with the W25Q128JV SPI flash memory for code/data storage. The BTC-MC7S-43 Micro-USB connector provides an optional 5V input and data interface. The AO3400A and 3401 MOSFETs are available for general-purpose switching, and the BAT54C and MM3Z10VT1G are available for protection/clamping and voltage reference functions, respectively.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPS54202",
+          "Functional Position": "Primary 5V Buck Converter",
+          "Recommendation Reason": "Monolithic synchronous buck converter with integrated MOSFETs, wide 4.5V-28V input range, and 2A continuous output current. Perfect for generating the main 5V/2A rail from V_MAIN with high efficiency.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "V_MAIN"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "FB_DIVIDER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "EN_5V"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "BOOT",
+              "Net": "BOOT_CAP"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "Functional Position": "3.3V LDO for MCU & Gyro",
+          "Recommendation Reason": "High-PSRR, 500mA LDO regulator. Takes the 5V output from the buck converter and provides a clean, stable 3.3V supply for the noise-sensitive STM32F405 MCU and MPU6000 gyroscope.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "5V_RAIL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "EN_3V3"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "3V3_RAIL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "Functional Position": "Main System Microcontroller",
+          "Recommendation Reason": "High-performance ARM Cortex-M4 MCU. Requires the clean 3.3V supply for core, I/O, and analog circuits. It will interface with the MPU6000 and W25Q128JV.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBAT",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "VSSA",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "VDDA",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "48",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "64",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "NRST",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "60",
+              "PinName": "BOOT0",
+              "Net": "BOOT0"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "Functional Position": "6-Axis Motion Sensor (Gyro + Accel)",
+          "Recommendation Reason": "Integrated motion sensor for the flight controller. Requires clean 3.3V analog power and communicates with the MCU via SPI or I2C.",
+          "Pin Connections": [
+            {
+              "PinNumber": "13",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "SCL/SCLK",
+              "Net": "MPU_SCLK"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "SDA/SDI",
+              "Net": "MPU_SDI"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "AD0/SDO",
+              "Net": "MPU_SDO"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "CS",
+              "Net": "MPU_CS"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "INT",
+              "Net": "MPU_INT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "Functional Position": "SPI Flash Memory for Firmware/Data",
+          "Recommendation Reason": "16MB SPI NOR flash for storing firmware, configuration, or logging data. Interfaces with the STM32F405 MCU.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "/CS",
+              "Net": "FLASH_CS"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CLK",
+              "Net": "FLASH_CLK"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DI (IO0)",
+              "Net": "FLASH_MOSI"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "DO (IO1)",
+              "Net": "FLASH_MISO"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "Functional Position": "Micro-USB Power & Data Interface",
+          "Recommendation Reason": "Provides a standard 5V input and USB 2.0 data interface for programming, communication, and auxiliary power.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D-",
+              "Net": "USB_DM"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D+",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "9V/1.4A HD VTX BEC with MCU Control",
+      "Function Description": "Generates a dedicated 9V supply for a High-Definition Video Transmitter (HD VTX). Features MCU-controlled enable/disable to manage inrush current and power state.",
+      "Signal Sources": "Protected main power rail (V_MAIN), MCU GPIO pin (9V_ENABLE).",
+      "Signal Destinations": "9V rail powers the HD Video Transmitter (VTX).",
+      "Implementation Logic": "Uses a buck converter IC configured for 9V/1.4A output. The converter's enable (EN) pin is driven by the MCU's GPIO (9V_ENABLE) via a level-shifter if needed. This allows the MCU to sequence power-up, disable the VTX during faults, or toggle it for power saving.",
+      "Signal Chain": "The module's primary function is to generate a regulated 9V/1.4A output from a protected main power rail (V_MAIN) under MCU control. The signal flow is as follows: 1. The main power input (V_MAIN) supplies the input (VIN) of the synchronous buck converter (TPS54202). 2. The MCU (STM32F405RGT6) generates a digital enable signal (9V_ENABLE) from a GPIO pin. This signal directly drives the enable (EN) pin of the TPS54202. 3. The TPS54202, configured with an external feedback resistor divider to set 9V output, converts V_MAIN to a stable 9V output at its switch node (SW), which is then filtered to produce the clean 9V rail. 4. This 9V rail directly powers the HD Video Transmitter (VTX) load. The MCU can sequence power-up/down or disable the VTX by toggling the 9V_ENABLE signal, controlling the TPS54202's operation. No level-shifting is required as the MCU's GPIO and the TPS54202's EN pin are compatible with standard logic levels (e.g., 3.3V).",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPS54202",
+          "Functional Position": "Primary Power Conversion",
+          "Recommendation Reason": "Monolithic synchronous buck converter with 4.5V-28V input range and 2A continuous output capability, suitable for generating the required 9V/1.4A output from a typical V_MAIN rail (e.g., 12V). It integrates MOSFETs, has an enable (EN) pin for MCU control, internal compensation, and protection features.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "V_MAIN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "FB_DIV"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "9V_ENABLE"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "BOOT",
+              "Net": "BOOT_CAP"
+            }
+          ]
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "Functional Position": "Control & Sequencing",
+          "Recommendation Reason": "High-performance ARM Cortex-M4 MCU with multiple GPIOs, capable of generating the digital enable signal (9V_ENABLE) to control the buck converter's power state for inrush current management and power sequencing.",
+          "Pin Connections": [
+            {
+              "PinNumber": "19",
+              "PinName": "VDD",
+              "Net": "MCU_3V3"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "VDD",
+              "Net": "MCU_3V3"
+            },
+            {
+              "PinNumber": "48",
+              "PinName": "VDD",
+              "Net": "MCU_3V3"
+            },
+            {
+              "PinNumber": "64",
+              "PinName": "VDD",
+              "Net": "MCU_3V3"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "VDDA",
+              "Net": "MCU_3V3"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "VSSA",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "NRST",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "60",
+              "PinName": "BOOT0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PA0",
+              "Net": "9V_ENABLE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "Functional Position": "MCU Power Supply",
+          "Recommendation Reason": "500mA LDO regulator to provide a stable 3.3V supply (VDD) for the MCU from the V_MAIN rail, ensuring clean power independent of the buck converter's switching noise.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "V_MAIN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "V_MAIN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "MCU_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MM3Z10VT1G",
+          "Functional Position": "Overvoltage Protection",
+          "Recommendation Reason": "10V Zener diode placed across the 9V output rail to GND, providing clamping protection against voltage spikes that could damage the VTX, given the nominal output is 9V.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "9V_OUT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Flight Control Core (MCU & IMU)",
+      "Function Description": "The central processing unit. The STM32F405 MCU reads flight dynamics data from the MPU6000 gyroscope/accelerometer, runs the flight control algorithms, and generates control signals for motor ESCs and telemetry.",
+      "Signal Sources": "MPU6000 sensor data (SPI/I2C), RC receiver signals (UART/SBUS), telemetry input.",
+      "Signal Destinations": "Motor ESC control signals (PWM/DShot), telemetry output (UART), 9V_ENABLE control signal, status LEDs.",
+      "Implementation Logic": "STM32F405 MCU is powered from the 3.3V LDO. It communicates with the MPU6000 via SPI for high-speed IMU data. It processes this data, mixes in RC commands, and outputs precise timing signals to ESCs. It also manages the 9V_ENABLE pin based on system state.",
+      "Signal Chain": "The module's core is the STM32F405RGT6 microcontroller powered by a stable 3.3V supply from the TPRT9013 LDO regulator. The MCU reads high-rate gyroscope and accelerometer data from the MPU-6000 via a dedicated SPI interface (STM32F405 as master, MPU-6000 as slave). Processed flight data and RC commands are output as precise PWM/DShot signals from MCU GPIO pins to motor ESCs. Telemetry communication (UART) is handled via another MCU UART interface. The MCU also controls a 9V_ENABLE signal via a GPIO pin, which can be used to gate a higher voltage rail, potentially using a MOSFET like the 3401 or AO3400A as a switch. The W25Q128JV SPI Flash provides non-volatile storage for firmware and data. The BTC-MC7S-43 USB port allows for programming, debugging, and serial communication. The MM3Z10VT1G Zener and BAT54C Schottky diode can be used for voltage clamping and protection on sensitive I/O lines, such as the USB data lines or external signal inputs.",
+      "Recommended Components": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "Functional Position": "Central Processing Unit",
+          "Recommendation Reason": "Core microcontroller for running flight control algorithms, reading sensors, and generating control signals. Provides necessary SPI, UART, and multiple GPIO interfaces.",
+          "Pin Connections": [
+            {
+              "PinNumber": "19",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "48",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "64",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "VDDA",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "VSSA",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "NRST",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "60",
+              "PinName": "BOOT0",
+              "Net": "BOOT0"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "PB13",
+              "Net": "SPI2_SCK"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "PB14",
+              "Net": "SPI2_MISO"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "PB15",
+              "Net": "SPI2_MOSI"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "PB12",
+              "Net": "SPI2_NSS_IMU"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "PC6",
+              "Net": "USART6_TX"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "PC7",
+              "Net": "USART6_RX"
+            },
+            {
+              "PinNumber": "46",
+              "PinName": "PA13",
+              "Net": "SWDIO"
+            },
+            {
+              "PinNumber": "49",
+              "PinName": "PA14",
+              "Net": "SWCLK"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "Functional Position": "Inertial Measurement Unit (IMU)",
+          "Recommendation Reason": "Provides 6-axis motion data (gyroscope and accelerometer) via SPI, essential for flight stabilization and control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "13",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "SCL/SCLK",
+              "Net": "SPI2_SCK"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "SDA/SDI",
+              "Net": "SPI2_MOSI"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "AD0/SDO",
+              "Net": "SPI2_MISO"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "CS",
+              "Net": "SPI2_NSS_IMU"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "INT",
+              "Net": "IMU_INT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "Functional Position": "3.3V Low-Dropout Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply for the MCU, IMU, and other low-power digital logic from a higher input voltage (e.g., 5V).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "5V_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "3V3_EN"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "3401",
+          "Functional Position": "High-Side Power Switch for 9V_ENABLE",
+          "Recommendation Reason": "P-channel MOSFET suitable for switching a higher voltage rail (e.g., 9V) based on a 3.3V logic signal from the MCU, enabling efficient power management for peripherals like ESCs or VTX.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "9V_ENABLE_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "S",
+              "Net": "9V_IN"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D",
+              "Net": "9V_OUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "Functional Position": "External SPI Flash Memory",
+          "Recommendation Reason": "Stores firmware, configuration parameters, and flight logs. Required for devices that may not have sufficient internal flash or need persistent storage.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "/CS",
+              "Net": "FLASH_CS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "DO (IO1)",
+              "Net": "FLASH_MISO"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DI (IO0)",
+              "Net": "FLASH_MOSI"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CLK",
+              "Net": "FLASH_SCK"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "Functional Position": "USB Communication and Power Port",
+          "Recommendation Reason": "Provides a standard interface for firmware programming, serial debug output, and 5V power input.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D-",
+              "Net": "USB_DM"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D+",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MM3Z10VT1G",
+          "Functional Position": "Voltage Clamping/Protection",
+          "Recommendation Reason": "Zener diode can be used for overvoltage protection on sensitive input lines (e.g., RC receiver signal) or to clamp voltage spikes.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "K",
+              "Net": "PROTECTED_SIGNAL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BAT54C",
+          "Functional Position": "Signal Clamping and ESD Protection",
+          "Recommendation Reason": "Schottky diode with common cathode configuration is ideal for bi-directional clamping of data lines (e.g., USB D+/D-) to prevent voltage excursions beyond the supply rails.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A2",
+              "Net": "USB_DM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "ESC Control & Telemetry Interface",
+      "Function Description": "Provides the physical and electrical interface to connect Electronic Speed Controllers (ESCs) for motor control and to send/receive telemetry data.",
+      "Signal Sources": "Motor control signals from the MCU, telemetry data from ESCs or peripherals.",
+      "Signal Destinations": "Motor ESCs (via signal pins), telemetry radio module.",
+      "Implementation Logic": "Consists of signal pin headers or pads for up to 4-8 ESCs. Each signal line may include a series resistor for impedance matching/protection. A dedicated UART port with appropriate level shifting (if 5V) is provided for telemetry communication with an external radio module.",
+      "Signal Chain": "The MCU (STM32F405RGT6) generates PWM motor control signals on its GPIO pins. Each signal passes through a series resistor for impedance matching/protection before reaching a dedicated header pin for connection to an ESC. For telemetry, the MCU uses a UART port (e.g., USART1) to send/receive data. The UART_TX line may require level shifting if the external radio module operates at 5V logic; this can be achieved using a discrete MOSFET (e.g., AO3400A) configured as a level shifter. The UART_RX line, if from a 5V source, would need voltage clamping (e.g., using a BAT54C diode) to protect the MCU's 3.3V input. The telemetry radio module connects to these level-shifted/clamped UART lines and a power rail. System power is supplied via a Micro-USB connector (BTC-MC7S-43), which provides 5V VBUS. This 5V is regulated down to 3.3V for the MCU and other logic using a buck converter (TPS54202) or LDO (TPRT9013), selected based on efficiency and current needs. The 3.3V rail powers the MCU, flash memory (W25Q128JV), and any 3.3V peripherals. The flash memory connects via SPI to the MCU for firmware storage. An optional MPU-6000 can be connected via I2C/SPI for motion sensing, supplementing telemetry data.",
+      "Recommended Components": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "Functional Position": "Main Microcontroller",
+          "Recommendation Reason": "Provides multiple PWM-capable timers for ESC control and multiple UARTs for telemetry communication. Sufficient I/O and peripherals for the module's core functions.",
+          "Pin Connections": [
+            {
+              "PinNumber": "42",
+              "PinName": "PA9",
+              "Net": "UART1_TX_TO_LEVEL_SHIFTER"
+            },
+            {
+              "PinNumber": "43",
+              "PinName": "PA10",
+              "Net": "UART1_RX_FROM_CLAMP"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "PB13",
+              "Net": "SPI2_SCK_TO_FLASH"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "PB14",
+              "Net": "SPI2_MISO_FROM_FLASH"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "PB15",
+              "Net": "SPI2_MOSI_TO_FLASH"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "PB12",
+              "Net": "SPI2_NSS_TO_FLASH_CS"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "VDD",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "VDDA",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "VSSA",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "Functional Position": "USB Power Input Connector",
+          "Recommendation Reason": "Provides a standard 5V power input from a USB source, suitable for powering the system.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS54202",
+          "Functional Position": "5V to 3.3V Step-Down Converter",
+          "Recommendation Reason": "Efficiently converts the 5V USB input to a stable 3.3V supply for the MCU and other logic, capable of delivering up to 2A.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_NODE_TO_LC_FILTER"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "FB_FROM_RESISTOR_DIVIDER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "BOOT",
+              "Net": "BOOT_CAP_TO_SW"
+            }
+          ]
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "Functional Position": "External Flash Memory",
+          "Recommendation Reason": "Stores firmware and telemetry data, interfacing with the MCU via SPI for high-speed data access.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "/CS",
+              "Net": "SPI2_NSS_TO_FLASH_CS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "DO (IO1)",
+              "Net": "SPI2_MISO_FROM_FLASH"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DI (IO0)",
+              "Net": "SPI2_MOSI_TO_FLASH"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "CLK",
+              "Net": "SPI2_SCK_TO_FLASH"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3_POWER"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AO3400A",
+          "Functional Position": "3.3V to 5V UART Level Shifter (TX Path)",
+          "Recommendation Reason": "Converts the MCU's 3.3V UART_TX signal to 5V logic for compatibility with a 5V telemetry radio module.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "UART1_TX_TO_LEVEL_SHIFTER"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "5V_TELEMETRY_TX_TO_RADIO"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "3V3_POWER"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BAT54C",
+          "Functional Position": "5V to 3.3V UART Voltage Clamp (RX Path)",
+          "Recommendation Reason": "Protects the MCU's 3.3V UART_RX input from overvoltage by clamping signals from a 5V telemetry radio module.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "Net": "5V_TELEMETRY_RX_FROM_RADIO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A2",
+              "Net": "UART1_RX_FROM_CLAMP"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "C",
+              "Net": "3V3_POWER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "3.3V VREF Circuit": [
+    {
+      "net_id": "net_vbus",
+      "Connections": [ { "ComponentID": "BAT54C", "PinName": "A1" } ]
+    },
+    {
+      "net_id": "net_vbat",
+      "Connections": [ { "ComponentID": "BAT54C", "PinName": "A2" } ]
+    },
+    {
+      "net_id": "net_ldo_in",
+      "Connections": [
+        { "ComponentID": "BAT54C", "PinName": "K" },
+        { "ComponentID": "TLV70430", "PinName": "IN" }
+      ]
+    },
+    {
+      "net_id": "net_vref",
+      "Connections": [ { "ComponentID": "TLV70430", "PinName": "OUT" } ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [ { "ComponentID": "TLV70430", "PinName": "GND" } ]
+    }
+  ]
+}

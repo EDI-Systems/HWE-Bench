@@ -1,0 +1,46 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "User Input & Control Module",
+      "Function Description": "Captures user interactions for tuning and volume control via a mechanical rotary encoder, debounces the signals, and processes them in the main microcontroller.",
+      "Signal Sources": "Rotary encoder A/B phase signals (through hardware RC debounce filters).",
+      "Signal Destinations": "ATtiny85 GPIO pins (for digital input processing).",
+      "Implementation Logic": "The rotary encoder is connected to ATtiny85 GPIO pins with external RC low-pass filters for hardware debouncing. The ATtiny85 firmware decodes the quadrature signals to determine direction and step count, translating them into frequency tuning or volume adjustment commands."
+    },
+    {
+      "Module Name": "Microcontroller & System Control Module",
+      "Function Description": "Acts as the central processing unit, interpreting user inputs, managing the I2C bus, controlling the FM tuner and display, and coordinating overall system workflow.",
+      "Signal Sources": "Debounced encoder signals from User Input Module, I2C data from RDA5807MP (status).",
+      "Signal Destinations": "I2C bus commands to OLED Display Module and FM Tuner Module, control signals to Audio Amplifier Module (e.g., shutdown/enable if supported).",
+      "Implementation Logic": "The ATtiny85 microcontroller runs firmware that polls the encoder state, updates the target FM frequency or volume setting, formats I2C commands for the RDA5807MP tuner IC to set frequency/volume, and sends display update commands to the OLED over the same I2C bus."
+    },
+    {
+      "Module Name": "FM Tuner & Demodulation Module",
+      "Function Description": "Receives FM radio signals, tunes to the specified frequency via I2C control, demodulates the RF signal, and outputs a stereo analog audio signal.",
+      "Signal Sources": "I2C control commands (frequency select, volume) from ATtiny85, RF input from antenna.",
+      "Signal Destinations": "Left/Right channel analog audio output to Audio Amplifier Module, I2C status/read data back to ATtiny85.",
+      "Implementation Logic": "The RDA5807MP IC is connected to an antenna for RF input. It receives tuning and control commands via I2C from the ATtiny85. It demodulates the FM signal and outputs the analog audio signals on its LOUT and ROUT pins, which are AC-coupled to the next stage."
+    },
+    {
+      "Module Name": "Audio Amplification & Output Module",
+      "Function Description": "Amplifies the low-level analog audio signal from the tuner to a level sufficient to drive a speaker, providing the final acoustic output.",
+      "Signal Sources": "AC-coupled left/right analog audio signals from FM Tuner Module.",
+      "Signal Destinations": "External speaker (connected to amplifier output).",
+      "Implementation Logic": "The XPT8871ES audio amplifier IC receives the AC-coupled audio signals. Its gain is typically set by external resistor configuration. It amplifies the signal and drives the speaker directly from its output pins. A shutdown/enable pin may be controlled by the ATtiny85 for power management."
+    },
+    {
+      "Module Name": "User Interface Display Module",
+      "Function Description": "Provides visual feedback to the user, showing current FM frequency, volume level, and other status information.",
+      "Signal Sources": "I2C data and commands from ATtiny85.",
+      "Signal Destinations": "N/A (end-user visual output).",
+      "Implementation Logic": "A small I2C-based OLED display (e.g., SSD1306 compatible) is connected to the shared I2C bus. The ATtiny85 firmware sends pixel data or character commands to update the display content based on the current system state (frequency, volume, etc.)."
+    },
+    {
+      "Module Name": "Power Regulation & Distribution Module",
+      "Function Description": "Provides stable and clean 3.3V DC power to all digital and RF components (ATtiny85, RDA5807MP, OLED, encoder logic) from a higher voltage battery source.",
+      "Signal Sources": "Input voltage from a battery (e.g., 5V via USB or 3.7V Li-ion).",
+      "Signal Destinations": "3.3V power rail to ATtiny85, RDA5807MP, OLED display, rotary encoder pull-up/logic.",
+      "Implementation Logic": "The HT7333-A linear voltage regulator steps down the input battery voltage to a stable 3.3V. Input and output capacitors are used for filtering and stability. This 3.3V rail powers the digital logic and the FM tuner IC. The audio amplifier may be powered directly from the battery or a separate rail depending on its voltage requirements."
+    }
+  ]
+}

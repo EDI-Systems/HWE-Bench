@@ -1,0 +1,1187 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Synchronous Boost Converter (SYS to 5V)",
+      "Function Description": "Steps up the variable main system voltage (e.g., 3.0V-4.2V from battery) to a stable 5V rail to power peripheral interfaces.",
+      "Signal Sources": "Main System Voltage Rail (SYS), Enable signal from system controller.",
+      "Signal Destinations": "5V Power Distribution Bus (to Load Switch Controllers).",
+      "Implementation Logic": "A high-efficiency, fixed-frequency synchronous boost converter IC. It uses internal MOSFETs and an external inductor/capacitor to generate a regulated 5V output, capable of supplying the required high current for peripherals with good transient response.",
+      "Signal Chain": "The module's primary function is to generate a stable 5V output from a variable system voltage (SYS, e.g., 3.0V-4.2V). The signal chain begins with the SYS input voltage and an Enable control signal from the system controller. The Enable signal is fed into the boost converter's EN pin to turn the converter on/off. The boost converter IC steps up the SYS input to a regulated 5V output using an internal synchronous switch and external inductor/capacitor network. The 5V output is then distributed to downstream load switch controllers for peripheral power management. The feedback (FB) pin of the boost converter monitors the output voltage via a resistor divider to maintain regulation at 5V.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPS61022",
+          "Functional Position": "Main Boost Converter IC",
+          "Recommendation Reason": "This is a high-efficiency, monolithic synchronous boost converter perfectly matching the module's requirement. It accepts an input voltage range (0.5V to 5.5V) that covers the specified SYS range (3.0V-4.2V) and can be configured to output a stable 5V. It integrates power MOSFETs, operates at high frequency for compact design, and includes enable and mode control pins.",
+          "Pin Connections": [
+            {
+              "PinNumber": "7",
+              "PinName": "VIN",
+              "Net": "SYS"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "ENABLE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "5V_RAIL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "FB_DIV"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "MODE",
+              "Net": "MODE_SELECT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Load Switch Controllers for Hot-Plug Interfaces",
+      "Function Description": "Individually controls power delivery to high-current peripheral connectors (e.g., HDMI, Micro SD) with inrush current limiting and fault protection.",
+      "Signal Sources": "5V Rail from Boost Converter, Individual enable signals from system controller (e.g., GPIOs), Fault feedback (optional).",
+      "Signal Destinations": "HDMI connector power pin, Micro SD card VDD pin, System controller (fault status).",
+      "Implementation Logic": "Dedicated load switch ICs per interface. Each integrates a low-Rds(on) MOSFET gate driver with adjustable slew rate (soft-start) control to limit inrush current during hot-plug. Includes over-current protection and thermal shutdown. Enabled only when the peripheral is activated.",
+      "Signal Chain": "The module receives a 5V rail from a boost converter (e.g., TPS61022) as the primary power source. Individual enable signals from the system controller (GPIOs) are conditioned (if needed) and fed to dedicated load switch ICs (e.g., RT9742) for each high-current peripheral interface (HDMI, Micro SD). Each load switch controls the connection between the 5V input and the peripheral's power pin, integrating inrush current limiting via adjustable slew rate (soft-start) and providing over-current, short-circuit, and thermal protection. Fault status from each load switch (open-drain flag) is reported back to the system controller via GPIOs or an interrupt line, enabling fault monitoring and safe shutdown. The Micro SD card requires a regulated 3.3V supply, so a 5V-to-3.3V LDO (e.g., TLV704) is placed before its load switch to step down the voltage. The HDMI connector typically uses 5V directly. All components share a common ground reference.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TPS61022",
+          "Functional Position": "Primary Boost Converter",
+          "Recommendation Reason": "Generates the stable 5V rail from a lower input voltage (e.g., battery or adapter) as specified in 'Signal Sources'. Its high efficiency and current capability support powering multiple peripherals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "7",
+              "PinName": "VIN",
+              "Net": "Input_Voltage_Source"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_Node"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "5V_Rail"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "Feedback_Network"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "Boost_Enable"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "MODE",
+              "Net": "Mode_Select"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT9742",
+          "Functional Position": "Load Switch for HDMI Connector Power",
+          "Recommendation Reason": "Integrates a low-Rds(on) MOSFET with adjustable slew rate (soft-start) for inrush current limiting, over-current protection, thermal shutdown, and fault flag output—matching the module's requirements for hot-plug interfaces and fault feedback.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "5V_Rail"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "HDMI_Enable"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FLG",
+              "Net": "HDMI_Fault"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "OUT",
+              "Net": "HDMI_VCC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TLV704",
+          "Functional Position": "3.3V LDO for Micro SD Card",
+          "Recommendation Reason": "Steps down the 5V rail to 3.3V required by the Micro SD card specification. Its low dropout and quiescent current suit power-sensitive applications.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "5V_Rail"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "3V3_Rail"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT9742",
+          "Functional Position": "Load Switch for Micro SD Card Power",
+          "Recommendation Reason": "Controls power delivery to the Micro SD card with inrush current limiting and protection features, ensuring safe hot-plug operation as per module logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "3V3_Rail"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "SD_Enable"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FLG",
+              "Net": "SD_Fault"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "OUT",
+              "Net": "SD_VDD"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TF-123",
+          "Functional Position": "Micro SD Card Connector",
+          "Recommendation Reason": "Provides the physical and electrical interface for the Micro SD card, with pins for power, data, clock, and card detection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "SD_VDD"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "DAT2",
+              "Net": "SD_DAT2"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "CD/DAT3",
+              "Net": "SD_CD_DAT3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CMD",
+              "Net": "SD_CMD"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "CLK",
+              "Net": "SD_CLK"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DAT0",
+              "Net": "SD_DAT0"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DAT1",
+              "Net": "SD_DAT1"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SWITCH",
+              "Net": "SD_SWITCH"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "EP",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "Functional Position": "Logic Buffer for Enable Signal Conditioning",
+          "Recommendation Reason": "Can be used for level shifting or buffering if the system controller GPIO voltage differs from the load switch enable input requirements, ensuring robust signal integrity.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "GPIO_Enable_Source"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Y",
+              "Net": "Conditioned_Enable"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VCC",
+              "Net": "Logic_Supply"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Automatic Power OR-ing & 3.3V LDO Reference",
+      "Function Description": "Provides seamless, glitch-free transition between the main SYS rail and a backup capacitor/battery for critical logic, generating a stable 3.3V rail immune to input transients.",
+      "Signal Sources": "Main System Voltage Rail (SYS) from Charger module, Optional backup capacitor bank.",
+      "Signal Destinations": "3.3V Rail (for core logic, MCU, memory), System monitoring circuits.",
+      "Implementation Logic": "A power OR-ing circuit using Schottky diodes or ideal diode controllers to combine SYS and a local reservoir. Its output feeds a low-noise, high-PSRR Low-Dropout (LDO) linear regulator set to 3.3V, ensuring stability during USB plug/unplug events.",
+      "Signal Chain": "The module's primary function is to provide a seamless, glitch-free transition between the main SYS rail and a backup capacitor/battery, generating a stable 3.3V rail. The signal chain begins with the main SYS voltage rail from the Charger module (bq25895's PMID or SYS pin) and an optional backup capacitor bank. These two power sources are combined using a power OR-ing circuit, typically implemented with Schottky diodes (e.g., BAT54) to prevent backflow and ensure the higher voltage source powers the downstream circuit. The combined output (OR-ed output) then feeds into a low-noise, high-PSRR Low-Dropout (LDO) linear regulator (TLV704 set to 3.3V) to generate a stable 3.3V rail. This 3.3V rail powers core logic, MCU, memory, and system monitoring circuits, ensuring immunity to input transients during events like USB plug/unplug. The bq25895 manages the input power path and charging, with its PMID/SYS providing the main SYS rail. The RT9742 could be used as a controlled load switch for enabling/disabling the 3.3V rail or sections of it, though it's not strictly necessary for the basic OR-ing and LDO function. The 74LVC1G07 is not directly relevant to the power path but could be used for level translation or control signaling if needed. The TPS61022 is a boost converter, which is not required for this module as it steps up voltage, whereas this module uses an LDO to step down. The LSM6DSV16XTR (IMU) and TF-123 (Micro-SD card connector) are unrelated to the power OR-ing and LDO function. The USB connector provides the physical interface for power input but is not part of the internal signal chain for OR-ing and regulation.",
+      "Recommended Components": [
+        {
+          "ComponentID": "BAT54",
+          "Functional Position": "Power OR-ing Diode",
+          "Recommendation Reason": "Provides low forward voltage drop and fast switching for combining SYS and backup capacitor sources, preventing backflow and ensuring seamless transition.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "Net": "SYS_RAIL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K1",
+              "Net": "ORED_OUTPUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TLV704",
+          "Functional Position": "3.3V Low-Dropout Linear Regulator",
+          "Recommendation Reason": "Generates a stable 3.3V output from the OR-ed input with high PSRR and low dropout, suitable for noise-sensitive logic and MCU power.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "ORED_OUTPUT"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "bq25895",
+          "Functional Position": "Battery Charger and Power Path Manager",
+          "Recommendation Reason": "Provides the main SYS rail from PMID/SYS pin, manages input power, and integrates power path for seamless operation with or without battery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PMID",
+              "Net": "SYS_RAIL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "PGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "AGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "VBAT",
+              "Net": "BATTERY_POSITIVE"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "SYS",
+              "Net": "SYS_RAIL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT9742",
+          "Functional Position": "Controlled Load Switch for 3.3V Rail",
+          "Recommendation Reason": "Optional component to enable/disable the 3.3V rail or sections of it via digital control, providing over-current and thermal protection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "EN_3V3_SWITCH"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FLG",
+              "Net": "FAULT_FLAG"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "OUT",
+              "Net": "3V3_SWITCHED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "USB-C PD Input & Battery Charger with Power-Path Management",
+      "Function Description": "Manages USB-C Power Delivery input, charges a single-cell lithium-ion/polymer battery, and dynamically routes power from either source to the main system voltage rail with priority and seamless switching.",
+      "Signal Sources": "USB-C connector (VBUS, CC1/CC2), Battery terminal (BAT+), System load demand.",
+      "Signal Destinations": "Main System Voltage Rail (SYS), Battery (for charging), Automatic Power OR-ing Network (as a source), System microcontroller (charging status, fault indicators).",
+      "Implementation Logic": "An integrated switching battery charger IC with built-in power-path management. It negotiates USB PD contracts, regulates battery charge current/voltage (CC/CV), and uses internal MOSFETs to select the higher-voltage source (USB or battery) to power the SYS rail, ensuring no back-powering and minimal dropout.",
+      "Signal Chain": "The module's core is the bq25895, an integrated battery charger and power-path manager. The signal flow begins at the USB Type-C connector, where VBUS provides input power and CC1/CC2 lines are used for PD negotiation and cable orientation detection. The bq25895's VBUS pin receives this input power. Its internal circuitry, controlled via I2C by a system microcontroller (using SCL and SDA pins), manages the power path. It can charge the single-cell battery connected to its VBAT pin via an internal buck converter (using SW and PGND). Simultaneously, it provides power to the system load on the SYS rail via its internal power-path management, which seamlessly selects the higher voltage source (USB input or battery) to power the SYS output. The PMID pin is also a power output for the system. Status and fault monitoring are provided through pins like INT (interrupt), PG (power good), and the TS pin for battery temperature sensing via an NTC thermistor. Additional components support this chain: The RT9742 can be used as a controlled load switch on the SYS rail for sub-system power sequencing. The TLV704 LDO can generate a stable 3.3V rail from the SYS voltage for low-power digital circuits. The 74LVC1G07 can be used for level translation of control signals (e.g., from the microcontroller to the charger's enable pin). The BAT54 Schottky diode can provide basic reverse polarity protection or OR-ing for auxiliary power paths. The TPS61022 boost converter is not typically needed in the primary chain as the bq25895 includes a boost function, but it could be used for a secondary, very low-voltage boost application. The LSM6DSV16XTR IMU and TF-123 Micro-SD connector are not part of the core power management signal chain.",
+      "Recommended Components": [
+        {
+          "ComponentID": "bq25895",
+          "Functional Position": "Core Battery Charger and Power-Path Manager",
+          "Recommendation Reason": "Integrates USB input detection, switch-mode battery charging (up to 5A), NVDC power-path management for seamless source switching between USB and battery to power the system rail (SYS), and a boost converter. It is I2C configurable and includes all necessary protections, directly fulfilling the module's primary function.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PMID",
+              "Net": "SYS_PMID"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "PGND",
+              "Net": "PGND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "AGND",
+              "Net": "AGND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "TS",
+              "Net": "BAT_TS"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CE",
+              "Net": "CHG_EN"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "INT",
+              "Net": "CHG_INT"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "DSEL",
+              "Net": "USB_SW_SEL"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "ILIM",
+              "Net": "ILIM_SET"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "VREGN",
+              "Net": "VREG_3V3"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "VBAT",
+              "Net": "BAT_P"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "SYS",
+              "Net": "SYS_MAIN"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "BTST",
+              "Net": "BOOTSTRAP"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "REGN",
+              "Net": "VREG_6V"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "VREF",
+              "Net": "REF_2V5"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "ACP",
+              "Net": "ADAPTER_PRESENT"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "ACDRV",
+              "Net": "AC_DRIVE"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "EN_HIZ",
+              "Net": "HIZ_EN"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "PG",
+              "Net": "PWR_GOOD"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Primary Power and Data Input Connector",
+          "Recommendation Reason": "Provides the physical USB-C interface for power delivery input (VBUS) and configuration channel (CC) lines essential for PD negotiation, as specified in the module's signal sources.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A5",
+              "PinName": "CC1",
+              "Net": "USB_CC1"
+            },
+            {
+              "PinNumber": "B5",
+              "PinName": "CC2",
+              "Net": "USB_CC2"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "Shell",
+              "PinName": "SHELL",
+              "Net": "SHIELD_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT9742",
+          "Functional Position": "System Rail Power Switch for Sub-System Control",
+          "Recommendation Reason": "Provides a digitally controlled, protected switch on the SYS rail to enable/disable power to a sub-system (e.g., peripherals), integrating over-current and thermal protection. Its fault flag (FLG) can alert the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "SYS_MAIN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "SUBSYS_EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FLG",
+              "Net": "SUBSYS_FLT"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "OUT",
+              "Net": "SUBSYS_PWR"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TLV704",
+          "Functional Position": "Low-Power 3.3V LDO for System Microcontroller",
+          "Recommendation Reason": "Generates a stable, low-noise 3.3V rail from the SYS voltage to power the system microcontroller and other low-power digital circuits, given its high input voltage tolerance and low quiescent current.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "SYS_MAIN"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "3V3_DIGITAL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "Functional Position": "Level Translator for Charge Enable Control",
+          "Recommendation Reason": "Can be used to interface a 1.8V or 3.3V microcontroller GPIO to the bq25895's CE pin (which may have different logic levels), providing voltage level translation and open-drain flexibility.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "MCU_GPIO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Y",
+              "Net": "CHG_EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VCC",
+              "Net": "3V3_DIGITAL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BAT54",
+          "Functional Position": "Auxiliary Power OR-ing or Protection Diode",
+          "Recommendation Reason": "Can be used for basic reverse polarity protection on a low-current auxiliary input or for OR-ing a backup power source (like a supercapacitor) onto the SYS rail, leveraging its low forward voltage.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "Net": "AUX_PWR_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K1",
+              "Net": "SYS_MAIN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "System Controller & Power Sequencing Logic",
+      "Function Description": "Manages the enable/disable sequencing of power rails, monitors system status, and controls the load switches based on operational state.",
+      "Signal Sources": "User input, peripheral detection signals (e.g., card detect), signals from charger module, voltage monitor outputs.",
+      "Signal Destinations": "Enable pins of Boost Converter and Load Switch Controllers, Status LEDs, Charger IC control pins.",
+      "Implementation Logic": "A low-power microcontroller or dedicated power sequencer IC. It follows a predefined sequence: ensures 3.3V is stable, enables the 5V boost converter, then enables specific load switches based on system mode. It also handles fault recovery and provides status communication.",
+      "Signal Chain": "The system controller (implied microcontroller, not in library) receives status signals from various sources: user input (e.g., button), peripheral detection (e.g., Micro-SD card detect via TF-123 SWITCH), charger module status (e.g., bq25895 INT, PG), and voltage monitor outputs (e.g., from TPS61022 feedback or external comparators). Based on a predefined sequence and these inputs, the controller generates enable signals. First, it ensures a stable 3.3V rail (possibly from TLV704 or bq25895 SYS). Then, it enables the 5V boost converter (TPS61022 EN) to generate 5V. Subsequently, it enables specific load switches (RT9742 EN) to power downstream subsystems (e.g., USB VBUS, peripherals). The controller also monitors fault flags (e.g., RT9742 FLG) for recovery and drives status LEDs. Communication with configurable ICs (e.g., bq25895, LSM6DSV16XTR) is via I2C for parameter setting and status reading.",
+      "Recommended Components": [
+        {
+          "ComponentID": "bq25895",
+          "Functional Position": "Power Path Manager and Battery Charger",
+          "Recommendation Reason": "Integrates power path management, battery charging, and a boost converter. It provides system power (SYS), manages input sources (VBUS), and offers I2C control and status monitoring (INT, PG) for the system controller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PMID",
+              "Net": "SYSTEM_POWER_RAIL"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SW",
+              "Net": "SWITCHING_NODE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "PGND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "AGND",
+              "Net": "ANALOG_GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "TS",
+              "Net": "BATT_THERMISTOR_NETWORK"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CE",
+              "Net": "CHARGER_ENABLE"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "INT",
+              "Net": "CHARGER_INTERRUPT"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "D+",
+              "Net": "USB_D_PLUS"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "D-",
+              "Net": "USB_D_MINUS"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "DSEL",
+              "Net": "USB_SWITCH_SELECT"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "ILIM",
+              "Net": "INPUT_CURRENT_LIMIT_SET"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "VREGN",
+              "Net": "INTERNAL_3V3_LDO"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "VBAT",
+              "Net": "BATTERY_POSITIVE"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "SYS",
+              "Net": "SYSTEM_POWER_OUTPUT"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "BTST",
+              "Net": "BOOTSTRAP_CAP"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "REGN",
+              "Net": "INTERNAL_6V_LDO"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "VREF",
+              "Net": "REFERENCE_2V5"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "ACP",
+              "Net": "ADAPTER_PRESENT_DETECT"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "ACDRV",
+              "Net": "EXTERNAL_PMOS_GATE"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "EN_HIZ",
+              "Net": "HIGH_Z_ENABLE"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "PG",
+              "Net": "POWER_GOOD_OUTPUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS61022",
+          "Functional Position": "5V Boost Converter",
+          "Recommendation Reason": "Generates 5V from a lower input voltage (e.g., battery or system rail) as required by the power sequencing logic. Its EN pin is controlled by the system controller to enable/disable the 5V rail.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SWITCH_NODE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "BOOST_5V_OUTPUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FB",
+              "Net": "FEEDBACK_VOLTAGE_DIVIDER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "EN",
+              "Net": "BOOST_ENABLE"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "MODE",
+              "Net": "PWM_PFM_SELECT"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VIN",
+              "Net": "BOOST_INPUT_VOLTAGE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT9742",
+          "Functional Position": "Load Switch for Peripheral Power",
+          "Recommendation Reason": "Provides controlled power switching to downstream loads (e.g., USB VBUS, sensors) based on system mode. Its EN pin is driven by the system controller, and FLG provides fault feedback.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "SWITCH_INPUT_POWER"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "LOAD_SWITCH_ENABLE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "FLG",
+              "Net": "LOAD_SWITCH_FAULT"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "OUT",
+              "Net": "SWITCHED_POWER_OUTPUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TLV704",
+          "Functional Position": "3.3V LDO Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V rail for low-power digital circuits (e.g., system controller, logic). Ensures the 3.3V is stable before enabling other rails as per the sequencing logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "LDO_INPUT_VOLTAGE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "REGULATED_3V3_OUTPUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "Functional Position": "Level Translator / Open-Drain Buffer",
+          "Recommendation Reason": "Used for voltage level translation between the system controller and other components (e.g., enabling signals to different voltage domains) or as an open-drain driver for wired-AND signals (e.g., interrupt lines).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "BUFFER_INPUT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "Y",
+              "Net": "BUFFER_OUTPUT_OPEN_DRAIN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VCC",
+              "Net": "BUFFER_SUPPLY_VOLTAGE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TF-123",
+          "Functional Position": "Micro-SD Card Interface",
+          "Recommendation Reason": "Provides card detection (SWITCH pin) as a peripheral status input to the system controller, enabling load switches based on card presence.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "DAT2",
+              "Net": "SD_DATA2"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "CD/DAT3",
+              "Net": "SD_CARD_DETECT"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CMD",
+              "Net": "SD_COMMAND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "SD_3V3_POWER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "CLK",
+              "Net": "SD_CLOCK"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VSS",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DAT0",
+              "Net": "SD_DATA0"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DAT1",
+              "Net": "SD_DATA1"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SWITCH",
+              "Net": "CARD_INSERT_DETECT"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "EP",
+              "Net": "SHIELD_GND"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "EP",
+              "Net": "SHIELD_GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "EP",
+              "Net": "SHIELD_GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "EP",
+              "Net": "SHIELD_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "USB Type-C Power and Data Interface",
+          "Recommendation Reason": "Provides VBUS input for charging/power and data lines. Its CC pins can be monitored for power delivery status, influencing power sequencing.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS_IN"
+            },
+            {
+              "PinNumber": "A5",
+              "PinName": "CC1",
+              "Net": "USB_CC1"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "DP1",
+              "Net": "USB_DP1"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "DN1",
+              "Net": "USB_DN1"
+            },
+            {
+              "PinNumber": "A8",
+              "PinName": "SBU1",
+              "Net": "USB_SBU1"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS_IN"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS_IN"
+            },
+            {
+              "PinNumber": "B5",
+              "PinName": "CC2",
+              "Net": "USB_CC2"
+            },
+            {
+              "PinNumber": "B6",
+              "PinName": "DP2",
+              "Net": "USB_DP2"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "DN2",
+              "Net": "USB_DN2"
+            },
+            {
+              "PinNumber": "B8",
+              "PinName": "SBU2",
+              "Net": "USB_SBU2"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS_IN"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "POWER_GND"
+            },
+            {
+              "PinNumber": "Shell",
+              "PinName": "SHELL",
+              "Net": "SHIELD_GND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

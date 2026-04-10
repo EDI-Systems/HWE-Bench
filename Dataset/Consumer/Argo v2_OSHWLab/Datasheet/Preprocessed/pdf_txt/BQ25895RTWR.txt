@@ -1,0 +1,44 @@
+Component ID: bq25895
+Component Type: I2C-Controlled Single-Cell Li-Ion/Li-Polymer Battery Charger and Power Path Manager with Boost Converter
+Description:
+The bq25895 is a highly integrated switch-mode battery charge management and system power path management IC designed for single-cell Li-Ion/Li-Polymer batteries. It features a 5-A buck charger optimized for high-voltage inputs (up to 14 V) and includes a boost converter capable of delivering up to 3.1 A from the battery to the system. The device supports Narrow-VDC (NVDC) power path management, allowing the system to operate instantly with or without a battery. It integrates all necessary MOSFETs, current sensing, and control logic, and is configurable via I2C for parameters like input current limit, charge voltage/current, and boost output voltage. Key features include USB input detection (SDP, CDP, DCP), Input Current Optimizer (ICO), battery temperature monitoring, and thermal regulation.
+
+Key Parameters:
+- **Charge Topology**: Switch-mode buck converter
+- **Max Charge Current**: 5 A
+- **Input Voltage Range**: 3.9 V to 14 V
+- **Battery Charge Voltage Regulation Accuracy**: ±0.5%
+- **Boost Converter Output Voltage Range**: 4.5 V to 5.5 V (adjustable)
+- **Max Boost Output Current**: 3.1 A
+- **Switching Frequency (Charge)**: 1.5 MHz (fixed)
+- **Switching Frequency (Boost)**: 500 kHz to 1.5 MHz (selectable)
+- **Battery Discharge MOSFET Rds(on)**: 11 mΩ
+- **Quiescent Current (Low Battery Leakage)**: 12 µA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VBUS | Power | Charger Input Voltage. The internal n-channel reverse block MOSFET prevents reverse current. | P | Power Input |
+| 2 | PMID | Power | Power Multiplexer Output. Connects to the system load. | P | Power Output |
+| 3 | SW | Power | Switching Node for the Buck and Boost Converters. | P | Power I/O |
+| 4 | PGND | Ground | Power Ground for the Switching Regulator. | G | Ground |
+| 5 | AGND | Ground | Analog Ground. | G | Ground |
+| 6 | TS | Analog Input | Battery Temperature Sense Input. Connect to an NTC thermistor network. | AI | Analog Input |
+| 7 | CE | Digital Input | Charge Enable Pin (Active Low). Pull low to enable charging. | DI | Digital Input |
+| 8 | INT | Digital Output | Interrupt Output (Active Low). Indicates status changes. | DO | Open-Drain Output |
+| 9 | SCL | Digital I/O | I2C Clock Line. | DIO | Open-Drain I/O |
+| 10 | SDA | Digital I/O | I2C Data Line. | DIO | Open-Drain I/O |
+| 11 | D+ | Analog I/O | USB Data Positive Line. Used for USB adapter detection. | AIO | Analog I/O |
+| 12 | D- | Analog I/O | USB Data Negative Line. Used for USB adapter detection. | AIO | Analog I/O |
+| 13 | DSEL | Digital Input | USB Data Line Switch Control. Selects internal/external USB data switch. | DI | Digital Input |
+| 14 | ILIM | Analog Input | Input Current Limit Set Pin. Sets default input current limit via resistor. | AI | Analog Input |
+| 15 | VREGN | Power Output | Internal LDO Output (3.3 V). Powers internal circuitry. Decoupling capacitor required. | P | Power Output |
+| 16 | VBAT | Power | Battery Connection. Connect directly to the battery positive terminal. | P | Power I/O |
+| 17 | SYS | Power | System Output. Powers the system load via the internal power path. | P | Power Output |
+| 18 | BTST | Power | Bootstrap Capacitor Connection for the High-Side Gate Driver. | P | Power Supply |
+| 19 | REGN | Power Output | Internal LDO Output (6 V). Powers the gate drivers. Decoupling capacitor required. | P | Power Output |
+| 20 | VREF | Power Output | Reference Voltage Output (2.5 V). Can be used for external circuits. | P | Power Output |
+| 21 | ACP | Analog Input | Adapter Present Indicator Input. Monitors input voltage presence. | AI | Analog Input |
+| 22 | ACDRV | Digital Output | Adapter Control Driver Output. Drives an external P-MOSFET for input source selection. | DO | Digital Output |
+| 23 | EN_HIZ | Digital Input | High Impedance Mode Enable (Active High). Enables high-Z state on VBUS. | DI | Digital Input |
+| 24 | PG | Digital Output | Power Good Output (Active Low). Indicates input power is valid. | DO | Open-Drain Output |

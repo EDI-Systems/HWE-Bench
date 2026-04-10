@@ -15,9 +15,9 @@ CIR_FILE  = os.path.join(BASE_DIR, "relay_audit_pro.net")
 LOG_FILE  = os.path.join(BASE_DIR, "relay_audit_pro.log")
 REPORT_FILE = os.path.join(BASE_DIR, "relay_audit_report.txt")
 
-# ================= 2. 全生命周期 10 项极限指标 =================
+# ================= 2. 10 Full-Lifecycle Stress Metrics =================
 TEST_CRITERIA = {
-    # 修正：放宽 0V 判定的浮点数容差，防止 -0.00001V 被误判为 FAIL
+    # Adjusted: Relaxed floating-point tolerance for 0V detection to prevent false FAIL on -0.00001V
     "v_gate_idle":   {"name": "01_Gate_Idle_Voltage",    "min": -0.05, "max": 0.10,  "unit": "V"},
     "v_drain_idle":  {"name": "02_Drain_Idle_Voltage",   "min": 23.90, "max": 24.10, "unit": "V"},
     "v_gate_on":     {"name": "03_Gate_Active_Voltage",  "min": 3.10,  "max": 3.35,  "unit": "V"},
@@ -32,7 +32,7 @@ TEST_CRITERIA = {
 
 def get_topology():
     if not os.path.exists(JSON_FILE):
-        raise FileNotFoundError(f"未找到 JSON 文件: {JSON_FILE}")
+        raise FileNotFoundError(f"JSON File not found: {JSON_FILE}")
         
     with open(JSON_FILE, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -49,7 +49,7 @@ def get_topology():
         res = pin_to_nets.get(f"{comp}:{pin}", [])
         if not res:
             nc = f"NC_{uuid.uuid4().hex[:4]}"
-            print(f"❌ 拓扑断路: 找不到 {comp}:{pin} -> 悬空 {nc}")
+            print(f"❌ Topology Open Circuit: Cannot find {comp}:{pin} -> Floating {nc}")
             return [nc]
         return res
     return fetch
@@ -57,11 +57,11 @@ def get_topology():
 def build_netlist():
     fetch = get_topology()
     print("\n" + "="*80)
-    print(">>> 🔌 正在从 JSON 读取物理拓扑，构建动态测试台...")
+    print(">>> 🔌 Reading physical topology from JSON, constructing dynamic testbench...")
     print("-" * 80)
 
     # =========================================================================
-    # 核心：动态读取 JSON 中的 net_id。如果 JSON 变了，这些名字也会跟着变
+    # Core: Dynamically read net_id from JSON. Names change based on JSON input.
     # =========================================================================
     n_mos_g   = fetch("DMN63D8", "G")[0]
     n_mos_d   = fetch("DMN63D8", "D")[0]
@@ -73,7 +73,7 @@ def build_netlist():
     n_dio_a   = fetch("1N4148WX", "Anode")[0]
     n_dio_k   = fetch("1N4148WX", "Cathode")[0]
 
-    # 将被读取到的源极网络定义为 SPICE 的全局地 (0)
+    # Normalize Source net as global Ground (0) for SPICE
     def sp(n): return "0" if n == n_mos_s else n
 
     netlist = [
@@ -84,45 +84,45 @@ def build_netlist():
         ".tran 10n 10m 0 uic",
         
         # =========================================================================
-        # 1. 固化在测试台 (Testbench) 中的外部刺激环境
+        # 1. Fixed External Stimulus (Testbench Environment)
         # =========================================================================
-        # 24V 电源挂载在继电器线圈2 (n_coil_2) 所在的网络上
+        # 24V Supply mounted on Relay Coil 2 (n_coil_2) network
         f"V_24V_PWR {sp(n_coil_2)} 0 24V",
-        # 产生单片机控制脉冲 (2ms开启，6ms关闭)
+        # Microcontroller control pulse (4ms High starting at 2ms)
         "V_CTRL_PULSE SIGNAL_IN 0 PULSE(0 3.3 2m 1u 1u 4m 10m)", 
-        # 外围栅极驱动电阻挂载在 MOSFET 栅极 (n_mos_g) 所在的网络上
+        # Gate resistor mounted on MOSFET Gate (n_mos_g) network
         f"R_GATE SIGNAL_IN {sp(n_mos_g)} 250",
         f"R_PD {sp(n_mos_g)} 0 10k",
         
         # =========================================================================
-        # 2. 从 JSON 动态实例化的被测设备 (DUT: Device Under Test)
+        # 2. Dynamically Instantiated Device Under Test (DUT)
         # =========================================================================
-        # 它们之间的连线完全取决于读取到的 net_id (例如 n_mos_d 和 n_coil_1 是否相等)
+        # Connections depend entirely on JSON net_ids
         f"M_Q1 {sp(n_mos_d)} {sp(n_mos_g)} 0 N_DMN63D8",
         
-        # 继电器线圈电感等效
+        # Relay Coil Equivalent
         f"L_COIL {sp(n_coil_1)} N_COIL_MID 10mH",
         f"R_COIL N_COIL_MID {sp(n_coil_2)} 1440",
         
-        # 续流二极管
+        # Flyback/Freewheeling Diode
         f"D_FLY {sp(n_dio_a)} {sp(n_dio_k)} D_4148",
         
         # =========================================================================
-        # 3. 测量指令 (使用读取到的关键网络进行测量)
+        # 3. Measurement Instructions (Targeting critical dynamic nets)
         # =========================================================================
         f".meas TRAN v_gate_idle AVG V({sp(n_mos_g)}) FROM 0.5m TO 1.5m",
         f".meas TRAN v_drain_idle AVG V({sp(n_mos_d)}) FROM 0.5m TO 1.5m",
         f".meas TRAN v_gate_on AVG V({sp(n_mos_g)}) FROM 4m TO 5m",
         f".meas TRAN v_drain_on AVG V({sp(n_mos_d)}) FROM 4m TO 5m",
         
-        # 修正：加入 ABS() 获取电流绝对值，防止被判负数
+        # Use ABS() for current to avoid negative polarity judgment issues
         f".meas TRAN i_coil_steady AVG ABS(I(R_COIL)) FROM 5m TO 5.5m",
         
         "*.meas TRAN t_s WHEN V(SIGNAL_IN)=1.65 RISE=1",
         f".meas TRAN t_g WHEN V({sp(n_mos_g)})=1.65 RISE=1",
         ".meas TRAN t_rc_gate PARAM (t_g-2e-3)*1e6",
         
-        # 反电动势与钳位监测点在 MOSFET 的漏极上
+        # Kickback and clamping monitored at MOSFET Drain
         f".meas TRAN v_kick_peak MAX V({sp(n_mos_d)}) FROM 6m TO 6.5m",
         f".meas TRAN i_diode_peak MAX ABS(I(D_FLY)) FROM 6m TO 6.5m",
         f".meas TRAN v_diode_fwd PARAM v_kick_peak-24.0",
@@ -141,10 +141,10 @@ def run_simulation():
 
         results = {}
         for k in TEST_CRITERIA.keys():
-            m = re.search(rf"{k}.*?[:=]\s*([-+]?\d*\.?\d+(?:[eE][-+]?\d+)?)", log, re.I)
+            m = re.search(rf"{k}.*?[:=]\s*([-+]?\d*\.?\d+(?:[eE][-+]?\d+)? )", log, re.I)
             if m:
                 val = float(m.group(1))
-                if "i_" in k: val = val * 1000  # 转换为 mA
+                if "i_" in k: val = val * 1000  # Convert to mA
                 results[k] = val
             else:
                 results[k] = None
@@ -164,12 +164,12 @@ def run_simulation():
 
         report.append("-" * 85)
         rate = (pass_count/len(TEST_CRITERIA))*100
-        report.append(f"passrate: {rate:.1f}%")
+        report.append(f"Pass Rate: {rate:.1f}%")
         
         final_out = "\n".join(report)
         print("\n" + final_out)
         with open(REPORT_FILE, 'w', encoding='utf-8') as f: f.write(final_out)
 
-    except Exception as e: print(f"审计执行失败: {e}")
+    except Exception as e: print(f"Audit Execution Failed: {e}")
 
 if __name__ == "__main__": run_simulation()

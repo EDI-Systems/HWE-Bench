@@ -1,0 +1,178 @@
+{
+  "MCU_Function_Groups": {
+    "STM32F405RGT6": {
+      "Power_Ground_Oscillator": [
+        { "PinName": "VDD", "FunctionName": "Digital Supply" },
+        { "PinName": "VSS", "FunctionName": "Digital Ground" },
+        { "PinName": "VDDA", "FunctionName": "Analog Supply" },
+        { "PinName": "VSSA", "FunctionName": "Analog Ground" },
+        { "PinName": "VBAT", "FunctionName": "Backup Supply" },
+        { "PinName": "NRST", "FunctionName": "System Reset" },
+        { "PinName": "PH0", "FunctionName": "OSC_IN" },
+        { "PinName": "PH1", "FunctionName": "OSC_OUT" },
+        { "PinName": "BOOT0", "FunctionName": "Boot Mode Selection" },
+        { "PinName": "VCAP_1", "FunctionName": "Regulator Filter 1" },
+        { "PinName": "VCAP_2", "FunctionName": "Regulator Filter 2" }
+      ],
+      "HighSpeed_SPI1_Gyro": [
+        { "PinName": "PA4", "FunctionName": "SPI1_NSS / GYRO_CS" },
+        { "PinName": "PA5", "FunctionName": "SPI1_SCK / GYRO_SCK" },
+        { "PinName": "PA6", "FunctionName": "SPI1_MISO / GYRO_MISO" },
+        { "PinName": "PA7", "FunctionName": "SPI1_MOSI / GYRO_MOSI" }
+      ],
+      "Blackbox_SPI2_Flash": [
+        { "PinName": "PB12", "FunctionName": "SPI2_NSS / FLASH_CS" },
+        { "PinName": "PB13", "FunctionName": "SPI2_SCK / FLASH_SCK" },
+        { "PinName": "PB14", "FunctionName": "SPI2_MISO / FLASH_MISO" },
+        { "PinName": "PB15", "FunctionName": "SPI2_MOSI / FLASH_MOSI" }
+      ],
+      "USB_Data_Link": [
+        { "PinName": "PA11", "FunctionName": "OTG_FS_DM" },
+        { "PinName": "PA12", "FunctionName": "OTG_FS_DP" },
+        { "PinName": "PA9", "FunctionName": "VBUS Sense" }
+      ],
+      "Telemetry_UARTs": [
+        { "PinName": "PA9", "FunctionName": "UART1_TX" },
+        { "PinName": "PA10", "FunctionName": "UART1_RX" },
+        { "PinName": "PA2", "FunctionName": "UART2_TX" },
+        { "PinName": "PA3", "FunctionName": "UART2_RX" },
+        { "PinName": "PB10", "FunctionName": "UART3_TX" },
+        { "PinName": "PB11", "FunctionName": "UART3_RX" },
+        { "PinName": "PC10", "FunctionName": "UART4_TX" },
+        { "PinName": "PC11", "FunctionName": "UART4_RX" },
+        { "PinName": "PC12", "FunctionName": "UART5_TX" },
+        { "PinName": "PD2", "FunctionName": "UART5_RX" },
+        { "PinName": "PC6", "FunctionName": "UART6_TX" },
+        { "PinName": "PC7", "FunctionName": "UART6_RX" }
+      ],
+      "Analog_Monitoring": [
+        { "PinName": "PC0", "FunctionName": "ADC123_IN10 / ADC_VBAT" },
+        { "PinName": "PC1", "FunctionName": "ADC123_IN11 / ADC_CURR" },
+        { "PinName": "PC2", "FunctionName": "ADC123_IN12" },
+        { "PinName": "PC3", "FunctionName": "ADC123_IN13" },
+        { "PinName": "PA0", "FunctionName": "ADC123_IN0" },
+        { "PinName": "PA1", "FunctionName": "ADC123_IN1" }
+      ],
+      "Flight_Peripheral_Bus": [
+        { "PinName": "PB6", "FunctionName": "I2C1_SCL" },
+        { "PinName": "PB7", "FunctionName": "I2C1_SDA" },
+        { "PinName": "PB8", "FunctionName": "I2C1_SCL_Alt" },
+        { "PinName": "PB9", "FunctionName": "I2C1_SDA_Alt" }
+      ],
+      "General_Control_IO": [
+        { "PinName": "PC13", "FunctionName": "BEEPER" },
+        { "PinName": "PC14", "FunctionName": "OSC32_IN" },
+        { "PinName": "PC15", "FunctionName": "OSC32_OUT" },
+        { "PinName": "PC4", "FunctionName": "ADC12_IN14 / GYRO_INT" },
+        { "PinName": "PC5", "FunctionName": "ADC12_IN15 / LED" },
+        { "PinName": "PB0", "FunctionName": "ADC12_IN8 / PWM1" },
+        { "PinName": "PB1", "FunctionName": "ADC12_IN9 / PWM2" },
+        { "PinName": "PB2", "FunctionName": "BOOT1" },
+        { "PinName": "PB3", "FunctionName": "JTDO" },
+        { "PinName": "PB4", "FunctionName": "NJTRST" },
+        { "PinName": "PB5", "FunctionName": "I2C1_SMBA" },
+        { "PinName": "PC8", "FunctionName": "SDIO_D0" },
+        { "PinName": "PC9", "FunctionName": "SDIO_D1" },
+        { "PinName": "PA8", "FunctionName": "MCO1" },
+        { "PinName": "PA13", "FunctionName": "JTMS-SWDIO" },
+        { "PinName": "PA14", "FunctionName": "JTCK-SWCLK" },
+        { "PinName": "PA15", "FunctionName": "JTDI" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "MPU-6000": {
+      "SPI_Standard": [
+        { "PinName": "CS", "FunctionName": "Chip Select" },
+        { "PinName": "SCL/SCLK", "FunctionName": "Serial Clock" },
+        { "PinName": "AD0/SDO", "FunctionName": "MISO" },
+        { "PinName": "SDA/SDI", "FunctionName": "MOSI" }
+      ]
+    },
+    "W25Q128JV": {
+      "SPI_Standard": [
+        { "PinName": "/CS", "FunctionName": "Chip Select" },
+        { "PinName": "CLK", "FunctionName": "Serial Clock" },
+        { "PinName": "DO (IO1)", "FunctionName": "MISO" },
+        { "PinName": "DI (IO0)", "FunctionName": "MOSI" }
+      ]
+    },
+    "BTC-MC7S-43": {
+      "USB_Data": [
+        { "PinName": "D+", "FunctionName": "USB Data+" },
+        { "PinName": "D-", "FunctionName": "USB Data-" }
+      ]
+    },
+    "TPS54202": {
+      "Buck_Node": [
+        { "PinName": "SW", "FunctionName": "Switch Output" },
+        { "PinName": "VIN", "FunctionName": "Voltage Input" }
+      ]
+    },
+    "TPRT9013": {
+      "LDO_Node": [
+        { "PinName": "VOUT", "FunctionName": "Regulated Output" },
+        { "PinName": "VIN", "FunctionName": "Voltage Input" }
+      ]
+    },
+    "AO3400A": {
+      "Switch_Gate": [
+        { "PinName": "G", "FunctionName": "Gate Control" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "HighSpeed_Gyro_SPI1_Check",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "HighSpeed_SPI1_.*",
+      "Slaves": [ { "ComponentID": "MPU-6000", "Interface": "SPI_Standard" } ]
+    },
+    {
+      "RuleName": "Blackbox_Flash_SPI2_Check",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "Blackbox_SPI2_.*",
+      "Slaves": [ { "ComponentID": "W25Q128JV", "Interface": "SPI_Standard" } ]
+    },
+    {
+      "RuleName": "USB_Direct_Link_Check",
+      "Type": "Bus_Pairing",
+      "MCU": "STM32F405RGT6",
+      "Target_Group_Pattern": "USB_Data_.*",
+      "Slaves": [ { "ComponentID": "BTC-MC7S-43", "Interface": "USB_Data" } ]
+    },
+    {
+      "RuleName": "VBAT_Resistor_Divider_to_ADC",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PC0" },
+        { "ComponentID": "R16", "PinName": "2" }
+      ]
+    },
+    {
+      "RuleName": "Buzzer_Driving_Logic",
+      "Type": "Resource_Allocation",
+      "MCU": "STM32F405RGT6",
+      "Target_Group": "General_Control_IO",
+      "Slaves": [ { "ComponentID": "AO3400A", "Interface": "Switch_Gate" } ]
+    },
+    {
+      "RuleName": "BEC_5V_to_MCU_LDO_Cascade",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TPS54202", "PinName": "SW" },
+        { "ComponentID": "TPRT9013", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "System_3V3_Core_Supply",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TPRT9013", "PinName": "VOUT" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDD" }
+      ]
+    }
+  ]
+}

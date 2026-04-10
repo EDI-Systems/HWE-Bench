@@ -1,0 +1,85 @@
+{
+  "ComponentID": "Rotary Encoder",
+  "ComponentType": "Incremental Rotary Encoder with Push-button Switch",
+  "Description": "This component is a mechanical incremental rotary encoder integrated with a momentary push-button switch. It converts the angular position or motion of a shaft into an analog or digital code. By rotating the shaft, it generates two-phase quadrature signals (Phase A and Phase B) that allow a microcontroller to detect both the direction and the magnitude of the rotation. The integrated switch is activated by pressing the shaft axially, commonly used for \"OK\" or \"Select\" functions in user interfaces.",
+  "KeyParameters": {
+    "**Pulses Per Revolution (PPR)": "** Typically 12, 20, or 24 PPR (model dependent).",
+    "**Switch Type": "** Momentary SPST (Single Pole Single Throw), Normally Open.",
+    "**Output Interface": "** 2-bit quadrature Gray code.",
+    "**Rotational Life": "** Typically 15,000 to 30,000 cycles."
+  },
+  "Pins": [
+    {
+      "PinNumber": "A",
+      "PinName": "Phase A",
+      "Functions": [
+        {
+          "FunctionName": "Output A",
+          "FunctionDescription": "Quadrature encoded output signal A"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "C",
+      "PinName": "Common",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common terminal for Phase A and Phase B"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "B",
+      "PinName": "Phase B",
+      "Functions": [
+        {
+          "FunctionName": "Output B",
+          "FunctionDescription": "Quadrature encoded output signal B"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "1",
+      "PinName": "SW1",
+      "Functions": [
+        {
+          "FunctionName": "Push Switch",
+          "FunctionDescription": "Terminal 1 of the integrated push-button switch"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SW2",
+      "Functions": [
+        {
+          "FunctionName": "Push Switch",
+          "FunctionDescription": "Terminal 2 of the integrated push-button switch"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "SHIELD",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Mechanical mounting tabs and EMI ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

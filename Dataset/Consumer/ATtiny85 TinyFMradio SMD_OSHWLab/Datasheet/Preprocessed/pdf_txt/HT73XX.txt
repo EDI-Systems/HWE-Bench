@@ -1,0 +1,23 @@
+Component ID: HT7333
+Component Type: Low-Dropout (LDO) Linear Voltage Regulator
+Description:
+The HT73XX-A series is a family of CMOS-based, low-dropout, high-precision, positive voltage linear regulators. They feature an ultra-low quiescent current, low output voltage temperature drift, and a high maximum input voltage of 12V, making them suitable for battery-powered devices, communication equipment, and portable instruments where stable voltage from a higher input source is required.
+
+Key Parameters:
+- **Output Voltage (VOUT)**: 1.8V, 2.5V, 2.7V, 3.0V, 3.3V, 3.6V, 5.0V (depending on specific model, e.g., HT7318-A, HT7325-A)
+- **Maximum Input Voltage (VIN)**: 12 V (Operating), 15 V (Absolute Maximum)
+- **Maximum Output Current (IOUT)**: 150 mA (min for HT7318-A), 180 mA (min for HT7325-A)
+- **Dropout Voltage (VDIF)**: 170 mV (Typical at IOUT=40mA)
+- **Quiescent / Ground Current (ISS)**: 2 µA (Typical), 3 µA (Max)
+- **Output Voltage Accuracy**: ±3%
+- **Line Regulation (ΔVOUT/(ΔVIN * VOUT))**: 0.2 %/V (Typical)
+- **Load Regulation (ΔVOUT)**: 45 mV (Typical, 1mA ≤ IOUT ≤ 60mA)
+- **Output Voltage Temperature Coefficient**: 50 ppm/°C (Typical) / +0.7 mV/°C (Typical for HT7318-A)
+- **Operating Temperature Range (Tw)**: -25°C to +70°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | GND      | Ground   | Chip Ground Terminal | Input   | Power (Ground)  |
+| 2          | VIN      | Input    | Power Supply Input Terminal | Input   | Power (Supply)  |
+| 3          | VOUT     | Output   | Regulated Voltage Output Terminal | Output  | Power (Output)  |

@@ -1,0 +1,25 @@
+Component ID: ATtiny85-20SU
+Component Type: 8-bit AVR Microcontroller
+Description: The ATtiny85 is a low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. By executing powerful instructions in a single clock cycle, the device achieves throughputs approaching 1 MIPS per MHz, allowing the system designer to optimize power consumption versus processing speed. It features 8KB of In-System Programmable Flash memory, 512B EEPROM, and 512B SRAM. Key peripherals include an 8-bit Timer/Counter with PWM, a high-speed 8-bit Timer/Counter with PWM and dead-time generator, a Universal Serial Interface (USI), and a 4-channel 10-bit ADC. It supports multiple sleep modes and offers six programmable I/O lines.
+
+Key Parameters:
+- Flash Memory 8 KB
+- EEPROM 512 Bytes
+- SRAM 512 Bytes
+- Speed Grade 20 MHz
+- Operating Voltage 2.7V to 5.5V
+- ADC 4-channel 10-bit
+- I/O Pins 6
+- Operating Temperature -40 to +85 Celsius
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | PB5 | Port B Bit 5 | ADC Input Channel 0 / Reset / debugWIRE | I/O | Digital/Analog |
+| 2 | PB3 | Port B Bit 3 | ADC Input Channel 3 / XTAL1 / CLKI | I/O | Digital/Analog |
+| 3 | PB4 | Port B Bit 4 | ADC Input Channel 2 / XTAL2 | I/O | Digital/Analog |
+| 4 | GND | Ground | Primary system ground reference | Power | 0V |
+| 5 | PB0 | Port B Bit 0 | MOSI / AIN0 / OC0A / OC1A / AREF | I/O | Digital/Analog |
+| 6 | PB1 | Port B Bit 1 | MISO / AIN1 / OC0B / OC1B | I/O | Digital/Analog |
+| 7 | PB2 | Port B Bit 2 | SCK / USCK / SCL / ADC1 / T0 / INT0 | I/O | Digital/Analog |
+| 8 | VCC | Supply Voltage | Positive power supply input | Power | 5V |

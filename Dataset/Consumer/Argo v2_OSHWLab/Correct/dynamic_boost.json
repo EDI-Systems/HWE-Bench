@@ -1,0 +1,41 @@
+{
+  "TSP61022 5V Boost Circuit": [
+    {
+      "net_id": "net_vsys",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "VIN" },
+        { "ComponentID": "TPS61022", "PinName": "MODE" }
+      ]
+    },
+    {
+      "net_id": "net_en",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "net_sw",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "SW" }
+      ]
+    },
+    {
+      "net_id": "net_vout",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "VOUT" }
+      ]
+    },
+    {
+      "net_id": "net_fb",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "FB" }
+      ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "TPS61022", "PinName": "GND" }
+      ]
+    }
+  ]
+}

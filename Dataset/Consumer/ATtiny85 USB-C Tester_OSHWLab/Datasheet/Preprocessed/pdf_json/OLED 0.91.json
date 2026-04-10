@@ -1,0 +1,61 @@
+{
+  "ComponentID": "OLED 0.91",
+  "ComponentType": "0.91-inch Monochrome OLED Display Module",
+  "Description": "This is a compact, monochrome graphic OLED (Organic Light-Emitting Diode) display module with a resolution of 128x32 pixels. It is characterized by high contrast and low power consumption since it does not require a backlight. The module is typically powered by the SSD1306 controller IC and communicates with a host microcontroller via a 2-wire I2C serial interface, making it ideal for small wearable devices and status indicators in embedded systems.",
+  "KeyParameters": {
+    "Display Resolution": "128 x 32 Pixels",
+    "Interface": "I2C (Inter-Integrated Circuit)",
+    "Operating Voltage": "3.3V to 5.0V",
+    "Driver IC": "SSD1306"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5.0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "I2C serial clock signal line"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "I2C bi-directional serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

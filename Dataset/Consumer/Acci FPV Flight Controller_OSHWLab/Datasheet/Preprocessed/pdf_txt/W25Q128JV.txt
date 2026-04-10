@@ -1,0 +1,28 @@
+Component ID: W25Q128JV  
+Component Type: Serial Flash Memory (SPI NOR Flash)  
+Description:  
+The W25Q128JV is a 3V, 128‑megabit (16‑megabyte) serial flash memory that supports standard SPI, Dual SPI, and Quad SPI interfaces for high‑speed data transfer. It is designed for code shadowing, execute‑in‑place (XIP), and data storage in space‑constrained systems. The memory is organized into 65,536 pages of 256 bytes each, with flexible erase options (4KB sector, 32KB/64KB block, or full chip erase). It operates from a single 2.7‑3.6V supply, features low‑power modes, and includes software/hardware write protection, security registers, and configurable status registers.
+
+Key Parameters:
+- Memory Capacity: 128 Mbit (16 MB)
+- Interface: Standard/Dual/Quad SPI
+- Supply Voltage: 2.7 V to 3.6 V
+- Operating Frequency (max): 133 MHz (SPI clock)
+- Page Size: 256 bytes
+- Erase Granularity: 4 KB sector, 32 KB block, 64 KB block, full chip
+- Standby Current: 1 µA (typical, power‑down)
+- Operating Temperature: Industrial & Industrial Plus Grade (‑40°C to +85°C / ‑40°C to +105°C)
+- Write/Erase Endurance: Typically 100,000 cycles per sector
+- Data Retention: >20 years
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | /CS      | Chip Select | Active‑low device select | Input | Digital, CMOS |
+| 2          | DO (IO1) | Data Output / IO1 | Serial data output in SPI mode; bidirectional I/O in Dual/Quad modes | I/O | Digital, CMOS |
+| 3          | /WP (IO2) | Write Protect / IO2 | Hardware write‑protect input; bidirectional I/O in Quad mode | I/O | Digital, CMOS |
+| 4          | GND      | Ground    | Power supply ground | Power | Ground |
+| 5          | DI (IO0) | Data Input / IO0 | Serial data input in SPI mode; bidirectional I/O in Dual/Quad modes | I/O | Digital, CMOS |
+| 6          | CLK      | Serial Clock | SPI clock input | Input | Digital, CMOS |
+| 7          | /HOLD (IO3) | Hold / IO3 | Pause serial communication without deselecting device; bidirectional I/O in Quad mode | I/O | Digital, CMOS |
+| 8          | VCC      | Power Supply | 2.7‑3.6V supply voltage | Power | Power |

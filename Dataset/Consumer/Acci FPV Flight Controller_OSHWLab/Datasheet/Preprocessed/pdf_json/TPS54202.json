@@ -1,0 +1,90 @@
+{
+  "ComponentID": "TPS54202",
+  "ComponentType": "Synchronous Step-Down (Buck) DC/DC Converter",
+  "Description": "The TPS54202 is a monolithic synchronous buck converter with a wide 4.5 V to 28 V input range, capable of delivering up to 2 A of continuous output current. It integrates both high-side and low-side MOSFETs, employs peak current-mode control with internal loop compensation, and operates at a fixed 500 kHz switching frequency. Key features include a 5 ms internal soft-start, frequency spread spectrum for reduced EMI, Advanced Eco‑mode for high light‑load efficiency, and comprehensive protection (cycle‑by‑cycle current limit, hiccup overcurrent, overvoltage, and thermal shutdown), all housed in a compact 6‑pin SOT‑23 package.",
+  "KeyParameters": {
+    "Input Voltage Range": "4.5 V to 28 V (operating)",
+    "Maximum Output Current": "2 A (continuous)",
+    "Switching Frequency": "500 kHz (fixed)",
+    "High‑Side MOSFET On‑Resistance": "148 mΩ",
+    "Low‑Side MOSFET On‑Resistance": "78 mΩ",
+    "Quiescent Current": "45 μA (typical)",
+    "Shutdown Current": "2 μA (typical)",
+    "Soft‑Start Time": "5 ms (internal)",
+    "Operating Temperature Range": "–40 °C to 125 °C (junction)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Source terminal of low‑side power NFET and ground for controller circuit. Connect sensitive feedback ground to this pin at a single point."
+        }
+      ],
+      "PinType": "–",
+      "ElectricalType": "Power Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch Node",
+          "FunctionDescription": "Connection between the high‑side and low‑side NFETs."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power Switch"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Supply",
+          "FunctionDescription": "Input voltage supply pin; drain terminal of the high‑side power NFET."
+        }
+      ],
+      "PinType": "–",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "FB",
+      "Functions": [
+        {
+          "FunctionName": "Feedback Input",
+          "FunctionDescription": "Converter feedback input. Connect to output voltage via an external resistor divider."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Enable pin. Floating the pin enables the device."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Control"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "BOOT",
+      "Functions": [
+        {
+          "FunctionName": "Bootstrap Supply",
+          "FunctionDescription": "Supply input for the high‑side NFET gate drive. Connect a 0.1 μF capacitor between BOOT and SW pins."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Bootstrap Supply"
+    }
+  ]
+}

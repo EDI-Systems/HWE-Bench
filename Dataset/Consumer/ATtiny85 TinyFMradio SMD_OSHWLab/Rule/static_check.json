@@ -1,0 +1,119 @@
+{
+  "MCU_Function_Groups": {
+    "ATtiny85": {
+      "System_Infrastructure": [
+        { "PinName": "VCC", "FunctionName": "3.3V Logic Supply" },
+        { "PinName": "GND", "FunctionName": "System Ground" },
+        { "PinName": "PB5", "FunctionName": "RESET#" }
+      ],
+      "I2C_Control_Bus": [
+        { "PinName": "PB0", "FunctionName": "SDA / USI Data Input" },
+        { "PinName": "PB2", "FunctionName": "SCL / USI Clock" }
+      ],
+      "Programming_Interface": [
+        { "PinName": "PB0", "FunctionName": "MOSI" },
+        { "PinName": "PB1", "FunctionName": "MISO" },
+        { "PinName": "PB2", "FunctionName": "SCK" },
+        { "PinName": "PB5", "FunctionName": "RESET" }
+      ],
+      "Rotary_Encoder_Input": [
+        { "PinName": "PB3", "FunctionName": "Encoder Phase A" },
+        { "PinName": "PB4", "FunctionName": "Encoder Phase B" }
+      ],
+      "User_Interaction": [
+        { "PinName": "PB1", "FunctionName": "Encoder Push Button" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "RDA5807MP": {
+      "I2C_Slave_Interface": [
+        { "PinName": "SDIO", "FunctionName": "Serial Data" },
+        { "PinName": "SCLK", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "OLED_Display": {
+      "I2C_Interface": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCL", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "ICSP-6": {
+      "Programming_Port": [
+        { "PinName": "MOSI", "FunctionName": "Master Out Slave In" },
+        { "PinName": "MISO", "FunctionName": "Master In Slave Out" },
+        { "PinName": "SCK", "FunctionName": "Serial Clock" },
+        { "PinName": "RESET", "FunctionName": "Reset Signal" }
+      ]
+    },
+    "Rotary Encoder": {
+      "Quadrature_Output": [
+        { "PinName": "Phase A", "FunctionName": "Output A" },
+        { "PinName": "Phase B", "FunctionName": "Output B" }
+      ],
+      "Push_Switch": [
+        { "PinName": "SW1", "FunctionName": "Terminal 1" }
+      ]
+    },
+    "XPT8871": {
+      "Audio_Input": [
+        { "PinName": "IN", "FunctionName": "Inverting Input" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_I2C_Shared_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85",
+      "Target_Group_Pattern": "I2C_Control_Bus",
+      "Slaves": [
+        { "ComponentID": "RDA5807MP", "Interface": "I2C_Slave_Interface" },
+        { "ComponentID": "OLED_Display", "Interface": "I2C_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Check_Firmware_Programming_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85",
+      "Target_Group_Pattern": "Programming_Interface",
+      "Slaves": [
+        { "ComponentID": "ICSP-6", "Interface": "Programming_Port" }
+      ]
+    },
+    {
+      "RuleName": "Check_Encoder_Rotation_Sensors",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85",
+      "Target_Group_Pattern": "Rotary_Encoder_Input",
+      "Slaves": [
+        { "ComponentID": "Rotary Encoder", "Interface": "Quadrature_Output" }
+      ]
+    },
+    {
+      "RuleName": "Check_Encoder_Click_Interaction",
+      "Type": "Resource_Allocation",
+      "MCU": "ATtiny85",
+      "Target_Group": "User_Interaction",
+      "Slaves": [
+        { "ComponentID": "Rotary Encoder", "Interface": "Push_Switch" }
+      ]
+    },
+    {
+      "RuleName": "Check_System_3V3_Power_Cascade",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "HT7333", "PinName": "VOUT" },
+        { "ComponentID": "ATtiny85", "PinName": "VCC" }
+      ]
+    },
+    {
+      "RuleName": "Check_Audio_Signal_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "RDA5807MP", "PinName": "LOUT" },
+        { "ComponentID": "XPT8871", "PinName": "IN" }
+      ]
+    }
+  ]
+}

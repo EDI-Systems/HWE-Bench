@@ -1,0 +1,101 @@
+{
+  "ComponentID": "TPS61022",
+  "ComponentType": "Boost Converter (DC-DC Switching Regulator)",
+  "Description": "The TPS61022 is a high-efficiency, monolithic synchronous boost converter designed to generate a stable output voltage (2.2 V to 5.5 V) from an extremely low input voltage source (0.5 V to 5.5 V). It integrates two power MOSFETs, operates at a high switching frequency (0.6 MHz to 1 MHz), and is optimized for applications like supercapacitor backup and battery-powered devices where the input can dip very low. It features selectable power-saving modes, comprehensive protection, and a very small solution size.",
+  "KeyParameters": {
+    "Input Voltage Range": "0.5 V to 5.5 V",
+    "Output Voltage Setting Range": "2.2 V to 5.5 V",
+    "Switch Current Limit (Valley)": "6.5 A (min)",
+    "Switching Frequency": "1 MHz (VIN > 1.5 V), 0.6 MHz (VIN < 1 V)",
+    "Quiescent Current": "26 µA (Light Load)",
+    "Peak Efficiency": "94.7% (at VIN=3.6V, VOUT=5V, IOUT=3A)",
+    "MOSFET On-Resistance": "12 mΩ (LS) / 18 mΩ (HS)",
+    "Operating Junction Temperature": "-40°C to 150°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for the IC. The ground pad of the output capacitor must be placed close to this pin."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch Node",
+          "FunctionDescription": "Connection to the drain of the internal low-side power MOSFET and the source of the internal high-side power MOSFET. This is the power switching node."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output Voltage",
+          "FunctionDescription": "Boost converter output. The VOUT pad of the output capacitor must be placed close to this pin."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "FB",
+      "Functions": [
+        {
+          "FunctionName": "Feedback",
+          "FunctionDescription": "Voltage feedback input for setting the output voltage via an external resistor divider."
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Logic input to enable (high) or disable/shutdown (low) the device."
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "MODE",
+      "Functions": [
+        {
+          "FunctionName": "Mode Select",
+          "FunctionDescription": "Logic input to select light-load operation mode: high for Forced PWM, low for Auto PFM."
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Voltage",
+          "FunctionDescription": "Power supply input pin for the IC."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power Input"
+    }
+  ]
+}

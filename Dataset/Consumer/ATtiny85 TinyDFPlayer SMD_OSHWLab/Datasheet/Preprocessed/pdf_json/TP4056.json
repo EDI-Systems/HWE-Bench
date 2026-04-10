@@ -1,0 +1,115 @@
+{
+  "ComponentID": "TP4056",
+  "ComponentType": "Single-Cell Lithium-Ion Battery Linear Charger IC",
+  "Description": "The TP4056 is a complete constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. It integrates a power MOSFET, reverse-blocking diode, and current sensing, requiring minimal external components. It features programmable charging current up to 1A, a fixed 4.2V float voltage, automatic charge termination (C/10), and automatic recharge. Additional functions include thermal regulation, under-voltage lockout (UVLO), battery temperature monitoring, and status indication via two open-drain outputs. It operates from a USB or adapter power supply and enters a low-current sleep mode when input power is removed.",
+  "KeyParameters": {
+    "**Maximum Charging Current**": "1000 mA (Programmable via external resistor)",
+    "**Float (Charge) Voltage**": "4.2 V (±1% accuracy)",
+    "**Input Supply Voltage (VCC) Range**": "4.0 V to 6.5 V (Operating)",
+    "**Battery Under-Voltage Trickle Charge Threshold**": "2.9 V (Typical)",
+    "**Charge Termination Threshold**": "C/10 (Current falls to 1/10 of programmed value)",
+    "**Standby Quiescent Current**": "50 µA (Typical)",
+    "**Shutdown Quiescent Current**": "35 µA (Typical)",
+    "**Battery Reverse Leakage Current**": "1 µA (Typical, Sleep Mode, VCC=0V)",
+    "**Thermal Regulation**": "Yes (Reduces charge current to limit die temperature)",
+    "**Operating Ambient Temperature**": "-40°C to +85°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "TEMP",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Battery Temperature Sense Input (Connect to NTC network or ground)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "High-Impedance"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PROG",
+      "Functions": [
+        {
+          "FunctionName": "I/O",
+          "FunctionDescription": "Constant-Charge Current Program and Charge Current Monitor"
+        }
+      ],
+      "PinType": "Analog I/O",
+      "ElectricalType": "Sink/Source"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Ground Reference"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive Input Supply Voltage (USB/Adapter)"
+        }
+      ],
+      "PinType": "Power Supply",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Charger Output (Connect to Battery Positive Terminal)"
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "STDBY",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Open-Drain Charge Complete Status Output (Active-Low when done)"
+        }
+      ],
+      "PinType": "Open-Drain Output",
+      "ElectricalType": "Digital Output"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "CHRG",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Open-Drain Charge Status Output (Active-Low during charging)"
+        }
+      ],
+      "PinType": "Open-Drain Output",
+      "ElectricalType": "Digital Output"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Chip Enable Input (Active High; Pull low to disable charger)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Digital Input"
+    }
+  ]
+}

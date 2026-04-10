@@ -1,0 +1,115 @@
+{
+  "ComponentID": "XPT8871",
+  "ComponentType": "Monolithic Audio Power Amplifier (Class AB/D Switchable)",
+  "Description": "The XPT8871 is a low-voltage, filterless, Class AB/D switchable audio power amplifier designed for portable applications. It features integrated feedback resistors, requires minimal external components (no output coupling capacitors, bootstrap capacitors, or snubber networks), and is designed to be free from FM interference. It provides a bridge-tied load (BTL) output, includes built-in thermal, undervoltage, and overcurrent protection, and supports a shutdown mode for low power consumption.",
+  "KeyParameters": {
+    "Supply Voltage Range (Recommended Operating)": "2.0 V to 5.5 V",
+    "Maximum Output Power (THD+N <10%, 2Ω BTL, 5V)": "5 W",
+    "Quiescent Current (Shutdown Mode)": "Low leakage (implied)",
+    "Gain Bandwidth Product": "2.5 MHz",
+    "Operating Mode Selection": "Class AB / Class D selectable via MODE pin",
+    "Thermal Protection": "Internal automatic shutdown",
+    "Package Thermal Resistance (θJA, SOP)": "140 °C/W",
+    "Total Harmonic Distortion + Noise (THD+N, Audio Band)": "<1%",
+    "Load Compatibility": "2Ω, 3Ω, 4Ω (BTL)",
+    "Logic Input High Voltage (VDD=5V)": "1.5 V (Typ.)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SD",
+      "Functions": [
+        {
+          "FunctionName": "Shutdown Control",
+          "FunctionDescription": "Powers down the device when driven high. Active high."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "BYP",
+      "Functions": [
+        {
+          "FunctionName": "Bypass",
+          "FunctionDescription": "Connection for internal common-mode voltage bypass capacitor."
+        }
+      ],
+      "PinType": "Analog",
+      "ElectricalType": "Passive"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "MODE",
+      "Functions": [
+        {
+          "FunctionName": "Mode Select",
+          "FunctionDescription": "Selects between Class AB and Class D operation modes."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "IN",
+      "Functions": [
+        {
+          "FunctionName": "Inverting Input",
+          "FunctionDescription": "Inverting input for the amplifier."
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VON",
+      "Functions": [
+        {
+          "FunctionName": "Negative Output",
+          "FunctionDescription": "Negative analog output (BTL)."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Positive power supply input."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Supply"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VOP",
+      "Functions": [
+        {
+          "FunctionName": "Positive Output",
+          "FunctionDescription": "Positive analog output (BTL)."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Output"
+    }
+  ]
+}

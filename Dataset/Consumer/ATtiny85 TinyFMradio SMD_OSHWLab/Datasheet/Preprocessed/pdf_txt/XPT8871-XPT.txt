@@ -1,0 +1,27 @@
+Component ID: XPT8871
+Component Type: Monolithic Audio Power Amplifier (Class AB/D Switchable)
+Description: The XPT8871 is a low-voltage, filterless, Class AB/D switchable audio power amplifier designed for portable applications. It features integrated feedback resistors, requires minimal external components (no output coupling capacitors, bootstrap capacitors, or snubber networks), and is designed to be free from FM interference. It provides a bridge-tied load (BTL) output, includes built-in thermal, undervoltage, and overcurrent protection, and supports a shutdown mode for low power consumption.
+
+Key Parameters:
+- Supply Voltage Range (Recommended Operating): 2.0 V to 5.5 V
+- Maximum Output Power (THD+N <10%, 2Ω BTL, 5V): 5 W
+- Quiescent Current (Shutdown Mode): Low leakage (implied)
+- Gain Bandwidth Product: 2.5 MHz
+- Operating Mode Selection: Class AB / Class D selectable via MODE pin
+- Thermal Protection: Internal automatic shutdown
+- Package Thermal Resistance (θJA, SOP): 140 °C/W
+- Total Harmonic Distortion + Noise (THD+N, Audio Band): <1%
+- Load Compatibility: 2Ω, 3Ω, 4Ω (BTL)
+- Logic Input High Voltage (VDD=5V): 1.5 V (Typ.)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SD | Shutdown Control | Powers down the device when driven high. Active high. | Digital Input | CMOS/TTL |
+| 2 | BYP | Bypass | Connection for internal common-mode voltage bypass capacitor. | Analog | Passive |
+| 3 | MODE | Mode Select | Selects between Class AB and Class D operation modes. | Digital Input | CMOS/TTL |
+| 4 | IN | Inverting Input | Inverting input for the amplifier. | Analog Input | Signal |
+| 5 | VON | Negative Output | Negative analog output (BTL). | Power Output | Output |
+| 6 | VDD | Power Supply | Positive power supply input. | Power | Supply |
+| 7 | GND | Ground | Power supply ground. | Power | Ground |
+| 8 | VOP | Positive Output | Positive analog output (BTL). | Power Output | Output |

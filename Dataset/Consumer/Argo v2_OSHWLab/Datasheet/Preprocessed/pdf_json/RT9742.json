@@ -1,0 +1,76 @@
+{
+  "ComponentID": "RT9742",
+  "ComponentType": "High-Side Power Switch / Load Switch with Integrated MOSFET",
+  "Description": "The RT9742 is a low-voltage, single N-MOSFET high-side power switch IC designed primarily for USB power management. It functions as a digitally controlled switch between a power supply (2.7V to 6V) and a load, integrating protection features including over-current, short-circuit, and thermal shutdown with foldback. It includes a fault flag output (FLG) to signal issues to a host controller and features an embedded delay to prevent false triggering from inrush currents.",
+  "KeyParameters": {
+    "Switch On-Resistance (R_DS(ON))": "70mΩ / 55mΩ (typical)",
+    "Operating Input Voltage Range (V_IN)": "2.7V to 6V",
+    "Maximum Continuous Switch Current (I_OUT)": "3A / 2.5A / 2A / 1.5A / 1A / 0.5A (variant-dependent)",
+    "Protection Features": "Over-Current Protection (OCP), Short-Circuit Protection, Thermal Shutdown with Foldback, Under-Voltage Lockout (UVLO)",
+    "Control Logic": "Enable (EN) pin with Active-High or Active-Low variants (part-dependent)",
+    "Additional Feature": "Integrated Output Discharge Function (variant-dependent)",
+    "Package Options": "TSOT-23-5, TSOT-23-5 (FC), SOT-23-3"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "IN",
+      "Functions": [
+        {
+          "FunctionName": "Power Input",
+          "FunctionDescription": "Input supply voltage (2.7V to 6V)."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable Control",
+          "FunctionDescription": "Logic input to enable/disable the power switch. Polarity is variant-dependent (Active High or Active Low)."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Control Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "FLG",
+      "Functions": [
+        {
+          "FunctionName": "Fault Flag",
+          "FunctionDescription": "Open-drain output. Pulls low to indicate a fault condition (over-current, thermal shutdown, UVLO)."
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain Output"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "OUT",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "Switched output to the load."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Output"
+    }
+  ]
+}

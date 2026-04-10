@@ -1,0 +1,37 @@
+Component ID: USB
+Component Type: USB Type-C Receptacle Connector
+Description:
+This is a USB Type-C female receptacle connector designed for surface-mount (SMT) applications. It provides a complete USB 3.1/Type-C interface, including four high-speed differential pairs (TX/RX), two sideband use (SBU) lines, two configuration channel (CC) lines for power delivery and cable orientation detection, multiple VBUS and GND pins for power distribution, and a robust metal shell for shielding and mechanical retention.
+
+Key Parameters:
+- **Voltage Rating (AC)**: 20 VAC
+- **Rated Current**: 5 A
+- **Operating Temperature**: -40°C to +85°C
+- **Initial Contact Resistance**: 40 mΩ Max.
+- **Final Contact Resistance**: 50 mΩ Max.
+- **Withstanding Voltage**: 100 VAC for 1 minute
+- **Insulation Resistance**: 100 MΩ Min. @ 500 VDC
+- **Insertion Force**: 5 N to 20 N (cycles 1-10,000)
+- **Withdrawal Force**: 8 N to 20 N (cycles 1-1,000); 6 N to 20 N (cycles 1,001-10,000)
+- **Mechanical Durability**: 10,000 mating cycles
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | GND | Ground | Ground connection for shielding/power return | SMT Pad | Power |
+| A4 | VBUS | Power | Bus power (+5V default, up to 20V via PD) | SMT Pad | Power |
+| A5 | CC1 | Configuration Channel 1 | Cable orientation detection & Power Delivery communication | SMT Pad | Analog/Digital |
+| A6 | DP1 | USB 2.0 Differential Pair Positive | USB 2.0 data positive (lane 1) | SMT Pad | Differential Signal |
+| A7 | DN1 | USB 2.0 Differential Pair Negative | USB 2.0 data negative (lane 1) | SMT Pad | Differential Signal |
+| A8 | SBU1 | Sideband Use 1 | Alternate mode sideband signal (e.g., DisplayPort AUX) | SMT Pad | Analog/Digital |
+| A9 | VBUS | Power | Bus power (+5V default, up to 20V via PD) | SMT Pad | Power |
+| A12 | GND | Ground | Ground connection for shielding/power return | SMT Pad | Power |
+| B1 | GND | Ground | Ground connection for shielding/power return | SMT Pad | Power |
+| B4 | VBUS | Power | Bus power (+5V default, up to 20V via PD) | SMT Pad | Power |
+| B5 | CC2 | Configuration Channel 2 | Cable orientation detection & Power Delivery communication | SMT Pad | Analog/Digital |
+| B6 | DP2 | USB 2.0 Differential Pair Positive | USB 2.0 data positive (lane 2) | SMT Pad | Differential Signal |
+| B7 | DN2 | USB 2.0 Differential Pair Negative | USB 2.0 data negative (lane 2) | SMT Pad | Differential Signal |
+| B8 | SBU2 | Sideband Use 2 | Alternate mode sideband signal (e.g., DisplayPort AUX) | SMT Pad | Analog/Digital |
+| B9 | VBUS | Power | Bus power (+5V default, up to 20V via PD) | SMT Pad | Power |
+| B12 | GND | Ground | Ground connection for shielding/power return | SMT Pad | Power |
+| Shell | SHELL | Shield / Shell | Metal outer shell for EMI shielding and mechanical retention | Through-hole / SMT Tab | Shield / Ground |

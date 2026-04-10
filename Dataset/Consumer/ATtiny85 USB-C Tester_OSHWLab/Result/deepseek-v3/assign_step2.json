@@ -1,0 +1,596 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Output & Load Connection",
+      "Function Description": "Provides a clean, sensed power output to the device under test (load) and includes necessary filtering.",
+      "Signal Sources": "High-Side Current/Power Sensing Module output.",
+      "Signal Destinations": "External load (via USB-C or terminal connectors).",
+      "Implementation Logic": "This is the output stage after the shunt resistor and sensing IC. It may include output capacitors for stability and low-ESR filtering. The power is delivered to a USB-C receptacle or screw terminals to connect the load, completing the pass-through measurement path.",
+      "Signal Chain": "The power output and load connection module receives a sensed power signal from the High-Side Current/Power Sensing Module (e.g., INA219 output). This signal, representing the power rail to be delivered to the load, is first filtered for stability and noise reduction using low-ESR output capacitors. The clean power is then routed to the load connection interface, which is a USB Type-C receptacle (USB-TYPE-C-6PIN) designed for power delivery. This completes the pass-through measurement path, allowing the external device under test (load) to be powered and measured.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "Functional Position": "Load Connection Interface",
+          "Recommendation Reason": "Provides a standardized, reversible USB Type-C connector for delivering power to the external load. It supports USB Power Delivery (PD) negotiation via CC pins, enabling higher power levels if needed, and is suitable for connecting to modern devices.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "POWER_OUT"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VBUS",
+              "Net": "POWER_OUT"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CC1",
+              "Net": "CC1"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "CC2",
+              "Net": "CC2"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHIELD",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "USB-C Power Input & Regulation",
+      "Function Description": "Receives power from a USB-C source, provides reverse polarity protection, and regulates the input voltage to a stable system voltage rail for all internal circuitry.",
+      "Signal Sources": "USB-C connector (VBUS, GND).",
+      "Signal Destinations": "High-Side Current/Power Sensing Module, Linear Voltage Regulator.",
+      "Implementation Logic": "Power enters via the USB-C connector. A protection circuit (e.g., using a P-MOSFET) prevents damage from incorrect connections. The raw VBUS is then fed to the sensing stage and to a linear regulator (e.g., 3.3V or 5V LDO) to create a stable, clean voltage for the microcontroller, display, and sensing IC's digital logic.",
+      "Signal Chain": "Power enters from the USB-C connector's VBUS pins. This raw input first passes through a reverse polarity protection circuit (not detailed in the library, but implied as a required external P-MOSFET stage). The protected VBUS rail then splits into two paths: 1) It feeds directly into the high-side current/power sensing module (e.g., INA219) for monitoring input current and voltage. 2) It is supplied to a linear voltage regulator (e.g., 78L05) which steps it down to a stable, clean system voltage (e.g., 5V). This regulated output powers the microcontroller (ATtiny85), the display (OLED 0.91), and the digital supply for the sensing IC. The microcontroller communicates with the current/power monitor and the display via I2C to read measurements and output status. The USB-C CC pins are for power negotiation but are not directly connected to other library components in this basic power input chain.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "Functional Position": "Power Input Connector",
+          "Recommendation Reason": "Provides the physical interface for USB-C power input, including VBUS, GND, and CC pins for basic power delivery.",
+          "Pin Connections": {
+            "1": "GND (System Ground)",
+            "2": "VBUS (To Protection Circuit Input)",
+            "3": "CC1 (To external PD controller or pull-down resistor, if needed)",
+            "4": "CC2 (To external PD controller or pull-down resistor, if needed)",
+            "5": "VBUS (To Protection Circuit Input, parallel with Pin 2)",
+            "6": "GND (System Ground)",
+            "0": "SHIELD (System Ground/Chassis Ground)"
+          }
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Linear Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 5V output from the protected VBUS input for powering digital logic and peripherals, suitable for low-power applications.",
+          "Pin Connections": {
+            "1": "INPUT (Connected to protected VBUS rail)",
+            "2": "GND (System Ground)",
+            "3": "OUTPUT (Regulated 5V System Rail)"
+          }
+        },
+        {
+          "ComponentID": "INA219",
+          "Functional Position": "High-Side Current/Power Sensing",
+          "Recommendation Reason": "Monitors the input current and voltage on the protected VBUS rail, providing digital readings via I2C to the microcontroller for power management.",
+          "Pin Connections": {
+            "1": "IN+ (Connected to protected VBUS rail, upstream of load)",
+            "2": "IN- (Connected to protected VBUS rail, downstream to load/regulator input)",
+            "3": "GND (System Ground)",
+            "4": "VS (Connected to Regulated 5V System Rail from 78L05)",
+            "5": "SCL (Connected to Microcontroller I2C SCL line)",
+            "6": "SDA (Connected to Microcontroller I2C SDA line)",
+            "7": "A0 (Connected to GND or VCC to set I2C address)",
+            "8": "A1 (Connected to GND or VCC to set I2C address)"
+          }
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Microcontroller",
+          "Recommendation Reason": "Controls the system, reads data from the INA219 via I2C, and drives the OLED display for user interface.",
+          "Pin Connections": {
+            "1": "PB5 (Configured as GPIO or ADC input, if needed)",
+            "2": "PB3 (Configured as GPIO or ADC input, if needed)",
+            "3": "PB4 (Configured as GPIO or ADC input, if needed)",
+            "4": "GND (System Ground)",
+            "5": "PB0 (Configured as I2C SDA, connected to INA219 SDA and OLED SDA)",
+            "6": "PB1 (Configured as I2C SCL, connected to INA219 SCL and OLED SCK)",
+            "7": "PB2 (Configured as GPIO, e.g., for status LED or control)",
+            "8": "VCC (Connected to Regulated 5V System Rail from 78L05)"
+          }
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "Functional Position": "User Display",
+          "Recommendation Reason": "Provides a visual interface to show power input parameters (voltage, current, power) read by the microcontroller.",
+          "Pin Connections": {
+            "1": "GND (System Ground)",
+            "2": "VCC (Connected to Regulated 5V System Rail from 78L05)",
+            "3": "SCK (Connected to Microcontroller I2C SCL line, from PB1)",
+            "4": "SDA (Connected to Microcontroller I2C SDA line, from PB0)"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "OLED Display Module",
+      "Function Description": "Provides a visual interface to show real-time measurements (voltage, current, power), accumulated energy, and system status/mode.",
+      "Signal Sources": "Microcontroller (I2C SDA, SCL).",
+      "Signal Destinations": "User (visual output).",
+      "Implementation Logic": "A small OLED display (e.g., SSD1306 based, 128x64) is connected to the same I2C bus as the sensing IC. The microcontroller sends formatted text and graphics commands to the display driver to update the readings in real-time.",
+      "Signal Chain": "The OLED Display Module functions as a visual output interface for real-time measurement data. The signal chain originates from the microcontroller's I2C bus. The microcontroller reads voltage, current, and power data from the INA219 current/power monitor via the shared I2C bus (SDA, SCL). It then formats this data into text/graphics commands and transmits them over the same I2C bus to the OLED display module. The OLED's SSD1306 controller receives these commands and drives the 128x32 pixel matrix to produce the visual output for the user. Power is supplied from a USB Type-C source, regulated to 5V by the 78L05 LDO to provide stable power for the microcontroller, INA219, and OLED display.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "Functional Position": "Power Input Connector",
+          "Recommendation Reason": "Provides a standardized USB Type-C power input for the module, supporting power delivery negotiation via CC pins.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VBUS",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CC1",
+              "Net": "CC1"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "CC2",
+              "Net": "CC2"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHIELD",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Regulates the unregulated input voltage (VIN_UNREG) from the USB Type-C connector to a stable 5V output, suitable for powering the microcontroller, INA219, and OLED display.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "INPUT",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OUTPUT",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Controller",
+          "Recommendation Reason": "Acts as the main microcontroller, reading data from the INA219 via I2C and controlling the OLED display by sending formatted commands over the same I2C bus.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "SCL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "INA219",
+          "Functional Position": "Current and Power Monitor",
+          "Recommendation Reason": "Measures shunt voltage and bus voltage to calculate current, power, and accumulated energy, providing digital readings to the microcontroller via I2C.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN+",
+              "Net": "SHUNT_POS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "IN-",
+              "Net": "SHUNT_NEG"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SCL",
+              "Net": "SCL"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SDA",
+              "Net": "SDA"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "A1",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "Functional Position": "Visual Display Output",
+          "Recommendation Reason": "Provides a monochrome OLED display to show real-time measurements, accumulated energy, and system status as controlled by the microcontroller via I2C.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "SDA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Side Current/Power Sensing",
+      "Function Description": "Measures the voltage drop across a precision shunt resistor to calculate the current flowing to the load, and measures the bus voltage, providing digitized data for power calculations.",
+      "Signal Sources": "Raw power from USB-C Input, voltage across the 8mΩ shunt resistor.",
+      "Signal Destinations": "Microcontroller (via I2C bus).",
+      "Implementation Logic": "A dedicated current/power monitor IC (e.g., INA219, INA226) is placed in the high-side path. It measures the small differential voltage across the precision 8mΩ shunt resistor to calculate current, and measures the bus voltage relative to ground. The IC internally digitizes these values and makes them available via an I2C interface.",
+      "Signal Chain": "The USB Type-C connector (USB-TYPE-C-6PIN) provides raw power (VBUS) and ground (GND) from an external source. The VBUS line connects to the high-side of the load path and also to the IN+ pin of the INA219 current/power monitor. A precision 8mΩ shunt resistor is placed in series between the INA219's IN- pin and the load's positive terminal. The INA219 measures the differential voltage across this shunt to calculate current, and measures the bus voltage (at its IN+ pin relative to its GND) to calculate power. The INA219 is powered by a regulated 5V supply from the 78L05 LDO regulator. The 78L05 takes the raw VBUS input and regulates it down to a stable 5V for the INA219 and the ATtiny85 microcontroller. The ATtiny85 communicates with the INA219 via the I2C bus (SCL, SDA) to read the digitized current, bus voltage, and power data. Optionally, the ATtiny85 can also drive an OLED display (OLED 0.91) via the same I2C bus to show the measurements. All components share a common ground reference.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "Functional Position": "Power Input Connector",
+          "Recommendation Reason": "Provides the raw USB-C power input (VBUS) which is the source for both the load and the system power supply. Its simplified 6-pin configuration is suitable for power-only applications.",
+          "Pin Connections": {
+            "Pin 2 (VBUS)": "Connected to 78L05 Pin 1 (INPUT) and INA219 Pin 1 (IN+)",
+            "Pin 5 (VBUS)": "Connected to 78L05 Pin 1 (INPUT) and INA219 Pin 1 (IN+)",
+            "Pin 1 (GND)": "Connected to system ground",
+            "Pin 6 (GND)": "Connected to system ground",
+            "Pin 3 (CC1)": "Leave open or connect per USB PD requirements (not used for basic power)",
+            "Pin 4 (CC2)": "Leave open or connect per USB PD requirements (not used for basic power)",
+            "Pin 0 (SHIELD)": "Connected to system ground"
+          }
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "System Voltage Regulator",
+          "Recommendation Reason": "Regulates the variable VBUS input (up to 20V) down to a stable 5V required to power the INA219 and ATtiny85 microcontroller.",
+          "Pin Connections": {
+            "Pin 1 (INPUT)": "Connected to USB-TYPE-C-6PIN Pin 2 and Pin 5 (VBUS)",
+            "Pin 2 (GND)": "Connected to system ground",
+            "Pin 3 (OUTPUT)": "Connected to INA219 Pin 4 (VS) and ATtiny85 Pin 8 (VCC)"
+          }
+        },
+        {
+          "ComponentID": "INA219",
+          "Functional Position": "High-Side Current/Power Monitor",
+          "Recommendation Reason": "Specifically designed to measure shunt voltage drop and bus voltage, with internal digitization and I2C interface, perfectly matching the module's functional description.",
+          "Pin Connections": {
+            "Pin 1 (IN+)": "Connected to USB-TYPE-C-6PIN Pin 2 and Pin 5 (VBUS) (high-side bus voltage)",
+            "Pin 2 (IN-)": "Connected to one terminal of the external 8mΩ shunt resistor (other terminal goes to load positive)",
+            "Pin 3 (GND)": "Connected to system ground",
+            "Pin 4 (VS)": "Connected to 78L05 Pin 3 (OUTPUT) for 5V supply",
+            "Pin 5 (SCL)": "Connected to ATtiny85 Pin 5 (PB0) configured as I2C SCL",
+            "Pin 6 (SDA)": "Connected to ATtiny85 Pin 6 (PB1) configured as I2C SDA",
+            "Pin 7 (A0)": "Connected to system ground (sets I2C address bit 0 low)",
+            "Pin 8 (A1)": "Connected to system ground (sets I2C address bit 1 low)"
+          }
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Controller",
+          "Recommendation Reason": "Microcontroller with I2C capability (via USI) to read data from the INA219 and optionally drive a display. Low-power and compact.",
+          "Pin Connections": {
+            "Pin 1 (PB5)": "Configured as RESET (with pull-up resistor) or left as GPIO",
+            "Pin 2 (PB3)": "Configured as GPIO (optional use)",
+            "Pin 3 (PB4)": "Configured as GPIO (optional use)",
+            "Pin 4 (GND)": "Connected to system ground",
+            "Pin 5 (PB0)": "Configured as I2C SCL, connected to INA219 Pin 5 (SCL) and OLED 0.91 Pin 3 (SCK)",
+            "Pin 6 (PB1)": "Configured as I2C SDA, connected to INA219 Pin 6 (SDA) and OLED 0.91 Pin 4 (SDA)",
+            "Pin 7 (PB2)": "Configured as GPIO (optional use)",
+            "Pin 8 (VCC)": "Connected to 78L05 Pin 3 (OUTPUT) for 5V supply"
+          }
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "Functional Position": "Optional Display",
+          "Recommendation Reason": "Provides a visual output for the current, voltage, and power readings via I2C, enhancing user interface.",
+          "Pin Connections": {
+            "Pin 1 (GND)": "Connected to system ground",
+            "Pin 2 (VCC)": "Connected to 78L05 Pin 3 (OUTPUT) for 5V supply",
+            "Pin 3 (SCK)": "Connected to ATtiny85 Pin 5 (PB0) (I2C SCL line)",
+            "Pin 4 (SDA)": "Connected to ATtiny85 Pin 6 (PB1) (I2C SDA line)"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Microcontroller & User Interface",
+      "Function Description": "The central processing unit that reads sensor data, calculates real-time voltage, current, and power, manages the display output, and handles user input from tactile switches.",
+      "Signal Sources": "Sensing Module (I2C SDA, SCL), User Buttons (GPIO inputs).",
+      "Signal Destinations": "OLED Display Module (I2C SDA, SCL), Internal logic for calculations and mode control.",
+      "Implementation Logic": "An ATtiny85 microcontroller runs the main firmware. It periodically queries the sensing IC via I2C for voltage and current data. It performs calculations (e.g., Power = V * I) and manages the system state. User buttons connected to its GPIO pins are polled or use interrupts to trigger actions like resetting energy counters or cycling display modes (e.g., V/I/P/Energy).",
+      "Signal Chain": "The microcontroller module operates as the central processing unit. It receives power from a USB Type-C source via a power-only USB Type-C receptacle, which provides an unregulated DC input voltage (VBUS). This input voltage is regulated to a stable 5V by a 78L05 linear voltage regulator to power the ATtiny85 microcontroller, the INA219 current/power monitor, and the OLED display. The ATtiny85 microcontroller runs the main firmware. It communicates with the INA219 sensor via a shared I2C bus (SDA, SCL) to periodically query for shunt voltage and bus voltage data. The microcontroller performs calculations (e.g., current, power, energy) internally. It also manages the OLED display by sending graphics data and commands over the same I2C bus. User tactile buttons are connected to available GPIO pins on the ATtiny85, which are polled or use interrupts to detect presses, triggering actions like resetting energy counters or cycling display modes (V/I/P/Energy). The system ground is common throughout.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "Functional Position": "Power Input Connector",
+          "Recommendation Reason": "Provides a standardized USB Type-C power input port for the system, capable of delivering the required voltage and current from a USB Power Delivery source.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VBUS",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHIELD",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CC1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "CC2",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "78L05",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Regulates the unregulated input voltage from the USB connector to a stable 5V, required by the ATtiny85, INA219, and OLED display. Provides up to 100mA, sufficient for this low-power module.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "INPUT",
+              "Net": "VIN_UNREG"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "OUTPUT",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Acts as the main processing unit. It reads sensor data via I2C, performs calculations, drives the OLED display via I2C, and handles user button inputs via GPIO. Its low power consumption and sufficient I/O make it ideal.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "BUTTON_1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "BUTTON_2"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "INA219",
+          "Functional Position": "Current and Power Sensor",
+          "Recommendation Reason": "Measures high-side current, bus voltage, and calculates power via an external shunt. Communicates digitized data to the microcontroller over I2C, which is essential for the module's sensing function.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN+",
+              "Net": "SHUNT_P"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "IN-",
+              "Net": "SHUNT_N"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "A1",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "Functional Position": "User Interface Display",
+          "Recommendation Reason": "Provides a monochrome graphical display to show real-time voltage, current, power, and energy readings. Uses I2C interface, minimizing required GPIO from the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

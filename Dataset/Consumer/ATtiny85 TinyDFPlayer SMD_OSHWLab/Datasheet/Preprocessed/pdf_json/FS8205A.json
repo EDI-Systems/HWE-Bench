@@ -1,0 +1,53 @@
+{
+  "ComponentID": "FS8205A",
+  "ComponentType": "N-Channel Power MOSFET",
+  "Description": "This is an N-Channel MOSFET utilizing Trench Power Technology, optimized for fast-switching applications such as synchronous rectification in DC/DC and AC/DC converters. It features a low on-state resistance (Rds(on)) and low gate charge, enabling high efficiency and performance in power conversion circuits.",
+  "KeyParameters": {
+    "Drain-Source Voltage (Vds)": "20 V (Max)",
+    "Continuous Drain Current (Id)": "6 A (Tc=25°C)",
+    "On-State Resistance (Rds(on))": "19.5 mΩ (Typ) @ Vgs=4.5V, Id=3A",
+    "Gate Threshold Voltage (Vgs(th))": "0.5 - 1.2 V",
+    "Total Gate Charge (Qg)": "(Not provided in excerpt, but implied as \"Low Gate Charge\")",
+    "Input Capacitance (Ciss)": "466 pF (Typ) @ Vds=10V",
+    "Maximum Power Dissipation (Pd)": "1.5 W (Tc=25°C)",
+    "Thermal Resistance, Junction-to-Case (RθJC)": "14.4 °C/W (Typ)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Control terminal for switching the MOSFET"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal / Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Output / High-current terminal, connected to the load/power rail"
+        }
+      ],
+      "PinType": "Output / Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Common / Ground terminal, return path for current"
+        }
+      ],
+      "PinType": "Common / Ground",
+      "ElectricalType": "Power / Ground"
+    }
+  ]
+}

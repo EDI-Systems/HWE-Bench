@@ -1,0 +1,627 @@
+{
+  "Synchronous Boost Converter (SYS to 5V)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "Y",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "IN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHELL",
+          "FunctionName": "Shield / Shell"
+        }
+      ]
+    }
+  ],
+  "Load Switch Controllers for Hot-Plug Interfaces": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PMID",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "AGND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "IN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    }
+  ],
+  "Automatic Power OR-ing & 3.3V LDO Reference": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PMID",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "SYS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "BAT54",
+          "PinName": "A1",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "BAT54",
+          "PinName": "K1",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "IN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "AGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ],
+  "USB-C PD Input & Battery Charger with Power-Path Management": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "bq25895",
+          "PinName": "AGND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "CE",
+          "FunctionName": "Digital Input"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "Y",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "SYS",
+          "FunctionName": "Power Output"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "IN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    }
+  ],
+  "System Controller & Power Sequencing Logic": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PMID",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "SW",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "SW",
+          "FunctionName": "Switch Node"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "PGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "SCL",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "A",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "D+",
+          "FunctionName": "Analog I/O"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "DP1",
+          "FunctionName": "USB 2.0 Differential Pair Positive"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "D-",
+          "FunctionName": "Analog I/O"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "DN1",
+          "FunctionName": "USB 2.0 Differential Pair Negative"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "bq25895",
+          "PinName": "SYS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "TPS61022",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "RT9742",
+          "PinName": "IN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net32",
+      "Connections": [
+        {
+          "ComponentID": "TLV704",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "74LVC1G07",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net44",
+      "Connections": [
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-123",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHELL",
+          "FunctionName": "Shield / Shell"
+        }
+      ]
+    }
+  ]
+}

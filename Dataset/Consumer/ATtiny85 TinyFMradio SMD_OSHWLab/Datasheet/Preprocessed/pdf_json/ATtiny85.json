@@ -1,0 +1,114 @@
+{
+  "ComponentID": "ATtiny85",
+  "ComponentType": "8-bit AVR Microcontroller",
+  "Description": "The ATtiny25/45/85 is a family of low-power, high-performance 8-bit AVR microcontrollers based on a RISC architecture, featuring in-system programmable Flash memory for program storage. It integrates a core with 32 general-purpose registers, SRAM, EEPROM, multiple timers with PWM, a USI for serial communication, a 10-bit ADC, an analog comparator, and a watchdog timer. Designed for embedded control applications, it offers various power-saving modes and operates across a wide voltage range, with the number of I/O lines and memory size varying by specific model (2/4/8KB Flash, 128/256/512B EEPROM/SRAM).",
+  "KeyParameters": {
+    "Core Architecture": "8-bit AVR RISC",
+    "CPU Speed": "Up to 20 MHz (model and voltage dependent)",
+    "Program Memory (Flash)": "2KB (ATtiny25), 4KB (ATtiny45), 8KB (ATtiny85)",
+    "Data Memory (SRAM)": "128B (ATtiny25), 256B (ATtiny45), 512B (ATtiny85)",
+    "EEPROM": "128B (ATtiny25), 256B (ATtiny45), 512B (ATtiny85)",
+    "Operating Voltage (VCC)": "1.8V - 5.5V (V-series), 2.7V - 5.5V (standard)",
+    "General Purpose I/O Lines": "6 (Port B)",
+    "ADC Resolution & Channels": "10-bit, 4 single-ended channels",
+    "Package Options": "8-pin PDIP, 8-pin SOIC, 20-pad QFN/MLF, 8-pin TSSOP (ATtiny45/V only)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "RESET/ADC0/dW",
+          "FunctionDescription": "Reset input (active low) / ADC input channel 0 / debugWIRE I/O"
+        }
+      ],
+      "PinType": "Digital I/O, Analog Input",
+      "ElectricalType": "Bidirectional, Open-drain when RESET"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "XTAL1/CLKI/ADC3/OC1B",
+          "FunctionDescription": "Crystal oscillator input / External clock input / ADC input channel 3 / Timer1 PWM output B"
+        }
+      ],
+      "PinType": "Digital I/O, Analog Input, Clock",
+      "ElectricalType": "Input/Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "XTAL2/CLKO/ADC2/OC1B",
+          "FunctionDescription": "Crystal oscillator output / System clock output / ADC input channel 2 / Timer1 PWM output B"
+        }
+      ],
+      "PinType": "Digital I/O, Analog Input, Clock",
+      "ElectricalType": "Output"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0",
+          "FunctionDescription": "SPI Master Out Slave In / USI Data Input / Analog Comparator Positive Input / Timer0 PWM output A / Timer1 PWM output A / ADC Reference / Pin Change Interrupt 0"
+        }
+      ],
+      "PinType": "Digital I/O, Analog I/O",
+      "ElectricalType": "Bidirectional"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1",
+          "FunctionDescription": "SPI Master In Slave Out / USI Data Output / Analog Comparator Negative Input / Timer0 PWM output B / Timer1 PWM output A / Pin Change Interrupt 1"
+        }
+      ],
+      "PinType": "Digital I/O, Analog Input",
+      "ElectricalType": "Bidirectional"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2",
+          "FunctionDescription": "SPI Serial Clock / USI External Clock Input / USI SCL (I2C) / ADC input channel 1 / Timer0 external counter input / External Interrupt 0 / Pin Change Interrupt 2"
+        }
+      ],
+      "PinType": "Digital I/O, Analog Input, Clock",
+      "ElectricalType": "Bidirectional"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "VCC",
+          "FunctionDescription": "Supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Supply"
+    }
+  ]
+}

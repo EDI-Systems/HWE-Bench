@@ -1,0 +1,22 @@
+Component ID: RDA5807MP
+Component Type: Single-Chip Broadcast FM Radio Tuner
+Description: The RDA5807MP is a highly integrated, single-chip broadcast FM stereo radio tuner. It features a fully integrated synthesizer, IF selectivity, RDS/RBDS, and an MPX decoder. Supporting worldwide frequency bands from 50 MHz to 115 MHz, it requires minimal external components and is designed to directly drive a 32-ohm headphone load. Its low power consumption and high integration make it a standard choice for portable devices like mobile phones, media players, and DIY radio modules.
+
+Key Parameters:
+- Frequency Range: 50 MHz to 115 MHz (Worldwide support)
+- Operating Voltage: 2.7V to 3.3V
+- Interface: $I^2C$ (Serial Data and Clock)
+- Audio Output: Stereo headphone drive (32-ohm load)
+- Features: RDS/RBDS Support, Bass Boost, Soft Mute
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | FMIN | FM Input | FM antenna input connection | Input | RF |
+| 2 | GND | Ground | Main system ground reference | Power | 0V |
+| 3 | SCLK | $I^2C$ Clock | Serial clock input for control interface | Input | Signal |
+| 4 | SDIO | $I^2C$ Data | Bi-directional serial data for control interface | I/O | Signal |
+| 5 | RCLK | Ref Clock | Reference clock input (typically 32.768 kHz) | Input | Signal |
+| 6 | VDD | Power | Positive supply voltage input | Power | 2.7V - 3.3V |
+| 7 | ROUT | Right Out | Right channel analog audio output | Output | Analog |
+| 8 | LOUT | Left Out | Left channel analog audio output | Output | Analog |

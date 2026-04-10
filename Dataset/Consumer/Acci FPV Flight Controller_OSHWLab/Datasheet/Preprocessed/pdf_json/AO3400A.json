@@ -1,0 +1,54 @@
+{
+  "ComponentID": "AO3400A",
+  "ComponentType": "N-Channel Enhancement Mode MOSFET",
+  "Description": "The AO3400A is an N-channel enhancement mode power MOSFET utilizing advanced trench technology and a low-resistance SOT-23 package to achieve an extremely low on-state resistance (Rds(on)). It is designed for applications such as load switching and PWM control, offering high current handling in a compact form factor.",
+  "KeyParameters": {
+    "**Drain-Source Voltage (Vds)**": "30 V (Maximum)",
+    "**Continuous Drain Current (Id)**": "5.7 A (Ta=25°C)",
+    "**Static Drain-Source On-Resistance (Rds(on))**": "18 mΩ (Typ, Vgs=10V, Id=5.7A)",
+    "**Gate Threshold Voltage (Vgs(th))**": "0.65 V to 1.45 V (Min to Max)",
+    "**Gate-Source Voltage (Vgs)**": "±12 V (Maximum)",
+    "**Total Gate Charge (Qg)**": "8.5 nC (Typ, Vgs=4.5V)",
+    "**Input Capacitance (Ciss)**": "630 pF (Typ, Vds=15V, Vgs=0V)",
+    "**Power Dissipation (Pd)**": "1.4 W (Max, Ta=25°C)",
+    "**Junction-to-Ambient Thermal Resistance (RθJA)**": "90 °C/W (Max, t ≤ 10s)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Control terminal for switching the MOSFET"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal / Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Output / load connection terminal"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Input / common and thermal pad connection"
+        }
+      ],
+      "PinType": "Input / Thermal",
+      "ElectricalType": "Power / Ground"
+    }
+  ]
+}

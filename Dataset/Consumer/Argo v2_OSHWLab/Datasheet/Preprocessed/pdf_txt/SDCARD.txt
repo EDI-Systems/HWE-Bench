@@ -1,0 +1,27 @@
+Component ID: TF-123
+Component Type: Micro-SD (TF) Card Connector
+Description: The TF-123-ARP9H15 is a standard Micro-SD (TransFlash) card receptacle designed for surface-mount (SMT) PCB applications. It provides the physical and electrical interface for Micro-SD storage cards, supporting both high-speed SDIO and simpler SPI communication protocols. This component typically features a mechanical locking mechanism (such as push-push or push-pull) and an integrated switch for hardware-level card detection.
+
+
+Key Parameters:
+- **Supported Cards:** Micro-SD / TF Card
+- **Interface Protocols:** SDIO (1-bit or 4-bit) / SPI
+- **Operating Voltage:** 2.7V to 3.6V (Standard SD specification)
+- **Mounting Type:** Surface Mount (SMT), Right Angle
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | DAT2 | Data 2 | SD mode data line bit 2 | I/O | Signal |
+| 2 | CD/DAT3 | CD / Data 3 | Card Detect / SD data line bit 3 / SPI Chip Select | I/O | Signal |
+| 3 | CMD | Command | Command/Response line (SDIO) / SPI Data Input (MOSI) | I/O | Signal |
+| 4 | VDD | Power | Positive supply voltage | Power | 3.3V |
+| 5 | CLK | Clock | Serial clock signal | Input | Signal |
+| 6 | VSS | Ground | System ground reference | Power | 0V |
+| 7 | DAT0 | Data 0 | SD data line bit 0 / SPI Data Output (MISO) | I/O | Signal |
+| 8 | DAT1 | Data 1 | SD mode data line bit 1 | I/O | Signal |
+| 9 | SWITCH | Det. Switch | Card insertion detection switch terminal | Passive | Signal |
+| 10 | EP | Shield | Connector shell ground / Mechanical support | Passive | Ground |
+| 11 | EP | Shield | Connector shell ground / Mechanical support | Passive | Ground |
+| 12 | EP | Shield | Connector shell ground / Mechanical support | Passive | Ground |
+| 13 | EP | Shield | Connector shell ground / Mechanical support | Passive | Ground |

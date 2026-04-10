@@ -1,0 +1,60 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "USB-C Power Input & Regulation",
+      "Nets": [
+        {
+          "net_id": "net_vin",
+          "Connections": [
+            { "ComponentID": "USB1", "PinName": "VBUS" },
+            { "ComponentID": "78L05", "PinName": "INPUT" }
+          ]
+        },
+        {
+          "net_id": "net_vcc",
+          "Connections": [
+            { "ComponentID": "78L05", "PinName": "OUTPUT" },
+            { "ComponentID": "ATtiny85", "PinName": "VCC" }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Side Current/Power Sensing",
+      "Nets": [
+        {
+          "net_id": "net_vin",
+          "Connections": [ { "ComponentID": "INA219", "PinName": "IN+" } ]
+        },
+        {
+          "net_id": "net_vout",
+          "Connections": [ { "ComponentID": "INA219", "PinName": "IN-" } ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Microcontroller & User Interface",
+      "Nets": [
+        {
+          "net_id": "net_sda",
+          "Connections": [
+            { "ComponentID": "ATtiny85", "PinName": "PB0" },
+            { "ComponentID": "INA219", "PinName": "SDA" }
+          ]
+        },
+        {
+          "net_id": "net_scl",
+          "Connections": [
+            { "ComponentID": "ATtiny85", "PinName": "PB2" },
+            { "ComponentID": "INA219", "PinName": "SCL" }
+          ]
+        },
+        {
+          "net_id": "net_vcc",
+          "Connections": [ { "ComponentID": "ATtiny85", "PinName": "VCC" } ]
+        },
+        { "net_id": "0", "Connections": [ { "ComponentID": "ATtiny85", "PinName": "GND" } ] }
+      ]
+    }
+  ]
+}

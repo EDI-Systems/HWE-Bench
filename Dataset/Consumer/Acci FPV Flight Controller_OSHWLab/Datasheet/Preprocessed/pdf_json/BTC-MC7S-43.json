@@ -1,0 +1,85 @@
+{
+  "ComponentID": "BTC-MC7S-43",
+  "ComponentType": "Micro-USB Type B Receptacle",
+  "Description": "The BTC-MC7S-43 is a standard 5-pin Micro-USB Type B female connector designed for surface-mount (SMT) applications. It provides a reliable interface for USB 2.0 power delivery and data communication in compact electronic devices. The component includes an integrated shield/ground connection (EP) to enhance mechanical stability on the PCB and provide effective electromagnetic interference (EMI) protection.",
+  "KeyParameters": {
+    "Connector Style": "Micro-USB Type B (Female)",
+    "Data Protocol": "USB 2.0 (High Speed 480 Mbps)",
+    "Mounting Type": "Surface Mount (SMT)",
+    "Current Rating": "Typically 1.0A - 1.8A (Pin 1)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "+5V USB Power Supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 Differential Data Negative"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 Differential Data Positive"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "ID",
+      "Functions": [
+        {
+          "FunctionName": "ID",
+          "FunctionDescription": "USB OTG Identification (Host/Slave)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main Signal Ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector Shell / Exposed Pad for EMI/GND"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

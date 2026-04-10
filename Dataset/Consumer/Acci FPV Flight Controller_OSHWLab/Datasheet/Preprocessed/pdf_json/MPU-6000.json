@@ -1,0 +1,222 @@
+{
+  "ComponentID": "MPU-6000",
+  "ComponentType": "6-Axis Motion Tracking Device (3-Axis Gyroscope + 3-Axis Accelerometer) with Digital Motion Processor (DMP)",
+  "Description": "The MPU-60X0 is a fully integrated 6-axis Motion Processing Unit that combines a 3-axis MEMS gyroscope and a 3-axis MEMS accelerometer on a single chip, along with an onboard Digital Motion Processor (DMP) capable of running complex 9-axis sensor fusion algorithms. It features an auxiliary I2C master bus to interface with external sensors (like a magnetometer) and communicates with a host processor via either I2C (MPU-6050 & MPU-6000) or SPI (MPU-6000 only). Its primary function is to provide precise motion sensing and processing for applications like gaming, navigation, and gesture recognition.",
+  "KeyParameters": {
+    "Gyroscope Full-Scale Range": "Programmable to ±250, ±500, ±1000, ±2000 °/sec (dps)",
+    "Accelerometer Full-Scale Range": "Programmable to ±2g, ±4g, ±8g, ±16g",
+    "Digital Motion Processor (DMP)": "Onboard processor for sensor fusion algorithms",
+    "Communication Interfaces": "I2C (up to 400 kHz) for MPU-6050; I2C & SPI (up to 20 MHz) for MPU-6000",
+    "Supply Voltage (VDD)": "Logic and analog supply for MPU-6000",
+    "Logic Level Reference (VLOGIC)": "Pin to define I2C interface voltage levels for MPU-6050",
+    "Auxiliary I2C Master": "For connecting and managing external sensors",
+    "Package": "4x4x0.9 mm QFN (Quad Flat No-leads)",
+    "Operating Temperature": "Not specified in provided text, but typical for MEMS sensors (-40°C to +85°C)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CLKIN",
+      "Functions": [
+        {
+          "FunctionName": "Clock Input",
+          "FunctionDescription": "External clock input (optional)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "AUX_DA",
+      "Functions": [
+        {
+          "FunctionName": "Aux Data",
+          "FunctionDescription": "Auxiliary $I^2C$ master serial data"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "AUX_CL",
+      "Functions": [
+        {
+          "FunctionName": "Aux Clock",
+          "FunctionDescription": "Auxiliary $I^2C$ master serial clock"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "SPI chip select (active low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "AD0/SDO",
+      "Functions": [
+        {
+          "FunctionName": "Addr / SDO",
+          "FunctionDescription": "$I^2C$ Address LSB / SPI serial data output"
+        }
+      ],
+      "PinType": "Output/Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "REGOUT",
+      "Functions": [
+        {
+          "FunctionName": "Regulator",
+          "FunctionDescription": "Regulator filter capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "FSYNC",
+      "Functions": [
+        {
+          "FunctionName": "Frame Sync",
+          "FunctionDescription": "Frame synchronization digital input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt",
+          "FunctionDescription": "Interrupt digital output (programmable)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Primary DC power supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.375V-3.46V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Digital and analog power supply ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved (leave unconnected or connect to GND)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "CPOUT",
+      "Functions": [
+        {
+          "FunctionName": "Charge Pump",
+          "FunctionDescription": "Charge pump capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved (leave unconnected or connect to GND)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved (leave unconnected or connect to GND)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "SCL/SCLK",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "$I^2C$ serial clock / SPI serial clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "SDA/SDI",
+      "Functions": [
+        {
+          "FunctionName": "Data",
+          "FunctionDescription": "$I^2C$ serial data / SPI serial data input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "EP",
+          "FunctionDescription": "Exposed Pad / Thermal ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

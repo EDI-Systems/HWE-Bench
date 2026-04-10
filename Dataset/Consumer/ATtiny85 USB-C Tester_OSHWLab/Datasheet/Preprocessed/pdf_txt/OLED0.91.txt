@@ -1,0 +1,17 @@
+Component ID: OLED 0.91
+Component Type: 0.91-inch Monochrome OLED Display Module
+Description: This is a compact, monochrome graphic OLED (Organic Light-Emitting Diode) display module with a resolution of 128x32 pixels. It is characterized by high contrast and low power consumption since it does not require a backlight. The module is typically powered by the SSD1306 controller IC and communicates with a host microcontroller via a 2-wire I2C serial interface, making it ideal for small wearable devices and status indicators in embedded systems.
+
+Key Parameters:
+- Display Resolution: 128 x 32 Pixels
+- Interface: I2C (Inter-Integrated Circuit)
+- Operating Voltage: 3.3V to 5.0V
+- Driver IC: SSD1306
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | System ground reference | Power | 0V |
+| 2 | VCC | Power | Positive power supply input | Power | 3.3V - 5.0V |
+| 3 | SCK | SCL | I2C serial clock signal line | Input | Signal |
+| 4 | SDA | SDA | I2C bi-directional serial data line | I/O | Signal |

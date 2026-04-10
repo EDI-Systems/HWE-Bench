@@ -1,0 +1,38 @@
+{
+  "ComponentID": "BAT54C",
+  "ComponentType": "Schottky Barrier Dual Diode (Common Cathode)",
+  "Description": "The BAT54C is a dual Schottky barrier diode encapsulated in a small SOT-23 surface-mount package. It features a common cathode configuration, meaning the cathodes of both internal diodes are tied to a single output pin. This device is widely used for high-speed switching, circuit protection, and clamping applications due to its extremely low forward voltage drop and very fast recovery time. It also includes an integrated guard ring for stress protection against transients and ESD.",
+  "KeyParameters": {
+    "Repetitive Peak Reverse Voltage ($V_{RRM}$)": "30V",
+    "Continuous Forward Current ($I_F$)": "200mA",
+    "Maximum Forward Voltage ($V_F$)": "0.8V at 100mA (typical 0.32V at 1mA)",
+    "Reverse Recovery Time ($t_{rr}$)": "< 5ns",
+    "Power Dissipation ($P_D$)": "225mW - 250mW (standard SOT-23)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Anode 1",
+          "FunctionDescription": "Anode of the first internal diode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A2",
+      "Functions": [
+        {
+          "FunctionName": "Anode 2",
+          "FunctionDescription": "Anode of the second internal diode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Input"
+    }
+  ]
+}

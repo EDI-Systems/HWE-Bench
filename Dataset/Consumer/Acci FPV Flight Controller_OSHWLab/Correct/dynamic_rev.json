@@ -1,0 +1,24 @@
+{
+  "Reverse Polarity Protection & Power Input": [
+    {
+      "net_id": "net_vlipo",
+      "Connections": [
+        { "ComponentID": "3401", "PinName": "D" }
+      ]
+    },
+    {
+      "net_id": "net_vmain",
+      "Connections": [
+        { "ComponentID": "3401", "PinName": "S" },
+        { "ComponentID": "MM3Z10VT1G", "PinName": "K" }
+      ]
+    },
+    {
+      "net_id": "net_gate",
+      "Connections": [
+        { "ComponentID": "3401", "PinName": "G" },
+        { "ComponentID": "MM3Z10VT1G", "PinName": "A" }
+      ]
+    }
+  ]
+}

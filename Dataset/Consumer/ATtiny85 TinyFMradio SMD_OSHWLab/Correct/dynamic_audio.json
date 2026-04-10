@@ -1,0 +1,47 @@
+{
+  "Audio Amplification & Output Module": [
+    {
+      "net_id": "net_amp_sd",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB0" },
+        { "ComponentID": "XPT8871", "PinName": "SD" }
+      ]
+    },
+    {
+      "net_id": "net_audio_mix",
+      "Connections": [ { "ComponentID": "XPT8871", "PinName": "IN" } ]
+    },
+    {
+      "net_id": "net_fm_lout",
+      "Connections": [ { "ComponentID": "RDA5807MP", "PinName": "LOUT" } ]
+    },
+    {
+      "net_id": "net_fm_rout",
+      "Connections": [ { "ComponentID": "RDA5807MP", "PinName": "ROUT" } ]
+    },
+    {
+      "net_id": "net_amp_byp",
+      "Connections": [ { "ComponentID": "XPT8871", "PinName": "BYP" } ]
+    },
+    {
+      "net_id": "net_spk_p",
+      "Connections": [ { "ComponentID": "XPT8871", "PinName": "VOP" } ]
+    },
+    {
+      "net_id": "net_spk_n",
+      "Connections": [ { "ComponentID": "XPT8871", "PinName": "VON" } ]
+    },
+    {
+      "net_id": "net_vdd5",
+      "Connections": [ { "ComponentID": "XPT8871", "PinName": "VDD" } ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "XPT8871", "PinName": "GND" },
+        { "ComponentID": "ATtiny85", "PinName": "GND" },
+        { "ComponentID": "RDA5807MP", "PinName": "GND" }
+      ]
+    }
+  ]
+}

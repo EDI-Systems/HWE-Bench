@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "USB-C Power Input & Regulation",
+      "Function Description": "Receives power from a USB-C source, provides reverse polarity protection, and regulates the input voltage to a stable system voltage rail for all internal circuitry.",
+      "Signal Sources": "USB-C connector (VBUS, GND).",
+      "Signal Destinations": "High-Side Current/Power Sensing Module, Linear Voltage Regulator.",
+      "Implementation Logic": "Power enters via the USB-C connector. A protection circuit (e.g., using a P-MOSFET) prevents damage from incorrect connections. The raw VBUS is then fed to the sensing stage and to a linear regulator (e.g., 3.3V or 5V LDO) to create a stable, clean voltage for the microcontroller, display, and sensing IC's digital logic."
+    },
+    {
+      "Module Name": "High-Side Current/Power Sensing",
+      "Function Description": "Measures the voltage drop across a precision shunt resistor to calculate the current flowing to the load, and measures the bus voltage, providing digitized data for power calculations.",
+      "Signal Sources": "Raw power from USB-C Input, voltage across the 8mΩ shunt resistor.",
+      "Signal Destinations": "Microcontroller (via I2C bus).",
+      "Implementation Logic": "A dedicated current/power monitor IC (e.g., INA219, INA226) is placed in the high-side path. It measures the small differential voltage across the precision 8mΩ shunt resistor to calculate current, and measures the bus voltage relative to ground. The IC internally digitizes these values and makes them available via an I2C interface."
+    },
+    {
+      "Module Name": "Microcontroller & User Interface",
+      "Function Description": "The central processing unit that reads sensor data, calculates real-time voltage, current, and power, manages the display output, and handles user input from tactile switches.",
+      "Signal Sources": "Sensing Module (I2C SDA, SCL), User Buttons (GPIO inputs).",
+      "Signal Destinations": "OLED Display Module (I2C SDA, SCL), Internal logic for calculations and mode control.",
+      "Implementation Logic": "An ATtiny85 microcontroller runs the main firmware. It periodically queries the sensing IC via I2C for voltage and current data. It performs calculations (e.g., Power = V * I) and manages the system state. User buttons connected to its GPIO pins are polled or use interrupts to trigger actions like resetting energy counters or cycling display modes (e.g., V/I/P/Energy)."
+    },
+    {
+      "Module Name": "OLED Display Module",
+      "Function Description": "Provides a visual interface to show real-time measurements (voltage, current, power), accumulated energy, and system status/mode.",
+      "Signal Sources": "Microcontroller (I2C SDA, SCL).",
+      "Signal Destinations": "User (visual output).",
+      "Implementation Logic": "A small OLED display (e.g., SSD1306 based, 128x64) is connected to the same I2C bus as the sensing IC. The microcontroller sends formatted text and graphics commands to the display driver to update the readings in real-time."
+    },
+    {
+      "Module Name": "Power Output & Load Connection",
+      "Function Description": "Provides a clean, sensed power output to the device under test (load) and includes necessary filtering.",
+      "Signal Sources": "High-Side Current/Power Sensing Module output.",
+      "Signal Destinations": "External load (via USB-C or terminal connectors).",
+      "Implementation Logic": "This is the output stage after the shunt resistor and sensing IC. It may include output capacitors for stability and low-ESR filtering. The power is delivered to a USB-C receptacle or screw terminals to connect the load, completing the pass-through measurement path."
+    }
+  ]
+}

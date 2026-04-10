@@ -1,0 +1,39 @@
+{
+  "User Input & Control Module": [
+    {
+      "net_id": "net_enc_a",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB3" },
+        { "ComponentID": "Rotary Encoder", "PinName": "Phase A" }
+      ]
+    },
+    {
+      "net_id": "net_enc_b",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB4" },
+        { "ComponentID": "Rotary Encoder", "PinName": "Phase B" }
+      ]
+    },
+    {
+      "net_id": "net_enc_sw",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB1" },
+        { "ComponentID": "Rotary Encoder", "PinName": "SW1" }
+      ]
+    },
+    {
+      "net_id": "net_vcc",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "GND" },
+        { "ComponentID": "Rotary Encoder", "PinName": "Common" },
+        { "ComponentID": "Rotary Encoder", "PinName": "SW2" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+Component ID: USB1
+Component Type: USB Type-C Plug (USB-C Plug)
+Description: USB Type-C plug connector exposing power (VBUS), ground (GND), USB 2.0 data (D+/D−), configuration channel pins (CC1/CC2), and sideband use pins (SBU1/SBU2). High-speed SuperSpeed pairs are present as XP/XN (TX/RX differential pairs) but shown as generic XP1/XN1/XP2/XN2 on this symbol.
+
+Pinout Table:
+| Pin Number | Pin Name | Function              | Description            | Pin Type    | Electrical Type         |
+| ---------- | -------- | --------------------- | ---------------------- | ----------- | ----------------------- |
+| A1         | GND      | Ground                | Ground return. Connect to system ground.                                                  | Ground      | Power                   |
+| A2         | XP1      | SuperSpeed Pair       | High-speed differential lane (orientation-dependent). Route as controlled-impedance pair. | I/O         | High-Speed Differential |
+| A3         | XN1      | SuperSpeed Pair       | High-speed differential lane (orientation-dependent). Route as controlled-impedance pair. | I/O         | High-Speed Differential |
+| A4         | VBUS     | USB Power             | VBUS power pin (VIN). Typically +5 V.                                                     | Power Input | Power                   |
+| A5         | CC1      | Configuration Channel | Type-C CC1 pin for attach/orientation/current role detection.                             | I/O         | Digital/Analog          |
+| A6         | D+       | USB 2.0 Data+         | USB 2.0 D+ line. Route as differential pair with D−.                                      | I/O         | High-Speed Digital      |
+| A7         | D-       | USB 2.0 Data-         | USB 2.0 D− line. Route as differential pair with D+.                                      | I/O         | High-Speed Digital      |
+| A8         | SBU1     | Sideband Use          | Sideband use pin (alt modes/debug accessory). Typically unused in USB2-only designs.      | I/O         | Analog                  |
+| A9         | VBUS     | USB Power             | VBUS power pin (VIN). Typically +5 V.                                                     | Power Input | Power                   |
+| A10        | XP2      | SuperSpeed Pair       | High-speed differential lane (orientation-dependent). Route as controlled-impedance pair. | I/O         | High-Speed Differential |
+| A11        | XN2      | SuperSpeed Pair       | High-speed differential lane (orientation-dependent). Route as controlled-impedance pair. | I/O         | High-Speed Differential |
+| A12        | GND      | Ground                | Ground return. Connect to system ground.                                                  | Ground      | Power                   |
+| B1         | GND      | Ground                | Ground return. Connect to system ground.                                                  | Ground      | Power                   |
+| B2         | XP2      | SuperSpeed Pair       | High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair.   | I/O         | High-Speed Differential |
+| B3         | XN2      | SuperSpeed Pair       | High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair.   | I/O         | High-Speed Differential |
+| B4         | VBUS     | USB Power             | VBUS power pin (VIN). Typically +5 V.                                                     | Power Input | Power                   |
+| B5         | CC2      | Configuration Channel | Type-C CC2 pin for attach/orientation/current role detection.                             | I/O         | Digital/Analog          |
+| B6         | D+       | USB 2.0 Data+         | USB 2.0 D+ line (duplicate for flip). Tie to A6.                                          | I/O         | High-Speed Digital      |
+| B7         | D-       | USB 2.0 Data-         | USB 2.0 D− line (duplicate for flip). Tie to A7.                                          | I/O         | High-Speed Digital      |
+| B8         | SBU2     | Sideband Use          | Sideband use pin (alt modes/debug accessory). Typically unused in USB2-only designs.      | I/O         | Analog                  |
+| B9         | VBUS     | USB Power             | VBUS power pin (VIN). Typically +5 V.                                                     | Power Input | Power                   |
+| B10        | XN1      | SuperSpeed Pair       | High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair.   | I/O         | High-Speed Differential |
+| B11        | XP1      | SuperSpeed Pair       | High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair.   | I/O         | High-Speed Differential |
+| B12        | GND      | Ground                | Ground return. Connect to system ground.                                                  | Ground      | Power                   |

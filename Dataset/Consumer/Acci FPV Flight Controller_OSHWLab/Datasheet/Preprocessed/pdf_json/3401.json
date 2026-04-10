@@ -1,0 +1,55 @@
+{
+  "ComponentID": "3401",
+  "ComponentType": "P-Channel Enhancement Mode Power MOSFET",
+  "Description": "The 3401 is a P-Channel logic-level enhancement mode power field-effect transistor (FET) manufactured using high cell density, advanced trench technology to achieve an extremely low on-state resistance (RDS(ON)). It is designed for low-voltage applications requiring minimal power loss and high current capability in a compact SOT23-3L surface-mount package. Its primary function is to act as a high-efficiency electronic switch for power management, enabling or disabling power to a load in applications such as load switches, DC/DC converters, and portable equipment.",
+  "KeyParameters": {
+    "Drain-Source Voltage (VDSS)": "-30 V (Absolute Maximum)",
+    "Gate-Source Voltage (VGSS)": "±12 V (Absolute Maximum)",
+    "Continuous Drain Current (ID)": "-4.3 A (Typ. @ VGS=-10V, Tc=25°C)",
+    "Drain-Source On-Resistance (RDS(ON))": "44 mΩ (Typ. @ VGS=-10V, ID=-4.3A)",
+    "Gate Threshold Voltage (VGS(th))": "-0.6 V to -1.2 V",
+    "Total Gate Charge (Qg)": "6.2 nC (Typ.)",
+    "Input Capacitance (Ciss)": "672 pF (Typ. @ VGS=0V, f=1MHz)",
+    "Power Dissipation (PD)": "1.5 W (TA=25°C)",
+    "Thermal Resistance (RθJA)": "120 °C/W",
+    "Operating Junction Temperature (TJ)": "150 °C (Max)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Control terminal. Voltage applied here relative to the Source pin controls the conduction between Drain and Source."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "High Impedance, Voltage Controlled"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Source terminal. Typically connected to the power supply rail in a high-side switch configuration."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input/Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain terminal. Typically connected to the load in a high-side switch configuration."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Output/Input"
+    }
+  ]
+}

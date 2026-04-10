@@ -1,0 +1,65 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_I2C_SDA_MOSI",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB0" },
+        { "ComponentID": "RDA5807MP", "PinName": "SDIO" },
+        { "ComponentID": "OLED_Display", "PinName": "SDA" },
+        { "ComponentID": "ICSP-6", "PinName": "MOSI" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL_SCK",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB2" },
+        { "ComponentID": "RDA5807MP", "PinName": "SCLK" },
+        { "ComponentID": "OLED_Display", "PinName": "SCL" },
+        { "ComponentID": "ICSP-6", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_MISO_BTN",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB1" },
+        { "ComponentID": "ICSP-6", "PinName": "MISO" },
+        { "ComponentID": "Rotary Encoder", "PinName": "SW1" }
+      ]
+    },
+    {
+      "net_id": "NET_MCU_RESET",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB5" },
+        { "ComponentID": "ICSP-6", "PinName": "RESET" }
+      ]
+    },
+    {
+      "net_id": "NET_ENC_PHASE_A",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB3" },
+        { "ComponentID": "Rotary Encoder", "PinName": "Phase A" }
+      ]
+    },
+    {
+      "net_id": "NET_ENC_PHASE_B",
+      "Connections": [
+        { "ComponentID": "ATtiny85", "PinName": "PB4" },
+        { "ComponentID": "Rotary Encoder", "PinName": "Phase B" }
+      ]
+    },
+    {
+      "net_id": "NET_VCC_3V3",
+      "Connections": [
+        { "ComponentID": "HT7333", "PinName": "VOUT" },
+        { "ComponentID": "ATtiny85", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_SIGNAL",
+      "Connections": [
+        { "ComponentID": "RDA5807MP", "PinName": "LOUT" },
+        { "ComponentID": "XPT8871", "PinName": "IN" }
+      ]
+    }
+  ]
+}

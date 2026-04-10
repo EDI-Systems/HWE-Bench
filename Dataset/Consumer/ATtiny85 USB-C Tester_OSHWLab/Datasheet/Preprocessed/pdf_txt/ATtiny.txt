@@ -1,0 +1,27 @@
+Component ID: ATtiny85
+Component Type: 8-bit AVR Microcontroller
+Description:
+The ATtiny25/45/85 is a family of low-power, high-performance 8-bit microcontrollers based on the AVR RISC architecture. It features in-system programmable Flash memory, EEPROM, and SRAM, along with a rich set of peripherals including timers with PWM, a USI for serial communication, a 10-bit ADC, an analog comparator, and a watchdog timer. Designed for efficient operation, it supports multiple power-saving modes and can run from 1.8V to 5.5V, making it suitable for compact, battery-powered embedded applications.
+
+Key Parameters:
+- Core Architecture: 8-bit AVR RISC
+- Max CPU Speed: Up to 20 MHz (dependent on voltage and variant)
+- Program Memory (Flash): 2/4/8 KB (Endurance: 10,000 write/erase cycles)
+- Data Memory (SRAM): 128/256/512 Bytes
+- EEPROM: 128/256/512 Bytes (Endurance: 100,000 write/erase cycles)
+- Operating Voltage: 1.8V - 5.5V (V-series) / 2.7V - 5.5V (standard)
+- General Purpose I/O Lines: 6
+- ADC Resolution: 10-bit (4 single-ended channels, 2 differential pairs)
+- Package Types: 8-pin PDIP, 8-pin SOIC, 20-pad QFN/MLF, 8-pin TSSOP (ATtiny45/V only)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | PB5 | RESET/ADC0/dW | Reset input (active low) / ADC input channel 0 / debugWIRE I/O | I/O | Digital/Analog |
+| 2 | PB3 | XTAL1/CLKI/ADC3 | External clock input / ADC input channel 3 / Crystal oscillator pin 1 | I/O | Digital/Analog |
+| 3 | PB4 | XTAL2/CLKO/ADC2 | External clock output / ADC input channel 2 / Crystal oscillator pin 2 | I/O | Digital/Analog |
+| 4 | GND | GND | Ground | PWR | Power |
+| 5 | PB0 | MOSI/OC0A/OC1A/AREF/ADC0 | SPI Master Out Slave In / Timer0 PWM output A / Timer1 PWM output A / ADC reference / ADC input channel 0 (alternate) | I/O | Digital/Analog |
+| 6 | PB1 | MISO/OC0B/OC1A/ADC1 | SPI Master In Slave Out / Timer0 PWM output B / Timer1 PWM output A (alternate) / ADC input channel 1 | I/O | Digital/Analog |
+| 7 | PB2 | SCK/USCK/OC1B/ADC1/T0 | SPI Serial Clock / USI Clock / Timer1 PWM output B / ADC input channel 1 (alternate) / Timer0 external counter input | I/O | Digital/Analog |
+| 8 | VCC | VCC | Supply voltage | PWR | Power |

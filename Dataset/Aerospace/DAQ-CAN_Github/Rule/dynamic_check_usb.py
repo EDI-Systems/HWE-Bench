@@ -112,14 +112,14 @@ def run_simulation():
             log = f.read()
 
         results = {}
-        for k in TEST_CRITERIA.keys():
-            m = re.search(rf"{k}.*?[:=]\s*([-+]?\d*\.?\d+(?:[eE][-+]?\d+)?)", log, re.I)
+        for k in TEST_CRITERIA.items():
+            m = re.search(rf"{k[0]}.*?[:=]\s*([-+]?\d*\.?\d+(?:[eE][-+]?\d+)? )", log, re.I)
             if m:
                 val = float(m.group(1))
-                if "i_" in k: val = val * 1000 
-                results[k] = val
+                if "i_" in k[0]: val = val * 1000 
+                results[k[0]] = val
             else:
-                results[k] = None
+                results[k[0]] = None
 
         report_lines = []
         report_lines.append("---------------------------------------------------------")
@@ -138,7 +138,7 @@ def run_simulation():
 
         report_lines.append("---------------------------------------------------------")
         rate = (pass_count / len(TEST_CRITERIA)) * 100
-        report_lines.append(f"passrate: {rate:.1f}%")
+        report_lines.append(f"Pass Rate: {rate:.1f}%")
         
         final_report = "\n".join(report_lines)
         print(final_report)

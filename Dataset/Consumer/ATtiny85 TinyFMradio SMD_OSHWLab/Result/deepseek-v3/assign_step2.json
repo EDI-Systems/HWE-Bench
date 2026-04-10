@@ -1,0 +1,1230 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "User Input & Control Module",
+      "Function Description": "Captures user interactions for tuning and volume control via a mechanical rotary encoder, debounces the signals, and processes them in the main microcontroller.",
+      "Signal Sources": "Rotary encoder A/B phase signals (through hardware RC debounce filters).",
+      "Signal Destinations": "ATtiny85 GPIO pins (for digital input processing).",
+      "Implementation Logic": "The rotary encoder is connected to ATtiny85 GPIO pins with external RC low-pass filters for hardware debouncing. The ATtiny85 firmware decodes the quadrature signals to determine direction and step count, translating them into frequency tuning or volume adjustment commands.",
+      "Signal Chain": "The rotary encoder generates quadrature signals (Phase A and Phase B) which are passed through external RC low-pass filters for hardware debouncing. These filtered digital signals are then input to the ATtiny85's GPIO pins. The ATtiny85 firmware samples these pins, decodes the quadrature sequence to determine rotation direction and step count, and processes this into frequency tuning or volume adjustment commands. The push-button switch on the encoder is connected to another GPIO pin (with a pull-up resistor) for selection or mode functions. The ATtiny85 communicates these control commands to other modules (e.g., FM tuner via I2C) as needed, though the tuner interface is not part of this specific module's direct signal chain.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "Main Microcontroller",
+          "Recommendation Reason": "Processes debounced rotary encoder signals to decode direction and steps for tuning/volume control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "ROTARY_A"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "ROTARY_B"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "ENCODER_SW"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "Functional Position": "User Input Device",
+          "Recommendation Reason": "Provides quadrature A/B phase signals and a push-button for user control input.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A",
+              "PinName": "Phase A",
+              "Net": "ROTARY_A"
+            },
+            {
+              "PinNumber": "B",
+              "PinName": "Phase B",
+              "Net": "ROTARY_B"
+            },
+            {
+              "PinNumber": "C",
+              "PinName": "Common",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SW1",
+              "Net": "ENCODER_SW"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "SHIELD",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "Power Regulator",
+          "Recommendation Reason": "Provides stable 3.3V supply for the ATtiny85 and other low-voltage components.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Enables in-circuit serial programming of the ATtiny85 firmware.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "PB1"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "PB2"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "PB0"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "PB5"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "FM Tuner & Demodulation Module",
+      "Function Description": "Receives FM radio signals, tunes to the specified frequency via I2C control, demodulates the RF signal, and outputs a stereo analog audio signal.",
+      "Signal Sources": "I2C control commands (frequency select, volume) from ATtiny85, RF input from antenna.",
+      "Signal Destinations": "Left/Right channel analog audio output to Audio Amplifier Module, I2C status/read data back to ATtiny85.",
+      "Implementation Logic": "The RDA5807MP IC is connected to an antenna for RF input. It receives tuning and control commands via I2C from the ATtiny85. It demodulates the FM signal and outputs the analog audio signals on its LOUT and ROUT pins, which are AC-coupled to the next stage.",
+      "Signal Chain": "The FM Tuner & Demodulation Module operates as follows: An antenna provides an RF FM signal to the RDA5807MP's FMIN pin. The ATtiny85 microcontroller generates I2C control commands (using its USI in I2C mode) to set the RDA5807MP's tuning frequency and volume via the SCLK and SDIO lines. The RDA5807MP demodulates the RF signal, producing stereo analog audio on its LOUT and ROUT pins. These outputs are AC-coupled (via external capacitors, not in the library) and fed into the XPT8871 audio amplifier's inputs for amplification to drive a speaker. The HT7333 LDO regulates the system voltage to 3.3V for the RDA5807MP and ATtiny85. The Rotary Encoder provides user input for frequency tuning and selection via quadrature outputs and a push-button, connected to the ATtiny85's GPIOs. The ICSP-6 header allows programming of the ATtiny85.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Controller",
+          "Recommendation Reason": "Provides I2C control to the RDA5807MP for frequency tuning and volume, and reads user input from the Rotary Encoder.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "Rotary_Encoder_Phase_A"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "Rotary_Encoder_Phase_B"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "ICSP_MOSI"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "ICSP_MISO"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "Functional Position": "FM Tuner and Demodulator",
+          "Recommendation Reason": "Receives FM signals, tunes via I2C, and outputs stereo analog audio.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "FMIN",
+              "Net": "Antenna"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDIO",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RCLK",
+              "Net": "32kHz_Clock"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "ROUT",
+              "Net": "Audio_R"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "LOUT",
+              "Net": "Audio_L"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "Voltage Regulator",
+          "Recommendation Reason": "Provides stable 3.3V supply from a higher input voltage (e.g., 5V) for the RDA5807MP and ATtiny85.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Enables firmware upload to the ATtiny85 microcontroller via SPI.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "ICSP_MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "ICSP_SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "ICSP_MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "Functional Position": "User Input",
+          "Recommendation Reason": "Allows user to change frequency (rotation) and select functions (push-button).",
+          "Pin Connections": [
+            {
+              "PinNumber": "A",
+              "PinName": "Phase A",
+              "Net": "Rotary_Encoder_Phase_A"
+            },
+            {
+              "PinNumber": "C",
+              "PinName": "Common",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B",
+              "PinName": "Phase B",
+              "Net": "Rotary_Encoder_Phase_B"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SW1",
+              "Net": "Rotary_Encoder_SW"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "SHIELD",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "XPT8871",
+          "Functional Position": "Audio Amplifier",
+          "Recommendation Reason": "Amplifies the stereo audio signals from the RDA5807MP to drive a speaker.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "SD",
+              "Net": "AMP_SD"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BYP",
+              "Net": "BYP_Cap"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "MODE",
+              "Net": "AMP_MODE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "IN",
+              "Net": "Audio_L"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VON",
+              "Net": "Speaker_Neg"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VOP",
+              "Net": "Speaker_Pos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Audio Amplification & Output Module",
+      "Function Description": "Amplifies the low-level analog audio signal from the tuner to a level sufficient to drive a speaker, providing the final acoustic output.",
+      "Signal Sources": "AC-coupled left/right analog audio signals from FM Tuner Module.",
+      "Signal Destinations": "External speaker (connected to amplifier output).",
+      "Implementation Logic": "The XPT8871ES audio amplifier IC receives the AC-coupled audio signals. Its gain is typically set by external resistor configuration. It amplifies the signal and drives the speaker directly from its output pins. A shutdown/enable pin may be controlled by the ATtiny85 for power management.",
+      "Signal Chain": "The AC-coupled left and right analog audio signals from the RDA5807MP tuner's LOUT and ROUT pins are each connected to the IN pin of a dedicated XPT8871 amplifier channel (one per channel). The ATtiny85 microcontroller provides power management by controlling the SD (shutdown) pin of each XPT8871 via a GPIO pin, enabling or disabling the amplifier to conserve power. The MODE pin of each XPT8871 is set to a fixed logic level (e.g., tied to GND or VDD) to select either Class AB or Class D operation mode. Each XPT8871 amplifies its input signal and drives a speaker directly from its BTL output pins (VOP and VON). The HT7333 LDO regulator provides a stable 3.3V supply to the RDA5807MP (VDD) and the ATtiny85 (VCC), while the XPT8871 amplifiers are powered directly from the main system voltage (e.g., 5V) via their VDD pins. The ATtiny85 also interfaces with the Rotary Encoder for user input (volume/station control) and communicates with the RDA5807MP via I2C (using its GPIO pins for SCLK and SDIO) for tuning and control. The ICSP-6 header connects to the ATtiny85's SPI programming pins (MOSI, MISO, SCK) and RESET for firmware programming.",
+      "Recommended Components": [
+        {
+          "ComponentID": "XPT8871",
+          "Functional Position": "Audio Power Amplifier (Left Channel)",
+          "Recommendation Reason": "Amplifies the low-level left audio signal from the tuner to drive a speaker. Its BTL output eliminates the need for output coupling capacitors, and it supports power management via the SD pin.",
+          "Pin Connections": {
+            "SD": "Connected to ATtiny85 PB0 for shutdown control",
+            "BYP": "Connected to a 1µF capacitor to GND for internal common-mode voltage bypass",
+            "MODE": "Connected to GND to select Class AB operation (or to VDD for Class D, based on design choice)",
+            "IN": "Connected to AC-coupled left audio signal from RDA5807MP LOUT pin",
+            "VON": "Connected to speaker terminal 1 (negative side of BTL load)",
+            "VDD": "Connected to system power supply (e.g., 5V)",
+            "GND": "Connected to system ground",
+            "VOP": "Connected to speaker terminal 2 (positive side of BTL load)"
+          }
+        },
+        {
+          "ComponentID": "XPT8871",
+          "Functional Position": "Audio Power Amplifier (Right Channel)",
+          "Recommendation Reason": "Amplifies the low-level right audio signal from the tuner to drive a speaker. A second amplifier is needed for stereo output.",
+          "Pin Connections": {
+            "SD": "Connected to ATtiny85 PB1 for shutdown control",
+            "BYP": "Connected to a 1µF capacitor to GND for internal common-mode voltage bypass",
+            "MODE": "Connected to GND to select Class AB operation (consistent with left channel)",
+            "IN": "Connected to AC-coupled right audio signal from RDA5807MP ROUT pin",
+            "VON": "Connected to speaker terminal 1 (negative side of BTL load)",
+            "VDD": "Connected to system power supply (e.g., 5V)",
+            "GND": "Connected to system ground",
+            "VOP": "Connected to speaker terminal 2 (positive side of BTL load)"
+          }
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Controller",
+          "Recommendation Reason": "Controls the XPT8871 shutdown pins for power management, interfaces with the RDA5807MP via I2C for tuner control, and reads the Rotary Encoder for user input.",
+          "Pin Connections": {
+            "PB5": "Connected to ICSP-6 RESET for programming",
+            "PB3": "Connected to Rotary Encoder Phase A for rotation detection",
+            "PB4": "Connected to Rotary Encoder Phase B for rotation detection",
+            "GND": "Connected to system ground",
+            "PB0": "Connected to left channel XPT8871 SD pin for shutdown control",
+            "PB1": "Connected to right channel XPT8871 SD pin for shutdown control",
+            "PB2": "Configured as SCL (I2C clock) and connected to RDA5807MP SCLK pin",
+            "VCC": "Connected to HT7333 VOUT (3.3V) for power"
+          }
+        },
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "3.3V Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply for the RDA5807MP tuner and ATtiny85 microcontroller, ensuring proper operation within their voltage ranges.",
+          "Pin Connections": {
+            "GND": "Connected to system ground",
+            "VIN": "Connected to main system input voltage (e.g., 5V or battery)",
+            "VOUT": "Connected to RDA5807MP VDD and ATtiny85 VCC (3.3V supply rail)"
+          }
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "Functional Position": "FM Radio Tuner",
+          "Recommendation Reason": "Provides the stereo audio signals (LOUT and ROUT) that are amplified by the XPT8871. It is controlled by the ATtiny85 via I2C.",
+          "Pin Connections": {
+            "FMIN": "Connected to FM antenna",
+            "GND": "Connected to system ground",
+            "SCLK": "Connected to ATtiny85 PB2 (configured as SCL for I2C)",
+            "SDIO": "Connected to ATtiny85 PB0 or PB1 (configured as SDA for I2C; note: PB0 is used for amplifier SD, so PB1 may be used if available, but ATtiny85 has limited pins; alternative: use software I2C on any GPIO)",
+            "RCLK": "Connected to a 32.768 kHz crystal or clock source",
+            "VDD": "Connected to HT7333 VOUT (3.3V)",
+            "ROUT": "Connected to AC-coupled input of right channel XPT8871 IN pin",
+            "LOUT": "Connected to AC-coupled input of left channel XPT8871 IN pin"
+          }
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "Functional Position": "User Input (Volume/Station Selection)",
+          "Recommendation Reason": "Allows user to adjust volume or change stations via rotation and push-button actions.",
+          "Pin Connections": {
+            "Phase A": "Connected to ATtiny85 PB3",
+            "Common": "Connected to system ground",
+            "Phase B": "Connected to ATtiny85 PB4",
+            "SW1": "Connected to ATtiny85 PB5 (via pull-up resistor) for push-button input",
+            "SW2": "Connected to system ground",
+            "GND": "Connected to system ground (shield)"
+          }
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface for ATtiny85",
+          "Recommendation Reason": "Enables in-circuit serial programming of the ATtiny85 microcontroller for firmware updates.",
+          "Pin Connections": {
+            "MISO": "Connected to ATtiny85 PB1 (MISO/DO function)",
+            "VCC": "Connected to system 3.3V rail (from HT7333 VOUT)",
+            "SCK": "Connected to ATtiny85 PB2 (SCK/USCK function)",
+            "MOSI": "Connected to ATtiny85 PB0 (MOSI/DI function)",
+            "RESET": "Connected to ATtiny85 PB5 (RESET function)",
+            "GND": "Connected to system ground"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "User Interface Display Module",
+      "Function Description": "Provides visual feedback to the user, showing current FM frequency, volume level, and other status information.",
+      "Signal Sources": "I2C data and commands from ATtiny85.",
+      "Signal Destinations": "N/A (end-user visual output).",
+      "Implementation Logic": "A small I2C-based OLED display (e.g., SSD1306 compatible) is connected to the shared I2C bus. The ATtiny85 firmware sends pixel data or character commands to update the display content based on the current system state (frequency, volume, etc.).",
+      "Signal Chain": "The ATtiny85 microcontroller acts as the central controller. It receives user input via the Rotary Encoder (quadrature signals for rotation and a push-button switch). Based on this input, it controls the RDA5807MP FM tuner via the I2C bus (SCL and SDA) to change frequency, volume, or other settings. The RDA5807MP outputs stereo audio to the XPT8871 audio amplifier. The ATtiny85 also sends display data and commands via the same I2C bus to the OLED display (not in library, but implied by the module description) to show the current FM frequency, volume level, and status. The HT7333 LDO provides a stable 3.3V supply for the RDA5807MP and likely the OLED display. The ATtiny85 can be programmed via the ICSP-6 header.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Acts as the main controller. It reads the rotary encoder, communicates with the FM tuner and display via I2C, and controls the audio amplifier.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET",
+              "ConnectedTo": "ICSP-6 Pin 5 (RESET)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "GPIO/ADC",
+              "ConnectedTo": "N/C (or future use)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "GPIO/ADC",
+              "ConnectedTo": "N/C (or future use)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "I2C_SDA",
+              "ConnectedTo": "RDA5807MP Pin 4 (SDIO) and OLED Display SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "GPIO",
+              "ConnectedTo": "Rotary Encoder Pin A (Phase A)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "I2C_SCL",
+              "ConnectedTo": "RDA5807MP Pin 3 (SCLK) and OLED Display SCL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_5V",
+              "ConnectedTo": "5V Supply (e.g., from USB)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "Functional Position": "FM Radio Tuner",
+          "Recommendation Reason": "Receives FM radio signals and outputs audio under I2C control from the ATtiny85.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "FMIN",
+              "Net": "ANTENNA",
+              "ConnectedTo": "FM Antenna"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "I2C_SCL",
+              "ConnectedTo": "ATtiny85 Pin 7 (PB2)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDIO",
+              "Net": "I2C_SDA",
+              "ConnectedTo": "ATtiny85 Pin 5 (PB0)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RCLK",
+              "Net": "32KHZ_REF",
+              "ConnectedTo": "32.768 kHz Crystal or external clock source"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "HT7333 Pin 3 (VOUT)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "ROUT",
+              "Net": "AUDIO_R",
+              "ConnectedTo": "XPT8871 Pin 4 (IN) via coupling capacitor"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "LOUT",
+              "Net": "AUDIO_L",
+              "ConnectedTo": "XPT8871 Pin 4 (IN) via coupling capacitor (mono sum)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "3.3V Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply for the RDA5807MP and the OLED display from a higher voltage input (e.g., 5V).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "VCC_5V",
+              "ConnectedTo": "5V Supply (e.g., from USB)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "RDA5807MP Pin 6 (VDD) and OLED Display VCC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "Functional Position": "User Input (Frequency/Volume Control and Selection)",
+          "Recommendation Reason": "Allows the user to scroll through frequencies/options and select via push-button.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A",
+              "PinName": "Phase A",
+              "Net": "ENC_A",
+              "ConnectedTo": "ATtiny85 Pin 6 (PB1)"
+            },
+            {
+              "PinNumber": "C",
+              "PinName": "Common",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "B",
+              "PinName": "Phase B",
+              "Net": "ENC_B",
+              "ConnectedTo": "ATtiny85 Pin 2 (PB3) or Pin 3 (PB4) via available GPIO"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SW1",
+              "Net": "SW",
+              "ConnectedTo": "ATtiny85 Pin 3 (PB4) or Pin 2 (PB3) via available GPIO (with pull-up)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW2",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "SHIELD",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground (optional for EMI)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "XPT8871",
+          "Functional Position": "Audio Power Amplifier",
+          "Recommendation Reason": "Amplifies the audio signal from the RDA5807MP to drive a speaker.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "SD",
+              "Net": "AMP_SD",
+              "ConnectedTo": "ATtiny85 GPIO (e.g., PB4 if free) for shutdown control"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BYP",
+              "Net": "BYPASS",
+              "ConnectedTo": "1 µF capacitor to GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "MODE",
+              "Net": "AMP_MODE",
+              "ConnectedTo": "VCC or GND to select Class AB/D (fixed)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "IN",
+              "Net": "AUDIO_IN",
+              "ConnectedTo": "RDA5807MP Pin 7 (ROUT) and Pin 8 (LOUT) summed via resistors/capacitors"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VON",
+              "Net": "SPK-",
+              "ConnectedTo": "Speaker negative terminal"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_5V",
+              "ConnectedTo": "5V Supply"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VOP",
+              "Net": "SPK+",
+              "ConnectedTo": "Speaker positive terminal"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface for ATtiny85",
+          "Recommendation Reason": "Enables in-circuit programming and debugging of the ATtiny85 firmware.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "ICSP_MISO",
+              "ConnectedTo": "ATtiny85 Pin 6 (PB1) - Note: shared with ENC_A, requires isolation during programming"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_5V",
+              "ConnectedTo": "5V Supply"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "ICSP_SCK",
+              "ConnectedTo": "ATtiny85 Pin 7 (PB2) - Note: shared with I2C_SCL, requires isolation during programming"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "ICSP_MOSI",
+              "ConnectedTo": "ATtiny85 Pin 5 (PB0) - Note: shared with I2C_SDA, requires isolation during programming"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET",
+              "ConnectedTo": "ATtiny85 Pin 1 (PB5)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Regulation & Distribution Module",
+      "Function Description": "Provides stable and clean 3.3V DC power to all digital and RF components (ATtiny85, RDA5807MP, OLED, encoder logic) from a higher voltage battery source.",
+      "Signal Sources": "Input voltage from a battery (e.g., 5V via USB or 3.7V Li-ion).",
+      "Signal Destinations": "3.3V power rail to ATtiny85, RDA5807MP, OLED display, rotary encoder pull-up/logic.",
+      "Implementation Logic": "The HT7333-A linear voltage regulator steps down the input battery voltage to a stable 3.3V. Input and output capacitors are used for filtering and stability. This 3.3V rail powers the digital logic and the FM tuner IC. The audio amplifier may be powered directly from the battery or a separate rail depending on its voltage requirements.",
+      "Signal Chain": "The power regulation and distribution module's primary function is to convert a higher input voltage from a battery source (e.g., 5V USB or 3.7V Li-ion) into a stable 3.3V DC rail. The HT7333 LDO regulator is the core component, stepping down the input voltage. Its input (VIN) receives the battery voltage, which is filtered by an input capacitor for noise suppression and stability. The regulator's ground (GND) is connected to the system ground. The output (VOUT) provides the regulated 3.3V, which is further filtered by an output capacitor to ensure a clean supply. This 3.3V rail is then distributed to power the ATtiny85 microcontroller (VCC pin), the RDA5807MP FM tuner (VDD pin), and other digital components like the OLED display and rotary encoder logic. The audio amplifier (XPT8871) may be powered directly from the battery input or the 3.3V rail, depending on its voltage requirements, but for this module's defined purpose of providing 3.3V, it is not included in the power distribution chain. The ICSP header provides a programming interface but does not directly participate in the power regulation signal flow; it connects to the microcontroller's SPI and reset for firmware updates.",
+      "Recommended Components": [
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "Core Voltage Regulator",
+          "Recommendation Reason": "Steps down the higher battery input voltage (up to 12V) to a stable 3.3V output with low dropout and quiescent current, suitable for battery-powered applications. It provides the primary 3.3V rail for all digital and RF components.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "BAT_IN"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "3V3_RAIL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "System Microcontroller",
+          "Recommendation Reason": "Requires a stable 3.3V supply for operation. It will be powered by the regulated 3.3V rail and manages the system control, including interfacing with the FM tuner, OLED, and rotary encoder.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "GPIO_1"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "GPIO_2"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "GPIO_3"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "GPIO_4"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "GPIO_5"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3_RAIL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "Functional Position": "FM Radio Tuner IC",
+          "Recommendation Reason": "Operates at 2.7V to 3.3V, so it must be powered from the regulated 3.3V rail. It receives power via VDD and connects to ground for reference.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "FMIN",
+              "Net": "FM_ANTENNA"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDIO",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RCLK",
+              "Net": "32KHZ_CLK"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "ROUT",
+              "Net": "AUDIO_R"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "LOUT",
+              "Net": "AUDIO_L"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface Header",
+          "Recommendation Reason": "Provides an interface for programming the ATtiny85 microcontroller in-circuit. It connects to the microcontroller's SPI pins and reset, allowing firmware updates without removing the chip.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "MISO"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "3V3_RAIL"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "SCK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "MOSI"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Microcontroller & System Control Module",
+      "Function Description": "Acts as the central processing unit, interpreting user inputs, managing the I2C bus, controlling the FM tuner and display, and coordinating overall system workflow.",
+      "Signal Sources": "Debounced encoder signals from User Input Module, I2C data from RDA5807MP (status).",
+      "Signal Destinations": "I2C bus commands to OLED Display Module and FM Tuner Module, control signals to Audio Amplifier Module (e.g., shutdown/enable if supported).",
+      "Implementation Logic": "The ATtiny85 microcontroller runs firmware that polls the encoder state, updates the target FM frequency or volume setting, formats I2C commands for the RDA5807MP tuner IC to set frequency/volume, and sends display update commands to the OLED over the same I2C bus.",
+      "Signal Chain": "The ATtiny85 microcontroller serves as the central processing unit. It receives debounced quadrature signals (Phase A and Phase B) and a push-button signal from the Rotary Encoder via its GPIO pins. The firmware interprets these inputs to update the target FM frequency or volume setting. The microcontroller then formats I2C commands and transmits them via its USI (configured as I2C Master) on the SCL and SDA lines. These commands are sent to the RDA5807MP FM tuner IC to set frequency/volume and to the OLED Display Module (not in library, but implied) for status updates, both sharing the same I2C bus. The microcontroller also generates a control signal (e.g., a GPIO) to the XPT8871 audio amplifier's SD pin for shutdown/enable control. Power is supplied and regulated by the HT7333 LDO, providing stable 3.3V to the microcontroller and other peripherals. The ICSP-6 header connects to the microcontroller's SPI and RESET pins for in-circuit programming.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ATtiny85",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Acts as the central processing unit to interpret encoder inputs, manage I2C bus communications with the FM tuner and display, and control the audio amplifier. Its USI supports I2C, and it has sufficient GPIOs for the required signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PB5",
+              "Net": "RESET_NET",
+              "ConnectedTo": "ICSP-6 Pin 5 (RESET)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PB3",
+              "Net": "GPIO_INPUT_NET",
+              "ConnectedTo": "Rotary Encoder Pin B (Phase B)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PB4",
+              "Net": "GPIO_INPUT_NET",
+              "ConnectedTo": "Rotary Encoder Pin A (Phase A)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PB0",
+              "Net": "I2C_SDA_NET",
+              "ConnectedTo": "RDA5807MP Pin 4 (SDIO) and OLED Display SDA (implied)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "PB1",
+              "Net": "GPIO_INPUT_NET",
+              "ConnectedTo": "Rotary Encoder Pin 1 (SW1) via pull-up resistor"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PB2",
+              "Net": "I2C_SCL_NET",
+              "ConnectedTo": "RDA5807MP Pin 3 (SCLK) and OLED Display SCL (implied)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "HT7333 Pin 3 (VOUT)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT7333",
+          "Functional Position": "Power Supply Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply from a higher input voltage (e.g., 5V) to power the ATtiny85, RDA5807MP, and other 3.3V peripherals, ensuring reliable operation within their voltage specifications.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VIN",
+              "Net": "VIN_5V",
+              "ConnectedTo": "External 5V Power Source"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VOUT",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "ATtiny85 Pin 8 (VCC), RDA5807MP Pin 6 (VDD), and other 3.3V peripherals"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "Functional Position": "Programming Interface",
+          "Recommendation Reason": "Provides a standard 6-pin header for in-circuit serial programming of the ATtiny85 microcontroller, enabling firmware updates without removing the chip.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "MISO",
+              "Net": "SPI_MISO_NET",
+              "ConnectedTo": "ATtiny85 Pin 6 (PB1/MISO)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VCC",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "HT7333 Pin 3 (VOUT)"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCK",
+              "Net": "SPI_SCK_NET",
+              "ConnectedTo": "ATtiny85 Pin 7 (PB2/SCK)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "MOSI",
+              "Net": "SPI_MOSI_NET",
+              "ConnectedTo": "ATtiny85 Pin 5 (PB0/MOSI)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RESET",
+              "Net": "RESET_NET",
+              "ConnectedTo": "ATtiny85 Pin 1 (PB5/RESET)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "Functional Position": "FM Tuner IC",
+          "Recommendation Reason": "Receives I2C commands from the microcontroller to set FM frequency and volume, and outputs stereo audio to the amplifier. It is a core component for the radio functionality.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "FMIN",
+              "Net": "FM_ANTENNA_NET",
+              "ConnectedTo": "FM Antenna"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SCLK",
+              "Net": "I2C_SCL_NET",
+              "ConnectedTo": "ATtiny85 Pin 7 (PB2/SCL)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SDIO",
+              "Net": "I2C_SDA_NET",
+              "ConnectedTo": "ATtiny85 Pin 5 (PB0/SDA)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "RCLK",
+              "Net": "REF_CLK_NET",
+              "ConnectedTo": "32.768 kHz Crystal or external clock source"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "HT7333 Pin 3 (VOUT)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "ROUT",
+              "Net": "AUDIO_R_NET",
+              "ConnectedTo": "Audio Amplifier Input (e.g., XPT8871 Pin 4 via coupling network)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "LOUT",
+              "Net": "AUDIO_L_NET",
+              "ConnectedTo": "Audio Amplifier Input (e.g., XPT8871 Pin 4 via coupling network for mono sum)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "Functional Position": "User Input Device",
+          "Recommendation Reason": "Provides quadrature-encoded rotation signals and a push-button for user interaction, allowing frequency/volume adjustment and selection commands to be input to the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A",
+              "PinName": "Phase A",
+              "Net": "ENCODER_A_NET",
+              "ConnectedTo": "ATtiny85 Pin 3 (PB4)"
+            },
+            {
+              "PinNumber": "C",
+              "PinName": "Common",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "B",
+              "PinName": "Phase B",
+              "Net": "ENCODER_B_NET",
+              "ConnectedTo": "ATtiny85 Pin 2 (PB3)"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SW1",
+              "Net": "ENCODER_SW_NET",
+              "ConnectedTo": "ATtiny85 Pin 6 (PB1) via pull-up resistor"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW2",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "SHIELD",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            }
+          ]
+        },
+        {
+          "ComponentID": "XPT8871",
+          "Functional Position": "Audio Power Amplifier",
+          "Recommendation Reason": "Amplifies the audio signal from the FM tuner to drive a speaker. It can be controlled via its SD pin by the microcontroller for shutdown/enable functionality, supporting power management.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "SD",
+              "Net": "AMP_SD_NET",
+              "ConnectedTo": "ATtiny85 GPIO (e.g., PB3 or PB4 if not used for encoder, but encoder uses them; alternative: use PB1 if button is polled, but it's used; in practice, reassign or use software I2C to free a pin. For this netlist, assume a dedicated pin is available via firmware optimization, but since none are free, this connection is noted as a requirement; actual implementation may require pin multiplexing.)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BYP",
+              "Net": "BYPASS_NET",
+              "ConnectedTo": "Bypass capacitor to GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "MODE",
+              "Net": "AMP_MODE_NET",
+              "ConnectedTo": "VCC_3V3 or GND to select Class AB/D (fixed by design)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "IN",
+              "Net": "AUDIO_IN_NET",
+              "ConnectedTo": "Summed audio from RDA5807MP Pin 7 (ROUT) and Pin 8 (LOUT) via coupling and summing network"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VON",
+              "Net": "SPK_NEG_NET",
+              "ConnectedTo": "Speaker Negative Terminal"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3",
+              "ConnectedTo": "HT7333 Pin 3 (VOUT)"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "GND",
+              "Net": "GND",
+              "ConnectedTo": "System Ground"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VOP",
+              "Net": "SPK_POS_NET",
+              "ConnectedTo": "Speaker Positive Terminal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

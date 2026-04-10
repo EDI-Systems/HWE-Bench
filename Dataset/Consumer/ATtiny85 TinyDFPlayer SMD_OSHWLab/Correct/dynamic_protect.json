@@ -1,0 +1,44 @@
+{
+  "LiPo Charging and Protection": [
+    {
+      "net_id": "net_vin",
+      "Connections": [ { "ComponentID": "TP4056", "PinName": "VCC" } ]
+    },
+    {
+      "net_id": "net_b_plus",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "BAT" },
+        { "ComponentID": "DW01A", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "net_b_minus",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "GND" },
+        { "ComponentID": "FS8205", "PinName": "D1" }
+      ]
+    },
+    {
+      "net_id": "net_out_minus",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "GND" },
+        { "ComponentID": "DW01A", "PinName": "CS" },
+        { "ComponentID": "FS8205", "PinName": "D2" }
+      ]
+    },
+    {
+      "net_id": "net_od",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OD" },
+        { "ComponentID": "FS8205", "PinName": "G1" }
+      ]
+    },
+    {
+      "net_id": "net_oc",
+      "Connections": [
+        { "ComponentID": "DW01A", "PinName": "OC" },
+        { "ComponentID": "FS8205", "PinName": "G2" }
+      ]
+    }
+  ]
+}

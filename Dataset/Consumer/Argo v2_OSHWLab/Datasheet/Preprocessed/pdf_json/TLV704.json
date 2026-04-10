@@ -1,0 +1,78 @@
+{
+  "ComponentID": "TLV704",
+  "ComponentType": "Low-Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The TLV704 series are CMOS-based low-dropout linear regulators designed to provide a stable, fixed output voltage from a higher input voltage. Key characteristics include a high maximum input voltage of 30V, very low quiescent current for power-sensitive applications, and a low dropout voltage, making them suitable for battery-powered and communication equipment where input voltage can be close to the desired output.",
+  "KeyParameters": {
+    "Maximum Input Voltage (VIN)": "30 V",
+    "Maximum Output Current (IOUT)": "150 mA",
+    "Dropout Voltage (VDIF)": "30 mV (Typical, at IOUT=1mA, ΔVOUT=2%)",
+    "Quiescent Current (IQ/ISS)": "1.8 µA (Typical)",
+    "Output Voltage Accuracy (Tolerance)": "±2%",
+    "Output Voltage Options (VOUT)": "3.0V, 3.3V, 5.0V (Fixed, model-dependent)",
+    "Operating Temperature Range (TA)": "-40°C to +85°C",
+    "Thermal Resistance (θJA)": "500 °C/W (SOT-23-5L package)",
+    "Maximum Power Dissipation (Pw)": "200 mW (SOT-23-5L package)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power (Ground)"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Unregulated input voltage supply."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power (Supply)"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Regulated output voltage."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power (Output)"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "Internally not connected. Do not connect externally."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "No Connect"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "Internally not connected. Do not connect externally."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "No Connect"
+    }
+  ]
+}

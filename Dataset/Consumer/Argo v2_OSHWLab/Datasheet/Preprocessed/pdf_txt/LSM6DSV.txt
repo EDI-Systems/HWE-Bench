@@ -1,0 +1,32 @@
+Component ID: LSM6DSV16XTR
+Component Type: iNEMO 6-axis Inertial Measurement Unit (IMU)
+Description: The LSM6DSV16XTR is a flagship-grade, ultra-low-power 6-axis IMU from STMicroelectronics. It integrates a 3D digital accelerometer and a 3D digital gyroscope with a high-performance sensor hub and advanced digital features. Notably, it includes "Qvar" (charge variation detection) for user interface applications (like skin contact or gesture sensing) and dual-channel OIS (Optical Image Stabilization) support. It is designed for high-end smartphones, wearable devices, and augmented/virtual reality systems.
+
+
+Key Parameters:
+- **Full-scale Accelerometer Range:** $\pm 2g, \pm 4g, \pm 8g, \pm 16g$
+- **Full-scale Gyroscope Range:** $\pm 125, \pm 245, \pm 500, \pm 1000, \pm 2000, \pm 4000$ dps
+- **Supply Voltage (Vdd):** 1.71V to 3.6V
+- **I/O Voltage (Vdd_IO):** 1.08V to Vdd + 0.1V
+- **Interfaces:** $I^2C$, $I^3C$ (MIPI), SPI (3/4-wire)
+- **Special Features:** Qvar detection, Sensor Hub, OIS/EIS dedicated outputs, and embedded Pedometer/Tilt/Significant Motion functions.
+
+---
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| -- | --- | --- | --- | --- | --- |
+| 1 | SDO/SA0 | SPI SDO / $I^2C$ Addr | SPI serial data output / $I^2C$ device address bit 0 | Output/Input | Signal |
+| 2 | SDx/AH1/Qvar1| Multi-function | Sensor Hub Data / OIS Data / Qvar channel 1 | I/O | Signal |
+| 3 | SCx/AH2/Qvar2| Multi-function | Sensor Hub Clock / OIS Clock / Qvar channel 2 | Input | Signal |
+| 4 | INT1 | Interrupt 1 | Programmable interrupt signal 1 | Output | Signal |
+| 5 | Vdd_IO | I/O Power | Power supply for digital I/O pins | Power | 1.08V - 3.6V |
+| 6 | GND | Ground | Power supply ground reference | Power | 0V |
+| 7 | GND | Ground | Power supply ground reference | Power | 0V |
+| 8 | Vdd | Power | Main analog/digital power supply | Power | 1.71V - 3.6V |
+| 9 | INT2 | Interrupt 2 | Programmable interrupt signal 2 | Output | Signal |
+| 10 | OCS_Aux | OIS Clock | Auxiliary OIS chain serial clock input | Input | Signal |
+| 11 | SDO_Aux | OIS Data | Auxiliary OIS chain serial data output | Output | Signal |
+| 12 | CS | Chip Select | SPI enable / $I^2C$ mode selection | Input | Signal |
+| 13 | SCL | Serial Clock | $I^2C$ serial clock / SPI serial clock | Input | Signal |
+| 14 | SDA | Serial Data | $I^2C$ serial data / SPI serial data input | I/O | Signal |

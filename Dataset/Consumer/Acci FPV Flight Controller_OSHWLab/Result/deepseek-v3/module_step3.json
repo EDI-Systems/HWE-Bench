@@ -1,0 +1,796 @@
+{
+  "Reverse Polarity Protection & Power Input": [],
+  "5V/2A BEC & MCU Power": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "VIN",
+          "FunctionName": "Input Supply"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "GND",
+          "FunctionName": "EP"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "VIN",
+          "FunctionName": "Supply power"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "VOUT",
+          "FunctionName": "Voltage output"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VBAT",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDDA",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    }
+  ],
+  "9V/1.4A HD VTX BEC with MCU Control": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MM3Z10VT1G",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "VIN",
+          "FunctionName": "Input Supply"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "VIN",
+          "FunctionName": "Supply power"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "CE",
+          "FunctionName": "Enable pin"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA0",
+          "FunctionName": "Port A 0"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDDA",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "VOUT",
+          "FunctionName": "Voltage output"
+        }
+      ]
+    }
+  ],
+  "Flight Control Core (MCU & IMU)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "VOUT",
+          "FunctionName": "Voltage output"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPRT9013",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "MM3Z10VT1G",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDDA",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB13",
+          "FunctionName": "Port B 13"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "SCL/SCLK",
+          "FunctionName": "Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB14",
+          "FunctionName": "Port B 14"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "AD0/SDO",
+          "FunctionName": "Addr / SDO"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB15",
+          "FunctionName": "Port B 15"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "SDA/SDI",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB12",
+          "FunctionName": "Port B 12"
+        },
+        {
+          "ComponentID": "MPU-6000",
+          "PinName": "CS",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "3401",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB0",
+          "FunctionName": "Port B 0"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "/CS",
+          "FunctionName": "Chip Select"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA4",
+          "FunctionName": "Port A 4"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DO (IO1)",
+          "FunctionName": "Data Output / IO1"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA6",
+          "FunctionName": "Port A 6"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DI (IO0)",
+          "FunctionName": "Data Input / IO0"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA7",
+          "FunctionName": "Port A 7"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "CLK",
+          "FunctionName": "Serial Clock"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA5",
+          "FunctionName": "Port A 5"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A2",
+          "FunctionName": "Anode 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A1",
+          "FunctionName": "Anode 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "MM3Z10VT1G",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA2",
+          "FunctionName": "Port A 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A1",
+          "FunctionName": "Anode 1"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "D+",
+          "FunctionName": "Data+"
+        }
+      ]
+    },
+    {
+      "net_id": "net30",
+      "Connections": [
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A2",
+          "FunctionName": "Anode 2"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "D-",
+          "FunctionName": "Data-"
+        }
+      ]
+    }
+  ],
+  "ESC Control & Telemetry Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA9",
+          "FunctionName": "Port A 9"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "EXTERNAL_RADIO_MODULE",
+          "PinName": "TX_IN",
+          "FunctionName": "Signal Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "EXTERNAL_RADIO_MODULE",
+          "PinName": "RX_OUT",
+          "FunctionName": "Signal Output"
+        },
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A1",
+          "FunctionName": "Anode 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "A2",
+          "FunctionName": "Anode 2"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PA10",
+          "FunctionName": "Port A 10"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB13",
+          "FunctionName": "Port B 13"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "CLK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB14",
+          "FunctionName": "Port B 14"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DO (IO1)",
+          "FunctionName": "Data Output / IO1"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB15",
+          "FunctionName": "Port B 15"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "DI (IO0)",
+          "FunctionName": "Data Input / IO0"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "PB12",
+          "FunctionName": "Port B 12"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "/CS",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VDDA",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "AO3400A",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "BAT54C",
+          "PinName": "C",
+          "FunctionName": "Common Cathode"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "STM32F405RGT6",
+          "PinName": "VSSA",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "W25Q128JV",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "EP",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "BTC-MC7S-43",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "VIN",
+          "FunctionName": "Input Supply"
+        },
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "SW",
+          "FunctionName": "Switch Node"
+        },
+        {
+          "ComponentID": "LC_FILTER_INPUT",
+          "PinName": "NODE",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "LC_FILTER_OUTPUT",
+          "PinName": "NODE",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "RESISTOR_DIVIDER_TOP",
+          "PinName": "NODE",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "RESISTOR_DIVIDER_BOTTOM",
+          "PinName": "NODE",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "FB",
+          "FunctionName": "Feedback Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "BOOT",
+          "FunctionName": "Bootstrap Supply"
+        },
+        {
+          "ComponentID": "BOOT_CAP_POS",
+          "PinName": "NODE",
+          "FunctionName": "Positive"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "BOOT_CAP_NEG",
+          "PinName": "NODE",
+          "FunctionName": "Negative"
+        },
+        {
+          "ComponentID": "TPS54202",
+          "PinName": "SW",
+          "FunctionName": "Switch Node"
+        }
+      ]
+    }
+  ]
+}

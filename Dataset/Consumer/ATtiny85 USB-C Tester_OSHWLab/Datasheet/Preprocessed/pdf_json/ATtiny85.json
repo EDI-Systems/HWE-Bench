@@ -1,0 +1,114 @@
+{
+  "ComponentID": "ATtiny85",
+  "ComponentType": "8-bit AVR Microcontroller",
+  "Description": "The ATtiny25/45/85 is a family of low-power, high-performance 8-bit microcontrollers based on the AVR RISC architecture. It features in-system programmable Flash memory, EEPROM, and SRAM, along with a rich set of peripherals including timers with PWM, a USI for serial communication, a 10-bit ADC, an analog comparator, and a watchdog timer. Designed for efficient operation, it supports multiple power-saving modes and can run from 1.8V to 5.5V, making it suitable for compact, battery-powered embedded applications.",
+  "KeyParameters": {
+    "Core Architecture": "8-bit AVR RISC",
+    "Max CPU Speed": "Up to 20 MHz (dependent on voltage and variant)",
+    "Program Memory (Flash)": "2/4/8 KB (Endurance: 10,000 write/erase cycles)",
+    "Data Memory (SRAM)": "128/256/512 Bytes",
+    "EEPROM": "128/256/512 Bytes (Endurance: 100,000 write/erase cycles)",
+    "Operating Voltage": "1.8V - 5.5V (V-series) / 2.7V - 5.5V (standard)",
+    "General Purpose I/O Lines": "6",
+    "ADC Resolution": "10-bit (4 single-ended channels, 2 differential pairs)",
+    "Package Types": "8-pin PDIP, 8-pin SOIC, 20-pad QFN/MLF, 8-pin TSSOP (ATtiny45/V only)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PB5",
+      "Functions": [
+        {
+          "FunctionName": "RESET/ADC0/dW",
+          "FunctionDescription": "Reset input (active low) / ADC input channel 0 / debugWIRE I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PB3",
+      "Functions": [
+        {
+          "FunctionName": "XTAL1/CLKI/ADC3",
+          "FunctionDescription": "External clock input / ADC input channel 3 / Crystal oscillator pin 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PB4",
+      "Functions": [
+        {
+          "FunctionName": "XTAL2/CLKO/ADC2",
+          "FunctionDescription": "External clock output / ADC input channel 2 / Crystal oscillator pin 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "GND",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PB0",
+      "Functions": [
+        {
+          "FunctionName": "MOSI/OC0A/OC1A/AREF/ADC0",
+          "FunctionDescription": "SPI Master Out Slave In / Timer0 PWM output A / Timer1 PWM output A / ADC reference / ADC input channel 0 (alternate)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PB1",
+      "Functions": [
+        {
+          "FunctionName": "MISO/OC0B/OC1A/ADC1",
+          "FunctionDescription": "SPI Master In Slave Out / Timer0 PWM output B / Timer1 PWM output A (alternate) / ADC input channel 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PB2",
+      "Functions": [
+        {
+          "FunctionName": "SCK/USCK/OC1B/ADC1/T0",
+          "FunctionDescription": "SPI Serial Clock / USI Clock / Timer1 PWM output B / ADC input channel 1 (alternate) / Timer0 external counter input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "VCC",
+          "FunctionDescription": "Supply voltage"
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    }
+  ]
+}

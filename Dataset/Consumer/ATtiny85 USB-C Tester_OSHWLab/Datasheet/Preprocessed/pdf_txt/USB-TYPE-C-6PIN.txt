@@ -1,0 +1,21 @@
+Component ID: USB-TYPE-C-6PIN
+Component Type: 6-Pin USB Type-C Receptacle (Charging/Power Only)
+Description: This is a simplified USB Type-C receptacle designed specifically for power delivery and battery charging applications where data transmission (USB 2.0 or 3.0) is not required. By omitting the high-speed data pairs and focusing on VBUS, Ground, and Configuration Channel (CC) pins, it simplifies PCB layout and reduces the footprint. The CC1 and CC2 pins are critical for identifying cable orientation and negotiating power levels with a USB Power Delivery (PD) source.
+
+
+Key Parameters:
+- Pin Configuration: 6 Internal Pins (GND, VBUS, CC1, CC2) + Shield
+- Data Lines: None (No D+/D-)
+- Max Current: Typically 3.0A to 5.0A (depending on manufacturer)
+- Standard Compliance: USB Power Delivery (PD) compatible for charging
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Common system ground | Power | 0V |
+| 2 | VBUS | Power | Positive power supply input | Power | 5V - 20V |
+| 3 | CC1 | Config 1 | Configuration channel for PD negotiation | I/O | Signal |
+| 4 | CC2 | Config 2 | Configuration channel for PD negotiation | I/O | Signal |
+| 5 | VBUS | Power | Positive power supply input | Power | 5V - 20V |
+| 6 | GND | Ground | Common system ground | Power | 0V |
+| 0 | SHIELD | Shield | Outer shell/Mounting tabs for EMI and GND | Passive | Ground |

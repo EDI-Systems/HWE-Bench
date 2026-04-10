@@ -1,0 +1,552 @@
+{
+  "Power Output & Load Connection": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        }
+      ]
+    }
+  ],
+  "USB-C Power Input & Regulation": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "INPUT",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "IN+",
+          "FunctionName": "Shunt+"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "OUTPUT",
+          "FunctionName": "Regulated Output"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "VS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/OC0B/OC1A/ADC1"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/OC0A/OC1A/AREF/ADC0"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    }
+  ],
+  "OLED Display Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "INPUT",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "OUTPUT",
+          "FunctionName": "Regulated Output"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "VS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/OC0A/OC1A/AREF/ADC0"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/OC0B/OC1A/ADC1"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    }
+  ],
+  "High-Side Current/Power Sensing": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "INPUT",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "IN+",
+          "FunctionName": "Shunt+"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "OUTPUT",
+          "FunctionName": "Regulated Output"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "VS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/OC0A/OC1A/AREF/ADC0"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/OC0B/OC1A/ADC1"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "A0",
+          "FunctionName": "Address"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "INA219",
+          "PinName": "A1",
+          "FunctionName": "Address"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ],
+  "Microcontroller & User Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "INPUT",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB-TYPE-C-6PIN",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "78L05",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "78L05",
+          "PinName": "OUTPUT",
+          "FunctionName": "Regulated Output"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "VS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/OC0A/OC1A/AREF/ADC0"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/OC1B/ADC1/T0"
+        },
+        {
+          "ComponentID": "INA219",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "OLED 0.91",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "ComponentID": "USB",
+  "ComponentType": "USB Type-C Receptacle Connector",
+  "Description": "This is a USB Type-C female receptacle connector designed for surface-mount (SMT) applications. It provides a complete USB 3.1/Type-C interface, including four high-speed differential pairs (TX/RX), two sideband use (SBU) lines, two configuration channel (CC) lines for power delivery and cable orientation detection, multiple VBUS and GND pins for power distribution, and a robust metal shell for shielding and mechanical retention.",
+  "KeyParameters": {
+    "**Voltage Rating (AC)**": "20 VAC",
+    "**Rated Current**": "5 A",
+    "**Operating Temperature**": "-40°C to +85°C",
+    "**Initial Contact Resistance**": "40 mΩ Max.",
+    "**Final Contact Resistance**": "50 mΩ Max.",
+    "**Withstanding Voltage**": "100 VAC for 1 minute",
+    "**Insulation Resistance**": "100 MΩ Min. @ 500 VDC",
+    "**Insertion Force**": "5 N to 20 N (cycles 1-10,000)",
+    "**Withdrawal Force**": "8 N to 20 N (cycles 1-1,000); 6 N to 20 N (cycles 1,001-10,000)",
+    "**Mechanical Durability**": "10,000 mating cycles"
+  },
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection for shielding/power return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power (+5V default, up to 20V via PD)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 1",
+          "FunctionDescription": "Cable orientation detection & Power Delivery communication"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "DP1",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Differential Pair Positive",
+          "FunctionDescription": "USB 2.0 data positive (lane 1)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "DN1",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Differential Pair Negative",
+          "FunctionDescription": "USB 2.0 data negative (lane 1)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 1",
+          "FunctionDescription": "Alternate mode sideband signal (e.g., DisplayPort AUX)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power (+5V default, up to 20V via PD)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection for shielding/power return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection for shielding/power return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power (+5V default, up to 20V via PD)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 2",
+          "FunctionDescription": "Cable orientation detection & Power Delivery communication"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "DP2",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Differential Pair Positive",
+          "FunctionDescription": "USB 2.0 data positive (lane 2)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "DN2",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Differential Pair Negative",
+          "FunctionDescription": "USB 2.0 data negative (lane 2)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 2",
+          "FunctionDescription": "Alternate mode sideband signal (e.g., DisplayPort AUX)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power (+5V default, up to 20V via PD)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection for shielding/power return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "Shell",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield / Shell",
+          "FunctionDescription": "Metal outer shell for EMI shielding and mechanical retention"
+        }
+      ],
+      "PinType": "Through-hole / SMT Tab",
+      "ElectricalType": "Shield / Ground"
+    }
+  ]
+}

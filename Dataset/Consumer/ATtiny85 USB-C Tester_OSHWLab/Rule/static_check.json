@@ -1,0 +1,97 @@
+{
+  "MCU_Function_Groups": {
+    "ATtiny85": {
+      "System_Power_Infrastructure": [
+        { "PinName": "VCC", "FunctionName": "Digital Supply (5V)" },
+        { "PinName": "GND", "FunctionName": "System Ground" }
+      ],
+      "I2C_Communication_Bus": [
+        { "PinName": "PB0", "FunctionName": "SDA / USI Data" },
+        { "PinName": "PB2", "FunctionName": "SCL / USI Clock" }
+      ],
+      "User_Interface_Inputs": [
+        { "PinName": "PB5", "FunctionName": "RESET_Button / RESET#" },
+        { "PinName": "PB3", "FunctionName": "SET_Button / ADC3" }
+      ],
+      "Unused_IO_Resources": [
+        { "PinName": "PB4", "FunctionName": "Digital IO / ADC2" },
+        { "PinName": "PB1", "FunctionName": "Digital IO / MISO" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "INA219": {
+      "I2C_Interface": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCL", "FunctionName": "Serial Clock" }
+      ],
+      "Current_Sense_Input": [
+        { "PinName": "IN+", "FunctionName": "Positive Shunt Input" },
+        { "PinName": "IN-", "FunctionName": "Negative Shunt Input" }
+      ]
+    },
+    "OLED 0.91": {
+      "I2C_Interface": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCK", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "78L05": {
+      "Regulator_Logic": [
+        { "PinName": "INPUT", "FunctionName": "Unregulated VIN" },
+        { "PinName": "OUTPUT", "FunctionName": "Regulated 5V" }
+      ]
+    },
+    "USB1": {
+      "PD_Power_Source": [
+        { "PinName": "VBUS", "FunctionName": "USB VBUS Output" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_I2C_Shared_Telemetry_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85",
+      "Target_Group_Pattern": "I2C_Communication_Bus",
+      "Slaves": [
+        { "ComponentID": "INA219", "Interface": "I2C_Interface" },
+        { "ComponentID": "OLED 0.91", "Interface": "I2C_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Check_Input_Buttons_Connectivity",
+      "Type": "Resource_Allocation",
+      "MCU": "ATtiny85",
+      "Target_Group": "User_Interface_Inputs",
+      "Slaves": [
+        { "ComponentID": "RESET_SW", "Interface": "Button_Contact" },
+        { "ComponentID": "SET_SW", "Interface": "Button_Contact" }
+      ]
+    },
+    {
+      "RuleName": "Check_PD_High_Voltage_to_LDO",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "USB1", "PinName": "VBUS" },
+        { "ComponentID": "78L05", "PinName": "INPUT" }
+      ]
+    },
+    {
+      "RuleName": "Check_System_Logic_VCC_Supply",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "78L05", "PinName": "OUTPUT" },
+        { "ComponentID": "ATtiny85", "PinName": "VCC" }
+      ]
+    },
+    {
+      "RuleName": "Check_Current_Monitor_Shunt_Bridge",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "INA219", "PinName": "IN+" },
+        { "ComponentID": "USB1", "PinName": "VBUS" }
+      ]
+    }
+  ]
+}

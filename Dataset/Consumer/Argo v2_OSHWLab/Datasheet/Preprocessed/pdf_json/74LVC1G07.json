@@ -1,0 +1,79 @@
+{
+  "ComponentID": "74LVC1G07",
+  "ComponentType": "Single Buffer Gate with Open-Drain Output (Logic Buffer/Driver)",
+  "Description": "The 74LVC1G07 is a single non-inverting buffer with an open-drain output, designed for voltage level translation and wired logic functions (wired-AND/wired-OR). It operates from a 1.65V to 5.5V supply, features 5.5V tolerant inputs for mixed-voltage systems, and includes IOFF circuitry to prevent backflow current when powered down. The output can sink up to 32mA.",
+  "KeyParameters": {
+    "Supply Voltage Range (VCC)": "1.65V to 5.5V",
+    "Input Voltage Tolerance": "Up to 5.5V (independent of VCC)",
+    "Output Configuration": "Open-Drain",
+    "Maximum Low-Level Output Current (IOL)": "32mA (sink)",
+    "Quiescent Supply Current (ICC)": "Typically 10µA (specified for low power consumption)",
+    "Input Logic High Voltage (VIH)": "VCC dependent (e.g., 0.7 x VCC for 3.3V operation)",
+    "Input Logic Low Voltage (VIL)": "VCC dependent (e.g., 0.3 x VCC for 3.3V operation)",
+    "Propagation Delay (tpd)": "Typically a few nanoseconds (specific value depends on VCC and load)",
+    "Operating Temperature Range": "Typically -40°C to +125°C (industrial grade implied)",
+    "ESD Protection (HBM)": "Exceeds 2000V"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "A",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Data Input"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS, 5.5V Tolerant"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Power Supply",
+      "ElectricalType": "Ground (0V)"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Y",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Data Output"
+        }
+      ],
+      "PinType": "Open-Drain Output",
+      "ElectricalType": "Active Low, Sink up to 32mA"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No Connection"
+        }
+      ],
+      "PinType": "Not Connected",
+      "ElectricalType": "Do Not Connect"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Supply Voltage"
+        }
+      ],
+      "PinType": "Power Supply",
+      "ElectricalType": "Positive Supply (1.65V to 5.5V)"
+    }
+  ]
+}

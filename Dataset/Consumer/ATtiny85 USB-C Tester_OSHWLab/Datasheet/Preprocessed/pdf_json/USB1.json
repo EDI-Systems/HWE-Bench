@@ -1,0 +1,296 @@
+{
+  "ComponentID": "USB1",
+  "ComponentType": "USB Type-C Plug (USB-C Plug)",
+  "Description": "USB Type-C plug connector exposing power (VBUS), ground (GND), USB 2.0 data (D+/D−), configuration channel pins (CC1/CC2), and sideband use pins (SBU1/SBU2). High-speed SuperSpeed pairs are present as XP/XN (TX/RX differential pairs) but shown as generic XP1/XN1/XP2/XN2 on this symbol.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A2",
+      "PinName": "XP1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (orientation-dependent). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "A3",
+      "PinName": "XN1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (orientation-dependent). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "USB Power",
+          "FunctionDescription": "VBUS power pin (VIN). Typically +5 V."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel",
+          "FunctionDescription": "Type-C CC1 pin for attach/orientation/current role detection."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data+",
+          "FunctionDescription": "USB 2.0 D+ line. Route as differential pair with D−."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Digital"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data-",
+          "FunctionDescription": "USB 2.0 D− line. Route as differential pair with D+."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Digital"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use",
+          "FunctionDescription": "Sideband use pin (alt modes/debug accessory). Typically unused in USB2-only designs."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "USB Power",
+          "FunctionDescription": "VBUS power pin (VIN). Typically +5 V."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A10",
+      "PinName": "XP2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (orientation-dependent). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "A11",
+      "PinName": "XN2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (orientation-dependent). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B2",
+      "PinName": "XP2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "B3",
+      "PinName": "XN2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "B4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "USB Power",
+          "FunctionDescription": "VBUS power pin (VIN). Typically +5 V."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel",
+          "FunctionDescription": "Type-C CC2 pin for attach/orientation/current role detection."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data+",
+          "FunctionDescription": "USB 2.0 D+ line (duplicate for flip). Tie to A6."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Digital"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data-",
+          "FunctionDescription": "USB 2.0 D− line (duplicate for flip). Tie to A7."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Digital"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use",
+          "FunctionDescription": "Sideband use pin (alt modes/debug accessory). Typically unused in USB2-only designs."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "USB Power",
+          "FunctionDescription": "VBUS power pin (VIN). Typically +5 V."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B10",
+      "PinName": "XN1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "B11",
+      "PinName": "XP1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Pair",
+          "FunctionDescription": "High-speed differential lane (mirrors/orientation). Route as controlled-impedance pair."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "High-Speed Differential"
+    },
+    {
+      "PinNumber": "B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    }
+  ]
+}

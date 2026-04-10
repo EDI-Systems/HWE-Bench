@@ -1,0 +1,23 @@
+Component ID: 78L05
+Component Type: Positive Linear Voltage Regulator (Low-Dropout, LDO)
+Description:
+The 78LXX series are monolithic integrated circuit 3-terminal positive voltage regulators designed to provide a fixed, stable output voltage from a higher, unregulated input voltage. They are suitable for low-power applications requiring up to 100mA of supply current and include built-in protection features such as thermal overload shutdown and short-circuit current limiting.
+
+Key Parameters:
+- **Maximum Output Current (Io max)**: 100 mA
+- **Fixed Output Voltages (Vo)**: 5V, 6V, 8V, 9V, 10V, 12V, 15V, 24V (specific to variant, e.g., 78L05 = 5V)
+- **Maximum Input Voltage (Vi max)**: 30V (for Vo=5V, 8V variants); 35V (for Vo=12V, 15V, 24V variants)
+- **Dropout Voltage (Vd)**: Typical 1.7V (for 78L05 at Tj=25°C)
+- **Line Regulation (ΔVo)**: Typical 8 mV (7V ≤ Vi ≤ 20V for 78L05)
+- **Load Regulation (ΔVo)**: Typical 11 mV (Io = 1mA to 100mA for 78L05)
+- **Quiescent Current (Iq)**: Typical 2.0 mA, Max 5.5 mA
+- **Ripple Rejection (RR)**: Min 40 dB, Typical 49 dB (f=120Hz for 78L05)
+- **Operating Junction Temperature (Tj)**: -20°C to +120°C
+- **Maximum Power Dissipation (Pd)**: 700 mW
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1          | INPUT    | Power Input | Unregulated DC input voltage. Requires an input capacitor (e.g., 0.33 µF) for stability. | Input    | Power           |
+| 2          | GND      | Ground     | Common ground reference for both the input and output circuits. | Input    | Ground          |
+| 3          | OUTPUT   | Regulated Output | Fixed, regulated positive output voltage. Requires an output capacitor (e.g., 0.1 µF) for stability. | Output   | Power           |

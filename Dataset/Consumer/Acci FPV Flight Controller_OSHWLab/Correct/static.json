@@ -1,0 +1,102 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_GYRO_CS",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA4" },
+        { "ComponentID": "MPU-6000", "PinName": "CS" }
+      ]
+    },
+    {
+      "net_id": "NET_GYRO_SCK",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA5" },
+        { "ComponentID": "MPU-6000", "PinName": "SCL/SCLK" }
+      ]
+    },
+    {
+      "net_id": "NET_GYRO_MISO",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA6" },
+        { "ComponentID": "MPU-6000", "PinName": "AD0/SDO" }
+      ]
+    },
+    {
+      "net_id": "NET_GYRO_MOSI",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA7" },
+        { "ComponentID": "MPU-6000", "PinName": "SDA/SDI" }
+      ]
+    },
+    {
+      "net_id": "NET_FLASH_CS",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB12" },
+        { "ComponentID": "W25Q128JV", "PinName": "/CS" }
+      ]
+    },
+    {
+      "net_id": "NET_FLASH_SCK",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB13" },
+        { "ComponentID": "W25Q128JV", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_FLASH_MISO",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB14" },
+        { "ComponentID": "W25Q128JV", "PinName": "DO (IO1)" }
+      ]
+    },
+    {
+      "net_id": "NET_FLASH_MOSI",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PB15" },
+        { "ComponentID": "W25Q128JV", "PinName": "DI (IO0)" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DM",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA11" },
+        { "ComponentID": "BTC-MC7S-43", "PinName": "D-" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DP",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PA12" },
+        { "ComponentID": "BTC-MC7S-43", "PinName": "D+" }
+      ]
+    },
+    {
+      "net_id": "NET_VBAT_SENSE",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PC0" },
+        { "ComponentID": "R16", "PinName": "2" }
+      ]
+    },
+    {
+      "net_id": "NET_BUZZER_GATE",
+      "Connections": [
+        { "ComponentID": "STM32F405RGT6", "PinName": "PC13" },
+        { "ComponentID": "AO3400A", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_BEC_5V_RAIL",
+      "Connections": [
+        { "ComponentID": "TPS54202", "PinName": "SW" },
+        { "ComponentID": "TPRT9013", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_MCU_3V3_PWR",
+      "Connections": [
+        { "ComponentID": "TPRT9013", "PinName": "VOUT" },
+        { "ComponentID": "STM32F405RGT6", "PinName": "VDD" }
+      ]
+    }
+  ]
+}

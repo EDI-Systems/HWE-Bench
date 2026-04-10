@@ -1,0 +1,110 @@
+{
+  "ComponentID": "RDA5807MP",
+  "ComponentType": "Single-Chip Broadcast FM Radio Tuner",
+  "Description": "The RDA5807MP is a highly integrated, single-chip broadcast FM stereo radio tuner. It features a fully integrated synthesizer, IF selectivity, RDS/RBDS, and an MPX decoder. Supporting worldwide frequency bands from 50 MHz to 115 MHz, it requires minimal external components and is designed to directly drive a 32-ohm headphone load. Its low power consumption and high integration make it a standard choice for portable devices like mobile phones, media players, and DIY radio modules.",
+  "KeyParameters": {
+    "Frequency Range": "50 MHz to 115 MHz (Worldwide support)",
+    "Operating Voltage": "2.7V to 3.3V",
+    "Interface": "$I^2C$ (Serial Data and Clock)",
+    "Audio Output": "Stereo headphone drive (32-ohm load)",
+    "Features": "RDS/RBDS Support, Bass Boost, Soft Mute"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "FMIN",
+      "Functions": [
+        {
+          "FunctionName": "FM Input",
+          "FunctionDescription": "FM antenna input connection"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "RF"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCLK",
+      "Functions": [
+        {
+          "FunctionName": "$I^2C$ Clock",
+          "FunctionDescription": "Serial clock input for control interface"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDIO",
+      "Functions": [
+        {
+          "FunctionName": "$I^2C$ Data",
+          "FunctionDescription": "Bi-directional serial data for control interface"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "RCLK",
+      "Functions": [
+        {
+          "FunctionName": "Ref Clock",
+          "FunctionDescription": "Reference clock input (typically 32.768 kHz)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.7V - 3.3V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "ROUT",
+      "Functions": [
+        {
+          "FunctionName": "Right Out",
+          "FunctionDescription": "Right channel analog audio output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "LOUT",
+      "Functions": [
+        {
+          "FunctionName": "Left Out",
+          "FunctionDescription": "Left channel analog audio output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "ComponentID": "TPRT9013",
+  "ComponentType": "Low-Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The TPRT9013 is a high-performance, 500mA low-dropout linear voltage regulator designed for space-constrained portable and RF/wireless applications. It features an extremely high power supply rejection ratio (PSRR) and ultra-low dropout voltage, ensuring stable output voltage even with a small difference between input and output. The device includes an enable (CE) pin for shutdown control to minimize power consumption and is available in fixed output voltage variants within a compact SOT23-5 package.",
+  "KeyParameters": {
+    "Maximum Output Current": "500 mA (Typical)",
+    "Dropout Voltage": "100 mV (Typical at 100mA load), 300 mV (Typical at 200mA load)",
+    "Quiescent (Supply) Current": "60 µA (Typical)",
+    "Power Supply Rejection Ratio (PSRR)": "70 dB (Typical at 1 kHz)",
+    "Output Voltage Accuracy": "±2% tolerance",
+    "Input Voltage Range": "Up to 7.0 V (Maximum)",
+    "Shutdown Current": "<1 µA (Typical)",
+    "Package / Power Dissipation": "SOT23-5, 250 mW"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Supply power",
+          "FunctionDescription": "Input voltage pin."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Enable pin",
+          "FunctionDescription": "Active-high control pin to enable (high) or disable (low) the output."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Control"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "NC",
+          "FunctionDescription": "No internal connection."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "No Connect"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Voltage output",
+          "FunctionDescription": "Regulated output voltage pin."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    }
+  ]
+}

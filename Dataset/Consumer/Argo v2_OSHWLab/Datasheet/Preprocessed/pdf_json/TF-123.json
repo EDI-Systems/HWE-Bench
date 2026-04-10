@@ -1,0 +1,169 @@
+{
+  "ComponentID": "TF-123",
+  "ComponentType": "Micro-SD (TF) Card Connector",
+  "Description": "The TF-123-ARP9H15 is a standard Micro-SD (TransFlash) card receptacle designed for surface-mount (SMT) PCB applications. It provides the physical and electrical interface for Micro-SD storage cards, supporting both high-speed SDIO and simpler SPI communication protocols. This component typically features a mechanical locking mechanism (such as push-push or push-pull) and an integrated switch for hardware-level card detection.",
+  "KeyParameters": {
+    "**Supported Cards": "** Micro-SD / TF Card",
+    "**Interface Protocols": "** SDIO (1-bit or 4-bit) / SPI",
+    "**Operating Voltage": "** 2.7V to 3.6V (Standard SD specification)",
+    "**Mounting Type": "** Surface Mount (SMT), Right Angle"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DAT2",
+      "Functions": [
+        {
+          "FunctionName": "Data 2",
+          "FunctionDescription": "SD mode data line bit 2"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "CD/DAT3",
+      "Functions": [
+        {
+          "FunctionName": "CD / Data 3",
+          "FunctionDescription": "Card Detect / SD data line bit 3 / SPI Chip Select"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CMD",
+      "Functions": [
+        {
+          "FunctionName": "Command",
+          "FunctionDescription": "Command/Response line (SDIO) / SPI Data Input (MOSI)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "Serial clock signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "DAT0",
+      "Functions": [
+        {
+          "FunctionName": "Data 0",
+          "FunctionDescription": "SD data line bit 0 / SPI Data Output (MISO)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "DAT1",
+      "Functions": [
+        {
+          "FunctionName": "Data 1",
+          "FunctionDescription": "SD mode data line bit 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SWITCH",
+      "Functions": [
+        {
+          "FunctionName": "Det. Switch",
+          "FunctionDescription": "Card insertion detection switch terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell ground / Mechanical support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell ground / Mechanical support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell ground / Mechanical support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector shell ground / Mechanical support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

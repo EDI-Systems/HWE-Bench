@@ -1,0 +1,82 @@
+Component ID: STM32F405RGT6
+Component Type: 32-bit ARM Cortex-M4 Microcontroller
+Description: The STM32F405RGT6 is a high-performance microcontroller based on the ARM Cortex-M4 32-bit RISC core operating at a frequency of up to 168 MHz. The Cortex-M4 core features a Floating Point Unit (FPU) which supports all ARM single-precision data-processing instructions and data types. It also implements a full set of DSP instructions and a memory protection unit (MPU) to enhance application security. The device incorporates high-speed embedded memories (up to 1 MB of Flash memory, 192 KB of SRAM) and an extensive range of enhanced I/Os and peripherals, including three 12-bit ADCs, two DACs, a low-power RTC, twelve general-purpose 16-bit timers, and multiple communication interfaces such as I2C, SPI, UART, CAN, and USB OTG.
+
+Key Parameters:
+- Core: ARM 32-bit Cortex-M4 CPU with FPU
+- Max CPU Frequency: 168 MHz
+- Flash Memory: 1 MB
+- SRAM: 192 KB
+- Operating Voltage: 1.8V to 3.6V
+- ADC: 3 x 12-bit (16 channels)
+- DAC: 2 x 12-bit
+- Timers: 12 x 16-bit, 2 x 32-bit
+- Communication: 3 x I2C, 3 x SPI, 2 x CAN, 6 x UART, USB OTG FS/HS, SDIO
+- Package: LQFP-64
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VBAT | Power | Battery backup supply voltage | Power | 3.3V |
+| 2 | PC13 | Port C 13 | General purpose I/O / RTC / Anti-tamp | I/O | Signal |
+| 3 | PC14 | Port C 14 | OSC32_IN / 32.768 kHz crystal input | I/O | Signal |
+| 4 | PC15 | Port C 15 | OSC32_OUT / 32.768 kHz crystal output | I/O | Signal |
+| 5 | PH0 | Port H 0 | OSC_IN / External high-speed clock input | I/O | Signal |
+| 6 | PH1 | Port H 1 | OSC_OUT / External high-speed clock output | I/O | Signal |
+| 7 | NRST | Reset | Active-low system reset input | Input | 3.3V |
+| 8 | PC0 | Port C 0 | ADC123_IN10 / GPIO | I/O | Analog/Signal |
+| 9 | PC1 | Port C 1 | ADC123_IN11 / GPIO | I/O | Analog/Signal |
+| 10 | PC2 | Port C 2 | ADC123_IN12 / GPIO | I/O | Analog/Signal |
+| 11 | PC3 | Port C 3 | ADC123_IN13 / GPIO | I/O | Analog/Signal |
+| 12 | VSSA | Ground | Analog ground reference | Power | 0V |
+| 13 | VDDA | Power | Analog positive power supply | Power | 3.3V |
+| 14 | PA0 | Port A 0 | ADC123_IN0 / WKUP / GPIO | I/O | Analog/Signal |
+| 15 | PA1 | Port A 1 | ADC123_IN1 / GPIO | I/O | Analog/Signal |
+| 16 | PA2 | Port A 2 | ADC123_IN2 / USART2_TX / GPIO | I/O | Analog/Signal |
+| 17 | PA3 | Port A 3 | ADC123_IN3 / USART2_RX / GPIO | I/O | Analog/Signal |
+| 18 | VSS | Ground | Primary digital system ground | Power | 0V |
+| 19 | VDD | Power | Primary digital power supply | Power | 3.3V |
+| 20 | PA4 | Port A 4 | ADC12_IN4 / DAC1_OUT / GPIO | I/O | Analog/Signal |
+| 21 | PA5 | Port A 5 | ADC12_IN5 / DAC2_OUT / GPIO | I/O | Analog/Signal |
+| 22 | PA6 | Port A 6 | ADC12_IN6 / SPI1_MISO / GPIO | I/O | Analog/Signal |
+| 23 | PA7 | Port A 7 | ADC12_IN7 / SPI1_MOSI / GPIO | I/O | Analog/Signal |
+| 24 | PC4 | Port C 4 | ADC12_IN14 / GPIO | I/O | Analog/Signal |
+| 25 | PC5 | Port C 5 | ADC12_IN15 / GPIO | I/O | Analog/Signal |
+| 26 | PB0 | Port B 0 | ADC12_IN8 / GPIO | I/O | Analog/Signal |
+| 27 | PB1 | Port B 1 | ADC12_IN9 / GPIO | I/O | Analog/Signal |
+| 28 | PB2 | Port B 2 | BOOT1 / GPIO | I/O | Signal |
+| 29 | PB10 | Port B 10 | I2C2_SCL / USART3_TX / GPIO | I/O | Signal |
+| 30 | PB11 | Port B 11 | I2C2_SDA / USART3_RX / GPIO | I/O | Signal |
+| 31 | VCAP_1 | Core Volt | Main regulator filter capacitor 1 | Power | Analog |
+| 32 | VDD | Power | Secondary digital power supply | Power | 3.3V |
+| 33 | PB12 | Port B 12 | SPI2_NSS / I2C1_SMBA / GPIO | I/O | Signal |
+| 34 | PB13 | Port B 13 | SPI2_SCK / GPIO | I/O | Signal |
+| 35 | PB14 | Port B 14 | SPI2_MISO / GPIO | I/O | Signal |
+| 36 | PB15 | Port B 15 | SPI2_MOSI / GPIO | I/O | Signal |
+| 37 | PC6 | Port C 6 | USART6_TX / SDIO_D6 / GPIO | I/O | Signal |
+| 38 | PC7 | Port C 7 | USART6_RX / SDIO_D7 / GPIO | I/O | Signal |
+| 39 | PC8 | Port C 8 | SDIO_D0 / GPIO | I/O | Signal |
+| 40 | PC9 | Port C 9 | SDIO_D1 / I2C3_SDA / GPIO | I/O | Signal |
+| 41 | PA8 | Port A 8 | MCO1 / USART1_CK / GPIO | I/O | Signal |
+| 42 | PA9 | Port A 9 | USART1_TX / VBUS / GPIO | I/O | Signal |
+| 43 | PA10 | Port A 10 | USART1_RX / OTG_FS_ID / GPIO | I/O | Signal |
+| 44 | PA11 | Port A 11 | OTG_FS_DM / CAN1_RX / GPIO | I/O | Signal |
+| 45 | PA12 | Port A 12 | OTG_FS_DP / CAN1_TX / GPIO | I/O | Signal |
+| 46 | PA13 | Port A 13 | JTMS-SWDIO / GPIO | I/O | Signal |
+| 47 | VCAP_2 | Core Volt | Main regulator filter capacitor 2 | Power | Analog |
+| 48 | VDD | Power | Tertiary digital power supply | Power | 3.3V |
+| 49 | PA14 | Port A 14 | JTCK-SWCLK / GPIO | I/O | Signal |
+| 50 | PA15 | Port A 15 | JTDI / GPIO | I/O | Signal |
+| 51 | PC10 | Port C 10 | UART4_TX / SDIO_D2 / GPIO | I/O | Signal |
+| 52 | PC11 | Port C 11 | UART4_RX / SDIO_D3 / GPIO | I/O | Signal |
+| 53 | PC12 | Port C 12 | UART5_TX / SDIO_CK / GPIO | I/O | Signal |
+| 54 | PD2 | Port D 2 | SDIO_CMD / UART5_RX / GPIO | I/O | Signal |
+| 55 | PB3 | Port B 3 | JTDO / TRACESWO / GPIO | I/O | Signal |
+| 56 | PB4 | Port B 4 | NJTRST / GPIO | I/O | Signal |
+| 57 | PB5 | Port B 5 | I2C1_SMBA / CAN2_RX / GPIO | I/O | Signal |
+| 58 | PB6 | Port B 6 | I2C1_SCL / CAN2_TX / GPIO | I/O | Signal |
+| 59 | PB7 | Port B 7 | I2C1_SDA / GPIO | I/O | Signal |
+| 60 | BOOT0 | Boot Mode | Boot mode selection input | Input | 3.3V |
+| 61 | PB8 | Port B 8 | CAN1_RX / I2C1_SCL / GPIO | I/O | Signal |
+| 62 | PB9 | Port B 9 | CAN1_TX / I2C1_SDA / GPIO | I/O | Signal |
+| 64 | VDD | Power | Quaternary digital power supply | Power | 3.3V |

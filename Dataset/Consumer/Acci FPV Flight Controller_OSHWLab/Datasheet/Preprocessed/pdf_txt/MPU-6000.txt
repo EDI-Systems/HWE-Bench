@@ -1,0 +1,35 @@
+Component ID: MPU-6000
+Component Type: 6-Axis Motion Tracking Device (3-Axis Gyroscope + 3-Axis Accelerometer) with Digital Motion Processor (DMP)
+Description: The MPU-60X0 is a fully integrated 6-axis Motion Processing Unit that combines a 3-axis MEMS gyroscope and a 3-axis MEMS accelerometer on a single chip, along with an onboard Digital Motion Processor (DMP) capable of running complex 9-axis sensor fusion algorithms. It features an auxiliary I2C master bus to interface with external sensors (like a magnetometer) and communicates with a host processor via either I2C (MPU-6050 & MPU-6000) or SPI (MPU-6000 only). Its primary function is to provide precise motion sensing and processing for applications like gaming, navigation, and gesture recognition.
+
+Key Parameters:
+- Gyroscope Full-Scale Range: Programmable to ±250, ±500, ±1000, ±2000 °/sec (dps)
+- Accelerometer Full-Scale Range: Programmable to ±2g, ±4g, ±8g, ±16g
+- Digital Motion Processor (DMP): Onboard processor for sensor fusion algorithms
+- Communication Interfaces: I2C (up to 400 kHz) for MPU-6050; I2C & SPI (up to 20 MHz) for MPU-6000
+- Supply Voltage (VDD): Logic and analog supply for MPU-6000
+- Logic Level Reference (VLOGIC): Pin to define I2C interface voltage levels for MPU-6050
+- Auxiliary I2C Master: For connecting and managing external sensors
+- Package: 4x4x0.9 mm QFN (Quad Flat No-leads)
+- Operating Temperature: Not specified in provided text, but typical for MEMS sensors (-40°C to +85°C)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CLKIN | Clock Input | External clock input (optional) | Input | Signal |
+| 6 | AUX_DA | Aux Data | Auxiliary $I^2C$ master serial data | I/O | Signal |
+| 7 | AUX_CL | Aux Clock | Auxiliary $I^2C$ master serial clock | Output | Signal |
+| 8 | CS | Chip Select | SPI chip select (active low) | Input | Signal |
+| 9 | AD0/SDO | Addr / SDO | $I^2C$ Address LSB / SPI serial data output | Output/Input | Signal |
+| 10 | REGOUT | Regulator | Regulator filter capacitor connection | Passive | Analog |
+| 11 | FSYNC | Frame Sync | Frame synchronization digital input | Input | Signal |
+| 12 | INT | Interrupt | Interrupt digital output (programmable) | Output | Signal |
+| 13 | VDD | Power | Primary DC power supply voltage | Power | 2.375V-3.46V |
+| 18 | GND | Ground | Digital and analog power supply ground | Power | 0V |
+| 19 | RESV | Reserved | Reserved (leave unconnected or connect to GND) | NC | - |
+| 20 | CPOUT | Charge Pump | Charge pump capacitor connection | Passive | Analog |
+| 21 | RESV | Reserved | Reserved (leave unconnected or connect to GND) | NC | - |
+| 22 | RESV | Reserved | Reserved (leave unconnected or connect to GND) | NC | - |
+| 23 | SCL/SCLK | Clock | $I^2C$ serial clock / SPI serial clock | Input | Signal |
+| 24 | SDA/SDI | Data | $I^2C$ serial data / SPI serial data input | I/O | Signal |
+| 25 | GND | EP | Exposed Pad / Thermal ground | Power | 0V |

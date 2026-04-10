@@ -1,0 +1,27 @@
+Component ID: ATtiny85
+Component Type: 8-bit AVR Microcontroller
+Description:
+The ATtiny25/45/85 is a family of low-power, high-performance 8-bit AVR microcontrollers based on a RISC architecture, featuring in-system programmable Flash memory for program storage. It integrates a core with 32 general-purpose registers, SRAM, EEPROM, multiple timers with PWM, a USI for serial communication, a 10-bit ADC, an analog comparator, and a watchdog timer. Designed for embedded control applications, it offers various power-saving modes and operates across a wide voltage range, with the number of I/O lines and memory size varying by specific model (2/4/8KB Flash, 128/256/512B EEPROM/SRAM).
+
+Key Parameters:
+- Core Architecture: 8-bit AVR RISC
+- CPU Speed: Up to 20 MHz (model and voltage dependent)
+- Program Memory (Flash): 2KB (ATtiny25), 4KB (ATtiny45), 8KB (ATtiny85)
+- Data Memory (SRAM): 128B (ATtiny25), 256B (ATtiny45), 512B (ATtiny85)
+- EEPROM: 128B (ATtiny25), 256B (ATtiny45), 512B (ATtiny85)
+- Operating Voltage (VCC): 1.8V - 5.5V (V-series), 2.7V - 5.5V (standard)
+- General Purpose I/O Lines: 6 (Port B)
+- ADC Resolution & Channels: 10-bit, 4 single-ended channels
+- Package Options: 8-pin PDIP, 8-pin SOIC, 20-pad QFN/MLF, 8-pin TSSOP (ATtiny45/V only)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | PB5 | RESET/ADC0/dW | Reset input (active low) / ADC input channel 0 / debugWIRE I/O | Digital I/O, Analog Input | Bidirectional, Open-drain when RESET |
+| 2 | PB3 | XTAL1/CLKI/ADC3/OC1B | Crystal oscillator input / External clock input / ADC input channel 3 / Timer1 PWM output B | Digital I/O, Analog Input, Clock | Input/Output |
+| 3 | PB4 | XTAL2/CLKO/ADC2/OC1B | Crystal oscillator output / System clock output / ADC input channel 2 / Timer1 PWM output B | Digital I/O, Analog Input, Clock | Output |
+| 4 | GND | GND | Ground | Power | Ground |
+| 5 | PB0 | MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0 | SPI Master Out Slave In / USI Data Input / Analog Comparator Positive Input / Timer0 PWM output A / Timer1 PWM output A / ADC Reference / Pin Change Interrupt 0 | Digital I/O, Analog I/O | Bidirectional |
+| 6 | PB1 | MISO/DO/AIN1/OC0B/OC1A/PCINT1 | SPI Master In Slave Out / USI Data Output / Analog Comparator Negative Input / Timer0 PWM output B / Timer1 PWM output A / Pin Change Interrupt 1 | Digital I/O, Analog Input | Bidirectional |
+| 7 | PB2 | SCK/USCK/SCL/ADC1/T0/INT0/PCINT2 | SPI Serial Clock / USI External Clock Input / USI SCL (I2C) / ADC input channel 1 / Timer0 external counter input / External Interrupt 0 / Pin Change Interrupt 2 | Digital I/O, Analog Input, Clock | Bidirectional |
+| 8 | VCC | VCC | Supply voltage | Power | Power Supply |

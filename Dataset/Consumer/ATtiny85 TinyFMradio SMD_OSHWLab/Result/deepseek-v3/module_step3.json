@@ -1,0 +1,1109 @@
+{
+  "User Input & Control Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase A",
+          "FunctionName": "Output A"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase B",
+          "FunctionName": "Output B"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW1",
+          "FunctionName": "Push Switch"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Common",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW2",
+          "FunctionName": "Push Switch"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    }
+  ],
+  "FM Tuner & Demodulation Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB3",
+          "FunctionName": "XTAL1/CLKI/ADC3/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase A",
+          "FunctionName": "Output A"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB4",
+          "FunctionName": "XTAL2/CLKO/ADC2/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase B",
+          "FunctionName": "Output B"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Common",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW2",
+          "FunctionName": "Push Switch"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SCLK",
+          "FunctionName": "$I^2C$ Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "ROUT",
+          "FunctionName": "Right Out"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    }
+  ],
+  "Audio Amplification & Output Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB3",
+          "FunctionName": "XTAL1/CLKI/ADC3/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase A",
+          "FunctionName": "Output A"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB4",
+          "FunctionName": "XTAL2/CLKO/ADC2/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Phase B",
+          "FunctionName": "Output B"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "Common",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "SD",
+          "FunctionName": "Shutdown Control"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "SD",
+          "FunctionName": "Shutdown Control"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SCLK",
+          "FunctionName": "I2C Clock"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Regulated Voltage Output Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Regulated Voltage Output Terminal"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "LOUT",
+          "FunctionName": "Left Out"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "ROUT",
+          "FunctionName": "Right Out"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "BYP",
+          "FunctionName": "Bypass"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "BYP",
+          "FunctionName": "Bypass"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "MODE",
+          "FunctionName": "Mode Select"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "MODE",
+          "FunctionName": "Mode Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VON",
+          "FunctionName": "Negative Output"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VON",
+          "FunctionName": "Negative Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VOP",
+          "FunctionName": "Positive Output"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VOP",
+          "FunctionName": "Positive Output"
+        }
+      ]
+    }
+  ],
+  "User Interface Display Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB3",
+          "FunctionName": "XTAL1/CLKI/ADC3/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "B",
+          "FunctionName": "Output B"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB4",
+          "FunctionName": "XTAL2/CLKO/ADC2/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW1",
+          "FunctionName": "Push Switch"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "C",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW2",
+          "FunctionName": "Push Switch"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SDIO",
+          "FunctionName": "$I^2C$ Data"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "A",
+          "FunctionName": "Output A"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SCLK",
+          "FunctionName": "$I^2C$ Clock"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "ROUT",
+          "FunctionName": "Right Out"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "LOUT",
+          "FunctionName": "Left Out"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    }
+  ],
+  "Power Regulation & Distribution Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MOSI",
+          "FunctionName": "Master Out Slave In"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "MISO",
+          "FunctionName": "Master In Slave Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "SCK",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    }
+  ],
+  "Microcontroller & System Control Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB5",
+          "FunctionName": "RESET/ADC0/dW"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB3",
+          "FunctionName": "XTAL1/CLKI/ADC3/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "B",
+          "FunctionName": "Output B"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB4",
+          "FunctionName": "XTAL2/CLKO/ADC2/OC1B"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "A",
+          "FunctionName": "Output A"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "GND",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "C",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB0",
+          "FunctionName": "MOSI/DI/AIN0/OC0A/OC1A/AREF/PCINT0"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SDIO",
+          "FunctionName": "$I^2C$ Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB1",
+          "FunctionName": "MISO/DO/AIN1/OC0B/OC1A/PCINT1"
+        },
+        {
+          "ComponentID": "Rotary Encoder",
+          "PinName": "SW1",
+          "FunctionName": "Push Switch"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "PB2",
+          "FunctionName": "SCK/USCK/SCL/ADC1/T0/INT0/PCINT2"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "SCLK",
+          "FunctionName": "$I^2C$ Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny85",
+          "PinName": "VCC",
+          "FunctionName": "VCC"
+        },
+        {
+          "ComponentID": "HT7333",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ICSP-6",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "RDA5807MP",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "XPT8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    }
+  ]
+}

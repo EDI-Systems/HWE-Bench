@@ -1,0 +1,118 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_USB_VBUS_IN",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "bq25895", "PinName": "VBUS" }
+      ]
+    },
+    {
+      "net_id": "NET_VSYS_MAIN",
+      "Connections": [
+        { "ComponentID": "bq25895", "PinName": "SYS" },
+        { "ComponentID": "TPS61022", "PinName": "VIN" },
+        { "ComponentID": "RT9742", "PinName": "IN" },
+        { "ComponentID": "TLV704", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_MCU_3V3_PWR",
+      "Connections": [
+        { "ComponentID": "TLV704", "PinName": "VOUT" },
+        { "ComponentID": "SBC_Core", "PinName": "VDD_3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_CHARGER_I2C_SCL",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SCL0" },
+        { "ComponentID": "bq25895", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_CHARGER_I2C_SDA",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SDA0" },
+        { "ComponentID": "bq25895", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_IMU_I2C_SCL",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "GPIO3" },
+        { "ComponentID": "LSM6DSV16XTR", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_IMU_I2C_SDA",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "GPIO2" },
+        { "ComponentID": "LSM6DSV16XTR", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_CLK",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_CLK" },
+        { "ComponentID": "TF-123", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_CMD",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_CMD" },
+        { "ComponentID": "TF-123", "PinName": "CMD" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_DAT0",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_DAT0" },
+        { "ComponentID": "TF-123", "PinName": "DAT0" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_DAT1",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_DAT1" },
+        { "ComponentID": "TF-123", "PinName": "DAT1" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_DAT2",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_DAT2" },
+        { "ComponentID": "TF-123", "PinName": "DAT2" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_DAT3_CS",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_DAT3" },
+        { "ComponentID": "TF-123", "PinName": "CD/DAT3" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_PWR_CTRL",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "SD_PWR_ON" },
+        { "ComponentID": "RT9742", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_VCC_SWITCHED",
+      "Connections": [
+        { "ComponentID": "RT9742", "PinName": "OUT" },
+        { "ComponentID": "TF-123", "PinName": "VDD" }
+      ]
+    },
+    {
+      "net_id": "NET_ACT_LED_BUFFER_IN",
+      "Connections": [
+        { "ComponentID": "SBC_Core", "PinName": "LED_NACT" },
+        { "ComponentID": "74LVC1G07", "PinName": "A" }
+      ]
+    }
+  ]
+}

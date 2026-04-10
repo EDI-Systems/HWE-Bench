@@ -1,0 +1,210 @@
+{
+  "ComponentID": "DF",
+  "ComponentType": "MP3 Audio Decoder Module",
+  "Description": "The DFPlayer Mini is a compact, low-cost MP3 module capable of decoding audio files (MP3, WAV, WMA) from storage media (TF card, U-disk, or internal NOR FLASH) and outputting audio via a built-in 24-bit DAC. It supports multiple control modes (serial, I/O, AD button) and features folder-based file management, adjustable volume/EQ, and advertising interruption functionality, making it suitable for embedded voice prompt and playback applications.",
+  "KeyParameters": {
+    "Supported Audio Formats": "MP3, WAV, WMA",
+    "Supported Sampling Rates": "8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz",
+    "DAC Resolution": "24-bit",
+    "Dynamic Range": "90 dB",
+    "Signal-to-Noise Ratio (SNR)": "85 dB",
+    "Storage Support": "FAT16/FAT32 file system, up to 32 GB TF card, 32 GB U-disk, 64 MB NOR FLASH",
+    "Folder/Song Capacity": "Up to 100 folders, each with up to 255 songs",
+    "Volume Control": "30 levels",
+    "Equalizer (EQ) Modes": "6 levels"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Module power input (3.2–5.0V)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "RX",
+      "Functions": [
+        {
+          "FunctionName": "Serial Receive",
+          "FunctionDescription": "UART data input (from MCU TX)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "UART RX"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "TX",
+      "Functions": [
+        {
+          "FunctionName": "Serial Transmit",
+          "FunctionDescription": "UART data output (to MCU RX)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "UART TX"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "DAC_R",
+      "Functions": [
+        {
+          "FunctionName": "Audio Output Right",
+          "FunctionDescription": "Right channel analog audio output"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Audio Output"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "DAC_L",
+      "Functions": [
+        {
+          "FunctionName": "Audio Output Left",
+          "FunctionDescription": "Left channel analog audio output"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Audio Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SPK_1",
+      "Functions": [
+        {
+          "FunctionName": "Speaker Positive",
+          "FunctionDescription": "Positive terminal for speaker connection"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Speaker Output"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SPK_2",
+      "Functions": [
+        {
+          "FunctionName": "Speaker Negative",
+          "FunctionDescription": "Negative terminal for speaker connection"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Speaker Output"
+    },
+    {
+      "PinNumber": "912",
+      "PinName": "ADKEY_1",
+      "Functions": [
+        {
+          "FunctionName": "AD Key 1",
+          "FunctionDescription": "Analog key input 1 (for button control)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "AD Key Input"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "IO_1",
+      "Functions": [
+        {
+          "FunctionName": "GPIO 1",
+          "FunctionDescription": "General-purpose I/O 1 (for I/O control mode)"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "GPIO"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "IO_2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO 2",
+          "FunctionDescription": "General-purpose I/O 2 (for I/O control mode)"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "GPIO"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "ADKEY_2",
+      "Functions": [
+        {
+          "FunctionName": "AD Key 2",
+          "FunctionDescription": "Analog key input 2 (for button control)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "AD Key Input"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "BUSY",
+      "Functions": [
+        {
+          "FunctionName": "Busy Indicator",
+          "FunctionDescription": "Outputs low during playback, high when idle"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Status Output"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "USB+",
+      "Functions": [
+        {
+          "FunctionName": "USB Data Positive",
+          "FunctionDescription": "USB D+ line (for U-disk connection)"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "USB Data"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "USB-",
+      "Functions": [
+        {
+          "FunctionName": "USB Data Negative",
+          "FunctionDescription": "USB D- line (for U-disk connection)"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "USB Data"
+    }
+  ]
+}

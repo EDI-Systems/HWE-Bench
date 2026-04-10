@@ -1,0 +1,195 @@
+{
+  "ComponentID": "LSM6DSV16XTR",
+  "ComponentType": "iNEMO 6-axis Inertial Measurement Unit (IMU)",
+  "Description": "The LSM6DSV16XTR is a flagship-grade, ultra-low-power 6-axis IMU from STMicroelectronics. It integrates a 3D digital accelerometer and a 3D digital gyroscope with a high-performance sensor hub and advanced digital features. Notably, it includes \"Qvar\" (charge variation detection) for user interface applications (like skin contact or gesture sensing) and dual-channel OIS (Optical Image Stabilization) support. It is designed for high-end smartphones, wearable devices, and augmented/virtual reality systems.",
+  "KeyParameters": {
+    "**Full-scale Accelerometer Range": "** $\\pm 2g, \\pm 4g, \\pm 8g, \\pm 16g$",
+    "**Full-scale Gyroscope Range": "** $\\pm 125, \\pm 245, \\pm 500, \\pm 1000, \\pm 2000, \\pm 4000$ dps",
+    "**Supply Voltage (Vdd)": "** 1.71V to 3.6V",
+    "**I/O Voltage (Vdd_IO)": "** 1.08V to Vdd + 0.1V",
+    "**Interfaces": "** $I^2C$, $I^3C$ (MIPI), SPI (3/4-wire)",
+    "**Special Features": "** Qvar detection, Sensor Hub, OIS/EIS dedicated outputs, and embedded Pedometer/Tilt/Significant Motion functions."
+  },
+  "Pins": [
+    {
+      "PinNumber": "--",
+      "PinName": "---",
+      "Functions": [
+        {
+          "FunctionName": "---",
+          "FunctionDescription": "---"
+        }
+      ],
+      "PinType": "---",
+      "ElectricalType": "---"
+    },
+    {
+      "PinNumber": "1",
+      "PinName": "SDO/SA0",
+      "Functions": [
+        {
+          "FunctionName": "SPI SDO / $I^2C$ Addr",
+          "FunctionDescription": "SPI serial data output / $I^2C$ device address bit 0"
+        }
+      ],
+      "PinType": "Output/Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SDx/AH1/Qvar1",
+      "Functions": [
+        {
+          "FunctionName": "Multi-function",
+          "FunctionDescription": "Sensor Hub Data / OIS Data / Qvar channel 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCx/AH2/Qvar2",
+      "Functions": [
+        {
+          "FunctionName": "Multi-function",
+          "FunctionDescription": "Sensor Hub Clock / OIS Clock / Qvar channel 2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "INT1",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt 1",
+          "FunctionDescription": "Programmable interrupt signal 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "Vdd_IO",
+      "Functions": [
+        {
+          "FunctionName": "I/O Power",
+          "FunctionDescription": "Power supply for digital I/O pins"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.08V - 3.6V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "Vdd",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main analog/digital power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - 3.6V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "INT2",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt 2",
+          "FunctionDescription": "Programmable interrupt signal 2"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "OCS_Aux",
+      "Functions": [
+        {
+          "FunctionName": "OIS Clock",
+          "FunctionDescription": "Auxiliary OIS chain serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "SDO_Aux",
+      "Functions": [
+        {
+          "FunctionName": "OIS Data",
+          "FunctionDescription": "Auxiliary OIS chain serial data output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "SPI enable / $I^2C$ mode selection"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "$I^2C$ serial clock / SPI serial clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "$I^2C$ serial data / SPI serial data input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

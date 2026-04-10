@@ -1,0 +1,91 @@
+{
+  "ComponentID": "DW01A",
+  "ComponentType": "Single-Cell Lithium-Ion/Polymer Battery Protection IC",
+  "Description": "The DW01A is a protection IC designed for single-cell lithium-ion or lithium-polymer battery packs. It monitors battery voltage and current to provide protection against overcharge, overdischarge, overcurrent (both charge and discharge), and short-circuit conditions. It achieves this by controlling external N-channel MOSFETs in series with the battery, features built-in protection delay timers, and supports charging from 0V.",
+  "KeyParameters": {
+    "Overcharge Protection Voltage (VOCP)": "4.28V ±50mV",
+    "Overcharge Release Voltage (VOCR)": "4.08V ±50mV",
+    "Overdischarge Protection Voltage (VODP)": "2.40V ±100mV",
+    "Overdischarge Release Voltage (VODR)": "3.00V ±100mV",
+    "Discharge Overcurrent Protection Threshold (VEC1)": "160mV ±20mV",
+    "Short-Circuit Protection Threshold (VSHORT)": "1.00V ±300mV",
+    "Charge Overcurrent Protection Threshold (VCHA)": "-0.150V",
+    "Operating Current (Typical)": "1.5 µA",
+    "Operating Temperature Range": "-40°C to +85°C",
+    "Package": "SOT-23-6"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "OD",
+      "Functions": [
+        {
+          "FunctionName": "Discharge Control",
+          "FunctionDescription": "MOSFET gate connection pin for discharge control"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital Output (Gate Drive)"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "Current Sense / Charger Detect",
+          "FunctionDescription": "Input pin for current sense and charger detection"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "OC",
+      "Functions": [
+        {
+          "FunctionName": "Charge Control",
+          "FunctionDescription": "MOSFET gate connection pin for charge control"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital Output (Gate Drive)"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "Not Connected",
+          "FunctionDescription": "Not Connected"
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Power supply, connected through a series resistor (R1)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for the IC"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

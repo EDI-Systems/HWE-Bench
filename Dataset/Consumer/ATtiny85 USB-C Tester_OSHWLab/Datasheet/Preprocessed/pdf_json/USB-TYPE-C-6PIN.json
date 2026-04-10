@@ -1,0 +1,97 @@
+{
+  "ComponentID": "USB-TYPE-C-6PIN",
+  "ComponentType": "6-Pin USB Type-C Receptacle (Charging/Power Only)",
+  "Description": "This is a simplified USB Type-C receptacle designed specifically for power delivery and battery charging applications where data transmission (USB 2.0 or 3.0) is not required. By omitting the high-speed data pairs and focusing on VBUS, Ground, and Configuration Channel (CC) pins, it simplifies PCB layout and reduces the footprint. The CC1 and CC2 pins are critical for identifying cable orientation and negotiating power levels with a USB Power Delivery (PD) source.",
+  "KeyParameters": {
+    "Pin Configuration": "6 Internal Pins (GND, VBUS, CC1, CC2) + Shield",
+    "Data Lines": "None (No D+/D-)",
+    "Max Current": "Typically 3.0A to 5.0A (depending on manufacturer)",
+    "Standard Compliance": "USB Power Delivery (PD) compatible for charging"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Config 1",
+          "FunctionDescription": "Configuration channel for PD negotiation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Config 2",
+          "FunctionDescription": "Configuration channel for PD negotiation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "0",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Outer shell/Mounting tabs for EMI and GND"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

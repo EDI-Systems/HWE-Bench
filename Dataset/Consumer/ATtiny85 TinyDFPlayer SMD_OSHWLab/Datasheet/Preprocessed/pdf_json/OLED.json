@@ -1,0 +1,56 @@
+{
+  "ComponentID": "OLED",
+  "ComponentType": "OLED Display Controller/Driver",
+  "Description": "This is a monochrome passive matrix OLED display module with a 0.96-inch diagonal, 128x64 pixel resolution, and an integrated SSD1306BZ controller/driver IC. It supports multiple host interfaces including I2C, SPI (3-wire and 4-wire), and parallel (6800/8080) via hardware configuration pins. The module includes an internal DC/DC charge pump for power supply generation.",
+  "KeyParameters": {},
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Main supply voltage input for the display logic and panel"
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Supply"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "I2C Clock",
+          "FunctionDescription": "Serial clock input for I2C data synchronization"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Logic Level"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "I2C Data",
+          "FunctionDescription": "Serial data line for transmitting display information (Net MOSI)"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "Logic Level"
+    }
+  ]
+}

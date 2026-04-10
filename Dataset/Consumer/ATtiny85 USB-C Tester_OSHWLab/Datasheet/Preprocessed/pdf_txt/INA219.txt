@@ -1,0 +1,21 @@
+Component ID: INA219
+Component Type: High-Side Current and Power Monitor with I2C Interface
+Description: The INA219 is a digital current and power monitor with an I2C- or SMBus-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A combined internal multiplier, along with an external shunt resistor, enables direct readouts of current in amperes and power in watts.
+
+Key Parameters:
+- Bus Voltage Range: 0V to 26V
+- Operating Voltage: 3.0V to 5.5V
+- Shunt Voltage Range: ±40mV to ±320mV
+- Interface: I2C (Supports up to 16 addresses)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | IN+ | Shunt+ | Positive differential shunt voltage input | Input | Analog |
+| 2 | IN- | Shunt- | Negative differential shunt voltage input | Input | Analog |
+| 3 | GND | Ground | Ground reference | Power | 0V |
+| 4 | VS | Power | Power supply input | Power | 3V - 5.5V |
+| 5 | SCL | SCL | I2C serial clock line | Input | Signal |
+| 6 | SDA | SDA | Bi-directional I2C serial data line | I/O | Signal |
+| 7 | A0 | Address | I2C address selection pin 0 | Input | Signal |
+| 8 | A1 | Address | I2C address selection pin 1 | Input | Signal |

@@ -1,0 +1,109 @@
+{
+  "ComponentID": "INA219",
+  "ComponentType": "High-Side Current and Power Monitor with I2C Interface",
+  "Description": "The INA219 is a digital current and power monitor with an I2C- or SMBus-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A combined internal multiplier, along with an external shunt resistor, enables direct readouts of current in amperes and power in watts.",
+  "KeyParameters": {
+    "Bus Voltage Range": "0V to 26V",
+    "Operating Voltage": "3.0V to 5.5V",
+    "Shunt Voltage Range": "±40mV to ±320mV",
+    "Interface": "I2C (Supports up to 16 addresses)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "IN+",
+      "Functions": [
+        {
+          "FunctionName": "Shunt+",
+          "FunctionDescription": "Positive differential shunt voltage input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "IN-",
+      "Functions": [
+        {
+          "FunctionName": "Shunt-",
+          "FunctionDescription": "Negative differential shunt voltage input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3V - 5.5V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "I2C serial clock line"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "Bi-directional I2C serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "A0",
+      "Functions": [
+        {
+          "FunctionName": "Address",
+          "FunctionDescription": "I2C address selection pin 0"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Address",
+          "FunctionDescription": "I2C address selection pin 1"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "MCU_Function_Groups": {
+    "SBC_Core": {
+      "System_Power_Rails": [
+        { "PinName": "VDD_3V3", "FunctionName": "3.3V Logic Supply" },
+        { "PinName": "GND", "FunctionName": "System Ground" }
+      ],
+      "MicroSD_SDIO_Bus": [
+        { "PinName": "SD_CLK", "FunctionName": "Clock Output" },
+        { "PinName": "SD_CMD", "FunctionName": "Command Line" },
+        { "PinName": "SD_DAT0", "FunctionName": "Data Bit 0" },
+        { "PinName": "SD_DAT1", "FunctionName": "Data Bit 1" },
+        { "PinName": "SD_DAT2", "FunctionName": "Data Bit 2" },
+        { "PinName": "SD_DAT3", "FunctionName": "Data Bit 3" },
+        { "PinName": "SD_PWR_ON", "FunctionName": "Slot Power Enable" }
+      ],
+      "Charger_I2C0_Management": [
+        { "PinName": "SDA0", "FunctionName": "I2C0 Data / BQ25895" },
+        { "PinName": "SCL0", "FunctionName": "I2C0 Clock / BQ25895" },
+        { "PinName": "CHG_INT", "FunctionName": "Charger Interrupt Input" }
+      ],
+      "Sensor_I2C_IMU": [
+        { "PinName": "GPIO2", "FunctionName": "I2C SDA / Sensor Hub" },
+        { "PinName": "GPIO3", "FunctionName": "I2C SCL / Sensor Hub" }
+      ],
+      "System_Logic_Control": [
+        { "PinName": "LED_NACT", "FunctionName": "Activity Status Driver" },
+        { "PinName": "LED_NPWR", "FunctionName": "Power Status Driver" },
+        { "PinName": "PWR_BUTTON", "FunctionName": "Soft Power Key" },
+        { "PinName": "NRPIBOOT", "FunctionName": "Boot Mode Selector" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "bq25895": {
+      "I2C_Bus": [
+        { "PinName": "SCL", "FunctionName": "Serial Clock" },
+        { "PinName": "SDA", "FunctionName": "Serial Data" }
+      ],
+      "Power_Main": [
+        { "PinName": "VBUS", "FunctionName": "Input from USB" },
+        { "PinName": "SYS", "FunctionName": "System Output" },
+        { "PinName": "VBAT", "FunctionName": "Battery Terminal" }
+      ]
+    },
+    "LSM6DSV16XTR": {
+      "I2C_Standard": [
+        { "PinName": "SCL", "FunctionName": "Clock" },
+        { "PinName": "SDA", "FunctionName": "Data" }
+      ]
+    },
+    "TF-123": {
+      "SD_Card_Slot": [
+        { "PinName": "CLK", "FunctionName": "Serial Clock" },
+        { "PinName": "CMD", "FunctionName": "Command" },
+        { "PinName": "DAT0", "FunctionName": "Data 0" },
+        { "PinName": "DAT1", "FunctionName": "Data 1" },
+        { "PinName": "DAT2", "FunctionName": "Data 2" },
+        { "PinName": "CD/DAT3", "FunctionName": "Chip Select / Data 3" }
+      ]
+    },
+    "RT9742": {
+      "Gated_Switch": [
+        { "PinName": "EN", "FunctionName": "Enable Logic" },
+        { "PinName": "IN", "FunctionName": "Power In" },
+        { "PinName": "OUT", "FunctionName": "Power Out" }
+      ]
+    },
+    "74LVC1G07": {
+      "Buffer_Gate": [
+        { "PinName": "A", "FunctionName": "Logic Input" },
+        { "PinName": "Y", "FunctionName": "Open-Drain Output" }
+      ]
+    },
+    "USB": {
+      "TypeC_Input": [
+        { "PinName": "VBUS", "FunctionName": "Main Power" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_Charger_Control_Loop",
+      "Type": "Bus_Pairing",
+      "MCU": "SBC_Core",
+      "Target_Group_Pattern": "Charger_I2C0_.*",
+      "Slaves": [ { "ComponentID": "bq25895", "Interface": "I2C_Bus" } ]
+    },
+    {
+      "RuleName": "Check_IMU_Sensor_I2C",
+      "Type": "Bus_Pairing",
+      "MCU": "SBC_Core",
+      "Target_Group_Pattern": "Sensor_I2C_.*",
+      "Slaves": [ { "ComponentID": "LSM6DSV16XTR", "Interface": "I2C_Standard" } ]
+    },
+    {
+      "RuleName": "Check_SDIO_Storage_Integrity",
+      "Type": "Bus_Pairing",
+      "MCU": "SBC_Core",
+      "Target_Group_Pattern": "MicroSD_SDIO_.*",
+      "Slaves": [ { "ComponentID": "TF-123", "Interface": "SD_Card_Slot" } ]
+    },
+    {
+      "RuleName": "Check_USB_Power_Injection",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "bq25895", "PinName": "VBUS" }
+      ]
+    },
+    {
+      "RuleName": "Check_VSYS_Power_Chain",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "bq25895", "PinName": "SYS" },
+        { "ComponentID": "TPS61022", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "Check_VREF_to_MCU_Supply",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TLV704", "PinName": "VOUT" },
+        { "ComponentID": "SBC_Core", "PinName": "VDD_3V3" }
+      ]
+    }
+  ]
+}

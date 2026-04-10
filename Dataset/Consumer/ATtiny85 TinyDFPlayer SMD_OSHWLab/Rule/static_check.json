@@ -1,0 +1,76 @@
+{
+  "MCU_Function_Groups": {
+    "ATtiny85-20SU": {
+      "Universal_Serial_Interface": [
+        { "PinName": "PB0", "FunctionName": "MOSI/SDA" },
+        { "PinName": "PB1", "FunctionName": "MISO" },
+        { "PinName": "PB2", "FunctionName": "SCK/SCL" }
+      ],
+      "UART_Soft_Serial": [
+        { "PinName": "PB3", "FunctionName": "RX" },
+        { "PinName": "PB4", "FunctionName": "TX" }
+      ],
+      "System_Control": [
+        { "PinName": "PB5", "FunctionName": "RESET/ADC0" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "OLED": {
+      "I2C_Target": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCK", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "ICSP-6": {
+      "SPI_Programming": [
+        { "PinName": "MOSI", "FunctionName": "MOSI" },
+        { "PinName": "MISO", "FunctionName": "MISO" },
+        { "PinName": "SCK", "FunctionName": "SCK" }
+      ]
+    },
+    "DFR0299": {
+      "UART_Interface": [
+        { "PinName": "RX", "FunctionName": "Receive" },
+        { "PinName": "TX", "FunctionName": "Transmit" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "OLED_Display_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85-20SU",
+      "Target_Group_Pattern": "Universal_.*",
+      "Slaves": [
+        { "ComponentID": "OLED", "Interface": "I2C_Target" }
+      ]
+    },
+    {
+      "RuleName": "Programming_Header_SPI",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85-20SU",
+      "Target_Group_Pattern": "Universal_.*",
+      "Slaves": [
+        { "ComponentID": "ICSP-6", "Interface": "SPI_Programming" }
+      ]
+    },
+    {
+      "RuleName": "DFPlayer_Serial_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny85-20SU",
+      "Target_Group_Pattern": "UART_.*",
+      "Slaves": [
+        { "ComponentID": "DFR0299", "Interface": "UART_Interface" }
+      ]
+    },
+    {
+      "RuleName": "MCU_Hardware_Reset",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ICSP-6", "PinName": "RESET" },
+        { "ComponentID": "ATtiny85-20SU", "PinName": "PB5" }
+      ]
+    }
+  ]
+}
