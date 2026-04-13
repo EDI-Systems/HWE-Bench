@@ -123,7 +123,7 @@
       "Slaves": [ { "ComponentID": "CN1", "Interface": "EInk_Header" } ]
     },
     {
-      "RuleName": "Check_Auto_Reset_燒錄电路",
+      "RuleName": "Check_Auto_Reset",
       "Type": "Resource_Allocation",
       "MCU": "ESP32-WROVER",
       "Target_Group": "Boot_and_Reset_Logic",
