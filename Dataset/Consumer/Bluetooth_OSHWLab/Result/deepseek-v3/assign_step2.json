@@ -1,0 +1,659 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Analog Audio Coupling & Output Module",
+      "Function Description": "Conditions the analog audio signals from the processor, blocks any DC offset to protect connected headphones/speakers, and provides the final low-impedance output to the audio jack.",
+      "Signal Sources": "Left and right channel analog audio signals from the Central Wireless Processing & Audio Unit's DAC output.",
+      "Signal Destinations": "Conditioned analog audio signals to the 3.5mm audio output jack (or speaker terminals).",
+      "Implementation Logic": "A passive network primarily consisting of series DC-blocking capacitors on each audio channel, followed by optional series resistors for current limiting/impedance matching. This forms a high-pass filter to remove DC components, ensuring only AC audio signals reach the output jack.",
+      "Signal Chain": "The analog audio signal chain originates from the AC6955F4 SoC's integrated audio DAC. The left channel audio signal (DACL, Pin 10) and right channel audio signal (DACR, Pin 11) are output as analog signals with a DC bias (common-mode voltage) set by VCOM0 (Pin 9). These signals must be AC-coupled to block any DC offset before reaching the output transducer to prevent damage and ensure proper operation. Each channel's signal path consists of a series DC-blocking capacitor (not in library, implied by implementation logic) forming a high-pass filter. The capacitor's value is chosen to pass the desired audio frequencies (e.g., 20 Hz and above). The conditioned AC audio signals are then routed directly to the corresponding pins of the 3.5mm audio jack. The PJ-3420 jack's TIP (Pin 2) receives the left channel, and RING (Pin 3) receives the right channel. The SLEEVE (Pin 1) provides the common ground return path, which is connected to the system audio ground (DACVSS, Pin 8). The internal shunt switches (TIP-SW, Pin 4 and RING-SW, Pin 6) are normally closed and can be used for plug detection or to mute an alternative audio path (e.g., internal speaker) when a headphone plug is inserted, but their use is optional for the basic coupling function described.",
+      "Recommended Components": [
+        {
+          "ComponentID": "AC6955F4",
+          "Functional Position": "Audio Signal Source",
+          "Recommendation Reason": "This is the specified Central Wireless Processing & Audio Unit that provides the left and right channel analog audio signals from its integrated DAC.",
+          "Pin Connections": [
+            {
+              "PinNumber": "10",
+              "PinName": "DACL",
+              "Net": "AUDIO_L"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "DACR",
+              "Net": "AUDIO_R"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DACVSS",
+              "Net": "AUDIO_GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VCOM0",
+              "Net": "AUDIO_VCOM"
+            }
+          ]
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "Functional Position": "Audio Output Interface",
+          "Recommendation Reason": "This is the standard 3.5mm stereo audio jack that provides the physical interface for headphones or speakers, which is the specified signal destination.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "TIP",
+              "Net": "AUDIO_L"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "RING",
+              "Net": "AUDIO_R"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "SLEEVE",
+              "Net": "AUDIO_GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "User Interface Module",
+      "Function Description": "Provides physical controls for user interaction, including power on/off, volume adjustment, and track control.",
+      "Signal Sources": "User mechanical input (button presses).",
+      "Signal Destinations": "Digital logic level signals (e.g., GPIO interrupts, ADC voltage levels) to the Central Wireless Processing & Audio Unit.",
+      "Implementation Logic": "A set of tactile push-button switches connected to the processor's GPIO pins, configured with internal/external pull-up resistors. Pressing a button pulls the pin to ground (or a specific voltage divider level for multi-function buttons), generating a distinct digital signal interpreted by the processor's firmware as a specific command (e.g., volume up, play/pause). The main power switch is a mechanical switch in the primary power path.",
+      "Signal Chain": "The user interface module consists of tactile push-button switches for volume adjustment and track control, and a main power switch. Each push-button connects between a GPIO pin on the processor and ground. The GPIO pins are configured with internal pull-up resistors, so when a button is not pressed, the pin reads a logic high. Pressing the button pulls the pin to ground, generating a logic low that the processor detects as an interrupt or through polling, interpreting it as a specific command (e.g., volume up, play/pause). The main power switch is a mechanical switch placed in the primary power path to physically connect or disconnect the battery from the system, controlling overall power on/off. This ensures user inputs are translated into digital signals for the Central Wireless Processing & Audio Unit.",
+      "Recommended Components": [
+        {
+          "ComponentID": "AC6955F4",
+          "Functional Position": "Central Wireless Processing & Audio Unit",
+          "Recommendation Reason": "This SoC integrates a Bluetooth audio processor, DSP, audio codec, and multiple GPIOs, making it ideal for handling user interface inputs via GPIO interrupts and processing audio commands. It serves as the digital logic destination for button signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "PA1/AUX0R/ADC0",
+              "Net": "VOLUME_UP_BUTTON"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "PA0/AUX0L",
+              "Net": "VOLUME_DOWN_BUTTON"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SD_PWR/PB11",
+              "Net": "PLAY_PAUSE_BUTTON"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "ADC9/AUX2R/SD0CMDB/PB10",
+              "Net": "NEXT_TRACK_BUTTON"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "AUX2L/SD0CLKB/PB9",
+              "Net": "PREVIOUS_TRACK_BUTTON"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDDIO",
+              "Net": "3.3V_POWER"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "VSSIO",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SK-32",
+          "Functional Position": "Main Power Switch",
+          "Recommendation Reason": "This SPDT slide switch is suitable as a mechanical switch in the primary power path to control overall system power on/off, aligning with the module's requirement for a main power switch.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "COM",
+              "Net": "BATTERY_POWER_IN"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "P1",
+              "Net": "SYSTEM_POWER_OUT"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHIELD",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Management & Battery Charging Module",
+      "Function Description": "Manages all power sources, safely charges the internal battery from an external wired input, provides stable system voltages, and enables seamless operation between battery and external power.",
+      "Signal Sources": "External DC power input (e.g., USB-C/VBUS), internal battery voltage.",
+      "Signal Destinations": "Regulated system voltage (VCC) to all other modules, charging current/control to the battery, power status signals to the Central Processing Unit.",
+      "Implementation Logic": "Comprises a battery charger IC (for Li-ion/Poly), DC-DC switching and/or LDO voltage regulators, power path management circuitry, and fuel gauge. It routes external power to charge the battery and power the system simultaneously, switches to battery power when external power is removed, and provides clean, stable VCC rails.",
+      "Signal Chain": "The module's primary function is to manage power sources and charge a single-cell Li-ion battery. The signal chain begins with the external DC power input, which is provided via the USB Type-C connector's VBUS pins. This input voltage (nominally 5V) is fed into the TP4054 charger IC's VCC pin. The TP4054 performs constant-current/constant-voltage (CC/CV) charging. It regulates the charging current to the battery based on an external resistor at its PROG pin and monitors the battery voltage at its BAT pin. When external power is present, the TP4054 routes power to charge the battery (via BAT) and can simultaneously power the system load through its internal power path. The BAT pin connects directly to the positive terminal of the battery. The system's main regulated voltage rail (VCC) is derived from this battery voltage (or the external input when present). The TP4054's CHRG pin provides an open-drain status output (e.g., charging active/low, complete/high-Z) which can be monitored by a system microcontroller for power management logic. A Schottky diode (1N5819WS) is placed between the external VBUS and the charger's VCC input for reverse polarity protection and to prevent back-feeding when external power is removed. The battery voltage (from TP4054 BAT) also feeds into the AC6955F4 SoC's VBAT pin as its primary power source. The SoC's internal PMU and LDO then generate the required core and I/O voltages (e.g., VDDIO, BT_AVDD). The SoC can monitor the battery voltage via its ADC pins (e.g., ADC/PB1) for fuel gauge functionality. The power status from the TP4054 (CHRG) can be read by the SoC via a GPIO pin configured as an input with a pull-up resistor.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "External Power Input Interface",
+          "Recommendation Reason": "Provides the standardized, reversible USB Type-C port for external DC power input (VBUS) and data connectivity. Essential for receiving charging power from a USB source.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "EXT_VBUS"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "VBUS",
+              "Net": "EXT_VBUS"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SHELL",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SHELL",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N5819WS",
+          "Functional Position": "Input Protection and OR-ing Diode",
+          "Recommendation Reason": "Provides reverse polarity protection and prevents current from flowing back from the battery to the external input when it is removed. Its low forward voltage drop minimizes power loss.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "EXT_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "CHARGER_VCC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4054",
+          "Functional Position": "Battery Charger and Power Path Manager",
+          "Recommendation Reason": "A complete linear charger IC for single-cell Li-ion batteries. It integrates CC/CV charging, thermal regulation, status indication, and reverse protection. It manages the power path between the external input and the battery, providing power to the system.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "CHARGER_VCC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "BAT",
+              "Net": "SYS_VBAT"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "CHRG",
+              "Net": "CHRG_STATUS"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PROG",
+              "Net": "PROG_RES"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "Functional Position": "System-on-Chip with Integrated Power Management and Monitoring",
+          "Recommendation Reason": "The SoC acts as the central processor and includes a Power Management Unit (PMU). Its VBAT pin is the main system power input, derived from the charger's BAT output. It can monitor the battery voltage via its ADC and read the charger status via a GPIO, enabling intelligent power management and fuel gauge functions.",
+          "Pin Connections": [
+            {
+              "PinNumber": "18",
+              "PinName": "VBAT",
+              "Net": "SYS_VBAT"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "VSSIO",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DACVSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "ADC/PB1",
+              "Net": "BAT_MONITOR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Central Wireless Processing & Audio Unit",
+      "Function Description": "Acts as the system's core, handling wireless communication (e.g., Bluetooth), decoding digital audio streams (from RF or local storage), performing digital-to-analog conversion (DAC), and processing user input commands.",
+      "Signal Sources": "Wireless RF signals from a paired host device, digital data from local storage media (if present), digital control signals from the User Interface Module.",
+      "Signal Destinations": "Analog left/right audio channel signals to the Analog Audio Coupling & Output Module, power control/status signals to the Power Management Module.",
+      "Implementation Logic": "A highly integrated System-on-Chip (SoC) or microcontroller with integrated wireless transceiver (e.g., Bluetooth), audio DSP, and DAC. It initializes upon system power-up, manages wireless pairing and audio stream reception, decodes the audio (e.g., SBC, AAC), converts it to analog, and executes volume/track control based on interpreted button presses.",
+      "Signal Chain": "The module's core is the AC6955F4 SoC. It receives wireless audio data via its integrated Bluetooth transceiver (BT_RF pin). Digital audio from a local MicroSD card is read via the SD host interface (SD0DATAB, SD0CLKB, SD0CMDB). The SoC's DSP decodes the audio stream (e.g., SBC, AAC). The decoded digital audio is converted to analog by the integrated DAC, outputting left (DACL) and right (DACR) channel signals. These analog signals are routed to the audio jack (PJ-3420). User input commands (e.g., from buttons/switches) are read via the SoC's GPIOs (e.g., PA0, PA1). The SoC can control system power states via GPIOs (e.g., SD_PWR/PB11). Power is supplied via VBAT and managed by the internal PMU. A USB Type-C connector (TYPE-C) provides 5V power input and data connectivity (via USBDM/USBDP). The TP4054 charges a single-cell Li-ion battery from the USB 5V supply. The 1N5819WS diode can be used for reverse polarity protection on the VBAT line.",
+      "Recommended Components": [
+        {
+          "ComponentID": "AC6955F4",
+          "Functional Position": "Central Processing & Wireless SoC",
+          "Recommendation Reason": "Integrates Bluetooth 5.1 transceiver, audio DSP, multi-format decoder, stereo DAC, and PMU, fulfilling all core functions (wireless comms, audio decoding, DAC, user command processing).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "USBDM",
+              "Net": "USB_DM"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "USBDP/ADC12",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PA1/AUX0R/ADC0",
+              "Net": "USER_BUTTON_1"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "PA0/AUX0L",
+              "Net": "USER_BUTTON_2"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PC7/MIC_BIAS",
+              "Net": "MIC_BIAS"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "MIC",
+              "Net": "MIC_IN"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDDIO",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DACVSS",
+              "Net": "AGND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VCOM0",
+              "Net": "VCOM0"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "DACL",
+              "Net": "AUDIO_L"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "DACR",
+              "Net": "AUDIO_R"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "FMIP",
+              "Net": "FM_ANTENNA"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SD_PWR/PB11",
+              "Net": "SD_POWER_EN"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "ADC9/AUX2R/SD0CMDB/PB10",
+              "Net": "SD_CMD"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "AUX2L/SD0CLKB/PB9",
+              "Net": "SD_CLK"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "ADC8/AUX1R/SD0DATAB/PB8",
+              "Net": "SD_DAT0"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PB5/LDO_IN",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "VBAT",
+              "Net": "VBAT"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "BT_AVDD",
+              "Net": "VDD_RF_1V8"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "ADC/PB1",
+              "Net": "BAT_VOLT_MON"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "BT_RF",
+              "Net": "BT_ANTENNA"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "VSSIO",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "BT_OSCI",
+              "Net": "XTAL_IN"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "BT_OSCO",
+              "Net": "XTAL_OUT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TF-01A",
+          "Functional Position": "Local Storage Interface",
+          "Recommendation Reason": "Provides MicroSD card interface for local digital audio storage, compatible with SoC's SD host controller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "DAT2",
+              "Net": "SD_DAT2"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "CD/DAT3",
+              "Net": "SD_DAT3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CMD",
+              "Net": "SD_CMD"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "SD_VDD"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "CLK",
+              "Net": "SD_CLK"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VSS",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DAT0",
+              "Net": "SD_DAT0"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DAT1",
+              "Net": "SD_DAT1"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "CD",
+              "Net": "SD_CARD_DETECT"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "GND",
+              "Net": "DGND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "Functional Position": "Analog Audio Output Connector",
+          "Recommendation Reason": "Standard 3.5mm stereo audio jack for outputting analog audio to headphones/external amplifier.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "SLEEVE",
+              "Net": "AGND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TIP",
+              "Net": "AUDIO_L"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "RING",
+              "Net": "AUDIO_R"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "TIP-SW",
+              "Net": "HEADPHONE_DETECT_L"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "RING-SW",
+              "Net": "HEADPHONE_DETECT_R"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "USB Power & Data Connector",
+          "Recommendation Reason": "Provides 5V power input for system and battery charging, and USB data interface for firmware updates/data transfer.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "SBU2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "CC1",
+              "Net": "USB_CC1"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "DN2",
+              "Net": "USB_DM"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "DP1",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DN1",
+              "Net": "USB_DM"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "DP2",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SBU1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "CC2",
+              "Net": "USB_CC2"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "VBUS",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SHELL",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SHELL",
+              "Net": "DGND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4054",
+          "Functional Position": "Battery Charger",
+          "Recommendation Reason": "Charges single-cell Li-ion battery from USB 5V input, includes protection and status indication.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "CHRG",
+              "Net": "CHARGING_LED"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "BAT",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PROG",
+              "Net": "RPROG_TO_GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "1N5819WS",
+          "Functional Position": "Battery Reverse Polarity Protection",
+          "Recommendation Reason": "Low forward voltage Schottky diode protects the system if battery is connected incorrectly.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "VBAT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SK-32",
+          "Functional Position": "Power Switch",
+          "Recommendation Reason": "SPDT slide switch for manual system power control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "P1",
+              "Net": "POWER_RAIL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "COM",
+              "Net": "VBAT"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "P2",
+              "Net": "DGND"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHIELD",
+              "Net": "DGND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "ComponentID": "SK-32",
+  "ComponentType": "Slide Switch",
+  "Description": "This component is a single-pole, double-throw (SPDT) slide switch with a momentary action mechanism. It functions by sliding the actuator to make or break an electrical connection between its common terminal and one of two output terminals, returning to a default position when released. It is designed for manual circuit control in electronic devices.",
+  "KeyParameters": {
+    "Rated Voltage/Current": "250V AC / 1mA",
+    "Insulation Resistance": "100 MΩ min (at DC 250V)",
+    "Contact Resistance": "100 mΩ max (at DC 100mV)",
+    "Operating Temperature Range": "-25°C to +70°C",
+    "Mechanical Life": "10,000 cycles",
+    "Operating Force": "250 ± 100 gf",
+    "Terminal Length (L) Options": "1.5 mm, 2.0 mm, 2.5 mm"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "P1",
+      "Functions": [
+        {
+          "FunctionName": "Throw 1",
+          "FunctionDescription": "Switch contact position 1"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "COM",
+      "Functions": [
+        {
+          "FunctionName": "Common",
+          "FunctionDescription": "Common terminal (wiper)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "P2",
+      "Functions": [
+        {
+          "FunctionName": "Throw 2",
+          "FunctionDescription": "Switch contact position 2"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "0",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Metal casing and mechanical support tabs"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

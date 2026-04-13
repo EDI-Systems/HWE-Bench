@@ -1,0 +1,25 @@
+Component ID: TPS62088  
+Component Type: High-Frequency Synchronous Step-Down (Buck) Converter  
+Description:  
+The TPS62088 is a high-efficiency, high-frequency synchronous step-down DC-DC converter designed for small solution size and high efficiency. It operates from a 2.4 V to 5.5 V input range, supports up to 3 A output current, and uses a 4 MHz switching frequency to minimize external component size. The device employs DCS-Control™ topology for excellent load transient performance and output regulation, and it automatically transitions between PWM mode at medium‑to‑heavy loads and Power Save Mode at light loads to maintain efficiency across the load range. Integrated features include over‑current protection, thermal shutdown, active output discharge, and a power‑good indicator.
+
+Key Parameters:  
+- Input Voltage Range: 2.4 V to 5.5 V  
+- Maximum Output Current: 3 A  
+- Switching Frequency: 4 MHz  
+- Quiescent Current (Operating): 4 µA  
+- Output Voltage Accuracy: ±1%  
+- Power MOSFET On‑Resistance: 26 mΩ (high‑side) and 26 mΩ (low‑side)  
+- Efficiency: Up to 95%  
+- Duty Cycle: Up to 100% (for low dropout)  
+- Package Options: 6‑pin WCSP (YFP: 0.8 mm × 1.2 mm × 0.5 mm; YWC: 0.8 mm × 1.2 mm × 0.3 mm)  
+
+Pinout Table:  
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| A1         | EN       | Enable   | Device enable. Pull high to enable, low to disable. Do not leave floating. | Input    | Digital Control |
+| B1         | PG       | Power Good | Open‑drain power‑good output. Pull‑up resistor can be connected to ≤5.5 V. Leave floating if unused. | Output   | Open‑Drain |
+| C1         | FB       | Feedback | Feedback input. For fixed‑output versions, connect directly to output. | Input    | Analog |
+| C2         | GND      | Ground   | Ground reference for the device. | Power    | Ground |
+| B2         | SW       | Switch   | Switching node of the power stage. Connect to inductor. | Output   | Power Switch |
+| A2         | VIN      | Input Voltage | Power supply input (2.4 V to 5.5 V). | Input    | Power Supply |

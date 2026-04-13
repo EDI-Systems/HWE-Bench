@@ -1,0 +1,27 @@
+Component ID: TC8871
+Component Type: Mono Audio Power Amplifier (Class AB/D Selectable)
+Description:
+The TC8871 is a single-channel, 5W audio power amplifier designed for portable and low-voltage audio systems. It features selectable Class AB or Class D operation to balance efficiency and audio quality, with built-in feedback resistors that simplify external circuitry by eliminating the need for output coupling capacitors, bootstrap capacitors, or snubber networks. Operating from a 2.0V to 5.5V supply, it offers high power output (e.g., 5W into 2Ω at 5V), includes a shutdown mode for low power consumption, and integrates thermal shutdown protection. Its design minimizes FM interference and is suitable for applications like USB-powered speakers, laptops, and multimedia audio systems.
+
+Key Parameters:
+- Supply Voltage Range (Recommended): 2.0 V to 5.5 V
+- Maximum Output Power (THD+N <10%, 1 kHz): 5 W (into 2Ω load at 5V)
+- Quiescent Supply Current (Static): 6 mA (Typical)
+- Shutdown Leakage Current: 0.8 μA (Typical)
+- Power Supply Rejection Ratio (PSRR): 80 dB (Typical)
+- Total Harmonic Distortion + Noise (THD+N): 0.2% (Typical, Aᵥ=2, Pₒ=0.5W, 4Ω)
+- Gain Bandwidth Product: 2.5 MHz
+- Operating Temperature Range: -40 °C to 85 °C
+- Thermal Resistance (θⱼₐ, ESOP-8): 140 °C/W
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|------------------|
+| 1          | SD       | Shutdown Control | Active-high shutdown control pin | Digital Input | CMOS/TTL |
+| 2          | BYP      | Bypass           | Internal common-mode voltage bypass capacitor connection | Analog | Passive |
+| 3          | MODE     | Mode Select      | AB/D Class mode selection pin (default is AB class) | Digital Input | CMOS/TTL |
+| 4          | IN       | Inverting Input  | Analog inverting input (feedback node) | Analog Input | Signal |
+| 5          | VON      | Negative Output  | Analog negative output (BTL configuration) | Analog Output | Power Output |
+| 6          | VDD      | Power Supply     | Positive power supply | Power | Supply |
+| 7          | GND      | Ground           | Power ground | Power | Ground |
+| 8          | VOP      | Positive Output  | Analog positive output (BTL configuration) | Analog Output | Power Output |

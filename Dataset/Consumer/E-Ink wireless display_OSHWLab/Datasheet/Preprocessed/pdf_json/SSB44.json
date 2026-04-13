@@ -1,0 +1,41 @@
+{
+  "ComponentID": "SSB44",
+  "ComponentType": "Surface Mount Schottky Barrier Rectifier Diode",
+  "Description": "This is a high-current-density, surface-mount Schottky rectifier designed for high-efficiency power conversion. It features a very low forward voltage drop, enabling reduced power losses in applications like DC/DC converters, polarity protection, and freewheeling circuits. It is packaged in an SMB (DO-214AA) case, is RoHS-compliant, and has variants qualified for automotive use (AEC-Q101).",
+  "KeyParameters": {
+    "Maximum Repetitive Peak Reverse Voltage (VRRM)": "30V (SSB43L), 40V (SSB44)",
+    "Maximum Average Forward Rectified Current (IF(AV))": "4.0 A",
+    "Forward Voltage (VF)": "0.38V typ., 0.42V max. @ 4.0A, Tj=125°C (SSB44)",
+    "Peak Forward Surge Current (IFSM)": "100 A (8.3 ms half-sine wave)",
+    "Maximum Reverse Current (IR)": "40 mA max. @ rated VRRM, Tj=125°C (SSB44)",
+    "Operating Junction Temperature (Tj)": "-65°C to +150°C",
+    "Thermal Resistance, Junction-to-Ambient (RθJA)": "70 °C/W (typical)",
+    "Package": "SMB (DO-214AA)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Anode",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Positive terminal of the diode"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Cathode",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Negative terminal of the diode (marked with color band)"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Power"
+    }
+  ]
+}

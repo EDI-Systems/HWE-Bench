@@ -1,0 +1,1468 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Wired Diagnostic & Programming Bridge",
+      "Function Description": "Provides a wired communication interface (e.g., USB-to-serial) for diagnostics and features an automated hardware-toggling circuit to force the main processor into its bootloader/programming mode, enabling seamless firmware updates without manual button presses.",
+      "Signal Sources": "External USB data lines, control signals from the external host.",
+      "Signal Destinations": "UART/SPI/JTAG signals to the Wireless Processing Unit; a specific hardware toggle signal (e.g., MCU boot pin, reset) to the processor.",
+      "Implementation Logic": "A USB bridge IC (e.g., FTDI, CP2102) converts USB to UART. An additional logic circuit (e.g., a microcontroller or state machine) monitors the USB data stream for a specific command sequence and then automatically asserts the required combination of reset and boot-select pins on the main processor to invoke its built-in bootloader.",
+      "Signal Chain": "The module's primary function is to provide a wired USB-to-UART bridge for diagnostics and to automatically force a main processor (e.g., ESP32-WROVER) into bootloader mode for firmware updates. The signal flow is as follows: 1. External USB host connects via the Type-C connector (KH-TYPE-C-16P), providing 5V VBUS power and differential USB data signals (D+/D-). 2. VBUS power is protected by a fuse (CFS06) and can be used to power a Li-ion battery charger (IP2312) if a battery is present via connector (S2B-PH-K-S). The battery or USB power is the system's primary input. 3. A USB-to-UART bridge IC (CP2102) receives USB data from the connector, converts it to UART signals (TXD, RXD), and provides regulated 3.3V (VDD). Its UART TXD connects to the main processor's UART RXD, and its RXD connects to the processor's UART TXD, establishing a bidirectional serial communication channel for diagnostics and command reception. 4. The main processor (ESP32-WROVER) is powered by the 3.3V rail, likely regulated from the battery/USB input by a buck converter (not fully specified in library, but TPS62088 is a candidate for 5V-to-3.3V conversion). It runs firmware that monitors the UART data stream from the CP2102. 5. Upon detecting a specific command sequence (e.g., a firmware update trigger), the processor's GPIO pins are configured to assert a hardware toggle sequence. Typically, this involves controlling the processor's own enable (EN) and GPIO0 pins to enter bootloader mode. An external circuit, such as an NPN transistor (S8050) driven by a processor GPIO, can be used to pull the EN pin low (reset) and then control GPIO0 (boot selection) as needed, simulating a manual button press. 6. The EN and GPIO0 pins of the processor are also connected to tactile switches (TS) for manual override/reset. 7. Once in bootloader mode, the same UART interface (or another like SPI/JTAG) is used for the actual firmware programming. The CP2102 facilitates this data transfer. 8. Power management components (IP2312 for charging, TPS61236P for boost conversion if needed, TPS62088 for buck conversion, SSB44 for protection) ensure stable power delivery to all components from either USB or battery.",
+      "Recommended Components": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "Functional Position": "External Interface - USB Connector",
+          "Recommendation Reason": "Provides the physical USB Type-C connection for power and data from the host. Essential for the module's wired communication function.",
+          "Pin Connections": {
+            "A4": "NET_VBUS_USB",
+            "A9": "NET_VBUS_USB",
+            "B4": "NET_VBUS_USB",
+            "B9": "NET_VBUS_USB",
+            "A6": "NET_USB_DP",
+            "A7": "NET_USB_DN",
+            "B6": "NET_USB_DP",
+            "B7": "NET_USB_DN",
+            "A1": "GND",
+            "A12": "GND",
+            "B1": "GND",
+            "B12": "GND",
+            "A5": "NET_CC1",
+            "B5": "NET_CC2",
+            "A8": "NET_SBU1",
+            "B8": "NET_SBU2"
+          }
+        },
+        {
+          "ComponentID": "CFS06",
+          "Functional Position": "Power Protection - Input Fuse",
+          "Recommendation Reason": "Protects the downstream circuit from overcurrent conditions on the USB VBUS line.",
+          "Pin Connections": {
+            "1": "NET_VBUS_USB",
+            "2": "NET_VBUS_PROTECTED"
+          }
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "Signal Conversion - USB to UART Bridge",
+          "Recommendation Reason": "Converts USB data from the host to UART signals for communication with the main processor. Provides a virtual COM port and regulated 3.3V.",
+          "Pin Connections": {
+            "13": "NET_USB_DN",
+            "14": "NET_USB_DP",
+            "11": "NET_VBUS_PROTECTED",
+            "12": "NET_VBUS_PROTECTED",
+            "4": "NET_VDD_3V3",
+            "25": "NET_VDD_3V3",
+            "8": "NET_UART_TXD_TO_MCU",
+            "2": "NET_UART_RXD_FROM_MCU",
+            "28": "NET_UART_RXD_FROM_MCU",
+            "6": "GND",
+            "15": "GND",
+            "19": "GND",
+            "22": "GND",
+            "18": "NET_CP2102_RST",
+            "10": "GND"
+          }
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Main Processor - Wireless Processing Unit",
+          "Recommendation Reason": "Acts as the primary microcontroller that runs the application, monitors UART commands, and controls the hardware toggling for bootloader entry. Provides Wi-Fi/Bluetooth functionality as per module name.",
+          "Pin Connections": {
+            "2": "NET_VDD_3V3",
+            "34": "NET_UART_TXD_TO_MCU",
+            "35": "NET_UART_RXD_FROM_MCU",
+            "3": "NET_MCU_EN",
+            "25": "NET_MCU_GPIO0",
+            "1": "GND",
+            "15": "GND",
+            "38": "GND"
+          }
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "Logic Control - Reset/Boot Toggle Driver",
+          "Recommendation Reason": "Used as a switch controlled by a processor GPIO to pull the MCU's EN pin low, facilitating a hardware reset as part of the automated bootloader entry sequence.",
+          "Pin Connections": {
+            "1": "NET_CTRL_GPIO",
+            "2": "GND",
+            "3": "NET_MCU_EN"
+          }
+        },
+        {
+          "ComponentID": "TS",
+          "Functional Position": "User Interface - Manual Reset/Boot Buttons",
+          "Recommendation Reason": "Provides manual override capability for resetting the processor (EN) and selecting boot mode (GPIO0), essential for development and recovery.",
+          "Pin Connections": {
+            "1": "NET_MCU_EN",
+            "2": "GND"
+          }
+        },
+        {
+          "ComponentID": "TS",
+          "Functional Position": "User Interface - Manual Reset/Boot Buttons",
+          "Recommendation Reason": "Second tactile switch for GPIO0 control.",
+          "Pin Connections": {
+            "1": "NET_MCU_GPIO0",
+            "2": "GND"
+          }
+        },
+        {
+          "ComponentID": "IP2312",
+          "Functional Position": "Power Management - Battery Charger",
+          "Recommendation Reason": "Charges a single-cell Li-ion/Li-Po battery from the USB 5V input, enabling portable operation and backup power.",
+          "Pin Connections": {
+            "8": "NET_VBUS_PROTECTED",
+            "5": "NET_BAT_POS",
+            "9": "GND"
+          }
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "Functional Position": "External Interface - Battery Connector",
+          "Recommendation Reason": "Provides a secure connection point for an external single-cell Li-ion/Li-Po battery.",
+          "Pin Connections": {
+            "1": "NET_BAT_POS",
+            "2": "GND"
+          }
+        },
+        {
+          "ComponentID": "TPS62088",
+          "Functional Position": "Power Management - Step-Down Converter (3.3V)",
+          "Recommendation Reason": "Efficiently converts the battery voltage (or protected USB voltage) down to a stable 3.3V required by the CP2102 and ESP32-WROVER.",
+          "Pin Connections": {
+            "A2": "NET_VIN_SYS",
+            "C1": "NET_VDD_3V3",
+            "B2": "NET_SW_BUCK",
+            "A1": "NET_EN_BUCK",
+            "C2": "GND"
+          }
+        },
+        {
+          "ComponentID": "SSB44",
+          "Functional Position": "Power Protection - Reverse Polarity/Backflow Prevention",
+          "Recommendation Reason": "Prevents reverse current flow from the battery to the USB input when USB is disconnected, protecting the charger and input circuit.",
+          "Pin Connections": {
+            "1": "NET_VBUS_PROTECTED",
+            "2": "NET_VIN_SYS"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Power Management Ecosystem",
+      "Function Description": "Manages the rechargeable battery's charging via a standard serial interface (e.g., USB-C with PD/QC) and provides dual-rail voltage regulation: a step-down converter for low-voltage digital logic (e.g., 3.3V/1.8V) and a step-up converter to generate the high-voltage baseline (e.g., +15V/-15V) required to drive the e-paper display.",
+      "Signal Sources": "Battery voltage, external charging power input (USB), enable/control signals from the Wireless Processing Unit.",
+      "Signal Destinations": "Stable low-voltage rail to the Wireless Processing Unit and other digital logic; stable high-voltage rail to the Display Interface; battery status/charging signals to the Wireless Processing Unit.",
+      "Implementation Logic": "A battery charger IC manages safe charging. A buck converter (step-down) and a boost converter (step-up) are used, controlled by power-good and enable signals from the main processor to enable power sequencing and low-power modes.",
+      "Signal Chain": "The power management ecosystem operates as follows: 1. External USB-C power (e.g., 5V) enters via the KH-TYPE-C-16P connector. The VBUS lines are fused by CFS06 for overcurrent protection. 2. The protected 5V input powers the IP2312 battery charger IC. The charger manages the single-cell Li-ion battery connected via the S2B-PH-K-S header, providing regulated charging current and voltage with NTC temperature monitoring. 3. The battery voltage (typically 3.0V-4.2V) serves as the primary input for the two DC-DC converters. 4. The TPS62088 synchronous buck converter steps down the battery voltage to a stable low-voltage rail (e.g., 3.3V or 1.8V) for the ESP32-WROVER and other digital logic. Its EN and PG signals allow the processor to control and monitor this rail. 5. The TPS61236P synchronous boost converter steps up the battery voltage to a stable high-voltage rail (e.g., +15V) for the e-paper display. Its EN pin allows processor control, and the FB pin is used to set the output voltage via a resistor divider. 6. The ESP32-WROVER, powered by the 3.3V rail, provides enable/control signals (GPIOs) to the converters for power sequencing and low-power modes. It can also monitor battery status via ADC pins and charger status signals. 7. The CP2102 USB-to-UART bridge provides a serial debug/communication interface between a host computer and the ESP32, powered from the 3.3V rail. 8. The TS tactile switch can be used as a user input (e.g., reset or wake-up) to the ESP32. 9. The SSB44 Schottky diode can be used for input polarity protection or as a freewheeling diode in auxiliary circuits. The S8050 NPN transistor can be used for level shifting or driving enable signals if needed.",
+      "Recommended Components": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "Functional Position": "External Power and Data Input Connector",
+          "Recommendation Reason": "Provides the physical USB-C interface for charging input and potential data communication (USB 2.0).",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A9",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B4",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B9",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A6",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "A7",
+              "Net": "USB_DN"
+            },
+            {
+              "PinNumber": "B6",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "B7",
+              "Net": "USB_DN"
+            },
+            {
+              "PinNumber": "A5",
+              "Net": "USB_CC1"
+            },
+            {
+              "PinNumber": "B5",
+              "Net": "USB_CC2"
+            },
+            {
+              "PinNumber": "A8",
+              "Net": "USB_SBU1"
+            },
+            {
+              "PinNumber": "B8",
+              "Net": "USB_SBU2"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CFS06",
+          "Functional Position": "Input Overcurrent Protection Fuse",
+          "Recommendation Reason": "Protects the downstream charging circuit from overloads or short circuits on the USB VBUS input.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "VIN_CHG"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IP2312",
+          "Functional Position": "Single-Cell Li-ion Battery Charger",
+          "Recommendation Reason": "Manages safe charging of the battery from the 5V USB input with programmable current, termination voltage, and temperature monitoring.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "Net": "VIN_CHG"
+            },
+            {
+              "PinNumber": "7",
+              "Net": "SW_CHG"
+            },
+            {
+              "PinNumber": "5",
+              "Net": "BAT_P"
+            },
+            {
+              "PinNumber": "6",
+              "Net": "ICHG_SET"
+            },
+            {
+              "PinNumber": "4",
+              "Net": "NTC"
+            },
+            {
+              "PinNumber": "1",
+              "Net": "CHG_STAT1"
+            },
+            {
+              "PinNumber": "3",
+              "Net": "CHG_STAT2"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "TEST"
+            },
+            {
+              "PinNumber": "9",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "Functional Position": "Battery Connection Header",
+          "Recommendation Reason": "Provides a secure, polarized connector for the rechargeable battery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "Net": "BAT_P"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS62088",
+          "Functional Position": "Step-Down (Buck) Converter for Low-Voltage Digital Rail",
+          "Recommendation Reason": "Efficiently generates a stable 3.3V (or adjustable) rail from the battery voltage for the processor and digital logic, with high frequency for small size and power-good monitoring.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A2",
+              "Net": "BAT_P"
+            },
+            {
+              "PinNumber": "B2",
+              "Net": "SW_BUCK"
+            },
+            {
+              "PinNumber": "C1",
+              "Net": "VOUT_3V3"
+            },
+            {
+              "PinNumber": "A1",
+              "Net": "EN_BUCK"
+            },
+            {
+              "PinNumber": "B1",
+              "Net": "PG_BUCK"
+            },
+            {
+              "PinNumber": "C2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "Functional Position": "Step-Up (Boost) Converter for High-Voltage Display Rail",
+          "Recommendation Reason": "Generates the required high voltage (e.g., +15V) from the battery to drive the e-paper display, with constant current capability and enable control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "Net": "BAT_P"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "SW_BOOST"
+            },
+            {
+              "PinNumber": "9",
+              "Net": "VOUT_HV"
+            },
+            {
+              "PinNumber": "6",
+              "Net": "FB_BOOST"
+            },
+            {
+              "PinNumber": "4",
+              "Net": "CC_BOOST"
+            },
+            {
+              "PinNumber": "7",
+              "Net": "EN_BOOST"
+            },
+            {
+              "PinNumber": "8",
+              "Net": "INACT_BOOST"
+            },
+            {
+              "PinNumber": "1",
+              "Net": "PGND"
+            },
+            {
+              "PinNumber": "5",
+              "Net": "AGND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Wireless Processing Unit (Main Controller)",
+          "Recommendation Reason": "Acts as the system controller, providing enable signals for power sequencing, monitoring battery and charger status via ADC/GPIO, and running the application.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "Net": "VOUT_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "38",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "Net": "EN_ESP32"
+            },
+            {
+              "PinNumber": "35",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "34",
+              "Net": "UART0_RX"
+            },
+            {
+              "PinNumber": "25",
+              "Net": "GPIO_EN_BUCK"
+            },
+            {
+              "PinNumber": "26",
+              "Net": "GPIO_EN_BOOST"
+            },
+            {
+              "PinNumber": "4",
+              "Net": "ADC_BAT_MON"
+            },
+            {
+              "PinNumber": "5",
+              "Net": "ADC_NTC_MON"
+            },
+            {
+              "PinNumber": "10",
+              "Net": "GPIO_CHG_STAT1"
+            },
+            {
+              "PinNumber": "11",
+              "Net": "GPIO_CHG_STAT2"
+            },
+            {
+              "PinNumber": "16",
+              "Net": "GPIO_PG_BUCK"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge for Debug/Communication",
+          "Recommendation Reason": "Enables serial communication between a host computer and the ESP32 for programming, debugging, or data exchange via USB.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "Net": "VOUT_3V3"
+            },
+            {
+              "PinNumber": "25",
+              "Net": "VOUT_3V3"
+            },
+            {
+              "PinNumber": "6",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "19",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "28",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "8",
+              "Net": "UART0_RX"
+            },
+            {
+              "PinNumber": "13",
+              "Net": "USB_DN"
+            },
+            {
+              "PinNumber": "14",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "11",
+              "Net": "VIN_CHG"
+            },
+            {
+              "PinNumber": "12",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "10",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "Net": "RST_CP2102"
+            },
+            {
+              "PinNumber": "1",
+              "Net": "DCD"
+            },
+            {
+              "PinNumber": "3",
+              "Net": "RTS#"
+            },
+            {
+              "PinNumber": "5",
+              "Net": "DTR#"
+            },
+            {
+              "PinNumber": "7",
+              "Net": "RI#"
+            },
+            {
+              "PinNumber": "9",
+              "Net": "CTS#"
+            },
+            {
+              "PinNumber": "20",
+              "Net": "SUSPEND"
+            },
+            {
+              "PinNumber": "21",
+              "Net": "SUSPEND#"
+            },
+            {
+              "PinNumber": "26",
+              "Net": "DSR#"
+            },
+            {
+              "PinNumber": "27",
+              "Net": "DCD"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TS",
+          "Functional Position": "User Input Button (e.g., Reset/Wake-up)",
+          "Recommendation Reason": "Provides a tactile user interface for actions like resetting the system or waking from sleep.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "Net": "GPIO_BUTTON"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SSB44",
+          "Functional Position": "Protection/Freewheeling Diode",
+          "Recommendation Reason": "Can be used for input reverse polarity protection on the battery or as a freewheeling diode in auxiliary circuits (e.g., for relay or inductor).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "Net": "ANODE"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "CATHODE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "Signal Level Shifter/Driver",
+          "Recommendation Reason": "Can be used to drive enable signals or other loads if the ESP32 GPIO needs to interface with higher voltage or current circuits.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "Net": "BASE_DRV"
+            },
+            {
+              "PinNumber": "2",
+              "Net": "EMITTER_DRV"
+            },
+            {
+              "PinNumber": "3",
+              "Net": "COLLECTOR_DRV"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Voltage Display Interface",
+      "Function Description": "A dedicated circuit that translates low-voltage digital commands from the processor into the precise, high-voltage waveforms required to drive the e-paper display's row and column electrodes to update the screen image.",
+      "Signal Sources": "Low-voltage control signals and pixel data from the Wireless Processing Unit; high-voltage power rails from the Power Management Ecosystem.",
+      "Signal Destinations": "High-voltage control signals to the e-paper display connector (e.g., source/gate driver ICs or directly to display tabs).",
+      "Implementation Logic": "Typically consists of a dedicated e-paper display controller IC or a combination of level shifters, high-voltage switches/drivers, and timing logic to generate the VCOM, gate, and source voltages with the required sequencing.",
+      "Signal Chain": "The High-Voltage Display Interface module requires a dedicated signal chain to translate low-voltage digital commands from the Wireless Processing Unit (WPU) into high-voltage waveforms for driving an e-paper display. The primary signal flow begins with the WPU (represented by the ESP32-WROVER module) generating low-voltage control signals (e.g., SPI, GPIO) and pixel data. These signals are processed and level-shifted to interface with high-voltage driver circuits, which generate the precise VCOM, gate, and source voltages required by the display electrodes. Power is supplied from the Power Management Ecosystem, which includes high-voltage rails, and is regulated and protected before distribution. The module may also include a USB interface for debugging or firmware updates, and a battery management system for portable operation. Critical components must handle power sequencing, voltage conversion, signal integrity, and protection to ensure reliable display operation.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Wireless Processing Unit (WPU) / Main Controller",
+          "Recommendation Reason": "Provides the low-voltage digital control signals and pixel data source for the display interface. It integrates Wi-Fi/Bluetooth, dual-core processor, and rich peripherals (SPI, I2C, GPIO) necessary for driving display timing and communication.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ENABLE"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO14",
+              "Net": "DISPLAY_SPI_CLK"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO12",
+              "Net": "DISPLAY_SPI_MISO"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO13",
+              "Net": "DISPLAY_SPI_MOSI"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO15",
+              "Net": "DISPLAY_SPI_CS"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "IO0",
+              "Net": "DISPLAY_DC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "IO2",
+              "Net": "DISPLAY_RESET"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART0_RX"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS62088",
+          "Functional Position": "Low-Voltage Power Rail Regulator",
+          "Recommendation Reason": "Steps down the main power input (e.g., 5V) to a stable 3.3V for the WPU and other low-voltage logic, ensuring efficient and regulated power with high-frequency operation for compact design.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A2",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            },
+            {
+              "PinNumber": "C2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B2",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "C1",
+              "PinName": "FB",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "EN",
+              "Net": "PWR_EN"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "PG",
+              "Net": "PWR_GOOD"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "Functional Position": "High-Voltage Boost Converter",
+          "Recommendation Reason": "Generates the high-voltage rails (e.g., 15V-20V) required for e-paper display driving from a lower input voltage (e.g., battery or 5V), with constant current capability for controlled power delivery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "VIN_BOOST"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "PGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "AGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "SW_BOOST"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VOUT",
+              "Net": "HV_RAIL"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "FB",
+              "Net": "HV_FEEDBACK"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "CC",
+              "Net": "CURRENT_SET"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "EN",
+              "Net": "HV_ENABLE"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "INACT",
+              "Net": "HV_STATUS"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CFS06",
+          "Functional Position": "Input Overcurrent Protection",
+          "Recommendation Reason": "Protects the module from overcurrent conditions on the main power input, preventing damage to downstream components like regulators and converters.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "PWR_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "OUT",
+              "Net": "VIN_PROTECTED"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SSB44",
+          "Functional Position": "Reverse Polarity Protection",
+          "Recommendation Reason": "Prevents damage from incorrect power supply connection by blocking reverse current flow, using its low forward voltage for minimal power loss.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "VIN_PROTECTED"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "VIN_REG"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge",
+          "Recommendation Reason": "Enables USB communication for debugging, firmware updates, or serial data exchange with the WPU, converting USB data to UART signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "11",
+              "PinName": "REGIN",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "TXD",
+              "Net": "UART0_RX"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "RXD",
+              "Net": "UART0_TX"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "VPP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "RST",
+              "Net": "USB_RST"
+            }
+          ]
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "Functional Position": "USB Type-C Power/Data Connector",
+          "Recommendation Reason": "Provides a modern, reversible connector for USB power input and data communication, supporting power delivery and USB 2.0 signals for the CP2102 bridge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "PWR_IN"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "PWR_IN"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "PWR_IN"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "PWR_IN"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "DP1",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "DN1",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "B6",
+              "PinName": "DP2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "DN2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A5",
+              "PinName": "CC1",
+              "Net": "CC1"
+            },
+            {
+              "PinNumber": "B5",
+              "PinName": "CC2",
+              "Net": "CC2"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IP2312",
+          "Functional Position": "Battery Charger",
+          "Recommendation Reason": "Manages single-cell Li-ion/Li-polymer battery charging from a USB input, providing regulated charging current and voltage for portable operation of the display module.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VIN",
+              "Net": "VIN_REG"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "BAT",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "SW",
+              "Net": "SW_CHG"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "ICHG",
+              "Net": "ICHG_SET"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NTC",
+              "Net": "NTC_THERM"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "D1",
+              "Net": "LED_CHG"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "D2",
+              "Net": "LED_FULL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TEST",
+              "Net": "BAT_POS_VIA_1K"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "Functional Position": "Battery Connection Header",
+          "Recommendation Reason": "Provides a secure, shrouded connector for attaching the battery to the charging circuit, ensuring reliable power connection for portable use.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "T1",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "T2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TS",
+          "Functional Position": "User Reset Button",
+          "Recommendation Reason": "Offers a tactile switch for user-initiated reset or control functions, such as resetting the WPU or triggering display updates.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Terminal 1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Terminal 2",
+              "Net": "RESET_BUTTON"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "High-Voltage Switch Driver",
+          "Recommendation Reason": "Acts as a switch or amplifier in the high-voltage driver circuit, controlling gate or source signals for the display electrodes based on low-voltage commands from the WPU.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "BASE",
+              "Net": "HV_CONTROL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "EMITTER",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "COLLECTOR",
+              "Net": "HV_GATE_DRIVE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Wireless Processing Unit",
+      "Function Description": "Acts as the central controller. It remains in a low-power sleep state, wakes upon receiving new image data via its wireless transceiver (e.g., Wi-Fi/Bluetooth), formats the graphics, and orchestrates the display refresh by commanding the Display Interface. It also manages overall system states and communicates with the Diagnostic Bridge.",
+      "Signal Sources": "Wireless RF signals (antenna), UART/SPI/I2C from the Diagnostic Bridge, GPIO interrupts from power management.",
+      "Signal Destinations": "Control and data signals to the Display Interface; control signals to the Power Management Ecosystem; communication signals to the Diagnostic Bridge.",
+      "Implementation Logic": "A low-power microcontroller (MCU) or system-on-chip (SoC) with integrated wireless capability. It runs firmware that handles wireless protocol stacks, image processing, display timing generation, and system power management routines.",
+      "Signal Chain": "The Wireless Processing Unit's signal chain begins with the reception of wireless RF signals (Wi-Fi/Bluetooth) via the ESP32-WROVER's integrated antenna. Upon receiving new image data, the ESP32-WROVER wakes from its low-power sleep state. The MCU core processes and formats the graphics data. For system control and diagnostics, a UART communication link is established with the Diagnostic Bridge via the CP2102 USB-to-UART bridge, which interfaces between the host USB and the ESP32-WROVER's UART0. GPIO interrupts from the Power Management Ecosystem can be monitored by the ESP32-WROVER for system state management. Once processing is complete, the ESP32-WROVER generates control and data signals (likely via SPI, I2C, or parallel interface configured on its GPIOs) to command the Display Interface for refresh. Power is supplied and managed through a dedicated chain: USB Type-C connector provides 5V VBUS, which is protected by a fuse (CFS06) and a Schottky diode (SSB44) for reverse polarity protection. This input powers the IP2312 battery charger, which manages charging a single-cell Li-ion battery connected via the S2B-PH-K-S header. The battery output (BAT) is the primary system input. The TPS61236P boost converter steps up the battery voltage to a stable 5V output for system peripherals. The TPS62088 buck converter then steps down this 5V or the battery voltage to a precise 3.3V for the ESP32-WROVER and CP2102. A tactile switch (TS) can be connected to a GPIO of the ESP32-WROVER for user input like reset or wake-up.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Central Wireless Microcontroller",
+          "Recommendation Reason": "Acts as the core SoC with integrated Wi-Fi/Bluetooth, dual-core processor, ample memory, and rich peripherals to handle wireless communication, image processing, display orchestration, and system management as described.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "MCU_ENABLE"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "RXD0",
+              "Net": "UART0_RXD"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "TXD0",
+              "Net": "UART0_TXD"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "IO0",
+              "Net": "BOOT_SELECT"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO14",
+              "Net": "DISPLAY_CLK"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "SD0/SD_DATA0",
+              "Net": "DISPLAY_DATA0"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "SD1/SD_DATA1",
+              "Net": "DISPLAY_DATA1"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "SD2/SD_DATA2",
+              "Net": "DISPLAY_DATA2"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "SD3/SD_DATA3",
+              "Net": "DISPLAY_DATA3"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IO34",
+              "Net": "PWR_MGMT_INT"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CP2102",
+          "Functional Position": "USB-to-UART Bridge for Diagnostic Communication",
+          "Recommendation Reason": "Provides a virtual COM port interface between a host PC (Diagnostic Bridge) and the ESP32-WROVER's UART0, enabling firmware programming, debugging, and system diagnostics.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "RXD",
+              "Net": "UART0_TXD"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "TXD",
+              "Net": "UART0_RXD"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "REGIN",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "RST",
+              "Net": "USB_BRIDGE_RST"
+            }
+          ]
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "Functional Position": "USB Power and Data Input Port",
+          "Recommendation Reason": "Standard USB Type-C receptacle for providing 5V power input from a USB charger/PC and data connection for the CP2102 bridge.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "DP1",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "DN1",
+              "Net": "USB_D-"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CFS06",
+          "Functional Position": "Input Overcurrent Protection Fuse",
+          "Recommendation Reason": "Protects the downstream power circuitry (charger, converters) from overcurrent conditions sourced from the USB VBUS.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "IN",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "OUT",
+              "Net": "VIN_PROTECTED"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SSB44",
+          "Functional Position": "Input Reverse Polarity Protection Diode",
+          "Recommendation Reason": "Schottky diode placed after the fuse to protect the system if reverse voltage is accidentally applied to the USB input, leveraging its low forward voltage drop.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode",
+              "Net": "VIN_PROTECTED"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode",
+              "Net": "VIN_CHARGER"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IP2312",
+          "Functional Position": "Single-Cell Li-ion Battery Charger",
+          "Recommendation Reason": "Manages charging of a single-cell Li-ion/Li-Polymer battery from the protected 5V USB input, providing programmable current, termination voltage, and temperature monitoring.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VIN",
+              "Net": "VIN_CHARGER"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "BAT",
+              "Net": "BATTERY_POS"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "EP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "SW",
+              "Net": "BAT_CHG_SW"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NTC",
+              "Net": "BATTERY_NTC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "ICHG",
+              "Net": "ICHG_SET"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "Functional Position": "Battery Connection Header",
+          "Recommendation Reason": "Provides a secure, standardized connector for attaching a single-cell Li-ion battery pack to the system.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "T1",
+              "Net": "BATTERY_POS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "T2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "Functional Position": "Battery Boost Converter (to 5V System Rail)",
+          "Recommendation Reason": "Steps up the variable battery voltage (e.g., 3.0V-4.2V) to a stable 5V output, providing power for system peripherals and the subsequent 3.3V buck converter.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "BATTERY_POS"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "VOUT",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "PGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "AGND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "SW",
+              "Net": "BOOST_SW"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "EN",
+              "Net": "EN_BOOST"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "FB",
+              "Net": "VCC_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TPS62088",
+          "Functional Position": "Step-Down Converter (to 3.3V Core Rail)",
+          "Recommendation Reason": "Efficiently converts the 5V system rail (or directly from battery) to a precise 3.3V required by the ESP32-WROVER, CP2102, and other low-voltage digital logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A2",
+              "PinName": "VIN",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "B2",
+              "PinName": "SW",
+              "Net": "BUCK_SW"
+            },
+            {
+              "PinNumber": "C2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "C1",
+              "PinName": "FB",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "EN",
+              "Net": "EN_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TS",
+          "Functional Position": "System Reset/User Input Button",
+          "Recommendation Reason": "Momentary tactile switch for user-initiated actions such as resetting the MCU, waking from deep sleep, or triggering a manual display refresh.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Terminal 1",
+              "Net": "GPIO_BUTTON"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Terminal 2",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "S8050",
+          "Functional Position": "GPIO Level Shifter / Power Control Switch",
+          "Recommendation Reason": "NPN transistor can be used to interface a 3.3V GPIO from the ESP32-WROVER to control higher voltage/lower impedance loads (e.g., enabling a peripheral power rail) or as a simple inverter/buffer.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "BASE",
+              "Net": "GPIO_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "EMITTER",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "COLLECTOR",
+              "Net": "LOAD_SWITCH"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

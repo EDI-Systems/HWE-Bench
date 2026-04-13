@@ -1,0 +1,46 @@
+Component ID: CP2102
+Component Type: USB-to-UART Bridge Controller (USB Serial Transceiver IC)
+Description: The CP2102/9 is a highly-integrated single-chip bridge that converts USB data to asynchronous serial UART data and vice versa. It contains a full-speed USB 2.0 function controller, transceiver, internal oscillator, voltage regulator, and programmable ROM, requiring minimal external components. It enables legacy RS-232 devices and systems to be upgraded to USB by providing a complete UART interface with full modem handshaking signals, appearing as a virtual COM port on the host computer.
+
+Key Parameters:
+- USB Specification: USB 2.0 Full-Speed (12 Mbps)
+- UART Baud Rate: 300 bps to 1 Mbps
+- UART Data Buffer: 576 Byte Receive, 640 Byte Transmit
+- Supply Voltage (Self-Powered): 3.0 V to 3.6 V
+- Supply Voltage (USB Bus-Powered): 4.0 V to 5.25 V
+- Internal Voltage Regulator Output: 3.3 V (CP2102) / 3.45 V (CP2109)
+- Internal Programmable ROM: 1024 bytes (EEPROM for CP2102, One-Time Programmable EPROM for CP2109)
+- Package: 28-pin QFN (5 mm x 5 mm)
+- Operating Temperature Range: –40 °C to +85 °C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | DCD | Output | Data Carrier Detect | Digital Output | Open-Drain |
+| 2 | RXD | Input | UART Data Input (Receive) | Digital Input | CMOS |
+| 3 | RTS# | Output | Request To Send (Active Low) | Digital Output | Open-Drain |
+| 4 | VDD | Power | Regulated 3.3 V (CP2102) or 3.45 V (CP2109) Output / Digital Power Input | Power | Power |
+| 5 | DTR# | Output | Data Terminal Ready (Active Low) | Digital Output | Open-Drain |
+| 6 | GND | Ground | Ground | Ground | Ground |
+| 7 | RI# | Output | Ring Indicator (Active Low) | Digital Output | Open-Drain |
+| 8 | TXD | Output | UART Data Output (Transmit) | Digital Output | CMOS |
+| 9 | CTS# | Input | Clear To Send (Active Low) | Digital Input | CMOS |
+| 10 | VPP | Power | Programming Voltage for EPROM (CP2109). Connect to GND for CP2102. | Power | Power |
+| 11 | REGIN | Power | Input to 3.3 V Regulator. Connect to USB VBUS or external 3.0-3.6V supply. | Power | Power |
+| 12 | VBUS | Power | USB Bus Power Sense | Analog Input | Analog |
+| 13 | D- | I/O | USB D- Signal | Analog I/O | USB Differential |
+| 14 | D+ | I/O | USB D+ Signal | Analog I/O | USB Differential |
+| 15 | GND | Ground | Ground | Ground | Ground |
+| 16 | NC | - | No Connect. Leave unconnected. | - | - |
+| 17 | NC | - | No Connect. Leave unconnected. | - | - |
+| 18 | RST | Input | Device Reset (Active Low). Internal pull-up. | Digital Input | CMOS |
+| 19 | GND | Ground | Ground | Ground | Ground |
+| 20 | SUSPEND | Output | USB Suspend State Indicator (Active High) | Digital Output | CMOS |
+| 21 | SUSPEND# | Output | USB Suspend State Indicator (Active Low) | Digital Output | Open-Drain |
+| 22 | GND | Ground | Ground | Ground | Ground |
+| 23 | NC | - | No Connect. Leave unconnected. | - | - |
+| 24 | NC | - | No Connect. Leave unconnected. | - | - |
+| 25 | VDD | Power | Regulated 3.3 V (CP2102) or 3.45 V (CP2109) Output / Digital Power Input | Power | Power |
+| 26 | DSR# | Input | Data Set Ready (Active Low) | Digital Input | CMOS |
+| 27 | DCD | Output | Data Carrier Detect | Digital Output | Open-Drain |
+| 28 | RXD | Input | UART Data Input (Receive) | Digital Input | CMOS |

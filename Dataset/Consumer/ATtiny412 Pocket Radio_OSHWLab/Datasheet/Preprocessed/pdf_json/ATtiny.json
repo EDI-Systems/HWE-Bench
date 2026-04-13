@@ -1,0 +1,109 @@
+{
+  "ComponentID": "ATtiny",
+  "ComponentType": "Microcontroller (MCU)",
+  "Description": "The ATtiny212/214/412/414 Automotive are members of the tinyAVR 1-series, featuring an AVR processor with hardware multiplier operating at up to 16 MHz. They include 2/4 KB Flash, 128/256 bytes SRAM, and 64/128 bytes EEPROM, available in 8-pin and 14-pin SOIC packages. Key peripherals include multiple timers (TCA, TCB, TCD, RTC), a USART, SPI, I2C, analog features (10-bit ADC, 8-bit DAC, Analog Comparator), an Event System, Configurable Custom Logic (CCL), and a Single-Pin Unified Program and Debug Interface (UPDI). Designed for low-power and flexible operation with Core Independent Peripherals, they support automotive temperature ranges and multiple clock options.",
+  "KeyParameters": {
+    "Architecture": "8-bit AVR RISC (up to 20 MHz)",
+    "Memory": "4 KB Flash / 256 B SRAM / 128 B EEPROM",
+    "Voltage Range": "1.8V to 5.5V",
+    "Peripherals": "12-bit ADC, 8-bit DAC, USART, SPI, I2C, Event System"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Main supply input for the MCU. Decouple to GND close to the pin."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PA6",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose I/O (KEY2 in schematic)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PA7",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose I/O (KEY3 in schematic)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "PA1",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / I2C SDA",
+          "FunctionDescription": "General-purpose I/O (SDA in schematic; can be used for TWI/I2C depending on configuration)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PA2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / I2C SCL",
+          "FunctionDescription": "General-purpose I/O (SCL in schematic; can be used for TWI/I2C depending on configuration)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "PA0",
+      "Functions": [
+        {
+          "FunctionName": "UPDI / GPIO",
+          "FunctionDescription": "UPDI single-wire programming/debug interface (UPDI in schematic). Can be GPIO when not used for UPDI."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "PA3",
+      "Functions": [
+        {
+          "FunctionName": "GPIO",
+          "FunctionDescription": "General-purpose I/O (KEY1 in schematic)."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference. Connect to system ground."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    }
+  ]
+}

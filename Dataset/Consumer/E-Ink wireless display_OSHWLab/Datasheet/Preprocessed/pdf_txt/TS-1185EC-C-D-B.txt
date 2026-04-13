@@ -1,0 +1,21 @@
+Component ID: TS
+Component Type: Tactile Switch (Tact Switch)
+Description:
+This is a surface-mount, momentary tactile switch designed for low-power signal applications. It functions as a normally-open (NO) push-button switch, closing a circuit between its two terminals when the actuator (keystake) is pressed. The switch features a compact, sealed design with a metal cover and is characterized by its low profile, multiple operating force options, and specified electrical ratings for reliable user interface integration.
+
+Key Parameters:
+- Contact Rating (Max Switching): 50 mA, 12 V DC
+- Contact Resistance: 100 mΩ max
+- Insulation Resistance: 100 MΩ min (at 500 V DC)
+- Dielectric Strength: 250 V AC for 1 minute
+- Actuator Travel: 0.13 mm
+- Operating Force (Options): A: 100 gf, B: 160 gf, C: 260 gf
+- Operating Temperature: -30°C to +85°C
+- Storage Temperature: -30°C to +80°C
+- Package Height (Options): A: 1.8 mm, B: 1.85 mm, C: 1.92 mm, D: 2.0 mm, E: 2.5 mm
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Terminal 1 | Common / Switch Terminal 1 | One of the two electrical connection points for the switch contact. | SMD Terminal | Signal / Power |
+| 2 | Terminal 2 | Common / Switch Terminal 2 | The other electrical connection point for the switch contact. The circuit is closed between Terminal 1 and 2 when the switch is pressed. | SMD Terminal | Signal / Power |

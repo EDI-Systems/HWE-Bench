@@ -1,0 +1,65 @@
+{
+  "ComponentID": "SSD1306BZ",
+  "ComponentType": "Monochrome Passive Matrix OLED Display Module",
+  "Description": "This is a 0.96-inch monochrome OLED display module with a resolution of 128x64 pixels. It is driven by the SSD1306BZ controller IC, which integrates a DC/DC converter and supports multiple host interfaces including I2C, SPI (3-wire and 4-wire), and parallel (6800/8080). The module features a passive matrix display with a 1/64 duty cycle and requires external capacitors for its internal charge pump voltage booster.",
+  "KeyParameters": {
+    "Display Resolution": "128 x 64 Dots",
+    "Display Size": "0.96 inch",
+    "Active Area": "21.738 mm x 10.858 mm",
+    "Pixel Pitch": "0.17 mm x 0.17 mm",
+    "Display Mode": "Passive Matrix",
+    "Drive Duty": "1/64",
+    "Interface Support": "6800 Parallel, 8080 Parallel, SPI, I2C",
+    "Controller IC": "SSD1306BZ"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5.0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "I2C serial clock line"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "I2C bi-directional serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    }
+  ]
+}

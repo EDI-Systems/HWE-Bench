@@ -1,0 +1,719 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "D+",
+          "FunctionName": "USB 2.0 Data"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O1",
+          "FunctionName": "Protected Line 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "D-",
+          "FunctionName": "USB 2.0 Data"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O2",
+          "FunctionName": "Protected Line 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "A4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "A9",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "B4",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "B9",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "+5V_Power",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "V33O",
+          "FunctionName": "LDO Out"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "VDDIO",
+          "FunctionName": "IO Power"
+        },
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "TX",
+          "FunctionName": "UART TX"
+        },
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PD6/A6/URX",
+          "FunctionName": "GPIO/ADC/UART"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "RX",
+          "FunctionName": "UART RX"
+        },
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PD5/A5/UTX",
+          "FunctionName": "GPIO/ADC/UART"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "A1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "B1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "VSS",
+          "FunctionName": "Exposed Pad"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "DDC/CEC_Ground",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock_Shield",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PC1/SDA/NSS/T2CH4",
+          "FunctionName": "GPIO/I2C/SPI"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "SDA",
+          "FunctionName": "Serial Data"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "SDA",
+          "FunctionName": "DDC SDA"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O3",
+          "FunctionName": "Protected Line 3"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PC2/SCL/URTS/T1BKIN",
+          "FunctionName": "GPIO/I2C/UART"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "SCL",
+          "FunctionName": "Serial Clock"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "SCL",
+          "FunctionName": "DDC SCL"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O4",
+          "FunctionName": "Protected Line 4"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PD2/A3/T1CH1/T2CH3",
+          "FunctionName": "GPIO/ADC/Timer"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "Hot_Plug_Detect",
+          "FunctionName": "HPD"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O5",
+          "FunctionName": "Protected Line 5"
+        },
+        {
+          "ComponentID": "BAT54",
+          "PinName": "A1",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "BAT54",
+          "PinName": "K1",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "Hot_Plug_Detect",
+          "FunctionName": "HPD"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "A0",
+          "FunctionName": "Address Input"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "A1",
+          "FunctionName": "Address Input"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "A2",
+          "FunctionName": "Address Input"
+        },
+        {
+          "ComponentID": "AT24C32",
+          "PinName": "WP",
+          "FunctionName": "Write Protect"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PC3/T1CH3/T1CH1N",
+          "FunctionName": "GPIO/Timer"
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "EH",
+          "FunctionName": "Shell"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "EH",
+          "FunctionName": "Shell"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "EH",
+          "FunctionName": "Shell"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "EH",
+          "FunctionName": "Shell"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PC0/T2CH3/UTX",
+          "FunctionName": "GPIO/UART"
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "PinName": "RX",
+          "FunctionName": "UART RX"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2+",
+          "FunctionName": "Data 2+"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2+",
+          "FunctionName": "Data 2+"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O5",
+          "FunctionName": "Protected Line 5"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2_Shield",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2-",
+          "FunctionName": "Data 2-"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data2-",
+          "FunctionName": "Data 2-"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O6",
+          "FunctionName": "Protected Line 6"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1+",
+          "FunctionName": "Data 1+"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1+",
+          "FunctionName": "Data 1+"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O3",
+          "FunctionName": "Protected Line 3"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1_Shield",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1-",
+          "FunctionName": "Data 1-"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data1-",
+          "FunctionName": "Data 1-"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O4",
+          "FunctionName": "Protected Line 4"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0+",
+          "FunctionName": "Data 0+"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0+",
+          "FunctionName": "Data 0+"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O1",
+          "FunctionName": "Protected Line 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0_Shield",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0-",
+          "FunctionName": "Data 0-"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Data0-",
+          "FunctionName": "Data 0-"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O2",
+          "FunctionName": "Protected Line 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock+",
+          "FunctionName": "Clock+"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock+",
+          "FunctionName": "Clock+"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O7",
+          "FunctionName": "Protected Line 7"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock_Shield",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock_Shield",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock-",
+          "FunctionName": "Clock-"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "TMDS_Clock-",
+          "FunctionName": "Clock-"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O8",
+          "FunctionName": "Protected Line 8"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "CEC",
+          "FunctionName": "CEC"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "CEC",
+          "FunctionName": "CEC"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "Reserved(N.C.)",
+          "FunctionName": "N.C."
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "Reserved(N.C.)",
+          "FunctionName": "N.C."
+        }
+      ]
+    },
+    {
+      "net_id": "net30",
+      "Connections": [
+        {
+          "ComponentID": "CH32V003",
+          "PinName": "PD7/NRST/T2CH4",
+          "FunctionName": "Reset"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O8",
+          "FunctionName": "Protected Line 8"
+        }
+      ]
+    },
+    {
+      "net_id": "net31",
+      "Connections": [
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O1",
+          "FunctionName": "Protected Line 1"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "SCL",
+          "FunctionName": "DDC SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net32",
+      "Connections": [
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "I/O2",
+          "FunctionName": "Protected Line 2"
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "SDA",
+          "FunctionName": "DDC SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net33",
+      "Connections": [
+        {
+          "ComponentID": "HDMI-01",
+          "PinName": "18",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "PinName": "1",
+          "FunctionName": "Protected Line 1"
+        },
+        {
+          "ComponentID": "BAT54",
+          "PinName": "1",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net34",
+      "Connections": [
+        {
+          "ComponentID": "BAT54",
+          "PinName": "2",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "BAT54",
+          "PinName": "2",
+          "FunctionName": "Cathode"
+        }
+      ]
+    }
+  ]
+}

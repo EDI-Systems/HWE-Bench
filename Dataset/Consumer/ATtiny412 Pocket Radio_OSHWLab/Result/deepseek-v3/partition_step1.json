@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Management & Battery Charging",
+      "Function Description": "Provides stable power to all system components, manages battery charging from USB Type-C input, and handles power source switching between battery and USB.",
+      "Signal Sources": "USB Type-C input (5V DC), Lithium-ion battery, Power switch signal.",
+      "Signal Destinations": "Linear voltage regulator output (stable VCC rail), Battery charging control, System power enable.",
+      "Implementation Logic": "A dedicated charging IC safely charges the Li-ion battery from the USB-C port. A power path management circuit selects between battery and USB power. A linear voltage regulator (e.g., LDO) takes the selected input (typically ~3.7V-5V) and outputs a clean, stable voltage (e.g., 3.3V) for sensitive digital logic."
+    },
+    {
+      "Module Name": "Central Microcontroller Unit (MCU)",
+      "Function Description": "Acts as the system brain, orchestrating all operations. It reads user inputs, controls the FM tuner, updates the display, and manages system states.",
+      "Signal Sources": "Tactile button inputs (digital), Digital communication bus from FM tuner (e.g., I2C data).",
+      "Signal Destinations": "Digital commands to FM tuner IC (e.g., I2C), Display data to OLED screen (e.g., I2C/SPI), Control signals to audio amplifier (e.g., enable/shutdown).",
+      "Implementation Logic": "A low-power microcontroller (e.g., ARM Cortex-M0+) runs firmware. It debounces button presses, interprets commands (volume/station change), communicates with the tuner IC via a digital bus to set frequency, fetches RDS data, and renders UI (frequency, volume, station info) on the OLED display."
+    },
+    {
+      "Module Name": "Digital FM Tuner & Demodulation",
+      "Function Description": "Receives FM radio signals, locks onto a user-selected frequency, demodulates it, and outputs a low-level analog audio signal.",
+      "Signal Sources": "FM antenna input (RF signal), Digital control commands from MCU (e.g., I2C).",
+      "Signal Destinations": "Low-level analog audio output to audio conditioning circuit, Digital status/data (e.g., signal strength, RDS) to MCU.",
+      "Implementation Logic": "A dedicated digital FM tuner IC (e.g., Silicon Labs Si4703) receives RF via an antenna. The MCU sends frequency tuning commands digitally. The IC performs all RF processing (amplification, mixing, filtering) and demodulation digitally, outputting a clean analog audio line-level signal."
+    },
+    {
+      "Module Name": "User Interface (UI) & Control",
+      "Function Description": "Provides user interaction and visual feedback, consisting of input controls and a display.",
+      "Signal Sources": "Tactile button physical presses (for power, volume up/down, station seek).",
+      "Signal Destinations": "Digital input signals to MCU GPIO pins, Visual output via OLED screen.",
+      "Implementation Logic": "Momentary push buttons are connected to MCU GPIO pins with pull-up resistors. The OLED display (I2C or SPI interface) is driven by the MCU to show frequency, volume level, battery status, and station information."
+    },
+    {
+      "Module Name": "Audio Processing & Amplification",
+      "Function Description": "Conditions the demodulated audio signal and amplifies it to a level sufficient to drive a loudspeaker.",
+      "Signal Sources": "Low-level analog audio signal from FM tuner IC.",
+      "Signal Destinations": "Amplified audio signal to loudspeaker terminals.",
+      "Implementation Logic": "The tuner's audio output first passes through a passive RC high-pass filter to block DC offset. This conditioned signal is then fed into a class-D or class-AB audio power amplifier IC. The amplifier, potentially with volume control via the MCU (digital potentiometer or amplifier gain control), boosts the signal to drive an 8Ω or 4Ω speaker."
+    }
+  ]
+}

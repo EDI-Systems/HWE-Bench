@@ -1,0 +1,144 @@
+{
+  "MCU_Function_Groups": {
+    "ESP32-WROVER": {
+      "System_Power_Infrastructure": [
+        { "PinName": "3V3", "FunctionName": "3.3V Supply Input" },
+        { "PinName": "GND", "FunctionName": "Ground Reference" }
+      ],
+      "UART0_Debug_Interface": [
+        { "PinName": "TXD0", "FunctionName": "UART TX / IO1" },
+        { "PinName": "RXD0", "FunctionName": "UART RX / IO3" }
+      ],
+      "Boot_and_Reset_Logic": [
+        { "PinName": "EN", "FunctionName": "Chip Enable / Reset" },
+        { "PinName": "IO0", "FunctionName": "Boot Mode Selection" }
+      ],
+      "EInk_Display_SPI_Bus": [
+        { "PinName": "IO18", "FunctionName": "SPI_CLK" },
+        { "PinName": "IO23", "FunctionName": "SPI_MOSI" },
+        { "PinName": "IO19", "FunctionName": "SPI_MISO" },
+        { "PinName": "IO5", "FunctionName": "SPI_CS" },
+        { "PinName": "IO22", "FunctionName": "Display_RESET" },
+        { "PinName": "IO25", "FunctionName": "Display_HRDY" }
+      ],
+      "Peripheral_Sensors_and_Ctrl": [
+        { "PinName": "SENSOR_VP", "FunctionName": "Battery Voltage Sense" },
+        { "PinName": "IO21", "FunctionName": "5V Boost Enable Control" }
+      ],
+      "General_Digital_IO": [
+        { "PinName": "IO32", "FunctionName": "GPIO32" },
+        { "PinName": "IO33", "FunctionName": "GPIO33" },
+        { "PinName": "IO26", "FunctionName": "GPIO26" },
+        { "PinName": "IO27", "FunctionName": "GPIO27" },
+        { "PinName": "IO14", "FunctionName": "GPIO14" },
+        { "PinName": "IO12", "FunctionName": "GPIO12" },
+        { "PinName": "IO13", "FunctionName": "GPIO13" },
+        { "PinName": "IO15", "FunctionName": "GPIO15" },
+        { "PinName": "IO2", "FunctionName": "GPIO2" },
+        { "PinName": "IO4", "FunctionName": "GPIO4" },
+        { "PinName": "IO16", "FunctionName": "GPIO16" },
+        { "PinName": "IO17", "FunctionName": "GPIO17" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "KH-TYPE-C-16P": {
+      "USB2_Power_Data": [
+        { "PinName": "VBUS", "FunctionName": "5V Power Input" },
+        { "PinName": "DP1", "FunctionName": "USB Data+" },
+        { "PinName": "DN1", "FunctionName": "USB Data-" }
+      ]
+    },
+    "IP2312": {
+      "Charger_Interface": [
+        { "PinName": "VIN", "FunctionName": "5V Input" },
+        { "PinName": "BAT", "FunctionName": "Battery Output" }
+      ]
+    },
+    "TPS62088": {
+      "Buck_Regulator": [
+        { "PinName": "VIN", "FunctionName": "Battery Input" },
+        { "PinName": "SW", "FunctionName": "3.3V Switch Node" }
+      ]
+    },
+    "TPS61236P": {
+      "Boost_Regulator": [
+        { "PinName": "VIN", "FunctionName": "Battery Input" },
+        { "PinName": "VOUT", "FunctionName": "5V Output" },
+        { "PinName": "EN", "FunctionName": "Enable Signal" }
+      ]
+    },
+    "CP2102": {
+      "UART_Bridge": [
+        { "PinName": "TXD", "FunctionName": "Serial Transmit" },
+        { "PinName": "RXD", "FunctionName": "Serial Receive" }
+      ]
+    },
+    "S8050": {
+      "Switch_Output": [
+        { "PinName": "COLLECTOR", "FunctionName": "Transistor Output" }
+      ]
+    },
+    "X2530WR-08-PTSN": {
+      "EInk_Header": [
+        { "PinName": "1", "FunctionName": "MISO" },
+        { "PinName": "2", "FunctionName": "MOSI" },
+        { "PinName": "3", "FunctionName": "SCK" },
+        { "PinName": "4", "FunctionName": "CS" },
+        { "PinName": "5", "FunctionName": "RST" },
+        { "PinName": "6", "FunctionName": "HRDY" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_USB_to_Charger_Input",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "USB1", "PinName": "VBUS" },
+        { "ComponentID": "IP2312", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "Check_Battery_Power_Tree",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "IP2312", "PinName": "BAT" },
+        { "ComponentID": "TPS62088", "PinName": "VIN" },
+        { "ComponentID": "TPS61236P", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "Check_UART0_Console_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32-WROVER",
+      "Target_Group_Pattern": "UART0_Debug_Interface",
+      "Slaves": [ { "ComponentID": "U4", "Interface": "UART_Bridge" } ]
+    },
+    {
+      "RuleName": "Check_EInk_SPI_Communication",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32-WROVER",
+      "Target_Group_Pattern": "EInk_Display_SPI_Bus",
+      "Slaves": [ { "ComponentID": "CN1", "Interface": "EInk_Header" } ]
+    },
+    {
+      "RuleName": "Check_Auto_Reset_燒錄电路",
+      "Type": "Resource_Allocation",
+      "MCU": "ESP32-WROVER",
+      "Target_Group": "Boot_and_Reset_Logic",
+      "Slaves": [
+        { "ComponentID": "Q1", "Interface": "Switch_Output" },
+        { "ComponentID": "Q2", "Interface": "Switch_Output" }
+      ]
+    },
+    {
+      "RuleName": "Check_Boost_Power_Control",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO21" },
+        { "ComponentID": "TPS61236P", "PinName": "EN" }
+      ]
+    }
+  ]
+}

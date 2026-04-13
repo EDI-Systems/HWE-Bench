@@ -1,0 +1,32 @@
+{
+  "Central Processing Unit (CPU) & System Controller": [
+    {
+      "net_id": "net_uart_rx",
+      "Connections": [
+        { "ComponentID": "HT42B534-2", "PinName": "TX", "FunctionName": "USB UART Transmit" },
+        { "ComponentID": "CH32V003", "PinName": "PD6/A6/URX", "FunctionName": "MCU UART Receive" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_scl",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PC2/SCL/URTS/T1BKIN", "FunctionName": "MCU I2C Clock" },
+        { "ComponentID": "AT24C32", "PinName": "SCL", "FunctionName": "EEPROM I2C Clock" }
+      ]
+    },
+    {
+      "net_id": "net_eeprom_wp",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PC3/T1CH3/T1CH1N", "FunctionName": "MCU Write Protect Ctrl" },
+        { "ComponentID": "AT24C32", "PinName": "WP", "FunctionName": "EEPROM Write Protect" }
+      ]
+    },
+    {
+      "net_id": "net_hdmi_hpd_ctrl",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PA1/OSCI/A1", "FunctionName": "MCU Hot Plug Ctrl" },
+        { "ComponentID": "HDMI-01", "PinName": "Hot_Plug_Detect", "FunctionName": "HDMI Hot Plug Pin" }
+      ]
+    }
+  ]
+}

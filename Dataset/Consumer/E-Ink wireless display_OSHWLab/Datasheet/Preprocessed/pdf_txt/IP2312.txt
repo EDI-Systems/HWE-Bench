@@ -1,0 +1,29 @@
+Component ID: IP2312
+Component Type: Single-Cell Li-ion/Li-Polymer Synchronous Buck Charger IC
+Description:
+The IP2312 is a monolithic synchronous switching buck charger IC designed for single-cell lithium-ion/polymer batteries. It operates from a 5V input, integrates power MOSFETs, and uses a 750kHz switching frequency to achieve high efficiency (up to 94% at 3.7V/2A). It features programmable charging current via an external resistor, supports multiple battery termination voltages (4.2V/4.3V/4.35V/4.4V), and includes comprehensive protection such as input OVP/UVP, NTC temperature monitoring, charge timeout, and IC overtemperature protection. It requires minimal external components and is offered in an ESOP8 package.
+
+Key Parameters:
+- Input Voltage Range (Recommended): 4.5V to 5.5V
+- Maximum Charging Current: 3 A
+- Charging Target Voltage (Typical): 4.2 V (Selectable: 4.2V/4.3V/4.35V/4.4V)
+- Switching Frequency (Typical): 750 kHz
+- Peak Efficiency: 94% (at VIN=5V, VBAT=3.7V, ICHG=2A)
+- Integrated Power MOSFET RDS(ON): PMOS 35 mΩ (typ), NMOS 30 mΩ (typ)
+- Trickle Charge Threshold Voltage (Typical): 3.0 V
+- Recharge Threshold Voltage (Typical): 4.1 V
+- Charge Termination Timeout (Typical): 24 Hours
+- Operating Junction Temperature: -40°C to 150°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | D1 | LED Drive / Battery Voltage Select | LED driver pin / Battery type selection (IP2312_VSET) | I/O | Digital/Analog |
+| 2 | TEST | Test | Test pin, connect to battery positive via a 1K resistor | I | Analog |
+| 3 | D2 | LED Drive | LED driver pin | O | Digital |
+| 4 | NTC | Temperature Sense | NTC temperature protection, connect to NTC resistor | I | Analog |
+| 5 | BAT | Battery Connection | Connect to the positive terminal of the Li-ion battery | P | Power |
+| 6 | ICHG | Charge Current Set | Charging current setting pin (via external resistor) | I | Analog |
+| 7 | SW | Switching Node | DC-DC switch pin (inductor connection) | P | Power |
+| 8 | VIN | Power Input | 5V charging input pin | P | Power |
+| 9 | EP | Exposed Pad / Ground | Ground connection for thermal and electrical performance | P | Ground |

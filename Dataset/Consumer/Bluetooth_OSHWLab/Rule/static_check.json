@@ -1,0 +1,135 @@
+{
+  "MCU_Function_Groups": {
+    "AC6955F4": {
+      "System_Power_Infrastructure": [
+        { "PinName": "VDDIO", "FunctionName": "IO Power Supply" },
+        { "PinName": "VSSIO", "FunctionName": "Digital/IO Ground" },
+        { "PinName": "VBAT", "FunctionName": "Main Battery Input" },
+        { "PinName": "PB5/LDO_IN", "FunctionName": "Internal LDO Input" },
+        { "PinName": "SYSVS", "FunctionName": "System Power Sense" }
+      ],
+      "USB_Communication_Link": [
+        { "PinName": "USBDM", "FunctionName": "USB Data Minus" },
+        { "PinName": "USBDP/ADC12", "FunctionName": "USB Data Plus / ADC" }
+      ],
+      "SD_Storage_Bus": [
+        { "PinName": "ADC8/AUX1R/SD0DATAB/PB8", "FunctionName": "SD Data B" },
+        { "PinName": "AUX2L/SD0CLKB/PB9", "FunctionName": "SD Clock B" },
+        { "PinName": "ADC9/AUX2R/SD0CMDB/PB10", "FunctionName": "SD Command B" },
+        { "PinName": "SD_PWR/PB11", "FunctionName": "SD Power Control" }
+      ],
+      "Audio_DAC_Outputs": [
+        { "PinName": "DACL", "FunctionName": "Left Audio Channel" },
+        { "PinName": "DACR", "FunctionName": "Right Audio Channel" },
+        { "PinName": "DACVSS", "FunctionName": "Audio Reference Ground" },
+        { "PinName": "VCOM0", "FunctionName": "Audio Common Voltage" }
+      ],
+      "RF_And_Clocking": [
+        { "PinName": "BT_RF", "FunctionName": "Bluetooth Antenna" },
+        { "PinName": "BT_OSCI", "FunctionName": "24MHz XTAL IN" },
+        { "PinName": "BT_OSCO", "FunctionName": "24MHz XTAL OUT" },
+        { "PinName": "BT_AVDD", "FunctionName": "RF Analog Power" }
+      ],
+      "Peripheral_IO_Misc": [
+        { "PinName": "PA1/AUX0R/ADC0", "FunctionName": "UART RX / AUX R" },
+        { "PinName": "PA0/AUX0L", "FunctionName": "UART TX / AUX L" },
+        { "PinName": "PC7/MIC_BIAS", "FunctionName": "Microphone Bias" },
+        { "PinName": "MIC", "FunctionName": "Microphone Input" },
+        { "PinName": "FMIP", "FunctionName": "FM Radio Input" },
+        { "PinName": "ADC/PB1", "FunctionName": "ADC Key Input" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "TYPE-C": {
+      "USB2_Pure_Data": [
+        { "PinName": "DN1", "FunctionName": "USB 2.0 Data-" },
+        { "PinName": "DP1", "FunctionName": "USB 2.0 Data+" }
+      ],
+      "Power_In": [
+        { "PinName": "VBUS", "FunctionName": "5V Supply" }
+      ]
+    },
+    "TP4054": {
+      "Charger_Interface": [
+        { "PinName": "VCC", "FunctionName": "Power Input" },
+        { "PinName": "BAT", "FunctionName": "Battery Connect" }
+      ]
+    },
+    "TF-01A": {
+      "SD_Interface": [
+        { "PinName": "DAT0", "FunctionName": "Data Bit 0" },
+        { "PinName": "CLK", "FunctionName": "Serial Clock" },
+        { "PinName": "CMD", "FunctionName": "Command" }
+      ]
+    },
+    "PJ-3420": {
+      "Stereo_Out": [
+        { "PinName": "TIP", "FunctionName": "Left Audio" },
+        { "PinName": "RING", "FunctionName": "Right Audio" }
+      ]
+    },
+    "SK-32": {
+      "Power_Switch": [
+        { "PinName": "COM", "FunctionName": "Common Terminal" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_Main_5V_Charging_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TYPE-C", "PinName": "VBUS" },
+        { "ComponentID": "TP4054", "PinName": "VCC" },
+        { "ComponentID": "AC6955F4", "PinName": "PB5/LDO_IN" }
+      ]
+    },
+    {
+      "RuleName": "Check_Battery_Charge_Closed_Loop",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TP4054", "PinName": "BAT" },
+        { "ComponentID": "AC6955F4", "PinName": "VBAT" }
+      ]
+    },
+    {
+      "RuleName": "Check_USB_Data_Differential_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "AC6955F4",
+      "Target_Group_Pattern": "USB_Communication_Link",
+      "Slaves": [ { "ComponentID": "TYPE-C", "Interface": "USB2_Pure_Data" } ]
+    },
+    {
+      "RuleName": "Check_SD_Card_Storage_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "AC6955F4",
+      "Target_Group_Pattern": "SD_Storage_Bus",
+      "Slaves": [ { "ComponentID": "TF-01A", "Interface": "SD_Interface" } ]
+    },
+    {
+      "RuleName": "Check_Audio_Headphone_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "AC6955F4", "PinName": "DACL" },
+        { "ComponentID": "PJ-3420", "PinName": "TIP" }
+      ]
+    },
+    {
+      "RuleName": "Check_Audio_Headphone_Path_R",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "AC6955F4", "PinName": "DACR" },
+        { "ComponentID": "PJ-3420", "PinName": "RING" }
+      ]
+    },
+    {
+      "RuleName": "Check_System_Power_Control_Switch",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "SK-32", "PinName": "COM" },
+        { "ComponentID": "AC6955F4", "PinName": "SYSVS" }
+      ]
+    }
+  ]
+}

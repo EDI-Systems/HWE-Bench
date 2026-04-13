@@ -1,0 +1,21 @@
+Component ID: ATtiny
+Component Type: Microcontroller (MCU)  
+Description: The ATtiny212/214/412/414 Automotive are members of the tinyAVR 1-series, featuring an AVR processor with hardware multiplier operating at up to 16 MHz. They include 2/4 KB Flash, 128/256 bytes SRAM, and 64/128 bytes EEPROM, available in 8-pin and 14-pin SOIC packages. Key peripherals include multiple timers (TCA, TCB, TCD, RTC), a USART, SPI, I2C, analog features (10-bit ADC, 8-bit DAC, Analog Comparator), an Event System, Configurable Custom Logic (CCL), and a Single-Pin Unified Program and Debug Interface (UPDI). Designed for low-power and flexible operation with Core Independent Peripherals, they support automotive temperature ranges and multiple clock options.
+
+Key Parameters:
+- Architecture: 8-bit AVR RISC (up to 20 MHz)
+- Memory: 4 KB Flash / 256 B SRAM / 128 B EEPROM
+- Voltage Range: 1.8V to 5.5V
+- Peripherals: 12-bit ADC, 8-bit DAC, USART, SPI, I2C, Event System
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1          | VDD      | Power Supply   | Main supply input for the MCU. Decouple to GND close to the pin.                                      | Power Input | Power           |
+| 2          | PA6      | GPIO           | General-purpose I/O (KEY2 in schematic).                                                              | I/O         | Digital         |
+| 3          | PA7      | GPIO           | General-purpose I/O (KEY3 in schematic).                                                              | I/O         | Digital         |
+| 4          | PA1      | GPIO / I2C SDA | General-purpose I/O (SDA in schematic; can be used for TWI/I2C depending on configuration).           | I/O         | Digital         |
+| 5          | PA2      | GPIO / I2C SCL | General-purpose I/O (SCL in schematic; can be used for TWI/I2C depending on configuration).           | I/O         | Digital         |
+| 6          | PA0      | UPDI / GPIO    | UPDI single-wire programming/debug interface (UPDI in schematic). Can be GPIO when not used for UPDI. | I/O         | Digital         |
+| 7          | PA3      | GPIO           | General-purpose I/O (KEY1 in schematic).                                                              | I/O         | Digital         |
+| 8          | GND      | Ground         | Ground reference. Connect to system ground.                                                           | Ground      | Power           |

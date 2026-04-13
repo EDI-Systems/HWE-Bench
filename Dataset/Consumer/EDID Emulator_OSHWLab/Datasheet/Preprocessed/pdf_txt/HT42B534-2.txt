@@ -1,0 +1,22 @@
+Component ID: HT42B534-2
+Component Type: USB to UART Bridge Controller
+Description: The HT42B534-2 is a high-performance USB to UART bridge controller designed by Holtek. It provides a cost-effective and simple solution for bridging USB to asynchronous serial data (UART) interfaces. It integrates a USB 2.0 Full Speed transceiver, an internal oscillator, and a 3.3V LDO regulator, which eliminates the need for an external crystal and reduces the overall bill of materials. It is widely used in USB-to-serial modules, device debugging interfaces, and various industrial control systems.
+
+
+Key Parameters:
+- USB Specification: USB 2.0 Full Speed (12 Mbps) compliant
+- UART Baud Rate: Supports standard rates from 300 bps to 3 Mbps
+- Operating Voltage: 4.0V to 5.5V (at VDD pin)
+- Integrated LDO: 3.3V output for I/O power and external components
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Common system ground reference | Power | 0V |
+| 2 | TX | UART TX | UART asynchronous data output | Output | Digital |
+| 3 | VDDIO | IO Power | Power supply for I/O pins (usually connected to V33O) | Power | 1.8V - 3.3V |
+| 4 | RX | UART RX | UART asynchronous data input | Input | Digital |
+| 5 | D+ | USB D+ | USB differential data positive line | I/O | USB Signal |
+| 6 | D- | USB D- | USB differential data negative line | I/O | USB Signal |
+| 7 | VDD | Power | Main power supply input (typically from USB 5V) | Power | 4.0V - 5.5V |
+| 8 | V33O | LDO Out | Internal 3.3V regulator output | Power | 3.3V |

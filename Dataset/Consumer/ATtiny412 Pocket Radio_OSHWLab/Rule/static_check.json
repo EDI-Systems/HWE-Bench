@@ -1,0 +1,103 @@
+{
+  "MCU_Function_Groups": {
+    "ATtiny": {
+      "System_Infrastructure": [
+        { "PinName": "VDD", "FunctionName": "Power Supply" },
+        { "PinName": "GND", "FunctionName": "Ground" },
+        { "PinName": "PA0", "FunctionName": "UPDI Programming" }
+      ],
+      "I2C_Control_Bus": [
+        { "PinName": "PA1", "FunctionName": "I2C SDA" },
+        { "PinName": "PA2", "FunctionName": "I2C SCL" }
+      ],
+      "User_Input_Keys": [
+        { "PinName": "PA3", "FunctionName": "KEY1_Input" },
+        { "PinName": "PA6", "FunctionName": "KEY2_Input" },
+        { "PinName": "PA7", "FunctionName": "KEY3_Input" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "RDA5807": {
+      "I2C_Slave": [
+        { "PinName": "SDIO", "FunctionName": "SDA" },
+        { "PinName": "SCLK", "FunctionName": "SCL" }
+      ],
+      "Audio_Output": [
+        { "PinName": "LOUT", "FunctionName": "Left Channel" },
+        { "PinName": "ROUT", "FunctionName": "Right Channel" }
+      ]
+    },
+    "SSD1306BZ": {
+      "I2C_Interface": [
+        { "PinName": "SDA", "FunctionName": "Data line" },
+        { "PinName": "SCK", "FunctionName": "Clock line" }
+      ]
+    },
+    "TC8871": {
+      "Amp_Input": [
+        { "PinName": "IN", "FunctionName": "Audio Input" }
+      ]
+    },
+    "ME6209": {
+      "LDO_Regulation": [
+        { "PinName": "VIN", "FunctionName": "Input" },
+        { "PinName": "VOUT", "FunctionName": "Output" }
+      ]
+    },
+    "MCP73831T": {
+      "Charger_Main": [
+        { "PinName": "VCC", "FunctionName": "Power Input" },
+        { "PinName": "BAT", "FunctionName": "Battery Connection" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_I2C_Shared_Control_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ATtiny",
+      "Target_Group_Pattern": "I2C_Control_Bus",
+      "Slaves": [
+        { "ComponentID": "RDA5807", "Interface": "I2C_Slave" },
+        { "ComponentID": "SSD1306BZ", "Interface": "I2C_Interface" }
+      ]
+    },
+    {
+      "RuleName": "Check_Audio_Signal_Mixed_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "RDA5807", "PinName": "LOUT" },
+        { "ComponentID": "RDA5807", "PinName": "ROUT" },
+        { "ComponentID": "TC8871", "PinName": "IN" }
+      ]
+    },
+    {
+      "RuleName": "Check_System_3V3_Logic_Supply",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ME6209", "PinName": "VOUT" },
+        { "ComponentID": "ATtiny", "PinName": "VDD" }
+      ]
+    },
+    {
+      "RuleName": "Check_Battery_Charger_Input",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "MCP73831T", "PinName": "VCC" }
+      ]
+    },
+    {
+      "RuleName": "Check_Control_Button_Allocation",
+      "Type": "Resource_Allocation",
+      "MCU": "ATtiny",
+      "Target_Group": "User_Input_Keys",
+      "Slaves": [
+        { "ComponentID": "KEY1", "Interface": "Passive_Terminal" },
+        { "ComponentID": "KEY2", "Interface": "Passive_Terminal" },
+        { "ComponentID": "KEY3", "Interface": "Passive_Terminal" }
+      ]
+    }
+  ]
+}

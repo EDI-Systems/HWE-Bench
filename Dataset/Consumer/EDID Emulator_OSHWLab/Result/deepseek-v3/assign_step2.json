@@ -1,0 +1,1802 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "External Communication Interface",
+      "Function Description": "Provides a user-accessible channel (e.g., USB, UART over micro-USB, Bluetooth) to upload new display profiles, update firmware, or configure system parameters.",
+      "Signal Sources": "External user device (PC, smartphone).",
+      "Signal Destinations": "Central Processing Unit.",
+      "Implementation Logic": "A physical connector and corresponding transceiver IC (e.g., USB-UART bridge, USB controller). Converts user data from the external interface into a serial protocol (e.g., UART, SPI) understood by the CPU for processing.",
+      "Signal Chain": "The external user device (e.g., PC, smartphone) connects via a USB Type-C connector (GT-USB-7010ASV). The USB 2.0 data lines (D+, D-) from the connector are routed to a USB to UART bridge controller (HT42B534-2), which converts the USB protocol to asynchronous serial UART signals. The bridge's UART TX and RX pins are connected to the microcontroller's (CH32V003) UART RX and TX pins, respectively, forming a complete bidirectional communication path. The microcontroller processes the received data (e.g., firmware updates, configuration commands) and may store profiles in non-volatile memory (AT24C32) via I2C if needed. ESD protection (RCLAMP0524P) is applied to the USB data lines to safeguard the bridge controller. A status LED (TZ-P2-0402RTIA1) can be driven by a microcontroller GPIO to indicate communication activity. Power is supplied from the USB connector's VBUS to the bridge controller's VDD, and its internal 3.3V LDO (V33O) powers the I/O lines and can supply the microcontroller if compatible. The HDMI connector (HDMI-01) and Schottky diode (BAT54) are not required for this external communication interface function.",
+      "Recommended Components": [
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "Functional Position": "Physical interface connector for external user device",
+          "Recommendation Reason": "Provides a standard USB Type-C port for user connection, supporting USB 2.0 data and power delivery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A6",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "Functional Position": "USB to UART protocol bridge",
+          "Recommendation Reason": "Converts USB data from the connector to UART signals compatible with the microcontroller, integrating an LDO for power.",
+          "Pin Connections": [
+            {
+              "PinNumber": "5",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDD",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "V33O",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VDDIO",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TX",
+              "Net": "UART_RX_MCU"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RX",
+              "Net": "UART_TX_MCU"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Central Processing Unit (MCU)",
+          "Recommendation Reason": "Processes incoming UART data from the bridge for firmware updates, configuration, etc.",
+          "Pin Connections": [
+            {
+              "PinNumber": "20",
+              "PinName": "PD6/A6/URX",
+              "Net": "UART_RX_MCU"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "PD5/A5/UTX",
+              "Net": "UART_TX_MCU"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "ESD protection for USB data lines",
+          "Recommendation Reason": "Protects the sensitive USB interface from electrostatic discharge and transients.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "I/O1",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "I/O2",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "Status indicator LED",
+          "Recommendation Reason": "Provides visual feedback for communication activity or system status.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "LED_DRIVE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AT24C32",
+          "Functional Position": "Non-volatile storage for display profiles or configuration",
+          "Recommendation Reason": "Optional component for storing user-uploaded profiles or parameters via I2C from the MCU.",
+          "Pin Connections": [
+            {
+              "PinNumber": "5",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "A2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "WP",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Low-Speed Bus Intercept & Emulation Unit",
+      "Function Description": "Intercepts the low-speed communication bus (e.g., DDC/CI for HDMI/DisplayPort, I2C, or AUX CH) used for device identification and capability exchange. It emulates a display by responding with spoofed EDID/DisplayID data stored in non-volatile memory.",
+      "Signal Sources": "Media source low-speed bus pins (SCL, SDA for I2C).",
+      "Signal Destinations": "Onboard Non-Volatile Memory block and Central Processing Unit.",
+      "Implementation Logic": "A bus switch or multiplexer initially connects the source to the real display for initial detection, then isolates it. A microcontroller or dedicated I2C/aux channel controller acts as a slave device on the bus, intercepting read requests from the source and fetching data from the memory block to send spoofed replies.",
+      "Signal Chain": "The low-speed bus (I2C DDC/CI) from the media source (via HDMI connector pins SCL and SDA) is intercepted. Initially, these lines may be connected to a real display for detection, but the module isolates them. The CH32V003 microcontroller, configured as an I2C slave, monitors the bus. When the source issues a read request for EDID/DisplayID data, the CH32V003 intercepts the command, fetches the corresponding spoofed data from the AT24C32 EEPROM over a separate I2C master interface, and transmits it back to the source over the intercepted bus. The HT42B534-2 USB-to-UART bridge provides a debug/configuration interface to the CH32V003, allowing external updates to the spoofed data in the EEPROM. The RCLAMP0524P provides ESD protection on the intercepted I2C lines. The TZ-P2-0402RTIA1 LED provides a visual status indicator for module activity.",
+      "Recommended Components": [
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Central Processing Unit / I2C Bus Intercept Controller",
+          "Recommendation Reason": "Acts as the intelligent core. It can be programmed to function as an I2C slave on the intercepted bus from the source, while also acting as an I2C master to read spoofed EDID data from the EEPROM. Its wide voltage range matches typical 3.3V/5V system logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "PC1/SDA/NSS/T2CH4",
+              "Net": "MCU_I2C_SDA"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PC2/SCL/URTS/T1BKIN",
+              "Net": "MCU_I2C_SCL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PC0/T2CH3/UTX",
+              "Net": "UART_TX_TO_BRIDGE"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "PD6/A6/URX",
+              "Net": "UART_RX_FROM_BRIDGE"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "PD7/NRST/T2CH4",
+              "Net": "MCU_nRESET"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AT24C32",
+          "Functional Position": "Non-Volatile Memory (EDID Data Storage)",
+          "Recommendation Reason": "Stores the spoofed EDID/DisplayID data. It is accessed via I2C by the microcontroller. Its 4KB capacity is sufficient for standard EDID and extended display data.",
+          "Pin Connections": [
+            {
+              "PinNumber": "5",
+              "PinName": "SDA",
+              "Net": "MCU_I2C_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SCL",
+              "Net": "MCU_I2C_SCL"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "A2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "WP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "Functional Position": "USB to UART Bridge (Debug/Configuration Interface)",
+          "Recommendation Reason": "Provides a USB serial interface for debugging the microcontroller and updating the spoofed data in the EEPROM. Its integrated 3.3V LDO can power the logic side of the circuit.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "TX",
+              "Net": "UART_RX_FROM_BRIDGE"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RX",
+              "Net": "UART_TX_TO_BRIDGE"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "V33O",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VDDIO",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDD",
+              "Net": "USB_5V"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "ESD Protection for Intercepted I2C Bus",
+          "Recommendation Reason": "Protects the sensitive I2C lines (SCL, SDA) from the HDMI connector from electrostatic discharge and electrical transients, ensuring system reliability.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "I/O1",
+              "Net": "HDMI_SCL_INTERCEPT"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "I/O2",
+              "Net": "HDMI_SDA_INTERCEPT"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "Source Input Connector (I2C Signal Source)",
+          "Recommendation Reason": "Provides the physical interface to the media source. Its SCL (pin 15) and SDA (pin 16) pins are the source of the low-speed I2C bus to be intercepted.",
+          "Pin Connections": [
+            {
+              "PinNumber": "15",
+              "PinName": "SCL",
+              "Net": "HDMI_SCL_INTERCEPT"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "SDA",
+              "Net": "HDMI_SDA_INTERCEPT"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "DDC/CEC_Ground",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "+5V_Power",
+              "Net": "USB_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "Status Indicator LED",
+          "Recommendation Reason": "Provides a visual indication of module power or activity status.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "LED_ANODE_VIA_RESISTOR"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Central Processing Unit (CPU) & System Controller",
+      "Function Description": "Manages system data flow, coordinates modules, handles user configuration updates, and triggers handshake re-negotiation. It listens for user commands and updates the memory block accordingly.",
+      "Signal Sources": "External Communication Interface, Power Arbitration Network status.",
+      "Signal Destinations": "Non-Volatile Memory Block, Connection Detection Signal Toggle, Low-Speed Bus Intercept & Emulation Unit.",
+      "Implementation Logic": "A microcontroller or FPGA soft-core. It monitors the external interface (e.g., USB). Upon receiving a new profile, it writes it to the memory block. It then electronically toggles the Hot Plug Detect (HPD) or similar signal to force the media source to restart the handshake and read the new profile from memory.",
+      "Signal Chain": "The CPU & System Controller module acts as the central intelligence. It receives user commands and configuration updates via an external communication interface (USB). The USB-to-UART bridge (HT42B534-2) converts the USB data stream into a UART protocol for the microcontroller (CH32V003). The microcontroller processes the commands, which include new EDID/display profiles. It writes these profiles to the non-volatile memory (AT24C32 EEPROM) via an I2C bus. After a successful write, the microcontroller toggles a GPIO pin connected to the HDMI connector's Hot Plug Detect (HPD) line. This HPD toggle forces the connected media source (e.g., a laptop) to restart its handshake sequence, during which it reads the newly written profile from the EEPROM via the HDMI's DDC (I2C) bus. The microcontroller also monitors status from the Power Arbitration Network (via an ADC or GPIO) and coordinates with the Low-Speed Bus Intercept & Emulation Unit (likely via another UART or GPIO). ESD protection (RCLAMP0524P) is placed on critical external lines (USB, HDMI DDC, HPD). A status LED (TZ-P2-0402RTIA1) provides visual feedback. Diodes (BAT54) may be used for voltage steering or protection in the HPD or power control circuits.",
+      "Recommended Components": [
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Central Microcontroller",
+          "Recommendation Reason": "Acts as the system CPU. It has the necessary peripherals: UART to receive commands, I2C to communicate with the EEPROM and HDMI DDC bus, GPIO to toggle the HPD signal and monitor status, and sufficient Flash/SRAM for firmware. Its wide operating voltage (2.7V-5.5V) suits typical 3.3V systems.",
+          "Pin Connections": {
+            "PD6/A6/URX": "Connected to HT42B534-2 TX (UART RX for command input)",
+            "PD5/A5/UTX": "Connected to HT42B534-2 RX (UART TX for debug/output)",
+            "PC1/SDA/NSS/T2CH4": "Connected to AT24C32 SDA and HDMI-01 SDA (I2C Data line)",
+            "PC2/SCL/URTS/T1BKIN": "Connected to AT24C32 SCL and HDMI-01 SCL (I2C Clock line)",
+            "PD2/A3/T1CH1/T2CH3": "Configured as GPIO Output, connected to HDMI-01 Hot_Plug_Detect pin for toggling",
+            "VDD": "Connected to 3.3V power rail",
+            "VSS": "Connected to system ground",
+            "PD1/SWIO/AETR2": "Reserved for Single-Wire Debug interface",
+            "PD7/NRST/T2CH4": "Connected to external reset circuit (pull-up and capacitor)"
+          }
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "Functional Position": "USB to UART Bridge",
+          "Recommendation Reason": "Provides the external communication interface (USB) specified as a signal source. It translates USB data from a host PC into a UART stream for the microcontroller, enabling firmware updates and command reception.",
+          "Pin Connections": {
+            "D+": "Connected to GT-USB-7010ASV D+ pin (via ESD protection)",
+            "D-": "Connected to GT-USB-7010ASV D- pin (via ESD protection)",
+            "TX": "Connected to CH32V003 PD6/A6/URX (UART data to MCU)",
+            "RX": "Connected to CH32V003 PD5/A5/UTX (UART data from MCU)",
+            "VDD": "Connected to USB VBUS (5V) from GT-USB-7010ASV",
+            "V33O": "Connected to 3.3V power rail (powers MCU I/O and other logic)",
+            "VDDIO": "Connected to V33O (3.3V)",
+            "GND": "Connected to system ground"
+          }
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "Functional Position": "External USB Type-C Connector",
+          "Recommendation Reason": "Physical interface for the external communication interface. Provides the USB 2.0 data lines and 5V power for the USB-to-UART bridge and potentially the system.",
+          "Pin Connections": {
+            "A6": "D+ (connected to HT42B534-2 D+ via protection)",
+            "A7": "D- (connected to HT42B534-2 D- via protection)",
+            "B7": "D+ (connected to HT42B534-2 D+ via protection)",
+            "B6": "D- (connected to HT42B534-2 D- via protection)",
+            "A4": "VBUS (provides 5V to HT42B534-2 VDD and possibly a power rail)",
+            "A9": "VBUS (connected to A4)",
+            "B4": "VBUS (connected to A4)",
+            "B9": "VBUS (connected to A4)",
+            "A1": "GND (system ground)",
+            "A12": "GND (system ground)",
+            "B1": "GND (system ground)",
+            "B12": "GND (system ground)"
+          }
+        },
+        {
+          "ComponentID": "AT24C32",
+          "Functional Position": "Non-Volatile Memory Block",
+          "Recommendation Reason": "Stores the display profiles (EDID) as specified. It is a serial EEPROM accessible via I2C, matching the microcontroller's interface and the HDMI DDC standard. Its size (4KB) is sufficient for multiple profiles.",
+          "Pin Connections": {
+            "SDA": "Connected to CH32V003 PC1/SDA/NSS/T2CH4 (I2C Data)",
+            "SCL": "Connected to CH32V003 PC2/SCL/URTS/T1BKIN (I2C Clock)",
+            "VCC": "Connected to 3.3V power rail",
+            "GND": "Connected to system ground",
+            "A0": "Connected to ground (sets I2C address bit 0)",
+            "A1": "Connected to ground (sets I2C address bit 1)",
+            "A2": "Connected to ground (sets I2C address bit 2)",
+            "WP": "Connected to ground (disables write protection for MCU access)"
+          }
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "Connection Detection Signal Toggle Target / DDC Bus Source",
+          "Recommendation Reason": "Provides the Hot Plug Detect (HPD) pin that the microcontroller toggles to force handshake re-negotiation. Its DDC (I2C) pins (SDA, SCL) are the bus where the media source reads the profile from the EEPROM.",
+          "Pin Connections": {
+            "Hot_Plug_Detect": "Connected to CH32V003 PD2/A3/T1CH1/T2CH3 (HPD control)",
+            "SDA": "Connected to CH32V003 PC1/SDA/NSS/T2CH4 (I2C Data bus)",
+            "SCL": "Connected to CH32V003 PC2/SCL/URTS/T1BKIN (I2C Clock bus)",
+            "DDC/CEC_Ground": "Connected to system ground",
+            "+5V_Power": "Connected to 5V power rail (from USB or other source)",
+            "GND pins (2,5,8,11,17)": "Connected to system ground",
+            "EH pins (20,21,22,23)": "Connected to chassis/mechanical ground"
+          }
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "ESD Protection for External Interfaces",
+          "Recommendation Reason": "Protects sensitive I/O lines (USB data, HDMI DDC, HPD) from electrostatic discharge and electrical transients as per industrial standards, ensuring system reliability.",
+          "Pin Connections": {
+            "I/O1": "Connected to GT-USB-7010ASV D+ line (to HT42B534-2 D+)",
+            "I/O2": "Connected to GT-USB-7010ASV D- line (to HT42B534-2 D-)",
+            "I/O3": "Connected to HDMI-01 SDA line (to CH32V003 PC1 and AT24C32 SDA)",
+            "I/O4": "Connected to HDMI-01 SCL line (to CH32V003 PC2 and AT24C32 SCL)",
+            "I/O5": "Connected to HDMI-01 Hot_Plug_Detect line (to CH32V003 PD2)",
+            "GND": "Connected to system ground"
+          }
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "System Status LED",
+          "Recommendation Reason": "Provides visual indication of system power, activity, or status (e.g., programming mode, error) for user feedback.",
+          "Pin Connections": {
+            "A": "Connected to a current-limiting resistor, then to a CH32V003 GPIO pin configured as output (e.g., PC3)",
+            "K": "Connected to system ground"
+          }
+        },
+        {
+          "ComponentID": "BAT54",
+          "Functional Position": "HPD Signal Steering/Protection",
+          "Recommendation Reason": "Can be used to create a simple open-drain or level-shifting circuit for the HPD line, ensuring proper voltage levels and preventing back-powering when the HDMI source's 5V is present. Its Schottky characteristics provide fast switching.",
+          "Pin Connections": {
+            "A1": "Connected to CH32V003 PD2 (HPD control GPIO)",
+            "K1": "Connected to HDMI-01 Hot_Plug_Detect pin"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Non-Volatile Memory Block",
+      "Function Description": "Stores customized display profiles (e.g., EDID binaries, resolution tables, vendor IDs) that define the emulated display's capabilities. Retains data when powered off.",
+      "Signal Sources": "Central Processing Unit (for write/update operations).",
+      "Signal Destinations": "Low-Speed Bus Intercept & Emulation Unit (for read operations).",
+      "Implementation Logic": "Implemented using an EEPROM or Flash memory chip. The CPU can write new profiles via an SPI or I2C interface. The Low-Speed Bus Intercept unit reads from this memory directly or via a buffer when emulating the display for the source.",
+      "Signal Chain": "The Non-Volatile Memory Block stores display profiles (e.g., EDID) and must retain data when powered off. The Central Processing Unit (CPU) writes/updates profiles via a serial interface. The Low-Speed Bus Intercept & Emulation Unit reads from this memory when emulating a display for the source. Given the component library, the CH32V003 microcontroller acts as the CPU, interfacing with the AT24C32 EEPROM via I2C for storage. The HT42B534-2 USB-to-UART bridge enables external communication for profile updates via USB, connecting to the CH32V003's UART. The HDMI-01 connector's DDC (I2C) lines (SCL, SDA) are intercepted by the Low-Speed Bus Intercept unit, which in this implementation is handled by the CH32V003. The CH32V003 reads from the AT24C32 and emulates the display by driving the HDMI DDC lines. Power is supplied via the GT-USB-7010ASV USB Type-C connector, with the HT42B534-2 deriving power from it for USB communication. The RCLAMP0524P provides ESD protection for the HDMI DDC and other sensitive lines. The TZ-P2-0402RTIA1 LED serves as a status indicator, and the BAT54 diode is not required for this core signal chain.",
+      "Recommended Components": [
+        {
+          "ComponentID": "AT24C32",
+          "Functional Position": "Non-Volatile Memory Storage",
+          "Recommendation Reason": "Provides 4 KB of EEPROM storage via I2C, suitable for storing display profiles with low power consumption and high reliability. It matches the module's need for non-volatile memory with serial interface access.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "A2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SDA",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SCL",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "WP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Central Processing Unit and Low-Speed Bus Intercept & Emulation Controller",
+          "Recommendation Reason": "Acts as the CPU for writing/updating profiles and the Low-Speed Bus Intercept unit for reading/emulating display data. It has I2C and UART peripherals to interface with the EEPROM and USB-to-UART bridge, and GPIOs to drive HDMI DDC lines.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD7/NRST/T2CH4",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PA1/OSCI/A1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PA2/OSCO/A0/T1CH2N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PD0/T1CH1N/OPN1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PC0/T2CH3/UTX",
+              "Net": "UART_TX_TO_BRIDGE"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PC1/SDA/NSS/T2CH4",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PC2/SCL/URTS/T1BKIN",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PC3/T1CH3/T1CH1N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PC4/A2/T1CH4/MCO",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PC5/SCK/T1ETR/T2CH1ETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PC6/MOSI/T1CH1CH3N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PC7/MISO/T1CH2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PD1/SWIO/AETR2",
+              "Net": "SWDIO"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PD2/A3/T1CH1/T2CH3",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PD3/A4/T2CH2/AETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "PD4/A7/UCK/T2CH1ETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "PD5/A5/UTX",
+              "Net": "UART_RX_FROM_BRIDGE"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "PD6/A6/URX",
+              "Net": "HDMI_HPD"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "Functional Position": "USB to UART Bridge for External Communication",
+          "Recommendation Reason": "Enables the CPU to communicate with external devices (e.g., a PC) via USB for writing/updating display profiles in the EEPROM. It provides a simple USB-to-serial interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TX",
+              "Net": "UART_RX_FROM_BRIDGE"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VDDIO",
+              "Net": "3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RX",
+              "Net": "UART_TX_TO_BRIDGE"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDD",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "V33O",
+              "Net": "3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "Functional Position": "USB Type-C Power and Data Interface",
+          "Recommendation Reason": "Provides power (5V) from an external USB source and data lines for USB communication via the HT42B534-2 bridge. Essential for module power and profile updates.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "D+",
+              "Net": "USB_D_P"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "D-",
+              "Net": "USB_D_N"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "5V_USB"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "HDMI Connector for Display Emulation Interface",
+          "Recommendation Reason": "Provides the physical interface for emulating a display to the source. Its DDC (I2C) lines are used by the Low-Speed Bus Intercept unit (CH32V003) to communicate display profiles.",
+          "Pin Connections": [
+            {
+              "PinNumber": "15",
+              "PinName": "SCL",
+              "Net": "HDMI_SCL"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "SDA",
+              "Net": "HDMI_SDA"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "DDC/CEC_Ground",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "+5V_Power",
+              "Net": "5V_HDMI"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "Hot_Plug_Detect",
+              "Net": "HDMI_HPD"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "ESD Protection for HDMI and Communication Lines",
+          "Recommendation Reason": "Protects sensitive HDMI DDC lines and other I/O from ESD and transients, ensuring reliability in accordance with IEC standards.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "I/O1",
+              "Net": "HDMI_SCL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "I/O2",
+              "Net": "HDMI_SDA"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "I/O3",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "I/O4",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "I/O5",
+              "Net": "UART_TX_TO_BRIDGE"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "I/O6",
+              "Net": "UART_RX_FROM_BRIDGE"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "I/O7",
+              "Net": "HDMI_HPD"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "I/O8",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "Status Indicator LED",
+          "Recommendation Reason": "Provides visual feedback (e.g., power-on, activity) for the module, enhancing usability.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "LED_ANODE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Dual-Input Power Arbitration Network",
+      "Function Description": "Manages system power by seamlessly selecting and regulating the primary power source between the power provided by the video cable (e.g., +5V from HDMI) and an external auxiliary power source (e.g., USB-C PD, barrel jack). Provides stable, clean power to all logic circuits.",
+      "Signal Sources": "Video cable power pin (e.g., HDMI +5V), Auxiliary power input connector.",
+      "Signal Destinations": "All other functional modules (voltage rails).",
+      "Implementation Logic": "Uses power path controllers, ideal diodes, or MOSFET-based OR-ing circuits to automatically select the higher or preferred voltage source. Includes voltage regulators (LDOs or switching regulators) to generate required logic voltages (e.g., 3.3V, 1.8V). Ensures uninterrupted operation during source switching.",
+      "Signal Chain": "The Dual-Input Power Arbitration Network manages power from two sources: HDMI +5V and USB-C auxiliary power. The signal chain begins with the HDMI connector's +5V_Power pin (Pin 18) and the USB-C connector's VBUS pins (A4, A9, B4, B9), which are the raw power inputs. These inputs are first protected against transients using TVS diodes (e.g., on VBUS lines). They then feed into a power arbitration circuit, which uses ideal diodes or MOSFET-based OR-ing to automatically select the higher or preferred voltage source, ensuring seamless switching without interruption. The selected power is then regulated to stable logic voltages (e.g., 3.3V, 1.8V) via voltage regulators (not in library, but implied) for distribution to all other functional modules. Status indication via an LED may be included to show power source selection. The microcontroller (CH32V003) can monitor input voltages via ADC channels for intelligent power management, though the library lacks dedicated power path controllers, so basic diode OR-ing with BAT54 diodes is a fallback for simple arbitration.",
+      "Recommended Components": [
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "Primary power input connector from video cable",
+          "Recommendation Reason": "Provides the +5V power source from the HDMI cable as specified in the module's signal sources.",
+          "Pin Connections": [
+            {
+              "PinNumber": "18",
+              "PinName": "+5V_Power",
+              "ConnectedTo": "Power arbitration circuit input (e.g., anode of BAT54 diode for HDMI source)"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "DDC/CEC_Ground",
+              "ConnectedTo": "System ground (GND)"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "EH",
+              "ConnectedTo": "Mechanical ground (chassis GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "Functional Position": "Auxiliary power input connector (e.g., USB-C PD)",
+          "Recommendation Reason": "Provides the external auxiliary power source as specified, with VBUS pins for power delivery.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "ConnectedTo": "Power arbitration circuit input (e.g., anode of BAT54 diode for USB source), via transient protection"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "ConnectedTo": "Same net as A4 VBUS for parallel connection"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "ConnectedTo": "Same net as A4 VBUS for parallel connection"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "ConnectedTo": "Same net as A4 VBUS for parallel connection"
+            },
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "ConnectedTo": "System ground (GND)"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "ConnectedTo": "System ground (GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BAT54",
+          "Functional Position": "Simple diode OR-ing for power arbitration (fallback solution)",
+          "Recommendation Reason": "Provides basic power source selection via Schottky diodes, minimizing voltage drop and preventing back-feeding between HDMI and USB power sources. Used as a cost-effective alternative to ideal diode controllers.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "ConnectedTo": "HDMI +5V_Power (from HDMI-01 Pin 18)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K1",
+              "ConnectedTo": "Common output to voltage regulator input (selected power rail)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BAT54",
+          "Functional Position": "Second diode in OR-ing circuit for USB power",
+          "Recommendation Reason": "Completes the dual-input OR-ing setup, allowing USB power to feed the common output when present and higher.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A1",
+              "ConnectedTo": "USB VBUS (from GT-USB-7010ASV Pin A4 net)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K1",
+              "ConnectedTo": "Common output to voltage regulator input (same net as first BAT54's cathode)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Microcontroller for power monitoring and management",
+          "Recommendation Reason": "Monitors input voltages via ADC channels to enable intelligent power arbitration (e.g., prioritizing USB when available) and system control. Operates on regulated 3.3V/5V from the power network.",
+          "Pin Connections": [
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "ConnectedTo": "Regulated logic voltage (e.g., 3.3V from implied LDO)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "ConnectedTo": "System ground (GND)"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "VSS",
+              "ConnectedTo": "System ground (GND)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PA1/OSCI/A1",
+              "ConnectedTo": "ADC channel to monitor HDMI input voltage (via voltage divider)"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PD2/A3/T1CH1/T2CH3",
+              "ConnectedTo": "ADC channel to monitor USB input voltage (via voltage divider)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "Status LED indicating active power source",
+          "Recommendation Reason": "Provides visual feedback on which power source is active (e.g., lit when USB power is selected), enhancing user interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "ConnectedTo": "Microcontroller GPIO pin (e.g., CH32V003 PC0) via current-limiting resistor"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "ConnectedTo": "System ground (GND)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "Transient voltage suppression on power input lines",
+          "Recommendation Reason": "Protects the power arbitration circuit from ESD, surges, and transients on both HDMI and USB power inputs, ensuring reliability.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "I/O1",
+              "ConnectedTo": "HDMI +5V_Power line (from HDMI-01 Pin 18)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "I/O2",
+              "ConnectedTo": "USB VBUS line (from GT-USB-7010ASV Pin A4 net)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "ConnectedTo": "System ground (GND)"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "ConnectedTo": "System ground (GND)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Speed Video Passthrough",
+      "Function Description": "Provides a transparent, low-latency electrical path for the high-speed multimedia data stream (e.g., TMDS, DisplayPort data lanes) from the media source to the display, ensuring the video payload is delivered untouched.",
+      "Signal Sources": "Media source high-speed video output pins.",
+      "Signal Destinations": "Display device high-speed video input pins.",
+      "Implementation Logic": "Directly routes high-speed differential pairs through impedance-matched traces, buffers, or redriver ICs to maintain signal integrity without processing or altering the video data.",
+      "Signal Chain": "The module functions as a high-speed video passthrough, directly routing differential video data lanes from a media source connector to a display connector. The primary signal path consists of the high-speed TMDS differential pairs (Data0+/-, Data1+/-, Data2+/-, Clock+/-) from the HDMI source connector, passing through impedance-matched PCB traces to the HDMI display connector. To ensure signal integrity over the transmission path, a TVS diode array is placed on each differential pair line for ESD and transient voltage protection. A microcontroller is included to manage auxiliary functions such as reading EDID data from the display via the DDC (I2C) bus and monitoring the Hot Plug Detect signal. The microcontroller can also control a status LED for operational indication. A USB-to-UART bridge provides a debug interface for the microcontroller, allowing firmware updates and system monitoring. Power is supplied via the HDMI connector's +5V line, which may be regulated locally for the microcontroller and other logic.",
+      "Recommended Components": [
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "Video Input Connector (Source)",
+          "Recommendation Reason": "Standard HDMI Type-A female connector to receive high-speed TMDS video data from a media source.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "TMDS_Data2+",
+              "Net": "TMDS2_P"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TMDS_Data2_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "TMDS_Data2-",
+              "Net": "TMDS2_N"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "TMDS_Data1+",
+              "Net": "TMDS1_P"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "TMDS_Data1_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "TMDS_Data1-",
+              "Net": "TMDS1_N"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "TMDS_Data0+",
+              "Net": "TMDS0_P"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "TMDS_Data0_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "TMDS_Data0-",
+              "Net": "TMDS0_N"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "TMDS_Clock+",
+              "Net": "TMDS_CLK_P"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "TMDS_Clock_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "TMDS_Clock-",
+              "Net": "TMDS_CLK_N"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "CEC",
+              "Net": "CEC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "Reserved(N.C.)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "SCL",
+              "Net": "DDC_SCL"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "SDA",
+              "Net": "DDC_SDA"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "DDC/CEC_Ground",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "+5V_Power",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "Hot_Plug_Detect",
+              "Net": "HPD"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "EH",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HDMI-01",
+          "Functional Position": "Video Output Connector (Display)",
+          "Recommendation Reason": "Standard HDMI Type-A female connector to output high-speed TMDS video data to a display device.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "TMDS_Data2+",
+              "Net": "TMDS2_P"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TMDS_Data2_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "TMDS_Data2-",
+              "Net": "TMDS2_N"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "TMDS_Data1+",
+              "Net": "TMDS1_P"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "TMDS_Data1_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "TMDS_Data1-",
+              "Net": "TMDS1_N"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "TMDS_Data0+",
+              "Net": "TMDS0_P"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "TMDS_Data0_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "TMDS_Data0-",
+              "Net": "TMDS0_N"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "TMDS_Clock+",
+              "Net": "TMDS_CLK_P"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "TMDS_Clock_Shield",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "TMDS_Clock-",
+              "Net": "TMDS_CLK_N"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "CEC",
+              "Net": "CEC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "Reserved(N.C.)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "SCL",
+              "Net": "DDC_SCL"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "SDA",
+              "Net": "DDC_SDA"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "DDC/CEC_Ground",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "+5V_Power",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "Hot_Plug_Detect",
+              "Net": "HPD"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "EH",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "EH",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RCLAMP0524P",
+          "Functional Position": "ESD Protection for High-Speed Video Lines",
+          "Recommendation Reason": "Provides robust ESD and transient voltage protection for the sensitive TMDS differential pairs, ensuring signal integrity and device reliability.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "I/O1",
+              "Net": "TMDS0_P"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "I/O2",
+              "Net": "TMDS0_N"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "I/O3",
+              "Net": "TMDS1_P"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "I/O4",
+              "Net": "TMDS1_N"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "I/O5",
+              "Net": "TMDS2_P"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "I/O6",
+              "Net": "TMDS2_N"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "I/O7",
+              "Net": "TMDS_CLK_P"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "I/O8",
+              "Net": "TMDS_CLK_N"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CH32V003",
+          "Functional Position": "Auxiliary Control and Management",
+          "Recommendation Reason": "Microcontroller to handle DDC communication for EDID reading, monitor HPD status, control status LED, and provide system management capabilities.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "PD7/NRST/T2CH4",
+              "Net": "NRST"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PA1/OSCI/A1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "PA2/OSCO/A0/T1CH2N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "PD0/T1CH1N/OPN1",
+              "Net": "LED_CTRL"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "VDD",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "PC0/T2CH3/UTX",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "PC1/SDA/NSS/T2CH4",
+              "Net": "DDC_SDA"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "PC2/SCL/URTS/T1BKIN",
+              "Net": "DDC_SCL"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "PC3/T1CH3/T1CH1N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "PC4/A2/T1CH4/MCO",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "PC5/SCK/T1ETR/T2CH1ETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "PC6/MOSI/T1CH1CH3N",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "PC7/MISO/T1CH2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "PD1/SWIO/AETR2",
+              "Net": "SWDIO"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "PD2/A3/T1CH1/T2CH3",
+              "Net": "HPD"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "PD3/A4/T2CH2/AETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "PD4/A7/UCK/T2CH1ETR",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "PD5/A5/UTX",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "PD6/A6/URX",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "VSS",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AT24C32",
+          "Functional Position": "EDID Memory for Display",
+          "Recommendation Reason": "Serial EEPROM to store EDID data for the display, accessible via I2C (DDC) by the source device.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A0",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "A1",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "A2",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SDA",
+              "Net": "DDC_SDA"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "SCL",
+              "Net": "DDC_SCL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "WP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "HT42B534-2",
+          "Functional Position": "USB to UART Debug Interface",
+          "Recommendation Reason": "Provides a USB-to-UART bridge for debugging, firmware programming, and serial communication with the microcontroller.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TX",
+              "Net": "UART_RX"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VDDIO",
+              "Net": "VCC_3V3"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RX",
+              "Net": "UART_TX"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "VDD",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "V33O",
+              "Net": "VCC_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "GT-USB-7010ASV",
+          "Functional Position": "USB Type-C Connector for Debug Interface",
+          "Recommendation Reason": "USB Type-C female connector to provide physical interface for the USB debug connection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "A1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "A2",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A3",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A4",
+              "PinName": "VBUS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "A5",
+              "PinName": "CC1",
+              "Net": "CC1"
+            },
+            {
+              "PinNumber": "A6",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "A7",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "A8",
+              "PinName": "SBU1",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A9",
+              "PinName": "VBUS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "A10",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A11",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "A12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "B2",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B3",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B4",
+              "PinName": "VBUS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "B5",
+              "PinName": "SBU2",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B6",
+              "PinName": "D-",
+              "Net": "USB_D-"
+            },
+            {
+              "PinNumber": "B7",
+              "PinName": "D+",
+              "Net": "USB_D+"
+            },
+            {
+              "PinNumber": "B8",
+              "PinName": "CC2",
+              "Net": "CC2"
+            },
+            {
+              "PinNumber": "B9",
+              "PinName": "VBUS",
+              "Net": "VCC_5V"
+            },
+            {
+              "PinNumber": "B10",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B11",
+              "PinName": "(Reserved)",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "B12",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TZ-P2-0402RTIA1",
+          "Functional Position": "System Status Indicator",
+          "Recommendation Reason": "SMD LED for visual indication of system power, activity, or error states.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "LED_CTRL"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

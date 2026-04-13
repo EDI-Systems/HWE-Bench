@@ -1,0 +1,295 @@
+{
+  "ComponentID": "HDMI-01",
+  "ComponentType": "HDMI Type-A Female Connector",
+  "Description": "The HDMI-01 is a standard High-Definition Multimedia Interface (HDMI) Type-A receptacle. It is designed to transmit high-speed digital video and multi-channel audio data using Transition-Minimized Differential Signaling (TMDS). The connector includes three differential data pairs, one differential clock pair, and auxiliary signals for display identification (DDC), device control (CEC), and connection detection (Hot Plug Detect).",
+  "KeyParameters": {
+    "Contact Resistance": "30 mΩ Max.",
+    "Mating Force": "44.1 N Max.",
+    "Unmating Force": "9.8 N Min.",
+    "Operating Life": "10000 Cycles Min.",
+    "Storage Temperature Range": "-40°C ~ +85°C",
+    "Operating Temperature Range": "-25°C ~ +70°C",
+    "Housing Material": "LCP (Liquid Crystal Polymer), Gray, High-Temperature Plastic",
+    "Contact Material": "Brass (H65), Thickness 0.20mm",
+    "Shell Material": "Cold Rolled Iron (SPCC), Thickness 0.50mm, Nickel Plated",
+    "Terminal Plating": "Contact Area - Gold Plated (2.0μ\" min), Solder Area - Tin Plated"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "TMDS_Data2+",
+      "Functions": [
+        {
+          "FunctionName": "Data 2+",
+          "FunctionDescription": "TMDS differential data channel 2 positive"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "TMDS_Data2_Shield",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Data channel 2 shield/ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "TMDS_Data2-",
+      "Functions": [
+        {
+          "FunctionName": "Data 2-",
+          "FunctionDescription": "TMDS differential data channel 2 negative"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "TMDS_Data1+",
+      "Functions": [
+        {
+          "FunctionName": "Data 1+",
+          "FunctionDescription": "TMDS differential data channel 1 positive"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "TMDS_Data1_Shield",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Data channel 1 shield/ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "TMDS_Data1-",
+      "Functions": [
+        {
+          "FunctionName": "Data 1-",
+          "FunctionDescription": "TMDS differential data channel 1 negative"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "TMDS_Data0+",
+      "Functions": [
+        {
+          "FunctionName": "Data 0+",
+          "FunctionDescription": "TMDS differential data channel 0 positive"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "TMDS_Data0_Shield",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Data channel 0 shield/ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "TMDS_Data0-",
+      "Functions": [
+        {
+          "FunctionName": "Data 0-",
+          "FunctionDescription": "TMDS differential data channel 0 negative"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "TMDS_Clock+",
+      "Functions": [
+        {
+          "FunctionName": "Clock+",
+          "FunctionDescription": "TMDS differential clock positive"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "TMDS_Clock_Shield",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Clock channel shield/ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "TMDS_Clock-",
+      "Functions": [
+        {
+          "FunctionName": "Clock-",
+          "FunctionDescription": "TMDS differential clock negative"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "CEC",
+      "Functions": [
+        {
+          "FunctionName": "CEC",
+          "FunctionDescription": "Consumer Electronics Control"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "Reserved(N.C.)",
+      "Functions": [
+        {
+          "FunctionName": "N.C.",
+          "FunctionDescription": "Reserved pin (No connection)"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "DDC SCL",
+          "FunctionDescription": "Display Data Channel I2C clock"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "DDC SDA",
+          "FunctionDescription": "Display Data Channel I2C data"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "DDC/CEC_Ground",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground for DDC, CEC, and HPD"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "+5V_Power",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "+5V supply for display logic"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "Hot_Plug_Detect",
+      "Functions": [
+        {
+          "FunctionName": "HPD",
+          "FunctionDescription": "Hot plug detection signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "EH",
+      "Functions": [
+        {
+          "FunctionName": "Shell",
+          "FunctionDescription": "Connector shell / Mechanical ground"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "EH",
+      "Functions": [
+        {
+          "FunctionName": "Shell",
+          "FunctionDescription": "Connector shell / Mechanical ground"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "EH",
+      "Functions": [
+        {
+          "FunctionName": "Shell",
+          "FunctionDescription": "Connector shell / Mechanical ground"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "GND"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "EH",
+      "Functions": [
+        {
+          "FunctionName": "Shell",
+          "FunctionDescription": "Connector shell / Mechanical ground"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "GND"
+    }
+  ]
+}

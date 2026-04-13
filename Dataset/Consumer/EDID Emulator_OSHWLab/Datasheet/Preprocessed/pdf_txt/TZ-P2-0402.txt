@@ -1,0 +1,15 @@
+Component ID: TZ-P2-0402RTIA1
+Component Type: Surface Mount (SMD) LED
+Description: The TZ-P2-0402RTIA1 is an ultra-miniature surface-mount Light Emitting Diode (LED) in a 0402 package. It is specifically designed for status indication, backlighting, and signal lighting in space-constrained electronic devices such as wearables, smartphones, and industrial sensors. This model emits red light and is characterized by its high reliability and low power consumption.
+
+Key Parameters:
+- Package Size: 0402 (1.0mm x 0.5mm)
+- Dominant Wavelength: 620nm - 630nm (Red)
+- Forward Voltage (VF): 1.8V to 2.4V
+- Maximum Forward Current (IF): 20mA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | A | Anode | Positive terminal of the LED | Passive | Input |
+| 2 | K | Cathode | Negative terminal; typically indicated by a marking on the package | Passive | Output |

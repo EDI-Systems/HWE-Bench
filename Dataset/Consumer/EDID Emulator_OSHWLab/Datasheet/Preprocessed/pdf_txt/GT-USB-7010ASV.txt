@@ -1,0 +1,44 @@
+Component ID: GT-USB-7010ASV
+Component Type: USB Type-C Female Surface-Mount Connector (16-pin, short body)
+Description:
+This is a USB Type-C 16-pin female receptacle designed for surface-mount assembly. It provides the standard USB 2.0 data lines (D+, D-), power delivery (VBUS, GND), configuration channels (CC1, CC2), and sideband use lines (SBU1, SBU2) for cable orientation detection, power negotiation, and alternate modes. It is rated for 3A power delivery on VBUS and features a compact, horizontal form factor with a 10,000-cycle mechanical durability rating.
+
+Key Parameters:
+- Current Rating (VBUS): 3 A
+- Current Rating (VCONN / Other): 1.25 A / 0.25 A
+- Voltage Rating: 24 V AC
+- Withstanding Voltage: 100 V AC/minute
+- Contact Resistance: 40 mΩ Max
+- Insulation Resistance: 100 MΩ Min
+- Operating Temperature: -40 °C to +85 °C
+- Mating Force: 5 N to 20 N
+- Unmating Force: 8 N to 20 N
+- Durability Cycle: 10,000 Cycles
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | GND | Ground | Ground return for power | SMT Pad | Power |
+| A2 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| A3 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| A4 | VBUS | Power | Bus Power (First) | SMT Pad | Power |
+| A5 | CC1 | Configuration Channel | Configuration Channel 1 (Second) | SMT Pad | Signal |
+| A6 | D+ | USB 2.0 Data | USB 2.0 Data Positive (Second) | SMT Pad | Signal |
+| A7 | D- | USB 2.0 Data | USB 2.0 Data Negative (Second) | SMT Pad | Signal |
+| A8 | SBU1 | Sideband Use | Sideband Use 1 (Second) | SMT Pad | Signal |
+| A9 | VBUS | Power | Bus Power (First) | SMT Pad | Power |
+| A10 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| A11 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| A12 | GND | Ground | Ground return for power (First) | SMT Pad | Power |
+| B1 | GND | Ground | Ground return for power (First) | SMT Pad | Power |
+| B2 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| B3 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| B4 | VBUS | Power | Bus Power (First) | SMT Pad | Power |
+| B5 | SBU2 | Sideband Use | Sideband Use 2 (Second) | SMT Pad | Signal |
+| B6 | D- | USB 2.0 Data | USB 2.0 Data Negative (Second) | SMT Pad | Signal |
+| B7 | D+ | USB 2.0 Data | USB 2.0 Data Positive (Second) | SMT Pad | Signal |
+| B8 | CC2 | Configuration Channel | Configuration Channel 2 (Second) | SMT Pad | Signal |
+| B9 | VBUS | Power | Bus Power (First) | SMT Pad | Power |
+| B10 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| B11 | (Reserved) | Reserved | Unconnected / Reserved | SMT Pad | NC |
+| B12 | GND | Ground | Ground return for power | SMT Pad | Power |

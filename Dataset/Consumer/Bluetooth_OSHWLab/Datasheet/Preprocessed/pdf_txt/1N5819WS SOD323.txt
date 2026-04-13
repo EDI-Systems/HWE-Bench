@@ -1,0 +1,22 @@
+Component ID: 1N5819WS
+Component Type: Schottky Barrier Diode
+Description:
+This component is a Schottky barrier diode series featuring a low forward voltage drop, guard ring construction for transient protection, negligible reverse recovery time, and low reverse capacitance. It is designed for high-efficiency switching applications where fast switching and low power loss are critical.
+
+Key Parameters:
+- Peak Repetitive Reverse Voltage (VRRM): 40V (1N5819WS), 30V (1N5819BWS), 20V (1N5819CWS)
+- Forward Continuous Current (IF(AV)): 350 mA
+- Repetitive Peak Forward Current (IFRM): 1.5 A (pulse ≤1.0s)
+- Forward Voltage (VF): Max 0.60 V (at IF=200mA)
+- Reverse Current (IR): Max 5.0 μA (at rated VR)
+- Junction Capacitance (CT): Typ 50 pF (VR=0V, f=1MHz)
+- Reverse Recovery Time (trr): Typ 10 ns
+- Power Dissipation (Pd): 400 mW
+- Thermal Resistance (RθJA): 300 °C/W
+- Package: SOD-323
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode | Anode | Positive terminal, current flows into this pin when forward biased. | Terminal | Power |
+| 2 | Cathode | Cathode | Negative terminal, current flows out of this pin when forward biased. | Terminal | Power |

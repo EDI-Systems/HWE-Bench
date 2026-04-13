@@ -1,0 +1,115 @@
+{
+  "ComponentID": "AT24C32",
+  "ComponentType": "Serial EEPROM (Electrically Erasable Programmable Read-Only Memory)",
+  "Description": "The AT24C32 and AT24C64 are low-power, low-voltage serial EEPROM memory chips providing 32,768 bits (4 KB) and 65,536 bits (8 KB) of non-volatile storage, respectively. They are organized as 4096 x 8 or 8192 x 8 and are accessed via a two-wire I²C-compatible serial interface. Key features include hardware write protection via a dedicated pin, a 32-byte page write mode, and high reliability with 1 million write cycle endurance and 100-year data retention. They operate over a wide voltage range and are designed for industrial and commercial applications.",
+  "KeyParameters": {
+    "Memory Size": "32 Kbits (AT24C32) / 64 Kbits (AT24C64)",
+    "Organization": "4096 x 8 (AT24C32) / 8192 x 8 (AT24C64)",
+    "Supply Voltage (VCC)": "1.8V to 5.5V",
+    "Operating Temperature": "-40°C to +85°C",
+    "Serial Interface": "Two-wire (I²C)",
+    "Maximum Clock Frequency": "1 MHz (at 5V), 400 kHz (at 1.8V, 2.5V, 2.7V)",
+    "Write Cycle Time (max)": "5 ms",
+    "Endurance": "1,000,000 Write Cycles",
+    "Data Retention": "100 Years",
+    "Page Size": "32 bytes"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "A0",
+      "Functions": [
+        {
+          "FunctionName": "Address Input",
+          "FunctionDescription": "Device Address Input Bit 0"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Address Input",
+          "FunctionDescription": "Device Address Input Bit 1"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "A2",
+      "Functions": [
+        {
+          "FunctionName": "Address Input",
+          "FunctionDescription": "Device Address Input Bit 2"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power Supply Ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "Bidirectional Serial Data Line (Open-Drain)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "Serial Clock Input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "WP",
+      "Functions": [
+        {
+          "FunctionName": "Write Protect",
+          "FunctionDescription": "Hardware Write Protect Control"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Positive Power Supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    }
+  ]
+}

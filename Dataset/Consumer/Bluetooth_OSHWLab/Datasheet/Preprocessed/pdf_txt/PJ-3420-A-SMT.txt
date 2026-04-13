@@ -1,0 +1,19 @@
+Component ID: PJ-3420
+Component Type: 3.5mm Stereo Audio Jack (SMT)
+Description: The PJ-3420-A-SMT is a surface-mount 3.5mm stereo phone jack used for audio input or output in compact electronic devices. It features a standard Tip-Ring-Sleeve (TRS) configuration and includes integrated shunt switches for both the Tip and Ring contacts. These switches are mechanically normally closed and are disconnected when a plug is inserted, making them ideal for "plug detection" or automatic audio routing (e.g., muting internal speakers when headphones are connected).
+
+Key Parameters:
+- Connector Size: 3.5mm
+- Mounting Style: Surface Mount (SMT)
+- Number of Conductors: 3 (Stereo)
+- Internal Switches: 2 (Tip Switch, Ring Switch)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SLEEVE | Ground | Common ground reference / Shell | Power | 0V |
+| 2 | TIP | Left | Left channel audio signal | I/O | Analog |
+| 3 | RING | Right | Right channel audio signal | I/O | Analog |
+| 4 | TIP-SW | Switch | Normally closed switch contact for Pin 2 | Passive | Analog |
+| 5 | NC | No Connect | Not connected / Unused switch contact | NC | - |
+| 6 | RING-SW | Switch | Normally closed switch contact for Pin 3 | Passive | Analog |er |

@@ -1,0 +1,213 @@
+{
+  "ComponentID": "KH-TYPE-C-16P",
+  "ComponentType": "USB Type-C Female Connector (Receptacle)",
+  "Description": "This is a 16-pin, single-row, surface-mount (SMT) USB Type-C receptacle connector with four board-mounting posts. It provides the physical and electrical interface for a USB Type-C plug, supporting power delivery (VBUS), ground (GND), USB 2.0 differential data pairs (D+/D-), configuration channel (CC) pins for cable orientation and power negotiation, and sideband use (SBU) pins for alternate modes like DisplayPort.",
+  "KeyParameters": {
+    "Contact Current Rating": "3 A Max",
+    "Rated Voltage": "30 V Max",
+    "Dielectric Withstanding Voltage": "AC 100V r.m.s.",
+    "Insulation Resistance": "100 MΩ Minimum",
+    "Contact Resistance": "40 mΩ Maximum",
+    "Operating Temperature": "-40°C to +85°C",
+    "Durability Cycles": "10000 Cycles",
+    "Insertion Force": "5 to 20 N",
+    "Withdrawal Force": "6 to 20 N",
+    "Shell Material": "Stainless Steel",
+    "Insulator Material": "High Temperature Plastic (UL 94 V-0)",
+    "Contact Material": "Copper Alloy"
+  },
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 1",
+          "FunctionDescription": "Cable orientation detection & power negotiation"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "DP1",
+      "Functions": [
+        {
+          "FunctionName": "Data Positive 1",
+          "FunctionDescription": "USB 2.0 differential data pair (positive)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "DN1",
+      "Functions": [
+        {
+          "FunctionName": "Data Negative 1",
+          "FunctionDescription": "USB 2.0 differential data pair (negative)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 1",
+          "FunctionDescription": "Alternate mode sideband signal (e.g., DisplayPort AUX)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 2",
+          "FunctionDescription": "Cable orientation detection & power negotiation"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "DP2",
+      "Functions": [
+        {
+          "FunctionName": "Data Positive 2",
+          "FunctionDescription": "USB 2.0 differential data pair (positive)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "DN2",
+      "Functions": [
+        {
+          "FunctionName": "Data Negative 2",
+          "FunctionDescription": "USB 2.0 differential data pair (negative)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 2",
+          "FunctionDescription": "Alternate mode sideband signal (e.g., DisplayPort AUX)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "ComponentID": "CFS06",
+  "ComponentType": "Thin Film Chip Fuse (Surface Mount Fuse)",
+  "Description": "This is a fast-acting, surface-mount thin film fuse designed for overcurrent protection in electronic circuits. It operates by opening the circuit within 5 seconds at 250% of its rated current, thereby protecting downstream components from damage due to overloads or short circuits.",
+  "KeyParameters": {
+    "**Rated Current (Irat)**": "0.4A to 4.0A (Specific value depends on part number, e.g., 0.5A, 1.0A, 2.0A)",
+    "**Rated Voltage**": "DC 32V or DC 50V (Specific value depends on part number/series)",
+    "**Breaking Capacity (Interrupting Rating)**": "35A @ 32VDC or 50A @ 50VDC/35VAC (Specific value depends on part number/series)",
+    "**Maximum Resistance (Rmax)**": "10 mΩ to 350 mΩ (Tolerance ±25%, measured at <10% Irat, specific value depends on part number)",
+    "**Fusing Characteristic (Time-Current)**": "Opens within 5 seconds at 250% of rated current.",
+    "**Package Size / Dimensions**": "Available in 0402 (CFS04: 1.0x0.52mm), 0603 (CFS06: 1.6x0.8mm), and 1206 (CFS12: 3.1x1.55mm) inch-coded footprints.",
+    "**Body Temperature Rise**": "<75°C when operating at 100% of its rated current.",
+    "**Resistance Tolerance**": "±25%"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "IN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Current entry terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "OUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Current exit terminal"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    }
+  ]
+}

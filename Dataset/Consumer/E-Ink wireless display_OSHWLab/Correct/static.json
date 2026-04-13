@@ -1,0 +1,113 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_USB_VBUS_5V",
+      "Connections": [
+        { "ComponentID": "USB1", "PinName": "VBUS" },
+        { "ComponentID": "IP2312", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_BATTERY_VBUS",
+      "Connections": [
+        { "ComponentID": "IP2312", "PinName": "BAT" },
+        { "ComponentID": "TPS62088", "PinName": "VIN" },
+        { "ComponentID": "TPS61236P", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_3V3_SYSTEM",
+      "Connections": [
+        { "ComponentID": "TPS62088", "PinName": "SW" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_TX_TO_USB",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "TXD0" },
+        { "ComponentID": "U4", "PinName": "RXD" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_RX_FROM_USB",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "RXD0" },
+        { "ComponentID": "U4", "PinName": "TXD" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_MISO",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO19" },
+        { "ComponentID": "CN1", "PinName": "1" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_MOSI",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO23" },
+        { "ComponentID": "CN1", "PinName": "2" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_SCK",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO18" },
+        { "ComponentID": "CN1", "PinName": "3" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_CS",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO5" },
+        { "ComponentID": "CN1", "PinName": "4" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_RST",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO22" },
+        { "ComponentID": "CN1", "PinName": "5" }
+      ]
+    },
+    {
+      "net_id": "NET_EINK_HRDY",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO25" },
+        { "ComponentID": "CN1", "PinName": "6" }
+      ]
+    },
+    {
+      "net_id": "NET_AUTO_RESET_EN",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "EN" },
+        { "ComponentID": "Q1", "PinName": "COLLECTOR" }
+      ]
+    },
+    {
+      "net_id": "NET_AUTO_BOOT_IO0",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO0" },
+        { "ComponentID": "Q2", "PinName": "COLLECTOR" }
+      ]
+    },
+    {
+      "net_id": "NET_BOOST_ENABLE",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO21" },
+        { "ComponentID": "TPS61236P", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "USB1", "PinName": "GND" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "GND" },
+        { "ComponentID": "TPS62088", "PinName": "GND" },
+        { "ComponentID": "TPS61236P", "PinName": "PGND" },
+        { "ComponentID": "U4", "PinName": "GND" }
+      ]
+    }
+  ]
+}

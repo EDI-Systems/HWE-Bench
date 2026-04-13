@@ -1,0 +1,43 @@
+Component ID: HDMI-01
+Component Type: HDMI Type-A Female Connector
+Description: The HDMI-01 is a standard High-Definition Multimedia Interface (HDMI) Type-A receptacle. It is designed to transmit high-speed digital video and multi-channel audio data using Transition-Minimized Differential Signaling (TMDS). The connector includes three differential data pairs, one differential clock pair, and auxiliary signals for display identification (DDC), device control (CEC), and connection detection (Hot Plug Detect).
+
+Key Parameters:
+- Contact Resistance: 30 mΩ Max.
+- Mating Force: 44.1 N Max.
+- Unmating Force: 9.8 N Min.
+- Operating Life: 10000 Cycles Min.
+- Storage Temperature Range: -40°C ~ +85°C
+- Operating Temperature Range: -25°C ~ +70°C
+- Housing Material: LCP (Liquid Crystal Polymer), Gray, High-Temperature Plastic
+- Contact Material: Brass (H65), Thickness 0.20mm
+- Shell Material: Cold Rolled Iron (SPCC), Thickness 0.50mm, Nickel Plated
+- Terminal Plating: Contact Area - Gold Plated (2.0μ" min), Solder Area - Tin Plated
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | TMDS_Data2+ | Data 2+ | TMDS differential data channel 2 positive | Output | Signal |
+| 2 | TMDS_Data2_Shield| Shield | Data channel 2 shield/ground | Power | GND |
+| 3 | TMDS_Data2- | Data 2- | TMDS differential data channel 2 negative | Output | Signal |
+| 4 | TMDS_Data1+ | Data 1+ | TMDS differential data channel 1 positive | Output | Signal |
+| 5 | TMDS_Data1_Shield| Shield | Data channel 1 shield/ground | Power | GND |
+| 6 | TMDS_Data1- | Data 1- | TMDS differential data channel 1 negative | Output | Signal |
+| 7 | TMDS_Data0+ | Data 0+ | TMDS differential data channel 0 positive | Output | Signal |
+| 8 | TMDS_Data0_Shield| Shield | Data channel 0 shield/ground | Power | GND |
+| 9 | TMDS_Data0- | Data 0- | TMDS differential data channel 0 negative | Output | Signal |
+| 10 | TMDS_Clock+ | Clock+ | TMDS differential clock positive | Output | Signal |
+| 11 | TMDS_Clock_Shield| Shield | Clock channel shield/ground | Power | GND |
+| 12 | TMDS_Clock- | Clock- | TMDS differential clock negative | Output | Signal |
+| 13 | CEC | CEC | Consumer Electronics Control | I/O | Signal |
+| 14 | Reserved(N.C.) | N.C. | Reserved pin (No connection) | NC | - |
+| 15 | SCL | DDC SCL | Display Data Channel I2C clock | Output | Signal |
+| 16 | SDA | DDC SDA | Display Data Channel I2C data | I/O | Signal |
+| 17 | DDC/CEC_Ground | Ground | Common ground for DDC, CEC, and HPD | Power | 0V |
+| 18 | +5V_Power | Power | +5V supply for display logic | Power | 5V |
+| 19 | Hot_Plug_Detect | HPD | Hot plug detection signal | Input | Signal |
+| 20 | EH | Shell | Connector shell / Mechanical ground | Passive | GND |
+| 21 | EH | Shell | Connector shell / Mechanical ground | Passive | GND |
+| 22 | EH | Shell | Connector shell / Mechanical ground | Passive | GND |
+| 23 | EH | Shell | Connector shell / Mechanical ground | Passive | GND |

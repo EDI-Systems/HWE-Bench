@@ -1,0 +1,307 @@
+{
+  "ComponentID": "GT-USB-7010ASV",
+  "ComponentType": "USB Type-C Female Surface-Mount Connector (16-pin, short body)",
+  "Description": "This is a USB Type-C 16-pin female receptacle designed for surface-mount assembly. It provides the standard USB 2.0 data lines (D+, D-), power delivery (VBUS, GND), configuration channels (CC1, CC2), and sideband use lines (SBU1, SBU2) for cable orientation detection, power negotiation, and alternate modes. It is rated for 3A power delivery on VBUS and features a compact, horizontal form factor with a 10,000-cycle mechanical durability rating.",
+  "KeyParameters": {
+    "Current Rating (VBUS)": "3 A",
+    "Current Rating (VCONN / Other)": "1.25 A / 0.25 A",
+    "Voltage Rating": "24 V AC",
+    "Withstanding Voltage": "100 V AC/minute",
+    "Contact Resistance": "40 mΩ Max",
+    "Insulation Resistance": "100 MΩ Min",
+    "Operating Temperature": "-40 °C to +85 °C",
+    "Mating Force": "5 N to 20 N",
+    "Unmating Force": "8 N to 20 N",
+    "Durability Cycle": "10,000 Cycles"
+  },
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return for power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A2",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "A3",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus Power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel",
+          "FunctionDescription": "Configuration Channel 1 (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data",
+          "FunctionDescription": "USB 2.0 Data Positive (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data",
+          "FunctionDescription": "USB 2.0 Data Negative (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use",
+          "FunctionDescription": "Sideband Use 1 (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus Power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A10",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "A11",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return for power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return for power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B2",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "B3",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "B4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus Power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use",
+          "FunctionDescription": "Sideband Use 2 (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data",
+          "FunctionDescription": "USB 2.0 Data Negative (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data",
+          "FunctionDescription": "USB 2.0 Data Positive (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel",
+          "FunctionDescription": "Configuration Channel 2 (Second)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus Power (First)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B10",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "B11",
+      "PinName": "(Reserved)",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Unconnected / Reserved"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "NC"
+    },
+    {
+      "PinNumber": "B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return for power"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    }
+  ]
+}

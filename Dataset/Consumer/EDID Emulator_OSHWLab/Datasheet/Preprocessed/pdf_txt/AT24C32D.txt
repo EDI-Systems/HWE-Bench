@@ -1,0 +1,28 @@
+Component ID: AT24C32
+Component Type: Serial EEPROM (Electrically Erasable Programmable Read-Only Memory)
+Description:
+The AT24C32 and AT24C64 are low-power, low-voltage serial EEPROM memory chips providing 32,768 bits (4 KB) and 65,536 bits (8 KB) of non-volatile storage, respectively. They are organized as 4096 x 8 or 8192 x 8 and are accessed via a two-wire I²C-compatible serial interface. Key features include hardware write protection via a dedicated pin, a 32-byte page write mode, and high reliability with 1 million write cycle endurance and 100-year data retention. They operate over a wide voltage range and are designed for industrial and commercial applications.
+
+Key Parameters:
+- Memory Size: 32 Kbits (AT24C32) / 64 Kbits (AT24C64)
+- Organization: 4096 x 8 (AT24C32) / 8192 x 8 (AT24C64)
+- Supply Voltage (VCC): 1.8V to 5.5V
+- Operating Temperature: -40°C to +85°C
+- Serial Interface: Two-wire (I²C)
+- Maximum Clock Frequency: 1 MHz (at 5V), 400 kHz (at 1.8V, 2.5V, 2.7V)
+- Write Cycle Time (max): 5 ms
+- Endurance: 1,000,000 Write Cycles
+- Data Retention: 100 Years
+- Page Size: 32 bytes
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | A0 | Address Input | Device Address Input Bit 0 | Input | Digital Input |
+| 2 | A1 | Address Input | Device Address Input Bit 1 | Input | Digital Input |
+| 3 | A2 | Address Input | Device Address Input Bit 2 | Input | Digital Input |
+| 4 | GND | Ground | Power Supply Ground | Power | Ground |
+| 5 | SDA | Serial Data | Bidirectional Serial Data Line (Open-Drain) | I/O | Open-Drain |
+| 6 | SCL | Serial Clock | Serial Clock Input | Input | Digital Input |
+| 7 | WP | Write Protect | Hardware Write Protect Control | Input | Digital Input |
+| 8 | VCC | Power Supply | Positive Power Supply | Power | Power |

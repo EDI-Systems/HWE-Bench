@@ -1,0 +1,79 @@
+{
+  "ComponentID": "TP4054",
+  "ComponentType": "Single-Cell Lithium-Ion Battery Linear Charger IC",
+  "Description": "The TP4054 is a complete monolithic constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. It integrates a power MOSFET and thermal regulation, requiring no external blocking diode or sense resistor. Designed for USB power specifications, it features a preset 4.2V charge voltage with ±1% accuracy, programmable charge current up to 500mA, and automatic charge termination when the current drops to 1/10 of the set value. It includes battery reverse-connection protection, under-voltage lockout (UVLO), automatic recharge, and status indication.",
+  "KeyParameters": {
+    "**Charging Algorithm**": "Constant-Current (CC) / Constant-Voltage (CV)",
+    "**Input Voltage Range (VCC)**": "4.25V to 6.5V (Operating), Absolute Max: Vss-0.3V to Vss+7V",
+    "**Programmable Charge Current (IBAT)**": "Up to 500mA (typ), set by external resistor (RPROG)",
+    "**Final Float (Charge) Voltage**": "4.2V (±1%)",
+    "**Charge Termination Threshold**": "1/10 of the programmed charge current",
+    "**Trickle Charge Threshold Voltage**": "2.9V",
+    "**Thermal Regulation Temperature**": "~120°C",
+    "**Standby Supply Current**": "25µA (when disabled)",
+    "**Package**": "SOT-23-5L",
+    "**BAT Pin Absolute Max Voltage**": "Vss-0.3V to 7V"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CHRG",
+      "Functions": [
+        {
+          "FunctionName": "Charge Status Output",
+          "FunctionDescription": "Open-drain output. Pulled low during charging, high-impedance when charge is complete or under UVLO. Flashes when no battery is detected (with external capacitor)."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Battery Connection",
+          "FunctionDescription": "Charging current output and voltage sense pin. Connects to the positive terminal of the battery. Provides reverse-connection protection."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog I/O"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply Input",
+          "FunctionDescription": "Positive input supply pin (e.g., from USB or adapter). Requires a bypass capacitor (≥1µF)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PROG",
+      "Functions": [
+        {
+          "FunctionName": "Charge Current Program / Monitor / Shutdown",
+          "FunctionDescription": "Connect a precision resistor (1% tolerance) to GND to set the charge current (IBAT = 1000 * VPROG/RPROG). Voltage ~1V during CC mode. Can be pulled high (>1.21V) to disable the charger."
+        }
+      ],
+      "PinType": "Analog I/O",
+      "ElectricalType": "Analog I/O"
+    }
+  ]
+}

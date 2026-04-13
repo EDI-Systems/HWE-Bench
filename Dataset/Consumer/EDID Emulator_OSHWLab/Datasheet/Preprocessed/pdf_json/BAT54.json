@@ -1,0 +1,42 @@
+{
+  "ComponentID": "BAT54",
+  "ComponentType": "Schottky Barrier Diode",
+  "Description": "The BAT54 series are surface-mount Schottky barrier diodes in an SOT23 package, offering a low forward voltage drop and fast switching characteristics. They are designed with a PN junction guard ring for enhanced transient and ESD protection, are fully RoHS compliant, and are qualified for automotive applications (AEC-Q101). The series includes common cathode (BAT54S), series (BAT54), common anode (BAT54A), and series-connected (BAT54C) configurations.",
+  "KeyParameters": {
+    "Peak Repetitive Reverse Voltage (VRRM)": "30 V",
+    "Average Rectified Forward Current (Io)": "200 mA",
+    "Maximum Forward Voltage (VFmax)": "0.8 V @ Io=200mA",
+    "Maximum Reverse Leakage Current (IRmax)": "2 µA @ VRRM=30V",
+    "Repetitive Peak Forward Current (IFRM)": "300 mA",
+    "Forward Surge Current (IFSM)": "600 mA (t < 1.0s)",
+    "Package": "SOT23",
+    "Operating Temperature (TA)": "+25°C (specified for key parameters)",
+    "Qualification": "AEC-Q101"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "A1",
+      "Functions": [
+        {
+          "FunctionName": "Anode",
+          "FunctionDescription": "Anode terminal of diode 1 (BAT54, BAT54C) / Common Anode (BAT54A) / Anode 1 (BAT54S)"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "K1",
+      "Functions": [
+        {
+          "FunctionName": "Cathode",
+          "FunctionDescription": "Cathode terminal of diode 1 (BAT54, BAT54C) / Common Cathode (BAT54S) / Cathode 1 (BAT54A)"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

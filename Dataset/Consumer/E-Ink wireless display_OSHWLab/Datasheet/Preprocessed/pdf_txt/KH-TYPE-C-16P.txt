@@ -1,0 +1,37 @@
+Component ID: KH-TYPE-C-16P
+Component Type: USB Type-C Female Connector (Receptacle)
+Description: This is a 16-pin, single-row, surface-mount (SMT) USB Type-C receptacle connector with four board-mounting posts. It provides the physical and electrical interface for a USB Type-C plug, supporting power delivery (VBUS), ground (GND), USB 2.0 differential data pairs (D+/D-), configuration channel (CC) pins for cable orientation and power negotiation, and sideband use (SBU) pins for alternate modes like DisplayPort.
+
+Key Parameters:
+- Contact Current Rating: 3 A Max
+- Rated Voltage: 30 V Max
+- Dielectric Withstanding Voltage: AC 100V r.m.s.
+- Insulation Resistance: 100 MΩ Minimum
+- Contact Resistance: 40 mΩ Maximum
+- Operating Temperature: -40°C to +85°C
+- Durability Cycles: 10000 Cycles
+- Insertion Force: 5 to 20 N
+- Withdrawal Force: 6 to 20 N
+- Shell Material: Stainless Steel
+- Insulator Material: High Temperature Plastic (UL 94 V-0)
+- Contact Material: Copper Alloy
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | GND | Ground | Ground connection | SMT Pad | Power |
+| A4 | VBUS | Power | Bus power | SMT Pad | Power |
+| A5 | CC1 | Configuration Channel 1 | Cable orientation detection & power negotiation | SMT Pad | Analog/Digital |
+| A6 | DP1 | Data Positive 1 | USB 2.0 differential data pair (positive) | SMT Pad | Differential Signal |
+| A7 | DN1 | Data Negative 1 | USB 2.0 differential data pair (negative) | SMT Pad | Differential Signal |
+| A8 | SBU1 | Sideband Use 1 | Alternate mode sideband signal (e.g., DisplayPort AUX) | SMT Pad | Analog/Digital |
+| A9 | VBUS | Power | Bus power | SMT Pad | Power |
+| A12 | GND | Ground | Ground connection | SMT Pad | Power |
+| B1 | GND | Ground | Ground connection | SMT Pad | Power |
+| B4 | VBUS | Power | Bus power | SMT Pad | Power |
+| B5 | CC2 | Configuration Channel 2 | Cable orientation detection & power negotiation | SMT Pad | Analog/Digital |
+| B6 | DP2 | Data Positive 2 | USB 2.0 differential data pair (positive) | SMT Pad | Differential Signal |
+| B7 | DN2 | Data Negative 2 | USB 2.0 differential data pair (negative) | SMT Pad | Differential Signal |
+| B8 | SBU2 | Sideband Use 2 | Alternate mode sideband signal (e.g., DisplayPort AUX) | SMT Pad | Analog/Digital |
+| B9 | VBUS | Power | Bus power | SMT Pad | Power |
+| B12 | GND | Ground | Ground connection | SMT Pad | Power |

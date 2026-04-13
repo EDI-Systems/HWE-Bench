@@ -1,0 +1,1175 @@
+{
+  "Wired Diagnostic & Programming Bridge": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A4",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B4",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "CFS06",
+          "PinName": "1",
+          "FunctionName": "IN"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "CFS06",
+          "PinName": "2",
+          "FunctionName": "OUT"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "11",
+          "FunctionName": "REGIN"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "12",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "8",
+          "FunctionName": "VIN"
+        },
+        {
+          "ComponentID": "SSB44",
+          "PinName": "1",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "SSB44",
+          "PinName": "2",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "A2",
+          "FunctionName": "VIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A6",
+          "FunctionName": "DP1"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "14",
+          "FunctionName": "D+"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A7",
+          "FunctionName": "DN1"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "13",
+          "FunctionName": "D-"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "6",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "15",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "19",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "22",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "15",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "38",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "S8050",
+          "PinName": "2",
+          "FunctionName": "EMITTER"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "2",
+          "FunctionName": "Terminal 2"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "2",
+          "FunctionName": "Terminal 2"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "9",
+          "FunctionName": "EP"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "C2",
+          "FunctionName": "GND"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "4",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "25",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "2",
+          "FunctionName": "3V3"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "C1",
+          "FunctionName": "FB"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "8",
+          "FunctionName": "TXD"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "34",
+          "FunctionName": "RXD0"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "2",
+          "FunctionName": "RXD"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "35",
+          "FunctionName": "TXD0"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "3",
+          "FunctionName": "EN"
+        },
+        {
+          "ComponentID": "S8050",
+          "PinName": "3",
+          "FunctionName": "COLLECTOR"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "1",
+          "FunctionName": "Terminal 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "25",
+          "FunctionName": "IO0"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "1",
+          "FunctionName": "Terminal 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "5",
+          "FunctionName": "BAT"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "1",
+          "FunctionName": "T1"
+        }
+      ]
+    }
+  ],
+  "Power Management Ecosystem": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A4",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B4",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "CFS06",
+          "PinName": "1",
+          "FunctionName": "IN"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "CFS06",
+          "PinName": "2",
+          "FunctionName": "OUT"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "8",
+          "FunctionName": "VIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "5",
+          "FunctionName": "BAT"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "1",
+          "FunctionName": "T1"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "A2",
+          "FunctionName": "VIN"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "3",
+          "FunctionName": "VIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "9",
+          "FunctionName": "EP"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "2",
+          "FunctionName": "T2"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "C2",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "1",
+          "FunctionName": "PGND"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "5",
+          "FunctionName": "AGND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "15",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "38",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "6",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "15",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "19",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "22",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "10",
+          "FunctionName": "VPP"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "2",
+          "FunctionName": "Terminal 2"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A12",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B12",
+          "FunctionName": "GND"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "C1",
+          "FunctionName": "FB"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "2",
+          "FunctionName": "3V3"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "4",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "25",
+          "FunctionName": "VDD"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "A1",
+          "FunctionName": "EN"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "25",
+          "FunctionName": "IO0"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "B1",
+          "FunctionName": "PG"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "16",
+          "FunctionName": "IO13"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "7",
+          "FunctionName": "EN"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "26",
+          "FunctionName": "IO4"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "35",
+          "FunctionName": "TXD0"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "2",
+          "FunctionName": "RXD"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "28",
+          "FunctionName": "RXD"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "34",
+          "FunctionName": "RXD0"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "8",
+          "FunctionName": "TXD"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "10",
+          "FunctionName": "IO25"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "1",
+          "FunctionName": "D1"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "11",
+          "FunctionName": "IO26"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "3",
+          "FunctionName": "D2"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "13",
+          "FunctionName": "D-"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A7",
+          "FunctionName": "DN1"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B7",
+          "FunctionName": "DN2"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "14",
+          "FunctionName": "D+"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "A6",
+          "FunctionName": "DP1"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "B6",
+          "FunctionName": "DP2"
+        }
+      ]
+    }
+  ],
+  "High-Voltage Display Interface": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "FB",
+          "FunctionName": "Feedback"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "REGIN",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "PGND",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "AGND",
+          "FunctionName": "Analog Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "EP",
+          "FunctionName": "Exposed Pad / Ground"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "T2",
+          "FunctionName": "Negative"
+        },
+        {
+          "ComponentID": "S8050",
+          "PinName": "EMITTER",
+          "FunctionName": "Current Output"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "Terminal 1",
+          "FunctionName": "Common / Switch Terminal 1"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VPP",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "TXD0",
+          "FunctionName": "GPIO1"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RXD",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "RXD0",
+          "FunctionName": "GPIO3"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "TXD",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "CFS06",
+          "PinName": "OUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "SSB44",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "SSB44",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D-",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "DN1",
+          "FunctionName": "Data Negative 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D+",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "DP1",
+          "FunctionName": "Data Positive 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net34",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "BAT",
+          "FunctionName": "Battery Connection"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "T1",
+          "FunctionName": "Positive"
+        }
+      ]
+    }
+  ],
+  "Wireless Processing Unit": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "FB",
+          "FunctionName": "Feedback"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "EP",
+          "FunctionName": "Exposed Pad / Ground"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "T2",
+          "FunctionName": "Negative"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "PGND",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "AGND",
+          "FunctionName": "Analog Ground"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TS",
+          "PinName": "Terminal 2",
+          "FunctionName": "Common / Switch Terminal 2"
+        },
+        {
+          "ComponentID": "S8050",
+          "PinName": "EMITTER",
+          "FunctionName": "Current Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "RXD0",
+          "FunctionName": "GPIO3"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "TXD",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "TXD0",
+          "FunctionName": "GPIO1"
+        },
+        {
+          "ComponentID": "CP2102",
+          "PinName": "RXD",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D-",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "DN1",
+          "FunctionName": "Data Negative 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "CP2102",
+          "PinName": "D+",
+          "FunctionName": "I/O"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "DP1",
+          "FunctionName": "Data Positive 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "CFS06",
+          "PinName": "OUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "SSB44",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "SSB44",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "BAT",
+          "FunctionName": "Battery Connection"
+        },
+        {
+          "ComponentID": "S2B-PH-K-S",
+          "PinName": "T1",
+          "FunctionName": "Positive"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "VOUT",
+          "FunctionName": "Power Output"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    }
+  ]
+}

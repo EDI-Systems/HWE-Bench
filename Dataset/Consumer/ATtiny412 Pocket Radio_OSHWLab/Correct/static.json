@@ -1,0 +1,78 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_I2C_SDA_SHARED",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "PA1" },
+        { "ComponentID": "RDA5807", "PinName": "SDIO" },
+        { "ComponentID": "SSD1306BZ", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL_SHARED",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "PA2" },
+        { "ComponentID": "RDA5807", "PinName": "SCLK" },
+        { "ComponentID": "SSD1306BZ", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_IN_MIXED",
+      "Connections": [
+        { "ComponentID": "RDA5807", "PinName": "LOUT" },
+        { "ComponentID": "RDA5807", "PinName": "ROUT" },
+        { "ComponentID": "TC8871", "PinName": "IN" }
+      ]
+    },
+    {
+      "net_id": "NET_3V3_SYSTEM",
+      "Connections": [
+        { "ComponentID": "ME6209", "PinName": "VOUT" },
+        { "ComponentID": "ATtiny", "PinName": "VDD" },
+        { "ComponentID": "RDA5807", "PinName": "VDD" },
+        { "ComponentID": "SSD1306BZ", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_VBUS_5V",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "MCP73831T", "PinName": "VCC" },
+        { "ComponentID": "ME6209", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_KEY1_VOL_PLUS",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "PA3" },
+        { "ComponentID": "KEY1", "PinName": "Pin 1" }
+      ]
+    },
+    {
+      "net_id": "NET_KEY2_CHANNEL",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "PA6" },
+        { "ComponentID": "KEY2", "PinName": "Pin 1" }
+      ]
+    },
+    {
+      "net_id": "NET_KEY3_VOL_MINUS",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "PA7" },
+        { "ComponentID": "KEY3", "PinName": "Pin 1" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "ATtiny", "PinName": "GND" },
+        { "ComponentID": "RDA5807", "PinName": "GND" },
+        { "ComponentID": "SSD1306BZ", "PinName": "GND" },
+        { "ComponentID": "TC8871", "PinName": "GND" },
+        { "ComponentID": "ME6209", "PinName": "VSS" },
+        { "ComponentID": "MCP73831T", "PinName": "GND" },
+        { "ComponentID": "USB", "PinName": "GND" }
+      ]
+    }
+  ]
+}

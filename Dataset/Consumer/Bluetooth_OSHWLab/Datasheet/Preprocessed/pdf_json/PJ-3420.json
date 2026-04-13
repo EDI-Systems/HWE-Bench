@@ -1,0 +1,85 @@
+{
+  "ComponentID": "PJ-3420",
+  "ComponentType": "3.5mm Stereo Audio Jack (SMT)",
+  "Description": "The PJ-3420-A-SMT is a surface-mount 3.5mm stereo phone jack used for audio input or output in compact electronic devices. It features a standard Tip-Ring-Sleeve (TRS) configuration and includes integrated shunt switches for both the Tip and Ring contacts. These switches are mechanically normally closed and are disconnected when a plug is inserted, making them ideal for \"plug detection\" or automatic audio routing (e.g., muting internal speakers when headphones are connected).",
+  "KeyParameters": {
+    "Connector Size": "3.5mm",
+    "Mounting Style": "Surface Mount (SMT)",
+    "Number of Conductors": "3 (Stereo)",
+    "Internal Switches": "2 (Tip Switch, Ring Switch)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SLEEVE",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common ground reference / Shell"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "TIP",
+      "Functions": [
+        {
+          "FunctionName": "Left",
+          "FunctionDescription": "Left channel audio signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "RING",
+      "Functions": [
+        {
+          "FunctionName": "Right",
+          "FunctionDescription": "Right channel audio signal"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "TIP-SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch",
+          "FunctionDescription": "Normally closed switch contact for Pin 2"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "Not connected / Unused switch contact"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "RING-SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch",
+          "FunctionDescription": "Normally closed switch contact for Pin 3"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

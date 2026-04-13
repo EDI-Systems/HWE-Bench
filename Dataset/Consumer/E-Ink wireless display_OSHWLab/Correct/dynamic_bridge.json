@@ -1,0 +1,35 @@
+{
+  "Wired Diagnostic & Programming Bridge": [
+    {
+      "net_id": "net_uart_dtr_ctrl",
+      "Connections": [
+        { "ComponentID": "CP2102", "PinName": "DTR" }
+      ]
+    },
+    {
+      "net_id": "net_uart_rts_ctrl",
+      "Connections": [
+        { "ComponentID": "CP2102", "PinName": "RTS" }
+      ]
+    },
+    {
+      "net_id": "net_mcu_en_reset",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "net_mcu_io0_boot",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO0" }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "CP2102", "PinName": "GND" },
+        { "ComponentID": "ESP32", "PinName": "GND" }
+      ]
+    }
+  ]
+}

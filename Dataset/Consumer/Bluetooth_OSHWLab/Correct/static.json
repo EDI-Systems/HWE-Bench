@@ -1,0 +1,86 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_VBUS_5V",
+      "Connections": [
+        { "ComponentID": "TYPE-C", "PinName": "VBUS" },
+        { "ComponentID": "TP4054", "PinName": "VCC" },
+        { "ComponentID": "AC6955F4", "PinName": "PB5/LDO_IN" }
+      ]
+    },
+    {
+      "net_id": "NET_BATTERY_CHARGE",
+      "Connections": [
+        { "ComponentID": "TP4054", "PinName": "BAT" },
+        { "ComponentID": "AC6955F4", "PinName": "VBAT" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DM",
+      "Connections": [
+        { "ComponentID": "TYPE-C", "PinName": "DN1" },
+        { "ComponentID": "AC6955F4", "PinName": "USBDM" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_DP",
+      "Connections": [
+        { "ComponentID": "TYPE-C", "PinName": "DP1" },
+        { "ComponentID": "AC6955F4", "PinName": "USBDP/ADC12" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_DAT0",
+      "Connections": [
+        { "ComponentID": "TF-01A", "PinName": "DAT0" },
+        { "ComponentID": "AC6955F4", "PinName": "ADC8/AUX1R/SD0DATAB/PB8" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_CLK",
+      "Connections": [
+        { "ComponentID": "TF-01A", "PinName": "CLK" },
+        { "ComponentID": "AC6955F4", "PinName": "AUX2L/SD0CLKB/PB9" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_CMD",
+      "Connections": [
+        { "ComponentID": "TF-01A", "PinName": "CMD" },
+        { "ComponentID": "AC6955F4", "PinName": "ADC9/AUX2R/SD0CMDB/PB10" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_L",
+      "Connections": [
+        { "ComponentID": "AC6955F4", "PinName": "DACL" },
+        { "ComponentID": "PJ-3420", "PinName": "TIP" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_R",
+      "Connections": [
+        { "ComponentID": "AC6955F4", "PinName": "DACR" },
+        { "ComponentID": "PJ-3420", "PinName": "RING" }
+      ]
+    },
+    {
+      "net_id": "NET_SYS_POWER_SENSE",
+      "Connections": [
+        { "ComponentID": "SK-32", "PinName": "COM" },
+        { "ComponentID": "AC6955F4", "PinName": "SYSVS" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "TYPE-C", "PinName": "GND" },
+        { "ComponentID": "TP4054", "PinName": "GND" },
+        { "ComponentID": "TF-01A", "PinName": "VSS" },
+        { "ComponentID": "AC6955F4", "PinName": "VSSIO" },
+        { "ComponentID": "AC6955F4", "PinName": "DACVSS" },
+        { "ComponentID": "PJ-3420", "PinName": "SLEEVE" }
+      ]
+    }
+  ]
+}

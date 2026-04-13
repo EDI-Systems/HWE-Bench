@@ -1,0 +1,16 @@
+Component ID: S2B-PH-K-S
+Component Type: 2-Pin Shrouded Header (2.0mm Pitch)
+Description: The S2B-PH-K-S is a 2-position shrouded header from the JST PH series. It features a 2.0mm pitch and is designed for wire-to-board connections. This through-hole, top-entry connector provides a secure mechanical connection with a friction-locking mechanism to prevent accidental disconnection. It is widely used for battery connections and internal power/signal routing in compact electronic devices.
+
+Key Parameters:
+- Number of Contacts: 2
+- Pitch: 2.0mm
+- Mounting Type: Through-Hole, Top Entry (Vertical)
+- Current Rating: 2.0A AC/DC
+- Voltage Rating: 100V AC/DC
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | T1 | Positive | Typically connected to VCC or positive signal | Passive | Power/Signal |
+| 2 | T2 | Negative | Typically connected to Ground or return signal | Passive | Power/Signal |

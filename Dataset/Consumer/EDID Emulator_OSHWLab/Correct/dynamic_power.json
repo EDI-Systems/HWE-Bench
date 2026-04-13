@@ -1,0 +1,30 @@
+{
+  "Dual-Input Power Arbitration Network": [
+    {
+      "net_id": "net_hdmi_5v_raw",
+      "Connections": [
+        { "ComponentID": "HDMI-01", "PinName": "+5V_Power", "FunctionName": "HDMI Power Output" }
+      ]
+    },
+    {
+      "net_id": "net_usb_5v_raw",
+      "Connections": [
+        { "ComponentID": "GT-USB-7010ASV", "PinName": "VBUS", "FunctionName": "USB Power Output" }
+      ]
+    },
+    {
+      "net_id": "net_sys_5v_safe",
+      "Connections": [
+        { "ComponentID": "AT24C32", "PinName": "VCC", "FunctionName": "EEPROM Power Input" }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "HDMI-01", "PinName": "DDC/CEC_Ground" },
+        { "ComponentID": "GT-USB-7010ASV", "PinName": "GND" },
+        { "ComponentID": "AT24C32", "PinName": "GND" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "MCU_Function_Groups": {
+    "CH32V003": {
+      "Digital_Power_Infrastructure": [
+        { "PinName": "VDD", "FunctionName": "Digital Supply" },
+        { "PinName": "VSS", "FunctionName": "System Ground (Pin 4)" },
+        { "PinName": "VSS", "FunctionName": "Exposed Pad Ground (Pin 21)" }
+      ],
+      "EDID_I2C_Management": [
+        { "PinName": "PC1/SDA/NSS/T2CH4", "FunctionName": "I2C Data" },
+        { "PinName": "PC2/SCL/URTS/T1BKIN", "FunctionName": "I2C Clock" }
+      ],
+      "Serial_USB_Bridge": [
+        { "PinName": "PD5/A5/UTX", "FunctionName": "UART TX" },
+        { "PinName": "PD6/A6/URX", "FunctionName": "UART RX" }
+      ],
+      "Status_LED_Signals": [
+        { "PinName": "PD3/A4/T2CH2/AETR", "FunctionName": "Status LED" },
+        { "PinName": "PD4/A7/UCK/T2CH1ETR", "FunctionName": "Error LED" }
+      ],
+      "Programming_Debug": [
+        { "PinName": "PC5/SCK/T1ETR/T2CH1ETR", "FunctionName": "SPI SCK / Debug" },
+        { "PinName": "PC6/MOSI/T1CH1CH3N", "FunctionName": "SPI MOSI" },
+        { "PinName": "PC7/MISO/T1CH2", "FunctionName": "SPI MISO" },
+        { "PinName": "PD1/SWIO/AETR2", "FunctionName": "Single-Wire Debug" }
+      ],
+      "System_Reset_Clock": [
+        { "PinName": "PD7/NRST/T2CH4", "FunctionName": "Reset Input" },
+        { "PinName": "PA1/OSCI/A1", "FunctionName": "External XTAL IN" },
+        { "PinName": "PA2/OSCO/A0/T1CH2N", "FunctionName": "External XTAL OUT" }
+      ],
+      "Other_Logic_IO": [
+        { "PinName": "PD0/T1CH1N/OPN1", "FunctionName": "GPIO PD0" },
+        { "PinName": "PD2/A3/T1CH1/T2CH3", "FunctionName": "GPIO PD2" },
+        { "PinName": "PC0/T2CH3/UTX", "FunctionName": "GPIO PC0" },
+        { "PinName": "PC3/T1CH3/T1CH1N", "FunctionName": "GPIO PC3" },
+        { "PinName": "PC4/A2/T1CH4/MCO", "FunctionName": "Clock Output" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "AT24C32": {
+      "EEPROM_I2C": [
+        { "PinName": "SDA", "FunctionName": "Serial Data" },
+        { "PinName": "SCL", "FunctionName": "Serial Clock" }
+      ]
+    },
+    "HDMI-01": {
+      "DDC_Bus": [
+        { "PinName": "SDA", "FunctionName": "DDC Data" },
+        { "PinName": "SCL", "FunctionName": "DDC Clock" }
+      ],
+      "TMDS_Signals": [
+        { "PinName": "TMDS_Data2+", "FunctionName": "TX2_P" },
+        { "PinName": "TMDS_Data2-", "FunctionName": "TX2_N" },
+        { "PinName": "TMDS_Data1+", "FunctionName": "TX1_P" },
+        { "PinName": "TMDS_Data1-", "FunctionName": "TX1_N" },
+        { "PinName": "TMDS_Data0+", "FunctionName": "TX0_P" },
+        { "PinName": "TMDS_Data0-", "FunctionName": "TX0_N" },
+        { "PinName": "TMDS_Clock+", "FunctionName": "CLK_P" },
+        { "PinName": "TMDS_Clock-", "FunctionName": "CLK_N" }
+      ]
+    },
+    "HT42B534-2": {
+      "UART_Side": [
+        { "PinName": "RX", "FunctionName": "UART RX Input" },
+        { "PinName": "TX", "FunctionName": "UART TX Output" }
+      ],
+      "USB_Side": [
+        { "PinName": "D+", "FunctionName": "USB Data Positive" },
+        { "PinName": "D-", "FunctionName": "USB Data Negative" }
+      ]
+    },
+    "TZ-P2-0402RTIA1": {
+      "LED_Anode": [
+        { "PinName": "A", "FunctionName": "Anode" }
+      ]
+    },
+    "GT-USB-7010ASV": {
+      "TypeC_Standard": [
+        { "PinName": "VBUS", "FunctionName": "Power Supply" },
+        { "PinName": "D+", "FunctionName": "USB 2.0 Data+" },
+        { "PinName": "D-", "FunctionName": "USB 2.0 Data-" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_EDID_Config_I2C_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "CH32V003",
+      "Target_Group_Pattern": "EDID_I2C_.*",
+      "Slaves": [
+        { "ComponentID": "AT24C32", "Interface": "EEPROM_I2C" },
+        { "ComponentID": "HDMI_IN", "Interface": "DDC_Bus" }
+      ]
+    },
+    {
+      "RuleName": "Check_USB_to_Serial_UART_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "CH32V003",
+      "Target_Group_Pattern": "Serial_USB_.*",
+      "Slaves": [ { "ComponentID": "HT42B534-2", "Interface": "UART_Side" } ]
+    },
+    {
+      "RuleName": "Check_HDMI_Direct_Pass_Through",
+      "Type": "Bus_Pairing",
+      "MCU": "HDMI_IN",
+      "Target_Group_Pattern": "TMDS_Signals",
+      "Slaves": [ { "ComponentID": "HDMI_OUT", "Interface": "TMDS_Signals" } ]
+    },
+    {
+      "RuleName": "Check_Status_LED_Driving",
+      "Type": "Resource_Allocation",
+      "MCU": "CH32V003",
+      "Target_Group": "Status_LED_Signals",
+      "Slaves": [
+        { "ComponentID": "STATUS_LED", "Interface": "LED_Anode" },
+        { "ComponentID": "ERROR_LED", "Interface": "LED_Anode" }
+      ]
+    },
+    {
+      "RuleName": "Check_USB_Power_Cascade",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "GT-USB-7010ASV", "PinName": "VBUS" },
+        { "ComponentID": "HT42B534-2", "PinName": "VDD" }
+      ]
+    },
+    {
+      "RuleName": "Check_EEPROM_Voltage_Reference",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "BAT54", "PinName": "K1" },
+        { "ComponentID": "AT24C32", "PinName": "VCC" }
+      ]
+    }
+  ]
+}

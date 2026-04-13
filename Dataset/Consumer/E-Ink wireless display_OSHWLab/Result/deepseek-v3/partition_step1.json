@@ -1,0 +1,32 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Management Ecosystem",
+      "Function Description": "Manages the rechargeable battery's charging via a standard serial interface (e.g., USB-C with PD/QC) and provides dual-rail voltage regulation: a step-down converter for low-voltage digital logic (e.g., 3.3V/1.8V) and a step-up converter to generate the high-voltage baseline (e.g., +15V/-15V) required to drive the e-paper display.",
+      "Signal Sources": "Battery voltage, external charging power input (USB), enable/control signals from the Wireless Processing Unit.",
+      "Signal Destinations": "Stable low-voltage rail to the Wireless Processing Unit and other digital logic; stable high-voltage rail to the Display Interface; battery status/charging signals to the Wireless Processing Unit.",
+      "Implementation Logic": "A battery charger IC manages safe charging. A buck converter (step-down) and a boost converter (step-up) are used, controlled by power-good and enable signals from the main processor to enable power sequencing and low-power modes."
+    },
+    {
+      "Module Name": "Wireless Processing Unit",
+      "Function Description": "Acts as the central controller. It remains in a low-power sleep state, wakes upon receiving new image data via its wireless transceiver (e.g., Wi-Fi/Bluetooth), formats the graphics, and orchestrates the display refresh by commanding the Display Interface. It also manages overall system states and communicates with the Diagnostic Bridge.",
+      "Signal Sources": "Wireless RF signals (antenna), UART/SPI/I2C from the Diagnostic Bridge, GPIO interrupts from power management.",
+      "Signal Destinations": "Control and data signals to the Display Interface; control signals to the Power Management Ecosystem; communication signals to the Diagnostic Bridge.",
+      "Implementation Logic": "A low-power microcontroller (MCU) or system-on-chip (SoC) with integrated wireless capability. It runs firmware that handles wireless protocol stacks, image processing, display timing generation, and system power management routines."
+    },
+    {
+      "Module Name": "High-Voltage Display Interface",
+      "Function Description": "A dedicated circuit that translates low-voltage digital commands from the processor into the precise, high-voltage waveforms required to drive the e-paper display's row and column electrodes to update the screen image.",
+      "Signal Sources": "Low-voltage control signals and pixel data from the Wireless Processing Unit; high-voltage power rails from the Power Management Ecosystem.",
+      "Signal Destinations": "High-voltage control signals to the e-paper display connector (e.g., source/gate driver ICs or directly to display tabs).",
+      "Implementation Logic": "Typically consists of a dedicated e-paper display controller IC or a combination of level shifters, high-voltage switches/drivers, and timing logic to generate the VCOM, gate, and source voltages with the required sequencing."
+    },
+    {
+      "Module Name": "Wired Diagnostic & Programming Bridge",
+      "Function Description": "Provides a wired communication interface (e.g., USB-to-serial) for diagnostics and features an automated hardware-toggling circuit to force the main processor into its bootloader/programming mode, enabling seamless firmware updates without manual button presses.",
+      "Signal Sources": "External USB data lines, control signals from the external host.",
+      "Signal Destinations": "UART/SPI/JTAG signals to the Wireless Processing Unit; a specific hardware toggle signal (e.g., MCU boot pin, reset) to the processor.",
+      "Implementation Logic": "A USB bridge IC (e.g., FTDI, CP2102) converts USB to UART. An additional logic circuit (e.g., a microcontroller or state machine) monitors the USB data stream for a specific command sequence and then automatically asserts the required combination of reset and boot-select pins on the main processor to invoke its built-in bootloader."
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "ComponentID": "CP2102",
+  "ComponentType": "USB-to-UART Bridge Controller (USB Serial Transceiver IC)",
+  "Description": "The CP2102/9 is a highly-integrated single-chip bridge that converts USB data to asynchronous serial UART data and vice versa. It contains a full-speed USB 2.0 function controller, transceiver, internal oscillator, voltage regulator, and programmable ROM, requiring minimal external components. It enables legacy RS-232 devices and systems to be upgraded to USB by providing a complete UART interface with full modem handshaking signals, appearing as a virtual COM port on the host computer.",
+  "KeyParameters": {
+    "USB Specification": "USB 2.0 Full-Speed (12 Mbps)",
+    "UART Baud Rate": "300 bps to 1 Mbps",
+    "UART Data Buffer": "576 Byte Receive, 640 Byte Transmit",
+    "Supply Voltage (Self-Powered)": "3.0 V to 3.6 V",
+    "Supply Voltage (USB Bus-Powered)": "4.0 V to 5.25 V",
+    "Internal Voltage Regulator Output": "3.3 V (CP2102) / 3.45 V (CP2109)",
+    "Internal Programmable ROM": "1024 bytes (EEPROM for CP2102, One-Time Programmable EPROM for CP2109)",
+    "Package": "28-pin QFN (5 mm x 5 mm)",
+    "Operating Temperature Range": "–40 °C to +85 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DCD",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Data Carrier Detect"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "UART Data Input (Receive)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "RTS#",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Request To Send (Active Low)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Regulated 3.3 V (CP2102) or 3.45 V (CP2109) Output / Digital Power Input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "DTR#",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Data Terminal Ready (Active Low)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "RI#",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Ring Indicator (Active Low)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "UART Data Output (Transmit)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "CTS#",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Clear To Send (Active Low)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "VPP",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Programming Voltage for EPROM (CP2109). Connect to GND for CP2102."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "REGIN",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Input to 3.3 V Regulator. Connect to USB VBUS or external 3.0-3.6V supply."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "USB Bus Power Sense"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "I/O",
+          "FunctionDescription": "USB D- Signal"
+        }
+      ],
+      "PinType": "Analog I/O",
+      "ElectricalType": "USB Differential"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "I/O",
+          "FunctionDescription": "USB D+ Signal"
+        }
+      ],
+      "PinType": "Analog I/O",
+      "ElectricalType": "USB Differential"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No Connect. Leave unconnected."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No Connect. Leave unconnected."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Device Reset (Active Low). Internal pull-up."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "SUSPEND",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "USB Suspend State Indicator (Active High)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "SUSPEND#",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "USB Suspend State Indicator (Active Low)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No Connect. Leave unconnected."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No Connect. Leave unconnected."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Regulated 3.3 V (CP2102) or 3.45 V (CP2109) Output / Digital Power Input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "DSR#",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Data Set Ready (Active Low)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "DCD",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Data Carrier Detect"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "UART Data Input (Receive)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    }
+  ]
+}

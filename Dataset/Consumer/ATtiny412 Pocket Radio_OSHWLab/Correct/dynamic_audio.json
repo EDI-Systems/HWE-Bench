@@ -1,0 +1,55 @@
+{
+  "Audio Processing & Amplification": [
+    {
+      "net_id": "net_sys_3v3",
+      "Connections": [
+        { "ComponentID": "ME6209", "PinName": "VOUT", "FunctionName": "LDO 3.3V Output" },
+        { "ComponentID": "TC8871", "PinName": "VDD", "FunctionName": "Amplifier Power Supply" }
+      ]
+    },
+    {
+      "net_id": "net_audio_l",
+      "Connections": [
+        { "ComponentID": "RDA5807", "PinName": "LOUT", "FunctionName": "Tuner Left Audio Out" }
+      ]
+    },
+    {
+      "net_id": "net_audio_r",
+      "Connections": [
+        { "ComponentID": "RDA5807", "PinName": "ROUT", "FunctionName": "Tuner Right Audio Out" }
+      ]
+    },
+    {
+      "net_id": "net_amp_in",
+      "Connections": [
+        { "ComponentID": "TC8871", "PinName": "IN", "FunctionName": "Amplifier Audio Input" }
+      ]
+    },
+    {
+      "net_id": "net_spk_p",
+      "Connections": [
+        { "ComponentID": "TC8871", "PinName": "VOP", "FunctionName": "Positive BTL Output" }
+      ]
+    },
+    {
+      "net_id": "net_spk_n",
+      "Connections": [
+        { "ComponentID": "TC8871", "PinName": "VON", "FunctionName": "Negative BTL Output" }
+      ]
+    },
+    {
+      "net_id": "net_amp_byp",
+      "Connections": [
+        { "ComponentID": "TC8871", "PinName": "BYP", "FunctionName": "Internal Bias Bypass" }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "ME6209", "PinName": "VSS", "FunctionName": "Ground" },
+        { "ComponentID": "TC8871", "PinName": "GND", "FunctionName": "Ground" },
+        { "ComponentID": "RDA5807", "PinName": "GND", "FunctionName": "Ground" }
+      ]
+    }
+  ]
+}

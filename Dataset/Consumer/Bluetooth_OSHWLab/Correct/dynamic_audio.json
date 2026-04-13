@@ -1,0 +1,59 @@
+{
+  "Analog Audio Coupling & Output Module": [
+    {
+      "net_id": "net_dac_out_l",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACL",
+          "FunctionName": "DAC Left Channel Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net_jack_in_l",
+      "Connections": [
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "TIP",
+          "FunctionName": "Audio Jack Left Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_dac_out_r",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACR",
+          "FunctionName": "DAC Right Channel Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net_jack_in_r",
+      "Connections": [
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "RING",
+          "FunctionName": "Audio Jack Right Input"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACVSS",
+          "FunctionName": "Analog Ground"
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "SLEEVE",
+          "FunctionName": "Common Jack Ground"
+        }
+      ]
+    }
+  ]
+}

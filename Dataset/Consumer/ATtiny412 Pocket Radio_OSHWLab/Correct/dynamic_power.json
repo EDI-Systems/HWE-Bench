@@ -1,0 +1,41 @@
+{
+  "Power Management & Battery Charging": [
+    {
+      "net_id": "net_5v_usb",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "VBUS", "FunctionName": "USB 5V Input" },
+        { "ComponentID": "MCP73831T", "PinName": "VCC", "FunctionName": "Charger Power Input" }
+      ]
+    },
+    {
+      "net_id": "net_vbat",
+      "Connections": [
+        { "ComponentID": "MCP73831T", "PinName": "BAT", "FunctionName": "Battery Terminal" },
+        { "ComponentID": "ME6209", "PinName": "VIN", "FunctionName": "LDO Voltage Input" }
+      ]
+    },
+    {
+      "net_id": "net_sys_3v3",
+      "Connections": [
+        { "ComponentID": "ME6209", "PinName": "VOUT", "FunctionName": "LDO 3.3V Regulated Output" },
+        { "ComponentID": "ATtiny", "PinName": "VDD", "FunctionName": "MCU Main Power" }
+      ]
+    },
+    {
+      "net_id": "net_chrg_stat",
+      "Connections": [
+        { "ComponentID": "MCP73831T", "PinName": "CHRG", "FunctionName": "Charge Status Open-Drain" },
+        { "ComponentID": "ATtiny", "PinName": "PA6", "FunctionName": "Status Monitor GPIO" }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "GND", "FunctionName": "System Ground" },
+        { "ComponentID": "MCP73831T", "PinName": "GND", "FunctionName": "System Ground" },
+        { "ComponentID": "ME6209", "PinName": "VSS", "FunctionName": "System Ground" },
+        { "ComponentID": "ATtiny", "PinName": "GND", "FunctionName": "System Ground" }
+      ]
+    }
+  ]
+}

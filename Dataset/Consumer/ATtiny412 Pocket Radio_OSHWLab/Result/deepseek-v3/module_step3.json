@@ -1,0 +1,662 @@
+{
+  "User Interface (UI) & Control": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA1",
+          "FunctionName": "GPIO / I2C SDA"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA2",
+          "FunctionName": "GPIO / I2C SCL"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    }
+  ],
+  "Power Management & Battery Charging": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "VCC",
+          "FunctionName": "Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "CHRG",
+          "FunctionName": "Charge Status Output"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA6",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    }
+  ],
+  "Digital FM Tuner & Demodulation": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "VCC",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA1",
+          "FunctionName": "GPIO / I2C SDA"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SDIO",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA2",
+          "FunctionName": "GPIO / I2C SCL"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SCLK",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "LOUT",
+          "FunctionName": "Left Out"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    }
+  ],
+  "Audio Processing & Amplification": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "ROUT",
+          "FunctionName": "Right Out"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "IN",
+          "FunctionName": "Inverting Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SCLK",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA2",
+          "FunctionName": "GPIO / I2C SCL"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SDIO",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA1",
+          "FunctionName": "GPIO / I2C SDA"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "TC8871",
+          "PinName": "SD",
+          "FunctionName": "Shutdown Control"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA3",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "TC8871",
+          "PinName": "MODE",
+          "FunctionName": "Mode Select"
+        },
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA6",
+          "FunctionName": "GPIO"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "VCC",
+          "FunctionName": "Power Input"
+        }
+      ]
+    }
+  ],
+  "Central Microcontroller Unit (MCU)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "VDD",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHIELD",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA1",
+          "FunctionName": "GPIO / I2C SDA"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SDIO",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA2",
+          "FunctionName": "GPIO / I2C SCL"
+        },
+        {
+          "ComponentID": "RDA5807",
+          "PinName": "SCLK",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "SSD1306BZ",
+          "PinName": "SCK",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ATtiny",
+          "PinName": "PA0",
+          "FunctionName": "UPDI / GPIO"
+        },
+        {
+          "ComponentID": "TC8871",
+          "PinName": "SD",
+          "FunctionName": "Shutdown Control"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "BAT",
+          "FunctionName": "Battery Connection"
+        },
+        {
+          "ComponentID": "ME6209",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "MCP73831T",
+          "PinName": "VCC",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ]
+}

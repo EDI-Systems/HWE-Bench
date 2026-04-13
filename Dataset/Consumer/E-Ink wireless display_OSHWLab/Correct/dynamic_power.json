@@ -1,0 +1,50 @@
+{
+  "Power Management Ecosystem": [
+    {
+      "net_id": "net_vbus_5v",
+      "Connections": [
+        { "ComponentID": "KH-TYPE-C-16P", "PinName": "VBUS" },
+        { "ComponentID": "IP2312", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "net_vbat_sys",
+      "Connections": [
+        { "ComponentID": "IP2312", "PinName": "BAT" },
+        { "ComponentID": "TPS62088", "PinName": "VIN" },
+        { "ComponentID": "TPS61236P", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "net_vcc3_3_mcu",
+      "Connections": [
+        { "ComponentID": "TPS62088", "PinName": "VOUT" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "VCC3_3" }
+      ]
+    },
+    {
+      "net_id": "net_vcc5_eink",
+      "Connections": [
+        { "ComponentID": "TPS61236P", "PinName": "VOUT" },
+        { "ComponentID": "WaveShare 9.7\" HAT", "PinName": "VCC5" }
+      ]
+    },
+    {
+      "net_id": "net_boost_enable_ctrl",
+      "Connections": [
+        { "ComponentID": "ESP32-WROVER", "PinName": "IO12" },
+        { "ComponentID": "TPS61236P", "PinName": "EN" }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "KH-TYPE-C-16P", "PinName": "GND" },
+        { "ComponentID": "IP2312", "PinName": "GND" },
+        { "ComponentID": "TPS62088", "PinName": "GND" },
+        { "ComponentID": "TPS61236P", "PinName": "GND" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "GND" }
+      ]
+    }
+  ]
+}

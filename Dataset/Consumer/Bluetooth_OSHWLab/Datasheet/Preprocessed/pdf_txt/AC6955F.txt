@@ -1,0 +1,44 @@
+Component ID: AC6955F4
+Component Type: Bluetooth Audio System-on-Chip (SoC) with integrated DSP, Audio Codec, and PMU
+Description:
+The AC6955F4 is a highly integrated Bluetooth audio SoC designed for stereo headsets. It features a 240MHz 32-bit DSP with FPU for audio processing, a Bluetooth 5.1 BR/EDR/BLE radio, a multi-format audio decoder (including SBC, AAC, MP3, FLAC), and a complete audio codec with DAC, ADC, and microphone interfaces. It integrates a full-speed USB OTG controller and a rich set of peripherals (UART, SPI, I2C, PWM, SD host) into a QSOP24 package, targeting low-power portable audio applications.
+
+Key Parameters:
+- **Core Processor**: 32-bit DSP with Hardware FPU
+- **Core Clock Speed**: Up to 240 MHz
+- **Bluetooth Version**: 5.1 (BR/EDR + BLE)
+- **RF Transmit Power**: +6 dBm
+- **RF Receiver Sensitivity**: -90 dBm
+- **Audio DAC SNR**: ≥ 95 dB (16-bit, 2-channel)
+- **Audio ADC SNR**: ≥ 90 dB (16-bit, 3-channel)
+- **Supply Voltage (VDDIO)**: 2.2V to 3.6V
+- **Low-Power Current**: 3 µA (Soft-off mode)
+- **Operating Temperature**: -20°C to +70°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | USBDM | USB Data- | USB differential data negative line | I/O | Digital |
+| 2 | USBDP/ADC12 | USB Data+ | USB differential data positive / ADC Input | I/O | Digital/Analog |
+| 3 | PA1/AUX0R/ADC0 | GPIO / AUX | Port A Pin 1 / Aux Right Channel / ADC 0 | I/O | Digital/Analog |
+| 4 | PA0/AUX0L | GPIO / AUX | Port A Pin 0 / Aux Left Channel | I/O | Digital/Analog |
+| 5 | PC7/MIC_BIAS | MIC Power | Port C Pin 7 / Microphone Bias Output | Output | Power |
+| 6 | MIC | MIC Input | Microphone analog input | Input | Analog |
+| 7 | VDDIO | IO Power | Power supply for digital I/O pins | Power | 3.3V |
+| 8 | DACVSS | Audio GND | Ground reference for Audio DAC | Power | 0V |
+| 9 | VCOM0 | Reference | Common voltage reference for audio | Passive | Analog |
+| 10 | DACL | Audio Out | Left channel audio output | Output | Analog |
+| 11 | DACR | Audio Out | Right channel audio output | Output | Analog |
+| 12 | FMIP | FM Antenna | FM Radio signal input pin | Input | RF |
+| 13 | SD_PWR/PB11 | SD Power | SD Card power control / GPIO Port B 11 | I/O | Digital |
+| 14 | ADC9/AUX2R/SD0CMDB/PB10 | Multi-Func | ADC 9 / Aux 2 Right / SD Card CMD B | I/O | Digital/Analog |
+| 15 | AUX2L/SD0CLKB/PB9 | Multi-Func | Aux 2 Left / SD Card Clock B | I/O | Digital |
+| 16 | ADC8/AUX1R/SD0DATAB/PB8 | Multi-Func | ADC 8 / Aux 1 Right / SD Card Data B | I/O | Digital/Analog |
+| 17 | PB5/LDO_IN | LDO Input | GPIO Port B 5 / Internal LDO input | Input | Power |
+| 18 | VBAT | Battery | Main battery power supply input | Power | 3.3V - 5.5V |
+| 19 | BT_AVDD | RF Power | Bluetooth analog power supply | Power | 1.8V - 3.3V |
+| 20 | ADC/PB1 | ADC / GPIO | Analog to Digital converter / Port B 1 | I/O | Digital/Analog |
+| 21 | BT_RF | BT Antenna | Bluetooth RF signal input/output | I/O | RF |
+| 22 | VSSIO | IO Ground | Digital and IO ground reference | Power | 0V |
+| 23 | BT_OSCI | Oscillator | Bluetooth crystal oscillator input | Input | Analog |
+| 24 | BT_OSCO | Oscillator | Bluetooth crystal oscillator output | Output | Analog |

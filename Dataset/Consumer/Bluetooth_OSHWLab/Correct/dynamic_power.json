@@ -1,0 +1,69 @@
+{
+  "Power Management & Battery Charging Module": [
+    {
+      "net_id": "net_usb_5v_raw",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "USB 5V Power Entry"
+        },
+        {
+          "ComponentID": "1N5819WS",
+          "PinName": "Anode",
+          "FunctionName": "Protection Diode Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_chrg_vcc_safe",
+      "Connections": [
+        {
+          "ComponentID": "1N5819WS",
+          "PinName": "Cathode",
+          "FunctionName": "Protection Diode Output"
+        },
+        {
+          "ComponentID": "TP4054",
+          "PinName": "VCC",
+          "FunctionName": "Charger Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_vbat_sys",
+      "Connections": [
+        {
+          "ComponentID": "TP4054",
+          "PinName": "BAT",
+          "FunctionName": "Charger Battery Output"
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "VBAT",
+          "FunctionName": "MCU Battery Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "USB Ground"
+        },
+        {
+          "ComponentID": "TP4054",
+          "PinName": "GND",
+          "FunctionName": "Charger Ground"
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "VSSIO",
+          "FunctionName": "MCU System Ground"
+        }
+      ]
+    }
+  ]
+}

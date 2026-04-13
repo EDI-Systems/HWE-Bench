@@ -1,0 +1,114 @@
+{
+  "ComponentID": "TC8871",
+  "ComponentType": "Mono Audio Power Amplifier (Class AB/D Selectable)",
+  "Description": "The TC8871 is a single-channel, 5W audio power amplifier designed for portable and low-voltage audio systems. It features selectable Class AB or Class D operation to balance efficiency and audio quality, with built-in feedback resistors that simplify external circuitry by eliminating the need for output coupling capacitors, bootstrap capacitors, or snubber networks. Operating from a 2.0V to 5.5V supply, it offers high power output (e.g., 5W into 2Ω at 5V), includes a shutdown mode for low power consumption, and integrates thermal shutdown protection. Its design minimizes FM interference and is suitable for applications like USB-powered speakers, laptops, and multimedia audio systems.",
+  "KeyParameters": {
+    "Supply Voltage Range (Recommended)": "2.0 V to 5.5 V",
+    "Maximum Output Power (THD+N <10%, 1 kHz)": "5 W (into 2Ω load at 5V)",
+    "Quiescent Supply Current (Static)": "6 mA (Typical)",
+    "Shutdown Leakage Current": "0.8 μA (Typical)",
+    "Power Supply Rejection Ratio (PSRR)": "80 dB (Typical)",
+    "Total Harmonic Distortion + Noise (THD+N)": "0.2% (Typical, Aᵥ=2, Pₒ=0.5W, 4Ω)",
+    "Gain Bandwidth Product": "2.5 MHz",
+    "Operating Temperature Range": "-40 °C to 85 °C",
+    "Thermal Resistance (θⱼₐ, ESOP-8)": "140 °C/W"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SD",
+      "Functions": [
+        {
+          "FunctionName": "Shutdown Control",
+          "FunctionDescription": "Active-high shutdown control pin"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "BYP",
+      "Functions": [
+        {
+          "FunctionName": "Bypass",
+          "FunctionDescription": "Internal common-mode voltage bypass capacitor connection"
+        }
+      ],
+      "PinType": "Analog",
+      "ElectricalType": "Passive"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "MODE",
+      "Functions": [
+        {
+          "FunctionName": "Mode Select",
+          "FunctionDescription": "AB/D Class mode selection pin (default is AB class)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "IN",
+      "Functions": [
+        {
+          "FunctionName": "Inverting Input",
+          "FunctionDescription": "Analog inverting input (feedback node)"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VON",
+      "Functions": [
+        {
+          "FunctionName": "Negative Output",
+          "FunctionDescription": "Analog negative output (BTL configuration)"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Positive power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Supply"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VOP",
+      "Functions": [
+        {
+          "FunctionName": "Positive Output",
+          "FunctionDescription": "Analog positive output (BTL configuration)"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Power Output"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "ComponentID": "TPS61236P",
+  "ComponentType": "High-Current Synchronous Boost Converter with Constant Current Output",
+  "Description": "The TPS6123x is a family of high-efficiency, synchronous boost converters designed to step up a single-cell Li-Ion/Li-Polymer battery voltage to a higher output. Its core functionality is to provide a regulated, high-current output (up to 3.5A for 3.3V to 5V conversion) with integrated power switches. A key feature is its programmable constant output current capability, which allows it to control power delivery for applications like USB charging without external current-limiting components. It includes comprehensive protection features (soft-start, current limit, OVP, thermal shutdown), offers a low 10µA quiescent current for light-load efficiency, and provides true input-output disconnection during shutdown.",
+  "KeyParameters": {
+    "**Topology**": "Synchronous Boost Converter",
+    "**Input Voltage Range (VIN)**": "2.3V to 5.5V (from Recommended Operating Conditions context)",
+    "**Output Voltage**": "Fixed 5.1V (TPS61235P) or Adjustable 2.9V to 5.5V (TPS61236P)",
+    "**Maximum Output Current**": "Up to 3.5A (for 3.3V to 5V conversion)",
+    "**Switch Current Limit (Valley)**": "10A (typ)",
+    "**Internal Switch Resistance (Rds_on)**": "14mΩ (High-side) / 14mΩ (Low-side)",
+    "**Switching Frequency**": "1 MHz (Fixed)",
+    "**Quiescent Current (IQ)**": "10 µA (Light Load)",
+    "**Shutdown Current**": "<1 µA",
+    "**Package**": "VQFN-9, 2.5mm x 2.5mm"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "PGND",
+      "Functions": [
+        {
+          "FunctionName": "Power Ground",
+          "FunctionDescription": "Power ground connection for the power stage."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switch Node",
+          "FunctionDescription": "Connection to the drain of the internal power MOSFETs; the switch pin of the boost converter."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Power Input",
+          "FunctionDescription": "IC power supply input."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CC",
+      "Functions": [
+        {
+          "FunctionName": "Constant Current Programming",
+          "FunctionDescription": "Connect a resistor to program the constant output current. Connect to AGND to disable the function."
+        }
+      ],
+      "PinType": "Analog",
+      "ElectricalType": "Input/Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "AGND",
+      "Functions": [
+        {
+          "FunctionName": "Analog Ground",
+          "FunctionDescription": "Analog ground reference."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "FB",
+      "Functions": [
+        {
+          "FunctionName": "Feedback",
+          "FunctionDescription": "Voltage feedback pin for adjustable version (TPS61236P). Connect to VOUT for fixed version (TPS61235P)."
+        }
+      ],
+      "PinType": "Analog",
+      "ElectricalType": "Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Logic high enables the device; logic low disables it (shutdown). Must be terminated."
+        }
+      ],
+      "PinType": "Digital",
+      "ElectricalType": "Input"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "INACT",
+      "Functions": [
+        {
+          "FunctionName": "Status Indicator",
+          "FunctionDescription": "Open-drain output for load status indication. Can be left floating or tied to AGND if unused."
+        }
+      ],
+      "PinType": "Digital",
+      "ElectricalType": "Output (Open Drain)"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "Boost converter output voltage."
+        }
+      ],
+      "PinType": "PWR",
+      "ElectricalType": "Power"
+    }
+  ]
+}

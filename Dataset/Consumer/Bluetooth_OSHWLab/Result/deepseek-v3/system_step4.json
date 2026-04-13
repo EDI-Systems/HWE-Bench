@@ -1,0 +1,289 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACL",
+          "FunctionName": "Audio Out"
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "TIP",
+          "FunctionName": "Left"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACR",
+          "FunctionName": "Audio Out"
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "RING",
+          "FunctionName": "Right"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "DACVSS",
+          "FunctionName": "Audio GND"
+        },
+        {
+          "ComponentID": "PJ-3420",
+          "PinName": "SLEEVE",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TP4054",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "VSSIO",
+          "FunctionName": "IO Ground"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "SHIELD",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "PA1/AUX0R/ADC0",
+          "FunctionName": "GPIO / AUX"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "PA0/AUX0L",
+          "FunctionName": "GPIO / AUX"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "P1",
+          "FunctionName": "Throw 1"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "SD_PWR/PB11",
+          "FunctionName": "SD Power"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "P2",
+          "FunctionName": "Throw 2"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "ADC9/AUX2R/SD0CMDB/PB10",
+          "FunctionName": "Multi-Func"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "SHIELD",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "1N5819WS",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "TP4054",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "1N5819WS",
+          "PinName": "Cathode",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "TP4054",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply Input"
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "VBAT",
+          "FunctionName": "Battery"
+        },
+        {
+          "ComponentID": "SK-32",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "TP4054",
+          "PinName": "BAT",
+          "FunctionName": "Battery Connection"
+        },
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "VBAT",
+          "FunctionName": "Battery"
+        },
+        {
+          "ComponentID": "1N5819WS",
+          "PinName": "Anode",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "USBDM",
+          "FunctionName": "USB Data-"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DN2",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DN1",
+          "FunctionName": "Data-"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "USBDP/ADC12",
+          "FunctionName": "USB Data+"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DP1",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DP2",
+          "FunctionName": "Data+"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "ADC9/AUX2R/SD0CMDB/PB10",
+          "FunctionName": "Multi-Func"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "CMD",
+          "FunctionName": "DI"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "AUX2L/SD0CLKB/PB9",
+          "FunctionName": "Multi-Func"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "CLK",
+          "FunctionName": "SCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "AC6955F4",
+          "PinName": "ADC8/AUX1R/SD0DATAB/PB8",
+          "FunctionName": "Multi-Func"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "DAT0",
+          "FunctionName": "D0"
+        }
+      ]
+    }
+  ]
+}

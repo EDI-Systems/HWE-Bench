@@ -1,0 +1,131 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_EDID_I2C_SDA",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PC1/SDA/NSS/T2CH4" },
+        { "ComponentID": "AT24C32", "PinName": "SDA" },
+        { "ComponentID": "HDMI_IN", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_EDID_I2C_SCL",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PC2/SCL/URTS/T1BKIN" },
+        { "ComponentID": "AT24C32", "PinName": "SCL" },
+        { "ComponentID": "HDMI_IN", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_TX_TO_USB",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PD5/A5/UTX" },
+        { "ComponentID": "HT42B534-2", "PinName": "RX" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_RX_FROM_USB",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PD6/A6/URX" },
+        { "ComponentID": "HT42B534-2", "PinName": "TX" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D2_POS",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data2+" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data2+" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D2_NEG",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data2-" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data2-" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D1_POS",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data1+" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data1+" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D1_NEG",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data1-" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data1-" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D0_POS",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data0+" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data0+" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_D0_NEG",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Data0-" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Data0-" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_CLK_POS",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Clock+" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Clock+" }
+      ]
+    },
+    {
+      "net_id": "NET_HDMI_CLK_NEG",
+      "Connections": [
+        { "ComponentID": "HDMI_IN", "PinName": "TMDS_Clock-" },
+        { "ComponentID": "HDMI_OUT", "PinName": "TMDS_Clock-" }
+      ]
+    },
+    {
+      "net_id": "NET_LED_STATUS",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PD3/A4/T2CH2/AETR" },
+        { "ComponentID": "STATUS_LED", "PinName": "A" }
+      ]
+    },
+    {
+      "net_id": "NET_LED_ERROR",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "PD4/A7/UCK/T2CH1ETR" },
+        { "ComponentID": "ERROR_LED", "PinName": "A" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_VBUS_POWER",
+      "Connections": [
+        { "ComponentID": "GT-USB-7010ASV", "PinName": "VBUS" },
+        { "ComponentID": "HT42B534-2", "PinName": "VDD" }
+      ]
+    },
+    {
+      "net_id": "NET_EEPROM_VCC_REF",
+      "Connections": [
+        { "ComponentID": "BAT54", "PinName": "K1" },
+        { "ComponentID": "AT24C32", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "CH32V003", "PinName": "VSS" },
+        { "ComponentID": "AT24C32", "PinName": "GND" },
+        { "ComponentID": "HT42B534-2", "PinName": "GND" },
+        { "ComponentID": "GT-USB-7010ASV", "PinName": "GND" },
+        { "ComponentID": "HDMI_IN", "PinName": "DDC/CEC_Ground" },
+        { "ComponentID": "HDMI_OUT", "PinName": "DDC/CEC_Ground" },
+        { "ComponentID": "STATUS_LED", "PinName": "K" },
+        { "ComponentID": "ERROR_LED", "PinName": "K" }
+      ]
+    }
+  ]
+}

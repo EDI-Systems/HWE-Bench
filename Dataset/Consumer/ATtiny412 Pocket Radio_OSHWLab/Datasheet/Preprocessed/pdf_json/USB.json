@@ -1,0 +1,104 @@
+{
+  "ComponentID": "USB",
+  "ComponentType": "USB 3.1 Type-C Receptacle Connector (6-Pin, SMT)",
+  "Description": "This is a surface-mount USB Type-C receptacle connector compliant with the USB 3.1 standard. It is a 6-pin version, providing the essential power (VBUS), ground (GND), and configuration channel (CC) lines required for basic USB Type-C power delivery and device detection, but does not include the high-speed SuperSpeed data lanes (TX/RX). Its primary functionality is to serve as a compact, durable, and electrically robust physical and electrical interface for connecting USB Type-C cables, supporting power delivery up to 100W (20V/5A) and data communication via USB 2.0 signals multiplexed over the CC pins.",
+  "KeyParameters": {
+    "Current Rating (VBUS Pin)": "5 A",
+    "Current Rating (GND Pin)": "1.25 A",
+    "Current Rating (Other Pins)": "0.25 A",
+    "Rated Voltage": "20 V DC Max",
+    "Withstanding Voltage": "100 V AC RMS",
+    "Contact Resistance": "40 mΩ Max",
+    "Insulation Resistance": "100 MΩ Min",
+    "Operating Temperature": "-25°C to +85°C",
+    "Mechanical Durability": "10,000 mating cycles",
+    "Insertion Force": "5 ~ 20 N",
+    "Extraction Force": "8 ~ 20 N"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Config 1",
+          "FunctionDescription": "Configuration channel 1 for PD negotiation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Config 2",
+          "FunctionDescription": "Configuration channel 2 for PD negotiation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "0",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Outer metal shell and mounting tabs"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+Component ID: MCP73831T
+Component Type: Single-Cell Lithium-Ion Battery Linear Charger IC
+Description:
+The MCP73831T-2ATI/OT is a fully integrated constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. Designed for USB power compliance, it requires minimal external components. It features programmable charge current up to 500mA, thermal regulation, automatic charge termination (C/10), and a preset 4.2V charge voltage. It includes battery reverse protection at the output, a charge status indicator, automatic recharge, and low-power shutdown/standby modes.
+
+Key Parameters:
+- **Charge Voltage (Preset)**: 4.2V (Typical, 4.158V Min, 4.242V Max)
+- **Programmable Charge Current**: Up to 500mA (Typical, set via external resistor RPROG)
+- **Input Voltage Range (Operating)**: 4.25V to 6.0V
+- **Maximum Power Dissipation (PDMAX)**: 250 mW
+- **Standby Current (Charge Terminated)**: 200 µA (Typical)
+- **Shutdown Current**: 25 µA (Typical)
+- **Trickle Charge Threshold Voltage (VTRKL)**: 2.9V (Typical)
+- **BAT Pin Reverse Leakage Current (Standby)**: -2.5 µA (Typical)
+- **Operating Ambient Temperature Range**: -40°C to +85°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CHRG | Charge Status Output | Open-drain output indicating charge state. | Output | Open-Drain |
+| 2 | GND | Ground | System ground reference. | Power | Ground |
+| 3 | BAT | Battery Connection | Charging current output to the battery. | Output | Power Output |
+| 4 | VCC | Power Input | Input supply from adapter or USB. | Input | Power Input |
+| 5 | PROG | Charge Current Program / Monitor / Shutdown | Sets charge current via resistor to GND; also used for monitoring and shutdown. | I/O | Analog I/O |

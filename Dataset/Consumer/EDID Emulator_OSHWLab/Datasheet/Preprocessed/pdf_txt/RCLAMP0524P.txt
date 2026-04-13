@@ -1,0 +1,29 @@
+Component ID: RCLAMP0524P
+Component Type: TVS Diode Array (ESD Protection Device)
+Description:
+The RCLAMP0524P is an ultra-low capacitance, 5V-rated TVS diode array designed for high-speed data line protection. It provides robust, multi-channel ESD, EFT, and surge protection for sensitive interfaces by clamping transient overvololtages to a safe level. Its primary function is to shunt harmful electrical transients from IEC standards to ground, thereby protecting downstream integrated circuits in applications like HDMI, DVI, PCIe, and SATA.
+
+Key Parameters:
+- Reverse Working Voltage (VRWM): 5 V (Max)
+- Breakdown Voltage (VBR): 6.8 to 9.5 V (IT = 1mA)
+- Clamping Voltage (VC): 17 V (Max, IPP = 4.5A, 8/20µs)
+- Peak Pulse Current (Ipp): 4.5 A (8/20µs)
+- ESD Protection Level (IEC 61000-4-2): ±25 kV (Air), ±20 kV (Contact)
+- Junction Capacitance (CJ): 0.35 pF (Typ, I/O to I/O), 0.6 to 0.8 pF (I/O to GND)
+- Reverse Leakage Current (IR): 0.08 µA (Max, VRWM = 5V)
+- Operating Temperature Range (TJ): -55 to +125 °C
+- Package: DFN2510-10 (2.5mm × 1.0mm × 0.5mm)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | I/O1 | Protected Line 1 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 2 | I/O2 | Protected Line 2 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 3 | I/O3 | Protected Line 3 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 4 | I/O4 | Protected Line 4 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 5 | GND | Ground | Common ground connection for all protection circuits | Power | Ground |
+| 6 | I/O5 | Protected Line 5 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 7 | I/O6 | Protected Line 6 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 8 | I/O7 | Protected Line 7 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 9 | I/O8 | Protected Line 8 | Signal I/O with integrated protection to GND | Signal | Bi-directional I/O |
+| 10 | GND | Ground | Common ground connection for all protection circuits | Power | Ground |

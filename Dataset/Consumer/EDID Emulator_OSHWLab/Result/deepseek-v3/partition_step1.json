@@ -1,0 +1,46 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "High-Speed Video Passthrough",
+      "Function Description": "Provides a transparent, low-latency electrical path for the high-speed multimedia data stream (e.g., TMDS, DisplayPort data lanes) from the media source to the display, ensuring the video payload is delivered untouched.",
+      "Signal Sources": "Media source high-speed video output pins.",
+      "Signal Destinations": "Display device high-speed video input pins.",
+      "Implementation Logic": "Directly routes high-speed differential pairs through impedance-matched traces, buffers, or redriver ICs to maintain signal integrity without processing or altering the video data."
+    },
+    {
+      "Module Name": "Low-Speed Bus Intercept & Emulation Unit",
+      "Function Description": "Intercepts the low-speed communication bus (e.g., DDC/CI for HDMI/DisplayPort, I2C, or AUX CH) used for device identification and capability exchange. It emulates a display by responding with spoofed EDID/DisplayID data stored in non-volatile memory.",
+      "Signal Sources": "Media source low-speed bus pins (SCL, SDA for I2C).",
+      "Signal Destinations": "Onboard Non-Volatile Memory block and Central Processing Unit.",
+      "Implementation Logic": "A bus switch or multiplexer initially connects the source to the real display for initial detection, then isolates it. A microcontroller or dedicated I2C/aux channel controller acts as a slave device on the bus, intercepting read requests from the source and fetching data from the memory block to send spoofed replies."
+    },
+    {
+      "Module Name": "Non-Volatile Memory Block",
+      "Function Description": "Stores customized display profiles (e.g., EDID binaries, resolution tables, vendor IDs) that define the emulated display's capabilities. Retains data when powered off.",
+      "Signal Sources": "Central Processing Unit (for write/update operations).",
+      "Signal Destinations": "Low-Speed Bus Intercept & Emulation Unit (for read operations).",
+      "Implementation Logic": "Implemented using an EEPROM or Flash memory chip. The CPU can write new profiles via an SPI or I2C interface. The Low-Speed Bus Intercept unit reads from this memory directly or via a buffer when emulating the display for the source."
+    },
+    {
+      "Module Name": "Central Processing Unit (CPU) & System Controller",
+      "Function Description": "Manages system data flow, coordinates modules, handles user configuration updates, and triggers handshake re-negotiation. It listens for user commands and updates the memory block accordingly.",
+      "Signal Sources": "External Communication Interface, Power Arbitration Network status.",
+      "Signal Destinations": "Non-Volatile Memory Block, Connection Detection Signal Toggle, Low-Speed Bus Intercept & Emulation Unit.",
+      "Implementation Logic": "A microcontroller or FPGA soft-core. It monitors the external interface (e.g., USB). Upon receiving a new profile, it writes it to the memory block. It then electronically toggles the Hot Plug Detect (HPD) or similar signal to force the media source to restart the handshake and read the new profile from memory."
+    },
+    {
+      "Module Name": "External Communication Interface",
+      "Function Description": "Provides a user-accessible channel (e.g., USB, UART over micro-USB, Bluetooth) to upload new display profiles, update firmware, or configure system parameters.",
+      "Signal Sources": "External user device (PC, smartphone).",
+      "Signal Destinations": "Central Processing Unit.",
+      "Implementation Logic": "A physical connector and corresponding transceiver IC (e.g., USB-UART bridge, USB controller). Converts user data from the external interface into a serial protocol (e.g., UART, SPI) understood by the CPU for processing."
+    },
+    {
+      "Module Name": "Dual-Input Power Arbitration Network",
+      "Function Description": "Manages system power by seamlessly selecting and regulating the primary power source between the power provided by the video cable (e.g., +5V from HDMI) and an external auxiliary power source (e.g., USB-C PD, barrel jack). Provides stable, clean power to all logic circuits.",
+      "Signal Sources": "Video cable power pin (e.g., HDMI +5V), Auxiliary power input connector.",
+      "Signal Destinations": "All other functional modules (voltage rails).",
+      "Implementation Logic": "Uses power path controllers, ideal diodes, or MOSFET-based OR-ing circuits to automatically select the higher or preferred voltage source. Includes voltage regulators (LDOs or switching regulators) to generate required logic voltages (e.g., 3.3V, 1.8V). Ensures uninterrupted operation during source switching."
+    }
+  ]
+}

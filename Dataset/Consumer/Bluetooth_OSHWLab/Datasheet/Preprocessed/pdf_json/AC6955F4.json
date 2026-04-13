@@ -1,0 +1,307 @@
+{
+  "ComponentID": "AC6955F4",
+  "ComponentType": "Bluetooth Audio System-on-Chip (SoC) with integrated DSP, Audio Codec, and PMU",
+  "Description": "The AC6955F4 is a highly integrated Bluetooth audio SoC designed for stereo headsets. It features a 240MHz 32-bit DSP with FPU for audio processing, a Bluetooth 5.1 BR/EDR/BLE radio, a multi-format audio decoder (including SBC, AAC, MP3, FLAC), and a complete audio codec with DAC, ADC, and microphone interfaces. It integrates a full-speed USB OTG controller and a rich set of peripherals (UART, SPI, I2C, PWM, SD host) into a QSOP24 package, targeting low-power portable audio applications.",
+  "KeyParameters": {
+    "**Core Processor**": "32-bit DSP with Hardware FPU",
+    "**Core Clock Speed**": "Up to 240 MHz",
+    "**Bluetooth Version**": "5.1 (BR/EDR + BLE)",
+    "**RF Transmit Power**": "+6 dBm",
+    "**RF Receiver Sensitivity**": "-90 dBm",
+    "**Audio DAC SNR**": "≥ 95 dB (16-bit, 2-channel)",
+    "**Audio ADC SNR**": "≥ 90 dB (16-bit, 3-channel)",
+    "**Supply Voltage (VDDIO)**": "2.2V to 3.6V",
+    "**Low-Power Current**": "3 µA (Soft-off mode)",
+    "**Operating Temperature**": "-20°C to +70°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "USBDM",
+      "Functions": [
+        {
+          "FunctionName": "USB Data-",
+          "FunctionDescription": "USB differential data negative line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "USBDP/ADC12",
+      "Functions": [
+        {
+          "FunctionName": "USB Data+",
+          "FunctionDescription": "USB differential data positive / ADC Input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PA1/AUX0R/ADC0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / AUX",
+          "FunctionDescription": "Port A Pin 1 / Aux Right Channel / ADC 0"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "PA0/AUX0L",
+      "Functions": [
+        {
+          "FunctionName": "GPIO / AUX",
+          "FunctionDescription": "Port A Pin 0 / Aux Left Channel"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "PC7/MIC_BIAS",
+      "Functions": [
+        {
+          "FunctionName": "MIC Power",
+          "FunctionDescription": "Port C Pin 7 / Microphone Bias Output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "MIC",
+      "Functions": [
+        {
+          "FunctionName": "MIC Input",
+          "FunctionDescription": "Microphone analog input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Power supply for digital I/O pins"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "DACVSS",
+      "Functions": [
+        {
+          "FunctionName": "Audio GND",
+          "FunctionDescription": "Ground reference for Audio DAC"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "VCOM0",
+      "Functions": [
+        {
+          "FunctionName": "Reference",
+          "FunctionDescription": "Common voltage reference for audio"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "DACL",
+      "Functions": [
+        {
+          "FunctionName": "Audio Out",
+          "FunctionDescription": "Left channel audio output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "DACR",
+      "Functions": [
+        {
+          "FunctionName": "Audio Out",
+          "FunctionDescription": "Right channel audio output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "FMIP",
+      "Functions": [
+        {
+          "FunctionName": "FM Antenna",
+          "FunctionDescription": "FM Radio signal input pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "RF"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "SD_PWR/PB11",
+      "Functions": [
+        {
+          "FunctionName": "SD Power",
+          "FunctionDescription": "SD Card power control / GPIO Port B 11"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "ADC9/AUX2R/SD0CMDB/PB10",
+      "Functions": [
+        {
+          "FunctionName": "Multi-Func",
+          "FunctionDescription": "ADC 9 / Aux 2 Right / SD Card CMD B"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "AUX2L/SD0CLKB/PB9",
+      "Functions": [
+        {
+          "FunctionName": "Multi-Func",
+          "FunctionDescription": "Aux 2 Left / SD Card Clock B"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "ADC8/AUX1R/SD0DATAB/PB8",
+      "Functions": [
+        {
+          "FunctionName": "Multi-Func",
+          "FunctionDescription": "ADC 8 / Aux 1 Right / SD Card Data B"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "PB5/LDO_IN",
+      "Functions": [
+        {
+          "FunctionName": "LDO Input",
+          "FunctionDescription": "GPIO Port B 5 / Internal LDO input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "VBAT",
+      "Functions": [
+        {
+          "FunctionName": "Battery",
+          "FunctionDescription": "Main battery power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5.5V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "BT_AVDD",
+      "Functions": [
+        {
+          "FunctionName": "RF Power",
+          "FunctionDescription": "Bluetooth analog power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.8V - 3.3V"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "ADC/PB1",
+      "Functions": [
+        {
+          "FunctionName": "ADC / GPIO",
+          "FunctionDescription": "Analog to Digital converter / Port B 1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "BT_RF",
+      "Functions": [
+        {
+          "FunctionName": "BT Antenna",
+          "FunctionDescription": "Bluetooth RF signal input/output"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "RF"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "VSSIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Ground",
+          "FunctionDescription": "Digital and IO ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "BT_OSCI",
+      "Functions": [
+        {
+          "FunctionName": "Oscillator",
+          "FunctionDescription": "Bluetooth crystal oscillator input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "BT_OSCO",
+      "Functions": [
+        {
+          "FunctionName": "Oscillator",
+          "FunctionDescription": "Bluetooth crystal oscillator output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+Component ID: ME6209
+Component Type: Low-Dropout (LDO) Linear Voltage Regulator
+Description:
+The ME6209 series is a family of CMOS-based, low-power, low-dropout linear voltage regulators designed for high ripple rejection. They feature ultra-low quiescent current, can deliver up to 250mA output current with a very small input-output voltage differential, and maintain good regulation. The devices include over-current and short-circuit protection and are suitable for a wide range of portable and low-power electronic applications.
+
+Key Parameters:
+- Maximum Input Voltage (VIN): 18 V
+- Maximum Output Current (IOUT): 250 mA (Typical, VOUT=3.3V)
+- Dropout Voltage (Vdiff1): 80 mV (Typical at 40mA, VOUT=3.3V) / 150 mV (Typical at 40mA per 1.8V spec table)
+- Quiescent / Ground Current (ISS): 3 µA (Typical)
+- Output Voltage Accuracy: ±1% (for VOUT = 2.8V, 3.3V, 5.0V); ±2% (for other voltage variants)
+- Line Regulation (∆VOUT/∆VIN × VOUT): 0.1 %/V (Typical)
+- Load Regulation (∆VOUT): 10 mV (Typical, 1mA ≤ IOUT ≤ 60mA)
+- Available Output Voltages (VOUT): 1.8V, 2.5V, 2.7V, 2.8V, 3.0V, 3.3V, 3.6V, 4.0V, 4.4V, 4.5V, 5.0V
+- Operating Temperature Range (TOPR): -40°C to +85°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VSS | Ground | Common ground reference | Power | 0V |
+| 2 | VOUT | Output | Regulated 3.3V output voltage | Power | 3.3V |
+| 3 | VIN | Input | Unregulated supply voltage input | Power | Max 18V |

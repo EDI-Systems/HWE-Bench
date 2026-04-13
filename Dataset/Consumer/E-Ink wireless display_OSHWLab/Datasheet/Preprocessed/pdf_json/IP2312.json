@@ -1,0 +1,127 @@
+{
+  "ComponentID": "IP2312",
+  "ComponentType": "Single-Cell Li-ion/Li-Polymer Synchronous Buck Charger IC",
+  "Description": "The IP2312 is a monolithic synchronous switching buck charger IC designed for single-cell lithium-ion/polymer batteries. It operates from a 5V input, integrates power MOSFETs, and uses a 750kHz switching frequency to achieve high efficiency (up to 94% at 3.7V/2A). It features programmable charging current via an external resistor, supports multiple battery termination voltages (4.2V/4.3V/4.35V/4.4V), and includes comprehensive protection such as input OVP/UVP, NTC temperature monitoring, charge timeout, and IC overtemperature protection. It requires minimal external components and is offered in an ESOP8 package.",
+  "KeyParameters": {
+    "Input Voltage Range (Recommended)": "4.5V to 5.5V",
+    "Maximum Charging Current": "3 A",
+    "Charging Target Voltage (Typical)": "4.2 V (Selectable: 4.2V/4.3V/4.35V/4.4V)",
+    "Switching Frequency (Typical)": "750 kHz",
+    "Peak Efficiency": "94% (at VIN=5V, VBAT=3.7V, ICHG=2A)",
+    "Integrated Power MOSFET RDS(ON)": "PMOS 35 mΩ (typ), NMOS 30 mΩ (typ)",
+    "Trickle Charge Threshold Voltage (Typical)": "3.0 V",
+    "Recharge Threshold Voltage (Typical)": "4.1 V",
+    "Charge Termination Timeout (Typical)": "24 Hours",
+    "Operating Junction Temperature": "-40°C to 150°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "D1",
+      "Functions": [
+        {
+          "FunctionName": "LED Drive / Battery Voltage Select",
+          "FunctionDescription": "LED driver pin / Battery type selection (IP2312_VSET)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital/Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "TEST",
+      "Functions": [
+        {
+          "FunctionName": "Test",
+          "FunctionDescription": "Test pin, connect to battery positive via a 1K resistor"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "D2",
+      "Functions": [
+        {
+          "FunctionName": "LED Drive",
+          "FunctionDescription": "LED driver pin"
+        }
+      ],
+      "PinType": "O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NTC",
+      "Functions": [
+        {
+          "FunctionName": "Temperature Sense",
+          "FunctionDescription": "NTC temperature protection, connect to NTC resistor"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Battery Connection",
+          "FunctionDescription": "Connect to the positive terminal of the Li-ion battery"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "ICHG",
+      "Functions": [
+        {
+          "FunctionName": "Charge Current Set",
+          "FunctionDescription": "Charging current setting pin (via external resistor)"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Switching Node",
+          "FunctionDescription": "DC-DC switch pin (inductor connection)"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Power Input",
+          "FunctionDescription": "5V charging input pin"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Exposed Pad / Ground",
+          "FunctionDescription": "Ground connection for thermal and electrical performance"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

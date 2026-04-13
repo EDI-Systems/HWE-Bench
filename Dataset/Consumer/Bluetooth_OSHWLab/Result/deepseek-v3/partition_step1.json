@@ -1,0 +1,32 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Central Wireless Processing & Audio Unit",
+      "Function Description": "Acts as the system's core, handling wireless communication (e.g., Bluetooth), decoding digital audio streams (from RF or local storage), performing digital-to-analog conversion (DAC), and processing user input commands.",
+      "Signal Sources": "Wireless RF signals from a paired host device, digital data from local storage media (if present), digital control signals from the User Interface Module.",
+      "Signal Destinations": "Analog left/right audio channel signals to the Analog Audio Coupling & Output Module, power control/status signals to the Power Management Module.",
+      "Implementation Logic": "A highly integrated System-on-Chip (SoC) or microcontroller with integrated wireless transceiver (e.g., Bluetooth), audio DSP, and DAC. It initializes upon system power-up, manages wireless pairing and audio stream reception, decodes the audio (e.g., SBC, AAC), converts it to analog, and executes volume/track control based on interpreted button presses."
+    },
+    {
+      "Module Name": "Power Management & Battery Charging Module",
+      "Function Description": "Manages all power sources, safely charges the internal battery from an external wired input, provides stable system voltages, and enables seamless operation between battery and external power.",
+      "Signal Sources": "External DC power input (e.g., USB-C/VBUS), internal battery voltage.",
+      "Signal Destinations": "Regulated system voltage (VCC) to all other modules, charging current/control to the battery, power status signals to the Central Processing Unit.",
+      "Implementation Logic": "Comprises a battery charger IC (for Li-ion/Poly), DC-DC switching and/or LDO voltage regulators, power path management circuitry, and fuel gauge. It routes external power to charge the battery and power the system simultaneously, switches to battery power when external power is removed, and provides clean, stable VCC rails."
+    },
+    {
+      "Module Name": "Analog Audio Coupling & Output Module",
+      "Function Description": "Conditions the analog audio signals from the processor, blocks any DC offset to protect connected headphones/speakers, and provides the final low-impedance output to the audio jack.",
+      "Signal Sources": "Left and right channel analog audio signals from the Central Wireless Processing & Audio Unit's DAC output.",
+      "Signal Destinations": "Conditioned analog audio signals to the 3.5mm audio output jack (or speaker terminals).",
+      "Implementation Logic": "A passive network primarily consisting of series DC-blocking capacitors on each audio channel, followed by optional series resistors for current limiting/impedance matching. This forms a high-pass filter to remove DC components, ensuring only AC audio signals reach the output jack."
+    },
+    {
+      "Module Name": "User Interface Module",
+      "Function Description": "Provides physical controls for user interaction, including power on/off, volume adjustment, and track control.",
+      "Signal Sources": "User mechanical input (button presses).",
+      "Signal Destinations": "Digital logic level signals (e.g., GPIO interrupts, ADC voltage levels) to the Central Wireless Processing & Audio Unit.",
+      "Implementation Logic": "A set of tactile push-button switches connected to the processor's GPIO pins, configured with internal/external pull-up resistors. Pressing a button pulls the pin to ground (or a specific voltage divider level for multi-function buttons), generating a distinct digital signal interpreted by the processor's firmware as a specific command (e.g., volume up, play/pause). The main power switch is a mechanical switch in the primary power path."
+    }
+  ]
+}

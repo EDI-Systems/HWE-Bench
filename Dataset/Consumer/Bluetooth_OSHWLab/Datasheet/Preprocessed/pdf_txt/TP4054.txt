@@ -1,0 +1,25 @@
+Component ID: TP4054
+Component Type: Single-Cell Lithium-Ion Battery Linear Charger IC
+Description:
+The TP4054 is a complete monolithic constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. It integrates a power MOSFET and thermal regulation, requiring no external blocking diode or sense resistor. Designed for USB power specifications, it features a preset 4.2V charge voltage with ±1% accuracy, programmable charge current up to 500mA, and automatic charge termination when the current drops to 1/10 of the set value. It includes battery reverse-connection protection, under-voltage lockout (UVLO), automatic recharge, and status indication.
+
+Key Parameters:
+- **Charging Algorithm**: Constant-Current (CC) / Constant-Voltage (CV)
+- **Input Voltage Range (VCC)**: 4.25V to 6.5V (Operating), Absolute Max: Vss-0.3V to Vss+7V
+- **Programmable Charge Current (IBAT)**: Up to 500mA (typ), set by external resistor (RPROG)
+- **Final Float (Charge) Voltage**: 4.2V (±1%)
+- **Charge Termination Threshold**: 1/10 of the programmed charge current
+- **Trickle Charge Threshold Voltage**: 2.9V
+- **Thermal Regulation Temperature**: ~120°C
+- **Standby Supply Current**: 25µA (when disabled)
+- **Package**: SOT-23-5L
+- **BAT Pin Absolute Max Voltage**: Vss-0.3V to 7V
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CHRG | Charge Status Output | Open-drain output. Pulled low during charging, high-impedance when charge is complete or under UVLO. Flashes when no battery is detected (with external capacitor). | Output | Open-Drain |
+| 2 | GND | Ground | System ground reference. | Power | Ground |
+| 3 | BAT | Battery Connection | Charging current output and voltage sense pin. Connects to the positive terminal of the battery. Provides reverse-connection protection. | Power | Analog I/O |
+| 4 | VCC | Power Supply Input | Positive input supply pin (e.g., from USB or adapter). Requires a bypass capacitor (≥1µF). | Input | Power |
+| 5 | PROG | Charge Current Program / Monitor / Shutdown | Connect a precision resistor (1% tolerance) to GND to set the charge current (IBAT = 1000 * VPROG/RPROG). Voltage ~1V during CC mode. Can be pulled high (>1.21V) to disable the charger. | Analog I/O | Analog I/O |
