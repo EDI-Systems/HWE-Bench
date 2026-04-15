@@ -1,0 +1,25 @@
+Component ID: USB
+Component Type: Micro-USB 2.0 Connector (Receptacle & Plug)
+Description:
+The ZX Series is a family of extremely small, high-reliability connectors compliant with the physical, electrical, and environmental requirements of the Micro-USB standard (USB 2.0). It includes both receptacles and plugs in various mounting styles (SMT, through-hole, mid-mount, reverse mount) and interface configurations (Micro-A, Micro-B, Micro-AB), enabling high-speed data transfer up to 480 Mbps and supporting applications like data transmission, charging, and audio. A unique contact and lock design ensures high durability and a positive mating tactile sensation.
+
+Key Parameters:
+- **Data Transfer Rate**: 480 Mbps (USB 2.0 Hi-Speed)
+- **Current Rating (Per Contact)**: 1 A
+- **Current Rating (Contacts 1 & 5)**: 1.8 A
+- **Current Rating (Contacts 2, 3, 4)**: 0.5 A
+- **Voltage Rating**: 30 VAC
+- **Contact Resistance**: 30 mΩ max. (at 100mA)
+- **Withstanding Voltage**: 100 VAC for 1 minute (no flashover/breakdown)
+- **Operating Temperature**: -30°C to +85°C (includes temperature rise from current)
+- **Durability**: 10,000 mating cycles (contact resistance rise ≤ 10 mΩ from initial)
+- **Insertion/Removal Force**: Insertion ≤ 35 N max., Removal ≥ 8 N min.
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|------------------|
+| 1          | VBUS     | Power    | +5V Power Supply | Contact | Power |
+| 2          | D-       | Data     | USB Data Negative (D-) | Contact | Data Line |
+| 3          | D+       | Data     | USB Data Positive (D+) | Contact | Data Line |
+| 4          | ID       | Identification | Connector Identification (Micro-AB only) | Contact | Signal/Control |
+| 5          | GND      | Ground   | Signal/Power Ground | Contact | Ground |

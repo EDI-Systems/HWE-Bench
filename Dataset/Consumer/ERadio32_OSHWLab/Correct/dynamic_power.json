@@ -1,0 +1,73 @@
+{
+  "Portable Power Management System": [
+    {
+      "net_id": "net_usb_vbus_5v",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "B9",
+          "FunctionName": "USB VBUS Power Input"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "G",
+          "FunctionName": "PMOS Gate (Blocked when 5V present)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_battery_raw",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BAT",
+          "FunctionName": "Charger Battery Output"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "S",
+          "FunctionName": "PMOS Source (Battery Side)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_sys_vin_bus",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "D",
+          "FunctionName": "PMOS Drain (System Power Output)"
+        },
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "VIN",
+          "FunctionName": "Buck Converter Main Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_3v3_logic_clean",
+      "Connections": [
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "FB",
+          "FunctionName": "Buck Converter 3.3V Output/Feedback"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "3V3",
+          "FunctionName": "System Logic Power"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "B12" },
+        { "ComponentID": "TP4056", "PinName": "GND" },
+        { "ComponentID": "RT8096C", "PinName": "GND" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "GND" }
+      ]
+    }
+  ]
+}

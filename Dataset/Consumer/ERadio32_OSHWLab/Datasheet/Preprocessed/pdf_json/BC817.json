@@ -1,0 +1,54 @@
+{
+  "ComponentID": "BC817",
+  "ComponentType": "NPN Bipolar Junction Transistor (BJT)",
+  "Description": "The BC817 is a general-purpose NPN bipolar junction transistor designed for medium-power amplification and switching applications. It features a high collector current capability, high DC current gain, and a low collector-emitter saturation voltage, making it suitable for audio frequency (AF) amplification and switching circuits requiring collector currents up to 500mA.",
+  "KeyParameters": {
+    "Collector-Emitter Voltage (VCEO)": "45 V (Max)",
+    "Collector Current (Ic Continuous)": "500 mA (Max)",
+    "Collector Power Dissipation (Pc)": "300 mW (Max)",
+    "DC Current Gain (hFE)": "100-250 (BC817-16), 160-400 (BC817-25), 250-600 (BC817-40) @ Vce=10V, Ic=150mA",
+    "Collector-Emitter Saturation Voltage (VCE(sat))": "0.7 V (Max) @ Ic=500mA, Ib=50mA",
+    "Transition Frequency (fT)": "100 MHz (Min) @ Vce=5V, Ic=10mA, f=100MHz",
+    "Collector-Base Voltage (VCBO)": "50 V (Max)",
+    "Emitter-Base Voltage (VEBO)": "5 V (Max)",
+    "Junction/Storage Temperature (Tj, Tstg)": "-55 to +150 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "E",
+      "Functions": [
+        {
+          "FunctionName": "Emitter",
+          "FunctionDescription": "Emitter terminal of the transistor."
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "B",
+      "Functions": [
+        {
+          "FunctionName": "Base",
+          "FunctionDescription": "Base terminal for controlling the transistor."
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "C",
+      "Functions": [
+        {
+          "FunctionName": "Collector",
+          "FunctionDescription": "Collector terminal of the transistor."
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Power"
+    }
+  ]
+}

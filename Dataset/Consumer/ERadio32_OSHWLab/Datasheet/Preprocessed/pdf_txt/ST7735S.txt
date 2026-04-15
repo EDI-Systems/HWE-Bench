@@ -1,0 +1,29 @@
+Component ID: ST7735S
+Component Type: 1.8-inch TFT LCD Display with Integrated SD Card Slot
+Description: This is a versatile 1.8-inch color Thin Film Transistor (TFT) Liquid Crystal Display (LCD) module driven by the ST7735S controller. It offers a resolution of 128x160 pixels with 65K full-color depth. The module communicates via a 4-wire Serial Peripheral Interface (SPI), making it highly compatible with a wide range of microcontrollers. A notable feature is the integrated SD card socket on the rear, which allows for easy storage and retrieval of bitmap images or data logs, sharing the SPI bus with the display to save on pin count.
+
+
+Key Parameters:
+- Display Controller: ST7735S
+- Screen Size: 1.8 inches
+- Resolution: 128 x 160 pixels
+- Interface: 4-wire SPI
+- Operating Voltage: 3.3V to 5.0V (Logic level is typically 3.3V)
+- Color Depth: 16-bit (65,536 colors)
+- Integrated Features: MicroSD card slot and LED backlight
+
+Pinout Table:
+| Pin Name | Function | Description | Pin Type | Electrical Type |
+| -------- | -------- | ----------- | -------- | --------------- |
+| 1          | VCC        | Power Supply        | Module supply input (3.3 V in schematic). Powers LCD and SD circuitry.               | Power Input | Power           |
+| 2          | GND        | Ground              | Ground reference for the module.                                                     | Ground      | Power           |
+| 3          | CS         | LCD Chip Select     | SPI chip select for the ST7735S LCD controller (TFT\_CS). Active low.                | Input       | Digital         |
+| 4          | RESET      | LCD Reset           | Reset input for LCD controller (RST). Typically active low.                          | Input       | Digital         |
+| 5          | A0 (DC)    | Data/Command Select | Selects command vs data for LCD SPI interface (TFT\_DC).                             | Input       | Digital         |
+| 6          | SDA (MOSI) | LCD SPI Data In     | SPI data input to LCD controller (MOSI).                                             | Input       | Digital         |
+| 7          | SCK        | LCD SPI Clock       | SPI clock input to LCD controller (SCK).                                             | Input       | Digital         |
+| 8          | LED        | Backlight Power     | Backlight LED supply/control pin. Drive from supply or via transistor/PWM as needed. | Power Input | Power           |
+| 9          | SD\_CS     | SD Chip Select      | SPI chip select for onboard microSD socket (SDC\_CS). Active low.                    | Input       | Digital         |
+| 10         | SD\_MOSI   | SD SPI MOSI         | SPI data input to microSD (MOSI).                                                    | Input       | Digital         |
+| 11         | SD\_MISO   | SD SPI MISO         | SPI data output from microSD (MISO).                                                 | Output      | Digital         |
+| 12         | SD\_SCK    | SD SPI Clock        | SPI clock input to microSD (SCK).                                                    | Input       | Digital         |

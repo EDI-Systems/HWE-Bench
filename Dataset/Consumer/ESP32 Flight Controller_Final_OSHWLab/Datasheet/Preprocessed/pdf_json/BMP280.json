@@ -1,0 +1,115 @@
+{
+  "ComponentID": "BMP280",
+  "ComponentType": "Digital Barometric Pressure Sensor (MEMS)",
+  "Description": "The BMP280 is an absolute barometric pressure and temperature sensor from Bosch Sensortec, designed for mobile and battery-powered applications. It utilizes piezo-resistive MEMS technology for high accuracy and linearity. The sensor provides calibrated digital output via I²C or SPI interfaces, features ultra-low power consumption, and includes configurable filtering and multiple measurement modes (sleep, forced, normal) for power-optimized operation. Its primary function is to enable altitude tracking, indoor/outdoor navigation, weather monitoring, and vertical velocity detection.",
+  "KeyParameters": {
+    "Pressure Measurement Range": "300 ... 1100 hPa",
+    "Relative Accuracy (Pressure)": "±0.12 hPa (typical, 700–900 hPa @ 25°C)",
+    "Absolute Accuracy (Pressure)": "±1 hPa (typical, 950–1050 hPa, 0–40°C)",
+    "Temperature Coefficient Offset (TCO)": "1.5 Pa/K (equiv. to 12.6 cm/K)",
+    "Current Consumption": "2.7 μA @ 1 Hz sampling rate (typical)",
+    "Operating Temperature Range": "-40 ... +85 °C",
+    "Supply Voltage (VDD)": "Minimum 1.71 V",
+    "Digital Interfaces": "I²C (up to 3.4 MHz), SPI (3-wire & 4-wire, up to 10 MHz)",
+    "Package": "8-pin LGA, 2.0 × 2.5 mm², height 0.95 mm",
+    "Pressure Resolution": "0.16 Pa"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "CSB",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "Chip select for SPI (Active Low) / $I^2C$ mode if high"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SDI",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "SDA for $I^2C$ / MOSI for SPI"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "SCL for $I^2C$ / SCK for SPI"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SDO",
+      "Functions": [
+        {
+          "FunctionName": "Serial Out",
+          "FunctionDescription": "$I^2C$ address LSB / MISO for SPI (4-wire)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Supply voltage for digital interface pins"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.2V - 3.6V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground connection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main analog supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - 3.6V"
+    }
+  ]
+}

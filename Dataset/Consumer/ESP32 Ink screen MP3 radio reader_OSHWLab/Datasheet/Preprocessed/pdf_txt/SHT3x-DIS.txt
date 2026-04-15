@@ -1,0 +1,28 @@
+Component ID: SHT
+Component Type: Digital Humidity and Temperature Sensor
+Description:
+The SHT3x-DIS is a fully calibrated, linearized, and temperature-compensated digital sensor for measuring relative humidity and ambient temperature. It features a CMOSens® chip with an integrated I2C interface supporting speeds up to 1 MHz and two user-selectable addresses. The sensor provides high accuracy and fast measurement times, operates from a wide supply voltage range, and is housed in a miniature DFN package.
+
+Key Parameters:
+- Supply Voltage Range: 2.15 V to 5.5 V
+- I2C Communication Speed: Up to 1 MHz
+- Humidity Accuracy (Typical, SHT35): ±1.5 %RH
+- Temperature Accuracy (Typical, SHT35, 20-60°C): ±0.1 °C
+- Humidity Measurement Range: 0 to 100 %RH
+- Temperature Measurement Range: -40 to 125 °C
+- Humidity Resolution: 0.01 %RH
+- Temperature Resolution: 0.01 °C
+- Package Type: 8-Pin DFN
+- Package Dimensions: 2.5 x 2.5 x 0.9 mm
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | SDA | Data Line | I2C Serial Data Input/Output | Digital I/O | Open Drain |
+| 2 | ADDR | Address Select | I2C Slave Address Selection (Connect to VSS or VDD) | Digital Input | CMOS |
+| 3 | ALERT | Alert Output | Interrupt/Alert Pin (Active Low) | Digital Output | Open Drain |
+| 4 | VSS | Ground | Supply Ground (0 V) | Power | Ground |
+| 5 | VDD | Supply Voltage | Positive Supply Voltage (2.15 V to 5.5 V) | Power | Power |
+| 6 | R | Reserved | Reserved for Future Use. Must be left unconnected (NC). | - | - |
+| 7 | R | Reserved | Reserved for Future Use. Must be left unconnected (NC). | - | - |
+| 8 | SCL | Clock Line | I2C Serial Clock Input | Digital Input | CMOS |

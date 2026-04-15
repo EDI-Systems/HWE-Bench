@@ -1,0 +1,46 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Wireless Central Processing & Connectivity Unit",
+      "Function Description": "Acts as the main system controller. It boots the device, manages network connectivity (e.g., Wi-Fi/Bluetooth) for streaming, accesses local removable storage (e.g., SD card), and orchestrates all other modules. It fetches and routes digital audio streams for decoding.",
+      "Signal Sources": "Digital audio streams from network or local storage. User input commands from the HMI module.",
+      "Signal Destinations": "Digital audio data to the Audio Decoding & Processing Module. Control signals to all other modules (Display, Audio Amplifiers, DAC, Power Management).",
+      "Implementation Logic": "A system-on-chip (SoC) or microcontroller with integrated wireless capabilities (Wi-Fi/Bluetooth), running the main application firmware. It interfaces with storage via SPI/SDIO, manages network stacks, and uses serial buses (I2C, SPI, UART) for system control."
+    },
+    {
+      "Module Name": "Audio Decoding & Processing Pipeline",
+      "Function Description": "Receives digital audio data from the central processor and decodes various high-fidelity audio formats (e.g., MP3, AAC, FLAC). It outputs decoded digital audio streams for amplification and analog conversion.",
+      "Signal Sources": "Encoded digital audio data from the Wireless Central Processing & Connectivity Unit.",
+      "Signal Destinations": "Decoded digital audio streams (I2S/TDM) to the Dual-Channel Amplification & Output Stage and the Auxiliary DAC Module.",
+      "Implementation Logic": "Can be implemented via a dedicated hardware audio decoder IC or the DSP core within the main processor. It outputs standard digital audio interfaces (I2S) for clean signal transmission to the subsequent stages."
+    },
+    {
+      "Module Name": "Dual-Channel Amplification & Output Stage",
+      "Function Description": "Amplifies the decoded digital audio signal to directly drive stereo speakers. Consists of dual digital Class-D amplifiers for high efficiency and integrated speaker drivers.",
+      "Signal Sources": "Decoded digital audio stream (I2S) from the Audio Decoding & Processing Pipeline.",
+      "Signal Destinations": "Amplified analog audio to the internal stereo speakers.",
+      "Implementation Logic": "Two digital Class-D amplifier ICs (or a stereo IC) receiving I2S data. They include integrated power stages and require a stable power supply from the Power Management System. May include output filters."
+    },
+    {
+      "Module Name": "Auxiliary DAC & Line-Out Module",
+      "Function Description": "Provides a high-quality analog line-level output for external audio systems. Converts the digital audio stream to an analog signal independently of the speaker amplifiers.",
+      "Signal Sources": "Decoded digital audio stream (I2S) from the Audio Decoding & Processing Pipeline.",
+      "Signal Destinations": "Analog line-level audio signal to a 3.5mm jack or RCA connectors.",
+      "Implementation Logic": "A dedicated stereo digital-to-analog converter (DAC) IC with a clean analog supply. It receives I2S data and outputs analog audio through an output buffer/op-amp stage to the physical connector."
+    },
+    {
+      "Module Name": "Human-Machine Interface (HMI) Module",
+      "Function Description": "Provides all user interaction capabilities. Includes a color graphical display for visual feedback, a rotary navigation encoder for menu control/volume, and an infrared (IR) receiver for remote control.",
+      "Signal Sources": "User physical input from the rotary encoder and IR remote commands.",
+      "Signal Destinations": "User input data (keystrokes, encoder movements) to the Wireless Central Processing & Connectivity Unit. Display control signals and framebuffer data from the processor to the screen.",
+      "Implementation Logic": "A display (e.g., SPI/I2C LCD) driven by the main processor's graphics library. The rotary encoder connects to GPIOs for quadrature decoding. An IR receiver module outputs demodulated data to a processor UART or GPIO pin."
+    },
+    {
+      "Module Name": "Portable Power Management System",
+      "Function Description": "Manages all power needs. Includes single-cell Li-ion/Polymer battery charging, a soft-latching power switch circuit for clean on/off control, and step-down DC-DC converters to provide stable, clean voltages for logic, audio, and RF circuits.",
+      "Signal Sources": "Power from external charging source (USB) and the internal battery.",
+      "Signal Destinations": "Stable regulated voltages (e.g., 3.3V, 5V, analog supplies) to all other modules. Power switch control signal to/from the HMI or processor.",
+      "Implementation Logic": "A battery management IC (charger + protector), a MOSFET-based soft-latch circuit controlled by a physical button and the processor, and multiple low-noise switching or LDO regulators with proper filtering for different voltage domains (digital, analog, amplifier)."
+    }
+  ]
+}

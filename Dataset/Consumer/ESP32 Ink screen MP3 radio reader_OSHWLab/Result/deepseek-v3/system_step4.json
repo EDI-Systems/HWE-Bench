@@ -1,0 +1,649 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "A1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "B1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TLM",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Ground/Return"
+        },
+        {
+          "ComponentID": "ME6210",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6211",
+          "PinName": "Vss",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "GND",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "DGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "AGND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "GND",
+          "FunctionName": "Supply"
+        },
+        {
+          "ComponentID": "SHT",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PCM12",
+          "PinName": "SHIELD",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "A4",
+          "FunctionName": "Bus Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "A9",
+          "FunctionName": "Bus Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "B4",
+          "FunctionName": "Bus Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "B9",
+          "FunctionName": "Bus Power"
+        },
+        {
+          "ComponentID": "1N4148WS",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        },
+        {
+          "ComponentID": "ME6210",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "ME6211",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "VCC",
+          "FunctionName": "Power Supply"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ME6210",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "SHT",
+          "PinName": "VDD",
+          "FunctionName": "Supply Voltage"
+        },
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "VDD",
+          "FunctionName": "Supply"
+        },
+        {
+          "ComponentID": "1N4148WS",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "PVDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "DVDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ME6211",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD0",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "SHT",
+          "PinName": "SDA",
+          "FunctionName": "Data Line"
+        },
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "SDA",
+          "FunctionName": "Input/Output"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CDATA",
+          "FunctionName": "Control Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD1",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "SHT",
+          "PinName": "SCL",
+          "FunctionName": "Clock Line"
+        },
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "SCL",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CCLK",
+          "FunctionName": "Control Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CLK",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "CLK",
+          "FunctionName": "SCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CMD",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "CMD",
+          "FunctionName": "DI"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD2",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "DAT2",
+          "FunctionName": "RSV"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD3",
+          "FunctionName": "SDIO"
+        },
+        {
+          "ComponentID": "TF-01A",
+          "PinName": "CD/DAT3",
+          "FunctionName": "CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO18",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "SCLK/DMIC_SCL",
+          "FunctionName": "Serial Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO0",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "LRCK",
+          "FunctionName": "Frame Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO21",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "DSDIN",
+          "FunctionName": "Audio Data In"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO12",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CDATA",
+          "FunctionName": "Control Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO14",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CCLK",
+          "FunctionName": "Control Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO15",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "CTRL",
+          "FunctionName": "Control"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO4",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "TLM",
+          "PinName": "Anode (A)",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ES8311",
+          "PinName": "OUTP",
+          "FunctionName": "Audio Output"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "INP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "PCM12",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "ES8311",
+          "PinName": "OUTN",
+          "FunctionName": "Audio Output"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "INN",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "ES8311",
+          "PinName": "AVDD",
+          "FunctionName": "Power Supply"
+        },
+        {
+          "ComponentID": "ME6211",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO32",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "1N4148WS",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "ME6211",
+          "PinName": "CE",
+          "FunctionName": "ON/OFF Control"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO33",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "1N4148WS",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "SHT",
+          "PinName": "ADDR",
+          "FunctionName": "Address Select"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "VDD",
+          "FunctionName": "Supply"
+        },
+        {
+          "ComponentID": "1N4148WS",
+          "PinName": "K",
+          "FunctionName": "Cathode"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO27",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "MCLK",
+          "FunctionName": "Master Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO25",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "ASDOUT",
+          "FunctionName": "Audio Data Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO26",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "DSDIN",
+          "FunctionName": "Audio Data In"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO2",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CDATA",
+          "FunctionName": "Control Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO5",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "ES8311",
+          "PinName": "CE",
+          "FunctionName": "Chip Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO16",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "RX8010SJ",
+          "PinName": "/IRQ1",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net30",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO17",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "NS4150",
+          "PinName": "CTRL",
+          "FunctionName": "Control"
+        }
+      ]
+    },
+    {
+      "net_id": "net31",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO19",
+          "FunctionName": "GPIO"
+        },
+        {
+          "ComponentID": "SHT",
+          "PinName": "ALERT",
+          "FunctionName": "Alert Output"
+        }
+      ]
+    }
+  ]
+}

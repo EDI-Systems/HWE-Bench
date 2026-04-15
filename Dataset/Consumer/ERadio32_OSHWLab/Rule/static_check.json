@@ -1,0 +1,96 @@
+{
+  "MCU_Function_Groups": {
+    "ESP32-WROOM-32": {
+      "Power_Supply_Infrastructure": [
+        { "PinName": "3V3", "FunctionName": "3.3V" },
+        { "PinName": "GND", "FunctionName": "GND" }
+      ],
+      "Digital_Audio_I2S_Bus": [
+        { "PinName": "IO25", "FunctionName": "LRCK" },
+        { "PinName": "IO26", "FunctionName": "BCLK" },
+        { "PinName": "IO22", "FunctionName": "DATA" }
+      ],
+      "LCD_SPI_Control_Group": [
+        { "PinName": "IO18", "FunctionName": "SCK" },
+        { "PinName": "IO23", "FunctionName": "MOSI" },
+        { "PinName": "IO5", "FunctionName": "CS" },
+        { "PinName": "IO27", "FunctionName": "A0 (DC)" }
+      ],
+      "SD_SPI_Mux_Group": [
+        { "PinName": "IO14", "FunctionName": "SD_SCK_MUX" },
+        { "PinName": "IO12", "FunctionName": "SD_MOSI_MUX" },
+        { "PinName": "IO19", "FunctionName": "SD_MISO" },
+        { "PinName": "IO15", "FunctionName": "SD_CS" }
+      ],
+      "Logic_Interface": [
+        { "PinName": "EN", "FunctionName": "Reset" },
+        { "PinName": "TXD0 / IO1", "FunctionName": "TX" },
+        { "PinName": "RXD0 / IO3", "FunctionName": "RX" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "MAX98357": {
+      "I2S_Slave": [
+        { "PinName": "LRCLK", "FunctionName": "WS" },
+        { "PinName": "BCLK", "FunctionName": "BCLK" },
+        { "PinName": "DIN", "FunctionName": "SDIN" }
+      ]
+    },
+    "ST7735S": {
+      "LCD_SPI": [
+        { "PinName": "SCK", "FunctionName": "LCD_CLK" },
+        { "PinName": "SDA (MOSI)", "FunctionName": "LCD_MOSI" },
+        { "PinName": "CS", "FunctionName": "LCD_CS" },
+        { "PinName": "A0 (DC)", "FunctionName": "LCD_DC" }
+      ],
+      "SD_SPI": [
+        { "PinName": "SD\\_SCK", "FunctionName": "SD_CLK" },
+        { "PinName": "SD\\_MOSI", "FunctionName": "SD_MOSI" },
+        { "PinName": "SD\\_MISO", "FunctionName": "SD_MISO" },
+        { "PinName": "SD\\_CS", "FunctionName": "SD_CS" }
+      ]
+    },
+    "TP4056": { "Charger": [ { "PinName": "BAT", "FunctionName": "BAT" } ] },
+    "RT8096C": { "Buck": [ { "PinName": "VIN", "FunctionName": "IN" }, { "PinName": "LX", "FunctionName": "SW" } ] },
+    "AMS1117": { "LDO": [ { "PinName": "VIN", "FunctionName": "IN" }, { "PinName": "VOUT", "FunctionName": "OUT" } ] }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Verify_I2S_Audio_Chain",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32-WROOM-32",
+      "Target_Group_Pattern": "Digital_Audio_I2S_Bus",
+      "Slaves": [ { "ComponentID": "MAX98357", "Interface": "I2S_Slave" } ]
+    },
+    {
+      "RuleName": "Verify_LCD_SPI_Connectivity",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32-WROOM-32",
+      "Target_Group_Pattern": "LCD_SPI_Control_Group",
+      "Slaves": [ { "ComponentID": "ST7735S", "Interface": "LCD_SPI" } ]
+    },
+    {
+      "RuleName": "Verify_SD_SPI_Connectivity",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32-WROOM-32",
+      "Target_Group_Pattern": "SD_SPI_Mux_Group",
+      "Slaves": [ { "ComponentID": "ST7735S", "Interface": "SD_SPI" } ]
+    },
+    {
+      "RuleName": "Verify_Power_Chain_Battery_to_Buck",
+      "Type": "Direct_Link",
+      "Nodes": [ { "ComponentID": "TP4056", "PinName": "BAT" }, { "ComponentID": "RT8096C", "PinName": "VIN" } ]
+    },
+    {
+      "RuleName": "Verify_Power_Chain_Buck_to_LDO",
+      "Type": "Direct_Link",
+      "Nodes": [ { "ComponentID": "RT8096C", "PinName": "LX" }, { "ComponentID": "AMS1117", "PinName": "VIN" } ]
+    },
+    {
+      "RuleName": "Verify_Power_Chain_LDO_to_MCU",
+      "Type": "Direct_Link",
+      "Nodes": [ { "ComponentID": "AMS1117", "PinName": "VOUT" }, { "ComponentID": "ESP32-WROOM-32", "PinName": "3V3" } ]
+    }
+  ]
+}

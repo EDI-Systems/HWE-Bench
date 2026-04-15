@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Wireless Central Processing Unit (WCPU)",
+      "Function Description": "Dedicated real-time processor for flight dynamics, sensor fusion, and control signal generation. Executes core flight control algorithms and manages all system communication.",
+      "Signal Sources": "Redundant Sensory Array, Satellite Positioning Module, Remote Control Receiver, Companion Computer via Data Bridge.",
+      "Signal Destinations": "Motor Control Output Headers, Companion Computer via Data Bridge.",
+      "Implementation Logic": "Receives and fuses multi-source telemetry (inertial, barometric, magnetic, GPS, RC). Computes stabilization and navigation commands. Generates precise PWM/PPM/DShot signals for ESCs. Maintains bidirectional, high-speed data link with companion computer for autonomous planning."
+    },
+    {
+      "Module Name": "Redundant Sensory Array",
+      "Function Description": "Fault-tolerant cluster of sensors providing spatial awareness, orientation, and altitude data.",
+      "Signal Sources": "Multiple Independent IMUs (gyro/accel), Dual Barometric Altimeters, Discrete Magnetometer.",
+      "Signal Destinations": "Wireless Central Processing Unit (WCPU).",
+      "Implementation Logic": "Multiple identical sensor units operate in parallel. Data is independently acquired and pre-processed (filtered, calibrated). A voting or consensus algorithm within the WCPU or a dedicated safety co-processor compares outputs to detect and isolate faults, providing a single, validated data stream to the main processor."
+    },
+    {
+      "Module Name": "Peripheral Interface & Communication Hub",
+      "Function Description": "Provides physical connectors and protocol management for all external devices and motor controllers.",
+      "Signal Sources": "Remote Control Receiver, Satellite Positioning Module (GPS/GLONASS/etc.), Companion Computer.",
+      "Signal Destinations": "Wireless Central Processing Unit (WCPU), Multi-channel Motor Output Headers.",
+      "Implementation Logic": "Includes dedicated serial buses (UART, I2C, SPI) for GPS and RC receiver. Features a high-bandwidth interface (e.g., Ethernet, high-speed UART, USB) for the companion computer data bridge. Houses multiple motor output headers with signal conditioning to drive ESCs directly from the WCPU's timer peripherals."
+    },
+    {
+      "Module Name": "Motor Control Output Stage",
+      "Function Description": "Final output driver stage that delivers precise timing control signals to Electronic Speed Controllers (ESCs).",
+      "Signal Sources": "Wireless Central Processing Unit (WCPU).",
+      "Signal Destinations": "Electronic Speed Controllers (ESCs) for multi-rotor motors.",
+      "Implementation Logic": "Receives digital command packets (e.g., DShot) or PWM timing values from the WCPU. Buffers and level-shifts signals as needed. Provides robust, isolated (optically or magnetically) output channels to protect the main board from motor/ESC electrical noise and faults."
+    },
+    {
+      "Module Name": "Power Management & Distribution System",
+      "Function Description": "Conditions input power from the UAV's battery and provides stable, isolated voltage rails to all onboard modules.",
+      "Signal Sources": "Main UAV Battery (e.g., LiPo).",
+      "Signal Destinations": "All Functional Modules (WCPU, Sensory Array, Interface Hub, etc.).",
+      "Implementation Logic": "Incorporates reverse-polarity protection, fusing, and input filtering. Uses switching regulators for high efficiency to generate core logic voltages (e.g., 3.3V, 5V). May include low-noise LDOs for analog sensor supplies. Provides power sequencing and monitoring for safe startup and fault detection."
+    }
+  ]
+}

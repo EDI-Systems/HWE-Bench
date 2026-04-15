@@ -1,0 +1,163 @@
+{
+  "ComponentID": "HMC5883L",
+  "ComponentType": "3-Axis Digital Magnetometer / Compass IC",
+  "Description": "The HMC5883L is a low-power, surface-mount, multi-chip module integrating three anisotropic magnetoresistive (AMR) sensors and a dedicated ASIC. It provides digital 3-axis magnetic field sensing for applications like electronic compassing. The ASIC handles signal amplification, automatic degaussing (set/reset), offset cancellation, and includes a 12-bit ADC. Data is output via an I²C serial interface, enabling heading accuracy of 1° to 2°. It is designed for low-voltage operation in consumer and navigation devices.",
+  "KeyParameters": {
+    "Supply Voltage (VDD)": "2.16 V to 3.6 V",
+    "I/O Voltage (VDDIO)": "1.71 V to VDD+0.1 V",
+    "Average Current (Measurement Mode)": "100 µA (Typical, 7.5 Hz ODR, Single Supply)",
+    "Magnetic Field Range": "±8 Gauss (Full Scale)",
+    "Dynamic Range (Gain Control)": "±1 Gauss to ±8 Gauss",
+    "Digital Resolution": "12-bit ADC",
+    "Output Data Rate (ODR)": "0.75 Hz to 160 Hz",
+    "Sensitivity (LSb/Gauss)": "230 to 1370 (Programmable Gain)",
+    "Noise Floor (Field Resolution)": "2 milli-gauss (Typical)",
+    "Package": "3.0 x 3.0 x 0.9 mm, 16-pin Leadless Chip Carrier (LCC)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "$I^2C$ serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.16V - 3.6V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No internal connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "S1",
+      "Functions": [
+        {
+          "FunctionName": "Tie-High",
+          "FunctionDescription": "Internal bridge supply; tie to VDDIO"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SETP",
+      "Functions": [
+        {
+          "FunctionName": "Set/Reset",
+          "FunctionDescription": "Set/Reset strap positive (connect to C2)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "C1",
+      "Functions": [
+        {
+          "FunctionName": "Filter",
+          "FunctionDescription": "Reservoir capacitor for internal LDO"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "SETC",
+      "Functions": [
+        {
+          "FunctionName": "Set/Reset",
+          "FunctionDescription": "Set/Reset strap negative (connect to C2)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Supply voltage for $I^2C$ and DRDY"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - VDD"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "DRDY",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt",
+          "FunctionDescription": "Data Ready interrupt (active high)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "$I^2C$ bi-directional serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "Motor Control Output Stage": [
+    {
+      "net_id": "net_pwm1_esc",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "10",
+          "FunctionName": "PWM Output Channel 1 (IO25)"
+        },
+        {
+          "ComponentID": "Header-Female-2.54_1x6",
+          "PinName": "1",
+          "FunctionName": "ESC Signal Output 1"
+        }
+      ]
+    }
+  ],
+  "Redundant Sensory Array": [
+    {
+      "net_id": "net_3v3_power",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "2", "FunctionName": "3V3 Power" },
+        { "ComponentID": "BMI160", "PinName": "8", "FunctionName": "VDD" },
+        { "ComponentID": "BMI160", "PinName": "5", "FunctionName": "VDDIO" },
+        { "ComponentID": "MPU-9250", "PinName": "13", "FunctionName": "VDD" },
+        { "ComponentID": "MPU-9250", "PinName": "8", "FunctionName": "VDDIO" },
+        { "ComponentID": "MPU-9250", "PinName": "1", "FunctionName": "RESV_VDDIO" },
+        { "ComponentID": "BMP280", "PinName": "8", "FunctionName": "VDD" },
+        { "ComponentID": "BMP280", "PinName": "6", "FunctionName": "VDDIO" },
+        { "ComponentID": "HMC5883L", "PinName": "2", "FunctionName": "VDD" },
+        { "ComponentID": "HMC5883L", "PinName": "13", "FunctionName": "VDDIO" },
+        { "ComponentID": "HMC5883L", "PinName": "4", "FunctionName": "S1 (Tie-High)" }
+      ]
+    },
+    {
+      "net_id": "net_gnd",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "1", "FunctionName": "GND" },
+        { "ComponentID": "ESP32", "PinName": "15", "FunctionName": "GND" },
+        { "ComponentID": "ESP32", "PinName": "38", "FunctionName": "GND" },
+        { "ComponentID": "BMI160", "PinName": "7", "FunctionName": "GND" },
+        { "ComponentID": "BMI160", "PinName": "6", "FunctionName": "GNDIO" },
+        { "ComponentID": "MPU-9250", "PinName": "18", "FunctionName": "GND" },
+        { "ComponentID": "MPU-9250", "PinName": "20", "FunctionName": "RESV_GND" },
+        { "ComponentID": "BMP280", "PinName": "1", "FunctionName": "GND" },
+        { "ComponentID": "BMP280", "PinName": "7", "FunctionName": "GND" },
+        { "ComponentID": "HMC5883L", "PinName": "9", "FunctionName": "GND" },
+        { "ComponentID": "HMC5883L", "PinName": "11", "FunctionName": "GND" }
+      ]
+    },
+    {
+      "net_id": "net_spi_sck",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "30", "FunctionName": "IO18 (SCK)" },
+        { "ComponentID": "BMI160", "PinName": "13", "FunctionName": "SCX" },
+        { "ComponentID": "MPU-9250", "PinName": "23", "FunctionName": "SCL/SCLK" }
+      ]
+    },
+    {
+      "net_id": "net_spi_mosi",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "37", "FunctionName": "IO23 (MOSI)" },
+        { "ComponentID": "BMI160", "PinName": "14", "FunctionName": "SDX" },
+        { "ComponentID": "MPU-9250", "PinName": "24", "FunctionName": "SDA/SDI" }
+      ]
+    },
+    {
+      "net_id": "net_spi_miso",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "31", "FunctionName": "IO19 (MISO)" },
+        { "ComponentID": "BMI160", "PinName": "1", "FunctionName": "SDO" },
+        { "ComponentID": "MPU-9250", "PinName": "9", "FunctionName": "AD0/SDO" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_scl",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "36", "FunctionName": "IO22 (SCL)" },
+        { "ComponentID": "BMP280", "PinName": "4", "FunctionName": "SCK" },
+        { "ComponentID": "HMC5883L", "PinName": "1", "FunctionName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_sda",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "33", "FunctionName": "IO21 (SDA)" },
+        { "ComponentID": "BMP280", "PinName": "3", "FunctionName": "SDI" },
+        { "ComponentID": "HMC5883L", "PinName": "16", "FunctionName": "SDA" }
+      ]
+    }
+  ]
+}

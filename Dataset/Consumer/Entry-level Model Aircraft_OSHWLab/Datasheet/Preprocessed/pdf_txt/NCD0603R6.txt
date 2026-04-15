@@ -1,0 +1,19 @@
+Component ID: NCD0603R6
+Component Type: Chip LED (Surface-Mount Device, SMD LED)
+Description: The NCD0603R6 is a red surface-mount LED in a 0603 package, designed for use as an indicator and backlight in consumer electronics, appliances, and automotive dashboards. It emits red light when forward-biased and is characterized by its compact size, wide viewing angle, and specific optical performance parameters.
+
+Key Parameters:
+- **Forward Voltage (VF)**: 1.6V to 2.4V (Typical 2.0V @ IF=5mA)
+- **Luminous Intensity (Iv)**: 30 mcd to 80 mcd (Typical 45 mcd @ IF=5mA)
+- **Dominant Wavelength (λd)**: 620 nm to 630 nm (Typical 622 nm)
+- **Maximum Continuous Forward Current (IF)**: 25 mA
+- **Maximum Reverse Voltage (VR)**: 5 V
+- **Viewing Angle (2θ1/2)**: 140 degrees (Typical)
+- **Operating Temperature Range**: -30°C to +85°C
+- **Package Size**: 0603 (1.6mm x 0.8mm body, approx.)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode (A) | Positive Terminal | The positive electrical connection for forward biasing the LED. | SMD Pad | Power Input |
+| 2 | Cathode (K) | Negative Terminal | The negative electrical connection for forward biasing the LED. | SMD Pad | Ground/Return |

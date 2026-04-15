@@ -1,0 +1,187 @@
+{
+  "ComponentID": "BMI160",
+  "ComponentType": "Inertial Measurement Unit (IMU)",
+  "Description": "The BMI160 is a low-power, 6-axis inertial measurement unit that combines a 16-bit digital triaxial accelerometer and a 16-bit digital triaxial gyroscope in a single package. It is designed for precise motion sensing in battery-powered devices like smartphones, wearables, and IoT products. Key features include hardware-synchronized sensor data, an integrated FIFO buffer, a power management unit for advanced low-power operation, and support for external sensor data (e.g., magnetometers). It enables motion-based applications such as step counting, gesture recognition, image stabilization, and augmented reality.",
+  "KeyParameters": {
+    "Power Supply Voltage (VDD)": "1.71 V to 3.6 V",
+    "I/O Voltage (VDDIO)": "1.2 V to 3.6 V",
+    "Current Consumption (Typical)": "925 µA (accelerometer and gyroscope both active)",
+    "Operating Temperature Range": "Not explicitly stated in excerpt; refer to full datasheet.",
+    "Accelerometer Resolution": "16-bit digital",
+    "Gyroscope Resolution": "16-bit digital",
+    "FIFO Buffer Size": "1024 bytes",
+    "Package Dimensions": "2.5 x 3.0 x 0.83 mm (LGA)",
+    "Interface Options": "I²C or SPI (primary), secondary I²C for external sensors",
+    "Interrupt Features": "Any-motion, no-motion, step detection, significant motion, tap/double-tap, orientation, free-fall"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SDO",
+      "Functions": [
+        {
+          "FunctionName": "I2C Addr/SPI MISO",
+          "FunctionDescription": "I2C address LSB / SPI Serial Data Out"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "ASDX",
+      "Functions": [
+        {
+          "FunctionName": "Aux SDA",
+          "FunctionDescription": "Auxiliary I2C data for sensor hub"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "ASCX",
+      "Functions": [
+        {
+          "FunctionName": "Aux SCL",
+          "FunctionDescription": "Auxiliary I2C clock for sensor hub"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "INT1",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt 1",
+          "FunctionDescription": "Programmable interrupt output 1"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Supply voltage for digital I/O pins"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.2V - 3.6V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GNDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Ground",
+          "FunctionDescription": "Ground reference for digital I/O"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main analog supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - 3.6V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "INT2",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt 2",
+          "FunctionDescription": "Programmable interrupt output 2"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "OCSB",
+      "Functions": [
+        {
+          "FunctionName": "OIS CS",
+          "FunctionDescription": "Chip select for Optical Image Stabilization interface"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "OSDO",
+      "Functions": [
+        {
+          "FunctionName": "OIS SDO",
+          "FunctionDescription": "Serial data output for OIS interface"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "CSB",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "Primary SPI chip select (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "SCX",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "Primary I2C/SPI serial clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "SDX",
+      "Functions": [
+        {
+          "FunctionName": "Serial Data",
+          "FunctionDescription": "Primary I2C SDA / SPI MOSI"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

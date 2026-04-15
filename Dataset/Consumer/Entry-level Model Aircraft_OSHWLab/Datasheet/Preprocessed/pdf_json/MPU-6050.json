@@ -1,0 +1,217 @@
+{
+  "ComponentID": "MPU-6050",
+  "ComponentType": "6-Axis Motion Tracking Device (Gyroscope + Accelerometer)",
+  "Description": "The MPU-6050 is a highly integrated 6-axis motion tracking device that combines a 3-axis gyroscope and a 3-axis accelerometer on a single silicon die. It features an onboard Digital Motion Processor (DMP) that processes complex 6-axis MotionFusion algorithms, reducing the load on the host microcontroller. Additionally, it includes a dedicated auxiliary I2C bus to interface with external sensors such as magnetometers, allowing for a complete 9-axis output. It is widely used in applications requiring orientation and motion sensing, such as drones, smartphones, and wearable devices.",
+  "KeyParameters": {
+    "Gyroscope Range": "±250, ±500, ±1000, ±2000 °/s (Programmable)",
+    "Accelerometer Range": "±2g, ±4g, ±8g, ±16g (Programmable)",
+    "Interface": "I2C (Up to 400kHz)",
+    "Operating Voltage (VDD)": "2.375V to 3.46V"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CLKIN",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "External clock reference input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "AUX_DA",
+      "Functions": [
+        {
+          "FunctionName": "Aux I2C",
+          "FunctionDescription": "Auxiliary I2C serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "AUX_CL",
+      "Functions": [
+        {
+          "FunctionName": "Aux I2C",
+          "FunctionDescription": "Auxiliary I2C serial clock line"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VLOGIC",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Digital I/O supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - VDD"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "AD0",
+      "Functions": [
+        {
+          "FunctionName": "Address",
+          "FunctionDescription": "I2C slave address LSB selection"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "REGOUT",
+      "Functions": [
+        {
+          "FunctionName": "Filter",
+          "FunctionDescription": "Regulator filter capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "FSYNC",
+      "Functions": [
+        {
+          "FunctionName": "Sync",
+          "FunctionDescription": "Frame synchronization digital input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt",
+          "FunctionDescription": "Interrupt digital output pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main positive supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.375V - 3.46V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved pin (connect to GND)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "CPOUT",
+      "Functions": [
+        {
+          "FunctionName": "Pump",
+          "FunctionDescription": "Charge pump capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved pin (connect to GND)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "RESV",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved pin (connect to GND)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "SCL",
+          "FunctionDescription": "I2C serial clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "SDA",
+          "FunctionDescription": "I2C bi-directional serial data line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Exposed pad (connect to system GND)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    }
+  ]
+}

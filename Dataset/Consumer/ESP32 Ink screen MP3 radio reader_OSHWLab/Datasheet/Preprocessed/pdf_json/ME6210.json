@@ -1,0 +1,54 @@
+{
+  "ComponentID": "ME6210",
+  "ComponentType": "Low-Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The ME6210 series are CMOS-based, low-quiescent-current linear voltage regulators designed for high-voltage input applications up to 18V. They provide a fixed, accurate output voltage with a typical output current capability of 500mA. Key features include very low dropout voltage, ultra-low ground current, built-in short-circuit protection, and stability with ceramic capacitors, making them suitable for battery-powered and portable electronic devices.",
+  "KeyParameters": {
+    "Maximum Input Voltage (VIN)": "18 V",
+    "Output Voltage Range (VOUT)": "1.5V to 5.0V (Fixed variants: 2.5V, 2.8V, 3.0V, 3.3V, 3.6V, 4.0V, 5.0V)",
+    "Maximum Output Current (IOUT)": "500 mA (Typ., Vin=4V, Vout=3V)",
+    "Dropout Voltage (VDIF)": "11 mV (Typ. @ Iout=10mA, Vout=3.0V)",
+    "Quiescent (Supply) Current (ISS)": "1.5 µA (Typ.)",
+    "Output Voltage Accuracy": "±2%",
+    "Line Regulation": "0.03 %/V (Typ.)",
+    "Short-Circuit Current": "50 mA (Typ.)",
+    "Operating Temperature Range (Topr)": "-25°C to +85°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power, Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Regulated output voltage."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power, Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Unregulated input voltage supply."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power, Input"
+    }
+  ]
+}

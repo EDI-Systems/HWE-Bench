@@ -1,0 +1,57 @@
+{
+  "High-Fidelity Audio Subsystem": [
+    {
+      "net_id": "net_audio_houtr",
+      "Connections": [
+        { "ComponentID": "PCM1771", "PinName": "10", "FunctionName": "HOUTR" }
+      ]
+    },
+    {
+      "net_id": "net_audio_houtl",
+      "Connections": [
+        { "ComponentID": "PCM1771", "PinName": "9", "FunctionName": "HOUTL" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_lrck",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "10", "FunctionName": "IO25 (LRCK)" },
+        { "ComponentID": "PCM1771", "PinName": "1", "FunctionName": "LRCK" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_data",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "11", "FunctionName": "IO26 (DATA)" },
+        { "ComponentID": "PCM1771", "PinName": "2", "FunctionName": "DATA" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_bck",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "12", "FunctionName": "IO27 (BCK)" },
+        { "ComponentID": "PCM1771", "PinName": "3", "FunctionName": "BCK" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_mclk",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "25", "FunctionName": "IO0 (MCLK)" },
+        { "ComponentID": "PCM1771", "PinName": "16", "FunctionName": "SCKI/MCLK" }
+      ]
+    },
+    {
+      "net_id": "net_3v3_audio",
+      "Connections": [
+        { "ComponentID": "PCM1771", "PinName": "12", "FunctionName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "net_audio_gnd",
+      "Connections": [
+        { "ComponentID": "PCM1771", "PinName": "5", "FunctionName": "AGND" },
+        { "ComponentID": "PCM1771", "PinName": "6", "FunctionName": "HGND" }
+      ]
+    }
+  ]
+}

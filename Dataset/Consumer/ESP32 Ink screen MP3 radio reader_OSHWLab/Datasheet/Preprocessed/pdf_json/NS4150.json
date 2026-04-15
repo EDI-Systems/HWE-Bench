@@ -1,0 +1,114 @@
+{
+  "ComponentID": "NS4150",
+  "ComponentType": "Mono Class-D Audio Power Amplifier",
+  "Description": "The NS4150B is a 3W mono, filterless Class-D audio power amplifier designed for low EMI and high efficiency in portable audio applications. It integrates a PWM modulation structure with built-in gain, eliminating the need for an external LC filter. The device features comprehensive protection circuits (over-current, over-temperature, and under-voltage), excellent PSRR, and low pop-and-click noise during power-on/off sequences. It operates from a single 3.0V to 5.0V supply and is offered in an MSOP-8 package.",
+  "KeyParameters": {
+    "Supply Voltage Range (Recommended)": "3.0V to 5.0V",
+    "Output Power (THD=10%, VDD=5V, RL=4Ω)": "2.8W",
+    "Maximum Efficiency": "90%",
+    "Quiescent Current (VDD=3.6V, No Load)": "3.0 mA (typ)",
+    "Modulation Frequency": "400 kHz (typ)",
+    "PSRR (217 Hz)": "-80 dB (typ)",
+    "THD+N (VDD=3.6V, Po=0.5W, RL=4Ω, 1kHz)": "0.10% (typ)",
+    "Shutdown Leakage Current (VDD=3.6V)": "0.1 µA (typ)",
+    "Operating Temperature Range": "-40°C to 85°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CTRL",
+      "Functions": [
+        {
+          "FunctionName": "Control",
+          "FunctionDescription": "Shutdown control (Low = Shutdown)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "Control"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Bypass",
+      "Functions": [
+        {
+          "FunctionName": "Bypass",
+          "FunctionDescription": "Internal common-mode voltage bypass; connect 1µF capacitor to GND"
+        }
+      ],
+      "PinType": "Analog",
+      "ElectricalType": "Power/Reference"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "INP",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Non-inverting audio input"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "INN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Inverting audio input"
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VoN",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Inverting audio output (negative)"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Supply voltage input and power stage supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Supply"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VoP",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Non-inverting audio output (positive)"
+        }
+      ],
+      "PinType": "Analog Output",
+      "ElectricalType": "Power Output"
+    }
+  ]
+}

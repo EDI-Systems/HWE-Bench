@@ -1,0 +1,33 @@
+ Component ID: ILI
+Component Type: Color TFT LCD Display Module with Resistive Touchscreen and Integrated Controller
+Description:
+This is a 2.4-inch diagonal color TFT LCD module with an integrated controller, RAM buffer, and a 4-LED white backlight. It features a resistive touchscreen overlay and supports two primary interface modes: an 8-bit parallel interface for high-speed operation and a 4/5-wire SPI interface for reduced pin count. The breakout board includes level-shifting circuitry for 3-5V logic compatibility, an onboard 3.3V regulator, and connections for an optional microSD card. It is designed to offload graphics processing from the host microcontroller.
+
+Key Parameters:
+- Display Resolution: 240 x 320 pixels
+- Display Technology: TFT with individual RGB pixel control
+- Interface Modes: 8-bit parallel, SPI (4/5-wire)
+- Logic Voltage Compatibility: 3V to 5V (with onboard level shifting)
+- Backlight: 4 white LEDs, PWM controllable
+- Touchscreen Type: 4-wire Resistive (separate Y+, X+, Y-, X- pins)
+- Supply Voltage (Vin): 3VDC to 5VDC
+- Onboard Output Voltage: 3.3V (regulated)
+- SD Card Interface: SPI-compatible (shared bus with TFT in SPI mode)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| P1 | GND | Ground | Main system ground reference | Power | 0V |
+| P2 | RESET | Reset | Hardware reset pin (Active Low) | Input | Digital |
+| P3 | SCL | Clock | SPI Serial Clock input | Input | Digital |
+| P4 | D/CX | Data/Cmd | Register select (Data or Command) | Input | Digital |
+| P5 | CSX | Chip Select | LCD Chip Select signal (Active Low) | Input | Digital |
+| P6 | SDI | Data In | SPI Master Out Slave In (MOSI) | Input | Digital |
+| P7 | SDO | Data Out | SPI Master In Slave Out (MISO) | Output | Digital |
+| P8 | GND2 | Ground | Secondary ground connection | Power | 0V |
+| P9 | VCC | Power | Main positive supply voltage | Power | 3.3V |
+| P10 | LEDA | Backlight+ | Common Anode for the LED backlight | Power | ~3.2V |
+| P11 | LED_K1 | Cathode 1 | LED backlight segment 1 cathode | Passive | Power |
+| P12 | LED_K2 | Cathode 2 | LED backlight segment 2 cathode | Passive | Power |
+| P13 | LED_K3 | Cathode 3 | LED backlight segment 3 cathode | Passive | Power |
+| P14 | LED_K4 | Cathode 4 | LED backlight segment 4 cathode | Passive | Power |

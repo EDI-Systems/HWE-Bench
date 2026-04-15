@@ -1,0 +1,128 @@
+{
+  "MCU_Function_Groups": {
+    "ESP32": {
+      "System_Logic_and_Power": [
+        { "PinName": "3V3", "FunctionName": "Main Power Supply" },
+        { "PinName": "GND", "FunctionName": "System Ground" },
+        { "PinName": "38", "FunctionName": "GND" },
+        { "PinName": "EN", "FunctionName": "Hardware Reset" },
+        { "PinName": "IO0", "FunctionName": "Boot Mode Selection" }
+      ],
+      "Multiplexed_IO_Bus": [
+        { "PinName": "IO18", "FunctionName": "TFT_SCK" },
+        { "PinName": "IO23", "FunctionName": "TFT_MOSI" },
+        { "PinName": "IO19", "FunctionName": "TFT_MISO" },
+        { "PinName": "IO5", "FunctionName": "TFT_CS" },
+        { "PinName": "IO27", "FunctionName": "TFT_DC" },
+        { "PinName": "IO33", "FunctionName": "TFT_RST" },
+        { "PinName": "IO21", "FunctionName": "TFT_Backlight_PWM" },
+        { "PinName": "IO14", "FunctionName": "SD_SCK" },
+        { "PinName": "IO13", "FunctionName": "SD_MOSI" },
+        { "PinName": "IO12", "FunctionName": "SD_MISO" },
+        { "PinName": "IO15", "FunctionName": "SD_CS" },
+        { "PinName": "IO25", "FunctionName": "I2S_LRCK" },
+        { "PinName": "IO26", "FunctionName": "I2S_DATA" },
+        { "PinName": "IO32", "FunctionName": "I2S_BCK" },
+        { "PinName": "IO2", "FunctionName": "I2S_MCLK / SCKI" },
+        { "PinName": "IO4", "FunctionName": "Audio_PA_Shutdown" },
+        { "PinName": "SENSOR_VN", "FunctionName": "ADC_Button_Ladder" },
+        { "PinName": "SENSOR_VP", "FunctionName": "Battery_ADC_Sense" },
+        { "PinName": "TXD0", "FunctionName": "UART_TX" },
+        { "PinName": "RXD0", "FunctionName": "UART_RX" }
+      ],
+      "Flash_Internal_Interface": [
+        { "PinName": "CLK", "FunctionName": "Flash_CLK" },
+        { "PinName": "CMD", "FunctionName": "Flash_CMD" },
+        { "PinName": "SD0", "FunctionName": "Flash_D0" },
+        { "PinName": "SD1", "FunctionName": "Flash_D1" },
+        { "PinName": "SD2", "FunctionName": "Flash_D2" },
+        { "PinName": "SD3", "FunctionName": "Flash_D3" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "ILI": {
+      "Display_SPI_Port": [
+        { "PinName": "SCL", "FunctionName": "Serial Clock" },
+        { "PinName": "SDI", "FunctionName": "MOSI" },
+        { "PinName": "SDO", "FunctionName": "MISO" },
+        { "PinName": "CSX", "FunctionName": "Chip Select" },
+        { "PinName": "D/CX", "FunctionName": "Data/Command Select" },
+        { "PinName": "RESET", "FunctionName": "Hardware Reset" }
+      ]
+    },
+    "PCM1771": {
+      "SD_SPI_Port": [
+        { "PinName": "CLK", "FunctionName": "SCLK" },
+        { "PinName": "CMD", "FunctionName": "DI/MOSI" },
+        { "PinName": "DAT0", "FunctionName": "DO/MISO" },
+        { "PinName": "CD/DAT3", "FunctionName": "Chip Select" }
+      ]
+    },
+    "CH340": {
+      "UART_Bridge_Port": [
+        { "PinName": "TXD", "FunctionName": "MCU Receive" },
+        { "PinName": "RXD", "FunctionName": "MCU Transmit" }
+      ]
+    },
+    "TP4056": {
+      "Charger_Interface": [
+        { "PinName": "VCC", "FunctionName": "USB Power Input" },
+        { "PinName": "BAT", "FunctionName": "Battery Output" }
+      ]
+    },
+    "MCP1825": {
+      "Regulator_Chain": [
+        { "PinName": "VIN", "FunctionName": "Power Input" },
+        { "PinName": "VOUT", "FunctionName": "3.3V Output" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_TFT_Screen_Control_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Multiplexed_IO_Bus",
+      "Slaves": [ { "ComponentID": "ILI", "Interface": "Display_SPI_Port" } ]
+    },
+    {
+      "RuleName": "Check_MicroSD_Storage_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Multiplexed_IO_Bus",
+      "Slaves": [ { "ComponentID": "PCM1771", "Interface": "SD_SPI_Port" } ]
+    },
+    {
+      "RuleName": "Check_UART_Debug_Interface",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Multiplexed_IO_Bus",
+      "Slaves": [ { "ComponentID": "CH340", "Interface": "UART_Bridge_Port" } ]
+    },
+    {
+      "RuleName": "Check_USB_to_Charger_Input",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "TP4056", "PinName": "VCC" }
+      ]
+    },
+    {
+      "RuleName": "Check_Battery_to_Regulator_Link",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "TP4056", "PinName": "BAT" },
+        { "ComponentID": "MCP1825", "PinName": "VIN" }
+      ]
+    },
+    {
+      "RuleName": "Check_3V3_System_Supply_Continuity",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "MCP1825", "PinName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "3V3" }
+      ]
+    }
+  ]
+}

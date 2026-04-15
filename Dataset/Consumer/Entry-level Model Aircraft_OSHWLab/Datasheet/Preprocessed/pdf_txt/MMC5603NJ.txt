@@ -1,0 +1,25 @@
+Component ID: MMC5603NJ  
+Component Type: Monolithic 3-Axis AMR (Anisotropic Magnetoresistance) Magnetic Sensor with Digital Interface  
+
+Description:  
+The MMC5603NJ is a complete, monolithic 3-axis magnetic sensor that integrates AMR sensing elements, signal processing, and a digital I²C/I3C interface. It measures magnetic fields with a full-scale range of ±30 Gauss, offering high resolution (down to 0.0625 mG/LSB) and low noise (2 mG RMS). Key features include an on-chip automatic degaussing (SET/RESET) function to eliminate temperature-induced offset and residual magnetization, built-in sensitivity compensation, a temperature sensor, and low power consumption. It is designed for applications such as electronic compassing and position sensing, requiring minimal external components.
+
+Key Parameters:
+- Field Range (Full Scale): ±30 G
+- Resolution: 0.0625 mG per LSB (20-bit operation mode)
+- Total RMS Noise: 2 mG (typical)
+- Supply Voltage (VDD): 1.62 V to 3.6 V
+- Supply Current: 0.75 mA to 4.0 mA (depending on bandwidth mode)
+- Power-Down Current: 1.0 µA (typical)
+- Operating Temperature: -40°C to +85°C
+- Output Data Rate: Up to 1000 Hz (sensor frequency response)
+- Interface: I²C (Fast Mode, ≤400 kHz) and I3C
+- Package Size: 0.8 mm × 0.8 mm × 0.4 mm (Wafer Level Package)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | VSA | GND | Analog supply ground reference | Power | 0V |
+| B1 | VDD | Power | Positive supply voltage input | Power | 1.62V - 3.6V |
+| A2 | SCL | SCL | I2C serial clock line | Input | Signal |
+| B2 | SDA | SDA | I2C bi-directional serial data line | I/O | Signal |

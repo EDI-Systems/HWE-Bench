@@ -1,0 +1,33 @@
+Component ID: HMC5883L
+Component Type: 3-Axis Digital Magnetometer / Compass IC
+Description:
+The HMC5883L is a low-power, surface-mount, multi-chip module integrating three anisotropic magnetoresistive (AMR) sensors and a dedicated ASIC. It provides digital 3-axis magnetic field sensing for applications like electronic compassing. The ASIC handles signal amplification, automatic degaussing (set/reset), offset cancellation, and includes a 12-bit ADC. Data is output via an I²C serial interface, enabling heading accuracy of 1° to 2°. It is designed for low-voltage operation in consumer and navigation devices.
+
+Key Parameters:
+- Supply Voltage (VDD): 2.16 V to 3.6 V
+- I/O Voltage (VDDIO): 1.71 V to VDD+0.1 V
+- Average Current (Measurement Mode): 100 µA (Typical, 7.5 Hz ODR, Single Supply)
+- Magnetic Field Range: ±8 Gauss (Full Scale)
+- Dynamic Range (Gain Control): ±1 Gauss to ±8 Gauss
+- Digital Resolution: 12-bit ADC
+- Output Data Rate (ODR): 0.75 Hz to 160 Hz
+- Sensitivity (LSb/Gauss): 230 to 1370 (Programmable Gain)
+- Noise Floor (Field Resolution): 2 milli-gauss (Typical)
+- Package: 3.0 x 3.0 x 0.9 mm, 16-pin Leadless Chip Carrier (LCC)
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | SCL | SCL | $I^2C$ serial clock input | Input | Digital |
+| 2 | VDD | Power | Positive supply voltage input | Power | 2.16V - 3.6V |
+| 3 | NC | - | No internal connection | NC | - |
+| 4 | S1 | Tie-High | Internal bridge supply; tie to VDDIO | Passive | Power |
+| 8 | SETP | Set/Reset | Set/Reset strap positive (connect to C2) | Passive | Analog |
+| 9 | GND | Ground | Main system ground | Power | 0V |
+| 10 | C1 | Filter | Reservoir capacitor for internal LDO | Passive | Analog |
+| 11 | GND | Ground | Main system ground | Power | 0V |
+| 12 | SETC | Set/Reset | Set/Reset strap negative (connect to C2) | Passive | Analog |
+| 13 | VDDIO | IO Power | Supply voltage for $I^2C$ and DRDY | Power | 1.71V - VDD |
+| 15 | DRDY | Interrupt | Data Ready interrupt (active high) | Output | Digital |
+| 16 | SDA | SDA | $I^2C$ bi-directional serial data line | I/O | Digital |

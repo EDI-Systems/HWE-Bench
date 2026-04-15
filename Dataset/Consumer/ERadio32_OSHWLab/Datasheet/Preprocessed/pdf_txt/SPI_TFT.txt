@@ -1,0 +1,34 @@
+Component ID: SPI_TFT
+Component Type: 2.8-inch TFT LCD Module with Touch and SD Card
+Description: This is a high-resolution 2.8" color TFT display module, featuring a 240x320 pixel resolution. It typically utilizes the ILI9341 controller and communicates over a Serial Peripheral Interface (SPI). This module is highly integrated, combining three separate SPI devices into a single board: the main LCD, a resistive touch controller (usually the XPT2046), and a standard SD card socket. This makes it ideal for developing comprehensive graphical user interfaces in embedded systems where space is at a premium.
+
+
+Key Parameters:
+- Screen Size: 2.8 inches
+- Resolution: 240 x 320 Pixels
+- LCD Controller: ILI9341 (common)
+- Touch Controller: XPT2046 (Resistive)
+- Interface: SPI (separate chip selects for LCD, Touch, and SD)
+- Operating Voltage: 3.3V (Logic) / 3.3V to 5V (VCC)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | VCC | Power | Main positive power supply input | Power | 3.3V - 5V |
+| 2 | GND | Ground | Common system ground reference | Power | 0V |
+| 3 | CS | LCD CS | LCD Chip Select (Active Low) | Input | Digital |
+| 4 | RESET | Reset | LCD hardware reset (Active Low) | Input | Digital |
+| 5 | D/C | Data/Cmd | Register select (Data or Command) | Input | Digital |
+| 6 | MOSI | LCD MOSI | Master Out Slave In for LCD/SD/Touch | Input | Digital |
+| 7 | SCK | SPI Clock | Serial Clock for all integrated SPI devices | Input | Digital |
+| 8 | LED | Backlight | Backlight control (PWM or high for ON) | Input | Analog/Digital |
+| 9 | MISO | LCD MISO | Master In Slave Out for LCD | Output | Digital |
+| 10 | T_CLK | Touch CLK | Clock for touch controller | Input | Digital |
+| 11 | T_CS | Touch CS | Touch controller Chip Select (Active Low) | Input | Digital |
+| 12 | T_DI | Touch DI | Touch controller Data In (MOSI) | Input | Digital |
+| 13 | T_DO | Touch DO | Touch controller Data Out (MISO) | Output | Digital |
+| 14 | T_IRQ | Touch IRQ | Touch interrupt signal (Active Low) | Output | Digital |
+| 15 | SD_CS | SD CS | SD card Chip Select (Active Low) | Input | Digital |
+| 16 | SD_MOSI | SD MOSI | SD card Master Out Slave In | Input | Digital |
+| 17 | SD_MISO | SD MISO | SD card Master In Slave Out | Output | Digital |
+| 18 | SD_CLK | SD CLK | SD card Serial Clock | Input | Digital |

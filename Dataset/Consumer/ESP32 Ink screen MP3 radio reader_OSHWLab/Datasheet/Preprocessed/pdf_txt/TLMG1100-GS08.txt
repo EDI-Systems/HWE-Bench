@@ -1,0 +1,21 @@
+Component ID: TLM
+Component Type: Standard 0603 SMD LED (Light Emitting Diode)
+Description:
+This is a family of surface-mount LEDs in an ultra-compact 0603 package (1.6 mm x 0.8 mm x 0.6 mm) designed for high-reliability applications in harsh environments. Utilizing either AlInGaP (for red, orange, yellow, green, pure green) or GaN (for blue) semiconductor technology, these LEDs provide a range of colors with specified luminous intensity and dominant wavelength. They feature an extremely wide 160° viewing angle, are compatible with IR reflow soldering, and are qualified for automotive use (AEC-Q101). Typical applications include backlighting for keypads and displays, navigation systems, automotive features, and miniaturized color effects.
+
+Key Parameters:
+- **Package Size**: 0603 (1.6 mm x 0.8 mm x 0.6 mm)
+- **Viewing Angle**: 160° (Angle of half intensity: ±80°)
+- **Forward Voltage (Typical)**: 2.1 V (AlInGaP colors), 3.9 V (Blue, GaN)
+- **DC Forward Current (Max)**: 30 mA (at Tamb ≤ 75 °C)
+- **Power Dissipation (Max)**: 90 mW
+- **Reverse Voltage (Max)**: 12 V
+- **Operating Temperature Range**: -40 °C to +100 °C
+- **Luminous Intensity (Typical)**: Ranges from 5 mcd (Blue) to 80 mcd (Orange/Yellow) depending on color/part number.
+- **Dominant Wavelength (Typical)**: Specific per color (e.g., 633 nm Red, 606 nm Orange, 589 nm Yellow, 570 nm Green, 561 nm Pure Green, 466 nm Blue).
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | Anode (A) | Power | Positive supply terminal for forward biasing the LED. | Physical Pad | Power Input |
+| 2 | Cathode (K) | Ground/Return | Negative supply terminal (ground return) for the LED circuit. | Physical Pad | Ground |

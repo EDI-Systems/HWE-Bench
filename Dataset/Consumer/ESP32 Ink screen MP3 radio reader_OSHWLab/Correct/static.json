@@ -1,0 +1,107 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_3V3_MCU",
+      "Connections": [
+        { "ComponentID": "ME6211", "PinName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_I2S_BCLK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO14" },
+        { "ComponentID": "ES8311", "PinName": "SCLK/DMIC_SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_I2S_LRCK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO12" },
+        { "ComponentID": "ES8311", "PinName": "LRCK" }
+      ]
+    },
+    {
+      "net_id": "NET_I2S_DIN",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO13" },
+        { "ComponentID": "ES8311", "PinName": "DSDIN" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_DIFF_P",
+      "Connections": [
+        { "ComponentID": "ES8311", "PinName": "OUTP" },
+        { "ComponentID": "NS4150", "PinName": "INP" }
+      ]
+    },
+    {
+      "net_id": "NET_AUDIO_DIFF_N",
+      "Connections": [
+        { "ComponentID": "ES8311", "PinName": "OUTN" },
+        { "ComponentID": "NS4150", "PinName": "INN" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL_SYSTEM",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO22" },
+        { "ComponentID": "ES8311", "PinName": "CCLK" },
+        { "ComponentID": "SHT", "PinName": "SCL" },
+        { "ComponentID": "RX8010SJ", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SDA_SYSTEM",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO21" },
+        { "ComponentID": "ES8311", "PinName": "CDATA" },
+        { "ComponentID": "SHT", "PinName": "SDA" },
+        { "ComponentID": "RX8010SJ", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_CLK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO18" },
+        { "ComponentID": "TF-01A", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_MOSI",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO23" },
+        { "ComponentID": "TF-01A", "PinName": "CMD" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_MISO",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO19" },
+        { "ComponentID": "TF-01A", "PinName": "DAT0" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_CS",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO5" },
+        { "ComponentID": "TF-01A", "PinName": "CD/DAT3" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "GND" },
+        { "ComponentID": "ESP32", "PinName": "38" },
+        { "ComponentID": "ESP32", "PinName": "39" },
+        { "ComponentID": "ES8311", "PinName": "DGND" },
+        { "ComponentID": "ES8311", "PinName": "AGND" },
+        { "ComponentID": "NS4150", "PinName": "GND" },
+        { "ComponentID": "SHT", "PinName": "VSS" },
+        { "ComponentID": "RX8010SJ", "PinName": "GND" },
+        { "ComponentID": "TF-01A", "PinName": "VSS" },
+        { "ComponentID": "ME6211", "PinName": "Vss" }
+      ]
+    }
+  ]
+}

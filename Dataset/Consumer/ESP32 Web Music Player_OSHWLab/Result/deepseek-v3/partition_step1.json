@@ -1,0 +1,32 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Central Wireless Microcontroller Unit (MCU)",
+      "Function Description": "Acts as the main processor for system control, data processing, and network communication. It fetches compressed digital audio streams from wireless networks or local storage, manages user interface logic, and orchestrates data flow to the audio subsystem.",
+      "Signal Sources": "User input from the analog keypad, data from the removable storage interface, data packets from the wireless network.",
+      "Signal Destinations": "Digital audio data and control signals to the Digital-to-Analog Converter (DAC), display data to the graphical screen, control signals for power management, and data read/write commands to the storage interface.",
+      "Implementation Logic": "An MCU with integrated wireless capability (e.g., Wi-Fi/Bluetooth SoC) runs the main application firmware. It decodes user inputs, manages file systems, handles network protocols, and streams audio data via a synchronous serial bus (e.g., I2S) to the DAC. It also updates the display via a parallel or serial display interface (e.g., SPI)."
+    },
+    {
+      "Module Name": "High-Fidelity Audio Subsystem",
+      "Function Description": "Converts digital audio data into a high-quality, low-noise analog signal suitable for driving headphones directly. It is the core audio output stage.",
+      "Signal Sources": "Synchronous digital audio data (e.g., I2S stream) and control signals (e.g., I2C) from the Central MCU.",
+      "Signal Destinations": "Analog audio signal to the headphone output jack.",
+      "Implementation Logic": "A dedicated, high-performance Digital-to-Analog Converter (DAC) chip receives the I2S data stream from the MCU. It includes an integrated headphone amplifier or is followed by a separate, low-noise headphone amplifier circuit. The analog output stage uses proper filtering and shielding to minimize noise and distortion."
+    },
+    {
+      "Module Name": "User Interface & Local Storage Module",
+      "Function Description": "Provides the user input mechanism, visual feedback, and local mass storage for audio files. It consists of the analog keypad, graphical screen, and removable storage interface.",
+      "Signal Sources": "Analog voltage from the multiplexed keypad resistor network, data from a removable storage device (e.g., microSD card).",
+      "Signal Destinations": "Analog keypad signal to the MCU's ADC pin, display commands/data to the graphical screen, storage data/commands to the MCU's storage interface pins.",
+      "Implementation Logic": "The analog keypad uses a resistor ladder network; different button presses generate unique voltage levels read by the MCU's ADC. A graphical display (e.g., TFT LCD) is connected via SPI or parallel interface. A removable storage slot (e.g., microSD) is connected to the MCU via an SDIO or SPI interface for file access."
+    },
+    {
+      "Module Name": "Power Management & Battery Subsystem",
+      "Function Description": "Manages all power rails for the system, including battery charging, voltage regulation, and providing clean, stable power to both digital and sensitive analog circuits.",
+      "Signal Sources": "Power from an external charging source (e.g., USB), voltage from the internal battery.",
+      "Signal Destinations": "Regulated voltage rails to the Central MCU, Audio Subsystem, User Interface & Storage Module, and other components.",
+      "Implementation Logic": "A power management IC (PMIC) or discrete circuits handle battery charging (with charge termination control). A switching regulator efficiently steps down the battery voltage to an intermediate rail. Dedicated low-noise linear regulators (LDOs) then provide clean, stable voltages to the analog audio circuits and noise-sensitive digital components, ensuring audio quality and system stability."
+    }
+  ]
+}

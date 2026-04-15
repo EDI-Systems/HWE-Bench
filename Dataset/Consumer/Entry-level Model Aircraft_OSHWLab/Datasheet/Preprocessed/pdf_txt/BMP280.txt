@@ -1,0 +1,27 @@
+Component ID: BMP280
+Component Type: Digital Barometric Pressure Sensor (MEMS)
+Description:
+The BMP280 is an absolute barometric pressure and temperature sensor from Bosch Sensortec, designed for mobile and battery-powered applications. It utilizes piezo-resistive MEMS technology for high accuracy, linearity, and long-term stability. The sensor provides compensated digital pressure and temperature data via I²C or SPI interfaces, featuring ultra-low power consumption, multiple operating modes (sleep, forced, normal), and an integrated IIR filter for noise reduction. Its primary applications include altitude tracking, indoor/outdoor navigation, weather monitoring, and vertical velocity indication.
+
+Key Parameters:
+- Pressure Measurement Range: 300 to 1100 hPa
+- Relative Accuracy (Pressure): ±0.12 hPa (700–900 hPa @ 25°C)
+- Absolute Accuracy (Pressure): Typ. ±1 hPa (950–1050 hPa, 0 to +40°C)
+- Temperature Coefficient Offset (TCO): 1.5 Pa/K (equiv. to 12.6 cm/K)
+- Current Consumption: 2.7 µA @ 1 Hz sampling rate (typical)
+- Supply Voltage (VDD): Minimum 1.71 V
+- Digital Interfaces: I²C (up to 3.4 MHz), SPI (3- and 4-wire, up to 10 MHz)
+- Operating Temperature Range: -40 to +85 °C
+- Package: 8-pin LGA, 2.0 x 2.5 mm², 0.95 mm height
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | VDD      | Power    | Power supply (1.71V ... 3.6V) | Power    | Digital Power   |
+| 2          | VDDIO    | Power    | Digital interface power supply (1.2V ... 3.6V) | Power    | Digital I/O Power |
+| 3          | GND      | Ground   | Ground                      | Ground   | Ground          |
+| 4          | CSB      | Chip Select (SPI) | Chip select for SPI interface (active low) | Digital Input | Digital Input  |
+| 5          | SDO      | Serial Data Out (SPI) / Address Select (I²C) | SPI data output / I²C address select (high: 0x77, low: 0x76) | Digital I/O | Digital I/O    |
+| 6          | SDI      | Serial Data In (SPI) | SPI data input               | Digital Input | Digital Input  |
+| 7          | SCK      | Serial Clock (SPI) / SCL (I²C) | SPI clock / I²C serial clock | Digital Input | Digital Input  |
+| 8          | SDA      | Serial Data (I²C)   | I²C serial data              | Digital I/O | Digital I/O    |

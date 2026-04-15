@@ -1,0 +1,209 @@
+{
+  "ComponentID": "CH340",
+  "ComponentType": "USB to UART Bridge / USB Serial Interface IC",
+  "Description": "The CH340 is a USB bus adapter chip that converts USB to a serial UART interface or a parallel printer port. In its primary serial port mode, it emulates a standard COM port with full hardware flow control signals (RTS, DTR, DCD, RI, DSR, CTS), enabling the upgrade of legacy serial devices to USB or adding virtual serial ports to a computer. It features built-in firmware, supports a wide range of baud rates, and can interface with RS232, RS485, or RS422 standards using external level shifters. Several variants include an integrated clock source, eliminating the need for an external crystal.",
+  "KeyParameters": {
+    "USB Specification": "Full-speed, compatible with USB 2.0",
+    "Supply Voltage": "5V and 3.3V operation",
+    "Baud Rate Range": "50 bps to 2 Mbps",
+    "Integrated Clock": "Available on CH340C/N/K/E/X/B variants (no external crystal required)",
+    "Built-in EEPROM": "Available on CH340B variant (for serial number configuration)",
+    "Package Options": "SOP-16, SOP-8, SSOP-20, ESSOP-10, MSOP-10",
+    "Flow Control Signals": "Supports RTS, DTR, DCD, RI, DSR, CTS",
+    "Infrared Support": "CH340R variant supports IrDA SIR (2400 bps to 115200 bps)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "Transmit",
+          "FunctionDescription": "UART serial data output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "Receive",
+          "FunctionDescription": "UART serial data input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "V3",
+      "Functions": [
+        {
+          "FunctionName": "LDO Out",
+          "FunctionDescription": "3.3V internal regulator bypass/output"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "D+",
+      "Functions": [
+        {
+          "FunctionName": "USB D+",
+          "FunctionDescription": "USB differential data positive line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "USB Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "D-",
+      "Functions": [
+        {
+          "FunctionName": "USB D-",
+          "FunctionDescription": "USB differential data negative line"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "USB Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "XI",
+      "Functions": [
+        {
+          "FunctionName": "Crystal In",
+          "FunctionDescription": "12MHz crystal oscillator input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "XO",
+      "Functions": [
+        {
+          "FunctionName": "Crystal Out",
+          "FunctionDescription": "12MHz crystal oscillator output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "CTS",
+      "Functions": [
+        {
+          "FunctionName": "CTS",
+          "FunctionDescription": "Clear To Send (Modem control input)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "DSR",
+      "Functions": [
+        {
+          "FunctionName": "DSR",
+          "FunctionDescription": "Data Set Ready (Modem control input)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "RI",
+      "Functions": [
+        {
+          "FunctionName": "RI",
+          "FunctionDescription": "Ring Indicator (Modem control input)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "DCD",
+      "Functions": [
+        {
+          "FunctionName": "DCD",
+          "FunctionDescription": "Data Carrier Detect (Modem control input)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "DTR",
+      "Functions": [
+        {
+          "FunctionName": "DTR",
+          "FunctionDescription": "Data Terminal Ready (Modem control output)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "RTS",
+      "Functions": [
+        {
+          "FunctionName": "RTS",
+          "FunctionDescription": "Request To Send (Modem control output)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "R232",
+      "Functions": [
+        {
+          "FunctionName": "Mode/Aux",
+          "FunctionDescription": "RS232 mode selection / Auxiliary signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main positive supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5V"
+    }
+  ]
+}

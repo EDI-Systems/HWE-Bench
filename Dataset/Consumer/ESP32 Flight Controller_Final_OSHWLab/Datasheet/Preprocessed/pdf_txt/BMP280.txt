@@ -1,0 +1,28 @@
+Component ID: BMP280
+Component Type: Digital Barometric Pressure Sensor (MEMS)
+Description:
+The BMP280 is an absolute barometric pressure and temperature sensor from Bosch Sensortec, designed for mobile and battery-powered applications. It utilizes piezo-resistive MEMS technology for high accuracy and linearity. The sensor provides calibrated digital output via I²C or SPI interfaces, features ultra-low power consumption, and includes configurable filtering and multiple measurement modes (sleep, forced, normal) for power-optimized operation. Its primary function is to enable altitude tracking, indoor/outdoor navigation, weather monitoring, and vertical velocity detection.
+
+Key Parameters:
+- Pressure Measurement Range: 300 ... 1100 hPa
+- Relative Accuracy (Pressure): ±0.12 hPa (typical, 700–900 hPa @ 25°C)
+- Absolute Accuracy (Pressure): ±1 hPa (typical, 950–1050 hPa, 0–40°C)
+- Temperature Coefficient Offset (TCO): 1.5 Pa/K (equiv. to 12.6 cm/K)
+- Current Consumption: 2.7 μA @ 1 Hz sampling rate (typical)
+- Operating Temperature Range: -40 ... +85 °C
+- Supply Voltage (VDD): Minimum 1.71 V
+- Digital Interfaces: I²C (up to 3.4 MHz), SPI (3-wire & 4-wire, up to 10 MHz)
+- Package: 8-pin LGA, 2.0 × 2.5 mm², height 0.95 mm
+- Pressure Resolution: 0.16 Pa
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND | Ground | Main system ground reference | Power | 0V |
+| 2 | CSB | Chip Select | Chip select for SPI (Active Low) / $I^2C$ mode if high | Input | Digital |
+| 3 | SDI | Serial Data | SDA for $I^2C$ / MOSI for SPI | I/O | Digital |
+| 4 | SCK | Serial Clock | SCL for $I^2C$ / SCK for SPI | Input | Digital |
+| 5 | SDO | Serial Out | $I^2C$ address LSB / MISO for SPI (4-wire) | Output | Digital |
+| 6 | VDDIO | IO Power | Supply voltage for digital interface pins | Power | 1.2V - 3.6V |
+| 7 | GND | Ground | Ground connection | Power | 0V |
+| 8 | VDD | Power | Main analog supply voltage | Power | 1.71V - 3.6V |

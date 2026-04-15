@@ -1,0 +1,30 @@
+Component ID: MPU-6050
+Component Type: 6-Axis Motion Tracking Device (Gyroscope + Accelerometer)
+Description: The MPU-6050 is a highly integrated 6-axis motion tracking device that combines a 3-axis gyroscope and a 3-axis accelerometer on a single silicon die. It features an onboard Digital Motion Processor (DMP) that processes complex 6-axis MotionFusion algorithms, reducing the load on the host microcontroller. Additionally, it includes a dedicated auxiliary I2C bus to interface with external sensors such as magnetometers, allowing for a complete 9-axis output. It is widely used in applications requiring orientation and motion sensing, such as drones, smartphones, and wearable devices.
+
+Key Parameters:
+- Gyroscope Range: ±250, ±500, ±1000, ±2000 °/s (Programmable)
+- Accelerometer Range: ±2g, ±4g, ±8g, ±16g (Programmable)
+- Interface: I2C (Up to 400kHz)
+- Operating Voltage (VDD): 2.375V to 3.46V
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CLKIN | Clock | External clock reference input | Input | Signal |
+| 6 | AUX_DA | Aux I2C | Auxiliary I2C serial data line | I/O | Signal |
+| 7 | AUX_CL | Aux I2C | Auxiliary I2C serial clock line | Output | Signal |
+| 8 | VLOGIC | IO Power | Digital I/O supply voltage | Power | 1.71V - VDD |
+| 9 | AD0 | Address | I2C slave address LSB selection | Input | Signal |
+| 10 | REGOUT | Filter | Regulator filter capacitor connection | Passive | Analog |
+| 11 | FSYNC | Sync | Frame synchronization digital input | Input | Signal |
+| 12 | INT | Interrupt | Interrupt digital output pin | Output | Signal |
+| 13 | VDD | Power | Main positive supply voltage | Power | 2.375V - 3.46V |
+| 18 | GND | Ground | Main ground reference | Power | 0V |
+| 19 | RESV | Reserved | Reserved pin (connect to GND) | Passive | Ground |
+| 20 | CPOUT | Pump | Charge pump capacitor connection | Passive | Analog |
+| 21 | RESV | Reserved | Reserved pin (connect to GND) | Passive | Ground |
+| 22 | RESV | Reserved | Reserved pin (connect to GND) | Passive | Ground |
+| 23 | SCL | SCL | I2C serial clock input | Input | Signal |
+| 24 | SDA | SDA | I2C bi-directional serial data line | I/O | Signal |
+| 25 | GND | Ground | Exposed pad (connect to system GND) | Power | 0V |

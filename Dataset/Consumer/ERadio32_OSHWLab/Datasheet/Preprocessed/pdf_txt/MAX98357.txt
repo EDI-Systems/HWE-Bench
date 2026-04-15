@@ -1,0 +1,22 @@
+Component ID: MAX98357
+Component Type: Digital PCM Input Class D Audio Power Amplifier
+Description: The MAX98357A/MAX98357B is a low-cost, filterless, digital-input Class D amplifier that provides high-quality Class AB-like audio performance with Class D efficiency. It features a flexible PCM digital audio interface that automatically recognizes numerous clocking schemes (I2S for MAX98357A, Left-Justified for MAX98357B, plus 8-channel TDM for both), eliminating the need for I2C programming or an external master clock (MCLK). It operates from a single 2.5V to 5.5V supply, supports sample rates from 8kHz to 96kHz, and includes features for low EMI, robust protection, and click-and-pop suppression.
+
+Key Parameters:
+- Supply Voltage Range: 2.5V to 5.5V
+- Output Power: 3.2W into 4 Ohm at 5V (10% THD+N)
+- Interface: I2S / PCM Digital Audio
+- Efficiency: 92% (RL = 8 Ohm, POUT = 1.5W)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | LRCLK | WS | Left-right clock (Word Select) input for I2S | Input | Digital |
+| 2 | BCLK | BCLK | Bit clock input for I2S | Input | Digital |
+| 3 | DIN | SDIN | Serial data input for I2S | Input | Digital |
+| 4 | GAIN | Gain | Gain select pin (3dB to 15dB settings) | Input | Analog/Logic |
+| 5 | SD | SD_MODE | Shutdown and channel select (L, R, or Mono) | Input | Digital |
+| 6 | GND | Ground | Common system ground reference | Power | 0V |
+| 7 | 2.5-5.5V | VDD | Positive power supply input | Power | 2.5V - 5.5V |
+| 8 | SPK+ | OUT+ | Positive differential speaker output | Output | Analog |
+| 9 | SPK- | OUT- | Negative differential speaker output | Output | Analog |

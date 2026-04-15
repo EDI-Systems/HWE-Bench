@@ -1,0 +1,28 @@
+Component ID: PCM1771
+Component Type: Micro SD (TF) Card Connector
+Description: This is a standard Micro SD (TransFlash) card receptacle used to provide removable, non-volatile data storage for embedded systems. It serves as the bridge between a Micro SD card and a host controller (like a microcontroller or SoC). This specific model supports both the high-performance SDIO (Secure Digital Input Output) protocol and the simpler SPI (Serial Peripheral Interface), making it compatible with everything from high-end processors to basic 8-bit MCUs. It also features a mechanical Card Detect (CDN) pin to allow the system to sense when a card is physically present.
+
+
+Key Parameters:
+* Supported Media: Micro SD / TF Card
+* Interface Protocols: SDIO (1-bit/4-bit) and SPI
+* Operating Voltage ($V_{DD}$): 2.7V to 3.6V (Typically 3.3V)
+* Mechanical Features: Integrated metal shield with multiple ground/mounting points (G1-G4)
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | DAT2 | RSV | SD Data Line 2 / Reserved in SPI mode | I/O | Signal |
+| 2 | CD/DAT3 | CS | SD Data Line 3 / SPI Chip Select (Active Low) | I/O | Signal |
+| 3 | CMD | DI | Command Line / SPI Data Input (MOSI) | I/O | Signal |
+| 4 | VDD | Power | Positive supply voltage input | Power | 3.3V |
+| 5 | CLK | SCLK | Serial Clock signal | Input | Digital |
+| 6 | VSS | Ground | Common system ground reference | Power | 0V |
+| 7 | DAT0 | DO | SD Data Line 0 / SPI Data Output (MISO) | I/O | Signal |
+| 8 | DAT1 | RSV | SD Data Line 1 / Reserved in SPI mode | I/O | Signal |
+| 9 | CDN | Detect | Card Detect switch (typically pulls to GND when inserted) | Passive | Signal |
+| 10 | G1 | Shield | Metal housing / Mechanical ground tab | Passive | Ground |
+| 11 | G2 | Shield | Metal housing / Mechanical ground tab | Passive | Ground |
+| 12 | G4 | Shield | Metal housing / Mechanical ground tab | Passive | Ground |
+| 13 | G3 | Shield | Metal housing / Mechanical ground tab | Passive | Ground |

@@ -1,0 +1,59 @@
+Component ID:ESP32
+Component Type:Wi-Fi + Bluetooth + BLE System-on-Chip (SoC) Module  
+Description: 
+The ESP32-WROOM-32D and ESP32-WROOM-32U are highly integrated, generic-purpose modules built around the ESP32-D0WD dual-core microcontroller. They provide comprehensive wireless connectivity including Wi-Fi (802.11 b/g/n), Bluetooth Classic, and Bluetooth Low Energy (BLE). The modules are designed for a wide range of applications from low-power sensor networks to demanding tasks like audio processing, featuring rich peripherals, configurable CPU clock speeds, and advanced power management with deep sleep currents below 5 µA. The primary difference between the D and U variants is the antenna interface: the 32D has an onboard PCB antenna, while the 32U integrates a U.FL connector for an external antenna.
+
+Key Parameters:
+- Core:Dual-core Xtensa® 32-bit LX6 microprocessor (ESP32-D0WD)
+- CPU Clock Frequency:Adjustable from 80 MHz to 240 MHz
+- Operating Voltage:3.0 V to 3.6 V
+- Wi-Fi Output Power:Up to 20 dBm
+- Wi-Fi Data Rate:Up to 150 Mbps
+- Bluetooth:Bluetooth v4.2 BR/EDR and BLE specification
+- Integrated Flash Memory:32 Mbit (4 MB) SPI flash
+- Operating Temperature Range:–40 °C to +85 °C
+- Sleep Current:< 5 µA
+- Dimensions (WxLxH):32D: 18.00 mm × 25.50 mm × 3.10 mm; 32U: 18.00 mm × 19.20 mm × 3.20 mm
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | GND      | Power    | Ground      | P        | GND             |
+| 2          | 3V3      | Power    | 3.3 V Power Supply | P      | PWR             |
+| 3          | EN       | System   | Module Enable (Active High) | I     | Digital Input   |
+| 4          | SENSOR_VP | Analog   | GPIO36, ADC1_CH0, RTC_GPIO0 | I/O   | Analog Input    |
+| 5          | SENSOR_VN | Analog   | GPIO39, ADC1_CH3, RTC_GPIO3 | I/O   | Analog Input    |
+| 6          | IO34     | GPIO     | GPIO34, ADC1_CH6, RTC_GPIO4 | I/O   | Digital Input   |
+| 7          | IO35     | GPIO     | GPIO35, ADC1_CH7, RTC_GPIO5 | I/O   | Digital Input   |
+| 8          | IO32     | GPIO     | GPIO32, ADC1_CH4, TOUCH_CH9, RTC_GPIO9 | I/O | Digital I/O     |
+| 9          | IO33     | GPIO     | GPIO33, ADC1_CH5, TOUCH_CH8, RTC_GPIO8 | I/O | Digital I/O     |
+| 10         | IO25     | GPIO     | GPIO25, DAC_1, ADC2_CH8, RTC_GPIO6, EMAC_RXD0 | I/O | Digital I/O     |
+| 11         | IO26     | GPIO     | GPIO26, DAC_2, ADC2_CH9, RTC_GPIO7, EMAC_RXD1 | I/O | Digital I/O     |
+| 12         | IO27     | GPIO     | GPIO27, ADC2_CH7, TOUCH_CH7, RTC_GPIO17 | I/O | Digital I/O     |
+| 13         | IO14     | GPIO     | GPIO14, ADC2_CH6, TOUCH_CH6, RTC_GPIO16, MTMS, HSPICLK | I/O | Digital I/O     |
+| 14         | IO12     | GPIO     | GPIO12, ADC2_CH5, TOUCH_CH5, RTC_GPIO15, MTDI, HSPIQ | I/O | Digital I/O     |
+| 15         | GND      | Power    | Ground      | P        | GND             |
+| 16         | IO13     | GPIO     | GPIO13, ADC2_CH4, TOUCH_CH4, RTC_GPIO14, MTCK, HSPID | I/O | Digital I/O     |
+| 17         | SD2      | SDIO     | GPIO9, SD_DATA2, SPIHD, HS1_DATA2 | I/O | Digital I/O     |
+| 18         | SD3      | SDIO     | GPIO10, SD_DATA3, SPIWP, HS1_DATA3 | I/O | Digital I/O     |
+| 19         | CMD      | SDIO     | GPIO11, SD_CMD, SPICS0, HS1_CMD | I/O | Digital I/O     |
+| 20         | CLK      | SDIO     | GPIO6, SD_CLK, SPICLK, HS1_CLK | I/O | Digital I/O     |
+| 21         | SD0      | SDIO     | GPIO7, SD_DATA0, SPIQ, HS1_DATA0 | I/O | Digital I/O     |
+| 22         | SD1      | SDIO     | GPIO8, SD_DATA1, SPID, HS1_DATA1 | I/O | Digital I/O     |
+| 23         | IO15     | GPIO     | GPIO15, ADC2_CH3, TOUCH_CH3, RTC_GPIO13, MTDO, HSPICS0 | I/O | Digital I/O     |
+| 24         | IO2      | GPIO     | GPIO2, ADC2_CH2, TOUCH_CH2, RTC_GPIO2 | I/O | Digital I/O     |
+| 25         | IO0      | GPIO     | GPIO0, ADC2_CH1, TOUCH_CH1, RTC_GPIO11 | I/O | Digital I/O     |
+| 26         | IO4      | GPIO     | GPIO4, ADC2_CH0, TOUCH_CH0, RTC_GPIO10 | I/O | Digital I/O     |
+| 27         | IO16     | GPIO     | GPIO16, HS1_DATA4, U2RXD, EMAC_CLK_OUT | I/O | Digital I/O     |
+| 28         | IO17     | GPIO     | GPIO17, HS1_DATA5, U2TXD, EMAC_CLK_OUT_180 | I/O | Digital I/O     |
+| 29         | IO5      | GPIO     | GPIO5, VSPICS0, HS1_DATA6, EMAC_RX_CLK | I/O | Digital I/O     |
+| 30         | IO18     | GPIO     | GPIO18, VSPICLK, HS1_DATA7 | I/O | Digital I/O     |
+| 31         | IO19     | GPIO     | GPIO19, VSPIQ, U0CTS, EMAC_TXD0 | I/O | Digital I/O     |
+| 32         | NC       | -        | Not Connected (Reserved for internal use) | -      | -               |
+| 33         | IO21     | GPIO     | GPIO21, VSPIHD, EMAC_TX_EN | I/O | Digital I/O     |
+| 34         | RXD0     | UART     | GPIO3, U0RXD, CLK_OUT2 | I/O | Digital I/O     |
+| 35         | TXD0     | UART     | GPIO1, U0TXD, CLK_OUT3, EMAC_RXD2 | I/O | Digital I/O     |
+| 36         | IO22     | GPIO     | GPIO22, VSPIWP, U0RTS, EMAC_TXD1 | I/O | Digital I/O     |
+| 37         | IO23     | GPIO     | GPIO23, VSPID, HS1_STROBE | I/O | Digital I/O     |
+| 38         | GND      | Power    | Ground      | P        | GND             |
+| 39         | GND      | Power    | Ground      | P        | GND             |

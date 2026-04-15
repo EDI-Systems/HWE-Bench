@@ -1,0 +1,769 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "E",
+          "FunctionName": "Emitter"
+        },
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "GND",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "2.5-5.5V",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "EN",
+          "FunctionName": "Chip Enable"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "CE",
+          "FunctionName": "Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO25",
+          "FunctionName": "GPIO25"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "BCLK",
+          "FunctionName": "BCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO26",
+          "FunctionName": "GPIO26"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "DIN",
+          "FunctionName": "SDIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO27",
+          "FunctionName": "GPIO27"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "LRCLK",
+          "FunctionName": "WS"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO14",
+          "FunctionName": "GPIO14"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "SCK",
+          "FunctionName": "SPI Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO12",
+          "FunctionName": "GPIO12"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "MISO",
+          "FunctionName": "LCD MISO"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO13",
+          "FunctionName": "GPIO13"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "MOSI",
+          "FunctionName": "LCD MOSI"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO2",
+          "FunctionName": "GPIO2"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "D/C",
+          "FunctionName": "Data/Cmd"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO4",
+          "FunctionName": "GPIO4"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "CS",
+          "FunctionName": "LCD CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO5",
+          "FunctionName": "GPIO5"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO22",
+          "FunctionName": "GPIO22"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "SD",
+          "FunctionName": "SD_MODE"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO21",
+          "FunctionName": "GPIO21"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GAIN",
+          "FunctionName": "Gain"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "B9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A9",
+          "FunctionName": "VBUS"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "VCC",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VIN",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        },
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "VIN",
+          "FunctionName": "Supply Voltage Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BAT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "S",
+          "FunctionName": "Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHRG",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "RXD0 / IO3",
+          "FunctionName": "Digital I/O"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "STDBY",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "TXD0 / IO1",
+          "FunctionName": "Digital I/O"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "G",
+          "FunctionName": "Gate"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "C",
+          "FunctionName": "Collector"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "EN",
+          "FunctionName": "Enable Control Input"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "D",
+          "FunctionName": "Drain"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO22",
+          "FunctionName": "GPIO22"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "T_CS",
+          "FunctionName": "Touch CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO21",
+          "FunctionName": "GPIO21"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "T_IRQ",
+          "FunctionName": "Touch IRQ"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO5",
+          "FunctionName": "GPIO5"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "B",
+          "FunctionName": "Base"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "BC817",
+          "PinName": "C",
+          "FunctionName": "Collector"
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "PinName": "LED",
+          "FunctionName": "Backlight"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "CLK / IO6",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "BCLK",
+          "FunctionName": "BCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "IO2",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "LRCLK",
+          "FunctionName": "WS"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "IO0",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "DIN",
+          "FunctionName": "SDIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "EN",
+          "FunctionName": "Digital I/O"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "CE",
+          "FunctionName": "Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "SD",
+          "FunctionName": "SD_MODE"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "C",
+          "FunctionName": "Collector"
+        }
+      ]
+    },
+    {
+      "net_id": "net30",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "LRCLK",
+          "FunctionName": "WS"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "LRCLK",
+          "FunctionName": "WS"
+        }
+      ]
+    },
+    {
+      "net_id": "net31",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "BCLK",
+          "FunctionName": "BCLK"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "BCLK",
+          "FunctionName": "BCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net32",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "DIN",
+          "FunctionName": "SDIN"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "DIN",
+          "FunctionName": "SDIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net33",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GAIN",
+          "FunctionName": "Gain"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GAIN",
+          "FunctionName": "Gain"
+        }
+      ]
+    },
+    {
+      "net_id": "net34",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "SD",
+          "FunctionName": "SD_MODE"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "SD",
+          "FunctionName": "SD_MODE"
+        }
+      ]
+    },
+    {
+      "net_id": "net35",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net36",
+      "Connections": [
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "2.5-5.5V",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "2.5-5.5V",
+          "FunctionName": "VDD"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VOUT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net37",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "CLK",
+          "FunctionName": "GPIO6"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "BCLK",
+          "FunctionName": "BCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net38",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO19",
+          "FunctionName": "GPIO19"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "DIN",
+          "FunctionName": "SDIN"
+        }
+      ]
+    },
+    {
+      "net_id": "net39",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "SD3",
+          "FunctionName": "GPIO18"
+        },
+        {
+          "ComponentID": "MAX98357",
+          "PinName": "LRCLK",
+          "FunctionName": "WS"
+        }
+      ]
+    },
+    {
+      "net_id": "net40",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "B12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "A12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "IRLM",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "E",
+          "FunctionName": "Emitter"
+        },
+        {
+          "ComponentID": "RT8096C",
+          "PinName": "GND",
+          "FunctionName": "Power Ground"
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+Component ID: ESP32
+Component Type: Wi-Fi + Bluetooth + Bluetooth LE System-on-Chip (SoC) Module with Integrated Flash and PSRAM
+Description:
+The ESP32-WROVER-E and ESP32-WROVER-IE are powerful, general-purpose Wi-Fi + Bluetooth + Bluetooth LE MCU modules based on the ESP32-D0WD-V3 chip. They integrate a dual-core Xtensa LX6 microprocessor, 4 MB of SPI flash, and 8 MB of SPI PSRAM. The modules support IEEE 802.11 b/g/n Wi-Fi up to 150 Mbps and Bluetooth v4.2 BR/EDR & BLE. They are designed for a wide range of applications from low-power sensor networks to demanding tasks like audio processing. The key difference is the antenna type: the WROVER-E uses a PCB antenna, while the WROVER-IE uses a connector for an external antenna.
+
+Key Parameters:
+- Core: Dual-core Xtensa LX6 microprocessor
+- CPU Clock Speed: 80 MHz to 240 MHz (adjustable)
+- Integrated Flash Memory: 4 MB SPI Flash
+- Integrated PSRAM: 8 MB SPI PSRAM
+- Operating Voltage: 3.0 V to 3.6 V
+- Wi-Fi Protocol: 802.11 b/g/n (802.11n with data rate up to 150 Mbps)
+- Bluetooth Protocol: Bluetooth v4.2 BR/EDR and Bluetooth LE
+- Operating Temperature Range: -40°C to 85°C
+- Sleep Current: < 5 µA
+- RF Output Power: Up to 20 dBm
+- Wi-Fi Receiver Sensitivity: -97 dBm (NZIF)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Power | Ground | P | Power |
+| 2 | 3V3 | Power | Power Supply (3.3V) | P | Power |
+| 3 | EN | Digital | Enable. Active high. | I | Digital Input |
+| 4 | SENSOR_VP | Analog/Digital | GPIO36, ADC1_CH0, RTC_GPIO0 | I | Analog Input / Digital I/O |
+| 5 | SENSOR_VN | Analog/Digital | GPIO39, ADC1_CH3, RTC_GPIO3 | I | Analog Input / Digital I/O |
+| 6 | IO34 | Analog/Digital | GPIO34, ADC1_CH6, RTC_GPIO4 | I | Analog Input / Digital I/O |
+| 7 | IO35 | Analog/Digital | GPIO35, ADC1_CH7, RTC_GPIO5 | I | Analog Input / Digital I/O |
+| 8 | IO32 | Analog/Digital/Osc | GPIO32, XTAL_32K_P (32.768 kHz crystal input), ADC1_CH4, TOUCH9, RTC_GPIO9 | I/O | Analog Input / Digital I/O / Oscillator |
+| 9 | IO33 | Analog/Digital/Osc | GPIO33, XTAL_32K_N (32.768 kHz crystal output), ADC1_CH5, TOUCH8, RTC_GPIO8 | I/O | Analog Input / Digital I/O / Oscillator |
+| 10 | IO25 | Analog/Digital | GPIO25, DAC_1, ADC2_CH8, RTC_GPIO6, EMAC_RXD0 | I/O | Analog Input/Output / Digital I/O |
+| 11 | IO26 | Analog/Digital | GPIO26, DAC_2, ADC2_CH9, RTC_GPIO7, EMAC_RXD1 | I/O | Analog Input/Output / Digital I/O |
+| 12 | IO27 | Digital | GPIO27, ADC2_CH7, TOUCH7, RTC_GPIO17, EMAC_RX_DV | I/O | Digital I/O |
+| 13 | IO14 | Digital/Osc | GPIO14, ADC2_CH6, TOUCH6, RTC_GPIO16, MTMS, HSPICLK, HS2_CLK, SD_CLK, EMAC_TXD2 | I/O | Digital I/O / Oscillator |
+| 14 | IO12 | Digital | GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, HS2_DATA2, SD_DATA2, EMAC_TXD3 | I/O | Digital I/O |
+| 15 | GND | Power | Ground | P | Power |
+| 16 | IO13 | Digital | GPIO13, ADC2_CH4, TOUCH4, RTC_GPIO14, MTCK, HSPID, HS2_DATA3, SD_DATA3, EMAC_RX_ER | I/O | Digital I/O |
+| 17 | SD2 | Digital | GPIO9, SD_DATA2, SPIHD, HS1_DATA2, U1RXD | I/O | Digital I/O |
+| 18 | SD3 | Digital | GPIO10, SD_DATA3, SPIWP, HS1_DATA3, U1TXD | I/O | Digital I/O |
+| 19 | CMD | Digital | GPIO11, SD_CMD, SPICS0, HS1_CMD, U1RTS | I/O | Digital I/O |
+| 20 | CLK | Digital | GPIO6, SD_CLK, SPICLK, HS1_CLK, U1CTS | I/O | Digital I/O |
+| 21 | SD0 | Digital | GPIO7, SD_DATA0, SPIQ, HS1_DATA0, U2RTS | I/O | Digital I/O |
+| 22 | SD1 | Digital | GPIO8, SD_DATA1, SPID, HS1_DATA1, U2CTS | I/O | Digital I/O |
+| 23 | IO15 | Digital | GPIO15, ADC2_CH3, TOUCH3, RTC_GPIO13, MTDO, HSPICS0, HS2_CMD, SD_CMD, EMAC_RXD3 | I/O | Digital I/O |
+| 24 | IO2 | Digital | GPIO2, ADC2_CH2, TOUCH2, RTC_GPIO12, HSPIWP, HS2_DATA0, SD_DATA0 | I/O | Digital I/O |
+| 25 | IO0 | Digital | GPIO0, ADC2_CH1, TOUCH1, RTC_GPIO11, CLK_OUT1, EMAC_TX_CLK | I/O | Digital I/O |
+| 26 | IO4 | Digital | GPIO4, ADC2_CH0, TOUCH0, RTC_GPIO10, HSPIHD, HS2_DATA1, SD_DATA1, EMAC_TX_ER | I/O | Digital I/O |
+| 27 | IO16 | Digital/UART | GPIO16, HS1_DATA4, U2RXD, EMAC_CLK_OUT | I/O | Digital I/O / UART |
+| 28 | IO17 | Digital/UART | GPIO17, HS1_DATA5, U2TXD, EMAC_CLK_OUT_180 | I/O | Digital I/O / UART |
+| 29 | IO5 | Digital | GPIO5, VSPICS0, HS1_DATA6, EMAC_RX_CLK | I/O | Digital I/O |
+| 30 | IO18 | Digital | GPIO18, VSPICLK, HS1_DATA7 | I/O | Digital I/O |
+| 31 | IO19 | Digital | GPIO19, VSPIQ, U0CTS, EMAC_TXD0 | I/O | Digital I/O |
+| 32 | NC | - | Not Connected | - | - |
+| 33 | IO21 | Digital/I2C | GPIO21, VSPIHD, EMAC_TX_EN | I/O | Digital I/O / I2C |
+| 34 | RXD0 | Digital/UART | GPIO3, U0RXD, CLK_OUT2 | I/O | Digital I/O / UART |
+| 35 | TXD0 | Digital/UART | GPIO1, U0TXD, CLK_OUT3, EMAC_RXD2 | I/O | Digital I/O / UART |
+| 36 | IO22 | Digital/I2C | GPIO22, VSPIWP, U0RTS, EMAC_TXD1 | I/O | Digital I/O / I2C |
+| 37 | IO23 | Digital | GPIO23, VSPID, HS1_STROBE | I/O | Digital I/O |
+| 38 | GND | Power | Ground | P | Power |

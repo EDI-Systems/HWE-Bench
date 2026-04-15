@@ -1,0 +1,34 @@
+{
+  "Power Management & Battery Subsystem": [
+    {
+      "net_id": "net_usb_5v",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "1", "FunctionName": "VBUS" },
+        { "ComponentID": "TP4056", "PinName": "4", "FunctionName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "net_battery_vbat",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "5", "FunctionName": "BAT" },
+        { "ComponentID": "MCP1825T-3302E/DB", "PinName": "1", "FunctionName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "net_3v3_main",
+      "Connections": [
+        { "ComponentID": "MCP1825T-3302E/DB", "PinName": "2", "FunctionName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "2", "FunctionName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "net_power_gnd",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "5", "FunctionName": "GND" },
+        { "ComponentID": "TP4056", "PinName": "3", "FunctionName": "GND" },
+        { "ComponentID": "MCP1825T-3302E/DB", "PinName": "3", "FunctionName": "GND" },
+        { "ComponentID": "MCP1825T-3302E/DB", "PinName": "4", "FunctionName": "GND" }
+      ]
+    }
+  ]
+}

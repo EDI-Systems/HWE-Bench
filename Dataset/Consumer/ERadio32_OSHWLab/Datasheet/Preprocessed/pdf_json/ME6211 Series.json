@@ -1,0 +1,78 @@
+{
+  "ComponentID": "ME6211 Series",
+  "ComponentType": "CMOS Low-Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The ME6211 series are highly accurate, low-noise CMOS LDO voltage regulators designed for portable and battery-powered applications. They provide a stable output voltage from an input supply, featuring high power supply ripple rejection (PSRR), low output noise, fast transient response, and low dropout voltage. The series includes variants with an enable (CE) pin for power management and variants where the enable function is internally tied high or low. They are stable with low-ESR ceramic capacitors.",
+  "KeyParameters": {
+    "Maximum Output Current": "500 mA (condition: VIN=4.3V, VOUT=3.3V)",
+    "Dropout Voltage": "100 mV (condition: IOUT=100mA)",
+    "Operating Input Voltage Range": "1.2 V to 6.0 V",
+    "Output Voltage Accuracy": "±1%",
+    "Quiescent Current (Operating)": "30 µA (Typical)",
+    "Standby Current (Disabled)": "0.1 µA (Typical)",
+    "Ripple Rejection (PSRR)": "70 dB @ 1 kHz (for ME6211C33 variant)",
+    "Output Noise": "50 µVrms",
+    "Line Regulation": "0.05% (Typical)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Unregulated supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.5V - 6V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Chip Enable input (Active High)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Logic"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "No internal connection"
+        }
+      ],
+      "PinType": "NC",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Regulated DC output voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Fixed/Adj"
+    }
+  ]
+}

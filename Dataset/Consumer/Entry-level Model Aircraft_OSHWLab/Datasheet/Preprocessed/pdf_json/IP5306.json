@@ -1,0 +1,115 @@
+{
+  "ComponentID": "IP5306",
+  "ComponentType": "Integrated Power Management SOC (System-on-Chip) for Power Banks",
+  "Description": "The IP5306 is a highly integrated power management SOC that combines a synchronous boost converter, lithium-ion battery charging management, and battery level indication into a single chip, providing a complete power solution for mobile power banks. It features synchronous switching for both charging (up to 2.1A) and discharging/boosting (up to 2.4A), supports simultaneous charging and discharging via built-in power path management, and drives 1-4 LEDs for battery level display. It includes a button control for power-on and flashlight driving, automatic load detection for entering low-power standby, and requires only a single external inductor.",
+  "KeyParameters": {
+    "Maximum Boost/Discharge Output Current": "2.4 A",
+    "Maximum Charging Input Current": "2.1 A",
+    "Boost Converter Efficiency": "Up to 92%",
+    "Charging Efficiency": "Up to 91%",
+    "Standby Current": "< 100 µA",
+    "Battery Charge Termination Voltage Options": "4.20 V / 4.30 V / 4.35 V / 4.40 V",
+    "Boost Output Voltage": "5 V",
+    "Charging Input Voltage": "5 V (DC)",
+    "Protection Features": "Output OVP, OCP, SCP; Input OVP, Battery OVP, OCP, OTP; ESD 4KV",
+    "Package": "ESOP8"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Power Input",
+          "FunctionDescription": "DC 5V charging input pin"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "LED1",
+      "Functions": [
+        {
+          "FunctionName": "LED Driver",
+          "FunctionDescription": "LED drive pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital/PWM"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "LED2",
+      "Functions": [
+        {
+          "FunctionName": "LED Driver",
+          "FunctionDescription": "LED drive pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital/PWM"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "LED3",
+      "Functions": [
+        {
+          "FunctionName": "LED Driver",
+          "FunctionDescription": "LED drive pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital/PWM"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "KEY",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Button input, shared with flashlight/LED driver"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Power Input/Output",
+          "FunctionDescription": "Boost input pin, connect to Li-ion battery positive terminal"
+        }
+      ],
+      "PinType": "Power I/O",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "SW",
+      "Functions": [
+        {
+          "FunctionName": "Power Switch",
+          "FunctionDescription": "DC-DC switching pin"
+        }
+      ],
+      "PinType": "Power I/O",
+      "ElectricalType": "Power (Switch Node)"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Power Output",
+          "FunctionDescription": "5V boost output pin"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power"
+    }
+  ]
+}

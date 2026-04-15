@@ -1,0 +1,20 @@
+Component ID: USB
+Component Type: 6-Pin USB Type-C Receptacle (Power/Charging Only)
+Description: The TYPE-C-31-M-17 is a specialized USB Type-C receptacle designed primarily for power delivery and charging applications. It simplifies the standard Type-C interface by providing only the essential pins for power (VBUS, GND) and orientation/negotiation (CC1, CC2), omitting all data lines. This makes it an ideal, cost-effective choice for devices that do not require data transfer, such as rechargeable flashlights, simple power banks, or battery-powered toys.
+
+Key Parameters:
+- Pin Count: 6 functional signal pins + 4 mounting/shield pins
+- Interface: Power Only (No USB 2.0 or 3.x data)
+- Power Compatibility: Supports USB Power Delivery (PD) negotiation via CC pins
+- Mounting Type: Surface Mount (SMT) with through-hole shell tabs for mechanical strength
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | B12 | Ground | System ground reference | Power | 0V |
+| 2 | B9 | VBUS | Positive power supply input | Power | 5V - 20V |
+| 3 | A5 | CC1 | Configuration Channel 1 (Orientation/PD) | I/O | Signal |
+| 4 | B5 | CC2 | Configuration Channel 2 (Orientation/PD) | I/O | Signal |
+| 5 | A9 | VBUS | Positive power supply input | Power | 5V - 20V |
+| 6 | A12 | Ground | System ground reference | Power | 0V |
+| 0 | SHELL | Shield | Connector housing and mechanical ground | Passive | Ground |

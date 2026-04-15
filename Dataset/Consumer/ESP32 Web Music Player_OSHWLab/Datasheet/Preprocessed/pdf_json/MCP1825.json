@@ -1,0 +1,67 @@
+{
+  "ComponentID": "MCP1825",
+  "ComponentType": "Low Dropout (LDO) Linear Voltage Regulator",
+  "Description": "The MCP1825/MCP1825S is a family of 500 mA low-dropout linear regulators designed for applications requiring high current at low output voltages. It features a low quiescent current, stable operation with small ceramic output capacitors, and is available in both fixed-output (MCP1825S: 3-pin; MCP1825: 5-pin) and adjustable-output (MCP1825: 5-pin) versions. Key protections include short-circuit current limiting and overtemperature shutdown. The MCP1825 variant includes a shutdown (SHDN) pin for ultra-low standby current and a power-good (PWRGD) output signal (fixed version) or an adjust (ADJ) pin (adjustable version).",
+  "KeyParameters": {
+    "Maximum Output Current": "500 mA",
+    "Input Voltage Range": "2.1 V to 6.0 V",
+    "Dropout Voltage": "210 mV (Typical at 500 mA load)",
+    "Output Voltage Range (Adjustable)": "0.8 V to 5.0 V",
+    "Output Voltage Tolerance": "0.5% (Typical)",
+    "Quiescent (Supply) Current": "120 µA (Typical)",
+    "Shutdown Current": "0.1 µA (Typical, MCP1825 only)",
+    "Minimum Output Capacitance": "1.0 µF (Ceramic, for stability)",
+    "Power Good Delay": "110 µs (Typical, fixed-output MCP1825)",
+    "Operating Junction Temperature": "-40°C to +125°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Input Voltage",
+          "FunctionDescription": "Power supply input pin. Must be bypassed with a capacitor."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Primary ground connection. The package tab is also electrically connected to ground."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output Voltage",
+          "FunctionDescription": "Regulated output voltage. Must be bypassed with a capacitor."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Additional ground connection. The package tab is also electrically connected to ground."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

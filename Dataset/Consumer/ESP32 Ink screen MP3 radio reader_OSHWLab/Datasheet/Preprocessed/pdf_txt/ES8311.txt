@@ -1,0 +1,40 @@
+Component ID: ES8311
+Component Type: Low Power Mono Audio CODEC (Coder-Decoder)
+Description: The ES8311 is a low-power, high-performance mono audio CODEC integrating a multibit delta-sigma ADC and DAC. It features a flexible I2S/PCM serial audio interface that can operate in master or slave mode, supports various system clocks (including 256/384Fs and USB clocks), and is configured via an I2C interface. It includes a microphone input path with a pre-amplifier, ALC, noise gate, and support for both analog and digital microphones, as well as a headphone driver output path with pop/click suppression. It is designed for portable and battery-powered audio applications.
+
+Key Parameters:
+- ADC Resolution & SNR: 24-bit, 100 dB SNR
+- ADC THD+N: -93 dB
+- DAC Resolution & SNR: 24-bit, 110 dB SNR
+- DAC THD+N: -80 dB
+- Sampling Frequency Range: 8 kHz to 96 kHz
+- Supply Voltage Range: 1.8V to 3.3V
+- Power Consumption (Playback & Record): 14 mW
+- Audio Interface: I2S/PCM, Master/Slave selectable
+- Control Interface: I2C (up to 400 kbps)
+- Package: QFN-20
+- Operating Temperature: -40°C to +105°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CCLK | Control Clock | I2C clock | Input | Digital |
+| 2 | MCLK | Master Clock | System master clock input | Input | Digital |
+| 3 | PVDD | Power Supply | Power for digital I/O | Power | Analog |
+| 4 | DVDD | Power Supply | Digital core power supply | Power | Analog |
+| 5 | DGND | Ground | Digital ground | Ground | Analog |
+| 6 | SCLK/DMIC_SCL | Serial Clock | I2S bit clock / Digital MIC clock | Input/Output | Digital |
+| 7 | ASDOUT | Audio Data Out | ADC serial data output | Output | Digital |
+| 8 | LRCK | Frame Clock | I2S left/right channel frame clock | Input/Output | Digital |
+| 9 | DSDIN | Audio Data In | DAC serial data input | Input | Digital |
+| 10 | AGND | Ground | Analog ground | Ground | Analog |
+| 11 | AVDD | Power Supply | Analog power supply | Power | Analog |
+| 12 | OUTP | Audio Output | Positive differential analog output | Output | Analog |
+| 13 | OUTN | Audio Output | Negative differential analog output | Output | Analog |
+| 14 | DACVREF | Reference Voltage | DAC reference filtering capacitor connection | Passive | Analog |
+| 15 | ADCVREF | Reference Voltage | ADC reference filtering capacitor connection | Passive | Analog |
+| 16 | VMID | Mid Voltage | Mid-rail filtering capacitor connection | Passive | Analog |
+| 17 | MIC1N | Microphone Input | Negative microphone input (differential) | Input | Analog |
+| 18 | MIC1P/DMIC_SDA | Microphone Input | Positive microphone input / Digital MIC data | Input | Analog/Digital |
+| 19 | CDATA | Control Data | I2C data line | Input/Output | Digital |
+| 20 | CE | Chip Enable | I2C address select | Input | Digital |

@@ -1,0 +1,20 @@
+Component ID: 1N4148WS
+Component Type: Fast Switching Diode
+Description: The 1N4148WS is a surface-mount, general-purpose, fast-switching silicon diode. It is characterized by a very fast reverse recovery time (4 ns), making it suitable for high-speed switching applications, clipping, clamping, and rectification in circuits where switching speed is critical. It comes in a small SOD-323 package.
+
+Key Parameters:
+- Peak Repetitive Reverse Voltage (VRRM): 75 V
+- Average Rectified Forward Current (IO): 200 mA
+- Forward Voltage (VF): 0.715 V (typ @ 1 mA) to 1.25 V (max @ 150 mA)
+- Reverse Recovery Time (trr): 4 ns
+- Junction Capacitance (CJ): 2.0 pF (max @ VR=0V, f=1 MHz)
+- Reverse Leakage Current (IR): 1.0 µA (max @ VR=75V), 25 nA (max @ VR=20V)
+- Non-Repetitive Peak Forward Surge Current (IFSM): 2.0 A (@ t=1.0 µs), 1.0 A (@ t=1.0 s)
+- Power Dissipation (PD): 200 mW
+- Operating Temperature Range (Tj, TSTG): -65°C to +150°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1          | K        | Cathode  | Negative terminal of the diode. Marked by a color band on the package body. | Physical Pin | Passive, Negative |
+| 2          | A        | Anode    | Positive terminal of the diode. | Physical Pin | Passive, Positive |

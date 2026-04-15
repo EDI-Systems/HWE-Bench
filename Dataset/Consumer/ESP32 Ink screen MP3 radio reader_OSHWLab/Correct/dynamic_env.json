@@ -1,0 +1,26 @@
+{
+  "Environmental Sensing & Timekeeping": [
+    {
+      "net_id": "net_i2c_scl",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "36", "FunctionName": "IO22 (SCL)" },
+        { "ComponentID": "RX8010SJ", "PinName": "3", "FunctionName": "SCL" },
+        { "ComponentID": "SHT", "PinName": "8", "FunctionName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "net_i2c_sda",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "33", "FunctionName": "IO21 (SDA)" },
+        { "ComponentID": "RX8010SJ", "PinName": "4", "FunctionName": "SDA" },
+        { "ComponentID": "SHT", "PinName": "1", "FunctionName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "net_rtc_pwr",
+      "Connections": [
+        { "ComponentID": "RX8010SJ", "PinName": "2", "FunctionName": "VDD" }
+      ]
+    }
+  ]
+}

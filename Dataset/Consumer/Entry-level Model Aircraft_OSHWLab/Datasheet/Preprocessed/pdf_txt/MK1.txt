@@ -1,0 +1,30 @@
+Component ID: MK1
+Component Type: Wi-Fi Microcontroller Module
+Description: This is an ESP8266-based Wi-Fi module, specifically following the ESP-12 series footprint. It integrates a Tensilica L106 32-bit RISC microprocessor, Flash memory, and a Wi-Fi transceiver into a compact surface-mount package. It is a staple in IoT (Internet of Things) development due to its low cost, integrated networking stack, and support for environments like Arduino and MicroPython. The module requires specific strapping pin configurations (IO0, IO2, IO15) during power-up to select between running from Flash or entering the UART bootloader.
+
+Key Parameters:
+- Processor: Tensilica L106 32-bit MCU (80MHz / 160MHz)
+- Wi-Fi: 802.11 b/g/n (2.4 GHz)
+- Operating Voltage: 3.0V to 3.6V (3.3V Recommended)
+- Flash Memory: Typically 4MB (32Mbit)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | RST | Reset | External reset pin (Active Low) | Input | Digital |
+| 2 | ADC | ADC | 10-bit Analog-to-Digital Converter input | Input | Analog |
+| 3 | EN | Enable | Chip enable (Active High); must be pulled high | Input | Digital |
+| 4 | IO16 | GPIO16 | General purpose I/O / Deep-sleep wake-up | I/O | Digital |
+| 5 | IO14 | GPIO14 | General purpose I/O / HSPI_CLK | I/O | Digital |
+| 6 | IO12 | GPIO12 | General purpose I/O / HSPI_MISO | I/O | Digital |
+| 7 | IO13 | GPIO13 | General purpose I/O / HSPI_MOSI / UART0_CTS | I/O | Digital |
+| 8 | VCC | Power | 3.3V power supply input | Power | 3.3V |
+| 9 | GND | Ground | Common system ground reference | Power | 0V |
+| 10 | IO15 | GPIO15 | General purpose I/O / HSPI_CS / Boot strap | I/O | Digital |
+| 11 | IO2 | GPIO2 | General purpose I/O / UART1_TXD / Boot strap | I/O | Digital |
+| 12 | IO0 | GPIO0 | General purpose I/O / Boot mode (Low to Flash) | I/O | Digital |
+| 13 | IO4 | GPIO4 | General purpose I/O | I/O | Digital |
+| 14 | IO5 | GPIO5 | General purpose I/O | I/O | Digital |
+| 15 | RXD | RXD0 | UART0 receive pin / GPIO3 | I/O | Digital |
+| 16 | TXD | TXD0 | UART0 transmit pin / GPIO1 | I/O | Digital |
+| 17 | EP | Thermal | Exposed pad (should be soldered to GND) | Passive | Ground |

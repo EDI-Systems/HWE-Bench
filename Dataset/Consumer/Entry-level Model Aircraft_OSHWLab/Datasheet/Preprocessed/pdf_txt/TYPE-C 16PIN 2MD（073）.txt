@@ -1,0 +1,33 @@
+Component ID: TYPE-C
+Component Type: USB Type-C Female Connector (Receptacle)
+Description:
+This is a 16-pin USB Type-C receptacle connector designed for surface-mount applications. Its primary functionality is to provide a standardized, reversible physical and electrical interface for USB connectivity, supporting data transfer and power delivery up to 5A. The component is specified for use in consumer electronics, with defined mechanical durability, electrical performance (including low contact resistance and high insulation), and environmental resilience across temperature, humidity, and soldering processes.
+
+Key Parameters:
+- Rated Voltage/Current: DC 5V, 5A
+- Operating Temperature Range: -25°C to +85°C
+- Contact Resistance: ≤ 10 mΩ (initial, at ≤100mA)
+- Insulation Resistance: ≥ 100 MΩ (at 100V DC)
+- Dielectric Strength: Withstands AC 100V (50Hz) for 1 min without breakdown
+- Insertion Force: 0.5 - 2.0 kgf
+- Withdrawal Force: 0.8 - 2.0 kgf
+- Mechanical Durability (Life Cycles): 5000 cycles (under rated load)
+- Solder Heat Resistance (Reflow): Peak temperature 260°C ±5°C for ≤20 seconds
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Common system ground reference | Power | 0V |
+| 2 | VBUS | Power | Bus power supply voltage | Power | 5V - 20V |
+| 3 | SBU2 | Sideband | Sideband Use pin 2 for Alternate Modes | I/O | Signal |
+| 4 | CC1 | Config 1 | Configuration Channel for PD and orientation | I/O | Signal |
+| 5 | DN2 | Data- | USB 2.0 differential pair 2 (Negative) | I/O | Signal |
+| 6 | DP1 | Data+ | USB 2.0 differential pair 1 (Positive) | I/O | Signal |
+| 7 | DN1 | Data- | USB 2.0 differential pair 1 (Negative) | I/O | Signal |
+| 8 | DP2 | Data+ | USB 2.0 differential pair 2 (Positive) | I/O | Signal |
+| 9 | SBU1 | Sideband | Sideband Use pin 1 for Alternate Modes | I/O | Signal |
+| 10 | CC2 | Config 2 | Configuration Channel for PD and orientation | I/O | Signal |
+| 11 | VBUS | Power | Bus power supply voltage | Power | 5V - 20V |
+| 12 | GND | Ground | Common system ground reference | Power | 0V |
+| 13 | SHELL | Shield | Metal housing / EMI protection | Passive | Ground |
+| 14 | SHELL | Shield | Metal housing / EMI protection | Passive | Ground |

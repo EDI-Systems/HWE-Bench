@@ -1,0 +1,69 @@
+{
+  "High-Current Drive Channels": [
+    {
+      "net_id": "net_pwm_ctrl",
+      "Connections": [
+        {
+          "ComponentID": "MCU",
+          "PinName": "IO14",
+          "FunctionName": "PWM Digital Output"
+        },
+        {
+          "ComponentID": "SM4410PRL",
+          "PinName": "Gate",
+          "FunctionName": "MOSFET Gate Control"
+        }
+      ]
+    },
+    {
+      "net_id": "net_motor_drive_node",
+      "Connections": [
+        {
+          "ComponentID": "SM4410PRL",
+          "PinName": "Drain",
+          "FunctionName": "Power Switch Drain (Low Side)"
+        },
+        {
+          "ComponentID": "Motor_Connector",
+          "PinName": "-",
+          "FunctionName": "Motor Negative Terminal"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "Anode",
+          "FunctionName": "Flyback Diode Anode (Catch Node)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_vbat_5v_power",
+      "Connections": [
+        {
+          "ComponentID": "Motor_Connector",
+          "PinName": "+",
+          "FunctionName": "Motor Positive Power (5V)"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "Cathode",
+          "FunctionName": "Flyback Diode Cathode (Reverse Bias)"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        {
+          "ComponentID": "SM4410PRL",
+          "PinName": "Source",
+          "FunctionName": "MOSFET Source Ground"
+        },
+        {
+          "ComponentID": "MCU",
+          "PinName": "GND",
+          "FunctionName": "System Ground"
+        }
+      ]
+    }
+  ]
+}

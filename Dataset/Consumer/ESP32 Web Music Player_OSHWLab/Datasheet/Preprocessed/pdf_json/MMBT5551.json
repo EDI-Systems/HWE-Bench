@@ -1,0 +1,54 @@
+{
+  "ComponentID": "MMBT5551",
+  "ComponentType": "NPN Bipolar Junction Transistor (BJT)",
+  "Description": "The MMBT5551 is a general-purpose NPN bipolar junction transistor in a SOT-23 surface-mount package. It is designed for medium-power amplification and switching applications, featuring epitaxial planar construction and high voltage ratings.",
+  "KeyParameters": {
+    "Collector-Base Voltage (VCBO)": "180 V (Max)",
+    "Collector-Emitter Voltage (VCEO)": "160 V (Max)",
+    "Collector Current (Ic)": "0.6 A (Max, DC)",
+    "Collector Power Dissipation (Pc)": "0.35 W (Max)",
+    "DC Current Gain (hFE)": "30 to 300 (at Vce=5V, depending on Ic)",
+    "Transition Frequency (fT)": "100 to 300 MHz",
+    "Collector-Emitter Saturation Voltage (VCE(sat))": "0.15 V (Max at Ic=10mA, Ib=1mA)",
+    "Base-Emitter Saturation Voltage (VBE(sat))": "1 V (Max at Ic=10mA, Ib=1mA)",
+    "Thermal Resistance, Junction to Ambient (RθJA)": "357 °C/W"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Emitter",
+      "Functions": [
+        {
+          "FunctionName": "Current Output",
+          "FunctionDescription": "Emitter terminal of the NPN transistor"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "Base",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Base terminal for controlling transistor conduction"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Input"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "Collector",
+      "Functions": [
+        {
+          "FunctionName": "Current Input",
+          "FunctionDescription": "Collector terminal of the NPN transistor"
+        }
+      ],
+      "PinType": "Terminal",
+      "ElectricalType": "Analog, Power"
+    }
+  ]
+}

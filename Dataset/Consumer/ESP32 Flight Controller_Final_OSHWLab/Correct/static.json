@@ -1,0 +1,82 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_SPI_SCK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO18" },
+        { "ComponentID": "BMI160", "PinName": "SCX" },
+        { "ComponentID": "MPU-9250", "PinName": "SCL/SCLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MOSI",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO23" },
+        { "ComponentID": "BMI160", "PinName": "SDX" },
+        { "ComponentID": "MPU-9250", "PinName": "SDA/SDI" }
+      ]
+    },
+    {
+      "net_id": "NET_SPI_MISO",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO19" },
+        { "ComponentID": "BMI160", "PinName": "SDO" },
+        { "ComponentID": "MPU-9250", "PinName": "AD0/SDO" }
+      ]
+    },
+    {
+      "net_id": "NET_BMI160_CS",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO5" },
+        { "ComponentID": "BMI160", "PinName": "CSB" }
+      ]
+    },
+    {
+      "net_id": "NET_MPU9250_CS",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO17" },
+        { "ComponentID": "MPU-9250", "PinName": "nCS" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C1_SDA",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO21" },
+        { "ComponentID": "BMP280", "PinName": "SDI" },
+        { "ComponentID": "HMC5883L", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C1_SCL",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO22" },
+        { "ComponentID": "BMP280", "PinName": "SCK" },
+        { "ComponentID": "HMC5883L", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_3V3_SYSTEM",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "3V3" },
+        { "ComponentID": "BMI160", "PinName": "VDD" },
+        { "ComponentID": "BMP280", "PinName": "VDD" }
+      ]
+    },
+    {
+      "net_id": "NET_SBUS_INPUT",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO13" },
+        { "ComponentID": "H5", "PinName": "SBUS_IN" }
+      ]
+    },
+    {
+      "net_id": "NET_GND",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "GND" },
+        { "ComponentID": "BMI160", "PinName": "GND" },
+        { "ComponentID": "BMP280", "PinName": "GND" },
+        { "ComponentID": "MPU-9250", "PinName": "GND" }
+      ]
+    }
+  ]
+}

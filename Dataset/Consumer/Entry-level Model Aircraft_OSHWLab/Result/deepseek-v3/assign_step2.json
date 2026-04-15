@@ -1,0 +1,825 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Management Ecosystem",
+      "Function Description": "Manages the single-cell battery charging, provides a stable logic voltage rail using a step-up followed by a step-down regulation topology to withstand severe battery voltage drops during motor activations.",
+      "Signal Sources": "Single-cell LiPo battery, external charger input.",
+      "Signal Destinations": "All other modules (provides stable Vlogic).",
+      "Implementation Logic": "Integrated charging IC for the battery. A boost converter first raises the variable battery voltage to a level above the required logic voltage, then a buck converter regulates it down to a precise, stable Vlogic (e.g., 3.3V), ensuring continuous operation during load transients.",
+      "Signal Chain": "The power management ecosystem begins with a single-cell LiPo battery connected to the IP5306's BAT pin, which serves as the primary energy source. An external 5V charger input is provided via a USB Type-C connector, whose VBUS pins connect to the IP5306's VIN pin for battery charging. The IP5306 integrates charging management, boosting the battery voltage to a stable 5V at its VOUT pin. This 5V rail then feeds into the AMS1117-3.3's VIN pin. The AMS1117, configured as a fixed 3.3V LDO, regulates the 5V input down to a precise and stable 3.3V logic voltage (Vlogic) at its VOUT pin. This Vlogic rail is distributed to all other system modules, including the MK1 Wi-Fi microcontroller, sensors, and peripherals, ensuring continuous operation even during battery voltage sag from motor loads. The IP5306 also manages battery level indication via its LED pins and system control via its KEY pin.",
+      "Recommended Components": [
+        {
+          "ComponentID": "IP5306",
+          "Functional Position": "Integrated Battery Charger and 5V Boost Converter",
+          "Recommendation Reason": "Provides complete single-cell LiPo charging management from a 5V USB input and integrates a synchronous boost converter to output a stable 5V from the variable battery voltage, fulfilling the 'boost' stage and charging requirement.",
+          "Pin Connections": {
+            "Pin1 (VIN)": "Connected to USB Type-C VBUS for 5V charging input.",
+            "Pin2 (LED1)": "Connected to an indicator LED (e.g., NCD0603R6 anode) for battery level/status.",
+            "Pin3 (LED2)": "Connected to an indicator LED (e.g., NCD0603R6 anode) for battery level/status.",
+            "Pin4 (LED3)": "Connected to an indicator LED (e.g., NCD0603R6 anode) for battery level/status.",
+            "Pin5 (KEY)": "Connected to a system power/control button.",
+            "Pin6 (BAT)": "Connected to the positive terminal of the single-cell LiPo battery.",
+            "Pin7 (SW)": "Connected to the boost inductor (external component not in library).",
+            "Pin8 (VOUT)": "Connected to the input (VIN) of the AMS1117-3.3 LDO, providing the 5V intermediate rail."
+          }
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Low Dropout Linear Regulator (Buck/Regulation Stage)",
+          "Recommendation Reason": "Provides precise and stable 3.3V output from the 5V intermediate rail, acting as the 'buck' regulation stage to create the final Vlogic rail. Its low dropout and 1A capability suit logic supply needs.",
+          "Pin Connections": {
+            "Pin1 (GND/ADJ)": "Connected to system ground (GND).",
+            "Pin2 (VOUT)": "Provides the stable 3.3V Vlogic rail to all other modules.",
+            "Pin3 (VIN)": "Connected to IP5306 Pin8 (VOUT) for 5V input."
+          }
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "External 5V Power and Data Input Connector",
+          "Recommendation Reason": "Provides the physical interface for the 5V external charger input to the IP5306, supporting USB power delivery.",
+          "Pin Connections": {
+            "Pin1 (GND)": "Connected to system ground (GND).",
+            "Pin2 (VBUS)": "Connected to IP5306 Pin1 (VIN) for charging power.",
+            "Pin11 (VBUS)": "Connected to IP5306 Pin1 (VIN) for charging power.",
+            "Pin12 (GND)": "Connected to system ground (GND).",
+            "Pin13 (SHELL)": "Connected to system ground (GND) for shielding.",
+            "Pin14 (SHELL)": "Connected to system ground (GND) for shielding."
+          }
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "Functional Position": "Battery Status Indicator LED",
+          "Recommendation Reason": "Used as a visual indicator for battery charging/level status, driven by the IP5306's LED pins.",
+          "Pin Connections": {
+            "Pin1 (Anode (A))": "Connected to one of IP5306's LED pins (LED1, LED2, or LED3) via a current-limiting resistor.",
+            "Pin2 (Cathode (K))": "Connected to system ground (GND)."
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Spatial Awareness Sensor Suite",
+      "Function Description": "Provides real-time orientation and altitude data. Includes a multi-axis IMU (gyroscope, accelerometer) and a barometric pressure sensor.",
+      "Signal Sources": "Inertial forces, atmospheric pressure.",
+      "Signal Destinations": "Wireless CPU (via digital bus).",
+      "Implementation Logic": "A combined IMU+pressure sensor module or discrete ICs communicating via I2C or SPI. The IMU provides angular rate and linear acceleration. The pressure sensor provides altitude estimation.",
+      "Signal Chain": "The module requires a power supply chain, sensor data acquisition, and data transmission to a wireless CPU. The signal flow begins with a USB Type-C connector providing 5V power. This 5V is regulated down to 3.3V by an LDO to power the digital components (Wi-Fi MCU, sensors). The 3.3V rail powers the MPU-6050 (IMU), BMP280 (pressure sensor), and MMC5603NJ (magnetometer). All three sensors communicate with the Wi-Fi MCU (MK1) via a shared I2C bus (SCL, SDA). The MK1 reads sensor data, processes it, and transmits the orientation and altitude data wirelessly to a host CPU. An optional status LED can be driven by the MK1. The CH340 is not required as the primary communication is wireless, not USB-to-serial.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "Power Input Connector",
+          "Recommendation Reason": "Provides a standardized, reversible 5V power input and potential data connection for the module.",
+          "Pin Connections": {
+            "1": "GND (System Ground)",
+            "2": "VBUS_IN (5V Input to LDO)",
+            "11": "VBUS_IN (5V Input to LDO)",
+            "12": "GND (System Ground)",
+            "13": "GND (System Ground)",
+            "14": "GND (System Ground)"
+          }
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Voltage Regulator",
+          "Recommendation Reason": "Steps down the 5V USB input to a stable 3.3V required by the MK1 Wi-Fi module and sensors.",
+          "Pin Connections": {
+            "1": "GND (System Ground)",
+            "2": "VCC_3V3 (3.3V Power Rail)",
+            "3": "VBUS_IN (5V Input from TYPE-C)"
+          }
+        },
+        {
+          "ComponentID": "MK1",
+          "Functional Position": "Wireless CPU / System Controller",
+          "Recommendation Reason": "Acts as the main processor; reads sensor data via I2C and transmits it wirelessly.",
+          "Pin Connections": {
+            "1": "RST (Pull-up to VCC_3V3 via resistor)",
+            "3": "EN (Pull-up to VCC_3V3)",
+            "8": "VCC_3V3",
+            "9": "GND",
+            "15": "RXD (UART0_RX, optional for debug)",
+            "16": "TXD (UART0_TX, optional for debug)",
+            "23": "SCL (I2C Clock, connect to sensor SCL lines)",
+            "24": "SDA (I2C Data, connect to sensor SDA lines)",
+            "17": "GND"
+          }
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "Functional Position": "6-Axis IMU (Gyroscope + Accelerometer)",
+          "Recommendation Reason": "Provides real-time angular rate and linear acceleration data for orientation sensing.",
+          "Pin Connections": {
+            "13": "VCC_3V3",
+            "18": "GND",
+            "23": "SCL (I2C Clock, shared with MK1)",
+            "24": "SDA (I2C Data, shared with MK1)",
+            "9": "AD0 (Pull-down to GND for I2C address 0x68)",
+            "8": "VLOGIC (Connect to VCC_3V3)",
+            "19": "GND",
+            "21": "GND",
+            "22": "GND",
+            "25": "GND"
+          }
+        },
+        {
+          "ComponentID": "BMP280",
+          "Functional Position": "Barometric Pressure and Temperature Sensor",
+          "Recommendation Reason": "Measures atmospheric pressure for altitude estimation.",
+          "Pin Connections": {
+            "1": "VCC_3V3",
+            "2": "VCC_3V3",
+            "3": "GND",
+            "7": "SCL (I2C Clock, shared with MK1)",
+            "8": "SDA (I2C Data, shared with MK1)",
+            "5": "SDO (Pull-up to VCC_3V3 for I2C address 0x77)"
+          }
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "Functional Position": "3-Axis Magnetometer",
+          "Recommendation Reason": "Provides magnetic field data for compass functionality and full 9-axis motion fusion.",
+          "Pin Connections": {
+            "B1": "VCC_3V3",
+            "A1": "GND",
+            "A2": "SCL (I2C Clock, shared with MK1)",
+            "B2": "SDA (I2C Data, shared with MK1)"
+          }
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "Functional Position": "Status Indicator LED",
+          "Recommendation Reason": "Visual indicator for power or system status.",
+          "Pin Connections": {
+            "1": "LED_DRIVE (Connect via current-limiting resistor to MK1 GPIO, e.g., IO2)",
+            "2": "GND"
+          }
+        },
+        {
+          "ComponentID": "SS8050",
+          "Functional Position": "LED Driver Transistor (if needed)",
+          "Recommendation Reason": "Can be used to drive the LED if the MK1 GPIO cannot source sufficient current directly.",
+          "Pin Connections": {
+            "1": "BASE (Connect via resistor to MK1 GPIO)",
+            "2": "EMITTER (Connect to GND)",
+            "3": "COLLECTOR (Connect to LED anode via current-limiting resistor)"
+          }
+        }
+      ]
+    },
+    {
+      "Module Name": "Automated Wired Diagnostic Bridge",
+      "Function Description": "Handles external wired communication (e.g., for telemetry) and facilitates seamless firmware flashing by automatically forcing the main CPU into bootloader/programming mode.",
+      "Signal Sources": "External programming/debugging host (via UART/USB).",
+      "Signal Destinations": "Wireless CPU (UART, boot mode control pin).",
+      "Implementation Logic": "A USB-to-serial bridge IC (e.g., CP2102, CH340) or a dedicated communication MCU. It monitors the communication line; upon detecting a specific command or sequence from the host, it toggles a hardware pin (e.g., MCU reset/boot) to force the main CPU into its bootloader, enabling firmware updates without user button presses.",
+      "Signal Chain": "The module functions as a wired diagnostic bridge. The primary signal flow begins at the USB Type-C connector, which provides 5V power and USB 2.0 data lines (D+, D-) from an external host. The USB data is converted to a UART serial interface by the CH340 USB-to-serial bridge IC. The CH340's UART TX and RX pins connect directly to the main wireless CPU's (MK1) UART0 RX and TX pins, establishing a communication channel for telemetry and commands. The CH340 also monitors this serial stream. Upon detecting a specific firmware update command sequence from the host, the CH340 toggles one of its modem control output pins (e.g., DTR# or RTS#). This output is connected to the MK1's boot mode control pin (IO0). When the control pin is pulled low (or toggled appropriately) while the MK1 is reset, it forces the MK1 into its UART bootloader mode, enabling firmware flashing. A stable 3.3V power supply for the CH340 and MK1 is derived from the USB 5V input via a linear regulator. An optional status LED can be connected to indicate power or activity.",
+      "Recommended Components": [
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "External Host Interface",
+          "Recommendation Reason": "Provides the physical USB connection for power and data from the external programming/debugging host. It is the entry point for both 5V power and the USB differential data signals.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "ConnectedToNet": "USB_5V_IN"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "VBUS",
+              "ConnectedToNet": "USB_5V_IN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "DP1",
+              "ConnectedToNet": "USB_D_P"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DN1",
+              "ConnectedToNet": "USB_D_N"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "GND",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SHELL",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SHELL",
+              "ConnectedToNet": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "CH340",
+          "Functional Position": "USB to UART Bridge & Boot Control",
+          "Recommendation Reason": "Converts USB data from the host to UART for the main CPU. It can monitor the UART stream and use its modem control outputs (e.g., DTR#, RTS#) to generate a hardware signal to force the main CPU into bootloader mode, fulfilling the core 'automated' flashing requirement.",
+          "Pin Connections": [
+            {
+              "PinNumber": "16",
+              "PinName": "VCC",
+              "ConnectedToNet": "VCC_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D+",
+              "ConnectedToNet": "USB_D_P"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "D-",
+              "ConnectedToNet": "USB_D_N"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "TXD",
+              "ConnectedToNet": "UART_HOST_RX"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "RXD",
+              "ConnectedToNet": "UART_HOST_TX"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "DTR#",
+              "ConnectedToNet": "BOOT_CTRL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MK1",
+          "Functional Position": "Main Wireless CPU / Target Device",
+          "Recommendation Reason": "This is the primary wireless CPU that requires firmware updates via UART. Its UART0 interface connects to the bridge, and its boot mode pin (IO0) is controlled by the bridge to enter the bootloader.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "ConnectedToNet": "VCC_3V3"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "GND",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "EP",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "RXD",
+              "ConnectedToNet": "UART_HOST_TX"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "TXD",
+              "ConnectedToNet": "UART_HOST_RX"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO0",
+              "ConnectedToNet": "BOOT_CTRL"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "ConnectedToNet": "VCC_3V3"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO15",
+              "ConnectedToNet": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Power Regulator",
+          "Recommendation Reason": "Steps down the 5V from the USB connector to a stable 3.3V required by the CH340 and the MK1 Wi-Fi module.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "ConnectedToNet": "USB_5V_IN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "ConnectedToNet": "VCC_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "ConnectedToNet": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "Functional Position": "Power/Status Indicator",
+          "Recommendation Reason": "Provides a visual indication that the module is powered. Can be driven by the 3.3V rail through a current-limiting resistor.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode (A)",
+              "ConnectedToNet": "VCC_3V3_LED"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode (K)",
+              "ConnectedToNet": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS8050",
+          "Functional Position": "Optional Boot Control Buffer/Driver",
+          "Recommendation Reason": "If the CH340's DTR# output requires more current drive or level shifting/isolation to control the MK1's IO0 pin reliably, this NPN transistor can be used as a switch. The base is driven by DTR#, the collector pulls IO0 to GND when active.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "BASE",
+              "ConnectedToNet": "BOOT_CTRL_SRC"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "EMITTER",
+              "ConnectedToNet": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "COLLECTOR",
+              "ConnectedToNet": "BOOT_CTRL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "High-Current Drive Channels",
+      "Function Description": "Drives external inductive loads (e.g., brushless DC motors) based on CPU commands. Provides high-current capacity for motor control.",
+      "Signal Sources": "Wireless CPU (PWM signals).",
+      "Signal Destinations": "External motor phases.",
+      "Implementation Logic": "Motor driver ICs or discrete MOSFET bridges (e.g., 3-phase for BLDC). Gate drivers amplify CPU PWM signals to switch high-current MOSFETs, controlling motor speed and direction.",
+      "Signal Chain": "The module receives PWM control signals from a wireless CPU (e.g., MK1 Wi-Fi microcontroller). These low-current digital signals are fed into gate driver circuitry (not in library, implied) to amplify the current/voltage for driving the gates of high-current N-channel power MOSFETs (SM4410). The MOSFETs are arranged in a 3-phase bridge configuration (using multiple SM4410 instances) to switch high currents from a power supply (e.g., battery via IP5306 or USB Type-C) to the external brushless DC motor phases. The motor's inductive load requires freewheeling diodes (SS34) across each MOSFET for protection. A stable 3.3V logic supply for the CPU and gate drivers is provided by a voltage regulator (AMS1117-3.3V) from the main power rail. Status indication (e.g., power, fault) can be provided by an LED (NCD0603R6).",
+      "Recommended Components": [
+        {
+          "ComponentID": "MK1",
+          "Functional Position": "Wireless CPU / PWM Signal Source",
+          "Recommendation Reason": "Provides the PWM control signals for motor speed and direction via its GPIO pins, and enables wireless command reception.",
+          "Pin Connections": [
+            {
+              "PinNumber": "8",
+              "PinName": "VCC",
+              "Net": "3V3_LOGIC"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "3V3_LOGIC"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "RST",
+              "Net": "CPU_RST"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO0",
+              "Net": "BOOT_MODE"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO2",
+              "Net": "BOOT_STRAP_2"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO15",
+              "Net": "BOOT_STRAP_15"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "IO14",
+              "Net": "PWM_UH"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO4",
+              "Net": "PWM_VH"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "IO5",
+              "Net": "PWM_WH"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IO12",
+              "Net": "PWM_UL"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "IO13",
+              "Net": "PWM_VL"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "IO16",
+              "Net": "PWM_WL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Logic Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply for the MK1 CPU and other logic-level components from a higher voltage input (e.g., 5V).",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "3V3_LOGIC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "5V_IN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SM4410",
+          "Functional Position": "High-side MOSFET for Phase U",
+          "Recommendation Reason": "N-channel power MOSFET to switch high current to the motor phase. Requires a gate driver (not in library) between CPU PWM and gate.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "G",
+              "Net": "GATE_DRIVE_UH"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "D",
+              "Net": "MOTOR_PHASE_U"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "SWITCH_NODE_UH"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SM4410",
+          "Functional Position": "Low-side MOSFET for Phase U",
+          "Recommendation Reason": "N-channel power MOSFET to switch high current to ground for the motor phase. Requires a gate driver (not in library).",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "G",
+              "Net": "GATE_DRIVE_UL"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "D",
+              "Net": "SWITCH_NODE_UH"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS34",
+          "Functional Position": "Freewheeling Diode for High-side MOSFET (Phase U)",
+          "Recommendation Reason": "Schottky diode provides a path for inductive kickback current when the high-side MOSFET turns off, protecting the MOSFET.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "SWITCH_NODE_UH"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "MOTOR_SUPPLY"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SS34",
+          "Functional Position": "Freewheeling Diode for Low-side MOSFET (Phase U)",
+          "Recommendation Reason": "Schottky diode provides a path for inductive kickback current when the low-side MOSFET turns off, protecting the MOSFET.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "A",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "K",
+              "Net": "SWITCH_NODE_UH"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IP5306",
+          "Functional Position": "Battery Management and 5V Boost Converter (Optional Power Source)",
+          "Recommendation Reason": "Can provide a regulated 5V output from a Li-ion battery for the motor supply and logic regulator, supporting high discharge current.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "BAT",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "VOUT",
+              "Net": "5V_IN"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "SW",
+              "Net": "SW_NODE"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "KEY",
+              "Net": "POWER_BUTTON"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "LED1",
+              "Net": "LED_BAT1"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "LED2",
+              "Net": "LED_BAT2"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "LED3",
+              "Net": "LED_BAT3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "USB Power and Data Input",
+          "Recommendation Reason": "Provides 5V power input for charging the battery (via IP5306) and/or directly powering the system, and a potential data connection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "VBUS",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "VBUS",
+              "Net": "5V_USB_IN"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "SHELL",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "SHELL",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "DP1",
+              "Net": "USB_DP"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "DN1",
+              "Net": "USB_DN"
+            }
+          ]
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "Functional Position": "Power/Status Indicator LED",
+          "Recommendation Reason": "Visual indicator for module power or operational status.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "Anode (A)",
+              "Net": "LED_ANODE"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "Cathode (K)",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Wireless Central Processing Unit (CPU)",
+      "Function Description": "The main system controller. Aggregates sensor data, executes flight/stabilization algorithms, generates timed pulse signals for motor control, and manages system states.",
+      "Signal Sources": "Sensor Suite (via I2C/SPI), Diagnostic Bridge (UART/Boot control).",
+      "Signal Destinations": "High-Current Drive Channels (PWM signals), Diagnostic Bridge (communication).",
+      "Implementation Logic": "A microcontroller (MCU) or microprocessor with integrated wireless capability (e.g., Bluetooth/Wi-Fi). Runs the main firmware, processing sensor fusion data and control loops to output PWM commands.",
+      "Signal Chain": "The Wireless CPU module acts as the central controller. It receives sensor data (e.g., from BMP280, MPU-6050, MMC5603NJ) via I2C/SPI interfaces for sensor fusion and control algorithm execution. It communicates with a diagnostic/configuration host (e.g., a PC) via a UART bridge (CH340) connected to its primary UART (UART0). The CPU runs flight/stabilization algorithms and generates timed PWM signals on its GPIOs to control high-current motor drive channels. System power is managed by the IP5306, which provides a stable 5V output from a battery. This 5V is then regulated down to 3.3V by an AMS1117-3.3 to power the CPU and other 3.3V digital components. The TYPE-C connector provides a physical interface for 5V power input and USB data lines to the CH340.",
+      "Recommended Components": [
+        {
+          "ComponentID": "MK1",
+          "Functional Position": "Main Wireless CPU/Microcontroller",
+          "Recommendation Reason": "An ESP8266-based Wi-Fi microcontroller module that integrates a 32-bit processor, Flash, and Wi-Fi transceiver. It can run the main firmware, perform sensor fusion, execute control loops, generate PWM outputs, and manage wireless communication, fulfilling the core CPU function.",
+          "Pin Connections": {
+            "RST": "Connected to a system reset circuit (e.g., pull-up resistor and button to GND).",
+            "ADC": "Can be used for battery voltage monitoring via a voltage divider.",
+            "EN": "Pulled high to VCC (3.3V) via a 10kΩ resistor.",
+            "IO16": "Can be used as a deep-sleep wake-up or general GPIO.",
+            "IO14": "Configured as GPIO/PWM output for motor control channel 1.",
+            "IO12": "Configured as GPIO/PWM output for motor control channel 2.",
+            "IO13": "Configured as GPIO/PWM output for motor control channel 3.",
+            "VCC": "Connected to the 3.3V power rail (output of AMS1117-3.3).",
+            "GND": "Connected to system ground.",
+            "IO15": "Pulled low to GND via a 10kΩ resistor for boot strap configuration.",
+            "IO2": "Pulled high to VCC (3.3V) via a 10kΩ resistor for boot strap configuration.",
+            "IO0": "Can be pulled high via a 10kΩ resistor to VCC (3.3V) for normal run mode; can have a button to GND for bootloader entry.",
+            "IO4": "Configured as GPIO for I2C SDA line (shared with other I2C devices).",
+            "IO5": "Configured as GPIO for I2C SCL line (shared with other I2C devices).",
+            "RXD": "Connected to TXD pin of CH340 (UART0 receive).",
+            "TXD": "Connected to RXD pin of CH340 (UART0 transmit).",
+            "EP": "Soldered to system ground plane."
+          }
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Linear Voltage Regulator",
+          "Recommendation Reason": "Provides a stable 3.3V supply from the 5V input for the MK1 CPU and other 3.3V digital components (sensors, CH340 V3). Its 1A current capability is sufficient for the module.",
+          "Pin Connections": {
+            "GND/ADJ": "Connected to system ground (using fixed 3.3V version, so this is GND).",
+            "VOUT": "Connected to the 3.3V power rail, with a >=10µF capacitor to GND for stability.",
+            "VIN": "Connected to the 5V power rail (from IP5306 VOUT or TYPE-C VBUS), with a >=10µF capacitor to GND."
+          }
+        },
+        {
+          "ComponentID": "CH340",
+          "Functional Position": "USB to UART Bridge for Diagnostic Communication",
+          "Recommendation Reason": "Enables serial communication between the host PC (via USB) and the MK1 CPU's UART0 for firmware debugging, bootloading, and system diagnostics.",
+          "Pin Connections": {
+            "GND": "Connected to system ground.",
+            "TXD": "Connected to RXD pin of MK1 (UART0 receive).",
+            "RXD": "Connected to TXD pin of MK1 (UART0 transmit).",
+            "V3": "Provides a 3.3V output; can be connected to the 3.3V rail or used locally.",
+            "D+": "Connected to DP1/DP2 pins of TYPE-C connector (via series resistors for USB 2.0).",
+            "D-": "Connected to DN1/DN2 pins of TYPE-C connector (via series resistors for USB 2.0).",
+            "NC": "No connection.",
+            "CTS#": "Can be left floating or pulled high if not used.",
+            "DSR#": "Can be left floating or pulled high if not used.",
+            "RI#": "Can be left floating or pulled high if not used.",
+            "DCD#": "Can be left floating or pulled high if not used.",
+            "DTR#": "Can be connected to MK1 RST for auto-reset during programming.",
+            "RTS#": "Can be connected to MK1 IO0 for boot mode control during programming.",
+            "R232": "Mode selection; typically pulled high or low as per datasheet for USB mode.",
+            "VCC": "Connected to the 5V power rail (from TYPE-C VBUS or IP5306 VOUT)."
+          }
+        },
+        {
+          "ComponentID": "IP5306",
+          "Functional Position": "Integrated Power Management and Battery Charger",
+          "Recommendation Reason": "Manages a Li-ion battery, provides 5V boost output from the battery, and handles charging via a 5V input. Enables portable operation and power path management for the Wireless CPU module.",
+          "Pin Connections": {
+            "VIN": "Connected to a 5V charging source (e.g., TYPE-C VBUS).",
+            "LED1": "Connected to an LED (like NCD0603R6 with series resistor) for battery level indication.",
+            "LED2": "Connected to an LED (like NCD0603R6 with series resistor) for battery level indication.",
+            "LED3": "Connected to an LED (like NCD0603R6 with series resistor) for battery level indication.",
+            "KEY": "Connected to a tactile switch to GND for power on/off and control.",
+            "BAT": "Connected to the positive terminal of the Li-ion battery.",
+            "SW": "Connected to one terminal of the power inductor; the other inductor terminal to VOUT.",
+            "VOUT": "Connected to the 5V power rail (input to AMS1117 and other 5V loads)."
+          }
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "Functional Position": "USB Power and Data Connector",
+          "Recommendation Reason": "Provides a reversible connector for 5V power input (to charge battery via IP5306 or power system directly) and USB 2.0 data lines for the CH340 bridge.",
+          "Pin Connections": {
+            "GND": "Connected to system ground (pins 1 & 12).",
+            "VBUS": "Connected to the 5V power input rail (pins 2 & 11), typically fused, to power IP5306 VIN and CH340 VCC.",
+            "SBU2": "No connection or reserved for alternate modes.",
+            "CC1": "Connected via a 5.1kΩ resistor to GND for default USB power role (Sink).",
+            "DN2": "Connected to D- of CH340 (for USB data).",
+            "DP1": "Connected to D+ of CH340 (for USB data).",
+            "DN1": "Connected to D- of CH340 (for USB data).",
+            "DP2": "Connected to D+ of CH340 (for USB data).",
+            "SBU1": "No connection or reserved for alternate modes.",
+            "CC2": "Connected via a 5.1kΩ resistor to GND for default USB power role (Sink).",
+            "SHELL": "Connected to system ground/shield (pins 13 & 14)."
+          }
+        },
+        {
+          "ComponentID": "BMP280",
+          "Functional Position": "Barometric Pressure and Temperature Sensor",
+          "Recommendation Reason": "Provides altitude and temperature data via I2C for the flight control algorithms (e.g., altitude hold).",
+          "Pin Connections": {
+            "VDD": "Connected to the 3.3V power rail.",
+            "VDDIO": "Connected to the 3.3V power rail.",
+            "GND": "Connected to system ground.",
+            "CSB": "Pulled high to 3.3V via a 10kΩ resistor to select I2C mode.",
+            "SDO": "Pulled high or low to set I2C address (e.g., to GND for 0x76).",
+            "SDI": "Connected to I2C SDA line (MK1 IO4).",
+            "SCK": "Connected to I2C SCL line (MK1 IO5).",
+            "SDA": "Connected to I2C SDA line (MK1 IO4)."
+          }
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "Functional Position": "6-Axis IMU (Gyroscope + Accelerometer)",
+          "Recommendation Reason": "Provides critical motion data (angular rate and acceleration) via I2C for sensor fusion and stabilization algorithms.",
+          "Pin Connections": {
+            "CLKIN": "Can be left floating if internal clock is used.",
+            "AUX_DA": "Can be left floating or connected to an external magnetometer's SDA if used.",
+            "AUX_CL": "Can be left floating or connected to an external magnetometer's SCL if used.",
+            "VLOGIC": "Connected to the 3.3V power rail (for I/O level).",
+            "AD0": "Pulled high to 3.3V or low to GND to set I2C address.",
+            "REGOUT": "Connected to a 2.2µF capacitor to GND.",
+            "FSYNC": "Connected to GND.",
+            "INT": "Connected to an interrupt-capable GPIO on MK1 (e.g., IO13) for data ready signal.",
+            "VDD": "Connected to the 3.3V power rail.",
+            "GND": "Connected to system ground (pin 25, exposed pad).",
+            "RESV": "Connected to GND (pins 19, 21, 22).",
+            "CPOUT": "Connected to a 100nF capacitor to GND.",
+            "SCL": "Connected to I2C SCL line (MK1 IO5).",
+            "SDA": "Connected to I2C SDA line (MK1 IO4)."
+          }
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "Functional Position": "3-Axis Magnetometer",
+          "Recommendation Reason": "Provides magnetic field data via I2C for compass heading, completing the 9-axis motion sensing with MPU-6050.",
+          "Pin Connections": {
+            "VSA": "Connected to system ground.",
+            "VDD": "Connected to the 3.3V power rail.",
+            "SCL": "Connected to I2C SCL line (MK1 IO5).",
+            "SDA": "Connected to I2C SDA line (MK1 IO4)."
+          }
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "Functional Position": "Status Indicator LED",
+          "Recommendation Reason": "Can be used as a visual indicator for system power, status, or errors. Multiple may be used with IP5306 for battery level.",
+          "Pin Connections": {
+            "Anode (A)": "Connected to a GPIO pin of MK1 or IP5306 LEDx pin via a current-limiting resistor (e.g., 220Ω).",
+            "Cathode (K)": "Connected to system ground."
+          }
+        }
+      ]
+    }
+  ]
+}

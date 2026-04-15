@@ -1,0 +1,80 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_3V3_LOGIC",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "MK1", "PinName": "VCC" },
+        { "ComponentID": "MPU-6050", "PinName": "VDD" },
+        { "ComponentID": "BMP280", "PinName": "VDD" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SDA",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO4" },
+        { "ComponentID": "MPU-6050", "PinName": "SDA" },
+        { "ComponentID": "MMC5603NJ", "PinName": "SDA" },
+        { "ComponentID": "BMP280", "PinName": "SDA" }
+      ]
+    },
+    {
+      "net_id": "NET_I2C_SCL",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO5" },
+        { "ComponentID": "MPU-6050", "PinName": "SCL" },
+        { "ComponentID": "MMC5603NJ", "PinName": "SCL" },
+        { "ComponentID": "BMP280", "PinName": "SCK" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_TX",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "TXD" },
+        { "ComponentID": "CH340", "PinName": "RXD" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_RX",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "RXD" },
+        { "ComponentID": "CH340", "PinName": "TXD" }
+      ]
+    },
+    {
+      "net_id": "NET_BOOT_RST",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "RST" },
+        { "ComponentID": "SS8050", "PinName": "COLLECTOR" }
+      ]
+    },
+    {
+      "net_id": "NET_BOOT_IO0",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO0" },
+        { "ComponentID": "SS8050", "PinName": "COLLECTOR" }
+      ]
+    },
+    {
+      "net_id": "NET_LOAD1_CTRL",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO14" },
+        { "ComponentID": "SM4410", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_LOAD2_CTRL",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO12" },
+        { "ComponentID": "SM4410", "PinName": "G" }
+      ]
+    },
+    {
+      "net_id": "NET_STATUS_LED",
+      "Connections": [
+        { "ComponentID": "MK1", "PinName": "IO15" },
+        { "ComponentID": "NCD0603R6", "PinName": "Anode (A)" }
+      ]
+    }
+  ]
+}

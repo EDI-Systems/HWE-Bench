@@ -1,0 +1,25 @@
+Component ID: RT8096C  
+Component Type: Synchronous Step-Down DC/DC Converter (Buck Converter)  
+Description:  
+The RT8096C is a high-efficiency, 1A output current, synchronous step-down DC/DC converter using a Current Mode Constant-On-Time (CMCOT) control architecture. It operates from a 2.5V to 6V input and provides an adjustable output voltage from 0.6V to 3.4V. It integrates both high-side and low-side power switches, requires minimal external components, and includes features such as soft-start, power-good indicator (6-pin version), cycle-by-cycle over-current protection, output under-voltage protection, input under-voltage lockout, thermal shutdown, and light-load power-saving mode.
+
+Key Parameters:
+- Input Voltage Range: 2.5V to 6V
+- Output Voltage Range: 0.6V to 3.4V (adjustable)
+- Maximum Output Current: 1A
+- Switching Frequency: 1.5MHz (typical)
+- Reference Voltage: 0.6V ±2%
+- High-Side Switch RDS(ON): 160mΩ
+- Low-Side Switch RDS(ON): 110mΩ
+- Soft-Start Time: 1.2ms (fixed)
+- Over-Current Protection Threshold: 1.5A (typical, valley current)
+- Thermal Shutdown: 150°C (with 20°C hysteresis)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | EN       | Enable Control Input | A logic-high enables the converter; logic-low forces shutdown. | Input    | Digital/Logic   |
+| 2          | GND      | Power Ground         | Ground reference for the IC. | Power    | Ground          |
+| 3          | LX       | Switch Node          | Connection point for the inductor and internal power switches. | Power    | Switch Output   |
+| 4          | VIN      | Supply Voltage Input | Power supply input (2.5V to 6V). | Power    | Power Input     |
+| 5  | FB       | Feedback Voltage Input | Connected to an external resistor divider to set the output voltage. | Input    | Analog Feedback |

@@ -1,0 +1,53 @@
+{
+  "ComponentID": "SS8050",
+  "ComponentType": "NPN Bipolar Junction Transistor (BJT)",
+  "Description": "The S 8050S is a general-purpose NPN bipolar junction transistor housed in an SOT-23 surface-mount package. It is designed for amplification and switching applications, capable of handling collector currents up to 1.5A. Its key functionality is to provide current gain, where a small base current controls a larger collector current. It is specified as the complementary pair to the PNP SS8550 transistor.",
+  "KeyParameters": {
+    "Collector-Emitter Voltage (VCEO)": "25 V (Max)",
+    "Collector Current (Ic)": "1.5 A (Max Continuous)",
+    "Collector Power Dissipation (Pc)": "300 mW (Max)",
+    "DC Current Gain (hFE)": "120 to 400 (Ranked L, H, J; VCE=1V, Ic=100mA)",
+    "Collector-Emitter Saturation Voltage (VCE(sat))": "0.5 V (Max; Ic=800mA, IB=80mA)",
+    "Transition Frequency (fT)": "100 MHz (Min; VCE=10V, Ic=50mA)",
+    "Thermal Resistance, Junction-to-Ambient (RthJA)": "417 °C/W",
+    "Emitter-Base Voltage (VEBO)": "5 V (Max)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "BASE",
+      "Functions": [
+        {
+          "FunctionName": "Control Input",
+          "FunctionDescription": "Controls the flow of current between Collector and Emitter."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "EMITTER",
+      "Functions": [
+        {
+          "FunctionName": "Current Outlet",
+          "FunctionDescription": "The terminal from which the main current flows out in common-emitter configuration."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "COLLECTOR",
+      "Functions": [
+        {
+          "FunctionName": "Current Inlet",
+          "FunctionDescription": "The terminal into which the main current flows; connects to the load and supply."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

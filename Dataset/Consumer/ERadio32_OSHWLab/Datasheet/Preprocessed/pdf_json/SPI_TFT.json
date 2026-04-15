@@ -1,0 +1,231 @@
+{
+  "ComponentID": "SPI_TFT",
+  "ComponentType": "2.8-inch TFT LCD Module with Touch and SD Card",
+  "Description": "This is a high-resolution 2.8\" color TFT display module, featuring a 240x320 pixel resolution. It typically utilizes the ILI9341 controller and communicates over a Serial Peripheral Interface (SPI). This module is highly integrated, combining three separate SPI devices into a single board: the main LCD, a resistive touch controller (usually the XPT2046), and a standard SD card socket. This makes it ideal for developing comprehensive graphical user interfaces in embedded systems where space is at a premium.",
+  "KeyParameters": {
+    "Screen Size": "2.8 inches",
+    "Resolution": "240 x 320 Pixels",
+    "LCD Controller": "ILI9341 (common)",
+    "Touch Controller": "XPT2046 (Resistive)",
+    "Interface": "SPI (separate chip selects for LCD, Touch, and SD)",
+    "Operating Voltage": "3.3V (Logic) / 3.3V to 5V (VCC)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V - 5V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "LCD CS",
+          "FunctionDescription": "LCD Chip Select (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "RESET",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "LCD hardware reset (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "D/C",
+      "Functions": [
+        {
+          "FunctionName": "Data/Cmd",
+          "FunctionDescription": "Register select (Data or Command)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "MOSI",
+      "Functions": [
+        {
+          "FunctionName": "LCD MOSI",
+          "FunctionDescription": "Master Out Slave In for LCD/SD/Touch"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "SPI Clock",
+          "FunctionDescription": "Serial Clock for all integrated SPI devices"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "LED",
+      "Functions": [
+        {
+          "FunctionName": "Backlight",
+          "FunctionDescription": "Backlight control (PWM or high for ON)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "MISO",
+      "Functions": [
+        {
+          "FunctionName": "LCD MISO",
+          "FunctionDescription": "Master In Slave Out for LCD"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "T_CLK",
+      "Functions": [
+        {
+          "FunctionName": "Touch CLK",
+          "FunctionDescription": "Clock for touch controller"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "T_CS",
+      "Functions": [
+        {
+          "FunctionName": "Touch CS",
+          "FunctionDescription": "Touch controller Chip Select (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "T_DI",
+      "Functions": [
+        {
+          "FunctionName": "Touch DI",
+          "FunctionDescription": "Touch controller Data In (MOSI)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "T_DO",
+      "Functions": [
+        {
+          "FunctionName": "Touch DO",
+          "FunctionDescription": "Touch controller Data Out (MISO)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "T_IRQ",
+      "Functions": [
+        {
+          "FunctionName": "Touch IRQ",
+          "FunctionDescription": "Touch interrupt signal (Active Low)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "SD_CS",
+      "Functions": [
+        {
+          "FunctionName": "SD CS",
+          "FunctionDescription": "SD card Chip Select (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "SD_MOSI",
+      "Functions": [
+        {
+          "FunctionName": "SD MOSI",
+          "FunctionDescription": "SD card Master Out Slave In"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "SD_MISO",
+      "Functions": [
+        {
+          "FunctionName": "SD MISO",
+          "FunctionDescription": "SD card Master In Slave Out"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "SD_CLK",
+      "Functions": [
+        {
+          "FunctionName": "SD CLK",
+          "FunctionDescription": "SD card Serial Clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

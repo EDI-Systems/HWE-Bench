@@ -1,0 +1,260 @@
+{
+  "ComponentID": "ES8311",
+  "ComponentType": "Low Power Mono Audio CODEC (Coder-Decoder)",
+  "Description": "The ES8311 is a low-power, high-performance mono audio CODEC integrating a multibit delta-sigma ADC and DAC. It features a flexible I2S/PCM serial audio interface that can operate in master or slave mode, supports various system clocks (including 256/384Fs and USB clocks), and is configured via an I2C interface. It includes a microphone input path with a pre-amplifier, ALC, noise gate, and support for both analog and digital microphones, as well as a headphone driver output path with pop/click suppression. It is designed for portable and battery-powered audio applications.",
+  "KeyParameters": {
+    "ADC Resolution & SNR": "24-bit, 100 dB SNR",
+    "ADC THD+N": "-93 dB",
+    "DAC Resolution & SNR": "24-bit, 110 dB SNR",
+    "DAC THD+N": "-80 dB",
+    "Sampling Frequency Range": "8 kHz to 96 kHz",
+    "Supply Voltage Range": "1.8V to 3.3V",
+    "Power Consumption (Playback & Record)": "14 mW",
+    "Audio Interface": "I2S/PCM, Master/Slave selectable",
+    "Control Interface": "I2C (up to 400 kbps)",
+    "Package": "QFN-20",
+    "Operating Temperature": "-40°C to +105°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "CCLK",
+      "Functions": [
+        {
+          "FunctionName": "Control Clock",
+          "FunctionDescription": "I2C clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "MCLK",
+      "Functions": [
+        {
+          "FunctionName": "Master Clock",
+          "FunctionDescription": "System master clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "PVDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Power for digital I/O"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "DVDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Digital core power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "DGND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Digital ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SCLK/DMIC_SCL",
+      "Functions": [
+        {
+          "FunctionName": "Serial Clock",
+          "FunctionDescription": "I2S bit clock / Digital MIC clock"
+        }
+      ],
+      "PinType": "Input/Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "ASDOUT",
+      "Functions": [
+        {
+          "FunctionName": "Audio Data Out",
+          "FunctionDescription": "ADC serial data output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "LRCK",
+      "Functions": [
+        {
+          "FunctionName": "Frame Clock",
+          "FunctionDescription": "I2S left/right channel frame clock"
+        }
+      ],
+      "PinType": "Input/Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "DSDIN",
+      "Functions": [
+        {
+          "FunctionName": "Audio Data In",
+          "FunctionDescription": "DAC serial data input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "AGND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Analog ground"
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "AVDD",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Analog power supply"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "OUTP",
+      "Functions": [
+        {
+          "FunctionName": "Audio Output",
+          "FunctionDescription": "Positive differential analog output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "OUTN",
+      "Functions": [
+        {
+          "FunctionName": "Audio Output",
+          "FunctionDescription": "Negative differential analog output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "DACVREF",
+      "Functions": [
+        {
+          "FunctionName": "Reference Voltage",
+          "FunctionDescription": "DAC reference filtering capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "ADCVREF",
+      "Functions": [
+        {
+          "FunctionName": "Reference Voltage",
+          "FunctionDescription": "ADC reference filtering capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "VMID",
+      "Functions": [
+        {
+          "FunctionName": "Mid Voltage",
+          "FunctionDescription": "Mid-rail filtering capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "MIC1N",
+      "Functions": [
+        {
+          "FunctionName": "Microphone Input",
+          "FunctionDescription": "Negative microphone input (differential)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "MIC1P/DMIC_SDA",
+      "Functions": [
+        {
+          "FunctionName": "Microphone Input",
+          "FunctionDescription": "Positive microphone input / Digital MIC data"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog/Digital"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "CDATA",
+      "Functions": [
+        {
+          "FunctionName": "Control Data",
+          "FunctionDescription": "I2C data line"
+        }
+      ],
+      "PinType": "Input/Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Chip Enable",
+          "FunctionDescription": "I2C address select"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "MCU_Function_Groups": {
+    "ESP32": {
+      "Logic_Power_Infrastructure": [
+        { "PinName": "3V3", "FunctionName": "Main VCC" },
+        { "PinName": "GND", "FunctionName": "Digital GND" },
+        { "PinName": "38", "FunctionName": "EP Pad 1" },
+        { "PinName": "39", "FunctionName": "EP Pad 2" },
+        { "PinName": "EN", "FunctionName": "Hardware Reset" }
+      ],
+      "Digital_Audio_I2S_Bus": [
+        { "PinName": "IO14", "FunctionName": "I2S_BCLK" },
+        { "PinName": "IO12", "FunctionName": "I2S_LRCK" },
+        { "PinName": "IO13", "FunctionName": "I2S_DIN" }
+      ],
+      "Shared_I2C_Communication": [
+        { "PinName": "IO21", "FunctionName": "System_SDA" },
+        { "PinName": "IO22", "FunctionName": "System_SCL" }
+      ],
+      "MicroSD_SPI_Interface": [
+        { "PinName": "IO18", "FunctionName": "SCK" },
+        { "PinName": "IO23", "FunctionName": "MOSI" },
+        { "PinName": "IO19", "FunctionName": "MISO" },
+        { "PinName": "IO5", "FunctionName": "CS" }
+      ],
+      "User_Interface_IO": [
+        { "PinName": "IO2", "FunctionName": "KEY_OK" },
+        { "PinName": "IO4", "FunctionName": "KEY_BACK" },
+        { "PinName": "IO32", "FunctionName": "WHEEL_A" },
+        { "PinName": "IO33", "FunctionName": "WHEEL_B" }
+      ],
+      "System_Monitoring": [
+        { "PinName": "IO35", "FunctionName": "BATTERY_ADC" },
+        { "PinName": "IO16", "FunctionName": "SD_POWER_EN" }
+      ],
+      "Reserved_Flash_Pins": [
+        { "PinName": "CLK", "FunctionName": "Flash_CLK" },
+        { "PinName": "CMD", "FunctionName": "Flash_CMD" },
+        { "PinName": "SD0", "FunctionName": "Flash_D0" },
+        { "PinName": "SD1", "FunctionName": "Flash_D1" },
+        { "PinName": "SD2", "FunctionName": "Flash_D2" },
+        { "PinName": "SD3", "FunctionName": "Flash_D3" }
+      ],
+      "General_Multiplexed_IO": [
+        { "PinName": "SENSOR_VP", "FunctionName": "GPIO36" },
+        { "PinName": "SENSOR_VN", "FunctionName": "GPIO39" },
+        { "PinName": "IO34", "FunctionName": "GPIO34" },
+        { "PinName": "IO25", "FunctionName": "GPIO25" },
+        { "PinName": "IO26", "FunctionName": "GPIO26" },
+        { "PinName": "IO27", "FunctionName": "GPIO27" },
+        { "PinName": "IO15", "FunctionName": "GPIO15" },
+        { "PinName": "IO17", "FunctionName": "GPIO17" },
+        { "PinName": "IO0", "FunctionName": "BOOT_MODE" },
+        { "PinName": "RXD0", "FunctionName": "RX" },
+        { "PinName": "TXD0", "FunctionName": "TX" },
+        { "PinName": "NC", "FunctionName": "Internal" },
+        { "PinName": "32", "FunctionName": "Internal" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "ES8311": {
+      "I2S_Slave": [
+        { "PinName": "SCLK/DMIC_SCL", "FunctionName": "BCLK" },
+        { "PinName": "LRCK", "FunctionName": "WS" },
+        { "PinName": "DSDIN", "FunctionName": "DATA" }
+      ],
+      "I2C_Slave": [
+        { "PinName": "CCLK", "FunctionName": "SCL" },
+        { "PinName": "CDATA", "FunctionName": "SDA" }
+      ],
+      "Differential_Out": [
+        { "PinName": "OUTP", "FunctionName": "P" },
+        { "PinName": "OUTN", "FunctionName": "N" }
+      ]
+    },
+    "NS4150": {
+      "Amplifier_In": [
+        { "PinName": "INP", "FunctionName": "In+" },
+        { "PinName": "INN", "FunctionName": "In-" }
+      ]
+    },
+    "TF-01A": {
+      "SPI_Storage": [
+        { "PinName": "CLK", "FunctionName": "SCK" },
+        { "PinName": "CMD", "FunctionName": "MOSI" },
+        { "PinName": "DAT0", "FunctionName": "MISO" },
+        { "PinName": "CD/DAT3", "FunctionName": "CS" }
+      ]
+    },
+    "I2C_Device": {
+      "Standard_Port": [
+        { "PinName": "SCL", "FunctionName": "Clock" },
+        { "PinName": "SDA", "FunctionName": "Data" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Verify_I2S_Audio_Data_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Digital_Audio_I2S",
+      "Slaves": [ { "ComponentID": "ES8311", "Interface": "I2S_Slave" } ]
+    },
+    {
+      "RuleName": "Verify_Analog_Audio_Input_Chain",
+      "Type": "Bus_Pairing",
+      "MCU": "ES8311",
+      "Target_Group_Pattern": "Differential_Out",
+      "Slaves": [ { "ComponentID": "NS4150", "Interface": "Amplifier_In" } ]
+    },
+    {
+      "RuleName": "Verify_Shared_I2C_Sensor_Hub",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Shared_I2C_Communication",
+      "Slaves": [
+        { "ComponentID": "ES8311", "Interface": "I2C_Slave" },
+        { "ComponentID": "SHT", "Interface": "I2C_Device" },
+        { "ComponentID": "RX8010SJ", "Interface": "I2C_Device" }
+      ]
+    },
+    {
+      "RuleName": "Verify_MicroSD_Storage_SPI",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "MicroSD_SPI_Interface",
+      "Slaves": [ { "ComponentID": "TF-01A", "Interface": "SPI_Storage" } ]
+    },
+    {
+      "RuleName": "Verify_Main_Power_Regulation_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ME6211", "PinName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "3V3" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "ComponentID": "MK1",
+  "ComponentType": "Wi-Fi Microcontroller Module",
+  "Description": "This is an ESP8266-based Wi-Fi module, specifically following the ESP-12 series footprint. It integrates a Tensilica L106 32-bit RISC microprocessor, Flash memory, and a Wi-Fi transceiver into a compact surface-mount package. It is a staple in IoT (Internet of Things) development due to its low cost, integrated networking stack, and support for environments like Arduino and MicroPython. The module requires specific strapping pin configurations (IO0, IO2, IO15) during power-up to select between running from Flash or entering the UART bootloader.",
+  "KeyParameters": {
+    "Processor": "Tensilica L106 32-bit MCU (80MHz / 160MHz)",
+    "Wi-Fi": "802.11 b/g/n (2.4 GHz)",
+    "Operating Voltage": "3.0V to 3.6V (3.3V Recommended)",
+    "Flash Memory": "Typically 4MB (32Mbit)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "RST",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "External reset pin (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "ADC",
+      "Functions": [
+        {
+          "FunctionName": "ADC",
+          "FunctionDescription": "10-bit Analog-to-Digital Converter input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Enable",
+          "FunctionDescription": "Chip enable (Active High); must be pulled high"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "IO16",
+      "Functions": [
+        {
+          "FunctionName": "GPIO16",
+          "FunctionDescription": "General purpose I/O / Deep-sleep wake-up"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "IO14",
+      "Functions": [
+        {
+          "FunctionName": "GPIO14",
+          "FunctionDescription": "General purpose I/O / HSPI_CLK"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "IO12",
+      "Functions": [
+        {
+          "FunctionName": "GPIO12",
+          "FunctionDescription": "General purpose I/O / HSPI_MISO"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "IO13",
+      "Functions": [
+        {
+          "FunctionName": "GPIO13",
+          "FunctionDescription": "General purpose I/O / HSPI_MOSI / UART0_CTS"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "3.3V power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "IO15",
+      "Functions": [
+        {
+          "FunctionName": "GPIO15",
+          "FunctionDescription": "General purpose I/O / HSPI_CS / Boot strap"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "IO2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO2",
+          "FunctionDescription": "General purpose I/O / UART1_TXD / Boot strap"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "IO0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO0",
+          "FunctionDescription": "General purpose I/O / Boot mode (Low to Flash)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "IO4",
+      "Functions": [
+        {
+          "FunctionName": "GPIO4",
+          "FunctionDescription": "General purpose I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "IO5",
+      "Functions": [
+        {
+          "FunctionName": "GPIO5",
+          "FunctionDescription": "General purpose I/O"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "RXD",
+      "Functions": [
+        {
+          "FunctionName": "RXD0",
+          "FunctionDescription": "UART0 receive pin / GPIO3"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "TXD",
+      "Functions": [
+        {
+          "FunctionName": "TXD0",
+          "FunctionDescription": "UART0 transmit pin / GPIO1"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "EP",
+      "Functions": [
+        {
+          "FunctionName": "Thermal",
+          "FunctionDescription": "Exposed pad (should be soldered to GND)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

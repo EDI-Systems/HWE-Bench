@@ -1,0 +1,59 @@
+{
+  "Automated Wired Diagnostic Bridge": [
+    {
+      "net_id": "net_uart_dtr_flow",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "DTR",
+          "FunctionName": "Data Terminal Ready (Control Source A)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_uart_rts_flow",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "RTS",
+          "FunctionName": "Request To Send (Control Source B)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_mcu_en_reset",
+      "Connections": [
+        {
+          "ComponentID": "MCU",
+          "PinName": "EN",
+          "FunctionName": "Hardware Reset Node (with RC Delay)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_mcu_io0_boot",
+      "Connections": [
+        {
+          "ComponentID": "MCU",
+          "PinName": "IO0",
+          "FunctionName": "Boot Mode Selection Node"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "GND",
+          "FunctionName": "Bridge Ground"
+        },
+        {
+          "ComponentID": "MCU",
+          "PinName": "GND",
+          "FunctionName": "System Ground"
+        }
+      ]
+    }
+  ]
+}

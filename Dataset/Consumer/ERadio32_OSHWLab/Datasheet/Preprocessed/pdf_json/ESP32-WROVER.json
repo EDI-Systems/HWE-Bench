@@ -1,0 +1,476 @@
+{
+  "ComponentID": "ESP32-WROVER",
+  "ComponentType": "Wi-Fi + Bluetooth + Bluetooth LE System-on-Chip (SoC) Module",
+  "Description": "The ESP32-WROVER-E and ESP32-WROVER-IE are highly-integrated, general-purpose Wi-Fi + Bluetooth + Bluetooth LE MCU modules. They are built around the ESP32-D0WD-V3 dual-core Xtensa® LX6 microprocessor, featuring integrated 4 MB SPI flash and 8 MB SPI PSRAM. The modules support IEEE 802.11 b/g/n Wi-Fi (up to 150 Mbps) and Bluetooth v4.2 BR/EDR & BLE standards. Designed for low-power applications, they include a rich set of peripherals (GPIO, ADC, DAC, SPI, I2C, I2S, UART, PWM, touch sensors, etc.) and are capable of handling demanding tasks like audio processing. The primary difference between the -E and -IE variants is the antenna: the -E uses a PCB antenna, while the -IE uses a connector for an external antenna.",
+  "KeyParameters": {
+    "Core": "Dual-core Xtensa® LX6 microprocessor",
+    "CPU Clock Speed": "80 MHz to 240 MHz (adjustable)",
+    "Integrated Flash Memory": "4 MB SPI Flash",
+    "Integrated PSRAM": "8 MB SPI PSRAM",
+    "Operating Voltage": "3.0 V to 3.6 V",
+    "Wi-Fi Protocol": "802.11 b/g/n (802.11n up to 150 Mbps)",
+    "Bluetooth Protocol": "Bluetooth v4.2 BR/EDR and BLE",
+    "Operating Temperature Range": "-40°C to 85°C",
+    "Sleep Current": "< 5 µA",
+    "RF Output Power (Typical)": "Up to 20 dBm",
+    "Wi-Fi Receiver Sensitivity": "-97 dBm (typical for Bluetooth BLE)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "3V3",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "3.3V power supply"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "EN",
+      "Functions": [
+        {
+          "FunctionName": "Chip Enable",
+          "FunctionDescription": "Enable pin (active high)"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SENSOR_VP",
+      "Functions": [
+        {
+          "FunctionName": "GPIO36, ADC1_CH0, RTC_GPIO0",
+          "FunctionDescription": "ADC input, RTC GPIO"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SENSOR_VN",
+      "Functions": [
+        {
+          "FunctionName": "GPIO39, ADC1_CH3, RTC_GPIO3",
+          "FunctionDescription": "ADC input, RTC GPIO"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Analog Input"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "IO34",
+      "Functions": [
+        {
+          "FunctionName": "GPIO34, ADC1_CH6, RTC_GPIO4",
+          "FunctionDescription": "GPIO, ADC input, RTC GPIO"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Digital Input, Analog Input"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "IO35",
+      "Functions": [
+        {
+          "FunctionName": "GPIO35, ADC1_CH7, RTC_GPIO5",
+          "FunctionDescription": "GPIO, ADC input, RTC GPIO"
+        }
+      ],
+      "PinType": "I",
+      "ElectricalType": "Digital Input, Analog Input"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "IO32",
+      "Functions": [
+        {
+          "FunctionName": "GPIO32, XTAL_32K_P, ADC1_CH4, TOUCH9, RTC_GPIO9",
+          "FunctionDescription": "GPIO, 32.768 kHz crystal input, ADC, Touch sensor, RTC GPIO"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "IO33",
+      "Functions": [
+        {
+          "FunctionName": "GPIO33, XTAL_32K_N, ADC1_CH5, TOUCH8, RTC_GPIO8",
+          "FunctionDescription": "GPIO, 32.768 kHz crystal output, ADC, Touch sensor, RTC GPIO"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "IO25",
+      "Functions": [
+        {
+          "FunctionName": "GPIO25, DAC_1, ADC2_CH8, RTC_GPIO6, EMAC_RXD0",
+          "FunctionDescription": "GPIO, DAC output, ADC input, RTC GPIO, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Output/Input"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "IO26",
+      "Functions": [
+        {
+          "FunctionName": "GPIO26, DAC_2, ADC2_CH9, RTC_GPIO7, EMAC_RXD1",
+          "FunctionDescription": "GPIO, DAC output, ADC input, RTC GPIO, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Output/Input"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "IO27",
+      "Functions": [
+        {
+          "FunctionName": "GPIO27, ADC2_CH7, TOUCH7, RTC_GPIO17, EMAC_RX_DV",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "IO14",
+      "Functions": [
+        {
+          "FunctionName": "GPIO14, ADC2_CH6, TOUCH6, RTC_GPIO16, MTMS, HSPICLK, HS2_CLK, SD_CLK, EMAC_TXD2",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI clock, SD card clock, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "IO12",
+      "Functions": [
+        {
+          "FunctionName": "GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, HS2_DATA2, SD_DATA2, EMAC_TXD3",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI data, SD card data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "15",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "16",
+      "PinName": "IO13",
+      "Functions": [
+        {
+          "FunctionName": "GPIO13, ADC2_CH4, TOUCH4, RTC_GPIO14, MTCK, HSPID, HS2_DATA3, SD_DATA3, EMAC_RX_ER",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI data, SD card data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "17",
+      "PinName": "IO9",
+      "Functions": [
+        {
+          "FunctionName": "GPIO9, D2",
+          "FunctionDescription": "GPIO, Internal Flash/PSRAM connection (not recommended for use)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "IO10",
+      "Functions": [
+        {
+          "FunctionName": "GPIO10, D3",
+          "FunctionDescription": "GPIO, Internal Flash/PSRAM connection (not recommended for use)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "19",
+      "PinName": "IO11",
+      "Functions": [
+        {
+          "FunctionName": "GPIO11, CMD",
+          "FunctionDescription": "GPIO, Internal Flash/PSRAM command line (not recommended for use)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "SD2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO17, SD_DATA2, HSPID, VSPIQ, EMAC_CLK_OUT_180",
+          "FunctionDescription": "GPIO, SD card data, SPI data, Ethernet MAC clock"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "SD3",
+      "Functions": [
+        {
+          "FunctionName": "GPIO18, SD_DATA3, HSPICLK, VSPICLK, EMAC_TXD2",
+          "FunctionDescription": "GPIO, SD card data, SPI clock, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "CMD",
+      "Functions": [
+        {
+          "FunctionName": "GPIO15, SD_CMD, HSPICS0, MTDO, VSPICS0, EMAC_RXD3",
+          "FunctionDescription": "GPIO, SD card command, SPI chip select, JTAG, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "GPIO6, SD_CLK, HSPICLK, VSPICLK, EMAC_TX_ER",
+          "FunctionDescription": "GPIO, SD card clock, SPI clock, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "SD0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO7, SD_DATA0, HSPID, VSPIQ, EMAC_RXD2",
+          "FunctionDescription": "GPIO, SD card data, SPI data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "25",
+      "PinName": "SD1",
+      "Functions": [
+        {
+          "FunctionName": "GPIO8, SD_DATA1, HSPIQ, VSPID, EMAC_RXD1",
+          "FunctionDescription": "GPIO, SD card data, SPI data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "26",
+      "PinName": "IO2",
+      "Functions": [
+        {
+          "FunctionName": "GPIO2, ADC2_CH2, TOUCH2, RTC_GPIO2, HSPIWP, HS2_DATA0, SD_DATA0",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, SPI write protect, SD card data"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "27",
+      "PinName": "IO4",
+      "Functions": [
+        {
+          "FunctionName": "GPIO4, ADC2_CH0, TOUCH0, RTC_GPIO10, HSPIHD, HS2_DATA1, SD_DATA1, EMAC_TX_ER",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, SPI hold, SD card data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "28",
+      "PinName": "IO5",
+      "Functions": [
+        {
+          "FunctionName": "GPIO5, ADC2_CH1, TOUCH1, RTC_GPIO11, VSPICS0, HS1_DATA6, EMAC_RX_CLK",
+          "FunctionDescription": "GPIO, ADC input, Touch sensor, RTC GPIO, SPI chip select, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O, Analog Input"
+    },
+    {
+      "PinNumber": "29",
+      "PinName": "IO16",
+      "Functions": [
+        {
+          "FunctionName": "GPIO16, HS1_DATA4, U2RXD, EMAC_CLK_OUT",
+          "FunctionDescription": "GPIO, UART RXD, Ethernet MAC clock"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "30",
+      "PinName": "IO17",
+      "Functions": [
+        {
+          "FunctionName": "GPIO17, HS1_DATA5, U2TXD, EMAC_CLK_OUT_180",
+          "FunctionDescription": "GPIO, UART TXD, Ethernet MAC clock"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "31",
+      "PinName": "IO23",
+      "Functions": [
+        {
+          "FunctionName": "GPIO23, HS1_STROBE, VSPID, EMAC_TXD0",
+          "FunctionDescription": "GPIO, SPI data, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "32",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "33",
+      "PinName": "IO19",
+      "Functions": [
+        {
+          "FunctionName": "GPIO19, VSPIQ, U0CTS, EMAC_TXD1",
+          "FunctionDescription": "GPIO, SPI data, UART clear to send, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "34",
+      "PinName": "IO22",
+      "Functions": [
+        {
+          "FunctionName": "GPIO22, VSPIWP, U0RTS, EMAC_TXD3",
+          "FunctionDescription": "GPIO, SPI write protect, UART ready to send, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "35",
+      "PinName": "IO21",
+      "Functions": [
+        {
+          "FunctionName": "GPIO21, VSPIHD, EMAC_TX_EN",
+          "FunctionDescription": "GPIO, SPI hold, Ethernet MAC transmit enable"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "36",
+      "PinName": "RXD0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO3, U0RXD, CLK_OUT2",
+          "FunctionDescription": "GPIO, UART RXD, Clock output"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "37",
+      "PinName": "TXD0",
+      "Functions": [
+        {
+          "FunctionName": "GPIO1, U0TXD, CLK_OUT3, EMAC_RXD2",
+          "FunctionDescription": "GPIO, UART TXD, Clock output, Ethernet MAC"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital I/O"
+    },
+    {
+      "PinNumber": "38",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Power supply ground"
+        }
+      ],
+      "PinType": "P",
+      "ElectricalType": "Power"
+    }
+  ]
+}

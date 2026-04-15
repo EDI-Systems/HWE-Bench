@@ -1,0 +1,1052 @@
+{
+  "Power Management Ecosystem": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "IP5306",
+          "PinName": "LED1",
+          "FunctionName": "LED Driver"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Anode (A)",
+          "FunctionName": "Positive Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VOUT",
+          "FunctionName": "Power Output"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        }
+      ]
+    }
+  ],
+  "Spatial Awareness Sensor Suite": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "12",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "13",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "14",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "1",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "9",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "17",
+          "FunctionName": "Thermal"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "18",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "19",
+          "FunctionName": "Reserved"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "21",
+          "FunctionName": "Reserved"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "22",
+          "FunctionName": "Reserved"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "25",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "3",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "A1",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "2",
+          "FunctionName": "Cathode (K)"
+        },
+        {
+          "ComponentID": "SS8050",
+          "PinName": "2",
+          "FunctionName": "EMITTER"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "2",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "11",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "3",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "2",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "8",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "13",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "8",
+          "FunctionName": "IO Power"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "1",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "2",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "B1",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "1",
+          "FunctionName": "Reset"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "3",
+          "FunctionName": "Enable"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "23",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "23",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "7",
+          "FunctionName": "Serial Clock (SPI) / SCL (I²C)"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "A2",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "24",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "24",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "8",
+          "FunctionName": "Serial Data (I²C)"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "B2",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "11",
+          "FunctionName": "GPIO2"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "1",
+          "FunctionName": "Anode (A)"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "SS8050",
+          "PinName": "1",
+          "FunctionName": "BASE"
+        },
+        {
+          "ComponentID": "SS8050",
+          "PinName": "3",
+          "FunctionName": "COLLECTOR"
+        }
+      ]
+    }
+  ],
+  "Automated Wired Diagnostic Bridge": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "EP",
+          "FunctionName": "Thermal"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        },
+        {
+          "ComponentID": "SS8050",
+          "PinName": "EMITTER",
+          "FunctionName": "Current Outlet"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DP1",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DN1",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "TXD",
+          "FunctionName": "Transmit"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "RXD",
+          "FunctionName": "RXD0"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "RXD",
+          "FunctionName": "Receive"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "TXD",
+          "FunctionName": "TXD0"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "DTR#",
+          "FunctionName": "DTR"
+        },
+        {
+          "ComponentID": "SS8050",
+          "PinName": "BASE",
+          "FunctionName": "Control Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "SS8050",
+          "PinName": "COLLECTOR",
+          "FunctionName": "Current Inlet"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "IO0",
+          "FunctionName": "GPIO0"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Anode (A)",
+          "FunctionName": "Positive Terminal"
+        }
+      ]
+    }
+  ],
+  "High-Current Drive Channels": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "SM4410",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "SM4410",
+          "PinName": "S",
+          "FunctionName": "Source"
+        },
+        {
+          "ComponentID": "SS34",
+          "PinName": "A",
+          "FunctionName": "Anode"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "EN",
+          "FunctionName": "Enable"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VOUT",
+          "FunctionName": "Power Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ],
+  "Wireless Central Processing Unit (CPU)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "VDDIO",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "VLOGIC",
+          "FunctionName": "IO Power"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "V3",
+          "FunctionName": "LDO Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VOUT",
+          "FunctionName": "Power Output"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "AMS1117",
+          "PinName": "GND/ADJ",
+          "FunctionName": "Ground / Adjust"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "VSA",
+          "FunctionName": "GND"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "BAT",
+          "FunctionName": "Power Input/Output"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "SHELL",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "EP",
+          "FunctionName": "Thermal"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "RESV",
+          "FunctionName": "Reserved"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "RESV",
+          "FunctionName": "Reserved"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "RESV",
+          "FunctionName": "Reserved"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "RXD",
+          "FunctionName": "RXD0"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "TXD",
+          "FunctionName": "Transmit"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "TXD",
+          "FunctionName": "TXD0"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "RXD",
+          "FunctionName": "Receive"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DP1",
+          "FunctionName": "Data+"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DP2",
+          "FunctionName": "Data+"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DN1",
+          "FunctionName": "Data-"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "DN2",
+          "FunctionName": "Data-"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "IP5306",
+          "PinName": "VIN",
+          "FunctionName": "Power Input"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TYPE-C",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "IO4",
+          "FunctionName": "GPIO4"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "SDA",
+          "FunctionName": "Serial Data (I²C)"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "SDA",
+          "FunctionName": "SDA"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "IO5",
+          "FunctionName": "GPIO5"
+        },
+        {
+          "ComponentID": "BMP280",
+          "PinName": "SCK",
+          "FunctionName": "Serial Clock (SPI) / SCL (I²C)"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        },
+        {
+          "ComponentID": "MMC5603NJ",
+          "PinName": "SCL",
+          "FunctionName": "SCL"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "MK1",
+          "PinName": "IO13",
+          "FunctionName": "GPIO13"
+        },
+        {
+          "ComponentID": "MPU-6050",
+          "PinName": "INT",
+          "FunctionName": "Interrupt"
+        }
+      ]
+    },
+    {
+      "net_id": "net46",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Anode (A)",
+          "FunctionName": "Positive Terminal"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "LED1",
+          "FunctionName": "LED Driver"
+        }
+      ]
+    },
+    {
+      "net_id": "net47",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net48",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Anode (A)",
+          "FunctionName": "Positive Terminal"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "LED2",
+          "FunctionName": "LED Driver"
+        }
+      ]
+    },
+    {
+      "net_id": "net49",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net50",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Anode (A)",
+          "FunctionName": "Positive Terminal"
+        },
+        {
+          "ComponentID": "IP5306",
+          "PinName": "LED3",
+          "FunctionName": "LED Driver"
+        }
+      ]
+    },
+    {
+      "net_id": "net51",
+      "Connections": [
+        {
+          "ComponentID": "NCD0603R6",
+          "PinName": "Cathode (K)",
+          "FunctionName": "Negative Terminal"
+        },
+        {
+          "ComponentID": "MK1",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+Component ID: BMI160  
+Component Type: Inertial Measurement Unit (IMU)  
+Description: The BMI160 is a low-power, 6-axis inertial measurement unit that combines a 16-bit digital triaxial accelerometer and a 16-bit digital triaxial gyroscope in a single package. It is designed for precise motion sensing in battery-powered devices like smartphones, wearables, and IoT products. Key features include hardware-synchronized sensor data, an integrated FIFO buffer, a power management unit for advanced low-power operation, and support for external sensor data (e.g., magnetometers). It enables motion-based applications such as step counting, gesture recognition, image stabilization, and augmented reality.
+
+Key Parameters:
+- Power Supply Voltage (VDD): 1.71 V to 3.6 V
+- I/O Voltage (VDDIO): 1.2 V to 3.6 V
+- Current Consumption (Typical): 925 µA (accelerometer and gyroscope both active)
+- Operating Temperature Range: Not explicitly stated in excerpt; refer to full datasheet.
+- Accelerometer Resolution: 16-bit digital
+- Gyroscope Resolution: 16-bit digital
+- FIFO Buffer Size: 1024 bytes
+- Package Dimensions: 2.5 x 3.0 x 0.83 mm (LGA)
+- Interface Options: I²C or SPI (primary), secondary I²C for external sensors
+- Interrupt Features: Any-motion, no-motion, step detection, significant motion, tap/double-tap, orientation, free-fall
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | SDO | I2C Addr/SPI MISO | I2C address LSB / SPI Serial Data Out | I/O | Digital |
+| 2 | ASDX | Aux SDA | Auxiliary I2C data for sensor hub | I/O | Digital |
+| 3 | ASCX | Aux SCL | Auxiliary I2C clock for sensor hub | Output | Digital |
+| 4 | INT1 | Interrupt 1 | Programmable interrupt output 1 | Output | Digital |
+| 5 | VDDIO | IO Power | Supply voltage for digital I/O pins | Power | 1.2V - 3.6V |
+| 6 | GNDIO | IO Ground | Ground reference for digital I/O | Power | 0V |
+| 7 | GND | Ground | Main system ground reference | Power | 0V |
+| 8 | VDD | Power | Main analog supply voltage | Power | 1.71V - 3.6V |
+| 9 | INT2 | Interrupt 2 | Programmable interrupt output 2 | Output | Digital |
+| 10 | OCSB | OIS CS | Chip select for Optical Image Stabilization interface | Input | Digital |
+| 11 | OSDO | OIS SDO | Serial data output for OIS interface | Output | Digital |
+| 12 | CSB | Chip Select | Primary SPI chip select (Active Low) | Input | Digital |
+| 13 | SCX | Serial Clock | Primary I2C/SPI serial clock | Input | Digital |
+| 14 | SDX | Serial Data | Primary I2C SDA / SPI MOSI | I/O | Digital |

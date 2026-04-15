@@ -1,0 +1,122 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_3V3_MCU",
+      "Connections": [
+        { "ComponentID": "MCP1825", "PinName": "VOUT" },
+        { "ComponentID": "ESP32", "PinName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_BATTERY_TO_LDO",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "BAT" },
+        { "ComponentID": "MCP1825", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_USB_VBUS",
+      "Connections": [
+        { "ComponentID": "USB", "PinName": "VBUS" },
+        { "ComponentID": "TP4056", "PinName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_SCK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO18" },
+        { "ComponentID": "ILI", "PinName": "SCL" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_MOSI",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO23" },
+        { "ComponentID": "ILI", "PinName": "SDI" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_MISO",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO19" },
+        { "ComponentID": "ILI", "PinName": "SDO" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_CS",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO5" },
+        { "ComponentID": "ILI", "PinName": "CSX" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_DC",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO27" },
+        { "ComponentID": "ILI", "PinName": "D/CX" }
+      ]
+    },
+    {
+      "net_id": "NET_TFT_RST",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO33" },
+        { "ComponentID": "ILI", "PinName": "RESET" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SCK",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO14" },
+        { "ComponentID": "PCM1771", "PinName": "CLK" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_MOSI",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO13" },
+        { "ComponentID": "PCM1771", "PinName": "CMD" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_MISO",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO12" },
+        { "ComponentID": "PCM1771", "PinName": "DAT0" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_CS",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "IO15" },
+        { "ComponentID": "PCM1771", "PinName": "CD/DAT3" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_DEBUG_TX",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "TXD0" },
+        { "ComponentID": "CH340", "PinName": "RXD" }
+      ]
+    },
+    {
+      "net_id": "NET_UART_DEBUG_RX",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "RXD0" },
+        { "ComponentID": "CH340", "PinName": "TXD" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "GND" },
+        { "ComponentID": "ESP32", "PinName": "38" },
+        { "ComponentID": "ILI", "PinName": "GND" },
+        { "ComponentID": "PCM1771", "PinName": "VSS" },
+        { "ComponentID": "CH340", "PinName": "GND" },
+        { "ComponentID": "TP4056", "PinName": "GND" },
+        { "ComponentID": "MCP1825", "PinName": "GND" },
+        { "ComponentID": "USB", "PinName": "GND" }
+      ]
+    }
+  ]
+}

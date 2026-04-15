@@ -1,0 +1,28 @@
+Component ID: IP5306
+Component Type: Integrated Power Management SOC (System-on-Chip) for Power Banks
+Description:
+The IP5306 is a highly integrated power management SOC that combines a synchronous boost converter, lithium-ion battery charging management, and battery level indication into a single chip, providing a complete power solution for mobile power banks. It features synchronous switching for both charging (up to 2.1A) and discharging/boosting (up to 2.4A), supports simultaneous charging and discharging via built-in power path management, and drives 1-4 LEDs for battery level display. It includes a button control for power-on and flashlight driving, automatic load detection for entering low-power standby, and requires only a single external inductor.
+
+Key Parameters:
+- Maximum Boost/Discharge Output Current: 2.4 A
+- Maximum Charging Input Current: 2.1 A
+- Boost Converter Efficiency: Up to 92%
+- Charging Efficiency: Up to 91%
+- Standby Current: < 100 µA
+- Battery Charge Termination Voltage Options: 4.20 V / 4.30 V / 4.35 V / 4.40 V
+- Boost Output Voltage: 5 V
+- Charging Input Voltage: 5 V (DC)
+- Protection Features: Output OVP, OCP, SCP; Input OVP, Battery OVP, OCP, OTP; ESD 4KV
+- Package: ESOP8
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VIN | Power Input | DC 5V charging input pin | Input | Power |
+| 2 | LED1 | LED Driver | LED drive pin | Output | Digital/PWM |
+| 3 | LED2 | LED Driver | LED drive pin | Output | Digital/PWM |
+| 4 | LED3 | LED Driver | LED drive pin | Output | Digital/PWM |
+| 5 | KEY | Control Input | Button input, shared with flashlight/LED driver | Input | Digital |
+| 6 | BAT | Power Input/Output | Boost input pin, connect to Li-ion battery positive terminal | Power I/O | Power |
+| 7 | SW | Power Switch | DC-DC switching pin | Power I/O | Power (Switch Node) |
+| 8 | VOUT | Power Output | 5V boost output pin | Output | Power |

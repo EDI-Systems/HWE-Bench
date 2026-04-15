@@ -1,0 +1,78 @@
+{
+  "ComponentID": "ME6211",
+  "ComponentType": "High-Speed, Low-Noise CMOS LDO Voltage Regulator",
+  "Description": "The ME6211 series are highly accurate, low-noise CMOS low-dropout (LDO) linear voltage regulators designed for portable and noise-sensitive applications. They feature a fast turn-on time, high power supply ripple rejection (PSRR), and excellent transient response, making them ideal for powering RF and analog circuits in devices like mobile phones. The series includes variants with fixed output voltages and an enable (CE) pin for power management, and they are stable with low-ESR ceramic capacitors.",
+  "KeyParameters": {
+    "Maximum Output Current": "500 mA (condition: VIN=4.3V, VOUT=3.3V)",
+    "Dropout Voltage": "100 mV (condition: IOUT=100mA)",
+    "Operating Input Voltage Range": "1.2 V to 6.0 V",
+    "Output Voltage Accuracy": "±1%",
+    "Quiescent Current": "30 µA (typical)",
+    "Standby Current": "0.1 µA (typical)",
+    "Ripple Rejection (PSRR)": "70 dB @ 1 kHz (for ME6211C33 variant)",
+    "Output Noise Voltage": "50 µVrms",
+    "Line Regulation": "0.05% (typical)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "Vss",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for the regulator."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VOUT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Regulated output voltage."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power Output"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "VIN",
+      "Functions": [
+        {
+          "FunctionName": "Power Input",
+          "FunctionDescription": "Unregulated input power supply."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "ON/OFF Control",
+          "FunctionDescription": "Enable pin. Logic high to enable output (ME6211C) or logic low to enable output (ME6211H)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Control"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "No Connect",
+          "FunctionDescription": "No internal connection."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "No Connect"
+    }
+  ]
+}

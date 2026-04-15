@@ -1,0 +1,33 @@
+Component ID: MPU-9250
+Component Type: 9-Axis Motion Tracking Unit (IMU + Magnetometer + DMP)
+Description:
+The MPU-9250 is a multi-chip module (MCM) that integrates a 3-axis MEMS gyroscope, a 3-axis MEMS accelerometer, and a 3-axis magnetometer (AK8963) along with a Digital Motion Processor (DMP). It provides complete 9-axis sensor fusion output. The device digitizes all sensor outputs with 16-bit ADCs, includes programmable filters and full-scale ranges, and communicates via I2C or SPI interfaces. It is designed for motion tracking in portable and wearable electronics.
+
+Key Parameters:
+- Gyroscope Full-Scale Range: Programmable ±250, ±500, ±1000, ±2000 °/sec
+- Accelerometer Full-Scale Range: Programmable ±2g, ±4g, ±8g, ±16g
+- Magnetometer Full-Scale Range: ±4800 µT
+- Operating Voltage (VDD): 2.4V to 3.6V
+- Digital I/O Voltage (VDDIO): 1.71V to VDD
+- Communication Interfaces: I2C (up to 400 kHz), SPI (1 MHz standard, up to 20 MHz for sensor/read interrupt)
+- Package: 3x3x1 mm QFN
+- Gyroscope Operating Current: 3.2 mA
+- Sleep Mode Current: 8 µA
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | RESV_VDDIO | Reserved | Reserved; connect to VDDIO | Passive | Power |
+| 7 | AUX_CL | Aux I2C | Auxiliary I2C serial clock for external sensors | Output | Digital |
+| 8 | VDDIO | IO Power | Digital I/O supply voltage | Power | 1.71V - VDD |
+| 9 | AD0/SDO | Addr/MISO | I2C address LSB / SPI serial data output | I/O | Digital |
+| 10 | REGOUT | Filter | Regulator filter capacitor connection | Passive | Analog |
+| 11 | FSYNC | Sync | Frame synchronization digital input | Input | Digital |
+| 12 | INT | Interrupt | Programmable interrupt output | Output | Digital |
+| 13 | VDD | Power | Main positive supply voltage | Power | 2.4V - 3.6V |
+| 18 | GND | Ground | Main system ground reference | Power | 0V |
+| 20 | RESV_GND | Reserved | Reserved; connect to GND | Passive | Ground |
+| 21 | AUX_DA | Aux I2C | Auxiliary I2C serial data for external sensors | I/O | Digital |
+| 22 | nCS | Chip Select | SPI chip select (Active Low) | Input | Digital |
+| 23 | SCL/SCLK | Clock | I2C serial clock / SPI serial clock | Input | Digital |
+| 24 | SDA/SDI | Data | I2C serial data / SPI serial data input | I/O | Digital |

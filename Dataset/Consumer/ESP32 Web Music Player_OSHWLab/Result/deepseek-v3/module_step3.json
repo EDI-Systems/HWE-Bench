@@ -1,0 +1,1715 @@
+{
+  "Power Management & Battery Subsystem": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "D-",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "D+",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "TEMP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BATT_TEMP_SENSE",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "PROG",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHG_CURRENT_SET",
+          "FunctionName": "Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BAT",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "STDBY",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHG_STDBY_STATUS",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHRG",
+          "FunctionName": "Output"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHG_ACTIVE_STATUS",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CE",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CHG_ENABLE",
+          "FunctionName": "Input"
+        }
+      ]
+    }
+  ],
+  "High-Fidelity Audio Subsystem": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "V3",
+          "FunctionName": "LDO Out"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "LEDA",
+          "FunctionName": "Backlight+"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK12C02",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "EN",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "RESISTOR1",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR1",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "RXD0",
+          "FunctionName": "Digital/UART"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "TXD",
+          "FunctionName": "Transmit"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "TXD0",
+          "FunctionName": "Digital/UART"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "RXD",
+          "FunctionName": "Receive"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO21",
+          "FunctionName": "Digital/I2C"
+        },
+        {
+          "ComponentID": "RESISTOR2",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR2",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO22",
+          "FunctionName": "Digital/I2C"
+        },
+        {
+          "ComponentID": "RESISTOR3",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR3",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO0",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "RESISTOR4",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR4",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO4",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "CD/DAT3",
+          "FunctionName": "CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD3",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "CMD",
+          "FunctionName": "DI"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD2",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "DAT0",
+          "FunctionName": "DO"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CLK",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "CLK",
+          "FunctionName": "SCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO12",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "D/CX",
+          "FunctionName": "Data/Cmd"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO14",
+          "FunctionName": "Digital/Osc"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SCL",
+          "FunctionName": "Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CMD",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "CSX",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD0",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDI",
+          "FunctionName": "Data In"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD1",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDO",
+          "FunctionName": "Data Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO15",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net21",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net22",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "CDN",
+          "FunctionName": "Detect"
+        },
+        {
+          "ComponentID": "RESISTOR5",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR5",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net23",
+      "Connections": [
+        {
+          "ComponentID": "MK12C02",
+          "PinName": "P1",
+          "FunctionName": "Throw 1"
+        },
+        {
+          "ComponentID": "RESISTOR6",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR6",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "XI",
+          "FunctionName": "Crystal In"
+        },
+        {
+          "ComponentID": "CRYSTAL1",
+          "PinName": "PIN1",
+          "FunctionName": "Crystal Terminal"
+        },
+        {
+          "ComponentID": "CRYSTAL1",
+          "PinName": "PIN2",
+          "FunctionName": "Crystal Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net25",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "XO",
+          "FunctionName": "Crystal Out"
+        },
+        {
+          "ComponentID": "CRYSTAL1",
+          "PinName": "PIN2",
+          "FunctionName": "Crystal Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net26",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "CTS",
+          "FunctionName": "CTS"
+        },
+        {
+          "ComponentID": "RESISTOR7",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR7",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net27",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "DSR",
+          "FunctionName": "DSR"
+        },
+        {
+          "ComponentID": "RESISTOR8",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR8",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net28",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "RI",
+          "FunctionName": "RI"
+        },
+        {
+          "ComponentID": "RESISTOR9",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR9",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net29",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "DCD",
+          "FunctionName": "DCD"
+        },
+        {
+          "ComponentID": "RESISTOR10",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR10",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net30",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "DTR",
+          "FunctionName": "DTR"
+        },
+        {
+          "ComponentID": "RESISTOR11",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR11",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net31",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "RTS",
+          "FunctionName": "RTS"
+        },
+        {
+          "ComponentID": "RESISTOR12",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR12",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net32",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "R232",
+          "FunctionName": "Mode/Aux"
+        },
+        {
+          "ComponentID": "RESISTOR13",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR13",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net33",
+      "Connections": [
+        {
+          "ComponentID": "ILI",
+          "PinName": "LED_K1",
+          "FunctionName": "Cathode 1"
+        },
+        {
+          "ComponentID": "RESISTOR14",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR14",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net34",
+      "Connections": [
+        {
+          "ComponentID": "ILI",
+          "PinName": "LED_K2",
+          "FunctionName": "Cathode 2"
+        },
+        {
+          "ComponentID": "RESISTOR15",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR15",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net35",
+      "Connections": [
+        {
+          "ComponentID": "ILI",
+          "PinName": "LED_K3",
+          "FunctionName": "Cathode 3"
+        },
+        {
+          "ComponentID": "RESISTOR16",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR16",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net36",
+      "Connections": [
+        {
+          "ComponentID": "ILI",
+          "PinName": "LED_K4",
+          "FunctionName": "Cathode 4"
+        },
+        {
+          "ComponentID": "RESISTOR17",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR17",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net37",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "DAT2",
+          "FunctionName": "RSV"
+        },
+        {
+          "ComponentID": "RESISTOR18",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR18",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net38",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "DAT1",
+          "FunctionName": "RSV"
+        },
+        {
+          "ComponentID": "RESISTOR19",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR19",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net39",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "G1",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "RESISTOR20",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR20",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net40",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "G2",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "RESISTOR21",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR21",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net41",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "G4",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "RESISTOR22",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR22",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net42",
+      "Connections": [
+        {
+          "ComponentID": "Micro sd",
+          "PinName": "G3",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "RESISTOR23",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR23",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    },
+    {
+      "net_id": "net43",
+      "Connections": [
+        {
+          "ComponentID": "USB",
+          "PinName": "ID",
+          "FunctionName": "Identification"
+        },
+        {
+          "ComponentID": "RESISTOR24",
+          "PinName": "PIN1",
+          "FunctionName": "Resistor Terminal"
+        },
+        {
+          "ComponentID": "RESISTOR24",
+          "PinName": "PIN2",
+          "FunctionName": "Resistor Terminal"
+        }
+      ]
+    }
+  ],
+  "User Interface & Local Storage Module": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SENSOR_VP",
+          "FunctionName": "Analog/Digital"
+        },
+        {
+          "ComponentID": "MK12C02",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO18",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SCL",
+          "FunctionName": "Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO23",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDI",
+          "FunctionName": "Data In"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO19",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDO",
+          "FunctionName": "Data Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO21",
+          "FunctionName": "Digital/I2C"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "D/CX",
+          "FunctionName": "Data/Cmd"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO22",
+          "FunctionName": "Digital/I2C"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "CSX",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO5",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "RESET",
+          "FunctionName": "Reset"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO14",
+          "FunctionName": "Digital/Osc"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CLK",
+          "FunctionName": "SCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO12",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CMD",
+          "FunctionName": "DI"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO13",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "DAT0",
+          "FunctionName": "DO"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO15",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CD/DAT3",
+          "FunctionName": "CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO27",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CDN",
+          "FunctionName": "Detect"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G1",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G2",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G4",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G3",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MMBT5551",
+          "PinName": "Emitter",
+          "FunctionName": "Current Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net15",
+      "Connections": [
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "BAT",
+          "FunctionName": "Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net16",
+      "Connections": [
+        {
+          "ComponentID": "TP4056",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net17",
+      "Connections": [
+        {
+          "ComponentID": "MMBT5551",
+          "PinName": "Base",
+          "FunctionName": "Control Input"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO2",
+          "FunctionName": "Digital"
+        }
+      ]
+    },
+    {
+      "net_id": "net18",
+      "Connections": [
+        {
+          "ComponentID": "ILI",
+          "PinName": "LEDA",
+          "FunctionName": "Backlight+"
+        },
+        {
+          "ComponentID": "MMBT5551",
+          "PinName": "Collector",
+          "FunctionName": "Current Input"
+        }
+      ]
+    }
+  ],
+  "Central Wireless Microcontroller Unit (MCU)": [
+    {
+      "net_id": "net1",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "3V3",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "V3",
+          "FunctionName": "LDO Out"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "VDD",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "CE",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VOUT",
+          "FunctionName": "Output Voltage"
+        }
+      ]
+    },
+    {
+      "net_id": "net2",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "ESP32",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "R232",
+          "FunctionName": "Mode/Aux"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "GND2",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "MK12C02",
+          "PinName": "P1",
+          "FunctionName": "Throw 1"
+        },
+        {
+          "ComponentID": "MMBT5551",
+          "PinName": "Emitter",
+          "FunctionName": "Current Output"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "VSS",
+          "FunctionName": "Ground"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G1",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G2",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G4",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "G3",
+          "FunctionName": "Shield"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "GND",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "TEMP",
+          "FunctionName": "Input"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "GND",
+          "FunctionName": "Ground"
+        }
+      ]
+    },
+    {
+      "net_id": "net3",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "EN",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "MK12C02",
+          "PinName": "COM",
+          "FunctionName": "Common"
+        }
+      ]
+    },
+    {
+      "net_id": "net4",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "RXD0",
+          "FunctionName": "Digital/UART"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "TXD",
+          "FunctionName": "Transmit"
+        }
+      ]
+    },
+    {
+      "net_id": "net5",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "TXD0",
+          "FunctionName": "Digital/UART"
+        },
+        {
+          "ComponentID": "CH340",
+          "PinName": "RXD",
+          "FunctionName": "Receive"
+        }
+      ]
+    },
+    {
+      "net_id": "net6",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD3",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "DAT0",
+          "FunctionName": "DO"
+        }
+      ]
+    },
+    {
+      "net_id": "net7",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CMD",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CMD",
+          "FunctionName": "DI"
+        }
+      ]
+    },
+    {
+      "net_id": "net8",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "CLK",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CLK",
+          "FunctionName": "SCLK"
+        }
+      ]
+    },
+    {
+      "net_id": "net9",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "SD0",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "PCM1771",
+          "PinName": "CD/DAT3",
+          "FunctionName": "CS"
+        }
+      ]
+    },
+    {
+      "net_id": "net10",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO18",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SCL",
+          "FunctionName": "Clock"
+        }
+      ]
+    },
+    {
+      "net_id": "net11",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO23",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDI",
+          "FunctionName": "Data In"
+        }
+      ]
+    },
+    {
+      "net_id": "net12",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO19",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "SDO",
+          "FunctionName": "Data Out"
+        }
+      ]
+    },
+    {
+      "net_id": "net13",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO5",
+          "FunctionName": "Digital"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "CSX",
+          "FunctionName": "Chip Select"
+        }
+      ]
+    },
+    {
+      "net_id": "net14",
+      "Connections": [
+        {
+          "ComponentID": "ESP32",
+          "PinName": "IO22",
+          "FunctionName": "Digital/I2C"
+        },
+        {
+          "ComponentID": "ILI",
+          "PinName": "D/CX",
+          "FunctionName": "Data/Cmd"
+        }
+      ]
+    },
+    {
+      "net_id": "net19",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D+",
+          "FunctionName": "USB D+"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D+",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net20",
+      "Connections": [
+        {
+          "ComponentID": "CH340",
+          "PinName": "D-",
+          "FunctionName": "USB D-"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "D-",
+          "FunctionName": "Data"
+        }
+      ]
+    },
+    {
+      "net_id": "net24",
+      "Connections": [
+        {
+          "ComponentID": "MCP1825",
+          "PinName": "VIN",
+          "FunctionName": "Input Voltage"
+        },
+        {
+          "ComponentID": "USB",
+          "PinName": "VBUS",
+          "FunctionName": "Power"
+        },
+        {
+          "ComponentID": "TP4056",
+          "PinName": "VCC",
+          "FunctionName": "Power"
+        }
+      ]
+    }
+  ]
+}

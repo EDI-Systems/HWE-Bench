@@ -1,0 +1,307 @@
+{
+  "ComponentID": "TYPE-C",
+  "ComponentType": "USB Type-C Female Receptacle (SMT Connector)",
+  "Description": "This is a 16-pin surface-mount USB Type-C receptacle connector. It is designed for data and power transfer, supporting the USB Type-C standard. The specification details its mechanical durability, electrical performance (including contact resistance and insulation), and environmental reliability (temperature, humidity, soldering). It is rated for 5V/5A DC operation.",
+  "KeyParameters": {
+    "Rated Voltage/Current": "5V DC, 5A",
+    "Operating Temperature Range": "-25°C to +85°C",
+    "Contact Resistance (Initial)": "≤ 10 mΩ (at ≤100mA)",
+    "Insulation Resistance": "≥ 100 MΩ (at 100V DC)",
+    "Dielectric Strength": "Withstand 100V AC (50Hz) for 1 min",
+    "Insertion Force": "0.5 - 2.0 kgf",
+    "Withdrawal Force": "0.8 - 2.0 kgf",
+    "Mechanical Life (Durability)": "5000 mating cycles",
+    "Solder Heat Resistance (Reflow)": "Peak temperature 260°C ±5°C for ≤20s",
+    "Solder Heat Resistance (Hand)": "Iron temperature 330°C ±5°C for 3s ±0.5s"
+  },
+  "Pins": [
+    {
+      "PinNumber": "A1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A2",
+      "PinName": "SSTXp1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Transmit+",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (TX+)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A3",
+      "PinName": "SSTXn1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Transmit-",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (TX-)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Bus Power",
+          "FunctionDescription": "Power supply (5V)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A5",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 1",
+          "FunctionDescription": "Cable orientation and power delivery communication"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital Signal"
+    },
+    {
+      "PinNumber": "A6",
+      "PinName": "Dp1",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data+",
+          "FunctionDescription": "USB 2.0 differential data pair (Positive)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A7",
+      "PinName": "Dn1",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data-",
+          "FunctionDescription": "USB 2.0 differential data pair (Negative)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A8",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 1",
+          "FunctionDescription": "Alternate mode (e.g., DisplayPort) sideband signal"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital Signal"
+    },
+    {
+      "PinNumber": "A9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Bus Power",
+          "FunctionDescription": "Power supply (5V)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "A10",
+      "PinName": "SSRXn2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Receive-",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (RX-) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A11",
+      "PinName": "SSRXp2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Receive+",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (RX+) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "A12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B2",
+      "PinName": "SSRXp1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Receive+",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (RX+)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B3",
+      "PinName": "SSRXn1",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Receive-",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (RX-)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B4",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Bus Power",
+          "FunctionDescription": "Power supply (5V)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B5",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Configuration Channel 2",
+          "FunctionDescription": "Cable orientation and power delivery communication"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital Signal"
+    },
+    {
+      "PinNumber": "B6",
+      "PinName": "Dp2",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data+",
+          "FunctionDescription": "USB 2.0 differential data pair (Positive) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B7",
+      "PinName": "Dn2",
+      "Functions": [
+        {
+          "FunctionName": "USB 2.0 Data-",
+          "FunctionDescription": "USB 2.0 differential data pair (Negative) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B8",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband Use 2",
+          "FunctionDescription": "Alternate mode (e.g., DisplayPort) sideband signal"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Analog/Digital Signal"
+    },
+    {
+      "PinNumber": "B9",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Bus Power",
+          "FunctionDescription": "Power supply (5V)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "B10",
+      "PinName": "SSTXn2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Transmit-",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (TX-) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B11",
+      "PinName": "SSTXp2",
+      "Functions": [
+        {
+          "FunctionName": "SuperSpeed Transmit+",
+          "FunctionDescription": "USB 3.1/3.2 differential pair (TX+) (flipped orientation)"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Differential Signal"
+    },
+    {
+      "PinNumber": "B12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground return"
+        }
+      ],
+      "PinType": "SMT Pad",
+      "ElectricalType": "Power"
+    }
+  ]
+}

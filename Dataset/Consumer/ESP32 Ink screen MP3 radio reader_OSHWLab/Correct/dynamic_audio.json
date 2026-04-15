@@ -1,0 +1,81 @@
+{
+  "Digital Audio Processing & Amplification": [
+    {
+      "net_id": "net_codec_outp",
+      "Connections": [
+        { "ComponentID": "ES8311", "PinName": "12", "FunctionName": "OUTP" }
+      ]
+    },
+    {
+      "net_id": "net_codec_outn",
+      "Connections": [
+        { "ComponentID": "ES8311", "PinName": "13", "FunctionName": "OUTN" }
+      ]
+    },
+    {
+      "net_id": "net_amp_inp",
+      "Connections": [
+        { "ComponentID": "NS4150", "PinName": "3", "FunctionName": "INP" }
+      ]
+    },
+    {
+      "net_id": "net_amp_inn",
+      "Connections": [
+        { "ComponentID": "NS4150", "PinName": "4", "FunctionName": "INN" }
+      ]
+    },
+    {
+      "net_id": "net_spk_p",
+      "Connections": [
+        { "ComponentID": "NS4150", "PinName": "8", "FunctionName": "VoP" },
+        { "ComponentID": "LS1", "PinName": "1", "FunctionName": "Speaker+" }
+      ]
+    },
+    {
+      "net_id": "net_spk_n",
+      "Connections": [
+        { "ComponentID": "NS4150", "PinName": "5", "FunctionName": "VoN" },
+        { "ComponentID": "LS1", "PinName": "2", "FunctionName": "Speaker-" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_data",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "25", "FunctionName": "IO0 (I2S_DATA)" },
+        { "ComponentID": "ES8311", "PinName": "9", "FunctionName": "DSDIN" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_bck",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "26", "FunctionName": "IO4 (I2S_BCK)" },
+        { "ComponentID": "ES8311", "PinName": "6", "FunctionName": "SCLK" }
+      ]
+    },
+    {
+      "net_id": "net_i2s_ws",
+      "Connections": [
+        { "ComponentID": "ESP32", "PinName": "27", "FunctionName": "IO16 (I2S_WS)" },
+        { "ComponentID": "ES8311", "PinName": "8", "FunctionName": "LRCK" }
+      ]
+    },
+    {
+      "net_id": "net_3v3_codec",
+      "Connections": [
+        { "ComponentID": "ME6211C33M5G-N", "PinName": "2", "FunctionName": "VOUT" },
+        { "ComponentID": "ES8311", "PinName": "3", "FunctionName": "PVDD" },
+        { "ComponentID": "ES8311", "PinName": "4", "FunctionName": "DVDD" },
+        { "ComponentID": "ES8311", "PinName": "11", "FunctionName": "AVDD" },
+        { "ComponentID": "NS4150", "PinName": "6", "FunctionName": "VCC" }
+      ]
+    },
+    {
+      "net_id": "net_audio_gnd",
+      "Connections": [
+        { "ComponentID": "ES8311", "PinName": "5", "FunctionName": "DGND" },
+        { "ComponentID": "ES8311", "PinName": "10", "FunctionName": "AGND" },
+        { "ComponentID": "NS4150", "PinName": "7", "FunctionName": "GND" }
+      ]
+    }
+  ]
+}

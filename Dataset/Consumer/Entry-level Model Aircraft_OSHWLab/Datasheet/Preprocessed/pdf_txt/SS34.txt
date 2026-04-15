@@ -1,0 +1,15 @@
+Component ID: SS34
+Component Type: Schottky Barrier Rectifier
+Description: The SS34 is a surface-mount Power Schottky Rectifier designed for use in low-voltage, high-frequency inverters, free-wheeling, and polarity protection applications. It is highly efficient due to its low forward voltage drop and fast switching characteristics. The device is typically encapsulated in a DO-214AC (SMA) or DO-214AB (SMC) package and features a guard ring for overvoltage protection.
+
+Key Parameters:
+- Maximum Repetitive Peak Reverse Voltage ($V_{RRM}$): 40V
+- Maximum Average Forward Rectified Current ($I_{F(AV)}$): 3.0A
+- Maximum Forward Voltage ($V_F$): 0.5V @ 3.0A
+- Peak Forward Surge Current ($I_{FSM}$): 100A
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ---------- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | A | Anode | Positive terminal of the diode | Passive | Power |
+| 2 | K | Cathode | Negative terminal; identified by the cathode band | Passive | Power |

@@ -1,0 +1,66 @@
+{
+  "ComponentID": "PCM12",
+  "ComponentType": "Ultraminiature Surface Mount Slide Switch",
+  "Description": "The PCM Series comprises ultraminiature, low-profile, surface-mount slide switches available in SPDT (Single Pole Double Throw) and SP3T (Single Pole Triple Throw) configurations. They function as manual electromechanical selectors, connecting a common terminal to one of several output terminals depending on the actuator's position. Designed for automated assembly, they are RoHS compliant and packaged on tape and reel for high-volume applications in computer peripherals, telecommunications, and test equipment.",
+  "KeyParameters": {
+    "Contact Rating (Max Switching Current/Voltage)": "0.3A @ 6 VDC",
+    "Mechanical Life": "10,000 cycles",
+    "Initial Contact Resistance": "70 mΩ max.",
+    "Insulation Resistance": "100 MΩ min. @ 500V",
+    "Dielectric Strength": "500 VAC min.",
+    "Operating Temperature Range": "–10°C to +85°C",
+    "Max Solder Temperature": "255°C",
+    "Switch Function (SPDT Model)": "ON1-2 (Position 1), ON2-3 (Position 2)",
+    "Switch Function (SP3T Model)": "ON1-3 (Position 1), ON2-3 (Position 2), ON3-4 (Position 3)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "P1",
+      "Functions": [
+        {
+          "FunctionName": "Throw 1",
+          "FunctionDescription": "Switch contact position 1"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "COM",
+      "Functions": [
+        {
+          "FunctionName": "Common",
+          "FunctionDescription": "Common terminal (Pole)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "P2",
+      "Functions": [
+        {
+          "FunctionName": "Throw 2",
+          "FunctionDescription": "Switch contact position 2"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SHIELD",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Metal housing / Mechanical mounting support"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

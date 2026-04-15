@@ -1,0 +1,115 @@
+{
+  "ComponentID": "TP4056",
+  "ComponentType": "Single-Cell Lithium-Ion Battery Linear Charger IC",
+  "Description": "The TP4056 is a complete constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. It integrates a power MOSFET, reverse-blocking diode, and current sense resistor, requiring minimal external components. It features programmable charge current up to 1A, a fixed 4.2V float voltage, and automatic charge termination when the current drops to 1/10 of the set value. Additional functions include thermal regulation, battery temperature monitoring, under-voltage lockout, automatic recharge, and status indication via two open-drain outputs.",
+  "KeyParameters": {
+    "**Programmable Charge Current**": "Up to 1000 mA (set via external resistor R_PROG)",
+    "**Float Voltage**": "4.2V (±1% accuracy)",
+    "**Input Supply Voltage (VCC)**": "4.0V to 6.5V (operating range)",
+    "**Battery End-of-Charge Termination Threshold**": "C/10 (Charge current falls to 1/10 of programmed value)",
+    "**Trickle Charge Threshold Voltage**": "2.9V (typical)",
+    "**Trickle Charge Current**": "Programmable as 1/10 of the full-scale current (e.g., 100 mA for 1A setting)",
+    "**Standby Quiescent Current**": "50 µA (typical)",
+    "**Shutdown Quiescent Current**": "35 µA (typical)",
+    "**Thermal Regulation**": "Yes, reduces charge current to limit die temperature",
+    "**Operating Ambient Temperature**": "-40°C to +85°C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "TEMP",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Battery Temperature Sense Input. Connect to NTC thermistor network or ground to disable."
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "High-Impedance"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "PROG",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Constant-Charge Current Set and Charge Enable. Connect a resistor (R_PROG) to GND to set charge current. Floating this pin disables charging."
+        }
+      ],
+      "PinType": "Analog Input",
+      "ElectricalType": "High-Impedance, Current Source/Sink"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Ground Terminal."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive Input Supply Voltage (4.0V to 6.5V). Powers the internal circuitry."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Input"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "BAT",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Battery Connection. Connects to the positive terminal of the single-cell Li-ion battery. Provides charge current and voltage regulation."
+        }
+      ],
+      "PinType": "Power Output",
+      "ElectricalType": "Power Output (Current Source)"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "STDBY",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Charge Complete Status Output (Open-Drain). Pulled low when charging is complete and battery voltage is within the float voltage window; otherwise high impedance."
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "CHRG",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Charge Status Output (Open-Drain). Pulled low when the device is in constant-current or constant-voltage charging mode; otherwise high impedance."
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open-Drain"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "CE",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Chip Enable Input (Active High). A logic high enables the charger; a logic low places the IC in shutdown mode. Can be tied to VCC if unused."
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS/TTL Compatible"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "ComponentID": "USB",
+  "ComponentType": "6-Pin USB Type-C Receptacle (Power/Charging Only)",
+  "Description": "The TYPE-C-31-M-17 is a specialized USB Type-C receptacle designed primarily for power delivery and charging applications. It simplifies the standard Type-C interface by providing only the essential pins for power (VBUS, GND) and orientation/negotiation (CC1, CC2), omitting all data lines. This makes it an ideal, cost-effective choice for devices that do not require data transfer, such as rechargeable flashlights, simple power banks, or battery-powered toys.",
+  "KeyParameters": {
+    "Pin Count": "6 functional signal pins + 4 mounting/shield pins",
+    "Interface": "Power Only (No USB 2.0 or 3.x data)",
+    "Power Compatibility": "Supports USB Power Delivery (PD) negotiation via CC pins",
+    "Mounting Type": "Surface Mount (SMT) with through-hole shell tabs for mechanical strength"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "B12",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "B9",
+      "Functions": [
+        {
+          "FunctionName": "VBUS",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "A5",
+      "Functions": [
+        {
+          "FunctionName": "CC1",
+          "FunctionDescription": "Configuration Channel 1 (Orientation/PD)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "B5",
+      "Functions": [
+        {
+          "FunctionName": "CC2",
+          "FunctionDescription": "Configuration Channel 2 (Orientation/PD)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "A9",
+      "Functions": [
+        {
+          "FunctionName": "VBUS",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "A12",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "System ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "0",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Connector housing and mechanical ground"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "ComponentID": "SHT",
+  "ComponentType": "Digital Humidity and Temperature Sensor",
+  "Description": "The SHT3x-DIS is a fully calibrated, linearized, and temperature-compensated digital sensor for measuring relative humidity and ambient temperature. It features a CMOSens® chip with an integrated I2C interface supporting speeds up to 1 MHz and two user-selectable addresses. The sensor provides high accuracy and fast measurement times, operates from a wide supply voltage range, and is housed in a miniature DFN package.",
+  "KeyParameters": {
+    "Supply Voltage Range": "2.15 V to 5.5 V",
+    "I2C Communication Speed": "Up to 1 MHz",
+    "Humidity Accuracy (Typical, SHT35)": "±1.5 %RH",
+    "Temperature Accuracy (Typical, SHT35, 20-60°C)": "±0.1 °C",
+    "Humidity Measurement Range": "0 to 100 %RH",
+    "Temperature Measurement Range": "-40 to 125 °C",
+    "Humidity Resolution": "0.01 %RH",
+    "Temperature Resolution": "0.01 °C",
+    "Package Type": "8-Pin DFN",
+    "Package Dimensions": "2.5 x 2.5 x 0.9 mm"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Data Line",
+          "FunctionDescription": "I2C Serial Data Input/Output"
+        }
+      ],
+      "PinType": "Digital I/O",
+      "ElectricalType": "Open Drain"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "ADDR",
+      "Functions": [
+        {
+          "FunctionName": "Address Select",
+          "FunctionDescription": "I2C Slave Address Selection (Connect to VSS or VDD)"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "ALERT",
+      "Functions": [
+        {
+          "FunctionName": "Alert Output",
+          "FunctionDescription": "Interrupt/Alert Pin (Active Low)"
+        }
+      ],
+      "PinType": "Digital Output",
+      "ElectricalType": "Open Drain"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Supply Ground (0 V)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Supply Voltage",
+          "FunctionDescription": "Positive Supply Voltage (2.15 V to 5.5 V)"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "R",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved for Future Use. Must be left unconnected (NC)."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "R",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved for Future Use. Must be left unconnected (NC)."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Clock Line",
+          "FunctionDescription": "I2C Serial Clock Input"
+        }
+      ],
+      "PinType": "Digital Input",
+      "ElectricalType": "CMOS"
+    }
+  ]
+}

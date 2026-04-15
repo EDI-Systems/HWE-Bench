@@ -1,0 +1,54 @@
+{
+  "ComponentID": "MK12C02",
+  "ComponentType": "Tactile Push Button Switch (Surface Mount)",
+  "Description": "This is a miniature, surface-mount, momentary tactile push button switch designed for low-voltage DC applications. It provides a normally-open (NO) contact that closes when the actuator is pressed, with a specified mechanical life and electrical ratings suitable for consumer electronics, control panels, and PC board interfaces.",
+  "KeyParameters": {
+    "Switch Type": "Momentary, Normally Open (NO)",
+    "Rated Electrical Load": "12V DC at 0.5A / 6V DC at 1.0A",
+    "Contact Resistance": "≤100 mΩ (max)",
+    "Insulation Resistance": "≥100 MΩ at 100V DC",
+    "Withstand Voltage": "250V AC for 1 minute",
+    "Operating Temperature": "-20°C to +70°C",
+    "Mechanical Life": "10,000 cycles (min)",
+    "Actuator Height (Switch Height)": "1.5 mm (G015), 2.0 mm (G020), or 2.5 mm (G025)",
+    "Reflow Soldering Temperature": "≤250°C (max)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "P1",
+      "Functions": [
+        {
+          "FunctionName": "Throw 1",
+          "FunctionDescription": "Connected to COM in position A"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "COM",
+      "Functions": [
+        {
+          "FunctionName": "Common",
+          "FunctionDescription": "Common terminal (Pole)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "P2",
+      "Functions": [
+        {
+          "FunctionName": "Throw 2",
+          "FunctionDescription": "Connected to COM in position B"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal/Power"
+    }
+  ]
+}

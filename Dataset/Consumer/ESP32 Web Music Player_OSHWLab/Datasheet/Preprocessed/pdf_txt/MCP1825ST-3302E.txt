@@ -1,0 +1,24 @@
+Component ID: MCP1825
+Component Type: Low Dropout (LDO) Linear Voltage Regulator
+Description:
+The MCP1825/MCP1825S is a family of 500 mA low-dropout linear regulators designed for applications requiring high current at low output voltages. It features a low quiescent current, stable operation with small ceramic output capacitors, and is available in both fixed-output (MCP1825S: 3-pin; MCP1825: 5-pin) and adjustable-output (MCP1825: 5-pin) versions. Key protections include short-circuit current limiting and overtemperature shutdown. The MCP1825 variant includes a shutdown (SHDN) pin for ultra-low standby current and a power-good (PWRGD) output signal (fixed version) or an adjust (ADJ) pin (adjustable version).
+
+Key Parameters:
+- Maximum Output Current: 500 mA
+- Input Voltage Range: 2.1 V to 6.0 V
+- Dropout Voltage: 210 mV (Typical at 500 mA load)
+- Output Voltage Range (Adjustable): 0.8 V to 5.0 V
+- Output Voltage Tolerance: 0.5% (Typical)
+- Quiescent (Supply) Current: 120 µA (Typical)
+- Shutdown Current: 0.1 µA (Typical, MCP1825 only)
+- Minimum Output Capacitance: 1.0 µF (Ceramic, for stability)
+- Power Good Delay: 110 µs (Typical, fixed-output MCP1825)
+- Operating Junction Temperature: -40°C to +125°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | VIN | Input Voltage | Power supply input pin. Must be bypassed with a capacitor. | Power Input | Analog |
+| 3 | GND | Ground | Primary ground connection. The package tab is also electrically connected to ground. | Power | Ground |
+| 2 | VOUT | Output Voltage | Regulated output voltage. Must be bypassed with a capacitor. | Power Output | Analog |
+| 4 | GND | Ground | Additional ground connection. The package tab is also electrically connected to ground. | Power | Ground |

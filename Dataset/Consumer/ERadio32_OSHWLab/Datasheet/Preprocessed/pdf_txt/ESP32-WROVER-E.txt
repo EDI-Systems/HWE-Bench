@@ -1,0 +1,59 @@
+Component ID: ESP32-WROVER
+Component Type: Wi-Fi + Bluetooth + Bluetooth LE System-on-Chip (SoC) Module
+Description:
+The ESP32-WROVER-E and ESP32-WROVER-IE are highly-integrated, general-purpose Wi-Fi + Bluetooth + Bluetooth LE MCU modules. They are built around the ESP32-D0WD-V3 dual-core Xtensa® LX6 microprocessor, featuring integrated 4 MB SPI flash and 8 MB SPI PSRAM. The modules support IEEE 802.11 b/g/n Wi-Fi (up to 150 Mbps) and Bluetooth v4.2 BR/EDR & BLE standards. Designed for low-power applications, they include a rich set of peripherals (GPIO, ADC, DAC, SPI, I2C, I2S, UART, PWM, touch sensors, etc.) and are capable of handling demanding tasks like audio processing. The primary difference between the -E and -IE variants is the antenna: the -E uses a PCB antenna, while the -IE uses a connector for an external antenna.
+
+Key Parameters:
+- Core: Dual-core Xtensa® LX6 microprocessor
+- CPU Clock Speed: 80 MHz to 240 MHz (adjustable)
+- Integrated Flash Memory: 4 MB SPI Flash
+- Integrated PSRAM: 8 MB SPI PSRAM
+- Operating Voltage: 3.0 V to 3.6 V
+- Wi-Fi Protocol: 802.11 b/g/n (802.11n up to 150 Mbps)
+- Bluetooth Protocol: Bluetooth v4.2 BR/EDR and BLE
+- Operating Temperature Range: -40°C to 85°C
+- Sleep Current: < 5 µA
+- RF Output Power (Typical): Up to 20 dBm
+- Wi-Fi Receiver Sensitivity: -97 dBm (typical for Bluetooth BLE)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | GND | Ground | Power supply ground | P | Power |
+| 2 | 3V3 | Power | 3.3V power supply | P | Power |
+| 3 | EN | Chip Enable | Enable pin (active high) | I | Digital Input |
+| 4 | SENSOR_VP | GPIO36, ADC1_CH0, RTC_GPIO0 | ADC input, RTC GPIO | I | Analog Input |
+| 5 | SENSOR_VN | GPIO39, ADC1_CH3, RTC_GPIO3 | ADC input, RTC GPIO | I | Analog Input |
+| 6 | IO34 | GPIO34, ADC1_CH6, RTC_GPIO4 | GPIO, ADC input, RTC GPIO | I | Digital Input, Analog Input |
+| 7 | IO35 | GPIO35, ADC1_CH7, RTC_GPIO5 | GPIO, ADC input, RTC GPIO | I | Digital Input, Analog Input |
+| 8 | IO32 | GPIO32, XTAL_32K_P, ADC1_CH4, TOUCH9, RTC_GPIO9 | GPIO, 32.768 kHz crystal input, ADC, Touch sensor, RTC GPIO | I/O | Digital I/O, Analog Input |
+| 9 | IO33 | GPIO33, XTAL_32K_N, ADC1_CH5, TOUCH8, RTC_GPIO8 | GPIO, 32.768 kHz crystal output, ADC, Touch sensor, RTC GPIO | I/O | Digital I/O, Analog Input |
+| 10 | IO25 | GPIO25, DAC_1, ADC2_CH8, RTC_GPIO6, EMAC_RXD0 | GPIO, DAC output, ADC input, RTC GPIO, Ethernet MAC | I/O | Digital I/O, Analog Output/Input |
+| 11 | IO26 | GPIO26, DAC_2, ADC2_CH9, RTC_GPIO7, EMAC_RXD1 | GPIO, DAC output, ADC input, RTC GPIO, Ethernet MAC | I/O | Digital I/O, Analog Output/Input |
+| 12 | IO27 | GPIO27, ADC2_CH7, TOUCH7, RTC_GPIO17, EMAC_RX_DV | GPIO, ADC input, Touch sensor, RTC GPIO, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 13 | IO14 | GPIO14, ADC2_CH6, TOUCH6, RTC_GPIO16, MTMS, HSPICLK, HS2_CLK, SD_CLK, EMAC_TXD2 | GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI clock, SD card clock, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 14 | IO12 | GPIO12, ADC2_CH5, TOUCH5, RTC_GPIO15, MTDI, HSPIQ, HS2_DATA2, SD_DATA2, EMAC_TXD3 | GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI data, SD card data, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 15 | GND | Ground | Power supply ground | P | Power |
+| 16 | IO13 | GPIO13, ADC2_CH4, TOUCH4, RTC_GPIO14, MTCK, HSPID, HS2_DATA3, SD_DATA3, EMAC_RX_ER | GPIO, ADC input, Touch sensor, RTC GPIO, JTAG, SPI data, SD card data, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 17 | IO9 | GPIO9, D2 | GPIO, Internal Flash/PSRAM connection (not recommended for use) | I/O | Digital I/O |
+| 18 | IO10 | GPIO10, D3 | GPIO, Internal Flash/PSRAM connection (not recommended for use) | I/O | Digital I/O |
+| 19 | IO11 | GPIO11, CMD | GPIO, Internal Flash/PSRAM command line (not recommended for use) | I/O | Digital I/O |
+| 20 | SD2 | GPIO17, SD_DATA2, HSPID, VSPIQ, EMAC_CLK_OUT_180 | GPIO, SD card data, SPI data, Ethernet MAC clock | I/O | Digital I/O |
+| 21 | SD3 | GPIO18, SD_DATA3, HSPICLK, VSPICLK, EMAC_TXD2 | GPIO, SD card data, SPI clock, Ethernet MAC | I/O | Digital I/O |
+| 22 | CMD | GPIO15, SD_CMD, HSPICS0, MTDO, VSPICS0, EMAC_RXD3 | GPIO, SD card command, SPI chip select, JTAG, Ethernet MAC | I/O | Digital I/O |
+| 23 | CLK | GPIO6, SD_CLK, HSPICLK, VSPICLK, EMAC_TX_ER | GPIO, SD card clock, SPI clock, Ethernet MAC | I/O | Digital I/O |
+| 24 | SD0 | GPIO7, SD_DATA0, HSPID, VSPIQ, EMAC_RXD2 | GPIO, SD card data, SPI data, Ethernet MAC | I/O | Digital I/O |
+| 25 | SD1 | GPIO8, SD_DATA1, HSPIQ, VSPID, EMAC_RXD1 | GPIO, SD card data, SPI data, Ethernet MAC | I/O | Digital I/O |
+| 26 | IO2 | GPIO2, ADC2_CH2, TOUCH2, RTC_GPIO2, HSPIWP, HS2_DATA0, SD_DATA0 | GPIO, ADC input, Touch sensor, RTC GPIO, SPI write protect, SD card data | I/O | Digital I/O, Analog Input |
+| 27 | IO4 | GPIO4, ADC2_CH0, TOUCH0, RTC_GPIO10, HSPIHD, HS2_DATA1, SD_DATA1, EMAC_TX_ER | GPIO, ADC input, Touch sensor, RTC GPIO, SPI hold, SD card data, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 28 | IO5 | GPIO5, ADC2_CH1, TOUCH1, RTC_GPIO11, VSPICS0, HS1_DATA6, EMAC_RX_CLK | GPIO, ADC input, Touch sensor, RTC GPIO, SPI chip select, Ethernet MAC | I/O | Digital I/O, Analog Input |
+| 29 | IO16 | GPIO16, HS1_DATA4, U2RXD, EMAC_CLK_OUT | GPIO, UART RXD, Ethernet MAC clock | I/O | Digital I/O |
+| 30 | IO17 | GPIO17, HS1_DATA5, U2TXD, EMAC_CLK_OUT_180 | GPIO, UART TXD, Ethernet MAC clock | I/O | Digital I/O |
+| 31 | IO23 | GPIO23, HS1_STROBE, VSPID, EMAC_TXD0 | GPIO, SPI data, Ethernet MAC | I/O | Digital I/O |
+| 32 | GND | Ground | Power supply ground | P | Power |
+| 33 | IO19 | GPIO19, VSPIQ, U0CTS, EMAC_TXD1 | GPIO, SPI data, UART clear to send, Ethernet MAC | I/O | Digital I/O |
+| 34 | IO22 | GPIO22, VSPIWP, U0RTS, EMAC_TXD3 | GPIO, SPI write protect, UART ready to send, Ethernet MAC | I/O | Digital I/O |
+| 35 | IO21 | GPIO21, VSPIHD, EMAC_TX_EN | GPIO, SPI hold, Ethernet MAC transmit enable | I/O | Digital I/O |
+| 36 | RXD0 | GPIO3, U0RXD, CLK_OUT2 | GPIO, UART RXD, Clock output | I/O | Digital I/O |
+| 37 | TXD0 | GPIO1, U0TXD, CLK_OUT3, EMAC_RXD2 | GPIO, UART TXD, Clock output, Ethernet MAC | I/O | Digital I/O |
+| 38 | GND | Ground | Power supply ground | P | Power |

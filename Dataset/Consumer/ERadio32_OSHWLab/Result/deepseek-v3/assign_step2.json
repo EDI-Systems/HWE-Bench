@@ -1,0 +1,1427 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Dual-Channel Amplification & Output Stage",
+      "Function Description": "Amplifies the decoded digital audio signal to directly drive stereo speakers. Consists of dual digital Class-D amplifiers for high efficiency and integrated speaker drivers.",
+      "Signal Sources": "Decoded digital audio stream (I2S) from the Audio Decoding & Processing Pipeline.",
+      "Signal Destinations": "Amplified analog audio to the internal stereo speakers.",
+      "Implementation Logic": "Two digital Class-D amplifier ICs (or a stereo IC) receiving I2S data. They include integrated power stages and require a stable power supply from the Power Management System. May include output filters.",
+      "Signal Chain": "The module receives a decoded digital audio stream via I2S from the Audio Decoding & Processing Pipeline. This I2S signal (comprising BCLK, LRCLK, and DIN) is fed into a digital Class-D amplifier IC. The amplifier requires a stable power supply, which is provided by a dedicated LDO regulator stepping down the main system voltage (e.g., 5V from USB or battery) to the amplifier's operating voltage (e.g., 3.3V or 5V). The amplifier internally processes the digital audio, performs PWM modulation, and drives its integrated H-bridge output stage. The differential outputs (SPK+, SPK-) connect directly to the stereo speakers. For a dual-channel implementation, two identical amplifier ICs are used, each receiving the same I2S clock signals but potentially different data channels if configured for stereo. The amplifier's gain and shutdown/mode control are set via fixed resistor connections or GPIOs from the main controller.",
+      "Recommended Components": [
+        {
+          "ComponentID": "MAX98357",
+          "Functional Position": "Digital Class-D Audio Power Amplifier",
+          "Recommendation Reason": "Directly accepts I2S digital audio input, eliminating the need for a separate DAC. It is a filterless Class-D amplifier with integrated output stage, providing high efficiency and sufficient power to drive internal stereo speakers. Its automatic clock detection simplifies the interface.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "LRCLK",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BCLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "DIN",
+              "Net": "I2S_DOUT (from Audio Decoder)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GAIN",
+              "Net": "GND (for fixed gain, e.g., 9dB)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SD",
+              "Net": "AMP_EN (GPIO from controller for shutdown control)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "2.5-5.5V",
+              "Net": "VDD_AMP (3.3V from LDO)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK+",
+              "Net": "SPK_R+ (to right speaker positive terminal)"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SPK-",
+              "Net": "SPK_R- (to right speaker negative terminal)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MAX98357",
+          "Functional Position": "Digital Class-D Audio Power Amplifier (Second Channel)",
+          "Recommendation Reason": "A second identical amplifier is required for the left stereo channel. It shares the same I2S clock lines but would receive the left channel data if the audio source provides separate data lines, or can be configured for mono mix if using a single data line.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "LRCLK",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BCLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "DIN",
+              "Net": "I2S_DOUT (from Audio Decoder, same as right channel or separate left data)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GAIN",
+              "Net": "GND (for fixed gain, matching right channel)"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SD",
+              "Net": "AMP_EN (shared shutdown control with right channel)"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "2.5-5.5V",
+              "Net": "VDD_AMP (3.3V from LDO, shared)"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK+",
+              "Net": "SPK_L+ (to left speaker positive terminal)"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SPK-",
+              "Net": "SPK_L- (to left speaker negative terminal)"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "Low-Dropout (LDO) Linear Voltage Regulator for Amplifier Power",
+          "Recommendation Reason": "Provides a clean, stable 3.3V supply for the MAX98357 amplifiers from a higher input voltage (e.g., 5V from USB or battery pack). Its low noise and high PSRR are critical for audio quality, preventing power supply noise from affecting the amplifier output.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_5V (from system power rail)"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "VIN_5V (always enabled, or connect to a power management GPIO)"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "VDD_AMP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Auxiliary DAC & Line-Out Module",
+      "Function Description": "Provides a high-quality analog line-level output for external audio systems. Converts the digital audio stream to an analog signal independently of the speaker amplifiers.",
+      "Signal Sources": "Decoded digital audio stream (I2S) from the Audio Decoding & Processing Pipeline.",
+      "Signal Destinations": "Analog line-level audio signal to a 3.5mm jack or RCA connectors.",
+      "Implementation Logic": "A dedicated stereo digital-to-analog converter (DAC) IC with a clean analog supply. It receives I2S data and outputs analog audio through an output buffer/op-amp stage to the physical connector.",
+      "Signal Chain": "The module receives a digital audio stream via I2S from the Audio Decoding & Processing Pipeline. This I2S signal (comprising BCLK, LRCLK, and DIN) is fed into a dedicated stereo DAC IC (MAX98357, which integrates a DAC and Class D amplifier). The DAC converts the digital audio to an analog signal. The analog output from the DAC is a differential signal (SPK+, SPK-) designed to drive a speaker load directly. For a line-level output, this differential signal must be converted to a single-ended signal and attenuated to line-level (typically around 1Vrms). An output buffer/op-amp stage (not present in the library, so we use the DAC's integrated amplifier with gain setting) can be configured for appropriate gain. The final analog signal is then routed to a physical connector (e.g., 3.5mm jack). Power is supplied via a clean analog rail, regulated from the main system power by an LDO (ME6211 Series) to minimize noise. The ESP32-WROOM-32 or ESP32-WROVER serves as the system controller, providing the I2S signals and potentially controlling the DAC's shutdown/gain pins.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "Functional Position": "System Controller & I2S Source",
+          "Recommendation Reason": "Provides the digital audio stream via I2S interface. It has dedicated I2S pins and sufficient processing power for audio applications.",
+          "Pin Connections": [
+            {
+              "PinNumber": "22",
+              "PinName": "CLK / IO6",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "IO2",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "IO0",
+              "Net": "I2S_DIN"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "VDD_3V3_DIGITAL"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ENABLE_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MAX98357",
+          "Functional Position": "Stereo DAC & Output Driver",
+          "Recommendation Reason": "Integrated PCM/I2S digital input Class D amplifier with DAC. It accepts I2S directly, provides analog output, and has configurable gain for line-level adjustment. Operates from 2.5V to 5.5V, compatible with 3.3V logic.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "BCLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "LRCLK",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "DIN",
+              "Net": "I2S_DIN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GAIN",
+              "Net": "GAIN_SELECT"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SD",
+              "Net": "DAC_SHUTDOWN"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "2.5-5.5V",
+              "Net": "VDD_3V3_ANALOG"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK+",
+              "Net": "AUDIO_OUT_L+"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SPK-",
+              "Net": "AUDIO_OUT_L-"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "Analog Power Regulator",
+          "Recommendation Reason": "CMOS LDO with high PSRR and low noise, ideal for providing clean analog power to the DAC. Fixed 3.3V output variant matches system voltage. 500mA output current is sufficient.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "ENABLE_3V3"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "VDD_3V3_ANALOG"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BC817",
+          "Functional Position": "Shutdown Control Transistor",
+          "Recommendation Reason": "NPN BJT to interface ESP32 GPIO (3.3V logic) with the DAC's shutdown pin (SD), which may require higher voltage or current handling. Provides level shifting and control.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "B",
+              "Net": "GPIO_DAC_SD"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "E",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "C",
+              "Net": "DAC_SHUTDOWN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Human-Machine Interface (HMI) Module",
+      "Function Description": "Provides all user interaction capabilities. Includes a color graphical display for visual feedback, a rotary navigation encoder for menu control/volume, and an infrared (IR) receiver for remote control.",
+      "Signal Sources": "User physical input from the rotary encoder and IR remote commands.",
+      "Signal Destinations": "User input data (keystrokes, encoder movements) to the Wireless Central Processing & Connectivity Unit. Display control signals and framebuffer data from the processor to the screen.",
+      "Implementation Logic": "A display (e.g., SPI/I2C LCD) driven by the main processor's graphics library. The rotary encoder connects to GPIOs for quadrature decoding. An IR receiver module outputs demodulated data to a processor UART or GPIO pin.",
+      "Signal Chain": "The HMI module's signal flow begins with user inputs from the rotary encoder and IR receiver. The rotary encoder's quadrature signals (A, B) and optional switch are directly connected to GPIO pins on the main processor for decoding. The IR receiver's demodulated output connects to a UART RX pin or a GPIO for software decoding. The main processor (ESP32-WROVER) processes these inputs, updates the graphical interface, and sends display commands via SPI to the TFT LCD. The display module shares a single SPI bus but uses separate chip select lines for the LCD, touch controller, and optional SD card. The processor also manages the display backlight via a GPIO/PWM pin. Processed user input data (e.g., encoder delta, IR command codes) is transmitted to the Wireless Central Processing & Connectivity Unit via a dedicated UART or other communication interface (not specified in library, assumed via ESP32's UART1/2). Power is supplied via USB Type-C, regulated to 3.3V for the logic components.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Main Processor & Connectivity",
+          "Recommendation Reason": "Dual-core processor with integrated Wi-Fi/Bluetooth, sufficient GPIOs, and 8MB PSRAM for graphics buffering. Handles display driving, rotary encoder decoding, IR reception, and communication with the central unit.",
+          "Pin Connections": [
+            {
+              "Net": "SPI_SCK",
+              "PinNumber": "23",
+              "PinName": "CLK"
+            },
+            {
+              "Net": "SPI_MOSI",
+              "PinNumber": "24",
+              "PinName": "SD0"
+            },
+            {
+              "Net": "SPI_MISO",
+              "PinNumber": "25",
+              "PinName": "SD1"
+            },
+            {
+              "Net": "TFT_CS",
+              "PinNumber": "22",
+              "PinName": "CMD"
+            },
+            {
+              "Net": "TFT_DC",
+              "PinNumber": "26",
+              "PinName": "IO2"
+            },
+            {
+              "Net": "TFT_RST",
+              "PinNumber": "27",
+              "PinName": "IO4"
+            },
+            {
+              "Net": "TOUCH_CS",
+              "PinNumber": "34",
+              "PinName": "IO22"
+            },
+            {
+              "Net": "TOUCH_IRQ",
+              "PinNumber": "35",
+              "PinName": "IO21"
+            },
+            {
+              "Net": "ENCODER_A",
+              "PinNumber": "36",
+              "PinName": "RXD0"
+            },
+            {
+              "Net": "ENCODER_B",
+              "PinNumber": "37",
+              "PinName": "TXD0"
+            },
+            {
+              "Net": "ENCODER_SW",
+              "PinNumber": "38",
+              "PinName": "GND"
+            },
+            {
+              "Net": "IR_RX",
+              "PinNumber": "33",
+              "PinName": "IO19"
+            },
+            {
+              "Net": "TFT_BL",
+              "PinNumber": "28",
+              "PinName": "IO5"
+            },
+            {
+              "Net": "3V3",
+              "PinNumber": "2",
+              "PinName": "3V3"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "1",
+              "PinName": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "Functional Position": "Color Graphical Display with Touch",
+          "Recommendation Reason": "2.8-inch TFT with integrated touch controller and SD card slot, using SPI interface compatible with the processor. Provides visual feedback and touch input capability.",
+          "Pin Connections": [
+            {
+              "Net": "VCC",
+              "PinNumber": "1",
+              "PinName": "VCC"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "2",
+              "PinName": "GND"
+            },
+            {
+              "Net": "TFT_CS",
+              "PinNumber": "3",
+              "PinName": "CS"
+            },
+            {
+              "Net": "TFT_RST",
+              "PinNumber": "4",
+              "PinName": "RESET"
+            },
+            {
+              "Net": "TFT_DC",
+              "PinNumber": "5",
+              "PinName": "D/C"
+            },
+            {
+              "Net": "SPI_MOSI",
+              "PinNumber": "6",
+              "PinName": "MOSI"
+            },
+            {
+              "Net": "SPI_SCK",
+              "PinNumber": "7",
+              "PinName": "SCK"
+            },
+            {
+              "Net": "TFT_BL",
+              "PinNumber": "8",
+              "PinName": "LED"
+            },
+            {
+              "Net": "SPI_MISO",
+              "PinNumber": "9",
+              "PinName": "MISO"
+            },
+            {
+              "Net": "TOUCH_CS",
+              "PinNumber": "11",
+              "PinName": "T_CS"
+            },
+            {
+              "Net": "TOUCH_IRQ",
+              "PinNumber": "14",
+              "PinName": "T_IRQ"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "3.3V LDO Regulator for Logic Power",
+          "Recommendation Reason": "Provides stable 3.3V from USB input (5V) for the processor and display. Low dropout, high PSRR, and 500mA output suitable for the module.",
+          "Pin Connections": [
+            {
+              "Net": "VIN_USB",
+              "PinNumber": "1",
+              "PinName": "VIN"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "2",
+              "PinName": "VSS"
+            },
+            {
+              "Net": "3V3",
+              "PinNumber": "5",
+              "PinName": "VOUT"
+            },
+            {
+              "Net": "EN_3V3",
+              "PinNumber": "3",
+              "PinName": "CE"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Power Input & Charging Port",
+          "Recommendation Reason": "USB Type-C receptacle for power delivery, enabling flexible power input and potential charging for battery-backed systems.",
+          "Pin Connections": [
+            {
+              "Net": "VIN_USB",
+              "PinNumber": "2",
+              "PinName": "B9"
+            },
+            {
+              "Net": "VIN_USB",
+              "PinNumber": "5",
+              "PinName": "A9"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "1",
+              "PinName": "B12"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "6",
+              "PinName": "A12"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "0",
+              "PinName": "SHELL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BC817",
+          "Functional Position": "Backlight Driver Transistor",
+          "Recommendation Reason": "NPN BJT used as a switch to control TFT backlight LED current, driven by processor PWM/GPIO for brightness adjustment.",
+          "Pin Connections": [
+            {
+              "Net": "TFT_BL_CTRL",
+              "PinNumber": "2",
+              "PinName": "B"
+            },
+            {
+              "Net": "GND",
+              "PinNumber": "1",
+              "PinName": "E"
+            },
+            {
+              "Net": "TFT_BL",
+              "PinNumber": "3",
+              "PinName": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Audio Decoding & Processing Pipeline",
+      "Function Description": "Receives digital audio data from the central processor and decodes various high-fidelity audio formats (e.g., MP3, AAC, FLAC). It outputs decoded digital audio streams for amplification and analog conversion.",
+      "Signal Sources": "Encoded digital audio data from the Wireless Central Processing & Connectivity Unit.",
+      "Signal Destinations": "Decoded digital audio streams (I2S/TDM) to the Dual-Channel Amplification & Output Stage and the Auxiliary DAC Module.",
+      "Implementation Logic": "Can be implemented via a dedicated hardware audio decoder IC or the DSP core within the main processor. It outputs standard digital audio interfaces (I2S) for clean signal transmission to the subsequent stages.",
+      "Signal Chain": "The Audio Decoding & Processing Pipeline receives encoded digital audio data (e.g., MP3, AAC, FLAC) from the Wireless Central Processing & Connectivity Unit via a digital interface (likely SPI or I2S). This data is processed by a dedicated audio decoder/DSP core (implemented within the main processor) which performs format decoding, sample rate conversion, and digital filtering. The decoded digital audio streams are then output via standard I2S/TDM interfaces: one I2S stream is sent to the Dual-Channel Amplification & Output Stage (MAX98357) for direct amplification, and another I2S stream is sent to the Auxiliary DAC Module for analog conversion. Power management is handled by voltage regulators (AMS1117 for 3.3V, ME6211 for 1.8V/1.2V) to supply the processor and audio components. The ESP32-WROVER serves as the main processor with integrated Wi-Fi/Bluetooth, handling wireless data reception, audio decoding via its DSP core, and I2S output generation.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Main Processor & Audio Decoder",
+          "Recommendation Reason": "Integrates dual-core Xtensa LX6 microprocessor with DSP capabilities for audio decoding (MP3, AAC, FLAC), Wi-Fi/Bluetooth for wireless data reception from the connectivity unit, and hardware I2S peripherals for outputting decoded digital audio streams. Includes 4MB flash and 8MB PSRAM for audio buffer management.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ENABLE_3V3"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "CLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO19",
+              "Net": "I2S_DOUT"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "SD3",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "RXD0",
+              "Net": "UART0_RX"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "TXD0",
+              "Net": "UART0_TX"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MAX98357",
+          "Functional Position": "Digital Audio Amplifier for Primary Output",
+          "Recommendation Reason": "Class D amplifier with I2S digital input, directly accepts decoded I2S audio from the processor for high-efficiency amplification to speakers. Eliminates need for external DAC and supports sample rates up to 96kHz.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "LRCLK",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BCLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "DIN",
+              "Net": "I2S_DOUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GAIN",
+              "Net": "GAIN_SEL_15dB"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SD",
+              "Net": "AMP_SHUTDOWN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "2.5-5.5V",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK+",
+              "Net": "SPK_P"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SPK-",
+              "Net": "SPK_N"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "3.3V Voltage Regulator for Digital Logic",
+          "Recommendation Reason": "Provides stable 3.3V supply for ESP32-WROVER, MAX98357, and other digital components from a higher input voltage (e.g., 5V USB). Fixed 3.3V version matches processor operating voltage.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "1.8V/1.2V LDO for Processor Core & Audio PLL",
+          "Recommendation Reason": "Low-noise CMOS LDO generates clean 1.8V or 1.2V for processor core voltage and audio PLL from 3.3V rail. High PSRR minimizes noise in audio signal chain.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "ENABLE_1V8"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "VDD_1V8"
+            }
+          ]
+        },
+        {
+          "ComponentID": "USB",
+          "Functional Position": "Power Input & Charging Port",
+          "Recommendation Reason": "USB Type-C receptacle provides 5V power input for the system and supports USB Power Delivery for flexible voltage/current. Power-only design simplifies circuitry.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "B12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "B9",
+              "Net": "VBUS_IN"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "A9",
+              "Net": "VBUS_IN"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "A12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHELL",
+              "Net": "GND"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Wireless Central Processing & Connectivity Unit",
+      "Function Description": "Acts as the main system controller. It boots the device, manages network connectivity (e.g., Wi-Fi/Bluetooth) for streaming, accesses local removable storage (e.g., SD card), and orchestrates all other modules. It fetches and routes digital audio streams for decoding.",
+      "Signal Sources": "Digital audio streams from network or local storage. User input commands from the HMI module.",
+      "Signal Destinations": "Digital audio data to the Audio Decoding & Processing Module. Control signals to all other modules (Display, Audio Amplifiers, DAC, Power Management).",
+      "Implementation Logic": "A system-on-chip (SoC) or microcontroller with integrated wireless capabilities (Wi-Fi/Bluetooth), running the main application firmware. It interfaces with storage via SPI/SDIO, manages network stacks, and uses serial buses (I2C, SPI, UART) for system control.",
+      "Signal Chain": "The module acts as the central controller. It receives digital audio streams from network (via integrated Wi-Fi/Bluetooth) or local storage (via SD card interface). User input commands are received from the HMI module via a serial interface (e.g., UART). The SoC processes these inputs, runs the application firmware, and orchestrates system control. For audio, it fetches the digital audio data, performs any necessary routing or format conversion, and outputs the digital audio stream (e.g., I2S) to the Audio Decoding & Processing Module. Control signals for other modules (Display, Audio Amplifiers, DAC, Power Management) are generated and sent via appropriate serial buses (I2C, SPI, UART) or GPIOs. Power is supplied and regulated locally for the SoC core and I/O.",
+      "Recommended Components": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "Functional Position": "Main System-on-Chip (SoC) / Central Processor",
+          "Recommendation Reason": "Integrates dual-core microcontroller, Wi-Fi, Bluetooth/BLE, and has ample integrated Flash (4MB) and PSRAM (8MB) for running application firmware, managing network connectivity, and handling audio streaming tasks. Provides rich peripherals (SPI, I2C, UART, I2S, SDIO) needed for system control and audio data routing.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ESP_EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "SENSOR_VP",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SENSOR_VN",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "IO34",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "IO35",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "IO32",
+              "Net": "XTAL_32K_P"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "IO33",
+              "Net": "XTAL_32K_N"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "IO25",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "IO26",
+              "Net": "I2S_DOUT"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "IO27",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "IO14",
+              "Net": "SPI_CLK"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "IO12",
+              "Net": "SPI_MISO"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "IO13",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "IO9",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "IO10",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "19",
+              "PinName": "IO11",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "20",
+              "PinName": "SD2",
+              "Net": "SD_DATA2"
+            },
+            {
+              "PinNumber": "21",
+              "PinName": "SD3",
+              "Net": "SD_DATA3"
+            },
+            {
+              "PinNumber": "22",
+              "PinName": "CMD",
+              "Net": "SD_CMD"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "CLK",
+              "Net": "SD_CLK"
+            },
+            {
+              "PinNumber": "24",
+              "PinName": "SD0",
+              "Net": "SD_DATA0"
+            },
+            {
+              "PinNumber": "25",
+              "PinName": "SD1",
+              "Net": "SD_DATA1"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "IO2",
+              "Net": "DISPLAY_DC"
+            },
+            {
+              "PinNumber": "27",
+              "PinName": "IO4",
+              "Net": "DISPLAY_CS"
+            },
+            {
+              "PinNumber": "28",
+              "PinName": "IO5",
+              "Net": "DISPLAY_RST"
+            },
+            {
+              "PinNumber": "29",
+              "PinName": "IO16",
+              "Net": "UART2_RXD"
+            },
+            {
+              "PinNumber": "30",
+              "PinName": "IO17",
+              "Net": "UART2_TXD"
+            },
+            {
+              "PinNumber": "31",
+              "PinName": "IO23",
+              "Net": "I2C_SDA"
+            },
+            {
+              "PinNumber": "32",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "IO19",
+              "Net": "I2C_SCL"
+            },
+            {
+              "PinNumber": "34",
+              "PinName": "IO22",
+              "Net": "AMP_SD"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "IO21",
+              "Net": "AMP_GAIN0"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "RXD0",
+              "Net": "UART0_RXD"
+            },
+            {
+              "PinNumber": "37",
+              "PinName": "TXD0",
+              "Net": "UART0_TXD"
+            },
+            {
+              "PinNumber": "38",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "3.3V LDO Regulator for SoC Core & I/O",
+          "Recommendation Reason": "Provides a stable, low-noise 3.3V supply from a higher input voltage (e.g., 5V) for the ESP32-WROVER's operating voltage (3.0V-3.6V). High PSRR and low dropout are suitable for clean power delivery to the RF and digital circuitry.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "VIN_5V"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "PWR_EN"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "VDD_3V3"
+            }
+          ]
+        },
+        {
+          "ComponentID": "SPI_TFT",
+          "Functional Position": "Human-Machine Interface (Display & Touch Input)",
+          "Recommendation Reason": "Integrated 2.8\" TFT display, resistive touch controller, and SD card socket. Shares SPI bus with the SoC for efficient control, providing visual feedback and touch input for user interaction, and local storage via SD card.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VCC",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CS",
+              "Net": "DISPLAY_CS"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "RESET",
+              "Net": "DISPLAY_RST"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "D/C",
+              "Net": "DISPLAY_DC"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "MOSI",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "SCK",
+              "Net": "SPI_CLK"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "LED",
+              "Net": "BACKLIGHT_PWM"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "MISO",
+              "Net": "SPI_MISO"
+            },
+            {
+              "PinNumber": "10",
+              "PinName": "T_CLK",
+              "Net": "SPI_CLK"
+            },
+            {
+              "PinNumber": "11",
+              "PinName": "T_CS",
+              "Net": "TOUCH_CS"
+            },
+            {
+              "PinNumber": "12",
+              "PinName": "T_DI",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "13",
+              "PinName": "T_DO",
+              "Net": "TOUCH_MISO"
+            },
+            {
+              "PinNumber": "14",
+              "PinName": "T_IRQ",
+              "Net": "TOUCH_IRQ"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "SD_CS",
+              "Net": "SD_CS"
+            },
+            {
+              "PinNumber": "16",
+              "PinName": "SD_MOSI",
+              "Net": "SPI_MOSI"
+            },
+            {
+              "PinNumber": "17",
+              "PinName": "SD_MISO",
+              "Net": "SPI_MISO"
+            },
+            {
+              "PinNumber": "18",
+              "PinName": "SD_CLK",
+              "Net": "SPI_CLK"
+            }
+          ]
+        },
+        {
+          "ComponentID": "MAX98357",
+          "Functional Position": "Digital Audio Power Amplifier (for system sounds or monitoring)",
+          "Recommendation Reason": "Accepts I2S digital audio input directly from the SoC, amplifies, and drives a speaker. Useful for system sounds, alerts, or audio monitoring without requiring a separate DAC. Integrated into the controller for direct digital audio output.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "LRCLK",
+              "Net": "I2S_LRCLK"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "BCLK",
+              "Net": "I2S_BCLK"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "DIN",
+              "Net": "I2S_DOUT"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "GAIN",
+              "Net": "AMP_GAIN0"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "SD",
+              "Net": "AMP_SD"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "2.5-5.5V",
+              "Net": "VDD_3V3"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "SPK+",
+              "Net": "SPK_P"
+            },
+            {
+              "PinNumber": "9",
+              "PinName": "SPK-",
+              "Net": "SPK_N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Module Name": "Portable Power Management System",
+      "Function Description": "Manages all power needs. Includes single-cell Li-ion/Polymer battery charging, a soft-latching power switch circuit for clean on/off control, and step-down DC-DC converters to provide stable, clean voltages for logic, audio, and RF circuits.",
+      "Signal Sources": "Power from external charging source (USB) and the internal battery.",
+      "Signal Destinations": "Stable regulated voltages (e.g., 3.3V, 5V, analog supplies) to all other modules. Power switch control signal to/from the HMI or processor.",
+      "Implementation Logic": "A battery management IC (charger + protector), a MOSFET-based soft-latch circuit controlled by a physical button and the processor, and multiple low-noise switching or LDO regulators with proper filtering for different voltage domains (digital, analog, amplifier).",
+      "Signal Chain": "The Portable Power Management System manages power from an external USB charging source and an internal single-cell Li-ion battery. The signal chain begins at the USB Type-C receptacle, which provides VBUS power and CC lines for power negotiation. The VBUS is connected to the TP4056 battery charger IC's VCC pin to serve as the charging input. The TP4056 regulates charging to the battery connected to its BAT pin, with status indicated via CHRG and STDBY pins. The battery voltage (typically 3.0V-4.2V) is fed into a soft-latching power switch circuit. This circuit uses a P-Channel MOSFET (IRLM) as the main power switch, controlled by a physical button and the processor (ESP32) via an NPN BJT (BC817). When activated, the switch passes battery voltage (V_SYS) to downstream regulators. V_SYS powers multiple voltage regulators: an RT8096C step-down DC-DC converter to generate a clean, efficient 3.3V supply for digital logic and the ESP32 module; an ME6211 LDO to provide a low-noise 3.3V or other analog voltage for sensitive circuits like audio; and an AMS1117 LDO (if needed for a 5V rail) to step up from battery or provide another regulated voltage. The ESP32 monitors the system via its GPIOs (e.g., for power button status, charger status) and controls the soft-latch enable. The regulated outputs (3.3V_DIG, 3.3V_ANA, 5V, etc.) are distributed to other modules with appropriate filtering.",
+      "Recommended Components": [
+        {
+          "ComponentID": "USB",
+          "Functional Position": "External Power Input and Charging Port",
+          "Recommendation Reason": "Provides the primary external power source (VBUS) for battery charging via the TP4056. Its CC pins handle USB Power Delivery negotiation for proper voltage/current selection.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "B9",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "A9",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "B12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "A12",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "A5",
+              "Net": "USB_CC1"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "B5",
+              "Net": "USB_CC2"
+            },
+            {
+              "PinNumber": "0",
+              "PinName": "SHELL",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "TP4056",
+          "Functional Position": "Single-Cell Li-ion Battery Charger",
+          "Recommendation Reason": "Manages battery charging from USB input with constant-current/constant-voltage profile, thermal regulation, and status indicators. Essential for safe battery charging.",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VCC",
+              "Net": "USB_VBUS"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "BAT",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "PROG",
+              "Net": "R_PROG_TO_GND"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "TEMP",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "8",
+              "PinName": "CE",
+              "Net": "VCC_ENABLE"
+            },
+            {
+              "PinNumber": "7",
+              "PinName": "CHRG",
+              "Net": "CHRG_STATUS"
+            },
+            {
+              "PinNumber": "6",
+              "PinName": "STDBY",
+              "Net": "STDBY_STATUS"
+            }
+          ]
+        },
+        {
+          "ComponentID": "IRLM",
+          "Functional Position": "Main Power Switch (Soft-Latch)",
+          "Recommendation Reason": "P-Channel MOSFET acts as a high-side switch to control power from battery to system rail (V_SYS). Controlled by processor and button via BJT for soft latching.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "S",
+              "Net": "BAT_POS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "D",
+              "Net": "V_SYS"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "G",
+              "Net": "PWR_SWITCH_CTRL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "BC817",
+          "Functional Position": "Soft-Latch Control Transistor",
+          "Recommendation Reason": "NPN BJT interfaces between the processor GPIO/button circuit and the P-MOSFET gate, providing the necessary current sink to turn the MOSFET on/off.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "E",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "B",
+              "Net": "PWR_BUTTON_LOGIC"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "C",
+              "Net": "PWR_SWITCH_CTRL"
+            }
+          ]
+        },
+        {
+          "ComponentID": "RT8096C",
+          "Functional Position": "Step-Down DC-DC Converter for Digital Logic Supply",
+          "Recommendation Reason": "Efficiently steps down V_SYS (battery voltage) to a stable 3.3V for digital circuits and the ESP32, providing high efficiency and adequate current (1A).",
+          "Pin Connections": [
+            {
+              "PinNumber": "4",
+              "PinName": "VIN",
+              "Net": "V_SYS"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "LX",
+              "Net": "SW_NODE_TO_INDUCTOR"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "FB",
+              "Net": "FB_VOLTAGE_DIVIDER"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "EN",
+              "Net": "V_SYS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "GND",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ME6211 Series",
+          "Functional Position": "Low-Noise LDO for Analog/Audio Supply",
+          "Recommendation Reason": "Provides a clean, low-noise regulated voltage (e.g., 3.3V) from V_SYS for sensitive analog circuits like audio amplifiers, with high PSRR and low output noise.",
+          "Pin Connections": [
+            {
+              "PinNumber": "1",
+              "PinName": "VIN",
+              "Net": "V_SYS"
+            },
+            {
+              "PinNumber": "5",
+              "PinName": "VOUT",
+              "Net": "3V3_ANALOG"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VSS",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "CE",
+              "Net": "EN_ANALOG"
+            },
+            {
+              "PinNumber": "4",
+              "PinName": "NC",
+              "Net": "NC"
+            }
+          ]
+        },
+        {
+          "ComponentID": "AMS1117",
+          "Functional Position": "Optional LDO for 5V or Additional Voltage Rail",
+          "Recommendation Reason": "Can provide a fixed 5V output (if using 5V version) from V_SYS for peripherals requiring 5V, or another voltage as needed. Simple, reliable linear regulator.",
+          "Pin Connections": [
+            {
+              "PinNumber": "3",
+              "PinName": "VIN",
+              "Net": "V_SYS"
+            },
+            {
+              "PinNumber": "2",
+              "PinName": "VOUT",
+              "Net": "5V_RAIL"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND/ADJ",
+              "Net": "GND"
+            }
+          ]
+        },
+        {
+          "ComponentID": "ESP32-WROOM-32",
+          "Functional Position": "Main Processor and System Controller",
+          "Recommendation Reason": "Manages the soft-latch power control (via GPIO), monitors charger status, and runs the application. Powered by the 3.3V digital rail from RT8096C.",
+          "Pin Connections": [
+            {
+              "PinNumber": "2",
+              "PinName": "3V3",
+              "Net": "3V3_DIGITAL"
+            },
+            {
+              "PinNumber": "1",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "15",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "23",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "33",
+              "PinName": "GND",
+              "Net": "GND"
+            },
+            {
+              "PinNumber": "3",
+              "PinName": "EN",
+              "Net": "ESP_ENABLE"
+            },
+            {
+              "PinNumber": "26",
+              "PinName": "IO0",
+              "Net": "PWR_CONTROL_GPIO"
+            },
+            {
+              "PinNumber": "35",
+              "PinName": "RXD0 / IO3",
+              "Net": "CHRG_STATUS_MONITOR"
+            },
+            {
+              "PinNumber": "36",
+              "PinName": "TXD0 / IO1",
+              "Net": "STDBY_STATUS_MONITOR"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

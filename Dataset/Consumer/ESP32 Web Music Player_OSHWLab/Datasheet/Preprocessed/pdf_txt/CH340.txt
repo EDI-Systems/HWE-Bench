@@ -1,0 +1,35 @@
+Component ID: CH340
+Component Type: USB to UART Bridge / USB Serial Interface IC
+Description:
+The CH340 is a USB bus adapter chip that converts USB to a serial UART interface or a parallel printer port. In its primary serial port mode, it emulates a standard COM port with full hardware flow control signals (RTS, DTR, DCD, RI, DSR, CTS), enabling the upgrade of legacy serial devices to USB or adding virtual serial ports to a computer. It features built-in firmware, supports a wide range of baud rates, and can interface with RS232, RS485, or RS422 standards using external level shifters. Several variants include an integrated clock source, eliminating the need for an external crystal.
+
+Key Parameters:
+- USB Specification: Full-speed, compatible with USB 2.0
+- Supply Voltage: 5V and 3.3V operation
+- Baud Rate Range: 50 bps to 2 Mbps
+- Integrated Clock: Available on CH340C/N/K/E/X/B variants (no external crystal required)
+- Built-in EEPROM: Available on CH340B variant (for serial number configuration)
+- Package Options: SOP-16, SOP-8, SSOP-20, ESSOP-10, MSOP-10
+- Flow Control Signals: Supports RTS, DTR, DCD, RI, DSR, CTS
+- Infrared Support: CH340R variant supports IrDA SIR (2400 bps to 115200 bps)
+
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND | Ground | Common system ground reference | Power | 0V |
+| 2 | TXD | Transmit | UART serial data output | Output | Digital |
+| 3 | RXD | Receive | UART serial data input | Input | Digital |
+| 4 | V3 | LDO Out | 3.3V internal regulator bypass/output | Power | 3.3V |
+| 5 | D+ | USB D+ | USB differential data positive line | I/O | USB Signal |
+| 6 | D- | USB D- | USB differential data negative line | I/O | USB Signal |
+| 7 | XI | Crystal In | 12MHz crystal oscillator input | Input | Analog |
+| 8 | XO | Crystal Out | 12MHz crystal oscillator output | Output | Analog |
+| 9 | CTS | CTS | Clear To Send (Modem control input) | Input | Digital |
+| 10 | DSR | DSR | Data Set Ready (Modem control input) | Input | Digital |
+| 11 | RI | RI | Ring Indicator (Modem control input) | Input | Digital |
+| 12 | DCD | DCD | Data Carrier Detect (Modem control input) | Input | Digital |
+| 13 | DTR | DTR | Data Terminal Ready (Modem control output) | Output | Digital |
+| 14 | RTS | RTS | Request To Send (Modem control output) | Output | Digital |
+| 15 | R232 | Mode/Aux | RS232 mode selection / Auxiliary signal | Input | Digital |
+| 16 | VCC | Power | Main positive supply voltage input | Power | 3.3V - 5V |

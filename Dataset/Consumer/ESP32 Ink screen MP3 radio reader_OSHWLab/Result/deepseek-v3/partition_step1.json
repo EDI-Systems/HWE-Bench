@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Digital Audio Processing & Amplification",
+      "Function Description": "Decodes digital audio files into high-fidelity analog audio signals and amplifies them for speaker output.",
+      "Signal Sources": "Central Microcontroller (digital audio stream), External MicroSD Card (via power-gated interface).",
+      "Signal Destinations": "External Speaker (via Class-D amplifier output), Headphone Jack (optional line-out).",
+      "Implementation Logic": "The microcontroller retrieves digital audio data from the MicroSD card and sends it via I2S or similar interface to a low-power digital audio codec. The codec converts the digital stream to analog, which is then fed into a Class-D audio amplifier. The amplifier drives the external speaker. The audio ground plane or headphone jack is utilized as an FM antenna, requiring isolation circuits (e.g., inductors/ferrite beads) to prevent RF interference from entering the audio path."
+    },
+    {
+      "Module Name": "Analog FM Radio Reception",
+      "Function Description": "Receives and demodulates FM radio broadcast signals for audio playback.",
+      "Signal Sources": "RF Antenna (using audio ground plane/headphone jack), Dedicated FM Tuner IC.",
+      "Signal Destinations": "Digital Audio Processing & Amplification Module (analog audio input), Headphone Jack/Speaker (via audio path).",
+      "Implementation Logic": "An analog FM tuner IC receives RF signals via the shared antenna (audio ground/jack) with high-frequency isolation (LC filters, RF chokes) to block interference. The tuner demodulates the signal into stereo audio, which is routed as an analog input to the audio codec or amplifier, multiplexed with other audio sources under microcontroller control."
+    },
+    {
+      "Module Name": "Environmental Sensing & Timekeeping",
+      "Function Description": "Monitors ambient temperature and humidity, and maintains accurate real-time clock with backup power.",
+      "Signal Sources": "I2C Temperature/Humidity Sensor, Hardware RTC with Crystal Oscillator, Backup Battery/Supercapacitor.",
+      "Signal Destinations": "Central Microcontroller (via I2C for sensor data and RTC time/date).",
+      "Implementation Logic": "An I2C-based sensor (e.g., SHT3x, AHT20) provides temperature/humidity data. A dedicated RTC IC (e.g., DS3231) with a crystal maintains time and is powered by a backup source (coin cell/supercapacitor) during main power loss. Both communicate with the microcontroller via a shared or separate I2C bus."
+    },
+    {
+      "Module Name": "User Interface & Control",
+      "Function Description": "Provides tactile user input via rotary encoder and push buttons for system control and navigation.",
+      "Signal Sources": "Rotary Encoder (quadrature signals), Momentary Push Buttons (digital inputs).",
+      "Signal Destinations": "Central Microcontroller (GPIO interrupts/digital inputs).",
+      "Implementation Logic": "A rotary encoder with push-button function and additional momentary buttons are connected to the microcontroller's GPIO pins. The encoder's quadrature outputs and button states are read via interrupts or polling, enabling menu navigation, volume control, playback commands, and mode selection."
+    },
+    {
+      "Module Name": "Power Management & Distribution",
+      "Function Description": "Provides stable, low-noise power to all analog and sensitive digital components, and manages power gating for peripherals.",
+      "Signal Sources": "Main System Power Input (e.g., battery), Enable Signals from Microcontroller.",
+      "Signal Destinations": "All other modules (regulated voltages), Power-Gated MicroSD Card Interface.",
+      "Implementation Logic": "Dedicated low-noise LDO voltage regulators supply clean power to the audio codec, FM tuner, sensors, and RTC. The microcontroller controls a power switch (e.g., MOSFET) to gate power to the MicroSD card, reducing standby current. Proper PCB layout with star grounding and separated analog/digital power planes is implemented to minimize noise."
+    }
+  ]
+}

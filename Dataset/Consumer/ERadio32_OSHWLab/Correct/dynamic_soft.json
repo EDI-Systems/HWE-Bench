@@ -1,0 +1,94 @@
+{
+  "Portable Power Management System": [
+    {
+      "net_id": "net_battery_power",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "S",
+          "FunctionName": "PMOS Source (Main Battery Input)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_q2_gate_control",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "G",
+          "FunctionName": "PMOS Gate Control Node"
+        },
+        {
+          "ComponentID": "BC817",
+          "PinName": "C",
+          "FunctionName": "NPN Collector (Strong Pull-down)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_system_vcc",
+      "Connections": [
+        {
+          "ComponentID": "IRLM",
+          "PinName": "D",
+          "FunctionName": "PMOS Drain (Switched System Power)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_q1_base_summing",
+      "Connections": [
+        {
+          "ComponentID": "BC817",
+          "PinName": "B",
+          "FunctionName": "NPN Base (Trigger Node)"
+        }
+      ]
+    },
+    {
+      "net_id": "net_button_in",
+      "Connections": [
+        {
+          "ComponentID": "Power_Button",
+          "PinName": "In",
+          "FunctionName": "Physical Button Power Source"
+        }
+      ]
+    },
+    {
+      "net_id": "net_button_out",
+      "Connections": [
+        {
+          "ComponentID": "Power_Button",
+          "PinName": "Out",
+          "FunctionName": "Physical Ignition Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "net_mcu_hold_ctrl",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO33",
+          "FunctionName": "MCU Software Latch Signal"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        {
+          "ComponentID": "BC817",
+          "PinName": "E",
+          "FunctionName": "NPN Emitter Ground (Must be 0V)"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "GND",
+          "FunctionName": "System Ground"
+        }
+      ]
+    }
+  ]
+}

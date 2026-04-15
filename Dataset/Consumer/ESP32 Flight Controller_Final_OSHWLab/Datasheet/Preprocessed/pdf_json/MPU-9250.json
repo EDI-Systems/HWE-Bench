@@ -1,0 +1,186 @@
+{
+  "ComponentID": "MPU-9250",
+  "ComponentType": "9-Axis Motion Tracking Unit (IMU + Magnetometer + DMP)",
+  "Description": "The MPU-9250 is a multi-chip module (MCM) that integrates a 3-axis MEMS gyroscope, a 3-axis MEMS accelerometer, and a 3-axis magnetometer (AK8963) along with a Digital Motion Processor (DMP). It provides complete 9-axis sensor fusion output. The device digitizes all sensor outputs with 16-bit ADCs, includes programmable filters and full-scale ranges, and communicates via I2C or SPI interfaces. It is designed for motion tracking in portable and wearable electronics.",
+  "KeyParameters": {
+    "Gyroscope Full-Scale Range": "Programmable ±250, ±500, ±1000, ±2000 °/sec",
+    "Accelerometer Full-Scale Range": "Programmable ±2g, ±4g, ±8g, ±16g",
+    "Magnetometer Full-Scale Range": "±4800 µT",
+    "Operating Voltage (VDD)": "2.4V to 3.6V",
+    "Digital I/O Voltage (VDDIO)": "1.71V to VDD",
+    "Communication Interfaces": "I2C (up to 400 kHz), SPI (1 MHz standard, up to 20 MHz for sensor/read interrupt)",
+    "Package": "3x3x1 mm QFN",
+    "Gyroscope Operating Current": "3.2 mA",
+    "Sleep Mode Current": "8 µA"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "RESV_VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved; connect to VDDIO"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "AUX_CL",
+      "Functions": [
+        {
+          "FunctionName": "Aux I2C",
+          "FunctionDescription": "Auxiliary I2C serial clock for external sensors"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "VDDIO",
+      "Functions": [
+        {
+          "FunctionName": "IO Power",
+          "FunctionDescription": "Digital I/O supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "1.71V - VDD"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "AD0/SDO",
+      "Functions": [
+        {
+          "FunctionName": "Addr/MISO",
+          "FunctionDescription": "I2C address LSB / SPI serial data output"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "REGOUT",
+      "Functions": [
+        {
+          "FunctionName": "Filter",
+          "FunctionDescription": "Regulator filter capacitor connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "FSYNC",
+      "Functions": [
+        {
+          "FunctionName": "Sync",
+          "FunctionDescription": "Frame synchronization digital input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "INT",
+      "Functions": [
+        {
+          "FunctionName": "Interrupt",
+          "FunctionDescription": "Programmable interrupt output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main positive supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.4V - 3.6V"
+    },
+    {
+      "PinNumber": "18",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "20",
+      "PinName": "RESV_GND",
+      "Functions": [
+        {
+          "FunctionName": "Reserved",
+          "FunctionDescription": "Reserved; connect to GND"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "21",
+      "PinName": "AUX_DA",
+      "Functions": [
+        {
+          "FunctionName": "Aux I2C",
+          "FunctionDescription": "Auxiliary I2C serial data for external sensors"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "22",
+      "PinName": "nCS",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "SPI chip select (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "23",
+      "PinName": "SCL/SCLK",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "I2C serial clock / SPI serial clock"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "24",
+      "PinName": "SDA/SDI",
+      "Functions": [
+        {
+          "FunctionName": "Data",
+          "FunctionDescription": "I2C serial data / SPI serial data input"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

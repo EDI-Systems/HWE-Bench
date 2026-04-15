@@ -1,0 +1,53 @@
+{
+  "ComponentID": "IRLM",
+  "ComponentType": "P-Channel Enhancement Mode Power MOSFET",
+  "Description": "This is a P-Channel MOSFET utilizing advanced trench technology, designed for efficient power switching in a compact SOT-23 package. Its primary function is to act as a voltage-controlled switch, where a negative gate-source voltage turns the device on, allowing a high continuous drain current (up to -4.1A) to flow with a very low on-state resistance. It is characterized by excellent RDS(on) performance and low gate charge, making it suitable for applications like load/power switching, interfacing, and logic level shifting.",
+  "KeyParameters": {
+    "Drain-Source Voltage (VDSS)": "-20 V",
+    "Continuous Drain Current (ID)": "-4.1 A (Tc=25°C)",
+    "Drain-Source On-State Resistance (RDS(on))": "< 52 mΩ (Typ 39 mΩ) @ VGS = -4.5V, ID = -4.1A",
+    "Gate Threshold Voltage (VGS(th))": "-0.7 V (Typ), Range: -0.45 V to -1.0 V",
+    "Total Gate Charge (Qg)": "7.8 nC (Typ)",
+    "Maximum Power Dissipation (PD)": "1.7 W",
+    "Input Capacitance (Ciss)": "740 pF (Typ)",
+    "Thermal Resistance, Junction-to-Ambient (RθJA)": "74 °C/W"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Control terminal. A negative voltage relative to the source turns the MOSFET on."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "High Impedance, Voltage Controlled"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Output/load terminal for the switched current."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Power (Current Sink when ON)"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Input/power terminal. Typically connected to the supply rail."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Power (Current Source when ON)"
+    }
+  ]
+}

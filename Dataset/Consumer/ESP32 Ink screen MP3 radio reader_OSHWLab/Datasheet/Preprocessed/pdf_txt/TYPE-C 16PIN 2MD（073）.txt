@@ -1,0 +1,44 @@
+Component ID: TYPE-C
+Component Type: USB Type-C Female Receptacle (SMT Connector)
+Description:
+This is a 16-pin surface-mount USB Type-C receptacle connector. It is designed for data and power transfer, supporting the USB Type-C standard. The specification details its mechanical durability, electrical performance (including contact resistance and insulation), and environmental reliability (temperature, humidity, soldering). It is rated for 5V/5A DC operation.
+
+Key Parameters:
+- Rated Voltage/Current: 5V DC, 5A
+- Operating Temperature Range: -25°C to +85°C
+- Contact Resistance (Initial): ≤ 10 mΩ (at ≤100mA)
+- Insulation Resistance: ≥ 100 MΩ (at 100V DC)
+- Dielectric Strength: Withstand 100V AC (50Hz) for 1 min
+- Insertion Force: 0.5 - 2.0 kgf
+- Withdrawal Force: 0.8 - 2.0 kgf
+- Mechanical Life (Durability): 5000 mating cycles
+- Solder Heat Resistance (Reflow): Peak temperature 260°C ±5°C for ≤20s
+- Solder Heat Resistance (Hand): Iron temperature 330°C ±5°C for 3s ±0.5s
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| A1 | GND | Ground | Ground return | SMT Pad | Power |
+| A2 | SSTXp1 | SuperSpeed Transmit+ | USB 3.1/3.2 differential pair (TX+) | SMT Pad | Differential Signal |
+| A3 | SSTXn1 | SuperSpeed Transmit- | USB 3.1/3.2 differential pair (TX-) | SMT Pad | Differential Signal |
+| A4 | VBUS | Bus Power | Power supply (5V) | SMT Pad | Power |
+| A5 | CC1 | Configuration Channel 1 | Cable orientation and power delivery communication | SMT Pad | Analog/Digital Signal |
+| A6 | Dp1 | USB 2.0 Data+ | USB 2.0 differential data pair (Positive) | SMT Pad | Differential Signal |
+| A7 | Dn1 | USB 2.0 Data- | USB 2.0 differential data pair (Negative) | SMT Pad | Differential Signal |
+| A8 | SBU1 | Sideband Use 1 | Alternate mode (e.g., DisplayPort) sideband signal | SMT Pad | Analog/Digital Signal |
+| A9 | VBUS | Bus Power | Power supply (5V) | SMT Pad | Power |
+| A10 | SSRXn2 | SuperSpeed Receive- | USB 3.1/3.2 differential pair (RX-) (flipped orientation) | SMT Pad | Differential Signal |
+| A11 | SSRXp2 | SuperSpeed Receive+ | USB 3.1/3.2 differential pair (RX+) (flipped orientation) | SMT Pad | Differential Signal |
+| A12 | GND | Ground | Ground return | SMT Pad | Power |
+| B1 | GND | Ground | Ground return | SMT Pad | Power |
+| B2 | SSRXp1 | SuperSpeed Receive+ | USB 3.1/3.2 differential pair (RX+) | SMT Pad | Differential Signal |
+| B3 | SSRXn1 | SuperSpeed Receive- | USB 3.1/3.2 differential pair (RX-) | SMT Pad | Differential Signal |
+| B4 | VBUS | Bus Power | Power supply (5V) | SMT Pad | Power |
+| B5 | CC2 | Configuration Channel 2 | Cable orientation and power delivery communication | SMT Pad | Analog/Digital Signal |
+| B6 | Dp2 | USB 2.0 Data+ | USB 2.0 differential data pair (Positive) (flipped orientation) | SMT Pad | Differential Signal |
+| B7 | Dn2 | USB 2.0 Data- | USB 2.0 differential data pair (Negative) (flipped orientation) | SMT Pad | Differential Signal |
+| B8 | SBU2 | Sideband Use 2 | Alternate mode (e.g., DisplayPort) sideband signal | SMT Pad | Analog/Digital Signal |
+| B9 | VBUS | Bus Power | Power supply (5V) | SMT Pad | Power |
+| B10 | SSTXn2 | SuperSpeed Transmit- | USB 3.1/3.2 differential pair (TX-) (flipped orientation) | SMT Pad | Differential Signal |
+| B11 | SSTXp2 | SuperSpeed Transmit+ | USB 3.1/3.2 differential pair (TX+) (flipped orientation) | SMT Pad | Differential Signal |
+| B12 | GND | Ground | Ground return | SMT Pad | Power |

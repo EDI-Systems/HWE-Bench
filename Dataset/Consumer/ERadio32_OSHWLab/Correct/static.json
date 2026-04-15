@@ -1,0 +1,81 @@
+{
+  "System_Netlist": [
+    {
+      "net_id": "NET_3V3_POWER",
+      "Connections": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "3V3" }
+      ]
+    },
+    {
+      "net_id": "NET_RT8096_TO_AMS",
+      "Connections": [
+        { "ComponentID": "RT8096C", "PinName": "LX" },
+        { "ComponentID": "AMS1117", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_BATTERY_VCC",
+      "Connections": [
+        { "ComponentID": "TP4056", "PinName": "BAT" },
+        { "ComponentID": "RT8096C", "PinName": "VIN" }
+      ]
+    },
+    {
+      "net_id": "NET_I2S_AUDIO_BUS",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO25" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO26" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO22" },
+        { "ComponentID": "MAX98357", "PinName": "LRCLK" },
+        { "ComponentID": "MAX98357", "PinName": "BCLK" },
+        { "ComponentID": "MAX98357", "PinName": "DIN" }
+      ]
+    },
+    {
+      "net_id": "NET_LCD_SPI_DATA",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO18" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO23" },
+        { "ComponentID": "ST7735S", "PinName": "SCK" },
+        { "ComponentID": "ST7735S", "PinName": "SDA (MOSI)" }
+      ]
+    },
+    {
+      "net_id": "NET_LCD_SPI_CTRL",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO5" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO27" },
+        { "ComponentID": "ST7735S", "PinName": "CS" },
+        { "ComponentID": "ST7735S", "PinName": "A0 (DC)" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_SHARED",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO14" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO12" },
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO19" },
+        { "ComponentID": "ST7735S", "PinName": "SD\\_SCK" },
+        { "ComponentID": "ST7735S", "PinName": "SD\\_MOSI" },
+        { "ComponentID": "ST7735S", "PinName": "SD\\_MISO" }
+      ]
+    },
+    {
+      "net_id": "NET_SD_SPI_CS",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "IO15" },
+        { "ComponentID": "ST7735S", "PinName": "SD\\_CS" }
+      ]
+    },
+    {
+      "net_id": "NET_SYSTEM_GND",
+      "Connections": [
+        { "ComponentID": "ESP32-WROOM-32", "PinName": "GND" },
+        { "ComponentID": "ST7735S", "PinName": "GND" },
+        { "ComponentID": "MAX98357", "PinName": "GND" },
+        { "ComponentID": "TP4056", "PinName": "GND" }
+      ]
+    }
+  ]
+}

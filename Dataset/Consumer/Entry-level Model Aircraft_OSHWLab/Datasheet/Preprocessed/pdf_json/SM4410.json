@@ -1,0 +1,109 @@
+{
+  "ComponentID": "SM4410",
+  "ComponentType": "N-Channel Enhancement Mode Power MOSFET",
+  "Description": "The SM4410PRL is an N-channel logic-level power MOSFET designed for high-density applications. It utilizes advanced trench technology to provide extremely low on-resistance ($R_{DS(on)}$) and superior switching performance. This component is typically housed in an SO-8 package and is widely used in power management, DC-DC converters, and load switching for portable devices and consumer electronics.",
+  "KeyParameters": {
+    "Drain-Source Voltage ($V_{DS}$)": "30V",
+    "Continuous Drain Current ($I_D$)": "~10A",
+    "Static Drain-Source On-Resistance ($R_{DS(on)}$)": "~13.5mΩ @ $V_{GS}$ = 10V",
+    "Gate-Source Voltage ($V_{GS}$)": "±20V"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Source terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Source terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "S",
+      "Functions": [
+        {
+          "FunctionName": "Source",
+          "FunctionDescription": "Source terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "G",
+      "Functions": [
+        {
+          "FunctionName": "Gate",
+          "FunctionDescription": "Gate control terminal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Signal/Logic"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "D",
+      "Functions": [
+        {
+          "FunctionName": "Drain",
+          "FunctionDescription": "Drain terminal connection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    }
+  ]
+}

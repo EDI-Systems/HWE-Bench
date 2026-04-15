@@ -1,0 +1,22 @@
+Component ID: MK12C02
+Component Type: Tactile Push Button Switch (Surface Mount)  
+Description:  
+This is a miniature, surface-mount, momentary tactile push button switch designed for low-voltage DC applications. It provides a normally-open (NO) contact that closes when the actuator is pressed, with a specified mechanical life and electrical ratings suitable for consumer electronics, control panels, and PC board interfaces.
+
+Key Parameters:
+- Switch Type: Momentary, Normally Open (NO)
+- Rated Electrical Load: 12V DC at 0.5A / 6V DC at 1.0A
+- Contact Resistance: ≤100 mΩ (max)
+- Insulation Resistance: ≥100 MΩ at 100V DC
+- Withstand Voltage: 250V AC for 1 minute
+- Operating Temperature: -20°C to +70°C
+- Mechanical Life: 10,000 cycles (min)
+- Actuator Height (Switch Height): 1.5 mm (G015), 2.0 mm (G020), or 2.5 mm (G025)
+- Reflow Soldering Temperature: ≤250°C (max)
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | P1 | Throw 1 | Connected to COM in position A | Passive | Signal/Power |
+| 2 | COM | Common | Common terminal (Pole) | Passive | Signal/Power |
+| 3 | P2 | Throw 2 | Connected to COM in position B | Passive | Signal/Power |

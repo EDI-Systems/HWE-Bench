@@ -1,0 +1,28 @@
+Component ID: TP4056
+Component Type: Single-Cell Lithium-Ion Battery Linear Charger IC
+Description:
+The TP4056 is a complete constant-current/constant-voltage linear charger for single-cell lithium-ion batteries. It integrates a power MOSFET, eliminating the need for an external sense resistor and blocking diode. It features programmable charge current up to 1000mA via an external resistor, a fixed 4.2V float voltage, and automatic charge termination when the current drops to 1/10 of the set value. Additional functions include thermal regulation, battery temperature monitoring, under-voltage lockout (UVLO), automatic recharge, and status indication outputs. It operates from a 4.0V to 6.5V supply and is offered in an ESOP-8 package.
+
+Key Parameters:
+- **Input Supply Voltage (VCC)**: 4.0V to 6.5V (Operating)
+- **Programmable Charge Current (IBAT)**: Up to 1000mA (e.g., 1000mA typical with RPROG=1.2kΩ)
+- **Float Voltage (VFLOAT)**: 4.2V typical (±1% accuracy, 4.158V to 4.242V)
+- **Trickle Charge Threshold Voltage (VTRIKL)**: 2.9V typical (2.8V to 3.0V)
+- **Trickle Charge Current (ITRIKL)**: 100mA typical (with RPROG=1.2kΩ)
+- **Standby (Quiescent) Current**: 50µA typical (Charging terminated)
+- **Shutdown Current**: 35µA typical (CE pin control)
+- **Thermal Regulation**: Yes (Reduces charge current to limit die temperature)
+- **Charge Termination Method**: C/10 (Current falls to 1/10 of programmed value)
+- **Operating Ambient Temperature**: -40°C to +85°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+|------------|----------|----------|-------------|----------|-----------------|
+| 1          | TEMP     | Input    | Battery Temperature Sense Input (Connect to NTC thermistor network or ground) | Analog Input | Voltage Sense |
+| 2          | PROG     | Input    | Constant-Charge Current Setting and Charge Enable. Connect a resistor to GND to set current. | Analog/Logic Input | Current Source/Sink |
+| 3          | GND      | Power    | Ground Terminal | Power | Ground |
+| 4          | VCC      | Power    | Positive Input Supply Voltage (4.0V to 6.5V) | Power | Power Supply Input |
+| 5          | BAT      | Output   | Battery Connection (Charging Current Output) | Power | Power Output |
+| 6          | STDBY    | Output   | Charge Status Output (Open-Drain). Goes low when charging is complete and VBAT is in regulation. | Open-Drain Output | Logic Output |
+| 7          | CHRG     | Output   | Charge Status Output (Open-Drain). Active low when the IC is in charging state. | Open-Drain Output | Logic Output |
+| 8          | CE        | Input    | Chip Enable Input (Active High). A logic high enables the charger. Pull low to disable. | Digital Input | Logic Input |

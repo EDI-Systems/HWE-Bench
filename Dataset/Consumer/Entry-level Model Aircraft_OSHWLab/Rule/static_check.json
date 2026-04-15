@@ -1,0 +1,130 @@
+{
+  "MCU_Function_Groups": {
+    "MK1": {
+      "System_Power": [
+        { "PinName": "VCC", "FunctionName": "3.3V Power" },
+        { "PinName": "GND", "FunctionName": "Ground" },
+        { "PinName": "EP", "FunctionName": "Thermal Ground" }
+      ],
+      "UART0_Console": [
+        { "PinName": "TXD", "FunctionName": "UART TX" },
+        { "PinName": "RXD", "FunctionName": "UART RX" }
+      ],
+      "I2C_Sensor_Bus": [
+        { "PinName": "IO4", "FunctionName": "I2C SDA" },
+        { "PinName": "IO5", "FunctionName": "I2C SCL" }
+      ],
+      "Boot_Control_Logic": [
+        { "PinName": "RST", "FunctionName": "Reset" },
+        { "PinName": "EN", "FunctionName": "Enable" },
+        { "PinName": "IO0", "FunctionName": "Flash Mode" },
+        { "PinName": "IO15", "FunctionName": "Boot Down" },
+        { "PinName": "IO2", "FunctionName": "Boot Up" }
+      ],
+      "Power_Load_Control": [
+        { "PinName": "IO14", "FunctionName": "Load Switch 1" },
+        { "PinName": "IO12", "FunctionName": "Load Switch 2" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "CH340": {
+      "UART_Bridge": [
+        { "PinName": "TXD", "FunctionName": "TX" },
+        { "PinName": "RXD", "FunctionName": "RX" }
+      ]
+    },
+    "MPU-6050": {
+      "I2C_Slave": [
+        { "PinName": "SCL", "FunctionName": "SCL" },
+        { "PinName": "SDA", "FunctionName": "SDA" }
+      ]
+    },
+    "MMC5603NJ": {
+      "I2C_Slave": [
+        { "PinName": "SCL", "FunctionName": "SCL" },
+        { "PinName": "SDA", "FunctionName": "SDA" }
+      ]
+    },
+    "BMP280": {
+      "I2C_Slave": [
+        { "PinName": "SCK", "FunctionName": "SCL" },
+        { "PinName": "SDA", "FunctionName": "SDA" }
+      ]
+    },
+    "SS8050": {
+      "BJT_Switch": [
+        { "PinName": "COLLECTOR", "FunctionName": "Collector Output" }
+      ]
+    },
+    "SM4410": {
+      "MOS_Gate": [
+        { "PinName": "G", "FunctionName": "Gate Drive" }
+      ]
+    },
+    "NCD0603R6": {
+      "LED_Anode": [
+        { "PinName": "Anode (A)", "FunctionName": "Positive" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_I2C_Sensor_Bus_Integrity",
+      "Type": "Bus_Pairing",
+      "MCU": "MK1",
+      "Target_Group_Pattern": "I2C_Sensor_Bus",
+      "Slaves": [
+        { "ComponentID": "MPU-6050", "Interface": "I2C_Slave" },
+        { "ComponentID": "MMC5603NJ", "Interface": "I2C_Slave" },
+        { "ComponentID": "BMP280", "Interface": "I2C_Slave" }
+      ]
+    },
+    {
+      "RuleName": "Check_UART_Console_Link",
+      "Type": "Bus_Pairing",
+      "MCU": "MK1",
+      "Target_Group_Pattern": "UART0_Console",
+      "Slaves": [
+        { "ComponentID": "CH340", "Interface": "UART_Bridge" }
+      ]
+    },
+    {
+      "RuleName": "Check_Auto_Boot_Reset_Circuit",
+      "Type": "Resource_Allocation",
+      "MCU": "MK1",
+      "Target_Group": "Boot_Control_Logic",
+      "Slaves": [
+        { "ComponentID": "SS8050", "Interface": "BJT_Switch" },
+        { "ComponentID": "SS8050", "Interface": "BJT_Switch" }
+      ]
+    },
+    {
+      "RuleName": "Check_High_Current_Load_Switching",
+      "Type": "Resource_Allocation",
+      "MCU": "MK1",
+      "Target_Group": "Power_Load_Control",
+      "Slaves": [
+        { "ComponentID": "SM4410", "Interface": "MOS_Gate" },
+        { "ComponentID": "SM4410", "Interface": "MOS_Gate" }
+      ]
+    },
+    {
+      "RuleName": "Check_Status_LED_Driving",
+      "Type": "Resource_Allocation",
+      "MCU": "MK1",
+      "Target_Group": "Boot_Control_Logic",
+      "Slaves": [
+        { "ComponentID": "NCD0603R6", "Interface": "LED_Anode" }
+      ]
+    },
+    {
+      "RuleName": "Check_3V3_Logic_Supply_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "AMS1117", "PinName": "VOUT" },
+        { "ComponentID": "MK1", "PinName": "VCC" }
+      ]
+    }
+  ]
+}

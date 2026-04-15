@@ -1,0 +1,160 @@
+{
+  "ComponentID": "ST7735S",
+  "ComponentType": "1.8-inch TFT LCD Display with Integrated SD Card Slot",
+  "Description": "This is a versatile 1.8-inch color Thin Film Transistor (TFT) Liquid Crystal Display (LCD) module driven by the ST7735S controller. It offers a resolution of 128x160 pixels with 65K full-color depth. The module communicates via a 4-wire Serial Peripheral Interface (SPI), making it highly compatible with a wide range of microcontrollers. A notable feature is the integrated SD card socket on the rear, which allows for easy storage and retrieval of bitmap images or data logs, sharing the SPI bus with the display to save on pin count.",
+  "KeyParameters": {
+    "Display Controller": "ST7735S",
+    "Screen Size": "1.8 inches",
+    "Resolution": "128 x 160 pixels",
+    "Interface": "4-wire SPI",
+    "Operating Voltage": "3.3V to 5.0V (Logic level is typically 3.3V)",
+    "Color Depth": "16-bit (65,536 colors)",
+    "Integrated Features": "MicroSD card slot and LED backlight"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power Supply",
+          "FunctionDescription": "Module supply input (3.3 V in schematic). Powers LCD and SD circuitry."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Ground reference for the module."
+        }
+      ],
+      "PinType": "Ground",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CS",
+      "Functions": [
+        {
+          "FunctionName": "LCD Chip Select",
+          "FunctionDescription": "SPI chip select for the ST7735S LCD controller (TFT\\_CS). Active low."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "RESET",
+      "Functions": [
+        {
+          "FunctionName": "LCD Reset",
+          "FunctionDescription": "Reset input for LCD controller (RST). Typically active low."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "A0 (DC)",
+      "Functions": [
+        {
+          "FunctionName": "Data/Command Select",
+          "FunctionDescription": "Selects command vs data for LCD SPI interface (TFT\\_DC)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "SDA (MOSI)",
+      "Functions": [
+        {
+          "FunctionName": "LCD SPI Data In",
+          "FunctionDescription": "SPI data input to LCD controller (MOSI)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "SCK",
+      "Functions": [
+        {
+          "FunctionName": "LCD SPI Clock",
+          "FunctionDescription": "SPI clock input to LCD controller (SCK)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "LED",
+      "Functions": [
+        {
+          "FunctionName": "Backlight Power",
+          "FunctionDescription": "Backlight LED supply/control pin. Drive from supply or via transistor/PWM as needed."
+        }
+      ],
+      "PinType": "Power Input",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SD\\_CS",
+      "Functions": [
+        {
+          "FunctionName": "SD Chip Select",
+          "FunctionDescription": "SPI chip select for onboard microSD socket (SDC\\_CS). Active low."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "SD\\_MOSI",
+      "Functions": [
+        {
+          "FunctionName": "SD SPI MOSI",
+          "FunctionDescription": "SPI data input to microSD (MOSI)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "SD\\_MISO",
+      "Functions": [
+        {
+          "FunctionName": "SD SPI MISO",
+          "FunctionDescription": "SPI data output from microSD (MISO)."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "SD\\_SCK",
+      "Functions": [
+        {
+          "FunctionName": "SD SPI Clock",
+          "FunctionDescription": "SPI clock input to microSD (SCK)."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "ComponentID": "RX8010SJ",
+  "ComponentType": "Real-Time Clock (RTC) Module with Integrated Crystal and I²C Interface",
+  "Description": "The RX8010SJ is a low-power real-time clock module that integrates a frequency-adjusted 32.768 kHz crystal unit. It provides a full calendar (year, month, day, weekday, hour, minute, second), alarm, timer, and frequency output functions. Communication is handled via a 400 kHz I²C interface. It features ultra-low backup current for battery-powered applications and includes 128 bits of user SRAM.",
+  "KeyParameters": {
+    "Operating Voltage Range (VDD)": "1.6 V to 5.5 V",
+    "Timekeeping Voltage Range (VCLK)": "1.1 V to 5.5 V",
+    "Backup Current (Typical @ 3V)": "160 nA",
+    "I²C Bus Speed": "400 kHz",
+    "Integrated Crystal Frequency": "32.768 kHz",
+    "Frequency Output Options": "32.768 kHz, 1024 Hz, 1 Hz (CMOS or Open-Drain selectable)",
+    "User RAM": "128 bits (8-bit x 16)",
+    "Operating Temperature Range": "-40 °C to +85 °C"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "/IRQ2",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Outputs interrupt signals for timer and frequency output (F_OUT)."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "CMOS Output"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Supply",
+          "FunctionDescription": "Positive power supply pin."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Power Supply"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Input",
+          "FunctionDescription": "Serial Clock line for I²C communication."
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital Input"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "SDA",
+      "Functions": [
+        {
+          "FunctionName": "Input/Output",
+          "FunctionDescription": "Serial Data line for I²C communication."
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Open-Drain I/O"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "/IRQ1",
+      "Functions": [
+        {
+          "FunctionName": "Output",
+          "FunctionDescription": "Outputs interrupt signals for alarm, timer, time update, and 32.768kHz clock."
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "N-ch Open-Drain Output"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No connection."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Supply",
+          "FunctionDescription": "Ground reference pin."
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "NC",
+      "Functions": [
+        {
+          "FunctionName": "-",
+          "FunctionDescription": "No connection."
+        }
+      ],
+      "PinType": "-",
+      "ElectricalType": "-"
+    }
+  ]
+}

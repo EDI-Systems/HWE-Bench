@@ -1,0 +1,26 @@
+Component ID: NS4150
+Component Type: Mono Class-D Audio Power Amplifier  
+Description: The NS4150B is a 3W mono, filterless Class-D audio power amplifier designed for low EMI and high efficiency in portable audio applications. It integrates a PWM modulation structure with built-in gain, eliminating the need for an external LC filter. The device features comprehensive protection circuits (over-current, over-temperature, and under-voltage), excellent PSRR, and low pop-and-click noise during power-on/off sequences. It operates from a single 3.0V to 5.0V supply and is offered in an MSOP-8 package.
+
+Key Parameters:
+- Supply Voltage Range (Recommended): 3.0V to 5.0V
+- Output Power (THD=10%, VDD=5V, RL=4Ω): 2.8W
+- Maximum Efficiency: 90%
+- Quiescent Current (VDD=3.6V, No Load): 3.0 mA (typ)
+- Modulation Frequency: 400 kHz (typ)
+- PSRR (217 Hz): -80 dB (typ)
+- THD+N (VDD=3.6V, Po=0.5W, RL=4Ω, 1kHz): 0.10% (typ)
+- Shutdown Leakage Current (VDD=3.6V): 0.1 µA (typ)
+- Operating Temperature Range: -40°C to 85°C
+
+Pinout Table:
+| Pin Number | Pin Name | Function | Description | Pin Type | Electrical Type |
+| ----- | -------- | -------- | ----------- | -------- | --------------- |
+| 1 | CTRL | Control | Shutdown control (Low = Shutdown) | Digital Input | Control |
+| 2 | Bypass | Bypass | Internal common-mode voltage bypass; connect 1µF capacitor to GND | Analog | Power/Reference |
+| 3 | INP | Input | Non-inverting audio input | Analog Input | Signal |
+| 4 | INN | Input | Inverting audio input | Analog Input | Signal |
+| 5 | VoN | Output | Inverting audio output (negative) | Analog Output | Power Output |
+| 6 | VCC | Power | Supply voltage input and power stage supply | Power | Power Supply |
+| 7 | GND | Ground | Ground reference | Power | Ground |
+| 8 | VoP | Output | Non-inverting audio output (positive) | Analog Output | Power Output |

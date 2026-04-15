@@ -1,0 +1,89 @@
+{
+  "Power Management Ecosystem": [
+    {
+      "net_id": "net_usb_5v",
+      "Connections": [
+        {
+          "ComponentID": "KH-TYPE-C-16P",
+          "PinName": "VBUS",
+          "FunctionName": "USB Power Input"
+        },
+        {
+          "ComponentID": "IP2312",
+          "PinName": "VIN",
+          "FunctionName": "Charger Power Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_vbat_raw",
+      "Connections": [
+        {
+          "ComponentID": "IP2312",
+          "PinName": "BAT",
+          "FunctionName": "Charger Battery Output"
+        },
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "VIN",
+          "FunctionName": "3.3V Buck Input"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "VIN",
+          "FunctionName": "5V Boost Input"
+        }
+      ]
+    },
+    {
+      "net_id": "net_vcc3_3_logic",
+      "Connections": [
+        {
+          "ComponentID": "TPS62088",
+          "PinName": "VOUT",
+          "FunctionName": "3.3V Logic Output"
+        },
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "VCC3_3",
+          "FunctionName": "MCU Core Power"
+        }
+      ]
+    },
+    {
+      "net_id": "net_vcc5_boost",
+      "Connections": [
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "VOUT",
+          "FunctionName": "5V Boosted Output"
+        }
+      ]
+    },
+    {
+      "net_id": "net_boost_en_ctrl",
+      "Connections": [
+        {
+          "ComponentID": "ESP32-WROVER",
+          "PinName": "IO12",
+          "FunctionName": "Boost Enable Control"
+        },
+        {
+          "ComponentID": "TPS61236P",
+          "PinName": "EN",
+          "FunctionName": "Boost Enable Pin"
+        }
+      ]
+    },
+    {
+      "net_id": "0",
+      "Connections": [
+        { "ComponentID": "KH-TYPE-C-16P", "PinName": "GND" },
+        { "ComponentID": "IP2312", "PinName": "GND" },
+        { "ComponentID": "TPS62088", "PinName": "GND" },
+        { "ComponentID": "TPS61236P", "PinName": "GND" },
+        { "ComponentID": "ESP32-WROVER", "PinName": "GND" }
+      ]
+    }
+  ]
+}

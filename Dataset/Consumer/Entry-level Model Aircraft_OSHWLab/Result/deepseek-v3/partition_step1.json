@@ -1,0 +1,39 @@
+{
+  "Functional Modules": [
+    {
+      "Module Name": "Power Management Ecosystem",
+      "Function Description": "Manages the single-cell battery charging, provides a stable logic voltage rail using a step-up followed by a step-down regulation topology to withstand severe battery voltage drops during motor activations.",
+      "Signal Sources": "Single-cell LiPo battery, external charger input.",
+      "Signal Destinations": "All other modules (provides stable Vlogic).",
+      "Implementation Logic": "Integrated charging IC for the battery. A boost converter first raises the variable battery voltage to a level above the required logic voltage, then a buck converter regulates it down to a precise, stable Vlogic (e.g., 3.3V), ensuring continuous operation during load transients."
+    },
+    {
+      "Module Name": "Wireless Central Processing Unit (CPU)",
+      "Function Description": "The main system controller. Aggregates sensor data, executes flight/stabilization algorithms, generates timed pulse signals for motor control, and manages system states.",
+      "Signal Sources": "Sensor Suite (via I2C/SPI), Diagnostic Bridge (UART/Boot control).",
+      "Signal Destinations": "High-Current Drive Channels (PWM signals), Diagnostic Bridge (communication).",
+      "Implementation Logic": "A microcontroller (MCU) or microprocessor with integrated wireless capability (e.g., Bluetooth/Wi-Fi). Runs the main firmware, processing sensor fusion data and control loops to output PWM commands."
+    },
+    {
+      "Module Name": "Spatial Awareness Sensor Suite",
+      "Function Description": "Provides real-time orientation and altitude data. Includes a multi-axis IMU (gyroscope, accelerometer) and a barometric pressure sensor.",
+      "Signal Sources": "Inertial forces, atmospheric pressure.",
+      "Signal Destinations": "Wireless CPU (via digital bus).",
+      "Implementation Logic": "A combined IMU+pressure sensor module or discrete ICs communicating via I2C or SPI. The IMU provides angular rate and linear acceleration. The pressure sensor provides altitude estimation."
+    },
+    {
+      "Module Name": "High-Current Drive Channels",
+      "Function Description": "Drives external inductive loads (e.g., brushless DC motors) based on CPU commands. Provides high-current capacity for motor control.",
+      "Signal Sources": "Wireless CPU (PWM signals).",
+      "Signal Destinations": "External motor phases.",
+      "Implementation Logic": "Motor driver ICs or discrete MOSFET bridges (e.g., 3-phase for BLDC). Gate drivers amplify CPU PWM signals to switch high-current MOSFETs, controlling motor speed and direction."
+    },
+    {
+      "Module Name": "Automated Wired Diagnostic Bridge",
+      "Function Description": "Handles external wired communication (e.g., for telemetry) and facilitates seamless firmware flashing by automatically forcing the main CPU into bootloader/programming mode.",
+      "Signal Sources": "External programming/debugging host (via UART/USB).",
+      "Signal Destinations": "Wireless CPU (UART, boot mode control pin).",
+      "Implementation Logic": "A USB-to-serial bridge IC (e.g., CP2102, CH340) or a dedicated communication MCU. It monitors the communication line; upon detecting a specific command or sequence from the host, it toggles a hardware pin (e.g., MCU reset/boot) to force the main CPU into its bootloader, enabling firmware updates without user button presses."
+    }
+  ]
+}

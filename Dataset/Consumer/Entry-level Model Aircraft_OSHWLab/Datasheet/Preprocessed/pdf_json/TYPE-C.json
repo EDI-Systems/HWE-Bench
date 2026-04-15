@@ -1,0 +1,186 @@
+{
+  "ComponentID": "TYPE-C",
+  "ComponentType": "USB Type-C Female Connector (Receptacle)",
+  "Description": "This is a 16-pin USB Type-C receptacle connector designed for surface-mount applications. Its primary functionality is to provide a standardized, reversible physical and electrical interface for USB connectivity, supporting data transfer and power delivery up to 5A. The component is specified for use in consumer electronics, with defined mechanical durability, electrical performance (including low contact resistance and high insulation), and environmental resilience across temperature, humidity, and soldering processes.",
+  "KeyParameters": {
+    "Rated Voltage/Current": "DC 5V, 5A",
+    "Operating Temperature Range": "-25°C to +85°C",
+    "Contact Resistance": "≤ 10 mΩ (initial, at ≤100mA)",
+    "Insulation Resistance": "≥ 100 MΩ (at 100V DC)",
+    "Dielectric Strength": "Withstands AC 100V (50Hz) for 1 min without breakdown",
+    "Insertion Force": "0.5 - 2.0 kgf",
+    "Withdrawal Force": "0.8 - 2.0 kgf",
+    "Mechanical Durability (Life Cycles)": "5000 cycles (under rated load)",
+    "Solder Heat Resistance (Reflow)": "Peak temperature 260°C ±5°C for ≤20 seconds"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "SBU2",
+      "Functions": [
+        {
+          "FunctionName": "Sideband",
+          "FunctionDescription": "Sideband Use pin 2 for Alternate Modes"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "CC1",
+      "Functions": [
+        {
+          "FunctionName": "Config 1",
+          "FunctionDescription": "Configuration Channel for PD and orientation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "DN2",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair 2 (Negative)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "DP1",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair 1 (Positive)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "DN1",
+      "Functions": [
+        {
+          "FunctionName": "Data-",
+          "FunctionDescription": "USB 2.0 differential pair 1 (Negative)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "DP2",
+      "Functions": [
+        {
+          "FunctionName": "Data+",
+          "FunctionDescription": "USB 2.0 differential pair 2 (Positive)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SBU1",
+      "Functions": [
+        {
+          "FunctionName": "Sideband",
+          "FunctionDescription": "Sideband Use pin 1 for Alternate Modes"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "CC2",
+      "Functions": [
+        {
+          "FunctionName": "Config 2",
+          "FunctionDescription": "Configuration Channel for PD and orientation"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "VBUS",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Bus power supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "5V - 20V"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / EMI protection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "14",
+      "PinName": "SHELL",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / EMI protection"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

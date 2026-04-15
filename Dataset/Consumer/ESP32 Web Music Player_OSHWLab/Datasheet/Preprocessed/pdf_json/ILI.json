@@ -1,0 +1,186 @@
+{
+  "ComponentID": "ILI",
+  "ComponentType": "Color TFT LCD Display Module with Resistive Touchscreen and Integrated Controller",
+  "Description": "This is a 2.4-inch diagonal color TFT LCD module with an integrated controller, RAM buffer, and a 4-LED white backlight. It features a resistive touchscreen overlay and supports two primary interface modes: an 8-bit parallel interface for high-speed operation and a 4/5-wire SPI interface for reduced pin count. The breakout board includes level-shifting circuitry for 3-5V logic compatibility, an onboard 3.3V regulator, and connections for an optional microSD card. It is designed to offload graphics processing from the host microcontroller.",
+  "KeyParameters": {
+    "Display Resolution": "240 x 320 pixels",
+    "Display Technology": "TFT with individual RGB pixel control",
+    "Interface Modes": "8-bit parallel, SPI (4/5-wire)",
+    "Logic Voltage Compatibility": "3V to 5V (with onboard level shifting)",
+    "Backlight": "4 white LEDs, PWM controllable",
+    "Touchscreen Type": "4-wire Resistive (separate Y+, X+, Y-, X- pins)",
+    "Supply Voltage (Vin)": "3VDC to 5VDC",
+    "Onboard Output Voltage": "3.3V (regulated)",
+    "SD Card Interface": "SPI-compatible (shared bus with TFT in SPI mode)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "P1",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Main system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "P2",
+      "PinName": "RESET",
+      "Functions": [
+        {
+          "FunctionName": "Reset",
+          "FunctionDescription": "Hardware reset pin (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P3",
+      "PinName": "SCL",
+      "Functions": [
+        {
+          "FunctionName": "Clock",
+          "FunctionDescription": "SPI Serial Clock input"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P4",
+      "PinName": "D/CX",
+      "Functions": [
+        {
+          "FunctionName": "Data/Cmd",
+          "FunctionDescription": "Register select (Data or Command)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P5",
+      "PinName": "CSX",
+      "Functions": [
+        {
+          "FunctionName": "Chip Select",
+          "FunctionDescription": "LCD Chip Select signal (Active Low)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P6",
+      "PinName": "SDI",
+      "Functions": [
+        {
+          "FunctionName": "Data In",
+          "FunctionDescription": "SPI Master Out Slave In (MOSI)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P7",
+      "PinName": "SDO",
+      "Functions": [
+        {
+          "FunctionName": "Data Out",
+          "FunctionDescription": "SPI Master In Slave Out (MISO)"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "P8",
+      "PinName": "GND2",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Secondary ground connection"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "P9",
+      "PinName": "VCC",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Main positive supply voltage"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "P10",
+      "PinName": "LEDA",
+      "Functions": [
+        {
+          "FunctionName": "Backlight+",
+          "FunctionDescription": "Common Anode for the LED backlight"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "~3.2V"
+    },
+    {
+      "PinNumber": "P11",
+      "PinName": "LED_K1",
+      "Functions": [
+        {
+          "FunctionName": "Cathode 1",
+          "FunctionDescription": "LED backlight segment 1 cathode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "P12",
+      "PinName": "LED_K2",
+      "Functions": [
+        {
+          "FunctionName": "Cathode 2",
+          "FunctionDescription": "LED backlight segment 2 cathode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "P13",
+      "PinName": "LED_K3",
+      "Functions": [
+        {
+          "FunctionName": "Cathode 3",
+          "FunctionDescription": "LED backlight segment 3 cathode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    },
+    {
+      "PinNumber": "P14",
+      "PinName": "LED_K4",
+      "Functions": [
+        {
+          "FunctionName": "Cathode 4",
+          "FunctionDescription": "LED backlight segment 4 cathode"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Power"
+    }
+  ]
+}

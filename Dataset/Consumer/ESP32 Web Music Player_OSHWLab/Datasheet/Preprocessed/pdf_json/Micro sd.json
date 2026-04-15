@@ -1,0 +1,175 @@
+{
+  "ComponentID": "Micro sd",
+  "ComponentType": "Memory Card Socket (SD / microSD)",
+  "Description": "This is a family of surface-mount card sockets designed for SD and microSD cards, compliant with UHS-I and UHS-II interfaces. They provide a physical and electrical interface for memory cards in portable and embedded devices, featuring mechanisms like push-push or push-pull for card insertion/ejection, shielding for EMI/ESD protection, and a space-saving, low-profile design suitable for double-sided PCB assembly.",
+  "KeyParameters": {
+    "Card Type Compatibility": "SD, microSD (UHS-I, UHS-II)",
+    "Number of Positions (Contacts)": "8 (microSD), 9 (SD)",
+    "Mechanism Type": "Push-Push, Push-Pull, or Hinge",
+    "Socket Height": "Ranges from 1.45mm to 2.70mm (ultra-thin)",
+    "Current Rating": "0.5A per contact",
+    "Voltage Rating": "5V AC",
+    "Contact Resistance": "100mΩ max.",
+    "Insertion/Extraction Force": "14N max.",
+    "Mechanical Durability": "10,000 cycles",
+    "Operating Temperature Range": "-55°C to +85°C (environmental test condition)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "DAT2",
+      "Functions": [
+        {
+          "FunctionName": "RSV",
+          "FunctionDescription": "SD Data Line 2 / Reserved in SPI mode"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "CD/DAT3",
+      "Functions": [
+        {
+          "FunctionName": "CS",
+          "FunctionDescription": "SD Data Line 3 / SPI Chip Select (Active Low)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "CMD",
+      "Functions": [
+        {
+          "FunctionName": "DI",
+          "FunctionDescription": "Command Line / SPI Data Input (MOSI)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "VDD",
+      "Functions": [
+        {
+          "FunctionName": "Power",
+          "FunctionDescription": "Positive supply voltage input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "3.3V"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "CLK",
+      "Functions": [
+        {
+          "FunctionName": "SCLK",
+          "FunctionDescription": "Serial Clock signal"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "VSS",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "DAT0",
+      "Functions": [
+        {
+          "FunctionName": "DO",
+          "FunctionDescription": "SD Data Line 0 / SPI Data Output (MISO)"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "DAT1",
+      "Functions": [
+        {
+          "FunctionName": "RSV",
+          "FunctionDescription": "SD Data Line 1 / Reserved in SPI mode"
+        }
+      ],
+      "PinType": "I/O",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "CDN",
+      "Functions": [
+        {
+          "FunctionName": "Detect",
+          "FunctionDescription": "Card Detect switch (typically pulls to GND when inserted)"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Signal"
+    },
+    {
+      "PinNumber": "10",
+      "PinName": "G1",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / Mechanical ground tab"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "11",
+      "PinName": "G2",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / Mechanical ground tab"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "12",
+      "PinName": "G4",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / Mechanical ground tab"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    },
+    {
+      "PinNumber": "13",
+      "PinName": "G3",
+      "Functions": [
+        {
+          "FunctionName": "Shield",
+          "FunctionDescription": "Metal housing / Mechanical ground tab"
+        }
+      ],
+      "PinType": "Passive",
+      "ElectricalType": "Ground"
+    }
+  ]
+}

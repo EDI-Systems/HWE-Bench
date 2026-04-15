@@ -1,0 +1,121 @@
+{
+  "ComponentID": "MAX98357",
+  "ComponentType": "Digital PCM Input Class D Audio Power Amplifier",
+  "Description": "The MAX98357A/MAX98357B is a low-cost, filterless, digital-input Class D amplifier that provides high-quality Class AB-like audio performance with Class D efficiency. It features a flexible PCM digital audio interface that automatically recognizes numerous clocking schemes (I2S for MAX98357A, Left-Justified for MAX98357B, plus 8-channel TDM for both), eliminating the need for I2C programming or an external master clock (MCLK). It operates from a single 2.5V to 5.5V supply, supports sample rates from 8kHz to 96kHz, and includes features for low EMI, robust protection, and click-and-pop suppression.",
+  "KeyParameters": {
+    "Supply Voltage Range": "2.5V to 5.5V",
+    "Output Power": "3.2W into 4 Ohm at 5V (10% THD+N)",
+    "Interface": "I2S / PCM Digital Audio",
+    "Efficiency": "92% (RL = 8 Ohm, POUT = 1.5W)"
+  },
+  "Pins": [
+    {
+      "PinNumber": "1",
+      "PinName": "LRCLK",
+      "Functions": [
+        {
+          "FunctionName": "WS",
+          "FunctionDescription": "Left-right clock (Word Select) input for I2S"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "2",
+      "PinName": "BCLK",
+      "Functions": [
+        {
+          "FunctionName": "BCLK",
+          "FunctionDescription": "Bit clock input for I2S"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "3",
+      "PinName": "DIN",
+      "Functions": [
+        {
+          "FunctionName": "SDIN",
+          "FunctionDescription": "Serial data input for I2S"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "4",
+      "PinName": "GAIN",
+      "Functions": [
+        {
+          "FunctionName": "Gain",
+          "FunctionDescription": "Gain select pin (3dB to 15dB settings)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Analog/Logic"
+    },
+    {
+      "PinNumber": "5",
+      "PinName": "SD",
+      "Functions": [
+        {
+          "FunctionName": "SD_MODE",
+          "FunctionDescription": "Shutdown and channel select (L, R, or Mono)"
+        }
+      ],
+      "PinType": "Input",
+      "ElectricalType": "Digital"
+    },
+    {
+      "PinNumber": "6",
+      "PinName": "GND",
+      "Functions": [
+        {
+          "FunctionName": "Ground",
+          "FunctionDescription": "Common system ground reference"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "0V"
+    },
+    {
+      "PinNumber": "7",
+      "PinName": "2.5-5.5V",
+      "Functions": [
+        {
+          "FunctionName": "VDD",
+          "FunctionDescription": "Positive power supply input"
+        }
+      ],
+      "PinType": "Power",
+      "ElectricalType": "2.5V - 5.5V"
+    },
+    {
+      "PinNumber": "8",
+      "PinName": "SPK+",
+      "Functions": [
+        {
+          "FunctionName": "OUT+",
+          "FunctionDescription": "Positive differential speaker output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    },
+    {
+      "PinNumber": "9",
+      "PinName": "SPK-",
+      "Functions": [
+        {
+          "FunctionName": "OUT-",
+          "FunctionDescription": "Negative differential speaker output"
+        }
+      ],
+      "PinType": "Output",
+      "ElectricalType": "Analog"
+    }
+  ]
+}

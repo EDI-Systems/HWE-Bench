@@ -1,0 +1,112 @@
+{
+  "MCU_Function_Groups": {
+    "ESP32": {
+      "System_Power_Logic": [
+        { "PinName": "3V3", "FunctionName": "3.3V Power Supply" },
+        { "PinName": "GND", "FunctionName": "Common Ground" },
+        { "PinName": "EN", "FunctionName": "Reset/Enable" }
+      ],
+      "SPI_Shared_Bus": [
+        { "PinName": "IO18", "FunctionName": "SPI_SCK" },
+        { "PinName": "IO23", "FunctionName": "SPI_MOSI" },
+        { "PinName": "IO19", "FunctionName": "SPI_MISO" },
+        { "PinName": "IO5", "FunctionName": "CS1_BMI160" },
+        { "PinName": "IO17", "FunctionName": "CS2_MPU9250" }
+      ],
+      "Primary_I2C_Bus": [
+        { "PinName": "IO21", "FunctionName": "I2C1_SDA" },
+        { "PinName": "IO22", "FunctionName": "I2C1_SCL" }
+      ],
+      "Secondary_I2C_Bus": [
+        { "PinName": "IO25", "FunctionName": "I2C2_SDA / PWM3" },
+        { "PinName": "IO26", "FunctionName": "I2C2_SCL / PWM4" }
+      ],
+      "UART_Interface": [
+        { "PinName": "TXD0", "FunctionName": "PROG_TX" },
+        { "PinName": "RXD0", "FunctionName": "PROG_RX" },
+        { "PinName": "IO17", "FunctionName": "GPS_TX2 / CS2" },
+        { "PinName": "IO16", "FunctionName": "GPS_RX2" }
+      ],
+      "PWM_Outputs": [
+        { "PinName": "IO32", "FunctionName": "PWM1" },
+        { "PinName": "IO33", "FunctionName": "PWM2" },
+        { "PinName": "IO25", "FunctionName": "PWM3 / I2C2_SDA" },
+        { "PinName": "IO26", "FunctionName": "PWM4 / I2C2_SCL" },
+        { "PinName": "IO27", "FunctionName": "PWM5" },
+        { "PinName": "IO14", "FunctionName": "PWM6" }
+      ],
+      "RC_Input": [
+        { "PinName": "IO13", "FunctionName": "SBUS_IN" }
+      ]
+    }
+  },
+  "Component_Interfaces": {
+    "BMI160": {
+      "SPI_Port": [
+        { "PinName": "SCX", "FunctionName": "Clock" },
+        { "PinName": "SDX", "FunctionName": "MOSI" },
+        { "PinName": "SDO", "FunctionName": "MISO" },
+        { "PinName": "CSB", "FunctionName": "CS" }
+      ]
+    },
+    "MPU-9250": {
+      "SPI_Port": [
+        { "PinName": "SCL/SCLK", "FunctionName": "Clock" },
+        { "PinName": "SDA/SDI", "FunctionName": "MOSI" },
+        { "PinName": "AD0/SDO", "FunctionName": "MISO" },
+        { "PinName": "nCS", "FunctionName": "CS" }
+      ]
+    },
+    "BMP280": {
+      "I2C_Port": [
+        { "PinName": "SCK", "FunctionName": "SCL" },
+        { "PinName": "SDI", "FunctionName": "SDA" }
+      ]
+    },
+    "HMC5883L": {
+      "I2C_Port": [
+        { "PinName": "SCL", "FunctionName": "SCL" },
+        { "PinName": "SDA", "FunctionName": "SDA" }
+      ]
+    }
+  },
+  "Routing_Rules": [
+    {
+      "RuleName": "Check_High_Speed_SPI_Sensor_Bus",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "SPI_Shared_Bus",
+      "Slaves": [
+        { "ComponentID": "BMI160", "Interface": "SPI_Port" },
+        { "ComponentID": "MPU-9250", "Interface": "SPI_Port" }
+      ]
+    },
+    {
+      "RuleName": "Check_Primary_I2C_Sensor_Network",
+      "Type": "Bus_Pairing",
+      "MCU": "ESP32",
+      "Target_Group_Pattern": "Primary_I2C_Bus",
+      "Slaves": [
+        { "ComponentID": "BMP280", "Interface": "I2C_Port" },
+        { "ComponentID": "HMC5883L", "Interface": "I2C_Port" }
+      ]
+    },
+    {
+      "RuleName": "Check_SBUS_RC_Receiver_Path",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ESP32", "PinName": "IO13" },
+        { "ComponentID": "H5", "PinName": "SBUS_IN" }
+      ]
+    },
+    {
+      "RuleName": "Check_Logic_Power_Rail_3V3",
+      "Type": "Direct_Link",
+      "Nodes": [
+        { "ComponentID": "ESP32", "PinName": "3V3" },
+        { "ComponentID": "BMI160", "PinName": "VDD" },
+        { "ComponentID": "BMP280", "PinName": "VDD" }
+      ]
+    }
+  ]
+}
